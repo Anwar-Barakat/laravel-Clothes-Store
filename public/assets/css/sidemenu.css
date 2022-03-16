@@ -557,7 +557,7 @@ slide is-expanded side-menu__item {
 
 .side-menu .slide.active .side-menu__label,
 .side-menu .slide.active .side-menu__icon {
-    color: #2c364c;
+    color: #009688;
 }
 
 .side-menu__item {
@@ -580,25 +580,25 @@ slide is-expanded side-menu__item {
 .side-menu__item:hover,
 .side-menu__item:focus {
     text-decoration: none;
-    color: #2c364c;
+    color: #009688;
 }
 
 .side-menu__item.active .side-menu__label {
-    color: #2c364c;
+    color: #009688;
 }
 
 .side-menu__item.active .angle {
-    color: #2c364c;
+    color: #009688;
 }
 
 .side-menu__item.active .side-menu__icon {
-    fill: #2c364c;
+    fill: #009688;
 }
 
 .side-menu__item.active .side-menu__icon,
 .side-menu__item:hover .side-menu__icon,
 .side-menu__item:focus .side-menu__icon {
-    color: #2c364c;
+    color: #009688;
 }
 
 @media (min-width: 768px) {
@@ -626,14 +626,14 @@ slide is-expanded side-menu__item {
 .slide:hover .side-menu__label,
 .slide:hover .angle,
 .slide:hover .side-menu__icon {
-    color: #2c364c !important;
-    fill: #2c364c !important;
+    color: #009688 !important;
+    fill: #009688 !important;
 }
 
 .slide.is-expanded .side-menu__label,
 .slide.is-expanded .side-menu__icon,
 .slide.is-expanded .angle {
-    color: #2c364c !important;
+    color: #009688 !important;
 }
 
 .slide-item.active,
@@ -647,7 +647,7 @@ slide is-expanded side-menu__item {
 .slide-item:hover,
 .slide-item:focus {
     text-decoration: none;
-    color: #2c364c !important;
+    color: #009688 !important;
 }
 
 .slide-menu .sub-slide {
@@ -691,7 +691,7 @@ slide is-expanded side-menu__item {
     font-size: 23px;
     line-height: 0;
     margin-right: 14px;
-    width: 22px;
+    width: 20px;
     height: 22px;
     line-height: 34px;
     border-radius: 3px;
@@ -731,13 +731,13 @@ slide is-expanded side-menu__item {
     content: '';
     width: 3px;
     height: 31px;
-    background: #005ee9;
+    background: #009688;
     position: absolute;
     left: 0;
 }
 
 .app-sidebar .side-item.side-item-category {
-    color: #2c364c;
+    color: #009688;
     font-size: 11px;
     text-transform: uppercase;
     font-weight: 700;
@@ -1268,7 +1268,7 @@ slide is-expanded side-menu__item {
 }
 
 .sub-slide.is-expanded .sub-side-menu__item {
-    color: #2c364c;
+    color: #009688;
 }
 
 .slide-menu .sub-slide.is-expanded {
@@ -1367,7 +1367,7 @@ slide is-expanded side-menu__item {
 }
 
 .app-sidebar .slide-menu a.active:before {
-    color: #2c364c;
+    color: #009688;
 }
 
 @media (min-width: 768px) {

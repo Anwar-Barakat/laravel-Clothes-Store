@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.admin_details'))
+@section('title', __('translation.admin_settings'))
 @section('css')
     <!---Internal Fileupload css-->
     <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.admin_details') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.admin_settings') }}</span>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
-                                    <label for="name">{{ __('translation.admin_name') }}</label>
+                                    <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" value="{{ old('name', Auth::guard('admin')->user()->name) }}">
                                     @error('name')
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="avatar">{{ __('translation.admin_image') }}</label>
+                            <label for="avatar">{{ __('translation.image') }}</label>
                             <input type="file" name="avatar" accept=".jpg, .png, image/jpeg, image/png"
                                 class="form-control @error('avatar') is-invalid @enderror">
                             @error('avatar')

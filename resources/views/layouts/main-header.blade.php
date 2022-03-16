@@ -169,16 +169,30 @@
                         </svg></a>
                 </div>
                 <div class="dropdown main-profile-menu nav nav-item nav-link">
-                    <a class="profile-user d-flex" href=""><img alt=""
-                            src="{{ URL::asset('assets/img/faces/6.jpg') }}"></a>
+                    <a class="profile-user d-flex" href="">
+                        @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
+                            <img alt=""
+                                src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}">
+                        @else
+                            <img alt="" src="{{ URL::asset('assets/img/faces/6.jpg') }}">
+                        @endif
+                    </a>
                     <div class="dropdown-menu">
                         <div class="main-header-profile bg-primary p-3">
                             <div class="d-flex wd-100p">
-                                <div class="main-img-user"><img alt=""
-                                        src="{{ URL::asset('assets/img/faces/6.jpg') }}" class="">
+                                <div class="main-img-user">
+                                    @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
+                                        <img alt=""
+                                            src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}"
+                                            class="">
+                                    @else
+                                        <img alt="" src="{{ URL::asset('assets/img/faces/6.jpg') }}"
+                                            class="">
+                                    @endif
                                 </div>
                                 <div class="mr-3 my-auto">
-                                    <h6>Petey Cruiser</h6><span>Premium Member</span>
+                                    <h6>{{ Auth::guard('admin')->user()->name }}</h6>
+                                    <span>{{ Auth::guard('admin')->user()->email }}</span>
                                 </div>
                             </div>
                         </div>

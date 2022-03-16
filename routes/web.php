@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminSettingController;
+use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -40,6 +41,12 @@ Route::group(
                 Route::post('update-password',                      [AdminSettingController::class, 'updatePassword'])->name('update.password');
 
                 Route::match(['get', 'post'], 'update-detail',      [AdminSettingController::class, 'updateDetails'])->name('update.details');
+
+                // Sections :
+                Route::get('sections/index',                        [SectionController::class, 'index'])->name('sections.index');
+
+                Route::post('update-section-status',       [SectionController::class, 'updateSectionStatus']);
+
 
                 Route::get('logout',                                [AdminController::class, 'logout'])->name('logout');
             });

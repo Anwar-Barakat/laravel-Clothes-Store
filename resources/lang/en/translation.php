@@ -9,6 +9,8 @@ return [
     'general'                   => 'General',
     'change_password'           => 'Update Password',
     'change_admin_detail'       => 'Update Admin Details',
+    'sections'                  => 'Sections',
+    'all_sections'              => 'All Sections',
 
 
     // dashboard :
@@ -43,8 +45,14 @@ return [
     'currnet_pwd_true'          => 'Current Password Is Correct',
     'currnet_pwd_false'         => 'Current Password Is Incorrect',
     'admin_details'             => 'Admin Details',
-    'admin_name'                => 'Name',
+    'name'                      => 'Name',
     'admin_phone'               => 'Phone',
-    'admin_image'               => 'Image',
+    'image'                     => 'Image',
 
+
+    // Sections :
+    'id'                        => 'Id',
+    'status'                    => 'Status',
+    'active'                    => 'Active',
+    'disactive'                 => 'Disactive',
 ];

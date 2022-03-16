@@ -8,7 +8,9 @@ return [
     'admin_settings'            => 'إعدادات الأدمن',
     'general'                   => 'عام',
     'change_password'           => 'تحديث كلمة المرور',
-    'update_admin_detail'       => 'تحديث بيانات الأدمن',
+    'change_admin_detail'       => 'تحديث بيانات الأدمن',
+    'sections'                  => 'الأقسام',
+    'all_sections'              => 'جميع الأقسام',
 
 
     // main header :
@@ -43,8 +45,14 @@ return [
     'currnet_pwd_true'          => 'كلمة المرور الحالية صحيحة ',
     'currnet_pwd_false'         => 'كلمة المرور الحالية غير صحيحة',
     'admin_details'             => 'بيانات الأدمن',
-    'admin_name'                => 'الاسم',
+    'name'                      => 'الاسم',
     'admin_phone'               => 'الموبايل',
-    'admin_image'               => 'الصورة الشخصية',
+    'image'                     => 'الصورة الشخصية',
 
+
+    // Sections :
+    'id'                        => 'الرقم',
+    'status'                    => 'الحالة',
+    'active'                    => 'فعال',
+    'disactive'                 => 'مًعطل'
 ];

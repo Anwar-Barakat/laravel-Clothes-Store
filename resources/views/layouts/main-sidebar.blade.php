@@ -37,13 +37,14 @@
             <li class="side-item side-item-category">{{ __('translation.main') }}</li>
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.dashboard') }}">
-                    <i class="fas fa-home icon_sidebar"></i>
+                    <i class="fas fa-chart-line icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.dashboard') }}</span>
                 </a>
             </li>
+            {{-- admin Settings --}}
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="{{ route('admin.settings') }}">
-                    <i class="fas fa-cog icon_sidebar"></i>
+                    <i class="fas fa-cogs icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.admin_settings') }}</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
@@ -57,6 +58,19 @@
                 </ul>
             </li>
 
+            {{-- sections --}}
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                    <i class="fas fa-bars icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.sections') }}</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li><a class="slide-item"
+                            href="{{ route('admin.sections.index') }}">{{ __('translation.all_sections') }}</a>
+                    </li>
+                </ul>
+            </li>
 
             <li class="side-item side-item-category">{{ __('translation.general') }}</li>
             <li class="slide">

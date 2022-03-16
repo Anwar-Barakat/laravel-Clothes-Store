@@ -8,3 +8,5 @@
     ->  update details and upload Avatar. 
 
 --------------------
+
+-   add sections table.
