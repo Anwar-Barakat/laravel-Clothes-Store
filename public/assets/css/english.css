@@ -1,0 +1,11 @@
+.slide-item {
+    padding: 0 0 0 58px
+}
+
+.app-sidebar .slide-menu a:before {
+    left: 41px;
+}
+
+.icon_sidebar {
+    margin-right: 14px;
+}

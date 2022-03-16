@@ -1,0 +1,15 @@
+    .symbol-input100 {
+        flex-direction: row-reverse;
+    }
+    
+    .icon_sidebar {
+        margin-left: 14px;
+    }
+    
+    .slide-item {
+        padding: 0 58px 0 0;
+    }
+    
+    .app-sidebar .slide-menu a:before {
+        right: 41px;
+    }
