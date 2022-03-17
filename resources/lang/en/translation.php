@@ -12,6 +12,7 @@ return [
     'sections'                  => 'Sections',
     'all_sections'              => 'All Sections',
     'categories'                => 'Categories',
+    'all_categories'              => 'All Categories',
 
 
     // dashboard :
@@ -63,10 +64,26 @@ return [
     'enter_the_name_ar'         => 'Enter Arabic Name',
     'enter_the_name_en'         => 'Enter English Name',
     'choose..'                  => 'Choose..',
+    'choose_file'               => 'Choose Image',
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',
 
     // Categories :
     'url'                       => 'URL',
+    'category_name'             => 'Category Name',
+    'category_level'            => 'Category Level',
+    'image'                     => 'Image',
+    'discount'                  => 'Discount',
+    'category_url'              => 'Category URL',
+    'desc'                      => 'Description',
+    'category_description'      => 'Category Description',
+    'meta'                      => 'Meta',
+    'meta_title'                => 'Meta Title',
+    'meta_description'          => 'Meta Description',
+    'meta_keywords'             => 'Meta keywords',
+    'category_meta_title'       => 'Category Meta Title',
+    'category_meta_description' => 'Category Meta Description',
+    'category_meta_keywords'    => 'Category Meta keywords',
+    'main_cat'                  => 'Main Category',
 
 ];

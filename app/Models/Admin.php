@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -42,6 +41,6 @@ class Admin extends Authenticatable implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->width(300)
-            ->height(100);
+            ->height(150);
     }
 }

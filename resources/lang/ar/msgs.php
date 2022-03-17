@@ -7,4 +7,6 @@ return [
 
     'section_added'             => 'تم إضافة القسم بنجاح',
     'section_updated'           => 'تم تحديث القسم بنجاح',
+
+    'category_add'              => 'تم إضافة الفئة بنجاح',
 ];

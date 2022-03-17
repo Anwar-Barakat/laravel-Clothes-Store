@@ -34,31 +34,33 @@ Route::group(
                 Route::get('/dashboard', function () {
                     return view('index');
                 })->name('admin.dashboard');
+                Route::get('settings',                                      [AdminSettingController::class, 'settings'])->name('admin.settings');
+                Route::post('check-current-password',                       [AdminSettingController::class, 'checkCurrentPassword'])->name('admin.check.currnet.pwd');
+                Route::post('update-password',                              [AdminSettingController::class, 'updatePassword'])->name('admin.update.password');
+                Route::match(['get', 'post'], 'update-detail',              [AdminSettingController::class, 'updateDetails'])->name('admin.update.details');
 
-                Route::get('settings',                              [AdminSettingController::class, 'settings'])->name('admin.settings');
 
-                Route::post('check-current-password',               [AdminSettingController::class, 'checkCurrentPassword'])->name('admin.check.currnet.pwd');
-
-                Route::post('update-password',                      [AdminSettingController::class, 'updatePassword'])->name('admin.update.password');
-
-                Route::match(['get', 'post'], 'update-detail',      [AdminSettingController::class, 'updateDetails'])->name('admin.update.details');
-
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
                 // Sections :
-                Route::get('sections/index',                        [SectionController::class, 'index'])->name('admin.sections.index');
-
-                Route::post('update-section-status',                [SectionController::class, 'updateSectionStatus']);
-
-                Route::post('sections/add',                         [SectionController::class, 'store'])->name('admin.sections.store');
-
-                Route::post('sections/update/{section}',            [SectionController::class, 'update'])->name('admin.sections.update');
+                Route::get('sections/index',                                [SectionController::class, 'index'])->name('admin.sections.index');
+                Route::post('update-section-status',                        [SectionController::class, 'updateSectionStatus']);
+                Route::post('sections/add',                                 [SectionController::class, 'store'])->name('admin.sections.store');
+                Route::post('sections/update/{section}',                    [SectionController::class, 'update'])->name('admin.sections.update');
 
 
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
                 // Categories :
-                Route::get('categories/index',                      [CategoryController::class, 'index'])->name('admin.categories.index');
+                Route::get('categories/index',                              [CategoryController::class, 'index'])->name('admin.categories.index');
+                Route::post('update-category-status',                       [CategoryController::class, 'updateCategoryStatus']);
+                Route::match(['get', 'post'], 'add-edit-category/{id?}',    [CategoryController::class, 'addEditCategory'])->name('admin.add.edit.category');
 
-                Route::post('update-category-status',               [CategoryController::class, 'updateCategoryStatus']);
-
-
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
                 Route::get('logout',                                [AdminController::class, 'logout'])->name('admin.logout');
             });
             Route::match(['get', 'post'], '/login',                 [AdminController::class, 'login'])->name('admin.login');

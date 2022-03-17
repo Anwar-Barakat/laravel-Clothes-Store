@@ -22,133 +22,138 @@
     <!-- breadcrumb -->
 @endsection
 @section('content')
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-header pb-0">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="card-title mg-b-0">{{ __('translation.all_sections') }}</h4>
-                    <button type="button" class="button-30 modal-effect" role="button" data-toggle="modal"
-                        data-target="#addNewSection">
-                        {{ __('buttons.add') }}
-                    </button>
+    <div class="row mb-5">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mg-b-0">{{ __('translation.all_sections') }}</h4>
+                        <button type="button" class="button-30 modal-effect" role="button" data-toggle="modal"
+                            data-target="#addNewSection">
+                            {{ __('buttons.add') }}
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table text-md-nowrap" id="sections">
-                        <thead>
-                            <tr>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($sections as $section)
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-md-nowrap" id="sections">
+                            <thead>
                                 <tr>
-                                    <td>{{ $section->id }}</td>
-                                    <td>{{ $section->name }}</td>
-                                    <td>
-                                        @if ($section->status == 1)
-                                            <a href="javascript:void(0);" class="updateSectionStatus text-success p-2"
-                                                id="section-{{ $section->id }}" section_id="{{ $section->id }}"
-                                                status="{{ $section->status }}">
-                                                <i class="fas fa-power-off"></i>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($sections as $section)
+                                    <tr>
+                                        <td>{{ $section->id }}</td>
+                                        <td>{{ $section->name }}</td>
+                                        <td>
+                                            @if ($section->status == 1)
+                                                <a href="javascript:void(0);" class="updateSectionStatus text-success p-2"
+                                                    id="section-{{ $section->id }}" section_id="{{ $section->id }}"
+                                                    status="{{ $section->status }}">
+                                                    <i class="fas fa-power-off"></i>
 
-                                            </a>
-                                        @else
-                                            <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
-                                                id="section-{{ $section->id }}" section_id="{{ $section->id }}"
-                                                status="{{ $section->status }}">
-                                                <i class="fas fa-power-off text-danger"></i>
+                                                </a>
+                                            @else
+                                                <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
+                                                    id="section-{{ $section->id }}" section_id="{{ $section->id }}"
+                                                    status="{{ $section->status }}">
+                                                    <i class="fas fa-power-off text-danger"></i>
 
+                                                </a>
+                                            @endif
+                                            <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                data-target="#editSection{{ $section->id }}" class="text-primary">
+                                                <i class="fas fa-edit"></i>
                                             </a>
-                                        @endif
-                                        <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                            data-target="#editSection{{ $section->id }}" class="text-primary">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    </td>
-                                    {{-- Edit Section Modal --}}
-                                    <div class="modal fade" id="editSection{{ $section->id }}" tabindex="-1"
-                                        role="dialog" aria-labelledby="editSection{{ $section->id }}Label"
-                                        aria-hidden="true" data-effect="effect-super-scaled">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                        {{ __('translation.update_section_name') }}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="{{ route('admin.sections.update', $section) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        <div class="form-group">
-                                                            <label for="name_ar">{{ __('translation.name_ar') }}</label>
-                                                            <input type="text"
-                                                                class="form-control  @error('name_ar') is-invalid @enderror"
-                                                                id="name_ar" name="name_ar"
-                                                                value="{{ $section->getTranslation('name', 'ar') }}"
-                                                                placeholder="{{ __('translation.enter_the_name_en') }}">
-                                                            @error('name_ar')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="name_en">{{ __('translation.name_en') }}</label>
-                                                            <input type="text"
-                                                                class="form-control  @error('name_en') is-invalid @enderror"
-                                                                id="name_en" name="name_en"
-                                                                value="{{ $section->getTranslation('name', 'en') }}"
-                                                                placeholder="{{ __('translation.enter_the_name_en') }}">
-                                                            @error('name_en')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="status">{{ __('translation.status') }}</label>
-                                                            <select
-                                                                class="form-control @error('status') is-invalid @enderror"
-                                                                id="status" name="status">
-                                                                <option value="">{{ __('translation.choose..') }}
-                                                                </option>
-                                                                <option value="1"
-                                                                    {{ $section->status ? 'selected' : '' }}>
-                                                                    {{ __('translation.active') }}</option>
-                                                                <option value="0"
-                                                                    {{ $section->status ? '' : 'selected' }}>
-                                                                    {{ __('translation.disactive') }}
-                                                                </option>
-                                                            </select>
-                                                            @error('status')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary modal-effect"
-                                                                data-dismiss="modal">{{ __('buttons.close') }}</button>
-                                                            <button type="submit"
-                                                                class="btn btn-primary">{{ __('buttons.update') }}</button>
-                                                        </div>
-                                                    </form>
+                                        </td>
+                                        {{-- Edit Section Modal --}}
+                                        <div class="modal fade" id="editSection{{ $section->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="editSection{{ $section->id }}Label"
+                                            aria-hidden="true" data-effect="effect-super-scaled">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ __('translation.update_section_name') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('admin.sections.update', $section) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="name_ar">{{ __('translation.name_ar') }}</label>
+                                                                <input type="text"
+                                                                    class="form-control  @error('name_ar') is-invalid @enderror"
+                                                                    id="name_ar" name="name_ar"
+                                                                    value="{{ $section->getTranslation('name', 'ar') }}"
+                                                                    placeholder="{{ __('translation.enter_the_name_en') }}">
+                                                                @error('name_ar')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="name_en">{{ __('translation.name_en') }}</label>
+                                                                <input type="text"
+                                                                    class="form-control  @error('name_en') is-invalid @enderror"
+                                                                    id="name_en" name="name_en"
+                                                                    value="{{ $section->getTranslation('name', 'en') }}"
+                                                                    placeholder="{{ __('translation.enter_the_name_en') }}">
+                                                                @error('name_en')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="status">{{ __('translation.status') }}</label>
+                                                                <select
+                                                                    class="form-control @error('status') is-invalid @enderror"
+                                                                    id="status" name="status">
+                                                                    <option value="">{{ __('translation.choose..') }}
+                                                                    </option>
+                                                                    <option value="1"
+                                                                        {{ $section->status ? 'selected' : '' }}>
+                                                                        {{ __('translation.active') }}</option>
+                                                                    <option value="0"
+                                                                        {{ $section->status ? '' : 'selected' }}>
+                                                                        {{ __('translation.disactive') }}
+                                                                    </option>
+                                                                </select>
+                                                                @error('status')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary modal-effect"
+                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">{{ __('buttons.update') }}</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

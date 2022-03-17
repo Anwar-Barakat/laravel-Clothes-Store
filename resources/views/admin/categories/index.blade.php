@@ -22,52 +22,56 @@
     <!-- breadcrumb -->
 @endsection
 @section('content')
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-header pb-0">
-                <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">{{ __('translation.all_categories') }}</h4>
-                    <i class="mdi mdi-dots-horizontal text-gray"></i>
+    <div class="row mb-5">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mg-b-0">{{ __('translation.all_categories') }}</h4>
+                        <a href="{{ route('admin.add.edit.category') }}" class="button-30">
+                            {{ __('buttons.add') }}
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table text-md-nowrap" id="categories">
-                        <thead>
-                            <tr>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.url') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('translation.status') }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($categories as $category)
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-md-nowrap" id="categories">
+                            <thead>
                                 <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->url }}</td>
-                                    <td>
-                                        @if ($category->status == 1)
-                                            <a href="javascript:void(0);" class="updateCategoryStatus text-success"
-                                                id="category-{{ $category->id }}" category_id="{{ $category->id }}"
-                                                status="{{ $category->status }}">
-                                                <i class="fas fa-power-off text-success"></i>
-                                                {{ __('translation.active') }}
-                                            </a>
-                                        @else
-                                            <a href="javascript:void(0);" class="updateCategoryStatus text-danger"
-                                                id="category-{{ $category->id }}" category_id="{{ $category->id }}"
-                                                status="{{ $category->status }}">
-                                                <i class="fas fa-power-off text-danger"></i>
-                                                {{ __('translation.disactive') }}
-                                            </a>
-                                        @endif
-                                    </td>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.url') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($categories as $category)
+                                    <tr>
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->url }}</td>
+                                        <td>
+                                            @if ($category->status == 1)
+                                                <a href="javascript:void(0);" class="updateCategoryStatus text-success p-2"
+                                                    id="category-{{ $category->id }}"
+                                                    category_id="{{ $category->id }}"
+                                                    status="{{ $category->status }}">
+                                                    <i class="fas fa-power-off"></i>
+                                                </a>
+                                            @else
+                                                <a href="javascript:void(0);" class="updateCategoryStatus text-danger p-2"
+                                                    id="category-{{ $category->id }}"
+                                                    category_id="{{ $category->id }}"
+                                                    status="{{ $category->status }}">
+                                                    <i class="fas fa-power-off "></i>
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

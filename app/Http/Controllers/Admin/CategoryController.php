@@ -4,13 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::latest()->get();
         return view('admin.categories.index', ['categories'  => $categories]);
     }
 
@@ -30,5 +32,42 @@ class CategoryController extends Controller
                 'category_id'   => $data['category_id']
             ]);
         }
+    }
+
+    public function addEditCategory(Request $request, $id = null)
+    {
+        if (!$id) {
+            $title  = __('translation.add_category');
+            $cat    = new Category();
+        } else {
+            $title = __('translation.edit_category');
+        }
+
+        if ($request->isMethod('post')) {
+            $data = $request->only(['name', 'url', 'section_id', 'parent_id', 'discount', 'description', 'status', 'meta_title', 'meta_description', 'meta_keywords', 'image']);
+            $validatedData = $request->validate([
+                'name'              => 'required|min:3',
+                'url'               => 'required|min:3',
+                'section_id'        => 'required',
+                'parent_id'         => 'required',
+                'discount'          => 'required',
+                'description'       => 'required|min:10',
+                'status'            => 'required|in:0,1',
+                'image'            => 'nullable|image|mimes:jpeg,png,jpg|max:1048',
+
+            ]);
+            $cat = Category::create($data);
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $cat->addMediaFromRequest('image')->toMediaCollection('categories');
+            }
+            Session::flash('message', __('translation.category_add'));
+            return redirect()->route('admin.categories.index');
+        }
+
+        $sections = Section::all();
+        return view('admin.categories.add_edit', [
+            'title'         => $title,
+            'sections'      => $sections,
+        ]);
     }
 }

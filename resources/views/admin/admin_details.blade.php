@@ -1,10 +1,7 @@
 @extends('layouts.master')
 @section('title', __('translation.admin_settings'))
 @section('css')
-    <!---Internal Fileupload css-->
-    <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
-    <!---Internal Fancy uploader css-->
-    <link href="{{ URL::asset('assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
+
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -41,7 +38,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-12">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
@@ -53,7 +50,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="email">{{ __('translation.email_address') }}</label>
                                     <input class="form-control" readonly="readonly" id="email"
@@ -88,20 +85,29 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="avatar">{{ __('translation.image') }}</label>
-                            <input type="file" name="avatar" accept=".jpg, .png, image/jpeg, image/png"
-                                class="form-control @error('avatar') is-invalid @enderror">
-                            @error('avatar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            {{-- <input id="demo" type="file" name="avatar" accept=".jpg, .png, image/jpeg, image/png"> --}}
+                        <div class="row">
+                            <div class="col-xl-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="avatar">{{ __('translation.image') }}</label>
+                                    <div class="custom-file">
+                                        <input class="custom-file-input" id="customFile" type="file" type="file"
+                                            name="avatar" accept=".jpg, .png, image/jpeg, image/png"> <label
+                                            class="custom-file-label @error('avatar') is-invalid @enderror"
+                                            for="customFile">{{ __('translation.choose_file') }}</label>
+                                    </div>
+                                    @error('avatar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    {{-- <input id="demo" type="file" name="avatar" accept=".jpg, .png, image/jpeg, image/png"> --}}
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
-                                <button type="submit" class="button-30" role="button">{{ __('buttons.update') }}</button>
+                                <button type="submit" class="button-30"
+                                    role="button">{{ __('buttons.update') }}</button>
                             </div>
                         </div>
                     </form>
@@ -115,14 +121,5 @@
     <!-- row -->
 @endsection
 @section('js')
-    <!--Internal Fileuploads js-->
-    <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 
-    <!--Internal Fancy uploader js-->
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
 @endsection

@@ -62,16 +62,10 @@
 
             {{-- sections --}}
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                <a class="side-menu__item" href="{{ route('admin.sections.index') }}">
                     <i class="fas fa-bars icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.sections') }}</span>
-                    <i class="angle fe fe-chevron-down"></i>
+                    <span class="side-menu__label">{{ __('translation.all_sections') }}</span>
                 </a>
-                <ul class="slide-menu">
-                    <li><a class="slide-item"
-                            href="{{ route('admin.sections.index') }}">{{ __('translation.all_sections') }}</a>
-                    </li>
-                </ul>
             </li>
 
             {{-- categories --}}

@@ -7,4 +7,7 @@ return [
 
     'section_added'             => 'Section Added Successfully !!',
     'section_updated'           => 'Section Updated Successfully !!',
+
+    'category_add'              => 'Category Added Successfuly !!'
+
 ];

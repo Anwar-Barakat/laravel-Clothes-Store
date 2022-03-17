@@ -64,11 +64,20 @@ return [
     'enter_the_name_ar'         => 'أدخل الاسم بالعربي',
     'enter_the_name_en'         => 'أدخل الاسم بالأنكليزي',
     'choose..'                  => 'اختر',
+    'choose_file'               => 'اختر صورة',
     'name_ar'                   => 'الاسم بالعربي',
     'name_en'                   => 'الاسم بالأنكليزي',
 
 
     // Categories :
     'url'                       => 'الرابط',
+    'category_name'             => 'اسم الفئة',
+    'category_level'            => 'مستوى الفئة',
+    'image'                     => 'الصورة',
+    'discount'                  => 'الخصوم',
+    'categoru_url'              => 'رابط الفئة',
+    'desc'                      => 'الوصف',
+    'category_description'      => 'وصف الفئة',
+    'main_cat'                  => 'فئة رئيسية',
 
 ];

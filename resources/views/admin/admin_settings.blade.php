@@ -27,14 +27,14 @@
                         name="updatePasswordForm" id="updatePasswordForm">
                         @csrf
                         <div class="row">
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="admin_email">{{ __('translation.email_address') }}</label>
                                     <input class="form-control" readonly="readonly" id="email_address"
                                         value="{{ Auth::guard('admin')->user()->email }}">
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="admin_type">{{ __('translation.admin_type') }}</label>
                                     <input class="form-control" readonly="readonly" id="admin_type"
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="new_password">{{ __('translation.password') }}</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
@@ -68,7 +68,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label
                                         for="password_confirmation">{{ __('translation.password_confirmation') }}</label>
