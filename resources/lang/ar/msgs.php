@@ -6,4 +6,5 @@ return [
     'no_matching'               => 'لا يوجد حقول مطابقة',
 
     'section_added'             => 'تم إضافة القسم بنجاح',
+    'section_updated'           => 'تم تحديث القسم بنجاح',
 ];

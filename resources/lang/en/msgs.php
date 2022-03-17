@@ -6,4 +6,5 @@ return [
     'no_matching'               => 'No matching records found',
 
     'section_added'             => 'Section Added Successfully !!',
+    'section_updated'           => 'Section Updated Successfully !!',
 ];

@@ -50,6 +50,8 @@ Route::group(
 
                 Route::post('sections/add',                         [SectionController::class, 'store'])->name('admin.sections.store');
 
+                Route::post('sections/update/{section}',            [SectionController::class, 'update'])->name('admin.sections.update');
+
 
                 // Categories :
                 Route::get('categories/index',                      [CategoryController::class, 'index'])->name('admin.categories.index');

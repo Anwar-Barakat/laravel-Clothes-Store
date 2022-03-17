@@ -59,6 +59,7 @@ return [
     'disactive'                 => 'مًعطل',
     'actions'                   => 'خيارات',
     'add_new_section'           => 'إضافة قسم جديد',
+    'update_section'            => 'تحديث القسم',
     'enter_the_name'            => 'أدخل الاسم',
     'enter_the_name_ar'         => 'أدخل الاسم بالعربي',
     'enter_the_name_en'         => 'أدخل الاسم بالأنكليزي',

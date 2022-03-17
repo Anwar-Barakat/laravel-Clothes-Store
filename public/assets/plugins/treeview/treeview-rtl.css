@@ -18,10 +18,10 @@
     top:0;
     bottom:0;
     right:0;
-    border-right:1px solid #e3e3e3;	
+    border-right:1px solid #e3e3e3;
 }
 .tree li {
-    margin:0;    
+    margin:0;
     line-height:2em;
     color:#56546d;
     position:relative
@@ -32,8 +32,8 @@
 .tree li i{
     margin-left: 5px;
     font-weight: bold;
-	color: #0162e8;
-	float: right;	
+	color: #2c5997;
+	float: right;
     margin-top: 8px;
 }
 .tree ul li:before {
@@ -45,13 +45,13 @@
     margin-top:-1px;
     position:absolute;
     top:1em;
-    right:0;	
+    right:0;
 }
 .tree ul li:last-child:before {
     background:#fff;
     height:auto;
     top:1em;
-    bottom:0;	
+    bottom:0;
 }
 .indicator {
     margin-right:5px;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSectionRequest;
+use App\Http\Requests\UpdateSectionRequest;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -30,6 +31,20 @@ class SectionController extends Controller
             Session::flash('message', __('msgs.section_added'));
             return redirect()->back();
         }
+    }
+
+    public function update(UpdateSectionRequest $request, Section $section)
+    {
+        $validation = $request->validated();
+        $section->update([
+            'name'      => [
+                'ar'        => $request->name_ar,
+                'en'        => $request->name_en,
+            ],
+            'status'    => $request->status
+        ]);
+        Session::flash('message', __('msgs.section_updated'));
+        return redirect()->back();
     }
 
     public function updateSectionStatus(Request $request)

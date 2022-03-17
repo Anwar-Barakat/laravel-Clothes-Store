@@ -58,6 +58,7 @@ return [
     'disactive'                 => 'Disactive',
     'actions'                   => 'Actions',
     'add_new_section'           => 'Add New Section',
+    'update_section'            => 'Update Section',
     'enter_the_name'            => 'Enter Name',
     'enter_the_name_ar'         => 'Enter Arabic Name',
     'enter_the_name_en'         => 'Enter English Name',
