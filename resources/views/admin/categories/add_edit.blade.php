@@ -63,9 +63,9 @@
                             <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <p class="mg-b-10">{{ __('translation.sections') }}</p>
-                                    <select name="section_id"
-                                        class="form-control @error('section_id') is-invalid @enderror select2"
-                                        multiple="multiple">
+                                    <select name="section_id" id="section_id"
+                                        class="form-control @error('section_id') is-invalid @enderror">
+                                        <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}">{{ $section->name }}</option>
                                         @endforeach
@@ -78,18 +78,8 @@
                                 </div>
                             </div>
                             <div class="col-sm-12 col-xl-6">
-                                <div class="form-group">
-                                    <p class="mg-b-10">{{ __('translation.category_level') }}</p>
-                                    <select name="parent_id"
-                                        class="form-control @error('parent_id') is-invalid @enderror select2"
-                                        multiple="multiple">
-                                        <option value="0">{{ __('translation.main_cat') }}</option>
-                                    </select>
-                                    @error('parent_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="form-group" id="appendCategoriesLevel">
+                                    @include('admin.categories.append__category')
                                 </div>
                             </div>
                         </div>
@@ -222,6 +212,29 @@
             $('.select2').select2({
                 placeholder: 'Choose one',
                 searchInputPlaceholder: 'Search'
+            });
+        });
+    </script>
+
+    {{-- Append Categories Level --}}
+    <script>
+        $(document).ready(function() {
+            $('#section_id').change(function() {
+                var section_id = $(this).val();
+                // alert(section_id);
+                $.ajax({
+                    type: 'post',
+                    url: '/admin/append-categories-level',
+                    data: {
+                        section_id: section_id
+                    },
+                    success: function(response) {
+                        $('#appendCategoriesLevel').html(response);
+                    },
+                    error: function() {
+                        alert('error');
+                    }
+                });
             });
         });
     </script>

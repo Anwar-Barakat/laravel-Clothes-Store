@@ -57,7 +57,7 @@ Route::group(
                 Route::get('categories/index',                              [CategoryController::class, 'index'])->name('admin.categories.index');
                 Route::post('update-category-status',                       [CategoryController::class, 'updateCategoryStatus']);
                 Route::match(['get', 'post'], 'add-edit-category/{id?}',    [CategoryController::class, 'addEditCategory'])->name('admin.add.edit.category');
-
+                Route::post('append-categories-level',                      [CategoryController::class, 'appendCategoriesLevel']);
 
                 // **************************************************************
                 // **************************************************************

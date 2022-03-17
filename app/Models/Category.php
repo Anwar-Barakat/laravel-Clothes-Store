@@ -40,4 +40,9 @@ class Category extends Model implements HasMedia
             ]
         ];
     }
+
+    public function subCategory()
+    {
+        return $this->hasMany(Category::class, 'parent_id')->where('status', 1);
+    }
 }

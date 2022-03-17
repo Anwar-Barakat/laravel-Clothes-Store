@@ -65,7 +65,7 @@ class CategoryController extends Controller
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $cat->addMediaFromRequest('image')->toMediaCollection('categories');
             }
-            Session::flash('message', __('translation.category_add'));
+            Session::flash('message', __('msgs.category_add'));
             return redirect()->route('admin.categories.index');
         }
 
@@ -74,5 +74,20 @@ class CategoryController extends Controller
             'title'         => $title,
             'sections'      => $sections,
         ]);
+    }
+
+    public function appendCategoriesLevel(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['section_id']);
+            $categories = Category::with('subCategory')->where([
+                'section_id'    => $data['section_id'],
+                'parent_id'     => 0,
+                'status'        => 1
+            ])->get();
+            return view('admin.categories.append__category', [
+                'categories'  => $categories
+            ]);
+        }
     }
 }
