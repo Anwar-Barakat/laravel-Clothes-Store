@@ -101,7 +101,7 @@
                         </div>
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
-                                <button type="submit" class="btn btn-primary">{{ __('buttons.update') }}</button>
+                                <button type="submit" class="button-30" role="button">{{ __('buttons.update') }}</button>
                             </div>
                         </div>
                     </form>

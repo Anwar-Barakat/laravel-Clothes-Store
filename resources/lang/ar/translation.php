@@ -11,6 +11,8 @@ return [
     'change_admin_detail'       => 'تحديث بيانات الأدمن',
     'sections'                  => 'الأقسام',
     'all_sections'              => 'جميع الأقسام',
+    'categories'                => 'الفئات',
+    'all_categories'            => 'جميع الفئات',
 
 
     // main header :
@@ -54,5 +56,18 @@ return [
     'id'                        => 'الرقم',
     'status'                    => 'الحالة',
     'active'                    => 'فعال',
-    'disactive'                 => 'مًعطل'
+    'disactive'                 => 'مًعطل',
+    'actions'                   => 'خيارات',
+    'add_new_section'           => 'إضافة قسم جديد',
+    'enter_the_name'            => 'أدخل الاسم',
+    'enter_the_name_ar'         => 'أدخل الاسم بالعربي',
+    'enter_the_name_en'         => 'أدخل الاسم بالأنكليزي',
+    'choose..'                  => 'اختر',
+    'name_ar'                   => 'الاسم بالعربي',
+    'name_en'                   => 'الاسم بالأنكليزي',
+
+
+    // Categories :
+    'url'                       => 'الرابط',
+
 ];

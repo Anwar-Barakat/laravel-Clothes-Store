@@ -25,9 +25,12 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header pb-0">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-center">
                     <h4 class="card-title mg-b-0">{{ __('translation.all_sections') }}</h4>
-                    <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    <button type="button" class="button-30" role="button" data-toggle="modal"
+                        data-target="#exampleModal">
+                        {{ __('buttons.add') }}
+                    </button>
                 </div>
             </div>
             <div class="card-body">
@@ -38,6 +41,7 @@
                                 <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
                                 <th class="wd-15p border-bottom-0">{{ __('translation.status') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,10 +66,72 @@
                                             </a>
                                         @endif
                                     </td>
+                                    <td>
+                                        <a href="" class="text-success">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Add New Section Modal --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('translation.add_new_section') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.sections.store') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name_ar">{{ __('translation.name_ar') }}</label>
+                            <input type="text" class="form-control  @error('name_ar') is-invalid @enderror" id="name_ar"
+                                name="name_ar" placeholder="{{ __('translation.enter_the_name_en') }}">
+                            @error('name_ar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="name_en">{{ __('translation.name_en') }}</label>
+                            <input type="text" class="form-control  @error('name_en') is-invalid @enderror" id="name_en"
+                                name="name_en" placeholder="{{ __('translation.enter_the_name_en') }}">
+                            @error('name_en')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="status">{{ __('translation.status') }}</label>
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                                <option value="">{{ __('translation.choose..') }}</option>
+                                <option value="1">{{ __('translation.active') }}</option>
+                                <option value="0">{{ __('translation.disactive') }}</option>
+                            </select>
+                            @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">{{ __('buttons.close') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('buttons.add') }}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

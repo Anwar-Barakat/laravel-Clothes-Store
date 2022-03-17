@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
         "mcamara/laravel-localization": "^1.7",
-        "spatie/laravel-medialibrary": "9.0.0"
+        "spatie/laravel-medialibrary": "9.0.0",
+        "spatie/laravel-translatable": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

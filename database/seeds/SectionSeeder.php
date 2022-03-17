@@ -2,6 +2,7 @@
 
 use App\Models\Section;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SectionSeeder extends Seeder
 {
@@ -12,20 +13,23 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        $sectionsRecords = [
-            [
-                'name'      => 'Men',
-                'status'    => 1
-            ],
-            [
-                'name'      => 'Women',
-                'status'    => 1
-            ],
-            [
-                'name'      => 'Children',
-                'status'    => 1
-            ],
-        ];
-        Section::insert($sectionsRecords);
+        DB::table('sections')->delete();
+        $section = new Section;
+        $section->setTranslation('name', 'en', 'Men')
+            ->setTranslation('name', 'ar', 'الرجال');
+        $section->status = 1;
+        $section->save();
+
+        $section = new Section;
+        $section->setTranslation('name', 'en', 'Woman')
+            ->setTranslation('name', 'ar', 'النساء');
+        $section->status = 1;
+        $section->save();
+
+        $section = new Section;
+        $section->setTranslation('name', 'en', 'Children')
+            ->setTranslation('name', 'ar', 'الأطفال');
+        $section->status = 1;
+        $section->save();
     }
 }

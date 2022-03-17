@@ -11,6 +11,7 @@ return [
     'change_admin_detail'       => 'Update Admin Details',
     'sections'                  => 'Sections',
     'all_sections'              => 'All Sections',
+    'categories'                => 'Categories',
 
 
     // dashboard :
@@ -55,4 +56,16 @@ return [
     'status'                    => 'Status',
     'active'                    => 'Active',
     'disactive'                 => 'Disactive',
+    'actions'                   => 'Actions',
+    'add_new_section'           => 'Add New Section',
+    'enter_the_name'            => 'Enter Name',
+    'enter_the_name_ar'         => 'Enter Arabic Name',
+    'enter_the_name_en'         => 'Enter English Name',
+    'choose..'                  => 'Choose..',
+    'name_ar'                   => 'Arabic Name',
+    'name_en'                   => 'English Name',
+
+    // Categories :
+    'url'                       => 'URL',
+
 ];
