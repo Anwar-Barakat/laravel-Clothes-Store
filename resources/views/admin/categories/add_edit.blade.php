@@ -42,19 +42,22 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- <div class="col-sm-12 col-xl-6">
+                            <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
-                                    <label for="url">{{ __('translation.url') }}</label>
-                                    <input url="text" name="url" class="form-control @error('url') is-invalid @enderror"
-                                        id="url" value="{{ old('url') }}"
-                                        placeholder="{{ __('translation.category_url') }}">
-                                    @error('url')
+                                    <label for="status">{{ __('translation.status') }}</label>
+                                    <select class="form-control @error('status') is-invalid @enderror" id="status"
+                                        name="status">
+                                        <option value="">{{ __('translation.choose..') }}</option>
+                                        <option value="1">{{ __('translation.active') }}</option>
+                                        <option value="0">{{ __('translation.disactive') }}</option>
+                                    </select>
+                                    @error('status')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-xl-6">
@@ -143,22 +146,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <div class="form-group">
-                                    <label for="status">{{ __('translation.status') }}</label>
-                                    <select class="form-control @error('status') is-invalid @enderror" id="status"
-                                        name="status">
-                                        <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="1">{{ __('translation.active') }}</option>
-                                        <option value="0">{{ __('translation.disactive') }}</option>
-                                    </select>
-                                    @error('status')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
+
                         </div>
                         <hr>
                         <h4 class="card-title pb-2 pt-1">{{ __('translation.meta') }}</h4>

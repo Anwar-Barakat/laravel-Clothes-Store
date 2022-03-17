@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddEditCategoryRequest;
 use App\Models\Category;
 use App\Models\Section;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -44,18 +46,21 @@ class CategoryController extends Controller
         }
 
         if ($request->isMethod('post')) {
-            $data = $request->only(['name', 'url', 'section_id', 'parent_id', 'discount', 'description', 'status', 'meta_title', 'meta_description', 'meta_keywords', 'image']);
+            $data = $request->only(['name', 'section_id', 'parent_id', 'discount', 'description', 'status', 'meta_title', 'meta_description', 'meta_keywords', 'image']);
             $validatedData = $request->validate([
                 'name'              => 'required|min:3',
-                'url'               => 'required|min:3',
                 'section_id'        => 'required',
                 'parent_id'         => 'required',
                 'discount'          => 'required',
+                'meta_title'        => 'required',
+                'meta_description'  => 'required',
+                'meta_keywords'     => 'required',
                 'description'       => 'required|min:10',
                 'status'            => 'required|in:0,1',
-                'image'            => 'nullable|image|mimes:jpeg,png,jpg|max:1048',
+                'image'             => 'nullable|image|mimes:jpeg,png,jpg|max:1048',
 
             ]);
+            $data['url'] = SlugService::createSlug(Category::class, 'url', $data['name']);
             $cat = Category::create($data);
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $cat->addMediaFromRequest('image')->toMediaCollection('categories');

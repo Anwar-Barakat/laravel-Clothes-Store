@@ -58,6 +58,7 @@ Route::group(
                 Route::post('update-category-status',                       [CategoryController::class, 'updateCategoryStatus']);
                 Route::match(['get', 'post'], 'add-edit-category/{id?}',    [CategoryController::class, 'addEditCategory'])->name('admin.add.edit.category');
 
+
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************

@@ -7,10 +7,11 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Category extends Model implements HasMedia
 {
-    use Notifiable, InteractsWithMedia;
+    use Notifiable, InteractsWithMedia, sluggable;
     protected $fillable = [
         'name',
         'url',
@@ -29,5 +30,14 @@ class Category extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(300)
             ->height(200);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'url' => [
+                'source' => 'name'
+            ]
+        ];
     }
 }

@@ -4,8 +4,8 @@
 -   setup dashboard.
 -   add admin login.
 -   add admin settings tab to :  
-    ->  update password. 
-    ->  update details and upload Avatar. 
+    -  update password. 
+    -  update details and upload Avatar. 
 
 --------------------
 
