@@ -80,7 +80,7 @@ class CategoryController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->only(['section_id']);
-            $categories = Category::with('subCategory')->where([
+            $categories = Category::with('subCategories')->where([
                 'section_id'    => $data['section_id'],
                 'parent_id'     => 0,
                 'status'        => 1
