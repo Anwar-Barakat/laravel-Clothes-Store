@@ -108,6 +108,12 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index');
     }
 
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return redirect()->route('admin.categories.index');
+    }
+
     public function appendCategoriesLevel(Request $request)
     {
         if ($request->ajax()) {

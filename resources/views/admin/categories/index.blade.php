@@ -59,24 +59,35 @@
                                             </a>
                                         </td>
                                         <td>
-                                            @if ($category->status == 1)
-                                                <a href="javascript:void(0);" class="updateCategoryStatus text-success p-2"
-                                                    id="category-{{ $category->id }}"
-                                                    category_id="{{ $category->id }}"
-                                                    status="{{ $category->status }}">
-                                                    <i class="fas fa-power-off"></i>
+                                            <form action="{{ route('admin.categories.destroy', $category) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                @if ($category->status == 1)
+                                                    <a href="javascript:void(0);"
+                                                        class="updateCategoryStatus text-success p-2"
+                                                        id="category-{{ $category->id }}"
+                                                        category_id="{{ $category->id }}"
+                                                        status="{{ $category->status }}">
+                                                        <i class="fas fa-power-off"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);"
+                                                        class="updateCategoryStatus text-danger p-2"
+                                                        id="category-{{ $category->id }}"
+                                                        category_id="{{ $category->id }}"
+                                                        status="{{ $category->status }}">
+                                                        <i class="fas fa-power-off "></i>
+                                                    </a>
+                                                @endif
+                                                <a href="{{ route('admin.categories.edit', $category) }}">
+                                                    <i class="fas fa-edit text-primary"></i>
                                                 </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateCategoryStatus text-danger p-2"
-                                                    id="category-{{ $category->id }}"
-                                                    category_id="{{ $category->id }}"
-                                                    status="{{ $category->status }}">
-                                                    <i class="fas fa-power-off "></i>
+                                                <a href="javascript:void(0);" class="p-2 confirmationDelete"
+                                                    data-category="{{ $category->id }}">
+                                                    <i class="fas fa-trash text-danger"></i>
                                                 </a>
-                                            @endif
-                                            <a href="{{ route('admin.categories.edit', $category) }}">
-                                                <i class="fas fa-edit text-primary"></i>
-                                            </a>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -141,5 +152,27 @@
                 });
             });
         });
+    </script>
+
+    {{-- Confirmation Delete Category --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('.confirmationDelete').click(function() {
+                // confirm($(this).data('category'));
+                Swal.fire({
+                    title: 'Are you sure?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/admin/delete-category/' + $(this).data('category');
+                    }
+                });
+            });
+        })
     </script>
 @endsection

@@ -58,10 +58,9 @@ Route::group(
                 Route::post('update-category-status',                           [CategoryController::class, 'updateCategoryStatus']);
                 Route::get('create-category',                                   [CategoryController::class, 'create'])->name('admin.categories.create');
                 Route::post('store-category',                                   [CategoryController::class, 'store'])->name('admin.categories.store');
-
                 Route::get('edit-category/{category}',                          [CategoryController::class, 'edit'])->name('admin.categories.edit');
                 Route::post('update-category/{category}',                       [CategoryController::class, 'update'])->name('admin.categories.update');
-
+                Route::get('delete-category/{category}',                        [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
                 Route::post('append-categories-level',                          [CategoryController::class, 'appendCategoriesLevel']);
 
                 // **************************************************************

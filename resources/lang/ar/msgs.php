@@ -10,4 +10,5 @@ return [
 
     'category_add'              => 'تم إضافة الفئة بنجاح',
     'category_update'           => 'تم تحديث الفئة بنجاح',
+    'category_delete'           => 'تم حذف الفئة بنجاح',
 ];
