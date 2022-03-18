@@ -9,4 +9,5 @@ return [
     'section_updated'           => 'تم تحديث القسم بنجاح',
 
     'category_add'              => 'تم إضافة الفئة بنجاح',
+    'category_update'           => 'تم تحديث الفئة بنجاح',
 ];

@@ -10,4 +10,4 @@
 --------------------
 
 -   CRU Sections. 
--   CRUD Categories.  
+-   CRU Categories.  

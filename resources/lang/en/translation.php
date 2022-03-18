@@ -85,5 +85,11 @@ return [
     'category_meta_description' => 'Category Meta Description',
     'category_meta_keywords'    => 'Category Meta keywords',
     'main_cat'                  => 'Main Category',
+    'section'                   => 'Section',
+    'parent_category'           => 'Parent Category',
+    'main'                      => 'Main',
+    'add_category'              => 'Add Category',
+    'edit_category'             => 'Edit Category'
+
 
 ];

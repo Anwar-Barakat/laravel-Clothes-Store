@@ -79,5 +79,14 @@ return [
     'desc'                      => 'الوصف',
     'category_description'      => 'وصف الفئة',
     'main_cat'                  => 'فئة رئيسية',
+    'meta'                      => 'ميتا',
+    'meta_title'                => ' عنوان الميتا',
+    'meta_description'          => ' وصف الميتا',
+    'meta_keywords'             => ' كلمات الميتا',
+    'section'                   => 'القسم',
+    'parent_category'           => 'الفئة الأب',
+    'main'                      => 'رئيسية',
+    'add_category'              => 'إضافة فئة',
+    'edit_category'             => 'تعديل الفئة'
 
 ];

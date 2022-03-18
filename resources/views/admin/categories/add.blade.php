@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.admin_settings'))
+@section('title', __('translation.add_category'))
 @section('css')
     <!-- Internal Select2 css -->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
@@ -10,7 +10,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.admin_settings') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.add_category') }}</span>
             </div>
         </div>
     </div>
@@ -22,10 +22,10 @@
         <div class="col-sm-12">
             <div class="card  box-shadow-0">
                 <div class="card-header">
-                    <h4 class="card-title mb-1">{{ __('translation.change_admin_detail') }}</h4>
+                    <h4 class="card-title mb-1">{{ __('translation.add_category') }}</h4>
                 </div>
                 <div class="card-body pt-0">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.add.edit.category') }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}"
                         enctype="multipart/form-data" name="categoryForm" id="categoryForm">
                         @csrf
                         <div class="row">
@@ -48,8 +48,10 @@
                                     <select class="form-control @error('status') is-invalid @enderror" id="status"
                                         name="status">
                                         <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="1">{{ __('translation.active') }}</option>
-                                        <option value="0">{{ __('translation.disactive') }}</option>
+                                        <option value="1">
+                                            {{ __('translation.active') }}</option>
+                                        <option value="0">
+                                            {{ __('translation.disactive') }}</option>
                                     </select>
                                     @error('status')
                                         <span class="invalid-feedback" role="alert">
@@ -128,7 +130,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea description="text" name="description" class="form-control @error('description') is-invalid @enderror"
                                         id="description" rows="3"
-                                        placeholder="{{ __('translation.category_description') }}">{{ old('description') }}</textarea>
+                                        placeholder="{{ __('translation.category_description') }}"> {{ old('description') }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -147,7 +149,7 @@
                                     <input meta_title="text" name="meta_title"
                                         class="form-control @error('meta_title') is-invalid @enderror" id="meta_title"
                                         value="{{ old('meta_title') }}"
-                                        placeholder="{{ __('translation.category_meta_title') }}">
+                                        placeholder="{{ __('translation.meta_title') }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -161,7 +163,7 @@
                                     <input meta_description="text" name="meta_description"
                                         class="form-control @error('meta_description') is-invalid @enderror"
                                         id="meta_description" value="{{ old('meta_description') }}"
-                                        placeholder="{{ __('translation.category_meta_description') }}">
+                                        placeholder="{{ __('translation.meta_description') }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -175,8 +177,8 @@
                                     <input meta_keywords="text" name="meta_keywords"
                                         class="form-control @error('meta_keywords') is-invalid @enderror" id="meta_keywords"
                                         value="{{ old('meta_keywords') }}"
-                                        placeholder="{{ __('translation.category_meta_keywords') }}">
-                                    @error('meta_description')
+                                        placeholder="{{ __('translation.meta_keywords') }}">
+                                    @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -187,7 +189,7 @@
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
                                 <button type="submit" class="button-30"
-                                    role="button">{{ __('buttons.update') }}</button>
+                                    role="button">{{ __('buttons.add') }}</button>
                             </div>
                         </div>
                     </form>

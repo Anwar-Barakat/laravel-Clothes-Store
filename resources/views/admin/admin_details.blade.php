@@ -31,9 +31,9 @@
                             <div class="col-sm-12 text-center">
                                 @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
                                     <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}"
-                                        class="img img-thumbnail mb-4 admin-image">
+                                        class="img img-thumbnail  admin-image">
                                 @else
-                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image">
+                                    <img src="{{ asset('assets/img/6.jpg') }}" class="img img-thumbnail  admin-image">
                                 @endif
                             </div>
                         </div>

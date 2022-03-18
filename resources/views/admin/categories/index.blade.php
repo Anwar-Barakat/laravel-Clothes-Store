@@ -28,7 +28,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.all_categories') }}</h4>
-                        <a href="{{ route('admin.add.edit.category') }}" class="button-30">
+                        <a href="{{ route('admin.categories.create') }}" class="button-30">
                             {{ __('buttons.add') }}
                         </a>
                     </div>
@@ -41,6 +41,8 @@
                                     <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.url') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.section') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.parent_category') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
@@ -50,6 +52,12 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->url }}</td>
+                                        <td>{{ $category->section->name }}</td>
+                                        <td>
+                                            <a href="" class="tag tag-cyan">
+                                                {{ $category->parentCategory->name ?? __('translation.main') }}
+                                            </a>
+                                        </td>
                                         <td>
                                             @if ($category->status == 1)
                                                 <a href="javascript:void(0);" class="updateCategoryStatus text-success p-2"
@@ -66,6 +74,9 @@
                                                     <i class="fas fa-power-off "></i>
                                                 </a>
                                             @endif
+                                            <a href="{{ route('admin.categories.edit', $category) }}">
+                                                <i class="fas fa-edit text-primary"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
