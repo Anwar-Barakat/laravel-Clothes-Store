@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -55,17 +56,26 @@ Route::group(
                 // **************************************************************
                 // Categories :
                 Route::get('categories/index',                                  [CategoryController::class, 'index'])->name('admin.categories.index');
-                Route::post('update-category-status',                           [CategoryController::class, 'updateCategoryStatus']);
                 Route::get('create-category',                                   [CategoryController::class, 'create'])->name('admin.categories.create');
                 Route::post('store-category',                                   [CategoryController::class, 'store'])->name('admin.categories.store');
                 Route::get('edit-category/{category}',                          [CategoryController::class, 'edit'])->name('admin.categories.edit');
                 Route::post('update-category/{category}',                       [CategoryController::class, 'update'])->name('admin.categories.update');
                 Route::get('delete-category/{category}',                        [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+                Route::post('update-category-status',                           [CategoryController::class, 'updateCategoryStatus']);
                 Route::post('append-categories-level',                          [CategoryController::class, 'appendCategoriesLevel']);
 
+                
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************
+                //Products :
+                // Route::resource('products',                                     ProductController::class);
+                Route::get('products/index',                                    [ProductController::class, 'index'])->name('admin.products.index');
+                Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('admin.products.destroy');
+                Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
+
+
+
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('admin.logout');
             });
             Route::match(['get', 'post'], '/login',                             [AdminController::class, 'login'])->name('admin.login');

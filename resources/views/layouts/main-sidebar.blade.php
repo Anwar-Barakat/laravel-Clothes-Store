@@ -64,7 +64,7 @@
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.sections.index') }}">
                     <i class="fas fa-bars icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.all_sections') }}</span>
+                    <span class="side-menu__label">{{ __('translation.section') }}</span>
                 </a>
             </li>
 
@@ -78,6 +78,30 @@
                 <ul class="slide-menu">
                     <li><a class="slide-item"
                             href="{{ route('admin.categories.index') }}">{{ __('translation.all_categories') }}</a>
+                    </li>
+                    <li><a class="slide-item"
+                            href="{{ route('admin.categories.create') }}">{{ __('translation.add_category') }}</a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- Products --}}
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                    <i class="fas fa-list-ol icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.products') }}</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.products.index') }}">
+                            {{ __('translation.all_products') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.categories.create') }}">
+                            {{ __('translation.add_product') }}
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -267,7 +291,8 @@
                             Validation</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'form-wizards')) }}">Form Wizards</a>
                     </li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'form-editor')) }}">WYSIWYG Editor</a>
+                    <li><a class="slide-item" href="{{ url('/' . ($page = 'form-editor')) }}">WYSIWYG
+                            Editor</a>
                     </li>
                 </ul>
             </li>

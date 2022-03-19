@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mg-b-0">{{ __('translation.all_sections') }}</h4>
+                        <h4 class="card-title mg-b-0">{{ __('translation.sections') }}</h4>
                         <button type="button" class="button-30 modal-effect" role="button" data-toggle="modal"
                             data-target="#addNewSection">
                             {{ __('buttons.add') }}

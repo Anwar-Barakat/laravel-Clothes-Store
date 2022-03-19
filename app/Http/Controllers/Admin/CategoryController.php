@@ -111,6 +111,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        Session::flash('alert-type', 'error');
+        Session::flash('message', __('msgs.category_delete'));
         return redirect()->route('admin.categories.index');
     }
 

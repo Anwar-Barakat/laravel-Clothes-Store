@@ -11,4 +11,8 @@ return [
     'category_add'              => 'Category Has Added Successfuly !!',
     'category_update'           => 'Category Has Updated Successfuly !!',
     'category_delete'           => 'Category Has Deleted Succesfully !!',
+
+    'product_add'               => 'Product Has Added Successfuly !!',
+    'product_update'            => 'Product Has Updated Successfuly !!',
+    'product_delete'            => 'Product Has Deleted Succesfully !!',
 ];

@@ -10,9 +10,12 @@ return [
     'change_password'           => 'Update Password',
     'change_admin_detail'       => 'Update Admin Details',
     'sections'                  => 'Sections',
-    'all_sections'              => 'All Sections',
+    'all_sections'              => 'Display Sections',
     'categories'                => 'Categories',
-    'all_categories'              => 'All Categories',
+    'all_categories'            => 'Display Categories',
+    'products'                  => 'Products',
+    'all_products'              => 'Display Products',
+    'add_product'               => 'Add Product',
 
 
     // dashboard :
@@ -89,7 +92,12 @@ return [
     'parent_category'           => 'Parent Category',
     'main'                      => 'Main',
     'add_category'              => 'Add Category',
-    'edit_category'             => 'Edit Category'
+    'edit_category'             => 'Edit Category',
 
+
+    // Products :
+    'color'                     => 'Color',
+    'code'                      => 'Code',
+    'category'                  => 'Category'
 
 ];

@@ -10,9 +10,13 @@ return [
     'change_password'           => 'تحديث كلمة المرور',
     'change_admin_detail'       => 'تحديث بيانات الأدمن',
     'sections'                  => 'الأقسام',
-    'all_sections'              => 'جميع الأقسام',
+    'all_sections'              => 'عرض الأقسام',
     'categories'                => 'الفئات',
-    'all_categories'            => 'جميع الفئات',
+    'all_categories'            => 'عرض الفئات',
+    'products'                  => 'المنتجات',
+    'all_products'              => 'عرض المنتجات',
+    'add_product'               => 'إضافة منتج',
+
 
 
     // main header :
@@ -87,6 +91,11 @@ return [
     'parent_category'           => 'الفئة الأب',
     'main'                      => 'رئيسية',
     'add_category'              => 'إضافة فئة',
-    'edit_category'             => 'تعديل الفئة'
+    'edit_category'             => 'تعديل الفئة',
 
+
+    // Products :
+    'color'                     => 'اللون',
+    'code'                      => 'الرمز',
+    'category'                  => 'الفئة'
 ];
