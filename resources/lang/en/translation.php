@@ -68,6 +68,7 @@ return [
     'enter_the_name_en'         => 'Enter English Name',
     'choose..'                  => 'Choose..',
     'choose_file'               => 'Choose Image',
+    'choose_video'              => 'Choose Video',
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',
 
@@ -80,7 +81,7 @@ return [
     'category_url'              => 'Category URL',
     'desc'                      => 'Description',
     'category_description'      => 'Category Description',
-    'meta'                      => 'Meta',
+    'meta'                      => 'Additional Info',
     'meta_title'                => 'Meta Title',
     'meta_description'          => 'Meta Description',
     'meta_keywords'             => 'Meta keywords',
@@ -98,6 +99,52 @@ return [
     // Products :
     'color'                     => 'Color',
     'code'                      => 'Code',
-    'category'                  => 'Category'
+    'category'                  => 'Category',
+    'product_name'              => 'Product Name',
+    'enter_product_name'        => 'Enter Product Name',
+    'product_color'             => 'Product Color',
+    'enter_product_color'       => 'Enter Product Color',
+    'product_code'              => 'product Code',
+    'enter_product_code'        => 'Enter Product Code',
+    'price'                     => 'Price',
+    'weight'                    => 'Weight',
+    'kg'                        => 'kg',
+    'video'                     => 'video',
+    'wash_care'                 => 'Wash Care',
+
+    'fabric'                    => 'Fabric',
+    'cotton'                    => 'Cotton',
+    'polyester'                 => 'Polyester',
+    'wool'                      => 'wool',
+
+    'sleeve'                    => 'Seleeve',
+    'full_sleeve'               => 'Full Sleeve',
+    'half_sleeve'               => 'Half Sleeve',
+    'short_sleeve'              => 'Short Sleeve',
+    'sleeveless'                => 'SleeveLess',
+
+    'pattern'                   => 'Pattern',
+    'checked'                   => 'Checked',
+    'plain'                     => 'Plain',
+    'printed'                   => 'Printed',
+    'self'                      => 'Self',
+    'solid'                     => 'Solid',
+
+    'fit'                       => 'Fit',
+    'regular'                   => 'Regular',
+    'slim'                      => 'Slim',
+
+    'occasion'                  => 'Occasion',
+    'casual'                    => 'Casual',
+    'formal'                    => 'Formal',
+    'attachments'               => 'Attachments',
+    'main_info'                 => 'Main Info',
+    'filters'                   => 'Filters',
+    'additional_info'           => 'additional Info',
+    'is_feature'                => 'Is Feature',
+    'yes'                       => 'Yes',
+    'no'                        => 'No',
+
+
 
 ];

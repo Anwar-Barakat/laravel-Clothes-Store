@@ -1,7 +1,7 @@
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap');
-        * {
+        /* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap'); */
+        /* * {
             font-family: 'Cairo', sans-serif !important;
-        }
+        } */
         
         .toast-success {
             background-color: #17b748;
@@ -125,4 +125,8 @@
         
         textarea {
             resize: none;
+        }
+        
+        .tr-class {
+            width: 11% !important;
         }

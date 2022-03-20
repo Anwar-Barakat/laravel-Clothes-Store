@@ -27,7 +27,7 @@
                     <form class="form-horizontal" method="POST" action="{{ route('admin.update.details') }}"
                         name="updateAdminDetailsForm" id="updateAdminDetailsForm" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-sm-12 text-center">
                                 @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
                                     <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}"

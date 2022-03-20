@@ -99,7 +99,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="slide-item" href="{{ route('admin.categories.create') }}">
+                        <a class="slide-item" href="{{ route('admin.products.create') }}">
                             {{ __('translation.add_product') }}
                         </a>
                     </li>

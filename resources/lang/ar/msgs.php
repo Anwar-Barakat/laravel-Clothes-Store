@@ -15,4 +15,8 @@ return [
     'product_add'               => 'تم إضافة المنتج بنجاح',
     'product_update'            => 'تم تحديث المنتج بنجاح',
     'product_delete'            => 'تم حذف المنتج بنجاح',
+
+    'product_add'               => 'تم إضافة المنتج بنجاح',
+    'product_update'            => 'تم تحديث المنتج بنجاح',
+    'product_delete'            => 'تم حذف المنتج بنجاح',
 ];

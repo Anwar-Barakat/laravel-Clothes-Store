@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductRequest;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -16,7 +19,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->get();
+        $products = Product::with([
+            'category' => function ($query) {
+                $query->select('id', 'name');
+            },
+            'section' => function ($query) {
+                $query->select('id', 'name');
+            }
+        ])->orderBy('created_at', 'desc')->get();
         return view('admin.products.index', ['products'  => $products]);
     }
 
@@ -27,7 +37,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Section::with('categories')->get();
+        // $categories = json_decode(json_encode($categories), true);
+        // echo "<pre>";
+        // print_r($categories);
+        // die;
+        return view('admin.products.add', ['categories' => $categories]);
     }
 
     /**
@@ -36,9 +52,14 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $data = $request->only(['category_id', 'name', 'status', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+        $category = Category::find($data['category_id']);
+        $data['section_id'] = $category['section_id'];
+        Product::create($data);
+        Session::flash('message', __('msgs.product_add'));
+        return redirect()->route('admin.products.index');
     }
 
     /**

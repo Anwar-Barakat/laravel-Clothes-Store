@@ -64,13 +64,17 @@ Route::group(
                 Route::post('update-category-status',                           [CategoryController::class, 'updateCategoryStatus']);
                 Route::post('append-categories-level',                          [CategoryController::class, 'appendCategoriesLevel']);
 
-                
+
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************
                 //Products :
                 // Route::resource('products',                                     ProductController::class);
                 Route::get('products/index',                                    [ProductController::class, 'index'])->name('admin.products.index');
+            Route::get('create-product',                                    [ProductController::class, 'create'])->name('admin.products.create');
+                Route::post('store-product',                                    [ProductController::class, 'store'])->name('admin.products.store');
+                Route::get('edit-product/{product}',                            [ProductController::class, 'edit'])->name('admin.products.edit');
+                Route::post('update-product/{product}',                         [ProductController::class, 'update'])->name('admin.products.update');
                 Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('admin.products.destroy');
                 Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
 

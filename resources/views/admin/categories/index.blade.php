@@ -52,7 +52,9 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->url }}</td>
-                                        <td>{{ $category->section->name }}</td>
+                                        <td>
+                                            <a href="" class="tag tag-green">{{ $category->section->name }}</a>
+                                        </td>
                                         <td>
                                             <a href="" class="tag tag-cyan">
                                                 {{ $category->parentCategory->name ?? __('translation.main') }}

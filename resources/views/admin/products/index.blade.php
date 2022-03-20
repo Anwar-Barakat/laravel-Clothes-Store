@@ -28,7 +28,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.products') }}</h4>
-                        <a href="{{ route('admin.categories.create') }}" class="button-30">
+                        <a href="{{ route('admin.products.create') }}" class="button-30">
                             {{ __('buttons.add') }}
                         </a>
                     </div>
@@ -44,7 +44,9 @@
                                     <th class="wd-15p border-bottom-0">{{ __('translation.category') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.color') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
+                                    <th class=" border-bottom-0 tr-class">
+                                        {{ __('translation.actions') }}
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,10 +54,10 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->name }}</td>
+                                        <td><a href="" class="tag tag-green">{{ $product->section->name }}</a></td>
+                                        <td><a href="" class="tag tag-cyan">{{ $product->category->name }}</a></td>
+                                        <td>{{ $product->code }}</td>
+                                        <td>{{ $product->color }}</td>
                                         <td>
                                             <form action="{{ route('admin.categories.destroy', $product) }}"
                                                 method="post">
@@ -144,7 +146,9 @@
                     },
                     success: function(response) {
                         if (response['status'])
-                            window.reload();
+                            $('category-' + response['product_id'])
+                            .attr('status', response['status']);
+                        alert($('category-' + response['product_id']))
                     },
                     error: function() {},
                 });

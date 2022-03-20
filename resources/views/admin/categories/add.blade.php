@@ -34,7 +34,7 @@
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" value="{{ old('name') }}"
-                                        placeholder="{{ __('translation.category_name') }}">
+                                        placeholder="{{ __('translation.category_name') }}" required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -48,9 +48,9 @@
                                     <select class="form-control @error('status') is-invalid @enderror" id="status"
                                         name="status">
                                         <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="1">
+                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
                                             {{ __('translation.active') }}</option>
-                                        <option value="0">
+                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
                                             {{ __('translation.disactive') }}</option>
                                     </select>
                                     @error('status')
@@ -110,7 +110,7 @@
                                             <span class="input-group-text">$</span>
                                         </div>
                                         <input name="discount" aria-label="Amount (to the nearest dollar)"
-                                            class="form-control @error('discount') is-invalid @enderror" type="text"
+                                            class="form-control @error('discount') is-invalid @enderror" type="number"
                                             value="{{ old('discount') }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
