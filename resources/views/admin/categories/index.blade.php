@@ -67,6 +67,7 @@
                                                 @method('DELETE')
                                                 @if ($category->status == 1)
                                                     <a href="javascript:void(0);"
+                                                        title="{{ __('translation.update_status') }}"
                                                         class="updateCategoryStatus text-success p-2"
                                                         id="category-{{ $category->id }}"
                                                         category_id="{{ $category->id }}"
@@ -75,6 +76,7 @@
                                                     </a>
                                                 @else
                                                     <a href="javascript:void(0);"
+                                                        title="{{ __('translation.update_status') }}"
                                                         class="updateCategoryStatus text-danger p-2"
                                                         id="category-{{ $category->id }}"
                                                         category_id="{{ $category->id }}"
@@ -82,11 +84,13 @@
                                                         <i class="fas fa-power-off "></i>
                                                     </a>
                                                 @endif
-                                                <a href="{{ route('admin.categories.edit', $category) }}">
+                                                <a href="{{ route('admin.categories.edit', $category) }}"
+                                                    title="{{ __('buttons.update') }}">
                                                     <i class="fas fa-edit text-primary"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" class="p-2 confirmationDelete"
-                                                    data-category="{{ $category->id }}">
+                                                    data-category="{{ $category->id }}"
+                                                    title="{{ __('buttons.delete') }}">
                                                     <i class="fas fa-trash text-danger"></i>
                                                 </a>
                                             </form>

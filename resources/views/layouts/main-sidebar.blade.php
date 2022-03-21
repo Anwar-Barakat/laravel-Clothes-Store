@@ -64,7 +64,7 @@
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.sections.index') }}">
                     <i class="fas fa-bars icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.section') }}</span>
+                    <span class="side-menu__label">{{ __('translation.sections') }}</span>
                 </a>
             </li>
 

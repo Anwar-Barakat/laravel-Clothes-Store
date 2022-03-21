@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Auth;
@@ -71,13 +72,16 @@ Route::group(
                 //Products :
                 // Route::resource('products',                                     ProductController::class);
                 Route::get('products/index',                                    [ProductController::class, 'index'])->name('admin.products.index');
-            Route::get('create-product',                                    [ProductController::class, 'create'])->name('admin.products.create');
+                Route::get('create-product',                                    [ProductController::class, 'create'])->name('admin.products.create');
                 Route::post('store-product',                                    [ProductController::class, 'store'])->name('admin.products.store');
                 Route::get('edit-product/{product}',                            [ProductController::class, 'edit'])->name('admin.products.edit');
                 Route::post('update-product/{product}',                         [ProductController::class, 'update'])->name('admin.products.update');
                 Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('admin.products.destroy');
                 Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
 
+                // Product Attributes :
+                Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('admin.attributes.create');
+                Route::post('store-attributes',                                 [ProductAttributeController::class, 'store'])->name('admin.attributes.store');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('admin.logout');

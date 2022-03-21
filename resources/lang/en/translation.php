@@ -147,5 +147,14 @@ return [
     'edit_product'              => 'Edit Product',
     'product_description'       => 'Product Description',
     'product_wash_care'         => 'For example Machine Washing, ... ',
-
+    'update_status'             => 'Update Status',
+    'product_attributes'        => 'Attributes Product',
+    'add_attributes'            => 'Add Attributes',
+    'enter_size'                => 'Enter Size',
+    'size'                      => 'Size',
+    'enter_sku'                 => 'Enter SKU',
+    'sku'                       => 'SKU',
+    'enter_price'               => 'Enter Price',
+    'enter_stock'               => 'Enter Stock',
+    'stock'                     => 'Stock',
 ];

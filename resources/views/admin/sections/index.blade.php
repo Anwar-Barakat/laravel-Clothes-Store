@@ -52,6 +52,7 @@
                                         <td>
                                             @if ($section->status == 1)
                                                 <a href="javascript:void(0);" class="updateSectionStatus text-success p-2"
+                                                    title="{{ __('translation.update_status') }}"
                                                     id="section-{{ $section->id }}" section_id="{{ $section->id }}"
                                                     status="{{ $section->status }}">
                                                     <i class="fas fa-power-off"></i>
@@ -59,6 +60,7 @@
                                                 </a>
                                             @else
                                                 <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
+                                                    title="{{ __('translation.update_status') }}"
                                                     id="section-{{ $section->id }}" section_id="{{ $section->id }}"
                                                     status="{{ $section->status }}">
                                                     <i class="fas fa-power-off text-danger"></i>
@@ -66,6 +68,7 @@
                                                 </a>
                                             @endif
                                             <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                title="{{ __('buttons.update') }}"
                                                 data-target="#editSection{{ $section->id }}" class="text-primary">
                                                 <i class="fas fa-edit"></i>
                                             </a>

@@ -74,15 +74,6 @@ font-family: 'Cairo', sans-serif !important;
 /* ****************************************************** */
 
 
-/* ****************************************************** */
-
-
-/* ****************************************************** */
-
-
-/* ****************************************************** */
-
-
 /* **************** Main Button  ************************ */
 
 .button-30 {
@@ -136,15 +127,6 @@ font-family: 'Cairo', sans-serif !important;
 
 /* ****************************************************** */
 
-
-/* ****************************************************** */
-
-
-/* ****************************************************** */
-
-
-/* ****************************************************** */
-
 textarea {
     resize: none;
 }
@@ -186,3 +168,48 @@ div.dataTables_wrapper div.dataTables_info {
 div.table-responsive>div.dataTables_wrapper>div.row {
     align-items: center;
 }
+
+
+/* **************************************************************************** */
+
+
+/* **************** MultField Form Product Attributes  ************************ */
+
+.multattributesform {
+    column-gap: 1.5rem;
+    background: #ecf0fa;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.added-field-attribute {
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    column-gap: 1.5rem;
+}
+
+.added-field-attribute-deleted-btn {
+    position: relative;
+    top: -0.5rem;
+    color: #f44336;
+    font-weight: 900;
+}
+
+.product-info {
+    grid-template-columns: repeat(auto-fill, minmax(447px, 1fr));
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+@media screen and (max-width:551px) {
+    .product-info {
+        grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    }
+}
+
+
+/* **************** MultField Form Product Attributes  ************************ */
+
+
+/* **************************************************************************** */

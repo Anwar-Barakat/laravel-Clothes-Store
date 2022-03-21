@@ -8,4 +8,7 @@ return [
     'edit'              => 'Edit',
     'close'             => 'Close',
 
+    'delete_row'        => 'Delete Row',
+    'add_row'           => 'Add Row',
+
 ];

@@ -70,12 +70,14 @@
                                             @endif
                                         </td>
                                         <td>
+
                                             <form action="{{ route('admin.categories.destroy', $product) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 @if ($product->status == 1)
                                                     <a href="javascript:void(0);"
+                                                        title="{{ __('translation.update_status') }}"
                                                         class="updateProductStatus text-success p-2"
                                                         id="product-{{ $product->id }}"
                                                         product_id="{{ $product->id }}"
@@ -84,6 +86,7 @@
                                                     </a>
                                                 @else
                                                     <a href="javascript:void(0);"
+                                                        title="{{ __('translation.update_status') }}"
                                                         class="updateProductStatus text-danger p-2"
                                                         id="product-{{ $product->id }}"
                                                         product_id="{{ $product->id }}"
@@ -91,13 +94,18 @@
                                                         <i class="fas fa-power-off "></i>
                                                     </a>
                                                 @endif
-                                                <a href="{{ route('admin.products.edit', $product) }}">
+                                                <a href="{{ route('admin.products.edit', $product) }}"
+                                                    title="{{ __('buttons.edit') }}">
                                                     <i class="fas fa-edit text-primary"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" class="p-2 confirmationDelete"
-                                                    data-product="{{ $product->id }}">
+                                                    data-product="{{ $product->id }}"
+                                                    title="{{ __('buttons.delete') }}">
                                                     <i class="fas fa-trash text-danger"></i>
                                                 </a>
+                                                <a href="{{ route('admin.attributes.create', $productf) }}"
+                                                    title="{{ __('translation.add_attributes') }}"><i
+                                                        class="fas fa-plus" style="color: gray"></i></a>
                                             </form>
                                         </td>
                                     </tr>

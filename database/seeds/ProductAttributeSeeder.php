@@ -3,6 +3,7 @@
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ProductAttributeSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class ProductAttributeSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('product_attributes')->delete();
         $productData = [];
         $productsId = collect(Product::all()->modelKeys());
         $products                   = collect(Product::all());
