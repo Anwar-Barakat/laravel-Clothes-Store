@@ -29,7 +29,7 @@ class CategorySeeder extends Seeder
                 'meta_title'        => '',
                 'meta_description'  => $faker->paragraph(),
                 'meta_keywords'     => '',
-                'status'            => 1,
+                'status'            => rand(0, 1),
             ],
             [
                 'parent_id'         => 0,
@@ -41,7 +41,7 @@ class CategorySeeder extends Seeder
                 'meta_title'        => '',
                 'meta_description'  => $faker->paragraph(),
                 'meta_keywords'     => '',
-                'status'            => 1,
+                'status'            => rand(0, 1),
             ],
         ];
         Category::insert($categoriesRecords);
