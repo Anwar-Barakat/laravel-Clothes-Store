@@ -145,6 +145,7 @@ return [
     'yes'                       => 'Yes',
     'no'                        => 'No',
     'edit_product'              => 'Edit Product',
-
+    'product_description'       => 'Product Description',
+    'product_wash_care'         => 'For example Machine Washing, ... ',
 
 ];

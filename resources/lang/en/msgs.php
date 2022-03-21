@@ -15,4 +15,6 @@ return [
     'product_add'               => 'Product Has Added Successfuly !!',
     'product_update'            => 'Product Has Updated Successfuly !!',
     'product_delete'            => 'Product Has Deleted Succesfully !!',
+
+    'browser_error'             => 'Your browser does not support the video tag.'
 ];

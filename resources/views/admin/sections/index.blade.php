@@ -28,8 +28,8 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.sections') }}</h4>
-                        <button type="button" class="button-30 modal-effect" role="button" data-toggle="modal"
-                            data-target="#addNewSection">
+                        <button type="button" class="button-30 modal-effect" data-effect="effect-rotate-left" role="button"
+                            data-toggle="modal" data-target="#addNewSection">
                             {{ __('buttons.add') }}
                         </button>
                     </div>
@@ -78,7 +78,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                            {{ __('translation.update_section_name') }}</h5>
+                                                            {{ __('translation.update_section') }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -159,7 +159,7 @@
         </div>
     </div>
     {{-- Add New Section Modal --}}
-    <div class="modal fade" id="addNewSection" data-effect="effect-super-scaled" tabindex="-1" role="dialog"
+    <div class="modal effect-rotate-left" id="addNewSection" tabindex="-1" role="dialog"
         aria-labelledby="addNewSectionLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

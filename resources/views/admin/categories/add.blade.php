@@ -130,7 +130,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea description="text" name="description" class="form-control @error('description') is-invalid @enderror"
                                         id="description" rows="3"
-                                        placeholder="{{ __('translation.category_description') }}"> {{ old('description') }}</textarea>
+                                        placeholder="{{ __('translation.category_description') }}">{{ old('description') }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

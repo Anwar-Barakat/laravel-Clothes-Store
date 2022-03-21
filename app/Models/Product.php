@@ -36,15 +36,23 @@ class Product extends Model implements HasMedia
 
     public function registerMediaCollections(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')
-            ->width(350)
-            ->height(350);
+        $this->addMediaConversion('large')
+            ->width(1040)
+            ->height(1200);
+
+        $this->addMediaConversion('medium')
+            ->width(520)
+            ->height(600);
+
+        $this->addMediaConversion('small')
+            ->width(260)
+            ->height(300);
     }
 
     public const fabricArray    = ['cotton', 'polyester', 'wool'];
     public const sleeveArray    = ['full_sleeve', 'half_sleeve', 'short_sleeve', 'sleeveless'];
     public const patternArray   = ['checked', 'plain', 'printed', 'self', 'solid'];
-    public const fitArray       = ['register', 'slim'];
+    public const fitArray       = ['regular', 'slim'];
     public const occasionArray  = ['casual', 'formal'];
 
 

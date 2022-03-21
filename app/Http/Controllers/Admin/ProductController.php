@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -55,7 +56,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data = $request->only(['category_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $data               = $request->only(['category_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;
@@ -90,7 +91,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit', ['product' => $product]);
+        $categories = Section::with('categories')->get();
+        return view('admin.products.edit', ['product' => $product, 'categories' => $categories]);
     }
 
     /**
@@ -100,9 +102,29 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(EditProductRequest $request, Product $product)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data               = $request->only(['category_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $category = Category::find($data['category_id']);
+            $data['section_id'] = $category['section_id'];
+            $data['status']     = 1;
+            // $data = json_decode(json_encode($data));
+            // echo "pre";
+            // print_r($data);
+            // die;
+            $product->update($data);
+            if ($request->hasFile('video') && $request->file('video')->isValid()) {
+                $product->clearMediaCollection('video_products');
+                $product->addMediaFromRequest('video')->toMediaCollection('video_products');
+            }
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $product->clearMediaCollection('image_products');
+                $product->addMediaFromRequest('image')->toMediaCollection('image_products');
+            }
+            Session::flash('message', __('msgs.product_add'));
+            return redirect()->route('admin.products.index');
+        }
     }
 
     /**

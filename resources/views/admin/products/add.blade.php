@@ -215,7 +215,8 @@
                                         name="fabric">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::fabricArray as $index => $fabric)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('fabric') == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $fabric) }}
                                             </option>
                                         @endforeach
@@ -234,7 +235,8 @@
                                         name="pattern">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::patternArray as $index => $pattern)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('pattern') == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $pattern) }}</option>
                                         @endforeach
                                     </select>
@@ -252,7 +254,8 @@
                                         name="sleeve">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::sleeveArray as $index => $sleeve)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('sleeve') == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $sleeve) }}</option>
                                         @endforeach
                                     </select>
@@ -271,7 +274,8 @@
                                     <select class="form-control @error('fit') is-invalid @enderror" id="fit" name="fit">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::fitArray as $index => $fit)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('fit') == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $fit) }}</option>
                                         @endforeach
                                     </select>
@@ -289,7 +293,8 @@
                                         name="occasion">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::occasionArray as $index => $occasion)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('occasion') == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $occasion) }}</option>
                                         @endforeach
                                     </select>
@@ -306,10 +311,10 @@
                                     <select class="form-control @error('is_feature') is-invalid @enderror" id="is_feature"
                                         name="is_feature">
                                         <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="1" {{ old('is_feature') == '1' ? 'selected' : '' }}>
+                                        <option value="Yes" {{ old('is_feature') == 'Yes' ? 'selected' : '' }}>
                                             {{ __('translation.yes') }}
                                         </option>
-                                        <option value="0" {{ old('is_feature') == '0' ? 'selected' : '' }}>
+                                        <option value="No" {{ old('is_feature') == 'No' ? 'selected' : '' }}>
                                             {{ __('translation.no') }}
                                         </option>
                                     </select>
@@ -329,7 +334,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea description="text" name="description" class="form-control @error('description') is-invalid @enderror"
                                         id="description" rows="3"
-                                        placeholder="{{ __('translation.product_description') }}"> {{ old('description') }}</textarea>
+                                        placeholder="{{ __('translation.product_description') }}">{{ old('description') }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -342,7 +347,7 @@
                                     <label for="wash_care">{{ __('translation.wash_care') }}</label>
                                     <textarea wash_care="text" name="wash_care" class="form-control @error('wash_care') is-invalid @enderror"
                                         id="wash_care" rows="3"
-                                        placeholder="{{ __('translation.product_wash_care') }}"> {{ old('wash_care') }}</textarea>
+                                        placeholder="{{ __('translation.product_wash_care') }}">{{ old('wash_care') }}</textarea>
                                     @error('wash_care')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -423,29 +428,6 @@
             $('.select2').select2({
                 placeholder: 'Choose one',
                 searchInputPlaceholder: 'Search'
-            });
-        });
-    </script>
-
-    {{-- Append Categories Level --}}
-    <script>
-        $(document).ready(function() {
-            $('#section_id').change(function() {
-                var section_id = $(this).val();
-                // alert(section_id);
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/append-categories-level',
-                    data: {
-                        section_id: section_id
-                    },
-                    success: function(response) {
-                        $('#appendCategoriesLevel').html(response);
-                    },
-                    error: function() {
-                        alert('error');
-                    }
-                });
             });
         });
     </script>

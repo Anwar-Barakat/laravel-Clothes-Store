@@ -1,132 +1,171 @@
-        /* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap'); */
-        /* * {
-            font-family: 'Cairo', sans-serif !important;
-        } */
-        
-        .toast-success {
-            background-color: #17b748;
-        }
-        
-        .container-login100 {
-            background: #ecf0fa;
-        }
-        
-        .header-lang-icon {
-            font-size: 1.3rem;
-            margin-right: 16px;
-            width: 20px !important;
-            height: 20px;
-            line-height: 34px;
-            border-radius: 3px;
-            text-align: center;
-            color: #a8b1c7;
-            fill: #5b6e88;
-            transition: .3s
-        }
-        
-        .main-message-list a .time {
-            font-size: 15px;
-            color: #8d8db3;
-            font-weight: 400;
-        }
-        
-        .is-invalid {
-            border: 2px solid #f44336;
-        }
-        
-        .invalid-feedback {
-            display: block;
-        }
-        
-        .icon_sidebar {
-            font-size: 23px;
-            line-height: 0;
-            width: 22px;
-            height: 22px;
-            line-height: 34px;
-            border-radius: 3px;
-            text-align: center;
-            color: #a8b1c7;
-            fill: #5b6e88;
-            overflow: hidden;
-            vertical-align: middle;
-        }
-        
-        .main-footer {
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        
-        .fa-chevron-up {
-            padding-top: 0;
-            font-size: 20px;
-            line-height: 2.4;
-        }
-        
-        .admin-image {
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
-        /* ****************************************************** */
-        /* ****************************************************** */
-        /* ****************************************************** */
-        /* ****************************************************** */
-        /* **************** Main Button  ************************ */
-        
-        .button-30 {
-            align-items: center;
-            appearance: none;
-            background-color: #FCFCFD;
-            border-radius: 4px;
-            border-width: 0;
-            box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-            box-sizing: border-box;
-            color: #36395A;
-            cursor: pointer;
-            display: inline-flex;
-            font-family: "JetBrains Mono", monospace;
-            height: 40px;
-            justify-content: center;
-            line-height: 1;
-            list-style: none;
-            overflow: hidden;
-            padding-left: 24px;
-            padding-right: 24px;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            transition: box-shadow .15s, transform .15s;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            white-space: nowrap;
-            will-change: box-shadow, transform;
-            font-size: 15px;
-        }
-        
-        .button-30:focus {
-            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-        }
-        
-        .button-30:hover {
-            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-            transform: translateY(-2px);
-        }
-        
-        .button-30:active {
-            box-shadow: #D6D6E7 0 3px 7px inset;
-            transform: translateY(2px);
-        }
-        /* **************** Main Button  ************************ */
-        /* ****************************************************** */
-        /* ****************************************************** */
-        /* ****************************************************** */
-        /* ****************************************************** */
-        
-        textarea {
-            resize: none;
-        }
-        
-        .tr-class {
-            width: 11% !important;
-        }
+/* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700&display=swap'); */
+
+
+/* * {
+font-family: 'Cairo', sans-serif !important;
+} */
+
+.toast-success {
+    background-color: #17b748;
+}
+
+.container-login100 {
+    background: #ecf0fa;
+}
+
+.header-lang-icon {
+    font-size: 1.3rem;
+    margin-right: 16px;
+    width: 20px !important;
+    height: 20px;
+    line-height: 34px;
+    border-radius: 3px;
+    text-align: center;
+    color: #a8b1c7;
+    fill: #5b6e88;
+    transition: .3s
+}
+
+.main-message-list a .time {
+    font-size: 15px;
+    color: #8d8db3;
+    font-weight: 400;
+}
+
+.is-invalid {
+    border: 2px solid #f44336;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.icon_sidebar {
+    font-size: 23px;
+    line-height: 0;
+    width: 22px;
+    height: 22px;
+    line-height: 34px;
+    border-radius: 3px;
+    text-align: center;
+    color: #a8b1c7;
+    fill: #5b6e88;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.main-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.fa-chevron-up {
+    padding-top: 0;
+    font-size: 20px;
+    line-height: 2.4;
+}
+
+.admin-image {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+
+/* ****************************************************** */
+
+
+/* ****************************************************** */
+
+
+/* ****************************************************** */
+
+
+/* ****************************************************** */
+
+
+/* **************** Main Button  ************************ */
+
+.button-30 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 40px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 15px;
+}
+
+.button-30:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button-30:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+
+/* **************** Main Button  ************************ */
+
+
+/* ****************************************************** */
+
+
+/* ****************************************************** */
+
+
+/* ****************************************************** */
+
+
+/* ****************************************************** */
+
+textarea {
+    resize: none;
+}
+
+.tr-class-action {
+    width: 11% !important;
+}
+
+.tr-class-image {
+    width: 20% !important;
+}
+
+.row-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    align-items: center;
+    justify-items: center;
+    align-items: start;
+}
+
+.product_edit_image {
+    max-width: 190px;
+    height: 220px;
+}

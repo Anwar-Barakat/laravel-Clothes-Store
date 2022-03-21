@@ -44,7 +44,8 @@
                                     <th class="wd-15p border-bottom-0">{{ __('translation.category') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.color') }}</th>
-                                    <th class=" border-bottom-0 tr-class">
+                                    <th class="wd-15p border-bottom-0 tr-class-image">{{ __('translation.image') }}</th>
+                                    <th class=" border-bottom-0 tr-class-action">
                                         {{ __('translation.actions') }}
                                     </th>
                                 </tr>
@@ -52,12 +53,22 @@
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $product->name }}</td>
                                         <td><a href="" class="tag tag-green">{{ $product->section->name }}</a></td>
                                         <td><a href="" class="tag tag-cyan">{{ $product->category->name }}</a></td>
                                         <td>{{ $product->code }}</td>
                                         <td>{{ $product->color }}</td>
+                                        <td>
+                                            @if ($product->getFirstMediaUrl('image_products', 'small'))
+                                                <img width="160" height="200"
+                                                    src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
+                                                    alt="{{ $product->name }}" class="img img-thumbnail">
+                                            @else
+                                                <img width="160" height="200" src="{{ asset('assets/img/1.jpg') }}"
+                                                    alt="{{ $product->name }}" class="img img-thumbnail">
+                                            @endif
+                                        </td>
                                         <td>
                                             <form action="{{ route('admin.categories.destroy', $product) }}"
                                                 method="post">

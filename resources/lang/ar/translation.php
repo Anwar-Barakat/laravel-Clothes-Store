@@ -144,4 +144,6 @@ return [
     'yes'                       => 'نعم',
     'no'                        => 'لا',
     'edit_product'              => 'تعديل المنتج',
+    'product_description'       => 'وصف المنتج',
+    'product_wash_care'         => 'مثلاً غسالة أتوماتيك, ... ',
 ];

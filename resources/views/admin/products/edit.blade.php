@@ -25,40 +25,16 @@
                     <h4 class="card-title mb-1">{{ __('translation.main_info') }} :</h4>
                 </div>
                 <div class="card-body pt-0">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.products.store') }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.products.update', $product) }}"
                         enctype="multipart/form-data" name="ProductForm" id="ProductForm">
                         @csrf
-                        <div class="row mb-4">
-                            <div class="col-sm-12 text-center col-xl-6 d-flex">
-                                @if ($product->getFirstMediaUrl('image_products', 'thumb'))
-                                    <img src="{{ $product->getFirstMediaUrl('image_products', 'thumb') }}"
-                                        class="img img-thumbnail mb-4 admin-image m-auto">
-                                @else
-                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image"
-                                        alt="Alternative Image">
-                                @endif
-                            </div>
-                            <div class="col-sm-12 text-center col-xl-6 d-flex">
-                                @if ($product->getFirstMediaUrl('video_products'))
-                                    <video width="320" height="240" controls>
-                                        <source src="{{ $product->getFirstMediaUrl('video_products') }}"
-                                            class="img img-thumbnail mb-4 admin-image" type="video/mp4">
-                                        <source src="{{ $product->getFirstMediaUrl('video_products') }}"
-                                            class="img img-thumbnail mb-4 admin-image" type="video/ogg">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                @else
-                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image"
-                                        alt="Alternative Vedio">
-                                @endif
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" value="{{ old('name') }}"
+                                        id="name" value="{{ old('name', $product->name) }}"
                                         placeholder="{{ __('translation.product_name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -73,23 +49,23 @@
                                     <p class="mg-b-10">{{ __('translation.categories') }}</p>
                                     <select name="category_id" id="category_id"
                                         class="form-control @error('category_id') is-invalid @enderror">
-                                        {{-- <option value="">{{ __('translation.choose..') }}</option>
+                                        <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach ($categories as $section)
                                             <optgroup label="{{ $section->name }}"></optgroup>
                                             @foreach ($section->categories ?? [] as $category)
                                                 <option value="{{ $category->id }}"
-                                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
                                                     &nbsp;&raquo;&nbsp; {{ $category->name }}
                                                 </option>
                                                 @foreach ($category->subCategories ?? [] as $subcategory)
                                                     <option value="{{ $subcategory->id }}"
-                                                        {{ old('category_id') == $subcategory->id ? 'selected' : '' }}>
+                                                        {{ old('category_id', $product->category_id) == $subcategory->id ? 'selected' : '' }}>
                                                         &nbsp;&raquo;&nbsp; &nbsp;&raquo;&nbsp;
                                                         {{ $subcategory->name }}
                                                     </option>
                                                 @endforeach
                                             @endforeach
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                     @error('category_id')
                                         <span class="invalid-feedback" role="alert">
@@ -105,7 +81,7 @@
                                 <div class="form-group">
                                     <label for="code">{{ __('translation.code') }}</label>
                                     <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
-                                        id="code" value="{{ old('code') }}"
+                                        id="code" value="{{ old('code', $product->code) }}"
                                         placeholder="{{ __('translation.enter_product_code') }}">
                                     @error('code')
                                         <span class="invalid-feedback" role="alert">
@@ -119,7 +95,7 @@
                                     <label for="color">{{ __('translation.color') }}</label>
                                     <input type="text" name="color"
                                         class="form-control @error('color') is-invalid @enderror" id="color"
-                                        value="{{ old('color') }}"
+                                        value="{{ old('color', $product->color) }}"
                                         placeholder="{{ __('translation.enter_product_color') }}">
                                     @error('color')
                                         <span class="invalid-feedback" role="alert">
@@ -140,7 +116,7 @@
                                         </div>
                                         <input type="number" name="price" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('price') is-invalid @enderror"
-                                            value="{{ old('price') }}">
+                                            value="{{ old('price', $product->price) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -161,7 +137,7 @@
                                         </div>
                                         <input type="number" name="discount" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('discount') is-invalid @enderror"
-                                            value="{{ old('discount') }}">
+                                            value="{{ old('discount', $product->discount) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -181,7 +157,7 @@
                                             <span class="input-group-text">{{ __('translation.kg') }}</span>
                                         </div>
                                         <input name="weight" class="form-control @error('weight') is-invalid @enderror"
-                                            type="number" value="{{ old('weight') }}">
+                                            type="number" value="{{ old('weight', $product->weight) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -195,6 +171,7 @@
                             </div>
                         </div>
                         <hr>
+
                         <h4 class="card-title mb-3">{{ __('translation.attachments') }} :</h4>
                         <div class="row">
                             <div class="col-xl-6 col-sm-12">
@@ -230,7 +207,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mb-4 row-grid">
+                            <div class="col-sm-12 text-center col-xl-6">
+                                @if ($product->getFirstMediaUrl('image_products', 'small'))
+                                    <img src="{{ $product->getFirstMediaUrl('image_products', 'medium') }}"
+                                        class="img img-thumbnail mb-4 admin-image product_edit_image">
+                                @else
+                                    <img src="{{ asset('assets/img/1.jpg') }}"
+                                        class="img img-thumbnail mb-4 admin-image product_edit_image"
+                                        alt="Alternative Image">
+                                @endif
+                            </div>
+                            <div class="col-sm-12 text-center col-xl-6">
+                                @if ($product->getFirstMediaUrl('video_products'))
+                                    <video width="320" height="240" class="img img-thumbnail mb-4 admin-image" controls>
+                                        <source src="{{ $product->getFirstMediaUrl('video_products') }}"
+                                            type="video/mp4">
+                                        <source src="{{ $product->getFirstMediaUrl('video_products') }}"
+                                            type="video/ogg">
+                                        {{ __('msgs.browser_error') }}
+                                    </video>
+                                @else
+                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image"
+                                        alt="Alternative Vedio">
+                                @endif
+                            </div>
+                        </div>
                         <hr>
+
                         <h4 class="card-title mb-3">{{ __('translation.filters') }} :</h4>
                         <div class="row">
                             <div class="col-sm-12 col-xl-4">
@@ -240,7 +244,8 @@
                                         name="fabric">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::fabricArray as $index => $fabric)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('fabric', $product->fabric) == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $fabric) }}
                                             </option>
                                         @endforeach
@@ -259,7 +264,8 @@
                                         name="pattern">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::patternArray as $index => $pattern)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('pattern', $product->pattern) == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $pattern) }}</option>
                                         @endforeach
                                     </select>
@@ -277,7 +283,8 @@
                                         name="sleeve">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::sleeveArray as $index => $sleeve)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('sleeve', $product->sleeve) == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $sleeve) }}</option>
                                         @endforeach
                                     </select>
@@ -296,7 +303,8 @@
                                     <select class="form-control @error('fit') is-invalid @enderror" id="fit" name="fit">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::fitArray as $index => $fit)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('fit', $product->fit) == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $fit) }}</option>
                                         @endforeach
                                     </select>
@@ -314,7 +322,8 @@
                                         name="occasion">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach (App\Models\Product::occasionArray as $index => $occasion)
-                                            <option value="{{ $index }}">
+                                            <option value="{{ $index }}"
+                                                {{ old('occasion', $product->occasion) == strval($index) ? 'selected' : '' }}>
                                                 {{ __('translation.' . $occasion) }}</option>
                                         @endforeach
                                     </select>
@@ -331,10 +340,12 @@
                                     <select class="form-control @error('is_feature') is-invalid @enderror" id="is_feature"
                                         name="is_feature">
                                         <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="1" {{ old('is_feature') == '1' ? 'selected' : '' }}>
+                                        <option value="Yes"
+                                            {{ old('is_feature', $product->is_feature) == 'Yes' ? 'selected' : '' }}>
                                             {{ __('translation.yes') }}
                                         </option>
-                                        <option value="0" {{ old('is_feature') == '0' ? 'selected' : '' }}>
+                                        <option value="No"
+                                            {{ old('is_feature', $product->is_feature) == 'No' ? 'selected' : '' }}>
                                             {{ __('translation.no') }}
                                         </option>
                                     </select>
@@ -354,7 +365,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea description="text" name="description" class="form-control @error('description') is-invalid @enderror"
                                         id="description" rows="3"
-                                        placeholder="{{ __('translation.product_description') }}"> {{ old('description') }}</textarea>
+                                        placeholder="{{ __('translation.product_description') }}">{{ old('description', $product->description) }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -367,7 +378,7 @@
                                     <label for="wash_care">{{ __('translation.wash_care') }}</label>
                                     <textarea wash_care="text" name="wash_care" class="form-control @error('wash_care') is-invalid @enderror"
                                         id="wash_care" rows="3"
-                                        placeholder="{{ __('translation.product_wash_care') }}"> {{ old('wash_care') }}</textarea>
+                                        placeholder="{{ __('translation.product_wash_care') }}">{{ old('wash_care', $product->wash_care) }}</textarea>
                                     @error('wash_care')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -382,7 +393,7 @@
                                     <label for="meta_title">{{ __('translation.meta_title') }}</label>
                                     <input meta_title="text" name="meta_title"
                                         class="form-control @error('meta_title') is-invalid @enderror" id="meta_title"
-                                        value="{{ old('meta_title') }}"
+                                        value="{{ old('meta_title', $product->meta_title) }}"
                                         placeholder="{{ __('translation.meta_title') }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
@@ -396,7 +407,8 @@
                                     <label for="meta_description">{{ __('translation.meta_description') }}</label>
                                     <input meta_description="text" name="meta_description"
                                         class="form-control @error('meta_description') is-invalid @enderror"
-                                        id="meta_description" value="{{ old('meta_description') }}"
+                                        id="meta_description"
+                                        value="{{ old('meta_description', $product->meta_description) }}"
                                         placeholder="{{ __('translation.meta_description') }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
@@ -410,7 +422,7 @@
                                     <label for="meta_keywords">{{ __('translation.meta_keywords') }}</label>
                                     <input meta_keywords="text" name="meta_keywords"
                                         class="form-control @error('meta_keywords') is-invalid @enderror"
-                                        id="meta_keywords" value="{{ old('meta_keywords') }}"
+                                        id="meta_keywords" value="{{ old('meta_keywords', $product->meta_keywords) }}"
                                         placeholder="{{ __('translation.meta_keywords') }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
@@ -423,7 +435,7 @@
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
                                 <button type="submit" class="button-30"
-                                    role="button">{{ __('buttons.add') }}</button>
+                                    role="button">{{ __('buttons.update') }}</button>
                             </div>
                         </div>
                     </form>
@@ -448,29 +460,6 @@
             $('.select2').select2({
                 placeholder: 'Choose one',
                 searchInputPlaceholder: 'Search'
-            });
-        });
-    </script>
-
-    {{-- Append Categories Level --}}
-    <script>
-        $(document).ready(function() {
-            $('#section_id').change(function() {
-                var section_id = $(this).val();
-                // alert(section_id);
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/append-categories-level',
-                    data: {
-                        section_id: section_id
-                    },
-                    success: function(response) {
-                        $('#appendCategoriesLevel').html(response);
-                    },
-                    error: function() {
-                        alert('error');
-                    }
-                });
             });
         });
     </script>

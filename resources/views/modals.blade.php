@@ -231,7 +231,7 @@
                                 data-toggle="modal" href="#modaldemo8">Rotate Bottom</a>
                         </div>
                         <div class="col-sm-6 col-md-4 col-xl-3 mg-t-20">
-                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-rotate-left"
+                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-rotate-left" 
                                 data-toggle="modal" href="#modaldemo8">Rotate Left</a>
                         </div>
                         <div class="col-sm-6 col-md-4 col-xl-3 mg-t-20">
