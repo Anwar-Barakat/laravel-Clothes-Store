@@ -54,12 +54,21 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $data = $request->only(['category_id', 'name', 'status', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
-        $category = Category::find($data['category_id']);
-        $data['section_id'] = $category['section_id'];
-        Product::create($data);
-        Session::flash('message', __('msgs.product_add'));
-        return redirect()->route('admin.products.index');
+        if ($request->isMethod('post')) {
+            $data = $request->only(['category_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $category = Category::find($data['category_id']);
+            $data['section_id'] = $category['section_id'];
+            $data['status']     = 1;
+            $product = Product::create($data);
+            if ($request->hasFile('video') && $request->file('video')->isValid()) {
+                $product->addMediaFromRequest('video')->toMediaCollection('video_products');
+            }
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $product->addMediaFromRequest('image')->toMediaCollection('image_products');
+            }
+            Session::flash('message', __('msgs.product_add'));
+            return redirect()->route('admin.products.index');
+        }
     }
 
     /**
@@ -81,7 +90,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', ['product' => $product]);
     }
 
     /**

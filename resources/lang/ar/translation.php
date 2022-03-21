@@ -109,7 +109,7 @@ return [
     'weight'                    => 'الوزن',
     'kg'                        => 'كغ',
     'video'                     => 'فيديو',
-    'wash_care'                 => 'Wash Care',
+    'wash_care'                 => 'الغسيل باستخدام',
 
     'fabric'                    => 'الفماش',
     'cotton'                    => 'قطن',
@@ -143,4 +143,5 @@ return [
     'is_feature'                => 'هو ميزة',
     'yes'                       => 'نعم',
     'no'                        => 'لا',
+    'edit_product'              => 'تعديل المنتج',
 ];

@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     protected $fillable = [
         'section_id',
         'category_id',
@@ -29,6 +33,13 @@ class Product extends Model
         'is_feature',
         'status'
     ];
+
+    public function registerMediaCollections(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(350)
+            ->height(350);
+    }
 
     public const fabricArray    = ['cotton', 'polyester', 'wool'];
     public const sleeveArray    = ['full_sleeve', 'half_sleeve', 'short_sleeve', 'sleeveless'];

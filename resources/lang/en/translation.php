@@ -144,7 +144,7 @@ return [
     'is_feature'                => 'Is Feature',
     'yes'                       => 'Yes',
     'no'                        => 'No',
-
+    'edit_product'              => 'Edit Product',
 
 
 ];

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.add_product'))
+@section('title', __('translation.edit_product'))
 @section('css')
     <!-- Internal Select2 css -->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
@@ -10,7 +10,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.add_product') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.edit_product') }}</span>
             </div>
         </div>
     </div>
@@ -28,6 +28,31 @@
                     <form class="form-horizontal" method="POST" action="{{ route('admin.products.store') }}"
                         enctype="multipart/form-data" name="ProductForm" id="ProductForm">
                         @csrf
+                        <div class="row mb-4">
+                            <div class="col-sm-12 text-center col-xl-6 d-flex">
+                                @if ($product->getFirstMediaUrl('image_products', 'thumb'))
+                                    <img src="{{ $product->getFirstMediaUrl('image_products', 'thumb') }}"
+                                        class="img img-thumbnail mb-4 admin-image m-auto">
+                                @else
+                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image"
+                                        alt="Alternative Image">
+                                @endif
+                            </div>
+                            <div class="col-sm-12 text-center col-xl-6 d-flex">
+                                @if ($product->getFirstMediaUrl('video_products'))
+                                    <video width="320" height="240" controls>
+                                        <source src="{{ $product->getFirstMediaUrl('video_products') }}"
+                                            class="img img-thumbnail mb-4 admin-image" type="video/mp4">
+                                        <source src="{{ $product->getFirstMediaUrl('video_products') }}"
+                                            class="img img-thumbnail mb-4 admin-image" type="video/ogg">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                @else
+                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image"
+                                        alt="Alternative Vedio">
+                                @endif
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
@@ -48,7 +73,7 @@
                                     <p class="mg-b-10">{{ __('translation.categories') }}</p>
                                     <select name="category_id" id="category_id"
                                         class="form-control @error('category_id') is-invalid @enderror">
-                                        <option value="">{{ __('translation.choose..') }}</option>
+                                        {{-- <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach ($categories as $section)
                                             <optgroup label="{{ $section->name }}"></optgroup>
                                             @foreach ($section->categories ?? [] as $category)
@@ -64,7 +89,7 @@
                                                     </option>
                                                 @endforeach
                                             @endforeach
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                     @error('category_id')
                                         <span class="invalid-feedback" role="alert">

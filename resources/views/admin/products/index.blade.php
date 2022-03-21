@@ -80,7 +80,7 @@
                                                         <i class="fas fa-power-off "></i>
                                                     </a>
                                                 @endif
-                                                <a href="{{ route('admin.categories.edit', $product) }}">
+                                                <a href="{{ route('admin.products.edit', $product) }}">
                                                     <i class="fas fa-edit text-primary"></i>
                                                 </a>
                                                 <a href="javascript:void(0);" class="p-2 confirmationDelete"
