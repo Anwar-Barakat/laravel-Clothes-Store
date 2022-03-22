@@ -152,6 +152,12 @@ textarea {
     height: 220px;
 }
 
+
+/* **************************************************************************** */
+
+
+/* ************************** TableDates Custom Css  ************************** */
+
 .dataTables_wrapper .dataTables_paginate .page-item.disabled .page-link,
 .dataTables_paginate .page-item.active .page-link {
     padding: 0 !important;
@@ -168,6 +174,12 @@ div.dataTables_wrapper div.dataTables_info {
 div.table-responsive>div.dataTables_wrapper>div.row {
     align-items: center;
 }
+
+
+/* ************************** TableDates Custom Css  ************************** */
+
+
+/* **************************************************************************** */
 
 
 /* **************************************************************************** */

@@ -47,7 +47,7 @@
                             <tbody>
                                 @foreach ($sections as $section)
                                     <tr>
-                                        <td>{{ $section->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $section->name }}</td>
                                         <td>
                                             @if ($section->status == 1)

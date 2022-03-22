@@ -49,7 +49,7 @@
                             <tbody>
                                 @foreach ($categories as $category)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->url }}</td>
                                         <td>

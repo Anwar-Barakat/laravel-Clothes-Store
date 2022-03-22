@@ -28,7 +28,8 @@ class ProductAttributeController extends Controller
      */
     public function create(Product $product)
     {
-        return view('admin.products.attributes.add', ['product' => $product]);
+        $productData = Product::with('attributes')->select('id', 'name', 'color', 'code')->findOrFail($product->id);
+        return view('admin.products.attributes.add', ['product' => $productData]);
     }
 
     /**
@@ -39,34 +40,40 @@ class ProductAttributeController extends Controller
      */
     public function store(Request $request)
     {
+        $product_id = $request->id;
         $data = $request->only(['size', 'sku', 'price', 'stock']);
+
         foreach ($data['sku'] as $key => $value) {
-            $attributeCountSKU = ProductAttribute::where('sku', $value)->count();
-            if ($attributeCountSKU > 0) {
-                Session::flash('alert-type', 'info');
-                Session::flash('message', __('msgs.sku_already_exists'));
-                return redirect()->back();
+            if (!empty($value)) {
+
+                // SKU Must Be Unique :
+                $skuCount = ProductAttribute::where('sku', $value)->count();
+                if ($skuCount > 0) {
+                    Session::flash('alert-type', 'info');
+                    Session::flash('message', __('msgs.sku_already_exists'));
+                    return redirect()->route('admin.attributes.create', $product_id);
+                }
+                // Size of Product Must Be Unique :
+                $sizeCount = ProductAttribute::where(['size' => $data['size'][$key], 'product_id' => $product_id])->count();
+                if ($sizeCount > 0) {
+                    Session::flash('alert-type', 'info');
+                    Session::flash('message', __('msgs.size_already_exists'));
+                    return redirect()->route('admin.attributes.create', $product_id);
+                }
+
+
+                ProductAttribute::create([
+                    'product_id'    => $product_id,
+                    'sku'           => $value,
+                    'size'          => $data['size'][$key],
+                    'price'          => $data['price'][$key],
+                    'stock'          => $data['stock'][$key],
+                    'status'        => 1,
+                ]);
             }
-
-            $attributeCountSize = ProductAttribute::where(['product_id' => $request->id, 'size' => $data['size'][$key]])->count();
-            if ($attributeCountSize > 0) {
-                Session::flash('alert-type', 'info');
-                Session::flash('message', __('msgs.size_already_exists'));
-                return redirect()->back();
-            }
-
-
-            ProductAttribute::create([
-                'product_id'    => $request->id,
-                'sku'           => $value,
-                'size'          => $data['size'][$key],
-                'price'         => $data['price'][$key],
-                'stock'         => $data['stock'][$key],
-                'status'        => 1
-            ]);
-            Session::flash('message', __('msgs.attributes_add'));
-            return redirect()->back();
         }
+        Session::flash('message', __('msgs.attributes_add'));
+        return redirect()->route('admin.attributes.create', $product_id);
     }
 
     /**

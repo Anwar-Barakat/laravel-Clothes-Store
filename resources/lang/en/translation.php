@@ -148,6 +148,9 @@ return [
     'product_description'       => 'Product Description',
     'product_wash_care'         => 'For example Machine Washing, ... ',
     'update_status'             => 'Update Status',
+
+
+    // Product Attributes :
     'product_attributes'        => 'Attributes Product',
     'add_attributes'            => 'Add Attributes',
     'enter_size'                => 'Enter Size',
@@ -157,4 +160,5 @@ return [
     'enter_price'               => 'Enter Price',
     'enter_stock'               => 'Enter Stock',
     'stock'                     => 'Stock',
+    'added_attributes'          => 'Added Attributes',
 ];

@@ -19,6 +19,7 @@ return [
     'browser_error'             => 'Your browser does not support the video tag.',
 
     'sku_already_exists'        => 'SKU Value Already Exists !!',
+    'size_already_exists'       => 'Size Value Already Exists !!',
 
     'attributes_add'            => 'Attributes Has Added Successfuly !!',
     'attributes_update'         => 'Attributes Has Updated Successfuly !!',

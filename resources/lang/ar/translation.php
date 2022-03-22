@@ -147,6 +147,9 @@ return [
     'product_description'       => 'وصف المنتج',
     'product_wash_care'         => 'مثلاً غسالة أتوماتيك, ... ',
     'update_status'             => 'تحديث الحالة',
+
+
+    // Product Attributes :
     'product_attributes'        => 'خصائص المنتج',
     'add_attributes'            => 'إضافة خصائص',
     'size'                      => 'القياس',
@@ -156,4 +159,5 @@ return [
     'enter_price'               => 'ادخل السعر',
     'enter_stock'               => 'ادخل القرض',
     'stock'                     => 'القرض',
+    'added_attributes'          => 'الخصائص المضافة',
 ];

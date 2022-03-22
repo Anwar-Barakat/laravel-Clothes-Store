@@ -1,6 +1,13 @@
 @extends('layouts.master')
 @section('title', __('translation.product_attributes'))
 @section('css')
+    <!-- Internal Data table css -->
+    <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -40,10 +47,6 @@
                                     <th>{{ __('translation.color') }}</th>
                                     <td>{{ $product->color }}</td>
                                 </tr>
-                                <tr>
-                                    <th>{{ __('translation.price') }}</th>
-                                    <td>{{ $product->price }}</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div><!-- bd -->
@@ -57,6 +60,39 @@
                         @endif
                     </div>
                 </div><!-- bd -->
+                @if (!empty($product->attributes))
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title mg-b-0">{{ __('translation.added_attributes') }}</h4>
+                        </div>
+                    </div>
+                    <div class="card-body product-attributes-info">
+                        <div class="table-responsive">
+                            <table class="table text-md-nowrap" id="productAttributes">
+                                <thead>
+                                    <tr>
+                                        <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
+                                        <th class="wd-15p border-bottom-0">{{ __('translation.size') }}</th>
+                                        <th class="wd-15p border-bottom-0">{{ __('translation.sku') }}</th>
+                                        <th class="wd-15p border-bottom-0">{{ __('translation.price') }}</th>
+                                        <th class="wd-15p border-bottom-0">{{ __('translation.stock') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($product->attributes as $attribute)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $attribute['size'] }}</td>
+                                            <td>{{ $attribute['sku'] }}</td>
+                                            <td>{{ $attribute['price'] }}</td>
+                                            <td>{{ $attribute['stock'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div><!-- bd -->
+                    </div><!-- bd -->
+                @endif
             </div><!-- bd -->
         </div>
     </div>
@@ -117,11 +153,40 @@
     <!-- row -->
 @endsection
 @section('js')
+    <!-- Internal Data tables -->
+    <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
+    <!--Internal  Datatable js -->
+    <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
+    <script>
+        $('#productAttributes').DataTable({
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_',
+            }
+        });
+    </script>
     <!-- Internal form-elements js -->
     <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
     <!-- Internal form-elements js -->
     <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
 
+    {{-- MultiField Form Script --}}
     <script type="text/javascript">
         $(document).ready(function() {
             var maxField = 10; //Input fields increment limitation
