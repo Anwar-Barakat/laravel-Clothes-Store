@@ -102,12 +102,24 @@ class ProductAttributeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductAttribute  $productAttribute
+     * @param  \App\Product  $Product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductAttribute $productAttribute)
+    public function update(Request $request, Product $product)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['attribute_id', 'price', 'stock']);
+            foreach ($data['attribute_id'] as $key => $value) {
+                if (!empty($value)) {
+                    ProductAttribute::where('id', $data['attribute_id'][$key])->update([
+                        'price'     => $data['price'][$key],
+                        'stock'     => $data['stock'][$key],
+                    ]);
+                }
+            }
+        }
+        Session::flash('message', __('msgs.attributes_update'));
+        return redirect()->route('admin.attributes.create', $product->id);
     }
 
     /**
@@ -118,7 +130,27 @@ class ProductAttributeController extends Controller
      */
     public function destroy(ProductAttribute $productAttribute)
     {
-        //
+        $productAttribute->delete();
+        Session::flash('alert-type', 'error');
+        Session::flash('message', __('msgs.attributes_add'));
+        return redirect()->back();
+    }
 
+    public function updateAttributeStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['status', 'attribute_id']);
+            if ($data['status'] == 1)
+                $status = 0;
+            else
+                $status = 1;
+            ProductAttribute::where('id', $data['attribute_id'])->update([
+                'status'    => $status
+            ]);
+            return response()->json([
+                'status'            => $status,
+                'attribute_id'      => $data['attribute_id']
+            ]);
+        }
     }
 }

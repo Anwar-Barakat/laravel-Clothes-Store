@@ -175,6 +175,14 @@ div.table-responsive>div.dataTables_wrapper>div.row {
     align-items: center;
 }
 
+div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-child {
+    padding: 0 .8rem 0 0.15rem;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0;
+}
+
 
 /* ************************** TableDates Custom Css  ************************** */
 

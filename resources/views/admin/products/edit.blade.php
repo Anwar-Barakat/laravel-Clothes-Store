@@ -451,10 +451,6 @@
 @section('js')
     <!-- Internal Select2.min js -->
     <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
-    <!-- Internal form-elements js -->
-    <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
-    <!-- Internal form-elements js -->
-    <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select2').select2({

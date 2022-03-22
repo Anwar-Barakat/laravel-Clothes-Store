@@ -122,42 +122,6 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                            {{-- <form action="{{ route('admin.categories.destroy', $product) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                @if ($product->status == 1)
-                                                    <a href="javascript:void(0);"
-                                                        title="{{ __('translation.update_status') }}"
-                                                        class="updateProductStatus text-success p-2"
-                                                        id="product-{{ $product->id }}"
-                                                        product_id="{{ $product->id }}"
-                                                        status="{{ $product->status }}">
-                                                        <i class="fas fa-power-off"></i>
-                                                    </a>
-                                                @else
-                                                    <a href="javascript:void(0);"
-                                                        title="{{ __('translation.update_status') }}"
-                                                        class="updateProductStatus text-danger p-2"
-                                                        id="product-{{ $product->id }}"
-                                                        product_id="{{ $product->id }}"
-                                                        status="{{ $product->status }}">
-                                                        <i class="fas fa-power-off "></i>
-                                                    </a>
-                                                @endif
-                                                <a href="{{ route('admin.products.edit', $product) }}"
-                                                    title="{{ __('buttons.edit') }}">
-                                                    <i class="fas fa-edit text-primary"></i>
-                                                </a>
-                                                <a href="javascript:void(0);" class="p-2 confirmationDelete"
-                                                    data-product="{{ $product->id }}"
-                                                    title="{{ __('buttons.delete') }}">
-                                                    <i class="fas fa-trash text-danger"></i>
-                                                </a>
-                                                <a href="{{ route('admin.attributes.create', $product) }}"
-                                                    title="{{ __('translation.add_attributes') }}"><i
-                                                        class="fas fa-plus" style="color: gray"></i></a>
-                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -200,7 +164,7 @@
         });
     </script>
 
-    {{-- turn on/off the section status --}}
+    {{-- turn on/off the Product status --}}
     <script>
         $(document).ready(() => {
             $('.updateProductStatus').click(function() {

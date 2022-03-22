@@ -82,6 +82,9 @@ Route::group(
                 // Product Attributes :
                 Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('admin.attributes.create');
                 Route::post('store-attributes',                                 [ProductAttributeController::class, 'store'])->name('admin.attributes.store');
+                Route::post('update-attributes/{product}',                      [ProductAttributeController::class, 'update'])->name('admin.attributes.update');
+                Route::post('update-attribute-status',                          [ProductAttributeController::class, 'updateAttributeStatus']);
+                Route::get('delete-attribute/{attribute}',                      [ProductAttributeController::class, 'destroy'])->name('admin.attributes.destroy');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('admin.logout');

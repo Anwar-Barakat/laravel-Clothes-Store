@@ -67,30 +67,94 @@
                         </div>
                     </div>
                     <div class="card-body product-attributes-info">
-                        <div class="table-responsive">
-                            <table class="table text-md-nowrap" id="productAttributes">
-                                <thead>
-                                    <tr>
-                                        <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
-                                        <th class="wd-15p border-bottom-0">{{ __('translation.size') }}</th>
-                                        <th class="wd-15p border-bottom-0">{{ __('translation.sku') }}</th>
-                                        <th class="wd-15p border-bottom-0">{{ __('translation.price') }}</th>
-                                        <th class="wd-15p border-bottom-0">{{ __('translation.stock') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($product->attributes as $attribute)
+                        <form action="{{ route('admin.attributes.update', $product) }}" method="post"
+                            name="UpdateProductAttributes" id="UpdateProductAttributes">
+                            @csrf
+                            <div class="table-responsive">
+                                <table class="table text-md-nowrap" id="productAttributes">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $attribute['size'] }}</td>
-                                            <td>{{ $attribute['sku'] }}</td>
-                                            <td>{{ $attribute['price'] }}</td>
-                                            <td>{{ $attribute['stock'] }}</td>
+                                            <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
+                                            <th class="wd-15p border-bottom-0">{{ __('translation.size') }}</th>
+                                            <th class="wd-15p border-bottom-0">{{ __('translation.sku') }}</th>
+                                            <th class="wd-15p border-bottom-0">{{ __('translation.price') }}</th>
+                                            <th class="wd-15p border-bottom-0">{{ __('translation.stock') }}</th>
+                                            <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div><!-- bd -->
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($product->attributes as $attribute)
+                                            <input type="text" class="d-none" name="attribute_id[]"
+                                                value="{{ $attribute['id'] }}">
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $attribute['size'] }}</td>
+                                                <td>{{ $attribute['sku'] }}</td>
+                                                <td>
+                                                    <input type="number" class="form-control" name="price[]"
+                                                        value="{{ $attribute['price'] }}" style="height: 2rem;">
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" name="stock[]"
+                                                        value="{{ $attribute['stock'] }}" style="height: 2rem;">
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown dropup">
+                                                        <button aria-expanded="false" aria-haspopup="true"
+                                                            style="font-size: 11px" class="btn ripple btn-secondary"
+                                                            data-toggle="dropdown"
+                                                            type="button">{{ __('translation.actions') }} <i
+                                                                class="fas fa-caret-down ml-1"></i></button>
+                                                        <div class="dropdown-menu tx-13">
+                                                            <form
+                                                                action="{{ route('admin.categories.destroy', $product) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                @if ($attribute['status'] == 1)
+                                                                    <a href="javascript:void(0);"
+                                                                        title="{{ __('translation.update_status') }}"
+                                                                        class="updateAttributeStatus text-success dropdown-item"
+                                                                        id="attribute-{{ $attribute['id'] }}"
+                                                                        attribute_id="{{ $attribute['id'] }}"
+                                                                        status="{{ $attribute['status'] }}">
+                                                                        <i class="fas fa-power-off"></i>
+                                                                        {{ __('translation.active') }}
+                                                                    </a>
+                                                                @else
+                                                                    <a href="javascript:void(0);"
+                                                                        title="{{ __('translation.update_status') }}"
+                                                                        class="updateAttributeStatus text-danger  dropdown-item"
+                                                                        id="attribute-{{ $attribute['id'] }}"
+                                                                        attribute_id="{{ $attribute['id'] }}"
+                                                                        status="{{ $attribute['status'] }}">
+                                                                        <i class="fas fa-power-off "></i>
+                                                                        {{ __('translation.disactive') }}
+                                                                    </a>
+                                                                @endif
+                                                                <a href="javascript:void(0);"
+                                                                    class="confirmationDelete dropdown-item"
+                                                                    data-attribute="{{ $attribute['id'] }}"
+                                                                    title="{{ __('buttons.delete') }}">
+                                                                    <i class="fas fa-trash text-danger"></i>
+                                                                    {{ __('buttons.delete') }}
+                                                                </a>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div><!-- bd -->
+                            <div class="form-group mb-0 mt-3 justify-content-end">
+                                <div>
+                                    <button type="submit" class="button-30"
+                                        role="button">{{ __('buttons.update') }}</button>
+                                </div>
+                            </div>
+                        </form>
                     </div><!-- bd -->
                 @endif
             </div><!-- bd -->
@@ -181,10 +245,6 @@
             }
         });
     </script>
-    <!-- Internal form-elements js -->
-    <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
-    <!-- Internal form-elements js -->
-    <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
 
     {{-- MultiField Form Script --}}
     <script type="text/javascript">
@@ -226,5 +286,53 @@
                 x--; //Decrement field counter
             });
         });
+    </script>
+
+    {{-- turn on/off the Attribute status --}}
+    <script>
+        $(document).ready(() => {
+            $('.updateAttributeStatus').click(function() {
+                var status = $(this).attr('status');
+                var attribute_id = $(this).attr('attribute_id');
+                $.ajax({
+                    type: 'post',
+                    url: '/admin/update-attribute-status',
+                    data: {
+                        status: status,
+                        attribute_id: attribute_id,
+                    },
+                    success: function(response) {
+                        if (response['status']) {
+                            $('#attribute-' + response['attribute_id'])
+                                .attr('status', `${response['status']}`);
+                        }
+
+                    },
+                    error: function() {},
+                });
+            });
+        });
+    </script>
+
+    {{-- Confirmation Delete Attribute --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('.confirmationDelete').click(function() {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Delete! '
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/admin/delete-attribute/' + $(this).data(
+                            'attribute');
+                    }
+                });
+            });
+        })
     </script>
 @endsection
