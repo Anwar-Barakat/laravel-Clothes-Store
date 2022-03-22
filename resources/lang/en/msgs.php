@@ -16,5 +16,11 @@ return [
     'product_update'            => 'Product Has Updated Successfuly !!',
     'product_delete'            => 'Product Has Deleted Succesfully !!',
 
-    'browser_error'             => 'Your browser does not support the video tag.'
+    'browser_error'             => 'Your browser does not support the video tag.',
+
+    'sku_already_exists'        => 'SKU Value Already Exists !!',
+
+    'attributes_add'            => 'Attributes Has Added Successfuly !!',
+    'attributes_update'         => 'Attributes Has Updated Successfuly !!',
+    'attributes_delete'         => 'Attributes Has Deleted Successfuly !!',
 ];

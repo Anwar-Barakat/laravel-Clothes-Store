@@ -20,5 +20,12 @@ return [
     'product_update'            => 'تم تحديث المنتج بنجاح',
     'product_delete'            => 'تم حذف المنتج بنجاح',
 
-    'browser_error'             => 'هذا المتصفح لا يدعم صيغة الفيدية هذه'
+    'browser_error'             => 'هذا المتصفح لا يدعم صيغة الفيدية هذه',
+
+    'sku_already_exists'        => 'قيمة الرمز النوعي موجودة مسبقا !!',
+    'size_already_exists'       => 'القياس موجود مسبقا !!',
+
+    'attributes_add'            => 'تم إضافة الخصائص بنجاح !!',
+    'attributes_update'         => 'تم تحديث الخصائص بنجاح !!',
+    'attributes_delete'         => 'تم حذف الخصائص بنجاح !!',
 ];

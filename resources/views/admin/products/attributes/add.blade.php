@@ -70,29 +70,33 @@
                     <form class="form-horizontal" method="POST" action="{{ route('admin.attributes.store') }}"
                         enctype="multipart/form-data" name="ProductAttributesForm" id="ProductAttributesForm">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $product->id }}">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div
-                                    class="field_wrapper d-flex align-items-center justify-content-start multattributesform">
+                                <div class="field_wrapper  multattributesform">
                                     <div class="form-group">
                                         <label for="size">{{ __('translation.size') }}</label>
                                         <input type="text" name="size[]" value="{{ old('size') }}" id="size"
-                                            class="form-control" placeholder="{{ __('translation.enter_size') }}" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">{{ __('translation.price') }}</label>
-                                        <input type="text" name="price[]" value="{{ old('price') }}" id="price"
-                                            class="form-control" placeholder="{{ __('translation.enter_price') }}" />
+                                            class="form-control" required=""
+                                            placeholder="{{ __('translation.enter_size') }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="sku">{{ __('translation.sku') }}</label>
                                         <input type="text" name="sku[]" value="{{ old('sku') }}" id="sku"
-                                            class="form-control" placeholder="{{ __('translation.enter_sku') }}" />
+                                            class="form-control" required=""
+                                            placeholder="{{ __('translation.enter_sku') }}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">{{ __('translation.price') }}</label>
+                                        <input type="number" name="price[]" value="{{ old('price') }}" id="price"
+                                            class="form-control" required=""
+                                            placeholder="{{ __('translation.enter_price') }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="stock">{{ __('translation.stock') }}</label>
-                                        <input type="text" name="stock[]" value="{{ old('stock') }}" id="stock"
-                                            class="form-control" placeholder="{{ __('translation.enter_stock') }}" />
+                                        <input type="number" name="stock[]" value="{{ old('stock') }}" id="stock"
+                                            class="form-control" required=""
+                                            placeholder="{{ __('translation.enter_stock') }}" />
                                     </div>
                                     <a href="javascript:void(0);" class="add_button button-30" title="Add field">
                                         {{ __('buttons.add_row') }}
@@ -126,16 +130,16 @@
             var fieldHTML =
                 `<div class="d-flex align-items-center justify-content-start added-field-attribute">
                     <div class="form-group">
-                        <input type="text" name="size[]" value="{{ old('size') }}" class="form-control" placeholder="{{ __('translation.enter_size') }}" id="size"/>
+                        <input type="text" name="size[]" value="{{ old('size') }}" class="form-control" required="" placeholder="{{ __('translation.enter_size') }}" id="size" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="price[]" value="{{ old('price') }}" class="form-control" placeholder="{{ __('translation.enter_price') }}" id="price"/>
+                        <input type="text" name="sku[]" value="{{ old('sku') }}" class="form-control" required="" placeholder="{{ __('translation.enter_sku') }}" id="sku" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="sku[]" value="{{ old('sku') }}" class="form-control" placeholder="{{ __('translation.enter_sku') }}" id="sku"/>
+                        <input type="number" name="price[]" value="{{ old('price') }}" class="form-control" required="" placeholder="{{ __('translation.enter_price') }}" id="price" />
                     </div>
                     <div class="form-group">
-                    <input type="text" name="stock[]" value="{{ old('stock') }}" class="form-control" placeholder="{{ __('translation.enter_stock') }}" id="stock"/>
+                    <input type="number" name="stock[]" value="{{ old('stock') }}" class="form-control" required="" placeholder="{{ __('translation.enter_stock') }}" id="stock" />
                     </div>
                     <a href="javascript:void(0);" class="remove_button button-30 added-field-attribute-deleted-btn">{{ __('buttons.delete_row') }}</a>
                 </div>`; //New input field html

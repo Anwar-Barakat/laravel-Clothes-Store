@@ -65,4 +65,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsTo(Section::class, 'section_id');
     }
+
+    // public function productAttributes()
+    // {
+    //     return $this->hasMany(ProductAttribute::class, 'product_id');
+    // }
 }

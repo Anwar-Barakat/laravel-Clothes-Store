@@ -70,8 +70,59 @@
                                             @endif
                                         </td>
                                         <td>
-
-                                            <form action="{{ route('admin.categories.destroy', $product) }}"
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
+                                                    type="button">{{ __('translation.actions') }} <i
+                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="{{ route('admin.categories.destroy', $product) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        @if ($product->status == 1)
+                                                            <a href="javascript:void(0);"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                class="updateProductStatus text-success dropdown-item"
+                                                                id="product-{{ $product->id }}"
+                                                                product_id="{{ $product->id }}"
+                                                                status="{{ $product->status }}">
+                                                                <i class="fas fa-power-off"></i>
+                                                                {{ __('translation.active') }}
+                                                            </a>
+                                                        @else
+                                                            <a href="javascript:void(0);"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                class="updateProductStatus text-danger  dropdown-item"
+                                                                id="product-{{ $product->id }}"
+                                                                product_id="{{ $product->id }}"
+                                                                status="{{ $product->status }}">
+                                                                <i class="fas fa-power-off "></i>
+                                                                {{ __('translation.disactive') }}
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('admin.products.edit', $product) }}"
+                                                            class="dropdown-item" title="{{ __('buttons.edit') }}">
+                                                            <i class="fas fa-edit text-primary"></i>
+                                                            {{ __('buttons.edit') }}
+                                                        </a>
+                                                        <a href="javascript:void(0);"
+                                                            class="confirmationDelete dropdown-item"
+                                                            data-product="{{ $product->id }}"
+                                                            title="{{ __('buttons.delete') }}">
+                                                            <i class="fas fa-trash text-danger"></i>
+                                                            {{ __('buttons.delete') }}
+                                                        </a>
+                                                        <a href="{{ route('admin.attributes.create', $product) }}"
+                                                            class="dropdown-item"
+                                                            title="{{ __('translation.add_attributes') }}">
+                                                            <i class="fas fa-plus" style="color: gray"></i>
+                                                            {{ __('translation.add_attributes') }}
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            {{-- <form action="{{ route('admin.categories.destroy', $product) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
@@ -103,10 +154,10 @@
                                                     title="{{ __('buttons.delete') }}">
                                                     <i class="fas fa-trash text-danger"></i>
                                                 </a>
-                                                <a href="{{ route('admin.attributes.create', $productf) }}"
+                                                <a href="{{ route('admin.attributes.create', $product) }}"
                                                     title="{{ __('translation.add_attributes') }}"><i
                                                         class="fas fa-plus" style="color: gray"></i></a>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach

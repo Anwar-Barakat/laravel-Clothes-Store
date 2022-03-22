@@ -176,6 +176,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 /* **************** MultField Form Product Attributes  ************************ */
 
 .multattributesform {
+    display: flex;
+    justify-content: start;
+    align-items: center;
     column-gap: 1.5rem;
     background: #ecf0fa;
     padding: 1rem;
@@ -205,6 +208,9 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 @media screen and (max-width:551px) {
     .product-info {
         grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    }
+    .multattributesform .form-group {
+        width: 100%;
     }
 }
 
