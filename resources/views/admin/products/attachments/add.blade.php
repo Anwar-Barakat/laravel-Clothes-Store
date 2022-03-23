@@ -8,6 +8,12 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
+    <!---Internal  Owl Carousel css-->
+    <link href="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <!---Internal  Multislider css-->
+    <link href="{{ URL::asset('assets/plugins/multislider/multislider.css') }}" rel="stylesheet">
+
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -62,15 +68,29 @@
                     </div>
                 </div><!-- bd -->
 
-
-                <div class="card-header pb-0">
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">{{ __('translation.product_images') }}</h4>
+                @if (!empty($product->getMedia('product_attachments')))
+                    <div class="card-body">
+                        <div class="card custom-card">
+                            <div class="card-body ht-100p">
+                                <div>
+                                    <h6 class="card-title mb-1">{{ __('translation.product_images') }}</h6>
+                                </div>
+                                <div id="basicSlider">
+                                    <div class="MS-content">
+                                        @foreach ($product->getMedia('product_attachments') as $key => $image)
+                                            <div class="item">
+                                                <a href="#" target="_blank">
+                                                    <img src="{{ $image->getUrl('small') }}"
+                                                        class="img img-thumbnail  admin-image" width="100%" height="100%">
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-
-                </div>
+                @endif
             </div><!-- bd -->
         </div>
     </div>
@@ -103,7 +123,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    {{-- <input id="demo" type="file" name="image" accept=".jpg, .png, image/jpeg, image/png"> --}}
                                 </div>
                             </div>
                             <div class="col-xl-6 col-sm-12">
@@ -128,7 +147,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <img width="200" src="{{ $image->getUrl('small') }}"
+                                                <img width="130" src="{{ $image->getUrl('small') }}"
                                                     class="img img-thumbnail  admin-image">
                                             </td>
                                             <td>
@@ -197,6 +216,13 @@
             }
         });
     </script>
+
+    <!-- Internal Owl Carousel js-->
+    <script src="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.js') }}"></script>
+    <!---Internal  Multislider js-->
+    <script src="{{ URL::asset('assets/plugins/multislider/multislider.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
+
 
     {{-- turn on/off the image status --}}
     <script>

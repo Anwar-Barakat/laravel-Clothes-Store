@@ -223,7 +223,7 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 @media screen and (max-width:551px) {
     .product-info {
-        grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
     }
     .multattributesform .form-group {
         width: 100%;
@@ -232,6 +232,43 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 
 /* **************** MultField Form Product Attributes  ************************ */
+
+
+/* **************************************************************************** */
+
+
+/* **************************************************************************** */
+
+
+/* **************** Custtom Multi Carousal CSS   ****************************** */
+
+#basicSlider .MS-content .item {
+    width: 260px;
+    max-width: 260px;
+    height: 300px;
+    max-height: 300px;
+}
+
+#basicSlider .MS-content .item img {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width:551px) {
+    #basicSlider .MS-content .item {
+        width: 200px;
+        max-width: 200px;
+        height: 240px;
+        max-height: 240px;
+    }
+    #basicSlider .MS-content .item img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+/* **************** Custtom Multi Carousal CSS   ****************************** */
 
 
 /* **************************************************************************** */
