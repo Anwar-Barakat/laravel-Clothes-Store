@@ -109,11 +109,8 @@ class ProductController extends Controller
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;
-            // $data = json_decode(json_encode($data));
-            // echo "pre";
-            // print_r($data);
-            // die;
             $product->update($data);
+            
             if ($request->hasFile('video') && $request->file('video')->isValid()) {
                 $product->clearMediaCollection('video_products');
                 $product->addMediaFromRequest('video')->toMediaCollection('video_products');
@@ -157,5 +154,10 @@ class ProductController extends Controller
                 'product_id'    => $data['product_id']
             ]);
         }
+    }
+
+    public function AddImage(Request $request)
+    {
+        return $request;
     }
 }

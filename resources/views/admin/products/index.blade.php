@@ -44,7 +44,7 @@
                                     <th class="wd-15p border-bottom-0">{{ __('translation.category') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.color') }}</th>
-                                    <th class="wd-15p border-bottom-0 tr-class-image">{{ __('translation.image') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.image') }}</th>
                                     <th class=" border-bottom-0 tr-class-action">
                                         {{ __('translation.actions') }}
                                     </th>
@@ -61,11 +61,11 @@
                                         <td>{{ $product->color }}</td>
                                         <td>
                                             @if ($product->getFirstMediaUrl('image_products', 'small'))
-                                                <img width="160" height="200"
+                                                <img width="80"
                                                     src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
                                                     alt="{{ $product->name }}" class="img img-thumbnail">
                                             @else
-                                                <img width="160" height="200" src="{{ asset('assets/img/1.jpg') }}"
+                                                <img width="80" src="{{ asset('assets/img/1.jpg') }}"
                                                     alt="{{ $product->name }}" class="img img-thumbnail">
                                             @endif
                                         </td>
@@ -106,18 +106,24 @@
                                                             <i class="fas fa-edit text-primary"></i>
                                                             {{ __('buttons.edit') }}
                                                         </a>
+                                                        <a href="{{ route('admin.product.attributes.create', $product) }}"
+                                                            class="dropdown-item"
+                                                            title="{{ __('translation.add_attributes') }}">
+                                                            <i class="fas fa-plus" style="color: #607d8b"></i>
+                                                            {{ __('translation.add_attributes') }}
+                                                        </a>
+                                                        <a href="{{ route('admin.product.images.create', $product) }}"
+                                                            class="dropdown-item"
+                                                            title="{{ __('translation.add_images') }}">
+                                                            <i class="fas fa-file-image" style="color: #ff9800gray"></i>
+                                                            {{ __('translation.add_images') }}
+                                                        </a>
                                                         <a href="javascript:void(0);"
                                                             class="confirmationDelete dropdown-item"
                                                             data-product="{{ $product->id }}"
                                                             title="{{ __('buttons.delete') }}">
                                                             <i class="fas fa-trash text-danger"></i>
                                                             {{ __('buttons.delete') }}
-                                                        </a>
-                                                        <a href="{{ route('admin.attributes.create', $product) }}"
-                                                            class="dropdown-item"
-                                                            title="{{ __('translation.add_attributes') }}">
-                                                            <i class="fas fa-plus" style="color: gray"></i>
-                                                            {{ __('translation.add_attributes') }}
                                                         </a>
                                                     </form>
                                                 </div>
@@ -207,7 +213,7 @@
         });
     </script>
 
-    {{-- Confirmation Delete Category --}}
+    {{-- Confirmation Delete Attribute --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {

@@ -160,4 +160,12 @@ return [
     'enter_stock'               => 'ادخل القرض',
     'stock'                     => 'القرض',
     'added_attributes'          => 'الخصائص المضافة',
+
+
+    // Product Images :
+    'add_images'                => 'إضافة مرفقات',
+    'product_images'            => 'مرفقات المنتج',
+    'add_multi_image'           => 'أختر عدة مرفقات',
+    'manage_product_images'     => 'إدارة مرفقات المنتج',
+
 ];

@@ -161,4 +161,11 @@ return [
     'enter_stock'               => 'Enter Stock',
     'stock'                     => 'Stock',
     'added_attributes'          => 'Added Attributes',
+
+    // Product Images :
+    'add_images'                => 'Add Attachments',
+    'product_images'            => 'Product Attachments',
+    'add_multi_image'           => 'Choose Multi Attachments',
+    'manage_product_images'     => 'Manage Product Attachments',
+
 ];

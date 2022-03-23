@@ -410,9 +410,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-xl-6 col-sm-12 col-sm-12">
-
-        </div>
     </div>
     <!-- row -->
 @endsection

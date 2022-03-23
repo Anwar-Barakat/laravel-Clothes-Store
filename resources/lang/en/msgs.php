@@ -21,7 +21,9 @@ return [
     'sku_already_exists'        => 'SKU Value Already Exists !!',
     'size_already_exists'       => 'Size Value Already Exists !!',
 
-    'attributes_add'            => 'Attributes Has Added Successfuly !!',
-    'attributes_update'         => 'Attributes Has Updated Successfuly !!',
-    'attributes_delete'         => 'Attributes Has Deleted Successfuly !!',
+    'attributes_add'            => 'Product Attributes Has Added Successfuly !!',
+    'attributes_update'         => 'Product Attributes Has Updated Successfuly !!',
+    'attributes_delete'         => 'Product Attributes Has Deleted Successfuly !!',
+
+    'product_attachments_add'   => 'Product Attachments Has Added Successfuly !!',
 ];

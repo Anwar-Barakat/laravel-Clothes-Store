@@ -25,7 +25,9 @@ return [
     'sku_already_exists'        => 'قيمة الرمز النوعي موجودة مسبقا !!',
     'size_already_exists'       => 'القياس موجود مسبقا !!',
 
-    'attributes_add'            => 'تم إضافة الخصائص بنجاح !!',
-    'attributes_update'         => 'تم تحديث الخصائص بنجاح !!',
-    'attributes_delete'         => 'تم حذف الخصائص بنجاح !!',
+    'attributes_add'            => 'تم إضافة خصائص المنتج بنجاح !!',
+    'attributes_update'         => 'تم تحديث خصائص المنتج بنجاح !!',
+    'attributes_delete'         => 'تم حذف خصائص المنتج بنجاح !!',
+
+    'product_attachments_add'   => 'تم اضافة مرفقات المنتج بنجاح !!'
 ];

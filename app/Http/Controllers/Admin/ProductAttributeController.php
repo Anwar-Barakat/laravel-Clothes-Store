@@ -51,14 +51,14 @@ class ProductAttributeController extends Controller
                 if ($skuCount > 0) {
                     Session::flash('alert-type', 'info');
                     Session::flash('message', __('msgs.sku_already_exists'));
-                    return redirect()->route('admin.attributes.create', $product_id);
+                    return redirect()->route('admin.product.attributes.create', $product_id);
                 }
                 // Size of Product Must Be Unique :
                 $sizeCount = ProductAttribute::where(['size' => $data['size'][$key], 'product_id' => $product_id])->count();
                 if ($sizeCount > 0) {
                     Session::flash('alert-type', 'info');
                     Session::flash('message', __('msgs.size_already_exists'));
-                    return redirect()->route('admin.attributes.create', $product_id);
+                    return redirect()->route('admin.product.attributes.create', $product_id);
                 }
 
 
@@ -73,7 +73,7 @@ class ProductAttributeController extends Controller
             }
         }
         Session::flash('message', __('msgs.attributes_add'));
-        return redirect()->route('admin.attributes.create', $product_id);
+        return redirect()->route('admin.product.attributes.create', $product_id);
     }
 
     /**
@@ -119,7 +119,7 @@ class ProductAttributeController extends Controller
             }
         }
         Session::flash('message', __('msgs.attributes_update'));
-        return redirect()->route('admin.attributes.create', $product->id);
+        return redirect()->route('admin.product.attributes.create', $product->id);
     }
 
     /**
@@ -128,11 +128,11 @@ class ProductAttributeController extends Controller
      * @param  \App\ProductAttribute  $productAttribute
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductAttribute $productAttribute)
+    public function destroy($id)
     {
-        $productAttribute->delete();
+        ProductAttribute::findOrFail($id)->delete();
         Session::flash('alert-type', 'error');
-        Session::flash('message', __('msgs.attributes_add'));
+        Session::flash('message', __('msgs.attributes_delete'));
         return redirect()->back();
     }
 
