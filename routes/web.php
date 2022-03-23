@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -79,12 +80,18 @@ Route::group(
                 Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('admin.products.destroy');
                 Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
 
+
                 // Product Attributes :
-                Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('admin.attributes.create');
-                Route::post('store-attributes',                                 [ProductAttributeController::class, 'store'])->name('admin.attributes.store');
-                Route::post('update-attributes/{product}',                      [ProductAttributeController::class, 'update'])->name('admin.attributes.update');
+                Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('admin.product.attributes.create');
+                Route::post('store-attributes',                                 [ProductAttributeController::class, 'store'])->name('admin.product.attributes.store');
+                Route::post('update-attributes/{product}',                      [ProductAttributeController::class, 'update'])->name('admin.product.attributes.update');
                 Route::post('update-attribute-status',                          [ProductAttributeController::class, 'updateAttributeStatus']);
-                Route::get('delete-attribute/{attribute}',                      [ProductAttributeController::class, 'destroy'])->name('admin.attributes.destroy');
+                Route::get('delete-attribute/{id}',                             [ProductAttributeController::class, 'destroy'])->name('admin.product.attributes.destroy');
+
+                // Product Images :
+                Route::get('create-images/{product}',                           [ProductImageController::class, 'create'])->name('admin.product.images.create');
+                Route::post('store-images',                                     [ProductImageController::class, 'store'])->name('admin.product.images.store');
+                Route::get('delete-image/{id}',                                 [ProductImageController::class, 'destroy'])->name('admin.product.images.destroy');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('admin.logout');

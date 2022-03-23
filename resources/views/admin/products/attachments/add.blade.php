@@ -139,32 +139,10 @@
                                                         type="button">{{ __('translation.actions') }} <i
                                                             class="fas fa-caret-down ml-1"></i></button>
                                                     <div class="dropdown-menu tx-13">
-                                                        {{-- <form
-                                                            action="{{ route('admin.product.image.destroy', $product) }}"
+                                                        <form
+                                                            action="{{ route('admin.product.images.destroy', $product->id) }}"
                                                             method="post">
                                                             @csrf
-                                                            @method('DELETE')
-                                                            @if ($image['status'] == 1)
-                                                                <a href="javascript:void(0);"
-                                                                    title="{{ __('translation.update_status') }}"
-                                                                    class="updateImageStatus text-success dropdown-item"
-                                                                    id="image-{{ $image['id'] }}"
-                                                                    image_id="{{ $image['id'] }}"
-                                                                    status="{{ $image['status'] }}">
-                                                                    <i class="fas fa-power-off "></i>
-                                                                    {{ __('translation.active') }}
-                                                                </a>
-                                                            @else
-                                                                <a href="javascript:void(0);"
-                                                                    title="{{ __('translation.update_status') }}"
-                                                                    class="updateImageStatus text-danger  dropdown-item"
-                                                                    id="image-{{ $image['id'] }}"
-                                                                    image_id="{{ $image['id'] }}"
-                                                                    status="{{ $image['status'] }}">
-                                                                    <i class="fas fa-power-off "></i>
-                                                                    {{ __('translation.disactive') }}
-                                                                </a>
-                                                            @endif
                                                             <a href="javascript:void(0);"
                                                                 class="confirmationDelete dropdown-item"
                                                                 data-image="{{ $image['id'] }}"
@@ -172,7 +150,7 @@
                                                                 <i class="fas fa-trash text-danger"></i>
                                                                 {{ __('buttons.delete') }}
                                                             </a>
-                                                        </form> --}}
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </td>

@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="card-body product-attributes-info">
-                        <form action="{{ route('admin.attributes.update', $product) }}" method="post"
+                        <form action="{{ route('admin.product.attributes.update', $product) }}" method="post"
                             name="UpdateProductAttributes" id="UpdateProductAttributes">
                             @csrf
                             <div class="table-responsive">
@@ -107,10 +107,9 @@
                                                                 class="fas fa-caret-down ml-1"></i></button>
                                                         <div class="dropdown-menu tx-13">
                                                             <form
-                                                                action="{{ route('admin.categories.destroy', $product) }}"
+                                                                action="{{ route('admin.product.attributes.destroy', $attribute['id']) }}"
                                                                 method="post">
                                                                 @csrf
-                                                                @method('DELETE')
                                                                 @if ($attribute['status'] == 1)
                                                                     <a href="javascript:void(0);"
                                                                         title="{{ __('translation.update_status') }}"
@@ -167,7 +166,7 @@
                     <h4 class="card-title mb-1">{{ __('translation.add_attributes') }} :</h4>
                 </div>
                 <div class="card-body pt-0">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.attributes.store') }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.product.attributes.store') }}"
                         enctype="multipart/form-data" name="ProductAttributesForm" id="ProductAttributesForm">
                         @csrf
                         <input type="hidden" name="id" value="{{ $product->id }}">
