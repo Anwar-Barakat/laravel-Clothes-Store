@@ -118,7 +118,7 @@
                                                                         id="attribute-{{ $attribute['id'] }}"
                                                                         attribute_id="{{ $attribute['id'] }}"
                                                                         status="{{ $attribute['status'] }}">
-                                                                        <i class="fas fa-power-off"></i>
+                                                                        <i class="fas fa-power-off "></i>
                                                                         {{ __('translation.active') }}
                                                                     </a>
                                                                 @else
@@ -294,6 +294,11 @@
             $('.updateAttributeStatus').click(function() {
                 var status = $(this).attr('status');
                 var attribute_id = $(this).attr('attribute_id');
+                var active = '{{ __('translation.active') }} ';
+                var disactiev = '{{ __('translation.disactive') }} ';
+                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+
                 $.ajax({
                     type: 'post',
                     url: '/admin/update-attribute-status',
@@ -302,11 +307,24 @@
                         attribute_id: attribute_id,
                     },
                     success: function(response) {
-                        if (response['status']) {
+                        if (response['status'] == 0) {
                             $('#attribute-' + response['attribute_id'])
                                 .attr('status', `${response['status']}`);
-                        }
+                            $('#attribute-' + response['attribute_id']).text(disactiev);
+                            $('#attribute-' + response['attribute_id']).attr('style',
+                                'color : #ee335e  !important');
+                            $('#attribute-' + response['attribute_id']).prepend(
+                                '<i class="fas fa-power-off text-danger"></i> ');
+                        } else {
+                            $('#attribute-' + response['attribute_id'])
+                                .attr('status', `${response['status']}`);
+                            $('#attribute-' + response['attribute_id']).text(active);
+                            $('#attribute-' + response['attribute_id']).attr('style',
+                                'color : #22c03c   !important');
+                            $('#attribute-' + response['attribute_id']).prepend(
+                                '<i class="fas fa-power-off text-success"></i> ');
 
+                        }
                     },
                     error: function() {},
                 });

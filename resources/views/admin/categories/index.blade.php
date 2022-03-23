@@ -61,39 +61,54 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.categories.destroy', $category) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                @if ($category->status == 1)
-                                                    <a href="javascript:void(0);"
-                                                        title="{{ __('translation.update_status') }}"
-                                                        class="updateCategoryStatus text-success p-2"
-                                                        id="category-{{ $category->id }}"
-                                                        category_id="{{ $category->id }}"
-                                                        status="{{ $category->status }}">
-                                                        <i class="fas fa-power-off"></i>
-                                                    </a>
-                                                @else
-                                                    <a href="javascript:void(0);"
-                                                        title="{{ __('translation.update_status') }}"
-                                                        class="updateCategoryStatus text-danger p-2"
-                                                        id="category-{{ $category->id }}"
-                                                        category_id="{{ $category->id }}"
-                                                        status="{{ $category->status }}">
-                                                        <i class="fas fa-power-off "></i>
-                                                    </a>
-                                                @endif
-                                                <a href="{{ route('admin.categories.edit', $category) }}"
-                                                    title="{{ __('buttons.update') }}">
-                                                    <i class="fas fa-edit text-primary"></i>
-                                                </a>
-                                                <a href="javascript:void(0);" class="p-2 confirmationDelete"
-                                                    data-category="{{ $category->id }}"
-                                                    title="{{ __('buttons.delete') }}">
-                                                    <i class="fas fa-trash text-danger"></i>
-                                                </a>
-                                            </form>
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
+                                                    type="button">{{ __('translation.actions') }} <i
+                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="{{ route('admin.categories.destroy', $category) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        @if ($category->status == 1)
+                                                            <a href="javascript:void(0);"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                class="updateCategoryStatus text-success dropdown-item"
+                                                                id="category-{{ $category->id }}"
+                                                                category_id="{{ $category->id }}"
+                                                                status="{{ $category->status }}">
+                                                                <i class="fas fa-power-off"></i>
+                                                                {{ __('translation.active') }}
+                                                            </a>
+                                                        @else
+                                                            <a href="javascript:void(0);"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                class="updateCategoryStatus text-danger dropdown-item"
+                                                                id="category-{{ $category->id }}"
+                                                                category_id="{{ $category->id }}"
+                                                                status="{{ $category->status }}">
+                                                                <i class="fas fa-power-off "></i>
+                                                                {{ __('translation.disactive') }}
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('admin.categories.edit', $category) }}"
+                                                            title="{{ __('buttons.update') }}" class="dropdown-item">
+                                                            <i class="fas fa-edit text-primary"></i>
+                                                            {{ __('buttons.edit') }}
+                                                        </a>
+                                                        <a href="javascript:void(0);"
+                                                            class="dropdown-item confirmationDelete"
+                                                            data-category="{{ $category->id }}"
+                                                            title="{{ __('buttons.delete') }}">
+                                                            <i class="fas fa-trash text-danger"></i>
+                                                            {{ __('buttons.delete') }}
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -142,7 +157,10 @@
             $('.updateCategoryStatus').click(function() {
                 var status = $(this).attr('status');
                 var category_id = $(this).attr('category_id');
-
+                var active = '{{ __('translation.active') }} ';
+                var disactiev = '{{ __('translation.disactive') }} ';
+                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
                 $.ajax({
                     type: 'post',
                     url: '/admin/update-category-status',
@@ -151,8 +169,24 @@
                         category_id: category_id,
                     },
                     success: function(response) {
-                        if (response['status'])
-                            window.reload();
+                        if (response['status'] == 0) {
+                            $('#category-' + response['category_id'])
+                                .attr('status', `${response['status']}`);
+                            $('#category-' + response['category_id']).text(disactiev);
+                            $('#category-' + response['category_id']).attr('style',
+                                'color : #ee335e  !important');
+                            $('#category-' + response['category_id']).prepend(
+                                '<i class="fas fa-power-off text-danger"></i> ');
+                        } else {
+                            $('#category-' + response['category_id'])
+                                .attr('status', `${response['status']}`);
+                            $('#category-' + response['category_id']).text(active);
+                            $('#category-' + response['category_id']).attr('style',
+                                'color : #22c03c   !important');
+                            $('#category-' + response['category_id']).prepend(
+                                '<i class="fas fa-power-off text-success"></i> ');
+
+                        }
                     },
                     error: function() {},
                 });

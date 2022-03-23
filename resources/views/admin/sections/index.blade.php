@@ -56,7 +56,6 @@
                                                     id="section-{{ $section->id }}" section_id="{{ $section->id }}"
                                                     status="{{ $section->status }}">
                                                     <i class="fas fa-power-off"></i>
-
                                                 </a>
                                             @else
                                                 <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
@@ -64,7 +63,6 @@
                                                     id="section-{{ $section->id }}" section_id="{{ $section->id }}"
                                                     status="{{ $section->status }}">
                                                     <i class="fas fa-power-off text-danger"></i>
-
                                                 </a>
                                             @endif
                                             <a href="javascript:void(0);" role="button" data-toggle="modal"
@@ -259,7 +257,10 @@
             $('.updateSectionStatus').click(function() {
                 var status = $(this).attr('status');
                 var section_id = $(this).attr('section_id');
-
+                var active = '{{ __('translation.active') }} ';
+                var disactiev = '{{ __('translation.disactive') }} ';
+                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
                 $.ajax({
                     type: 'post',
                     url: '/admin/update-section-status',
@@ -268,10 +269,17 @@
                         section_id: section_id,
                     },
                     success: function(response) {
-                        if (response['status'])
-                            window.reload();
-
-
+                        if (response['status'] == 0) {
+                            $('#section-' + response['section_id'])
+                                .attr('status', `${response['status']}`);
+                            $('#section-' + response['section_id']).html(
+                                '<i class="fas fa-power-off text-danger"></i> ');
+                        } else {
+                            $('#section-' + response['section_id'])
+                                .attr('status', `${response['status']}`);
+                            $('#section-' + response['section_id']).html(
+                                '<i class="fas fa-power-off text-success"></i> ');
+                        }
                     },
                     error: function() {},
                 });
