@@ -126,14 +126,14 @@
                                         role="button">{{ __('buttons.add') }}</button>
                                 </div>
                             </div>
-                            @if (!empty($product->getMedia('product_attachments')))
+                            @if ($product->getFirstMediaUrl('product_attachments'))
                                 <div class="col-xl-2 col-sm-12">
                                     <label></label>
                                     <form action="{{ route('admin.product.images.all.destroy', $product) }}"
                                         method="post">
                                         @csrf
                                         <a href="javascript:void(0);" class="confirmationDeleteAllAttachments button-30"
-                                            data-product="{{ $product }}"
+                                            data-product="{{ $product->id }}"
                                             title="{{ __('buttons.delete_all_attachments') }}"
                                             style="margin-top: 0.35rem">
                                             {{ __('buttons.delete_all_attachments') }}
@@ -244,7 +244,7 @@
             coverflowEffect: {
                 rotate: 30,
                 stretch: 0,
-                depth: 150,
+                depth: 200,
                 modifier: 1,
                 slideShadows: false
             },
@@ -252,62 +252,19 @@
     </script>
 
 
-    {{-- turn on/off the image status --}}
-    <script>
-        $(document).ready(() => {
-            $('.updateImageStatus').click(function() {
-                var status = $(this).attr('status');
-                var image_id = $(this).attr('image_id');
-                var active = '{{ __('translation.active') }} ';
-                var disactiev = '{{ __('translation.disactive') }} ';
-                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/update-image-status',
-                    data: {
-                        status: status,
-                        image_id: image_id,
-                    },
-                    success: function(response) {
-                        if (response['status'] == 0) {
-                            $('#image-' + response['image_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#image-' + response['image_id']).text(disactiev);
-                            $('#image-' + response['image_id']).attr('style',
-                                'color : #ee335e  !important');
-                            $('#image-' + response['image_id']).prepend(
-                                '<i class="fas fa-power-off text-danger"></i> ');
-                        } else {
-                            $('#image-' + response['image_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#image-' + response['image_id']).text(active);
-                            $('#image-' + response['image_id']).attr('style',
-                                'color : #22c03c   !important');
-                            $('#image-' + response['image_id']).prepend(
-                                '<i class="fas fa-power-off text-success"></i> ');
-
-                        }
-                    },
-                    error: function() {},
-                });
-            });
-        });
-    </script>
-
     {{-- Confirmation Delete image --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             $('.confirmationDelete').click(function() {
                 Swal.fire({
-                    title: 'Are you sure?',
+                    title: '{{ __('msgs.are_your_sure') }}',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Delete! '
+                    cancelButtonText: '{{ __('buttons.close') }}',
+                    confirmButtonText: '{{ __('msgs.yes_delete') }}',
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location.href = '/admin/delete-image/' + $(this).data(
@@ -321,16 +278,17 @@
         $(document).ready(function() {
             $('.confirmationDeleteAllAttachments').click(function() {
                 Swal.fire({
-                    title: 'Are you sure?',
+                    title: '{{ __('msgs.delete_all_attachs') }}',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Delete! '
+                    cancelButtonText: '{{ __('buttons.close') }}',
+                    confirmButtonText: '{{ __('msgs.yes_delete') }}',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = '/admin/delete-product-attachments/' + $(this).data(
-                            'product');
+                        window.location.href =
+                            '/admin/delete-product-attachments/' + $(this).data('product');
                     }
                 });
             });

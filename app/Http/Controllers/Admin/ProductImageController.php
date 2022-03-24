@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProductAttachmentsRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -22,7 +23,7 @@ class ProductImageController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreProductAttachmentsRequest $request)
     {
         if ($request->isMethod('post')) {
             $product    = Product::findOrFail($request->product_id);
@@ -46,11 +47,11 @@ class ProductImageController extends Controller
         return redirect()->back();
     }
 
-    public function destroyAllProductAttachments(Product $product)
+    public function destroyAllProductAttachments($id)
     {
-        Media::where('model_id', $product->id)->delete();
+        Media::where(['model_id' => $id, 'collection_name' => 'product_attachments'])->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.product_attachment_delete'));
+        Session::flash('message', __('msgs.product_attachments_delete'));
         return redirect()->back();
     }
 

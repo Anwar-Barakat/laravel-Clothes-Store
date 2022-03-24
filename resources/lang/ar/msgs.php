@@ -29,6 +29,11 @@ return [
     'attributes_update'         => 'تم تحديث خصائص المنتج بنجاح !!',
     'attributes_delete'         => 'تم حذف خصائص المنتج بنجاح !!',
 
-    'product_attachments_add'   => 'تم اضافة مرفقات المنتج بنجاح !!',
-    'product_attachments_delete'   => 'تم حذف مرفقات المنتج بنجاح !!'
+    'product_attachments_add'       => 'تم اضافة مرفقات المنتج بنجاح !!',
+    'product_attachment_delete'     => 'تم حذف المرفق بنجاح !!',
+    'product_attachments_delete'    => 'تم حذف مرفقات المنتج بنجاح !!',
+
+    'are_your_sure'             => 'هل أنت متأكد من عملية الحذف ؟',
+    'yes_delete'                => 'تعم, احذف !',
+    'delete_all_attachs'        => 'هل أنت متأكد من حذف جميع المرفقات ؟'
 ];

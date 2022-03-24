@@ -26,6 +26,10 @@ return [
     'attributes_delete'         => 'Product Attributes Has Deleted Successfuly !!',
 
     'product_attachments_add'       => 'Product Attachments Has Added Successfuly !!',
+    'product_attachment_delete'     => 'Product Attachment Has Deleted Successfuly !!',
     'product_attachments_delete'    => 'Product Attachments Has Deleted Successfuly !!',
 
+
+    'are_your_sure'             => 'Are you sure?',
+    'yes_delete'                => 'Yes, Delete !',
 ];

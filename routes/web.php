@@ -93,7 +93,7 @@ Route::group(
                 Route::post('store-images',                                     [ProductImageController::class, 'store'])->name('admin.product.images.store');
                 Route::get('delete-image/{id}',                                 [ProductImageController::class, 'destroy'])->name('admin.product.images.destroy');
                 Route::get('download-image/{id}',                               [ProductImageController::class, 'download'])->name('admin.product.images.download');
-                Route::get('delete-product-attachments/{product}',              [ProductImageController::class, 'destroyAllProductAttachments'])->name('admin.product.images.all.destroy');
+                Route::get('delete-product-attachments/{id}',                   [ProductImageController::class, 'destroyAllProductAttachments'])->name('admin.product.images.all.destroy');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('admin.logout');

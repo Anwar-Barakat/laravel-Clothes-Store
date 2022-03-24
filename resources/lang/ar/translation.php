@@ -168,5 +168,6 @@ return [
     'add_multi_image'           => 'أختر عدة مرفقات',
     'manage_product_images'     => 'إدارة مرفقات المنتج',
     'no_attachments'            => 'لا يوجد مرفقات',
+    
 
 ];

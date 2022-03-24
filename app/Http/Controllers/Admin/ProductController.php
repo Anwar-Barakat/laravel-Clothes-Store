@@ -119,7 +119,7 @@ class ProductController extends Controller
                 $product->clearMediaCollection('image_products');
                 $product->addMediaFromRequest('image')->toMediaCollection('image_products');
             }
-            Session::flash('message', __('msgs.product_add'));
+            Session::flash('message', __('msgs.product_update'));
             return redirect()->route('admin.products.index');
         }
     }
