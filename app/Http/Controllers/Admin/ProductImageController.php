@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductImageController extends Controller
 {
@@ -34,5 +35,27 @@ class ProductImageController extends Controller
             Session::flash('message', __('msgs.product_attachments_add'));
             return redirect()->back();
         }
+    }
+
+    public function destroy($id)
+    {
+        $media = Media::whereId($id)->first();
+        $media->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.product_attachment_delete'));
+        return redirect()->back();
+    }
+
+    public function destroyAllProductAttachments(Product $product)
+    {
+        Media::where('model_id', $product->id)->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.product_attachment_delete'));
+        return redirect()->back();
+    }
+
+    public function download($id)
+    {
+        return Media::where('id', $id)->first();
     }
 }

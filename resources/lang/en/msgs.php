@@ -25,5 +25,7 @@ return [
     'attributes_update'         => 'Product Attributes Has Updated Successfuly !!',
     'attributes_delete'         => 'Product Attributes Has Deleted Successfuly !!',
 
-    'product_attachments_add'   => 'Product Attachments Has Added Successfuly !!',
+    'product_attachments_add'       => 'Product Attachments Has Added Successfuly !!',
+    'product_attachments_delete'    => 'Product Attachments Has Deleted Successfuly !!',
+
 ];

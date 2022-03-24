@@ -167,5 +167,6 @@ return [
     'product_images'            => 'Product Attachments',
     'add_multi_image'           => 'Choose Multi Attachments',
     'manage_product_images'     => 'Manage Product Attachments',
+    'no_attachments'            => 'No Attachments Yet !!',
 
 ];

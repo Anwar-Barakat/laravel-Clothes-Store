@@ -131,7 +131,7 @@ class ProductAttributeController extends Controller
     public function destroy($id)
     {
         ProductAttribute::findOrFail($id)->delete();
-        Session::flash('alert-type', 'error');
+        Session::flash('alert-type', 'info');
         Session::flash('message', __('msgs.attributes_delete'));
         return redirect()->back();
     }

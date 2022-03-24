@@ -29,5 +29,6 @@ return [
     'attributes_update'         => 'تم تحديث خصائص المنتج بنجاح !!',
     'attributes_delete'         => 'تم حذف خصائص المنتج بنجاح !!',
 
-    'product_attachments_add'   => 'تم اضافة مرفقات المنتج بنجاح !!'
+    'product_attachments_add'   => 'تم اضافة مرفقات المنتج بنجاح !!',
+    'product_attachments_delete'   => 'تم حذف مرفقات المنتج بنجاح !!'
 ];

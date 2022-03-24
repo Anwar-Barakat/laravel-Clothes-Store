@@ -242,29 +242,23 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 /* **************** Custtom Multi Carousal CSS   ****************************** */
 
-#basicSlider .MS-content .item {
-    width: 260px;
-    max-width: 260px;
-    height: 300px;
-    max-height: 300px;
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-#basicSlider .MS-content .item img {
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 260px;
+    height: 300px;
+}
+
+.swiper-slide img {
+    display: block;
     width: 100%;
     height: 100%;
-}
-
-@media screen and (max-width:551px) {
-    #basicSlider .MS-content .item {
-        width: 200px;
-        max-width: 200px;
-        height: 240px;
-        max-height: 240px;
-    }
-    #basicSlider .MS-content .item img {
-        width: 100%;
-        height: 100%;
-    }
 }
 
 

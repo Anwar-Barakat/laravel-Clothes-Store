@@ -9,11 +9,8 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
-    <!---Internal  Owl Carousel css-->
-    <link href="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
-    <!---Internal  Multislider css-->
-    <link href="{{ URL::asset('assets/plugins/multislider/multislider.css') }}" rel="stylesheet">
-
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -67,25 +64,23 @@
                         @endif
                     </div>
                 </div><!-- bd -->
-
                 @if (!empty($product->getMedia('product_attachments')))
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($product->getMedia('product_attachments') as $key => $image)
+                                <div class="swiper-slide">
+                                    <img src="{{ $image->getUrl('small') }}" />
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                @else
                     <div class="card-body">
                         <div class="card custom-card">
                             <div class="card-body ht-100p">
                                 <div>
-                                    <h6 class="card-title mb-1">{{ __('translation.product_images') }}</h6>
-                                </div>
-                                <div id="basicSlider">
-                                    <div class="MS-content">
-                                        @foreach ($product->getMedia('product_attachments') as $key => $image)
-                                            <div class="item">
-                                                <a href="#" target="_blank">
-                                                    <img src="{{ $image->getUrl('small') }}"
-                                                        class="img img-thumbnail  admin-image" width="100%" height="100%">
-                                                </a>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                    <h6 class="card-title mb-1">{{ __('translation.no_attachments') }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +92,6 @@
     <div class="row  mb-5">
         <div class="col-sm-12">
             <div class="card  box-shadow-0">
-                {{-- @if (!empty($product->images)) --}}
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title mg-b-0">{{ __('translation.manage_product_images') }}</h4>
@@ -125,13 +119,28 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-sm-12">
+                            <div class="col-xl-2 col-sm-12">
                                 <label></label>
                                 <div class="form-group" style="margin-top: 0.35rem">
                                     <button type="submit" class="button-30"
                                         role="button">{{ __('buttons.add') }}</button>
                                 </div>
                             </div>
+                            @if (!empty($product->getMedia('product_attachments')))
+                                <div class="col-xl-2 col-sm-12">
+                                    <label></label>
+                                    <form action="{{ route('admin.product.images.all.destroy', $product) }}"
+                                        method="post">
+                                        @csrf
+                                        <a href="javascript:void(0);" class="confirmationDeleteAllAttachments button-30"
+                                            data-product="{{ $product }}"
+                                            title="{{ __('buttons.delete_all_attachments') }}"
+                                            style="margin-top: 0.35rem">
+                                            {{ __('buttons.delete_all_attachments') }}
+                                        </a>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                         <div class="table-responsive mt-3">
                             <table class="table text-md-nowrap" id="productAttachments">
@@ -159,17 +168,22 @@
                                                             class="fas fa-caret-down ml-1"></i></button>
                                                     <div class="dropdown-menu tx-13">
                                                         <form
-                                                            action="{{ route('admin.product.images.destroy', $product->id) }}"
+                                                            action="{{ route('admin.product.images.destroy', $image->id) }}"
                                                             method="post">
                                                             @csrf
                                                             <a href="javascript:void(0);"
                                                                 class="confirmationDelete dropdown-item"
-                                                                data-image="{{ $image['id'] }}"
+                                                                data-image="{{ $image->id }}"
                                                                 title="{{ __('buttons.delete') }}">
                                                                 <i class="fas fa-trash text-danger"></i>
                                                                 {{ __('buttons.delete') }}
                                                             </a>
                                                         </form>
+                                                        <a href="{{ route('admin.product.images.download', $image->id) }}"
+                                                            class="dropdown-item" title="{{ __('buttons.download') }}">
+                                                            <i class="fas fa-download text-primary"></i>
+                                                            {{ __('buttons.download') }}
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -180,7 +194,6 @@
                         </div><!-- bd -->
                     </form>
                 </div><!-- bd -->
-                {{-- @endif --}}
             </div>
         </div>
     </div>
@@ -217,11 +230,26 @@
         });
     </script>
 
-    <!-- Internal Owl Carousel js-->
-    <script src="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.js') }}"></script>
-    <!---Internal  Multislider js-->
-    <script src="{{ URL::asset('assets/plugins/multislider/multislider.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 150,
+                modifier: 1,
+                slideShadows: false
+            },
+        });
+    </script>
 
 
     {{-- turn on/off the image status --}}
@@ -289,4 +317,24 @@
             });
         })
     </script>
+    <script>
+        $(document).ready(function() {
+            $('.confirmationDeleteAllAttachments').click(function() {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Delete! '
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/admin/delete-product-attachments/' + $(this).data(
+                            'product');
+                    }
+                });
+            });
+        })
+    </script>
+
 @endsection
