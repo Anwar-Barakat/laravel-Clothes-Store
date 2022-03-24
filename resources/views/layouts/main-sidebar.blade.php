@@ -68,6 +68,14 @@
                 </a>
             </li>
 
+            {{-- Brands --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.brands.index') }}">
+                    <i class="fas fa-sign icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.brands') }}</span>
+                </a>
+            </li>
+
             {{-- categories --}}
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
@@ -88,7 +96,7 @@
             {{-- Products --}}
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
-                    <i class="fas fa-list-ol icon_sidebar side-menu__icon"></i>
+                    <i class="fas fa-tags icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.products') }}</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
@@ -105,7 +113,6 @@
                     </li>
                 </ul>
             </li>
-
 
 
             <li class="slide">

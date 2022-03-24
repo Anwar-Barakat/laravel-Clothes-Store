@@ -32,4 +32,7 @@ return [
 
     'are_your_sure'             => 'Are you sure?',
     'yes_delete'                => 'Yes, Delete !',
+
+    'brand_added'             => 'Brand Has Added Successfully !!',
+    'brand_updated'           => 'Brand Has Updated Successfully !!',
 ];

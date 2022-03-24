@@ -168,6 +168,13 @@ return [
     'add_multi_image'           => 'أختر عدة مرفقات',
     'manage_product_images'     => 'إدارة مرفقات المنتج',
     'no_attachments'            => 'لا يوجد مرفقات',
-    
 
+
+    // Brands :
+    'brands'                    => 'الشعارات',
+    'update_brand'              => 'تحديث الشعار',
+    'id'                        => 'الرقم',
+    'status'                    => 'الحالة',
+    'add_new_brand'             => 'إضافة شعار جديد',
+    'update_brand'              => 'تحديث الشعار',
 ];

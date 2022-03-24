@@ -24,8 +24,8 @@ class StoreSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'       => 'required|regex:/^[\pL\s\-]+$/u',
-            'name_en'       => 'required|regex:/^[\pL\s\-]+$/u',
+            'name_ar'       => 'required|unique:sections,name->ar|regex:/^[\pL\s\-]+$/u',
+            'name_en'       => 'required|unique:sections,name->en|regex:/^[\pL\s\-]+$/u',
             'status'        => 'required|in:0,1',
         ];
     }

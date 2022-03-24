@@ -24,8 +24,8 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar'       => 'required|regex:/^[\pL\s\-]+$/u',
-            'name_en'       => 'required|regex:/^[\pL\s\-]+$/u',
+            'name_ar'       => 'required|regex:/^[\pL\s\-]+$/u|unique:brands,name->ar,' . $this->section->id,
+            'name_en'       => 'required|regex:/^[\pL\s\-]+$/u|unique:brands,name->en,' . $this->section->id,
             'status'        => 'required|in:0,1',
         ];
     }

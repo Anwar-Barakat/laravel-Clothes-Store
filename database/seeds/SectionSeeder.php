@@ -13,23 +13,24 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sections')->delete();
-        $section = new Section;
-        $section->setTranslation('name', 'en', 'Men')
-            ->setTranslation('name', 'ar', 'الرجال');
-        $section->status = 1;
-        $section->save();
+        $sections = [
+            [
+                'en' => 'Men',
+                'ar' => 'الرجال',
+            ],
+            [
+                'en' => 'Woman',
+                'ar' => 'النساء',
+            ],
+            [
+                'en' => 'Children',
+                'ar' => 'الأطفال',
+            ],
+        ];
 
-        $section = new Section;
-        $section->setTranslation('name', 'en', 'Woman')
-            ->setTranslation('name', 'ar', 'النساء');
-        $section->status = 1;
-        $section->save();
-
-        $section = new Section;
-        $section->setTranslation('name', 'en', 'Children')
-            ->setTranslation('name', 'ar', 'الأطفال');
-        $section->status = 1;
-        $section->save();
+        foreach ($sections as $city) {
+            if (is_null(Section::where('name->en', $city['en'])->where('name->ar', $city['ar'])->first()))
+                Section::create(['name' => $city, 'status' => 1]);
+        }
     }
 }

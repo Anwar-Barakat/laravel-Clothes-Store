@@ -169,4 +169,10 @@ return [
     'manage_product_images'     => 'Manage Product Attachments',
     'no_attachments'            => 'No Attachments Yet !!',
 
+
+    // Brands :
+    'brands'                    => 'Brands',
+    'update_brand'              => 'Update Brand',
+    'add_new_brand'             => 'Add New Brand',
+    'update_brand'              => 'Update Brand',
 ];

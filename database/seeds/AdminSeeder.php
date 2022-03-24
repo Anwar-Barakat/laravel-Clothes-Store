@@ -17,8 +17,8 @@ class AdminSeeder extends Seeder
         DB::table('admins')->delete();
         $adminRecords = [
             [
-                'name'              => 'admin1',
-                'email'             => 'admin1@admin.com',
+                'name'              => 'Anwar admin',
+                'email'             => 'brkatanwar0@admin.com',
                 'email_verified_at' => Carbon::now(),
                 'password'          => bcrypt('adminadmin'),
                 'type'              => 'admin',
@@ -27,8 +27,8 @@ class AdminSeeder extends Seeder
                 'status'            => 1
             ],
             [
-                'name'              => 'admin2',
-                'email'             => 'admin2@admin.com',
+                'name'              => 'First admin',
+                'email'             => 'admin01@admin.com',
                 'email_verified_at' => Carbon::now(),
                 'password'          => bcrypt('adminadmin'),
                 'type'              => 'admin',
@@ -37,8 +37,8 @@ class AdminSeeder extends Seeder
                 'status'            => 1
             ],
             [
-                'name'              => 'admin3',
-                'email'             => 'admin3@admin.com',
+                'name'              => 'Second Admin',
+                'email'             => 'admin02@admin.com',
                 'email_verified_at' => Carbon::now(),
                 'password'          => bcrypt('adminadmin'),
                 'type'              => 'admin',
@@ -48,7 +48,7 @@ class AdminSeeder extends Seeder
             ],
             [
                 'name'              => 'subadmin',
-                'email'             => 'subadmin@subadmin.com',
+                'email'             => 'subadmin@admin.com',
                 'email_verified_at' => Carbon::now(),
                 'password'          => bcrypt('adminadmin'),
                 'type'              => 'subadmin',
