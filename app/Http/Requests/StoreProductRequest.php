@@ -25,6 +25,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'category_id'           => 'required',
+            'brand_id'              => 'required',
             'name'                  => 'required|regex:/^[\pL\s\-]+$/u',
             'code'                  => 'required|regex:/^[\w-]*$/',
             'color'                 => 'required|regex:/^[\pL\s\-]+$/u',

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Section;
@@ -56,7 +56,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data               = $request->only(['category_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $data               = $request->only(['category_id', 'brand_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;
@@ -102,10 +102,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(EditProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         if ($request->isMethod('post')) {
-            $data               = $request->only(['category_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $data               = $request->only(['category_id', 'brand_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;

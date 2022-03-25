@@ -172,6 +172,7 @@ return [
 
     // Brands :
     'brands'                    => 'Brands',
+    'brand'                     => 'Brand',
     'update_brand'              => 'Update Brand',
     'add_new_brand'             => 'Add New Brand',
     'update_brand'              => 'Update Brand',

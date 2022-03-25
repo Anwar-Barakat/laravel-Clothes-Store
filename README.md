@@ -10,4 +10,10 @@
 --------------------
 
 -   CRU Sections. 
+-   CRUD Brands. 
 -   CRU Categories.  
+-   CRU Products
+    -   CRUD Product Attributes.
+    -   CRUD Product Attachments 
+
+--------------------

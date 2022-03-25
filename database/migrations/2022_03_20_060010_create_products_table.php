@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->foreignId('section_id')->constrained('sections');
             $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('brand_id')->constrained('brands');
             $table->string('name');
             $table->string('code');
             $table->string('color');

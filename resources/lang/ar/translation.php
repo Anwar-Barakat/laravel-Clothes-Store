@@ -172,6 +172,7 @@ return [
 
     // Brands :
     'brands'                    => 'الشعارات',
+    'brand'                     => 'الشعار',
     'update_brand'              => 'تحديث الشعار',
     'id'                        => 'الرقم',
     'status'                    => 'الحالة',

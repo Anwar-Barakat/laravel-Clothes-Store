@@ -42,6 +42,7 @@
                                     <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.section') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.category') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.brand') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.color') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.image') }}</th>
@@ -57,6 +58,7 @@
                                         <td>{{ $product->name }}</td>
                                         <td><a href="" class="tag tag-green">{{ $product->section->name }}</a></td>
                                         <td><a href="" class="tag tag-cyan">{{ $product->category->name }}</a></td>
+                                        <td><a href="" class="tag tag-primary">{{ $product->brand->name }}</a></td>
                                         <td>{{ $product->code }}</td>
                                         <td>{{ $product->color }}</td>
                                         <td>

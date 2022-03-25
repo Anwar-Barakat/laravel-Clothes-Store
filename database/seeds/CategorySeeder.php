@@ -43,6 +43,18 @@ class CategorySeeder extends Seeder
                 'meta_keywords'     => '',
                 'status'            => rand(0, 1),
             ],
+            [
+                'parent_id'         => 0,
+                'section_id'        => $sections->random(),
+                'name'              => 'Trousers',
+                'discount'          => 0,
+                'description'       => $faker->paragraph(),
+                'url'               => 'trousers',
+                'meta_title'        => '',
+                'meta_description'  => $faker->paragraph(),
+                'meta_keywords'     => '',
+                'status'            => rand(0, 1),
+            ],
         ];
         Category::insert($categoriesRecords);
     }

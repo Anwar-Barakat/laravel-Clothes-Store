@@ -12,6 +12,7 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
     protected $fillable = [
         'section_id',
+        'brand_id',
         'category_id',
         'name',
         'code',
@@ -64,6 +65,11 @@ class Product extends Model implements HasMedia
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 
     public function attributes()
