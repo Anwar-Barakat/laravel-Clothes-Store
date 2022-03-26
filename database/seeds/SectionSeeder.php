@@ -28,9 +28,9 @@ class SectionSeeder extends Seeder
             ],
         ];
 
-        foreach ($sections as $city) {
-            if (is_null(Section::where('name->en', $city['en'])->where('name->ar', $city['ar'])->first()))
-                Section::create(['name' => $city, 'status' => 1]);
+        foreach ($sections as $section) {
+            if (is_null(Section::where('name->en', $section['en'])->where('name->ar', $section['ar'])->first()))
+                Section::create(['name' => $section, 'status' => 1]);
         }
     }
 }

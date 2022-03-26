@@ -120,8 +120,10 @@ Route::group(
         });
 
 
-        Route::group(['prefix' => '/'], function () {
-            Route::get('/', [HomeController::class, 'index']);
+        Route::group(['as' => 'frontend.'], function () {
+            Route::get('/', [HomeController::class, 'index'])->name('home');
+
+            Route::get('/shop', [HomeController::class, 'about'])->name('shop');
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }

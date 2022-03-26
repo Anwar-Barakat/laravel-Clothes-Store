@@ -21,6 +21,23 @@ return [
     'shop'                  => 'Shop',
     'latest_products'       => 'Latest Products',
     'on_sale'               => 'On Sale',
-    'products_categories'   => 'Products Categories'
+    'products_categories'   => 'Products Categories',
 
+
+
+    // Shop :
+    'digitals'              => 'Digitals',
+    'electronic'            => 'Electronics',
+    'brands'                => 'Brands',
+    'price'                 => 'Price',
+    'filter'                => 'Filter',
+    'show_more'             => 'Show More',
+    'size'                  => 'Size',
+    'coolr'                 => 'Color',
+    'grid'                  => 'Grid',
+    'list'                  => 'List',
+    'add_to_cart'           => 'Add To Cart',
+    'popular_product'       => 'POPULAR PRODUCTS',
+    'default_sorting'       => 'Default Sorting',
+    'per_page'              => 'Per Page',
 ];

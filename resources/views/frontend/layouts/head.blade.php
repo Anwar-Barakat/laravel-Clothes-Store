@@ -22,6 +22,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/owl.carousel.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/style.css') }}">
+    <style>
+        body {
+            direction: rtl !important
+        }
+
+    </style>
 @else
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/font-awesome.min.css') }}">
@@ -29,6 +35,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/style.css') }}">
+    <style>
+        body {
+            direction: ltr !important
+        }
+
+    </style>
 @endif
 
 <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/color-01.css') }}">

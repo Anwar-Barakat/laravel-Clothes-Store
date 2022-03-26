@@ -2616,6 +2616,10 @@ li.menu-item .nav-label.sale-label::before {
     }
 }
 
+.wrap-breadcrumb {
+    direction: ltr;
+}
+
 .wrap-breadcrumb ul {
     padding: 0;
     text-align: right;

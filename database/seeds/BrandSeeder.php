@@ -32,9 +32,9 @@ class BrandSeeder extends Seeder
             ],
         ];
 
-        foreach ($brands as $city) {
-            if (is_null(Brand::where('name->en', $city['en'])->where('name->ar', $city['ar'])->first()))
-                Brand::create(['name' => $city, 'status' => 1]);
+        foreach ($brands as $brand) {
+            if (is_null(Brand::where('name->en', $brand['en'])->where('name->ar', $brand['ar'])->first()))
+                Brand::create(['name' => $brand, 'status' => 1]);
         }
     }
 }
