@@ -41,4 +41,18 @@ return [
     'default_sorting'       => 'الترتيب الأفتراضي',
     'per_page'              => 'لكل صفحة',
 
+
+    // Cart :
+    'products_name'         => 'اسماء المنتجات',
+    'order_summary'         => 'ملخص الطلب',
+    'subtotal'              => 'المجموع الفرعي',
+    'total'                 => 'المجموع الأجمالي',
+    'contiue_shopping'      => 'استمرار الشراء',
+    'delete_from_cart'      => 'حذف من الكرت',
+    'clear_cart'            => ' ازالة المنتجات من كرت الشراء',
+    'update_cart'           => 'تحديث كرت الشراء',
+    'most_viewed'           => 'المنتجات الأكثر مشاهدة',
+    'new'                   => 'جديد',
+    'sale'                  => 'تخفيض سعر',
+    'Bestseller'            => 'الأكثر مبيعاً',
 ];

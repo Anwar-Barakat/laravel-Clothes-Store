@@ -40,4 +40,19 @@ return [
     'popular_product'       => 'POPULAR PRODUCTS',
     'default_sorting'       => 'Default Sorting',
     'per_page'              => 'Per Page',
+
+
+    // Cart :
+    'products_name'         => 'Products Name',
+    'order_summary'         => 'Order Summery',
+    'subtotal'              => 'SubTotal',
+    'total'                 => 'Total',
+    'contiue_shopping'      => 'Continue Shopping',
+    'delete_from_cart'      => 'Delete from your cart',
+    'clear_cart'            => 'Clear Shopping Cart',
+    'update_cart'           => 'Update Shopping Cart',
+    'most_viewed'           => 'Most Viewed Products',
+    'new'                   => 'New',
+    'sale'                  => 'Sale',
+    'Bestseller'            => 'BestSeller',
 ];

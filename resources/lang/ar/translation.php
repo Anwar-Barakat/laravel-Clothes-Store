@@ -178,4 +178,7 @@ return [
     'status'                    => 'الحالة',
     'add_new_brand'             => 'إضافة شعار جديد',
     'update_brand'              => 'تحديث الشعار',
+
+
+    
 ];

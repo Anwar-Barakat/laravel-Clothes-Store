@@ -6,8 +6,10 @@
                     <div class="topbar-menu left-menu">
                         <ul>
                             <li class="menu-item">
-                                <a title="{{ __('frontend.phone') }}" href="javascript:void(0)"><span
-                                        class="icon label-before fa fa-mobile"></span>{{ __('frontend.phone') }}</a>
+                                <a title="{{ __('frontend.phone') }}" href="javascript:void(0)">
+                                    <span class="icon label-before fa fa-mobile"></span>
+                                    {{ __('frontend.phone') }}
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -152,12 +154,12 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="shop.html" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.shop') }}" class="link-term mercado-item-title">
                                     {{ __('frontend.shop') }}
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="cart.html" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.cart') }}" class="link-term mercado-item-title">
                                     {{ __('frontend.cart') }}
                                 </a>
                             </li>

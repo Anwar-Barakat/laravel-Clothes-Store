@@ -37,10 +37,12 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
+
+        // ======================================================
+        // BackFrontEnd :
+        // ======================================================
         Route::prefix('/admin')->as('admin.')->group(function () {
-
             Route::group(['middleware' => 'admin'], function () {
-
                 Route::get('/dashboard', function () {
                     return view('index');
                 })->name('dashboard');
@@ -120,10 +122,15 @@ Route::group(
         });
 
 
+        // ======================================================
+        // FrontEnd :
+        // ======================================================
         Route::group(['as' => 'frontend.'], function () {
             Route::get('/', [HomeController::class, 'index'])->name('home');
 
             Route::get('/shop', [HomeController::class, 'about'])->name('shop');
+
+            Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }

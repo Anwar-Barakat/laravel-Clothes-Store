@@ -26,7 +26,6 @@
         body {
             direction: rtl !important
         }
-
     </style>
 @else
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/animate.css') }}">
