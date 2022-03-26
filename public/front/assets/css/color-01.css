@@ -24,7 +24,7 @@
 .product-style-1 .product-info .wrap-btn a,
 .wrap-breadcrumb ul a:hover,
 .center-section .wrap-search-form .wrap-list-cate .list-cate li:not(.level-0):hover {
-    color: #009688;
+    color: #009688 !important;
 }
 
 .widget a:hover,
@@ -71,7 +71,7 @@
 .summary-item .btn,
 .choose-payment-methods .payment-method input[type=radio]:checked+span::before,
 .main-info-area .right-section .wrap-icon-section.minicart .index {
-    background: #009688;
+    background: #009688 !important;
 }
 
 .has-child-cate .toggle-control:hover::after,
@@ -92,7 +92,7 @@
 .choose-payment-methods .payment-method input[type=radio]:checked+span::before,
 .wrap-demo-item-1:hover img,
 .center-section .wrap-search-form {
-    border-color: #009688;
+    border-color: #009688 !important;
 }
 
 .widget.widget-tag-clouds ul li a:hover,

@@ -26,6 +26,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Auth::routes();
 
+Route::get('/', function () {
+    return view('frontend.index');
+});
+
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -116,7 +121,7 @@ Route::group(
 
 
         Route::group(['prefix' => '/'], function () {
-            Route::get('index', [HomeController::class, 'index']);
+            Route::get('/', [HomeController::class, 'index']);
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }

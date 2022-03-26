@@ -634,8 +634,6 @@ textarea {
     padding-bottom: 12px;
 }
 
-.center-section .wrap-search-form .wrap-list-cate .list-cate li.level-0 {}
-
 .center-section .wrap-search-form .wrap-list-cate .link-control::after {
     content: '\f0dd';
     font-family: FontAwesome;
@@ -1168,7 +1166,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .wrap-banner.banner-style-3 .sub-title::first-letter {
     font-weight: 600;
-    color: red;
+    color: #009688 !important;
     text-decoration: line-through;
 }
 
@@ -2555,7 +2553,6 @@ li.menu-item .nav-label.sale-label::before {
 
 .coppy-right-box .coppy-right-item {
     display: inline-block;
-    float: left;
     padding: 12px 0;
 }
 

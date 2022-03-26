@@ -30,9 +30,15 @@ return [
     'product_attachments_delete'    => 'Product Attachments Has Deleted Successfuly !!',
 
 
-    'are_your_sure'             => 'Are you sure?',
-    'yes_delete'                => 'Yes, Delete !',
+    'are_your_sure'                 => 'Are you sure?',
+    'yes_delete'                    => 'Yes, Delete !',
 
-    'brand_added'             => 'Brand Has Added Successfully !!',
-    'brand_updated'           => 'Brand Has Updated Successfully !!',
+    'brand_added'                   => 'Brand Has Added Successfully !!',
+    'brand_updated'                 => 'Brand Has Updated Successfully !!',
+
+
+
+
+    // FrontEnd :
+    'copy_right'                => 'Copyright © 2022 Anwar Store. All rights reserved'
 ];
