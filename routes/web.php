@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\FrontEnd\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -111,6 +112,11 @@ Route::group(
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
             });
             Route::match(['get', 'post'], '/login',                             [AdminController::class, 'login'])->name('login');
+        });
+
+
+        Route::group(['prefix' => '/'], function () {
+            Route::get('index', [HomeController::class, 'index']);
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }
