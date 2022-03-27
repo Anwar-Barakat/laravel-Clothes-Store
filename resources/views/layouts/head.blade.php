@@ -10,6 +10,8 @@
 <link href="{{ URL::asset('assets/plugins/mscrollbar/jquery.mCustomScrollbar.css') }}" rel="stylesheet" />
 <!--  Sidebar css -->
 <link href="{{ URL::asset('assets/plugins/sidebar/sidebar.css') }}" rel="stylesheet">
+{{-- Sweet Alert 2 --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 
 @yield('css')
 @if (App::getLocale() == 'ar')

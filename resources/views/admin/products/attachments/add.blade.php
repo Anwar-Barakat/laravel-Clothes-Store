@@ -253,46 +253,41 @@
 
 
     {{-- Confirmation Delete image --}}
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function() {
-            $('.confirmationDelete').click(function() {
-                Swal.fire({
-                    title: '{{ __('msgs.are_your_sure') }}',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: '{{ __('buttons.close') }}',
-                    confirmButtonText: '{{ __('msgs.yes_delete') }}',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = '/admin/delete-image/' + $(this).data(
-                            'image');
-                    }
-                });
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/delete-image/' + $(this).data(
+                        'image');
+                }
             });
-        })
+        });
     </script>
     <script>
-        $(document).ready(function() {
-            $('.confirmationDeleteAllAttachments').click(function() {
-                Swal.fire({
-                    title: '{{ __('msgs.delete_all_attachs') }}',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: '{{ __('buttons.close') }}',
-                    confirmButtonText: '{{ __('msgs.yes_delete') }}',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href =
-                            '/admin/delete-product-attachments/' + $(this).data('product');
-                    }
-                });
+        $(document).on("click", ".confirmationDeleteAllAttachments", function() {
+            Swal.fire({
+                title: '{{ __('msgs.delete_all_attachs') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href =
+                        '/admin/delete-product-attachments/' + $(this).data('product');
+                }
             });
-        })
+        });
     </script>
 
 @endsection

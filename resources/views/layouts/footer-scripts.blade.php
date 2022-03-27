@@ -7,6 +7,9 @@
 <!-- JQuery min js -->
 <script src="{{ URL::asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 
+{{-- Sweet Alert 2 --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Bootstrap Bundle js -->
 <script src="{{ URL::asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

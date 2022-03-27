@@ -5,6 +5,10 @@
 font-family: 'Cairo', sans-serif !important;
 } */
 
+.swal2-icon.swal2-warning.swal2-icon-show {
+    font-size: 1rem;
+}
+
 .toast-success {
     background-color: #17b748;
 }

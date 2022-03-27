@@ -24,8 +24,8 @@ class StoreProductAttachmentsRequest extends FormRequest
     public function rules()
     {
         return [
-            "image"    => "required|array|mimes:jpeg,png,jpg|max:1048",
-            "image.*"  => "required|distinct|mimes:jpeg,png,jpg|max:1048",
+            "image"    => "array",
+            "image.*"  => "distinct|image|mimes:jpeg,png,jpg,gif,svg|max:2048",
         ];
     }
 }

@@ -216,25 +216,21 @@
     </script>
 
     {{-- Confirmation Delete Attribute --}}
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $(document).ready(function() {
-            $('.confirmationDelete').click(function() {
-                // confirm($(this).data('category'));
-                Swal.fire({
-                    title: '{{ __('msgs.are_your_sure') }}',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: '{{ __('buttons.close') }}',
-                    confirmButtonText: '{{ __('msgs.yes_delete') }}',
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = '/admin/delete-product/' + $(this).data('product');
-                    }
-                });
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/delete-product/' + $(this).data('product');
+                }
             });
-        })
+        });
     </script>
 @endsection
