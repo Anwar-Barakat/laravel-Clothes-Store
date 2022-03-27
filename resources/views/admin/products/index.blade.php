@@ -174,43 +174,41 @@
 
     {{-- turn on/off the Product status --}}
     <script>
-        $(document).ready(() => {
-            $('.updateProductStatus').click(function() {
-                var status = $(this).attr('status');
-                var product_id = $(this).attr('product_id');
-                var active = '{{ __('translation.active') }} ';
-                var disactiev = '{{ __('translation.disactive') }} ';
-                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/update-product-status',
-                    data: {
-                        status: status,
-                        product_id: product_id,
-                    },
-                    success: function(response) {
-                        if (response['status'] == 0) {
-                            $('#product-' + response['product_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#product-' + response['product_id']).text(disactiev);
-                            $('#product-' + response['product_id']).attr('style',
-                                'color : #ee335e  !important');
-                            $('#product-' + response['product_id']).prepend(
-                                '<i class="fas fa-power-off text-danger"></i> ');
-                        } else {
-                            $('#product-' + response['product_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#product-' + response['product_id']).text(active);
-                            $('#product-' + response['product_id']).attr('style',
-                                'color : #22c03c   !important');
-                            $('#product-' + response['product_id']).prepend(
-                                '<i class="fas fa-power-off text-success"></i> ');
+        $(document).on("click", ".updateProductStatus", function() {
+            var status = $(this).attr('status');
+            var product_id = $(this).attr('product_id');
+            var active = '{{ __('translation.active') }} ';
+            var disactiev = '{{ __('translation.disactive') }} ';
+            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+            $.ajax({
+                type: 'post',
+                url: '/admin/update-product-status',
+                data: {
+                    status: status,
+                    product_id: product_id,
+                },
+                success: function(response) {
+                    if (response['status'] == 0) {
+                        $('#product-' + response['product_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#product-' + response['product_id']).text(disactiev);
+                        $('#product-' + response['product_id']).attr('style',
+                            'color : #ee335e  !important');
+                        $('#product-' + response['product_id']).prepend(
+                            '<i class="fas fa-power-off text-danger"></i> ');
+                    } else {
+                        $('#product-' + response['product_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#product-' + response['product_id']).text(active);
+                        $('#product-' + response['product_id']).attr('style',
+                            'color : #22c03c   !important');
+                        $('#product-' + response['product_id']).prepend(
+                            '<i class="fas fa-power-off text-success"></i> ');
 
-                        }
-                    },
-                    error: function() {},
-                });
+                    }
+                },
+                error: function() {},
             });
         });
     </script>

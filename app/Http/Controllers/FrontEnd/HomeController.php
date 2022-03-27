@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $sections =  Section::with('categories')->get();
-        return view('frontend.index', ['sections'    => $sections]);
+        return view('frontend.index');
     }
 
     public function about()
@@ -25,7 +25,11 @@ class HomeController extends Controller
 
     public function cart()
     {
-        $sections =  Section::with('categories')->get();
-        return view('frontend.cart', ['sections'    => $sections]);
+        $featuredPorductsCount  = Product::where('is_feature', 'Yes')->count();
+        $featuredPorducts       = Product::where('is_feature', 'Yes')->get();
+        return view('frontend.cart', [
+            'featuredPorductsCount'     => $featuredPorductsCount,
+            'featuredPorducts'          => $featuredPorducts,
+        ]);
     }
 }

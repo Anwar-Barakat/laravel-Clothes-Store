@@ -153,43 +153,41 @@
 
     {{-- turn on/off the section status --}}
     <script>
-        $(document).ready(() => {
-            $('.updateCategoryStatus').click(function() {
-                var status = $(this).attr('status');
-                var category_id = $(this).attr('category_id');
-                var active = '{{ __('translation.active') }} ';
-                var disactiev = '{{ __('translation.disactive') }} ';
-                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/update-category-status',
-                    data: {
-                        status: status,
-                        category_id: category_id,
-                    },
-                    success: function(response) {
-                        if (response['status'] == 0) {
-                            $('#category-' + response['category_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#category-' + response['category_id']).text(disactiev);
-                            $('#category-' + response['category_id']).attr('style',
-                                'color : #ee335e  !important');
-                            $('#category-' + response['category_id']).prepend(
-                                '<i class="fas fa-power-off text-danger"></i> ');
-                        } else {
-                            $('#category-' + response['category_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#category-' + response['category_id']).text(active);
-                            $('#category-' + response['category_id']).attr('style',
-                                'color : #22c03c   !important');
-                            $('#category-' + response['category_id']).prepend(
-                                '<i class="fas fa-power-off text-success"></i> ');
+        $(document).on("click", ".updateCategoryStatus", function() {
+            var status = $(this).attr('status');
+            var category_id = $(this).attr('category_id');
+            var active = '{{ __('translation.active') }} ';
+            var disactiev = '{{ __('translation.disactive') }} ';
+            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+            $.ajax({
+                type: 'post',
+                url: '/admin/update-category-status',
+                data: {
+                    status: status,
+                    category_id: category_id,
+                },
+                success: function(response) {
+                    if (response['status'] == 0) {
+                        $('#category-' + response['category_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#category-' + response['category_id']).text(disactiev);
+                        $('#category-' + response['category_id']).attr('style',
+                            'color : #ee335e  !important');
+                        $('#category-' + response['category_id']).prepend(
+                            '<i class="fas fa-power-off text-danger"></i> ');
+                    } else {
+                        $('#category-' + response['category_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#category-' + response['category_id']).text(active);
+                        $('#category-' + response['category_id']).attr('style',
+                            'color : #22c03c   !important');
+                        $('#category-' + response['category_id']).prepend(
+                            '<i class="fas fa-power-off text-success"></i> ');
 
-                        }
-                    },
-                    error: function() {},
-                });
+                    }
+                },
+                error: function() {},
             });
         });
     </script>

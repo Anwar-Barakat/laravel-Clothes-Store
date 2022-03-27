@@ -255,36 +255,34 @@
 
     {{-- turn on/off the Brand status --}}
     <script>
-        $(document).ready(() => {
-            $('.updateBrandStatus').click(function() {
-                var status = $(this).attr('status');
-                var brand_id = $(this).attr('brand_id');
-                var active = '{{ __('translation.active') }} ';
-                var disactiev = '{{ __('translation.disactive') }} ';
-                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-                $.ajax({
-                    type: 'post',
-                    url: '/admin/update-brand-status',
-                    data: {
-                        status: status,
-                        brand_id: brand_id,
-                    },
-                    success: function(response) {
-                        if (response['status'] == 0) {
-                            $('#brand-' + response['brand_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#brand-' + response['brand_id']).html(
-                                '<i class="fas fa-power-off text-danger"></i> ');
-                        } else {
-                            $('#brand-' + response['brand_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#brand-' + response['brand_id']).html(
-                                '<i class="fas fa-power-off text-success"></i> ');
-                        }
-                    },
-                    error: function() {},
-                });
+        $(document).on("click", ".updateBrandStatus", function() {
+            var status = $(this).attr('status');
+            var brand_id = $(this).attr('brand_id');
+            var active = '{{ __('translation.active') }} ';
+            var disactiev = '{{ __('translation.disactive') }} ';
+            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+            $.ajax({
+                type: 'post',
+                url: '/admin/update-brand-status',
+                data: {
+                    status: status,
+                    brand_id: brand_id,
+                },
+                success: function(response) {
+                    if (response['status'] == 0) {
+                        $('#brand-' + response['brand_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#brand-' + response['brand_id']).html(
+                            '<i class="fas fa-power-off text-danger"></i> ');
+                    } else {
+                        $('#brand-' + response['brand_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#brand-' + response['brand_id']).html(
+                            '<i class="fas fa-power-off text-success"></i> ');
+                    }
+                },
+                error: function() {},
             });
         });
     </script>

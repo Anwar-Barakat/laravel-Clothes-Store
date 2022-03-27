@@ -21,3 +21,8 @@
 .section-title:first-child {
     margin-top: 0;
 }
+
+.shop-image {
+    border: 6px solid #f1f1f1;
+    box-shadow: rgb(0 0 0 / 40%) 2px 11px 2px, rgb(0 0 0 / 30%) 0px 15px 16px -3px, rgb(0 0 0 / 20%) 3px 4px 0px inset;
+}

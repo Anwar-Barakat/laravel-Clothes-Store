@@ -2075,7 +2075,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .product .product-info .product-name span,
 .product-style-2 .product-info .product-name span {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 18px;
     color: #222222;
     text-align: left;
@@ -2135,7 +2135,7 @@ li.menu-item .nav-label.sale-label::before {
     font-size: 14px;
     line-height: 24px;
     display: inline-block;
-    margin: 0;
+    margin: 4px;
 }
 
 .product .product-info .wrap-price span.product-price,
@@ -2761,7 +2761,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .product.product-style-3 .product-name span {
-    font-size: 13px;
+    font-size: 16px;
     line-height: 18px;
     color: #444444;
     margin-top: 11px;
@@ -8167,7 +8167,7 @@ table.shop_attributes tbody {
 }
 
 .wrap-search-form .content {
-    background-color: #d3d3d3;
+    background-color: #ededed;
     border: 10px;
     padding: 2.5rem;
     width: 100%;

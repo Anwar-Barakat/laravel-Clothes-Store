@@ -56,5 +56,6 @@ return [
     'sale'                  => 'تخفيض سعر',
     'Bestseller'            => 'الأكثر مبيعاً',
     'all_sections'          => 'جميع الأقسام',
-    'color'                 => 'اللون'
+    'color'                 => 'اللون',
+    'quick_view'            => 'عرض سريع'
 ];

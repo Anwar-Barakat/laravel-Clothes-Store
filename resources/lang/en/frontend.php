@@ -56,4 +56,5 @@ return [
     'sale'                  => 'Sale',
     'Bestseller'            => 'BestSeller',
     'all_sections'          => 'All Sections',
+    'quick_view'            => 'quick view'
 ];
