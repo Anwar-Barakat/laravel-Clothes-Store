@@ -44,7 +44,6 @@
 }
 
 .product-style-1 .product-info .wrap-btn a::after,
-.primary .menu-item.home-icon,
 .center-section .wrap-search-form button,
 .wrap-banner .banner-link,
 .wrap-main-slide .slide-1 .btn-link,
@@ -70,7 +69,8 @@
 .wrap-product-detail .detail-info .quantity-input .btn:hover,
 .summary-item .btn,
 .choose-payment-methods .payment-method input[type=radio]:checked+span::before,
-.main-info-area .right-section .wrap-icon-section.minicart .index {
+.main-info-area .right-section .wrap-icon-section.minicart .index,
+.link-term.mercado-item-title.active {
     background: #009688 !important;
 }
 

@@ -108,7 +108,7 @@
                     @if (!empty($featuredPorducts))
                         <div class="wrap-show-advance-info-box style-1 box-in-site">
                             <h3 class="title-box">
-                                {{ __('frontend.most_viewed') }} ({{ $featuredPorductsCount }})
+                                {{ __('frontend.most_viewed') }} ({{ $featuredPorducts->count() }})
                             </h3>
                             <div class="wrap-products" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
                                 <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
@@ -118,22 +118,23 @@
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="#" title="{{ $featuredPorduct->name }}">
-                                                    <figure>
-                                                        @if ($featuredPorduct->getFirstMediaUrl('image_products', 'small'))
+                                                    @if ($featuredPorduct->getFirstMediaUrl('image_products', 'small'))
+                                                        <figure>
                                                             <img src="{{ $featuredPorduct->getFirstMediaUrl('image_products', 'small') }}"
                                                                 width="214" height="214"
                                                                 alt="{{ $featuredPorduct->name }}">
-                                                        @else
+                                                        </figure>
+                                                    @else
+                                                        <figure>
                                                             <img src="{{ asset('assets/img/1.jpg') }}" width="214"
-                                                                height="214" alt="{{ $featuredPorduct->name }}"
-                                                                alt="Alternative Image">
-                                                        @endif
-                                                    </figure>
+                                                                height="214" alt="{{ $featuredPorduct->name }}">
+                                                        </figure>
+                                                    @endif
                                                 </a>
                                                 <div class="group-flash">
-                                                    <span class="flash-item sale-label">
+                                                    {{-- <span class="flash-item sale-label">
                                                         {{ __('frontend.sale') }}
-                                                    </span>
+                                                    </span> --}}
                                                 </div>
                                                 <div class="wrap-btn">
                                                     <a href="#" class="function-link">
@@ -149,18 +150,24 @@
                                                         <p class="product-price">{{ $featuredPorduct->price }}$ </p>
                                                     </ins>
                                                     <del>
-                                                        <p class="product-price">{{ $featuredPorduct->discount }}</p>
+                                                        <p class="product-price">$250.00</p>
                                                     </del>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
+
                                 </div>
                             </div>
+                            <!--End wrap-products-->
                         </div>
                     @endif
+
                 </div>
+                <!--end main content area-->
             </div>
+            <!--end container-->
+
         </main>
     </div>
 @endsection

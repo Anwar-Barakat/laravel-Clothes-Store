@@ -6,7 +6,13 @@
 <script src="{{ asset('front/assets/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('front/assets/js/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('front/assets/js/jquery.sticky.js') }}"></script>
-<script src="{{ asset('front/assets/js/functions.js') }}"></script>
+
+@if (App::getLocale() == 'ar')
+    <script src="{{ asset('front/assets/js/arabic-functions.js') }}"></script>
+@else
+    <script src="{{ asset('front/assets/js/functions.js') }}"></script>
+@endif
+
 <!-- Bootstrap Bundle js -->
 <script src="{{ URL::asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 

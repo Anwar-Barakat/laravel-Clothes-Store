@@ -14,7 +14,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $latestProducts         = Product::latest()->take(5)->get();
+        return view('frontend.index', [
+            'latestProducts'        => $latestProducts,
+        ]);
     }
 
     public function about()
@@ -25,10 +28,8 @@ class HomeController extends Controller
 
     public function cart()
     {
-        $featuredPorductsCount  = Product::where('is_feature', 'Yes')->count();
-        $featuredPorducts       = Product::where('is_feature', 'Yes')->get();
+        $featuredPorducts       = Product::where(['is_feature' => 'Yes', 'status' => 1])->get();
         return view('frontend.cart', [
-            'featuredPorductsCount'     => $featuredPorductsCount,
             'featuredPorducts'          => $featuredPorducts,
         ]);
     }

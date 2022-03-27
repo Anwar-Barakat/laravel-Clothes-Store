@@ -75,29 +75,6 @@
                         <div class="wrap-search-form">
                             <form action="#" id="form-search-top" name="form-search-top">
                                 @csrf
-                                {{-- <div class="wrap-list-cate">
-                                    <input type="hidden" name="product-cate" value="0" id="product-cate">
-                                    <a href="javascript:void(0);"
-                                        class="link-control">{{ __('frontend.all_categories') }}</a>
-                                    <ul class="list-cate">
-                                        @foreach ($sections as $section)
-                                            <li class="level-0">
-                                                <a href=""> {{ $section->name }}</a>
-                                            </li>
-                                            @foreach ($section->categories ?? [] as $category)
-                                                <li class="level-2">
-                                                    <a href="">&nbsp;&raquo;&nbsp; {{ $category->name }}</a>
-                                                </li>
-                                                @foreach ($category->subCategories ?? [] as $subcategory)
-                                                    <li class="level-2">
-                                                        <a href="">&nbsp;&raquo;&nbsp;
-                                                            &nbsp;&raquo;&nbsp;{{ $subcategory->name }}</a>
-                                                    </li>
-                                                @endforeach
-                                            @endforeach
-                                        @endforeach
-                                    </ul>
-                                </div> --}}
                                 <a href="javascript:void(0);"
                                     class="all_categories">{{ __('frontend.all_categories') }}</a>
                                 <div class="mega-box">
@@ -164,7 +141,8 @@
                     <div class="container">
                         <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu">
                             <li class="menu-item home-icon">
-                                <a href="{{ route('frontend.home') }}" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.home') }}"
+                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.home') ? 'active' : '' }}">
                                     <span class="home-link">
                                         {{ __('frontend.home') }}
                                     </span>
@@ -172,17 +150,19 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.shop') }}" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.shop') }}" class="link-term mercado-item-title ">
                                     {{ __('frontend.about_us') }}
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.shop') }}" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.shop') }}"
+                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.shop') ? 'active' : '' }} ">
                                     {{ __('frontend.shop') }}
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.cart') }}" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.cart') }}"
+                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.cart') ? 'active' : '' }}">
                                     {{ __('frontend.cart') }}
                                 </a>
                             </li>
