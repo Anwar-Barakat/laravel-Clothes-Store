@@ -1,6 +1,23 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+
 .home-link {
     color: #f1f1f1;
     text-transform: uppercase;
     font-weight: 700;
     padding: 4px;
+}
+
+.section-title {
+    font-size: 17px;
+    color: #009688;
+    border-bottom: 1px solid #009688;
+    margin-bottom: 2px;
+    width: fit-content;
+    margin-top: 2rem;
+}
+
+.section-title:first-child {
+    margin-top: 0;
 }

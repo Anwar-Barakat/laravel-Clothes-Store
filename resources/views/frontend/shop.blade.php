@@ -93,57 +93,32 @@
 
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                         <div class="widget mercado-widget categories-widget">
-                            <h2 class="widget-title">{{ __('frontend.all_categories') }}</h2>
+                            <h2 class="widget-title">{{ __('frontend.all_sections') }}</h2>
                             <div class="widget-content">
                                 <ul class="list-category">
-                                    <li class="category-item has-child-cate">
-                                        <a href="#" class="cate-link">Fashion & Accessories</a>
-                                        <span class="toggle-control">+</span>
-                                        <ul class="sub-cate">
-                                            <li class="category-item"><a href="#" class="cate-link">Batteries (22)</a>
+                                    @foreach ($sections as $section)
+                                        <h5 class="section-title">{{ $section->name }} :</h5>
+                                        @foreach ($section->categories ?? [] as $category)
+                                            <li class="category-item has-child-cate">
+                                                <a href="#" class="cate-link">{{ $category->name }}</a>
+                                                @if ($category->subCategories->count() > 0)
+                                                    <span class="toggle-control">+</span>
+                                                @endif
+                                                <ul class="sub-cate">
+                                                    @foreach ($category->subCategories ?? [] as $subcategory)
+                                                        <li class="category-item">
+                                                            <a href="" class="cate-link">
+                                                                &nbsp;&raquo;&nbsp;{{ $subcategory->name }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
                                             </li>
-                                            <li class="category-item"><a href="#" class="cate-link">Headsets (16)</a>
-                                            </li>
-                                            <li class="category-item"><a href="#" class="cate-link">Screen (28)</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="category-item has-child-cate">
-                                        <a href="#" class="cate-link">Furnitures & Home Decors</a>
-                                        <span class="toggle-control">+</span>
-                                        <ul class="sub-cate">
-                                            <li class="category-item"><a href="#" class="cate-link">Batteries (22)</a>
-                                            </li>
-                                            <li class="category-item"><a href="#" class="cate-link">Headsets (16)</a>
-                                            </li>
-                                            <li class="category-item"><a href="#" class="cate-link">Screen (28)</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="category-item has-child-cate">
-                                        <a href="#" class="cate-link">Digital & Electronics</a>
-                                        <span class="toggle-control">+</span>
-                                        <ul class="sub-cate">
-                                            <li class="category-item"><a href="#" class="cate-link">Batteries (22)</a>
-                                            </li>
-                                            <li class="category-item"><a href="#" class="cate-link">Headsets (16)</a>
-                                            </li>
-                                            <li class="category-item"><a href="#" class="cate-link">Screen (28)</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="cate-link">Tools & Equipments</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="cate-link">Kid’s Toys</a>
-                                    </li>
-                                    <li class="category-item">
-                                        <a href="#" class="cate-link">Organics & Spa</a>
-                                    </li>
+                                        @endforeach
+                                    @endforeach
                                 </ul>
                             </div>
                         </div><!-- Categories widget-->
+                        <hr>
 
                         <div class="widget mercado-widget filter-widget brand-widget">
                             <h2 class="widget-title">{{ __('frontend.brands') }}</h2>

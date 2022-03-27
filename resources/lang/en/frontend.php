@@ -55,4 +55,5 @@ return [
     'new'                   => 'New',
     'sale'                  => 'Sale',
     'Bestseller'            => 'BestSeller',
+    'all_sections'          => 'All Sections',
 ];

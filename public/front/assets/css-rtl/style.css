@@ -2890,9 +2890,7 @@ li.menu-item .nav-label.sale-label::before {
     margin: 0;
     width: 100%;
     text-align: right;
-    border-bottom: 1px solid #e6e6e6;
-    padding-bottom: 19px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     float: right;
 }
 
@@ -2931,6 +2929,10 @@ li.menu-item .nav-label.sale-label::before {
 
 .widget.categories-widget .has-child-cate:not(.open) .sub-cate {
     display: none;
+}
+
+.widget.categories-widget ul.list-category>li {
+    padding-right: 2rem;
 }
 
 .has-child-cate .toggle-control {
@@ -8139,3 +8141,102 @@ table.shop_attributes tbody {
     margin-bottom: 65px;
     padding-right: 40px;
 }
+
+
+/* Start Mega Menu */
+
+.wrap-search-form {
+    padding: 1rem;
+}
+
+.wrap-search-form .all_categories {
+    width: 100%;
+    display: block;
+}
+
+.wrap-search-form .mega-box {
+    position: absolute;
+    right: 0;
+    padding: 0 30px;
+    top: 100px;
+    z-index: 22;
+    width: 900px;
+    right: 50%;
+    transform: translateX(50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s ease-in;
+}
+
+.wrap-search-form .mega-box.active {
+    opacity: 1;
+    visibility: visible;
+    top: 50px;
+}
+
+.wrap-search-form .content {
+    background-color: #d3d3d3;
+    border: 10px;
+    padding: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.wrap-search-form .content .main {
+    width: 25%;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+}
+
+.wrap-search-form .content .main p {
+    color: #009688;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.wrap-search-form .content .main .mega-links {
+    list-style: none;
+    text-align: right;
+    padding: 0;
+}
+
+.wrap-search-form .content .main .mega-links>li>a {
+    display: inline-block;
+    color: #444444;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+.wrap-search-form .content .main .sub__mega-links {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.wrap-search-form .content .main .sub__mega-links>li {
+    margin: 0.5rem;
+}
+
+.wrap-search-form .content .main .sub__mega-links>li>a {
+    margin: 0.5rem;
+    color: #808080;
+}
+
+@media screen and (max-width:991px) {
+    .wrap-search-form .mega-box {
+        width: 100%;
+    }
+    .wrap-search-form .content .main {
+        width: 100%;
+    }
+    .wrap-search-form .content .main .mega-links {
+        border-left: none;
+    }
+}
+
+
+/* End Mega Menu */

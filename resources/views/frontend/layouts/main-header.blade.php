@@ -74,32 +74,55 @@
                     <div class="wrap-search center-section">
                         <div class="wrap-search-form">
                             <form action="#" id="form-search-top" name="form-search-top">
-                                <input type="text" name="search" value="" placeholder="Search here...">
-                                <button form="form-search-top" type="button"><i class="fa fa-search"
-                                        aria-hidden="true"></i></button>
-                                <div class="wrap-list-cate">
+                                @csrf
+                                {{-- <div class="wrap-list-cate">
                                     <input type="hidden" name="product-cate" value="0" id="product-cate">
                                     <a href="javascript:void(0);"
                                         class="link-control">{{ __('frontend.all_categories') }}</a>
                                     <ul class="list-cate">
-                                        <li class="level-0">All Category</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
+                                        @foreach ($sections as $section)
+                                            <li class="level-0">
+                                                <a href=""> {{ $section->name }}</a>
+                                            </li>
+                                            @foreach ($section->categories ?? [] as $category)
+                                                <li class="level-2">
+                                                    <a href="">&nbsp;&raquo;&nbsp; {{ $category->name }}</a>
+                                                </li>
+                                                @foreach ($category->subCategories ?? [] as $subcategory)
+                                                    <li class="level-2">
+                                                        <a href="">&nbsp;&raquo;&nbsp;
+                                                            &nbsp;&raquo;&nbsp;{{ $subcategory->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            @endforeach
+                                        @endforeach
                                     </ul>
+                                </div> --}}
+                                <a href="javascript:void(0);"
+                                    class="all_categories">{{ __('frontend.all_categories') }}</a>
+                                <div class="mega-box">
+                                    <div class="content">
+                                        @foreach ($sections as $section)
+                                            <div class="main">
+                                                <p>{{ $section->name }}</p>
+                                                <ul class="mega-links">
+                                                    @foreach ($section->categories ?? [] as $category)
+                                                        <li>
+                                                            <a href="">{{ $category->name }}</a>
+                                                        </li>
+                                                        <ul class="sub__mega-links">
+                                                            @foreach ($category->subCategories ?? [] as $subcategory)
+                                                                <li>
+                                                                    <a href="">
+                                                                        &nbsp;&raquo;&nbsp;{{ $subcategory->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -180,3 +203,15 @@
         </div>
     </div>
 </header>
+
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $(".all_categories").click(function(e) {
+                e.preventDefault();
+                $(".mega-box").toggleClass("active");
+            });
+        });
+    </script>
+@endsection
