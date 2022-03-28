@@ -296,3 +296,17 @@ div.dataTables_wrapper div.dataTables_filter input {
         margin: 1.75rem auto;
     }
 }
+
+@media (min-width: 576px) {
+    .modal-dialog.editBannerModal {
+        max-width: 620px;
+        margin: 1.75rem auto;
+    }
+}
+
+.banner-image {
+    width: 40vw;
+    display: block;
+    margin: auto;
+    max-height: 16vw;
+}

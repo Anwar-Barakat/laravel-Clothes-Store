@@ -34,6 +34,9 @@
                         </button>
                     </div>
                 </div>
+                @if ($errors->any())
+                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                @endif
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="banners">
@@ -41,6 +44,7 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.title') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.image') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
@@ -49,6 +53,15 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $banner->title }}</td>
+                                        <td>
+                                            @if ($banner->getFirstMediaUrl('banners', 'thumb'))
+                                                <img src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}"
+                                                    alt="{{ $banner->title }}" class="img img-thumbnail">
+                                            @else
+                                                <img src="{{ asset('assets/img/banners/4.jpg') }}"
+                                                    alt="{{ $banner->title }}" class="img img-thumbnail">
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
@@ -99,10 +112,10 @@
                                             </div>
                                         </td>
                                         {{-- Edit Banner Modal --}}
-                                        <div class="modal fade" id="editBanner{{ $banner->id }}" tabindex="-1"
-                                            role="dialog" aria-labelledby="editBanner{{ $banner->id }}Label"
-                                            aria-hidden="true" data-effect="effect-super-scaled">
-                                            <div class="modal-dialog" role="document">
+                                        <div class="modal effect-rotate-left" id="editBanner{{ $banner->id }}"
+                                            tabindex="-1" role="dialog"
+                                            aria-labelledby="editBanner{{ $banner->id }}Label" aria-hidden="true">
+                                            <div class="modal-dialog editBannerModal" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">
@@ -114,57 +127,136 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="{{ route('admin.banners.update', $banner) }}"
-                                                            method="post">
+                                                            method="post" enctype="multipart/form-data">
                                                             @csrf
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="title_ar">{{ __('translation.title_ar') }}</label>
-                                                                <input type="text"
-                                                                    class="form-control  @error('title_ar') is-invalid @enderror"
-                                                                    id="title_ar" name="title_ar"
-                                                                    value="{{ $banner->getTranslation('title', 'ar') }}"
-                                                                    placeholder="{{ __('translation.enter_the_title_en') }}">
-                                                                @error('title_ar')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
+                                                            <div class="row mb-4">
+                                                                <div class="col-12">
+                                                                    @if ($banner->getFirstMediaUrl('banners', 'thumb'))
+                                                                        <img src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}"
+                                                                            alt="{{ $banner->title }}"
+                                                                            class="img img-thumbnail banner-image">
+                                                                    @else
+                                                                        <img src="{{ asset('assets/img/banners/4.jpg') }}"
+                                                                            alt="{{ $banner->title }}"
+                                                                            class="img img-thumbnail banner-image">
+                                                                    @endif
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="title_en">{{ __('translation.title_en') }}</label>
-                                                                <input type="text"
-                                                                    class="form-control  @error('title_en') is-invalid @enderror"
-                                                                    id="title_en" name="title_en"
-                                                                    value="{{ $banner->getTranslation('title', 'en') }}"
-                                                                    placeholder="{{ __('translation.enter_the_title_en') }}">
-                                                                @error('title_en')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="title_ar">{{ __('translation.title_ar') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('title_ar') is-invalid @enderror"
+                                                                            id="title_ar" name="title_ar"
+                                                                            value="{{ old('title_ar', $banner->getTranslation('title', 'ar')) }}"
+                                                                            placeholder="
+                                                                                                                                                                    {{ __('translation.enter_the_title_en') }}">
+                                                                        @error('title_ar')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="title_en">{{ __('translation.title_en') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('title_en') is-invalid @enderror"
+                                                                            id="title_en" name="title_en"
+                                                                            value="{{ old('title_en', $banner->getTranslation('title', 'en')) }}"
+                                                                            placeholder="{{ __('translation.enter_the_title_en') }}">
+                                                                        @error('title_en')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="status">{{ __('translation.status') }}</label>
-                                                                <select
-                                                                    class="form-control @error('status') is-invalid @enderror"
-                                                                    id="status" name="status">
-                                                                    <option value="">{{ __('translation.choose..') }}
-                                                                    </option>
-                                                                    <option value="1"
-                                                                        {{ $banner->status ? 'selected' : '' }}>
-                                                                        {{ __('translation.active') }}</option>
-                                                                    <option value="0"
-                                                                        {{ $banner->status ? '' : 'selected' }}>
-                                                                        {{ __('translation.disactive') }}
-                                                                    </option>
-                                                                </select>
-                                                                @error('status')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
+                                                            <div class="row">
+                                                                <div class="col-sm-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="alternative">{{ __('translation.alternative') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('alternative') is-invalid @enderror"
+                                                                            id="alternative" name="alternative"
+                                                                            value="{{ old('alternative', $banner->alternative) }}"
+                                                                            placeholder="{{ __('translation.enter_the_title_en') }}">
+                                                                        @error('alternative')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="link">{{ __('translation.link') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('link') is-invalid @enderror"
+                                                                            id="link" name="link"
+                                                                            value="{{ old('link', $banner->link) }}"
+                                                                            placeholder="{{ __('translation.enter_the_title_en') }}">
+                                                                        @error('link')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="status">{{ __('translation.status') }}</label>
+                                                                        <select
+                                                                            class="form-control @error('status') is-invalid @enderror"
+                                                                            id="status" name="status">
+                                                                            <option value="">
+                                                                                {{ __('translation.choose..') }}</option>
+                                                                            <option value="1"
+                                                                                {{ old('status', $banner->status) == '1' ? 'selected' : '' }}>
+                                                                                {{ __('translation.active') }}</option>
+                                                                            <option value="0"
+                                                                                {{ old('status', $banner->status) == '0' ? 'selected' : '' }}>
+                                                                                {{ __('translation.disactive') }}
+                                                                            </option>
+                                                                        </select>
+                                                                        @error('status')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="image">{{ __('translation.image') }}</label>
+                                                                        <div class="custom-file">
+                                                                            <input class="custom-file-input" id="customFile"
+                                                                                type="file" type="file" name="image"
+                                                                                accept=".jpg, .png, jpeg, image/jpeg, image/png , image/jpeg">
+                                                                            <label
+                                                                                class="custom-file-label @error('image') is-invalid @enderror"
+                                                                                for="customFile">{{ __('translation.choose_file') }}</label>
+                                                                        </div>
+                                                                        @error('image')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary modal-effect"
@@ -205,7 +297,7 @@
                                 <div class="form-group">
                                     <label for="title_ar">{{ __('translation.title_ar') }}</label>
                                     <input type="text" class="form-control  @error('title_ar') is-invalid @enderror"
-                                        id="title_ar" name="title_ar"
+                                        id="title_ar" name="title_ar" value="{{ old('title_ar') }}"
                                         placeholder="{{ __('translation.enter_the_title_en') }}">
                                     @error('title_ar')
                                         <span class="invalid-feedback" role="alert">
@@ -218,7 +310,7 @@
                                 <div class="form-group">
                                     <label for="title_en">{{ __('translation.title_en') }}</label>
                                     <input type="text" class="form-control  @error('title_en') is-invalid @enderror"
-                                        id="title_en" name="title_en"
+                                        id="title_en" name="title_en" value="{{ old('title_en') }}"
                                         placeholder="{{ __('translation.enter_the_title_en') }}">
                                     @error('title_en')
                                         <span class="invalid-feedback" role="alert">
@@ -233,7 +325,7 @@
                                 <div class="form-group">
                                     <label for="alternative">{{ __('translation.alternative') }}</label>
                                     <input type="text" class="form-control  @error('alternative') is-invalid @enderror"
-                                        id="alternative" name="alternative"
+                                        id="alternative" name="alternative" value="{{ old('alternative') }}"
                                         placeholder="{{ __('translation.enter_the_title_en') }}">
                                     @error('alternative')
                                         <span class="invalid-feedback" role="alert">
@@ -246,7 +338,8 @@
                                 <div class="form-group">
                                     <label for="link">{{ __('translation.link') }}</label>
                                     <input type="text" class="form-control  @error('link') is-invalid @enderror" id="link"
-                                        name="link" placeholder="{{ __('translation.enter_the_title_en') }}">
+                                        name="link" value="{{ old('link') }}"
+                                        placeholder="{{ __('translation.enter_the_title_en') }}">
                                     @error('link')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -375,6 +468,25 @@
                     }
                 },
                 error: function() {},
+            });
+        });
+    </script>
+
+    {{-- Confirmation Delete Banner --}}
+    <script>
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/delete-banner/' + $(this).data('banner');
+                }
             });
         });
     </script>

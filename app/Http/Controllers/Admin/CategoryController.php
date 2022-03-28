@@ -8,6 +8,7 @@ use App\Models\Section;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CategoryController extends Controller
 {
@@ -110,6 +111,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+        Media::where(['model_id' => $category->id, 'collection_name' => 'categories'])->delete();
         Session::flash('alert-type', 'info');
         Session::flash('message', __('msgs.category_delete'));
         return redirect()->route('admin.categories.index');

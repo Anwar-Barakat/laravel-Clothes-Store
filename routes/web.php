@@ -69,9 +69,9 @@ Route::group(
                 // Banner :
                 Route::get('banners/index',                                     [BannerController::class, 'index'])->name('banners.index');
                 Route::post('banners/add',                                      [BannerController::class, 'store'])->name('banners.store');
-                Route::post('banners/update/{brand}',                           [BannerController::class, 'update'])->name('banners.update');
+                Route::post('banners/update/{banner}',                          [BannerController::class, 'update'])->name('banners.update');
                 Route::post('update-banner-status',                             [BannerController::class, 'updateBannerStatus']);
-                Route::get('delete-banner/{banner}',                            [BannerController::class, 'destroy'])->name('banners.destroy');
+                Route::get('delete-banner/{id}',                            [BannerController::class, 'destroy'])->name('banners.destroy');
 
 
                 // **************************************************************

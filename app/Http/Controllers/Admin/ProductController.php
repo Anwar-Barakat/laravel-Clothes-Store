@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProductController extends Controller
 {
@@ -133,6 +134,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        Media::where(['model_id' => $product->id, 'collection_name' => 'image_products'])->delete();
         Session::flash('alert-type', 'error');
         Session::flash('message', __('msgs.product_delete'));
         return redirect()->route('admin.products.index');

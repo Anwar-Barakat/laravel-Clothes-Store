@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBannerRequest;
+use App\Http\Requests\UpdateBannerRequest;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class BannerController extends Controller
 {
@@ -85,12 +87,32 @@ class BannerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Banner $banner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBannerRequest $request, Banner $banner)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['title_ar', 'title_en', 'link', 'alternative', 'status', 'image']);
+
+            $banner->update([
+                'title'         => [
+                    'ar'            => $request->title_ar,
+                    'en'            => $request->title_en,
+                ],
+                'status'        => $request->status,
+                'link'          => $request->link,
+                'alternative'   => $request->alternative,
+            ]);
+
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $banner->clearMediaCollection('banners');
+                $banner->addMediaFromRequest('image')->toMediaCollection('banners');
+            }
+
+            Session::flash('message', __('msgs.banner_update'));
+            return redirect()->route('admin.banners.index');
+        }
     }
 
     /**
@@ -101,7 +123,11 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Banner::findOrFail($id)->delete();
+        Media::where(['model_id' => $id, 'collection_name' => 'banners'])->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.banner_delete'));
+        return redirect()->route('admin.banners.index');
     }
 
     public function updateBannerStatus(Request $request)
