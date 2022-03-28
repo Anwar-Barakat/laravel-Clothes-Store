@@ -50,26 +50,53 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $banner->title }}</td>
                                         <td>
-                                            @if ($banner->status == 1)
-                                                <a href="javascript:void(0);" class="updateBannerStatus text-success p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="banner-{{ $banner->id }}" banner_id="{{ $banner->id }}"
-                                                    status="{{ $banner->status }}">
-                                                    <i class="fas fa-power-off"></i>
-                                                </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateBannerStatus text-danger p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="banner-{{ $banner->id }}" banner_id="{{ $banner->id }}"
-                                                    status="{{ $banner->status }}">
-                                                    <i class="fas fa-power-off text-danger"></i>
-                                                </a>
-                                            @endif
-                                            <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                title="{{ __('buttons.update') }}"
-                                                data-target="#editBanner{{ $banner->id }}" class="text-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
+                                                    type="button">{{ __('translation.actions') }} <i
+                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="{{ route('admin.banners.destroy', $banner) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @if ($banner->status == 1)
+                                                            <a href="javascript:void(0);"
+                                                                class="updateBannerStatus text-success dropdown-item"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                id="banner-{{ $banner->id }}"
+                                                                banner_id="{{ $banner->id }}"
+                                                                status="{{ $banner->status }}">
+                                                                <i class="fas fa-power-off"></i>
+                                                                {{ __('translation.active') }}
+                                                            </a>
+                                                        @else
+                                                            <a href="javascript:void(0);"
+                                                                class="updateBannerStatus text-danger dropdown-item"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                id="banner-{{ $banner->id }}"
+                                                                banner_id="{{ $banner->id }}"
+                                                                status="{{ $banner->status }}">
+                                                                <i class="fas fa-power-off text-danger"></i>
+                                                                {{ __('translation.disactive') }}
+                                                            </a>
+                                                        @endif
+                                                        <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                            title="{{ __('buttons.update') }}"
+                                                            data-target="#editBanner{{ $banner->id }}"
+                                                            class="text-primary dropdown-item">
+                                                            <i class="fas fa-edit"></i>
+                                                            {{ __('buttons.edit') }}
+                                                        </a>
+                                                        <a href="javascript:void(0);"
+                                                            class="dropdown-item confirmationDelete"
+                                                            data-banner="{{ $banner->id }}"
+                                                            title="{{ __('buttons.delete') }}">
+                                                            <i class="fas fa-trash text-danger"></i>
+                                                            {{ __('buttons.delete') }}
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                         {{-- Edit Banner Modal --}}
                                         <div class="modal fade" id="editBanner{{ $banner->id }}" tabindex="-1"
@@ -162,7 +189,7 @@
     {{-- Add New Banner Modal --}}
     <div class="modal effect-rotate-left" id="addNewBanner" tabindex="-1" role="dialog" aria-labelledby="addNewBannerLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog addNewBannerModal" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">{{ __('translation.add_new_banner') }}</h5>
@@ -171,42 +198,100 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.banners.store') }}" method="post">
+                    <form action="{{ route('admin.banners.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label for="title_ar">{{ __('translation.title_ar') }}</label>
-                            <input type="text" class="form-control  @error('title_ar') is-invalid @enderror" id="title_ar"
-                                name="title_ar" placeholder="{{ __('translation.enter_the_title_en') }}">
-                            @error('title_ar')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="title_ar">{{ __('translation.title_ar') }}</label>
+                                    <input type="text" class="form-control  @error('title_ar') is-invalid @enderror"
+                                        id="title_ar" name="title_ar"
+                                        placeholder="{{ __('translation.enter_the_title_en') }}">
+                                    @error('title_ar')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="title_en">{{ __('translation.title_en') }}</label>
+                                    <input type="text" class="form-control  @error('title_en') is-invalid @enderror"
+                                        id="title_en" name="title_en"
+                                        placeholder="{{ __('translation.enter_the_title_en') }}">
+                                    @error('title_en')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="title_en">{{ __('translation.title_en') }}</label>
-                            <input type="text" class="form-control  @error('title_en') is-invalid @enderror" id="title_en"
-                                name="title_en" placeholder="{{ __('translation.enter_the_title_en') }}">
-                            @error('title_en')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="alternative">{{ __('translation.alternative') }}</label>
+                                    <input type="text" class="form-control  @error('alternative') is-invalid @enderror"
+                                        id="alternative" name="alternative"
+                                        placeholder="{{ __('translation.enter_the_title_en') }}">
+                                    @error('alternative')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="link">{{ __('translation.link') }}</label>
+                                    <input type="text" class="form-control  @error('link') is-invalid @enderror" id="link"
+                                        name="link" placeholder="{{ __('translation.enter_the_title_en') }}">
+                                    @error('link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="status">{{ __('translation.status') }}</label>
-                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                                <option value="">{{ __('translation.choose..') }}</option>
-                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
-                                    {{ __('translation.active') }}</option>
-                                <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
-                                    {{ __('translation.disactive') }}</option>
-                            </select>
-                            @error('status')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="status">{{ __('translation.status') }}</label>
+                                    <select class="form-control @error('status') is-invalid @enderror" id="status"
+                                        name="status">
+                                        <option value="">{{ __('translation.choose..') }}</option>
+                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
+                                            {{ __('translation.active') }}</option>
+                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
+                                            {{ __('translation.disactive') }}</option>
+                                    </select>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="image">{{ __('translation.image') }}</label>
+                                    <div class="custom-file">
+                                        <input class="custom-file-input" id="customFile" type="file" type="file"
+                                            name="image" accept=".jpg, .png, jpeg, image/jpeg, image/png , image/jpeg">
+                                        <label class="custom-file-label @error('image') is-invalid @enderror"
+                                            for="customFile">{{ __('translation.choose_file') }}</label>
+                                    </div>
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
@@ -273,13 +358,20 @@
                     if (response['status'] == 0) {
                         $('#banner-' + response['banner_id'])
                             .attr('status', `${response['status']}`);
-                        $('#banner-' + response['banner_id']).html(
+                        $('#banner-' + response['banner_id']).text(disactiev);
+                        $('#banner-' + response['banner_id']).attr('style',
+                            'color : #ee335e  !important');
+                        $('#banner-' + response['banner_id']).prepend(
                             '<i class="fas fa-power-off text-danger"></i> ');
                     } else {
                         $('#banner-' + response['banner_id'])
                             .attr('status', `${response['status']}`);
-                        $('#banner-' + response['banner_id']).html(
+                        $('#banner-' + response['banner_id']).text(active);
+                        $('#banner-' + response['banner_id']).attr('style',
+                            'color : #22c03c   !important');
+                        $('#banner-' + response['banner_id']).prepend(
                             '<i class="fas fa-power-off text-success"></i> ');
+
                     }
                 },
                 error: function() {},

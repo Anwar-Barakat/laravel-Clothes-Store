@@ -183,7 +183,14 @@ return [
 
     // Banners :
     'update_banner'             => 'تحديث الراية',
-    'add_new_banner'            => 'إضافة رايو جديدة',
+    'add_new_banner'            => 'إضافة راية جديدة',
+    'enter_the_title_ar'        => 'أدخل العنوان بالعربي',
+    'enter_the_title_en'        => 'أدخل العنوان بالأنكليزي',
+    'title_ar'                  => 'العنوان بالعربي',
+    'title_en'                  => 'العنوان بالأنكليزي',
+    'link'                      => 'الرابط',
+    'alternative'               => 'البديل',
+    'title'                     => 'العنوان'
 
 
 ];

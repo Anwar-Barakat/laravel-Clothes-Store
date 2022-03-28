@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddEditCategoryRequest;
 use App\Models\Category;
 use App\Models\Section;
 use Cviebrock\EloquentSluggable\Services\SlugService;

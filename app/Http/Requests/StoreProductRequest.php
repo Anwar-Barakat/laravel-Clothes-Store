@@ -43,7 +43,7 @@ class StoreProductRequest extends FormRequest
             'meta_description'      => '',
             'meta_keywords'         => '',
             'is_feature'            => 'required|in:No,Yes',
-            'image'                 => 'nullable|image|mimes:jpeg,png,jpg|max:1048',
+            'image'                 => 'required|image|mimes:jpeg,png,jpg|max:1048',
             'video'                 => 'mimes:mp4,mov,ogg,qt|max:10000',
 
         ];

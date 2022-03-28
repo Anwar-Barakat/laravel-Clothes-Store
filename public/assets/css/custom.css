@@ -289,3 +289,10 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 
 /* **************************************************************************** */
+
+@media (min-width: 576px) {
+    .modal-dialog.addNewBannerModal {
+        max-width: 620px;
+        margin: 1.75rem auto;
+    }
+}

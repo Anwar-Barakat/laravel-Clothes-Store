@@ -186,5 +186,7 @@ return [
     'enter_the_title_en'        => 'Enter English Title',
     'title_ar'                  => 'Arabic Title',
     'title_en'                  => 'English Title',
+    'link'                      => 'Link',
+    'alternative'               => 'Alternative',
 
 ];

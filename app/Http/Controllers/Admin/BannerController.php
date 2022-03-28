@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBannerRequest;
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BannerController extends Controller
 {
@@ -34,9 +36,27 @@ class BannerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBannerRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['title_ar', 'title_en', 'link', 'alternative', 'status', 'image']);
+
+            $banner = Banner::create([
+                'title'      => [
+                    'ar'        => $data['title_ar'],
+                    'en'        => $data['title_en'],
+                ],
+                'link'          => $data['link'],
+                'alternative'   => $data['alternative'],
+                'status'        => $data['status'],
+            ]);
+
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $banner->addMediaFromRequest('image')->toMediaCollection('banners');
+            }
+            Session::flash('message', __('msgs.banner_add'));
+            return redirect()->route('admin.banners.index');
+        }
     }
 
     /**

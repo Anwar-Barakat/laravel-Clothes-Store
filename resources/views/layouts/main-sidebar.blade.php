@@ -79,7 +79,7 @@
             {{-- Banners --}}
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.banners.index') }}">
-                    <i class="fas fa-flag icon_sidebar side-menu__icon"></i>
+                    <i class="fab fa-buffer icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.banners') }}</span>
                 </a>
             </li>

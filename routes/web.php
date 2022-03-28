@@ -71,6 +71,7 @@ Route::group(
                 Route::post('banners/add',                                      [BannerController::class, 'store'])->name('banners.store');
                 Route::post('banners/update/{brand}',                           [BannerController::class, 'update'])->name('banners.update');
                 Route::post('update-banner-status',                             [BannerController::class, 'updateBannerStatus']);
+                Route::get('delete-banner/{banner}',                            [BannerController::class, 'destroy'])->name('banners.destroy');
 
 
                 // **************************************************************

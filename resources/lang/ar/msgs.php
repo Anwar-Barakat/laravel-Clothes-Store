@@ -12,6 +12,10 @@ return [
     'category_update'           => 'تم تحديث الفئة بنجاح',
     'category_delete'           => 'تم حذف الفئة بنجاح',
 
+    'banner_add'               => 'تم إضافة الراية بنجاح',
+    'banner_update'            => 'تم تحديث الراية بنجاح',
+    'banner_delete'            => 'تم حذف الراية بنجاح',
+
     'product_add'               => 'تم إضافة المنتج بنجاح',
     'product_update'            => 'تم تحديث المنتج بنجاح',
     'product_delete'            => 'تم حذف المنتج بنجاح',

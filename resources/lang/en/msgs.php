@@ -12,6 +12,10 @@ return [
     'category_update'           => 'Category Has Updated Successfuly !!',
     'category_delete'           => 'Category Has Deleted Succesfully !!',
 
+    'banner_add'                => 'Banner Has Added Successfuly !!',
+    'banner_update'             => 'Banner Has Updated Successfuly !!',
+    'banner_delete'             => 'Banner Has Deleted Succesfully !!',
+
     'product_add'               => 'Product Has Added Successfuly !!',
     'product_update'            => 'Product Has Updated Successfuly !!',
     'product_delete'            => 'Product Has Deleted Succesfully !!',
