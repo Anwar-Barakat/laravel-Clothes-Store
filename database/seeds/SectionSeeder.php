@@ -15,16 +15,16 @@ class SectionSeeder extends Seeder
     {
         $sections = [
             [
-                'en' => 'Men',
-                'ar' => 'الرجال',
+                'en' => 'Electronics',
+                'ar' => 'الألكترونيات',
             ],
             [
-                'en' => 'Woman',
-                'ar' => 'النساء',
+                'en' => 'Men Clothes',
+                'ar' => 'ملابس للرجال',
             ],
             [
-                'en' => 'Children',
-                'ar' => 'الأطفال',
+                'en' => 'ًWoman Clothes',
+                'ar' => 'ملابس للنساء',
             ],
         ];
 

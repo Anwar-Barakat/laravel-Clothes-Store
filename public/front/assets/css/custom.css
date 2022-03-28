@@ -26,3 +26,40 @@
     border: 6px solid #f1f1f1;
     box-shadow: rgb(0 0 0 / 40%) 2px 11px 2px, rgb(0 0 0 / 30%) 0px 15px 16px -3px, rgb(0 0 0 / 20%) 3px 4px 0px inset;
 }
+
+@media (max-width: 1024px) {
+    .header .main-info-area .right-section .show-up-after-1024 {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1000000000;
+        color: white;
+        background: #009688;
+        border: 1px solid #009688;
+    }
+    .header .main-info-area .right-section .show-up-after-1024 a {
+        border: 1px solid #009688;
+    }
+    .header .main-info-area .right-section .show-up-after-1024 span {
+        background-color: white;
+    }
+    .mercado-panel li {
+        padding: 0;
+    }
+    .link-term.mercado-item-title.active {
+        padding: 0.3rem 1rem;
+        display: block;
+    }
+    .fa-home {
+        font-size: 20px;
+        color: white;
+        padding: 0 5px;
+        position: relative;
+        top: 2px;
+    }
+}
+
+.owl-carousel .owl-stage-outer,
+.owl-carousel .owl-stage {
+    max-height: 350px;
+}

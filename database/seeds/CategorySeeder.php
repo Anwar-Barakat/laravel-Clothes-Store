@@ -17,15 +17,14 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->delete();
         $faker      = Factory::create();
-        $sections = collect(Section::all()->modelKeys());
         $categoriesRecords = [
             [
                 'parent_id'         => 0,
-                'section_id'        => $sections->random(),
-                'name'              => 'T-shirts',
+                'section_id'        => Section::where('name->en', 'Electronics')->first()->id,
+                'name'              => 'Asus',
                 'discount'          => 0,
                 'description'       => $faker->paragraph(),
-                'url'               => 't-shirt',
+                'url'               => 'asus',
                 'meta_title'        => '',
                 'meta_description'  => $faker->paragraph(),
                 'meta_keywords'     => '',
@@ -33,11 +32,11 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id'         => 0,
-                'section_id'        => $sections->random(),
-                'name'              => 'Casual T-shirts',
+                'section_id'        => Section::where('name->en', 'Men Clothes')->first()->id,
+                'name'              => 'T-Shirts',
                 'discount'          => 0,
                 'description'       => $faker->paragraph(),
-                'url'               => 'casual-t-shirt',
+                'url'               => 't-shirts',
                 'meta_title'        => '',
                 'meta_description'  => $faker->paragraph(),
                 'meta_keywords'     => '',
@@ -45,11 +44,11 @@ class CategorySeeder extends Seeder
             ],
             [
                 'parent_id'         => 0,
-                'section_id'        => $sections->random(),
-                'name'              => 'Trousers',
+                'section_id'        => Section::where('name->en', 'Woman Clothes')->first()->id,
+                'name'              => 'Dresses',
                 'discount'          => 0,
                 'description'       => $faker->paragraph(),
-                'url'               => 'trousers',
+                'url'               => 'dresses',
                 'meta_title'        => '',
                 'meta_description'  => $faker->paragraph(),
                 'meta_keywords'     => '',

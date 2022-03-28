@@ -105,7 +105,8 @@
                             <a class="btn btn-update" href="#">{{ __('frontend.update_cart') }}</a>
                         </div>
                     </div>
-                    @if (!empty($featuredPorducts))
+
+                    @if ($featuredPorducts->count() > 0)
                         <div class="wrap-show-advance-info-box style-1 box-in-site">
                             <h3 class="title-box">
                                 {{ __('frontend.most_viewed') }} ({{ $featuredPorducts->count() }})

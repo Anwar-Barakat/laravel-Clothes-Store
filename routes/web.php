@@ -9,7 +9,10 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\FrontEnd\HomeController;
+use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\Frontend\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -138,11 +141,10 @@ Route::group(
         // FrontEnd :
         // ======================================================
         Route::group(['as' => 'frontend.'], function () {
-            Route::get('/', [HomeController::class, 'index'])->name('home');
-
-            Route::get('/shop', [HomeController::class, 'about'])->name('shop');
-
-            Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
+            Route::get('/',                 [HomeController::class, 'index'])->name('home');
+            Route::get('/shop',             [ShopController::class, 'index'])->name('shop');
+            Route::get('/cart',             [CartController::class, 'index'])->name('cart');
+            Route::get('/{url}',            [FrontendProductController::class, 'index'])->name('url');
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }

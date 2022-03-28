@@ -206,58 +206,61 @@
                 </div>
 
                 <!--Latest Products-->
-                <div class="wrap-show-advance-info-box style-1">
-                    <h3 class="title-box">
-                        {{ __('frontend.latest_products') }} ({{ $latestProducts->count() }})
-                    </h3>
-                    <div class="wrap-products">
-                        <div class="wrap-product-tab tab-style-1">
-                            <div class="tab-contents">
-                                <div class="tab-content-item active" id="digital_1a"
-                                    @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
-                                    <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container"
-                                        data-items="5" data-loop="false" data-nav="true" data-dots="false"
-                                        data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
-                                        @foreach ($latestProducts as $latestProduct)
-                                            <div class="product product-style-2 equal-elem ">
-                                                <div class="product-thumnail">
-                                                    <a href="detail.html" title="{{ $latestProduct->name }}">
-                                                        @if ($latestProduct->getFirstMediaUrl('image_products', 'small'))
-                                                            <figure>
-                                                                <img src="{{ $latestProduct->getFirstMediaUrl('image_products', 'small') }}"
-                                                                    width="800" height="800"
-                                                                    alt="{{ $latestProduct->name }}">
-                                                            </figure>
-                                                        @else
-                                                            <figure>
-                                                                <img src="{{ asset('assets/img/1.jpg') }}" width="800"
-                                                                    height="800" alt="{{ $latestProduct->name }}">
-                                                            </figure>
-                                                        @endif
-                                                    </a>
-                                                    {{-- <div class="group-flash">
+                @if ($latestProducts->count() > 0)
+                    <div class="wrap-show-advance-info-box style-1">
+                        <h3 class="title-box">
+                            {{ __('frontend.latest_products') }} ({{ $latestProducts->count() }})
+                        </h3>
+                        <div class="wrap-products">
+                            <div class="wrap-product-tab tab-style-1">
+                                <div class="tab-contents">
+                                    <div class="tab-content-item active" id="digital_1a"
+                                        @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
+                                        <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container"
+                                            data-items="5" data-loop="false" data-nav="true" data-dots="false"
+                                            data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                                            @foreach ($latestProducts as $latestProduct)
+                                                <div class="product product-style-2 equal-elem ">
+                                                    <div class="product-thumnail">
+                                                        <a href="detail.html" title="{{ $latestProduct->name }}">
+                                                            @if ($latestProduct->getFirstMediaUrl('image_products', 'small'))
+                                                                <figure>
+                                                                    <img src="{{ $latestProduct->getFirstMediaUrl('image_products', 'small') }}"
+                                                                        width="800" height="800"
+                                                                        alt="{{ $latestProduct->name }}">
+                                                                </figure>
+                                                            @else
+                                                                <figure>
+                                                                    <img src="{{ asset('assets/img/1.jpg') }}"
+                                                                        width="800" height="800"
+                                                                        alt="{{ $latestProduct->name }}">
+                                                                </figure>
+                                                            @endif
+                                                        </a>
+                                                        {{-- <div class="group-flash">
                                                         <span class="flash-item new-label">new</span>
                                                     </div> --}}
-                                                    <div class="wrap-btn">
+                                                        <div class="wrap-btn">
+                                                            <a href="#"
+                                                                class="function-link">{{ __('frontend.quick_view') }}</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-info">
                                                         <a href="#"
-                                                            class="function-link">{{ __('frontend.quick_view') }}</a>
+                                                            class="product-name"><span>{{ $latestProduct->name }}</span></a>
+                                                        <div class="wrap-price"><span
+                                                                class="product-price">{{ $latestProduct->price }}$</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="product-info">
-                                                    <a href="#"
-                                                        class="product-name"><span>{{ $latestProduct->name }}</span></a>
-                                                    <div class="wrap-price"><span
-                                                            class="product-price">{{ $latestProduct->price }}$</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
                 <!--Product Categories-->
                 <div class="wrap-show-advance-info-box style-1">

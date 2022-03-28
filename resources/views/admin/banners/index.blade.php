@@ -145,14 +145,14 @@
                                                             <div class="row">
                                                                 <div class="col-sm-12 col-xl-6">
                                                                     <div class="form-group">
-                                                                        <label
-                                                                            for="title_ar">{{ __('translation.title_ar') }}</label>
+                                                                        <label for="title_ar">
+                                                                            {{ __('translation.title_ar') }}
+                                                                        </label>
                                                                         <input type="text"
                                                                             class="form-control  @error('title_ar') is-invalid @enderror"
                                                                             id="title_ar" name="title_ar"
                                                                             value="{{ old('title_ar', $banner->getTranslation('title', 'ar')) }}"
-                                                                            placeholder="
-                                                                                                                                                                    {{ __('translation.enter_the_title_en') }}">
+                                                                            placeholder="{{ __('translation.enter_the_title_ar') }}">
                                                                         @error('title_ar')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -186,7 +186,7 @@
                                                                             class="form-control  @error('alternative') is-invalid @enderror"
                                                                             id="alternative" name="alternative"
                                                                             value="{{ old('alternative', $banner->alternative) }}"
-                                                                            placeholder="{{ __('translation.enter_the_title_en') }}">
+                                                                            placeholder="{{ __('translation.enter_the_alternative') }}">
                                                                         @error('alternative')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -202,7 +202,7 @@
                                                                             class="form-control  @error('link') is-invalid @enderror"
                                                                             id="link" name="link"
                                                                             value="{{ old('link', $banner->link) }}"
-                                                                            placeholder="{{ __('translation.enter_the_title_en') }}">
+                                                                            placeholder="{{ __('translation.enter_the_link') }}">
                                                                         @error('link')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -298,7 +298,7 @@
                                     <label for="title_ar">{{ __('translation.title_ar') }}</label>
                                     <input type="text" class="form-control  @error('title_ar') is-invalid @enderror"
                                         id="title_ar" name="title_ar" value="{{ old('title_ar') }}"
-                                        placeholder="{{ __('translation.enter_the_title_en') }}">
+                                        placeholder="{{ __('translation.enter_the_title_ar') }}">
                                     @error('title_ar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -326,7 +326,7 @@
                                     <label for="alternative">{{ __('translation.alternative') }}</label>
                                     <input type="text" class="form-control  @error('alternative') is-invalid @enderror"
                                         id="alternative" name="alternative" value="{{ old('alternative') }}"
-                                        placeholder="{{ __('translation.enter_the_title_en') }}">
+                                        placeholder="{{ __('translation.enter_the_alternative') }}">
                                     @error('alternative')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -339,7 +339,7 @@
                                     <label for="link">{{ __('translation.link') }}</label>
                                     <input type="text" class="form-control  @error('link') is-invalid @enderror" id="link"
                                         name="link" value="{{ old('link') }}"
-                                        placeholder="{{ __('translation.enter_the_title_en') }}">
+                                        placeholder="{{ __('translation.enter_the_link') }}">
                                     @error('link')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

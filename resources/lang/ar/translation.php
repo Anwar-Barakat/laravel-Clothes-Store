@@ -186,11 +186,13 @@ return [
     'add_new_banner'            => 'إضافة راية جديدة',
     'enter_the_title_ar'        => 'أدخل العنوان بالعربي',
     'enter_the_title_en'        => 'أدخل العنوان بالأنكليزي',
+    'enter_the_link'            => 'ادخال الرابط',
+    'enter_the_alternative'     => 'ادخل البديل',
     'title_ar'                  => 'العنوان بالعربي',
     'title_en'                  => 'العنوان بالأنكليزي',
     'link'                      => 'الرابط',
     'alternative'               => 'البديل',
-    'title'                     => 'العنوان'
+    'title'                     => 'العنوان',
 
 
 ];

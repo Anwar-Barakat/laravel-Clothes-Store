@@ -55,4 +55,29 @@ class Category extends Model implements HasMedia
     {
         return $this->belongsTo(Category::class, 'parent_id')->select('id', 'name');
     }
+
+    public static function catDetails($url)
+    {
+        $catDetails = Category::select('id', 'name', 'url')
+            ->with([
+                'subCategories' => function ($q) {
+                    $q->select('id', 'parent_id')->where('status', 1);
+                }
+            ])
+            ->where('url', $url)
+            ->first()
+            ->toArray();
+
+        $categoryIds    = [];
+        $categoryIds[]  = $catDetails['id'];
+        foreach ($catDetails['sub_categories'] as $key => $subCat) {
+            // push id of main cat and its subcats into $categoryIds:
+            $categoryIds[] = $subCat['id'];
+        }
+
+        return [
+            'catDetails'        => $catDetails,
+            'categoryIds'       => $categoryIds
+        ];
+    }
 }
