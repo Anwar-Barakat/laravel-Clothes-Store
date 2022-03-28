@@ -27,4 +27,10 @@ class Banner extends Model implements HasMedia
             ->width(1040)
             ->height(500);
     }
+
+
+    public static  function getBanners()
+    {
+        return Banner::where('status', 1)->orderBy('id', 'desc')->get();
+    }
 }

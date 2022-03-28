@@ -22,6 +22,7 @@ return [
     'latest_products'       => 'آخر المنتجات',
     'on_sale'               => 'معروض للبيع',
     'products_categories'   => 'منتجات الفئات',
+    'shop_now'              => 'اشتري الأن',
 
 
 
@@ -57,5 +58,5 @@ return [
     'Bestseller'            => 'الأكثر مبيعاً',
     'all_sections'          => 'جميع الأقسام',
     'color'                 => 'اللون',
-    'quick_view'            => 'عرض سريع'
+    'quick_view'            => 'عرض سريع',
 ];

@@ -22,6 +22,7 @@ return [
     'latest_products'       => 'Latest Products',
     'on_sale'               => 'On Sale',
     'products_categories'   => 'Products Categories',
+    'shop_now'              => 'Shop Now',
 
 
 
