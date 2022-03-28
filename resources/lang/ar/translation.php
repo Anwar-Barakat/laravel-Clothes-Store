@@ -16,6 +16,7 @@ return [
     'products'                  => 'المنتجات',
     'all_products'              => 'عرض المنتجات',
     'add_product'               => 'إضافة منتج',
+    'banners'                   => 'الرايات',
 
 
 
@@ -180,5 +181,9 @@ return [
     'update_brand'              => 'تحديث الشعار',
 
 
-    
+    // Banners :
+    'update_banner'             => 'تحديث الراية',
+    'add_new_banner'            => 'إضافة رايو جديدة',
+
+
 ];

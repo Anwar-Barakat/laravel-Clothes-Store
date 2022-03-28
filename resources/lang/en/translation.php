@@ -16,6 +16,7 @@ return [
     'products'                  => 'Products',
     'all_products'              => 'Display Products',
     'add_product'               => 'Add Product',
+    'banners'                   => 'Banners',
 
 
     // dashboard :
@@ -176,4 +177,14 @@ return [
     'update_brand'              => 'Update Brand',
     'add_new_brand'             => 'Add New Brand',
     'update_brand'              => 'Update Brand',
+
+
+    // Banners :
+    'update_banner'             => 'Update Banner',
+    'add_new_banner'            => 'Add New Banner',
+    'enter_the_title_ar'        => 'Enter Arabic Title',
+    'enter_the_title_en'        => 'Enter English Title',
+    'title_ar'                  => 'Arabic Title',
+    'title_en'                  => 'English Title',
+
 ];

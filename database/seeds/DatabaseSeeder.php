@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             SectionSeeder::class,
             BrandSeeder::class,
             CategorySeeder::class,
+            BannerSeeder::class,
 
 
         ]);

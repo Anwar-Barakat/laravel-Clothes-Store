@@ -9,6 +9,7 @@ Admin Dashboard :
         -  update details and upload Avatar. 
     -   CRU Sections. 
     -   CRUD Brands. 
+    -   CRUD Banners. 
     -   CRU Categories.  
     -   CRU Products
         -   CRUD Product Attributes.

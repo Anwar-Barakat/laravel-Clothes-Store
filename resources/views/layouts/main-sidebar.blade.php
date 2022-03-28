@@ -76,6 +76,14 @@
                 </a>
             </li>
 
+            {{-- Banners --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.banners.index') }}">
+                    <i class="fas fa-flag icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.banners') }}</span>
+                </a>
+            </li>
+
             {{-- categories --}}
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
@@ -185,7 +193,8 @@
                     </li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'calendar')) }}">Calendar</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'contacts')) }}">Contacts</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'image-compare')) }}">Image-compare</a>
+                    <li><a class="slide-item"
+                            href="{{ url('/' . ($page = 'image-compare')) }}">Image-compare</a>
                     </li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'notification')) }}">Notification</a>
                     </li>

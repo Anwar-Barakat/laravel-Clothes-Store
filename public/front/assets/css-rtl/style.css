@@ -2010,7 +2010,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .product-style-2:hover {
-    border-color: #ffa67b;
+    border-color: #00968861;
 }
 
 .product .product-thumnail {
@@ -8173,7 +8173,7 @@ table.shop_attributes tbody {
 }
 
 .wrap-search-form .content {
-    background-color: #d3d3d3;
+    background-color: #ededed;
     border: 10px;
     padding: 2.5rem;
     width: 100%;

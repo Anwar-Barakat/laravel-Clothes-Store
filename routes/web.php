@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminSettingController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -60,6 +61,16 @@ Route::group(
                 Route::post('sections/add',                                     [SectionController::class, 'store'])->name('sections.store');
                 Route::post('sections/update/{section}',                        [SectionController::class, 'update'])->name('sections.update');
                 Route::post('update-section-status',                            [SectionController::class, 'updateSectionStatus']);
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Banner :
+                Route::get('banners/index',                                     [BannerController::class, 'index'])->name('banners.index');
+                Route::post('banners/add',                                      [BannerController::class, 'store'])->name('banners.store');
+                Route::post('banners/update/{brand}',                           [BannerController::class, 'update'])->name('banners.update');
+                Route::post('update-banner-status',                             [BannerController::class, 'updateBannerStatus']);
 
 
                 // **************************************************************

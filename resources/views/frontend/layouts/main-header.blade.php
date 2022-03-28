@@ -187,11 +187,9 @@
 
 @section('js')
     <script>
-        $(document).ready(function() {
-            $(".all_categories").click(function(e) {
-                e.preventDefault();
-                $(".mega-box").toggleClass("active");
-            });
+        $(document).on('click', '.all_categories', function(e) {
+            e.preventDefault();
+            $(".mega-box").toggleClass("active");
         });
     </script>
 @endsection
