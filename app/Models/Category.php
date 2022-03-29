@@ -58,7 +58,7 @@ class Category extends Model implements HasMedia
 
     public static function catDetails($url)
     {
-        $catDetails = Category::select('id', 'name', 'url')
+        $catDetails = Category::select('id', 'parent_id', 'name', 'url')
             ->with([
                 'subCategories' => function ($q) {
                     $q->select('id', 'parent_id')->where('status', 1);
@@ -67,6 +67,19 @@ class Category extends Model implements HasMedia
             ->where('url', $url)
             ->first()
             ->toArray();
+
+        // main cat :
+        if ($catDetails['parent_id'] == 0) {
+
+            $breadcrumbs = '<a href="' . url('/shop/' . $catDetails['url']) . '" class="breadcrumb_cat">' . $catDetails['name'] . '</a>';
+        } else {
+            // subcat
+            $parentCat = Category::select('name', 'url')->where('id', $catDetails['parent_id'])->first()->toArray();
+            $breadcrumbs = '
+                <a href="' . url('/shop/' . $parentCat['url']) . '" class="breadcrumb_cat">' . $parentCat['name'] . '</a>\
+                <a href="' . url('/shop/' . $catDetails['url']) . '" class="breadcrumb_cat">' . $catDetails['name'] . '</a>';
+        }
+
         $categoryIds    = [];
         $categoryIds[]  = $catDetails['id'];
         foreach ($catDetails['sub_categories'] as $key => $subCat) {
@@ -76,7 +89,8 @@ class Category extends Model implements HasMedia
 
         return [
             'catDetails'        => $catDetails,
-            'categoryIds'       => $categoryIds
+            'categoryIds'       => $categoryIds,
+            'breadcrumbs'       => $breadcrumbs
         ];
     }
 }

@@ -19,10 +19,20 @@ class ProductController extends Controller
         $categoryCount = Category::where('url', $url)->count();
         if ($categoryCount > 0) {
             $categoryDetails    = (object)Category::catDetails($url);
-            $categoryProducts   = (object)Product::whereIn('category_id', $categoryDetails->categoryIds)
-                ->where('status', 1)
-                ->get();
-            return view('frontend.shop', ['categoryDetails'  => $categoryDetails, 'categoryProducts' => $categoryProducts]);
+
+
+            $categoryProducts   = Product::with([
+                'brand' => function ($q) {
+                    $q->select('id', 'name');
+                }
+            ])->whereIn('category_id', $categoryDetails->categoryIds)
+                ->where('status', 1)->get();
+
+
+            return view('frontend.shop', [
+                'categoryDetails'  => $categoryDetails,
+                'categoryProducts' => $categoryProducts
+            ]);
         } else {
             return redirect()->back();
         }

@@ -42,11 +42,11 @@ class Product extends Model implements HasMedia
             ->height(1200);
 
         $this->addMediaConversion('medium')
-            ->width(520)
+            ->width(600)
             ->height(600);
 
         $this->addMediaConversion('small')
-            ->width(260)
+            ->width(300)
             ->height(300);
     }
 

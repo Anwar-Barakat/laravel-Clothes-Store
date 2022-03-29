@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Brand;
 use App\Models\Section;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -33,7 +34,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('frontend.shop', function ($view) {
-            $view->with('sections', Section::with('categories')->get());
+            $view->with([
+                'sections'  => Section::with('categories')->get(),
+                'brands'    => Brand::all(),
+            ]);
         });
     }
 }

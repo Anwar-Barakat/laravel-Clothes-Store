@@ -21,14 +21,15 @@
                         <div class="banner-shop">
                             <a href="#" class="banner-link">
                                 <figure>
-                                    <img class="shop-image" src="{{ asset('front/assets/images/shop-banner.jpg') }}"
-                                        alt="">
+                                    <img class="shop-image" {{-- src="{{ $categoryDetails->catDetails->getFirstMediaUrl('categories', 'thumb') }}" --}}
+                                        src="{{ asset('front/assets/images/shop-banner.jpg') }}" alt="">
                                 </figure>
                             </a>
                         </div>
                         <div class="wrap-shop-control">
                             <h1 class="shop-title">
                                 {{ $categoryDetails->catDetails['name'] }}
+                                ({{ $categoryProducts->count() }})
                             </h1>
                             <div class="wrap-right">
                                 <div class="sort-item orderby ">
@@ -66,6 +67,11 @@
                                 </div>
                             </div>
                         </div>
+                        <h4 dir="ltr">
+                            @php
+                                echo $categoryDetails->breadcrumbs;
+                            @endphp
+                        </h4>
                         <!--end wrap shop control-->
                         <div class="row">
                             <ul class="product-list grid-products equal-container">
@@ -74,10 +80,17 @@
                                         <div class="product product-style-3 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="detail.html" title="{{ $product->name }}">
-                                                    <figure>
-                                                        <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
-                                                            alt="{{ $product->name }}">
-                                                    </figure>
+                                                    @if ($product->getFirstMediaUrl('image_products', 'small'))
+                                                        <figure>
+                                                            <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
+                                                                alt="{{ $product->name }}">
+                                                        </figure>
+                                                    @else
+                                                        <figure>
+                                                            <img src="{{ asset('assets/img/products/default-image.png') }}"
+                                                                alt="">
+                                                        </figure>
+                                                    @endif
                                                 </a>
                                             </div>
                                             <div class="product-info">
@@ -139,23 +152,13 @@
                             <h2 class="widget-title">{{ __('frontend.brands') }}</h2>
                             <div class="widget-content">
                                 <ul class="list-style vertical-list list-limited" data-show="6">
-                                    <li class="list-item"><a class="filter-link active" href="#">Fashion Clothings</a>
-                                    </li>
-                                    <li class="list-item"><a class="filter-link " href="#">Laptop Batteries</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">Printer & Ink</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">CPUs & Prosecsors</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">Sound & Speaker</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">Shop Smartphone &
-                                            Tablets</a></li>
-                                    <li class="list-item default-hiden"><a class="filter-link " href="#">Printer & Ink</a>
-                                    </li>
-                                    <li class="list-item default-hiden"><a class="filter-link " href="#">CPUs &
-                                            Prosecsors</a></li>
-                                    <li class="list-item default-hiden"><a class="filter-link " href="#">Sound &
-                                            Speaker</a>
-                                    </li>
-                                    <li class="list-item default-hiden"><a class="filter-link " href="#">Shop Smartphone &
-                                            Tablets</a></li>
+                                    @foreach ($brands as $index => $brand)
+                                        <li class="list-item {{ $index >= 3 ? 'default-hiden' : '' }}">
+                                            <a class="filter-link " href="#">
+                                                {{ $brand->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                     <li class="list-item">
                                         <a data-label='{{ __('frontend.show_more') }}<i class="fa fa-angle-up" aria-hidden="true"></i>'
                                             class="btn-control control-show-more" href="#">
@@ -230,9 +233,10 @@
                                             <div class="thumbnnail">
                                                 <a href="detail.html"
                                                     title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                    <figure><img
-                                                            src="{{ asset('front/assets/images/products/digitals/digital_01.jpg') }}"
-                                                            alt=""></figure>
+                                                    <figure>
+                                                        <img src="{{ asset('front/assets/images/products/digitals/digital_01.jpg') }}"
+                                                            alt="">
+                                                    </figure>
                                                 </a>
                                             </div>
                                             <div class="product-info">
