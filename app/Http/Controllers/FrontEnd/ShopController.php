@@ -15,8 +15,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $sections =  Section::with('categories')->get();
-        return view('frontend.shop', ['sections'    => $sections]);
+        return view('frontend.shop');
     }
 
     /**

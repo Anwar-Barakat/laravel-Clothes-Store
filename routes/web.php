@@ -144,7 +144,7 @@ Route::group(
             Route::get('/',                 [HomeController::class, 'index'])->name('home');
             Route::get('/shop',             [ShopController::class, 'index'])->name('shop');
             Route::get('/cart',             [CartController::class, 'index'])->name('cart');
-            Route::get('/{url}',            [FrontendProductController::class, 'index'])->name('url');
+            Route::get('/shop/{url}',            [FrontendProductController::class, 'index'])->name('url');
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }

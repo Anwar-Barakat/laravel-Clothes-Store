@@ -81,6 +81,22 @@
                                     <div class="content">
                                         @foreach ($sections as $section)
                                             <div class="main">
+                                                @if ($section->getTranslation('name', 'en') == 'Electronics')
+                                                    <div>
+                                                        <img src="{{ asset('assets/img/cats_mega_menu/electronics.jpg') }}"
+                                                            alt="" class="mega__menu__image">
+                                                    </div>
+                                                @elseif ($section->getTranslation('name', 'en') == 'Men')
+                                                    <div>
+                                                        <img src="{{ asset('assets/img/cats_mega_menu/men.jpg') }}"
+                                                            alt="" class="mega__menu__image">
+                                                    </div>
+                                                @elseif ($section->getTranslation('name', 'en') == 'Women')
+                                                    <div>
+                                                        <img src="{{ asset('assets/img/cats_mega_menu/women.png') }}"
+                                                            alt="" class="mega__menu__image">
+                                                    </div>
+                                                @endif
                                                 <p>{{ $section->name }}</p>
                                                 <ul class="mega-links">
                                                     @foreach ($section->categories ?? [] as $category)

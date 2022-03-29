@@ -31,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer('frontend.layouts.main-header', function ($view) {
             $view->with('sections', Section::with('categories')->get());
         });
+
+        View::composer('frontend.shop', function ($view) {
+            $view->with('sections', Section::with('categories')->get());
+        });
     }
 }

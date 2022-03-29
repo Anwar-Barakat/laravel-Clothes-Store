@@ -19,12 +19,12 @@ class SectionSeeder extends Seeder
                 'ar' => 'الألكترونيات',
             ],
             [
-                'en' => 'Men Clothes',
-                'ar' => 'ملابس للرجال',
+                'en' => 'Men',
+                'ar' => 'الرجال',
             ],
             [
-                'en' => 'ًWoman Clothes',
-                'ar' => 'ملابس للنساء',
+                'en' => 'Women',
+                'ar' => 'النساء',
             ],
         ];
 

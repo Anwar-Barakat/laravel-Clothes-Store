@@ -67,7 +67,6 @@ class Category extends Model implements HasMedia
             ->where('url', $url)
             ->first()
             ->toArray();
-
         $categoryIds    = [];
         $categoryIds[]  = $catDetails['id'];
         foreach ($catDetails['sub_categories'] as $key => $subCat) {

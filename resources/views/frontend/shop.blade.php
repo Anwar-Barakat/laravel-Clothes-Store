@@ -27,7 +27,8 @@
                             </a>
                         </div>
                         <div class="wrap-shop-control">
-                            <h1 class="shop-title">{{ __('frontend.digitals') }} & {{ __('frontend.electronic') }}
+                            <h1 class="shop-title">
+                                {{ $categoryDetails->catDetails['name'] }}
                             </h1>
                             <div class="wrap-right">
                                 <div class="sort-item orderby ">
@@ -68,23 +69,33 @@
                         <!--end wrap shop control-->
                         <div class="row">
                             <ul class="product-list grid-products equal-container">
-                                <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                                    <div class="product product-style-3 equal-elem ">
-                                        <div class="product-thumnail">
-                                            <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                                <figure><img
-                                                        src="{{ asset('front/assets/images/products/digitals/digital_20.jpg') }}"
-                                                        alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
-                                            </a>
+                                @forelse ($categoryProducts as $product)
+                                    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                        <div class="product product-style-3 equal-elem ">
+                                            <div class="product-thumnail">
+                                                <a href="detail.html" title="{{ $product->name }}">
+                                                    <figure>
+                                                        <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
+                                                            alt="{{ $product->name }}">
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <div class="product-info">
+                                                <span>{{ $product->brand->name }}</span>
+                                                <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
+                                                <div class="wrap-price"><span
+                                                        class="product-price">${{ $product->price }}</span>
+                                                </div>
+                                                <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
+                                            </div>
                                         </div>
-                                        <div class="product-info">
-                                            <a href="#" class="product-name"><span>Radiant-360 R6 Wireless Omnidirectional
-                                                    Speaker [White]</span></a>
-                                            <div class="wrap-price"><span class="product-price">$250.00</span></div>
-                                            <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @empty
+                                    <li class="col-12"
+                                        style="text-align: center;line-height: 8rem;font-size: 2rem;">
+                                        {{ __('msgs.no_products_yet') }}
+                                    </li>
+                                @endforelse
                             </ul>
                         </div>
 
@@ -111,7 +122,8 @@
                                                     @foreach ($category->subCategories ?? [] as $subcategory)
                                                         <li class="category-item">
                                                             <a href="" class="cate-link">
-                                                                &nbsp;&raquo;&nbsp;{{ $subcategory->name }}</a>
+                                                                - {{ $subcategory->name }}
+                                                            </a>
                                                         </li>
                                                     @endforeach
                                                 </ul>

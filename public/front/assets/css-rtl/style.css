@@ -2763,7 +2763,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .product.product-style-3 .product-name span {
-    font-size: 13px;
+    font-size: 18px;
     line-height: 18px;
     color: #444444;
     margin-top: 11px;
@@ -2890,10 +2890,8 @@ li.menu-item .nav-label.sale-label::before {
     margin: 0;
     width: 100%;
     text-align: right;
-    border-bottom: 1px solid #e6e6e6;
-    padding-bottom: 19px;
-    margin-bottom: 18px;
-    float: right;
+    margin-bottom: 16px;
+    float: left;
 }
 
 .widget ul li a {

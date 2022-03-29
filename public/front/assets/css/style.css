@@ -2761,7 +2761,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .product.product-style-3 .product-name span {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 18px;
     color: #444444;
     margin-top: 11px;
@@ -6466,8 +6466,6 @@ table.shop_attributes tbody {
     display: block;
     margin: 30px 0 30px 0;
     border-top: 1px solid #e6e6e6;
-    /*border-bottom: 1px solid #e6e6e6;*/
-    /*padding-bottom: 1px;*/
 }
 
 .wrap-brands .owl-stage-outer {

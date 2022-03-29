@@ -44,5 +44,6 @@ return [
 
 
     // FrontEnd :
-    'copy_right'                => 'Copyright © 2022 Anwar Store. All rights reserved'
+    'copy_right'                => 'Copyright © 2022 Anwar Store. All rights reserved',
+    'no_products_yet'           => 'No Products Yet !!',
 ];

@@ -58,7 +58,7 @@
                                                 <img src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}"
                                                     alt="{{ $banner->title }}" class="img img-thumbnail">
                                             @else
-                                                <img src="{{ asset('assets/img/banners/4.jpg') }}"
+                                                <img src="{{ asset('assets/img/banners/banner-default.jpg') }}"
                                                     alt="{{ $banner->title }}" class="img img-thumbnail">
                                             @endif
                                         </td>
