@@ -40,16 +40,28 @@
                             </h1>
                             <div class="wrap-right">
                                 <div class="sort-item orderby ">
-                                    <select name="orderby" class="use-chosen">
-                                        <option value="menu_order" selected="selected">
-                                            {{ __('frontend.default_sorting') }}
-                                        </option>
-                                        <option value="popularity">Sort by popularity</option>
-                                        <option value="rating">Sort by average rating</option>
-                                        <option value="date">Sort by newness</option>
-                                        <option value="price">Sort by price: low to high</option>
-                                        <option value="price-desc">Sort by price: high to low</option>
-                                    </select>
+                                    <form id="sortProduct" name="sortProduct">
+                                        <select name="orderby" id="orderby" class="use-chosen">
+                                            <option value="" selected="selected">
+                                                {{ __('frontend.default_sorting') }}
+                                            </option>
+                                            <option value="date"
+                                                @if (isset($_GET['orderby']) && $_GET['orderby'] == 'date') {{ 'selected' }} @endif>
+                                                {{ __('frontend.newest_sort') }}</option>
+                                            <option value="name_a_z"
+                                                @if (isset($_GET['orderby']) && $_GET['orderby'] == 'name_a_z') {{ 'selected' }} @endif>
+                                                {{ __('frontend.name_a_z_sort') }}</option>
+                                            <option value="name_z_a"
+                                                @if (isset($_GET['orderby']) && $_GET['orderby'] == 'name_z_a') {{ 'selected' }} @endif>
+                                                {{ __('frontend.name_z_a_sort') }}</option>
+                                            <option value="price_asc"
+                                                @if (isset($_GET['orderby']) && $_GET['orderby'] == 'price_asc') {{ 'selected' }} @endif>
+                                                {{ __('frontend.price_asc_sort') }}</option>
+                                            <option value="price_desc"
+                                                @if (isset($_GET['orderby']) && $_GET['orderby'] == 'price_desc') {{ 'selected' }} @endisset>
+                                                {{ __('frontend.price_desc_sort') }}</option>
+                                        </select>
+                                    </form>
                                 </div>
 
                                 <div class="sort-item product-per-page">
@@ -160,7 +172,11 @@
                         </div>
 
                         <div class="wrap-pagination-info">
-
+                            @if (isset($_GET['orderby']) && !empty($_GET['orderby']))
+                                {{ $categoryProducts->appends(['orderby' => $_GET['orderby']])->links() }}
+                            @else
+                                {{ $categoryProducts->links() }}
+                            @endif
                         </div>
                     </div>
                     <!--end main products area-->
@@ -371,6 +387,7 @@
 @endsection
 
 @section('js')
+    {{-- List & Grid Menu --}}
     <script>
         var gridMode = document.querySelector('.grid-mode');
         var listMode = document.querySelector('.list-mode');
@@ -391,6 +408,13 @@
             }
             document.querySelector('.product-grid-template').classList.add('disactive');
             document.querySelector('.product-list-template').classList.remove('disactive');
+        });
+    </script>
+
+    {{-- Sorting --}}
+    <script>
+        $('#orderby').on('change', function() {
+            $('#sortProduct').submit();
         });
     </script>
 @endsection

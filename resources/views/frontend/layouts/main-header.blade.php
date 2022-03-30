@@ -169,13 +169,13 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.shop') }}" class="link-term mercado-item-title ">
+                                <a href="" class="link-term mercado-item-title ">
                                     {{ __('frontend.about_us') }}
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.shop') }}"
-                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.shop') ? 'active' : '' }} ">
+                                <a href="{{ route('frontend.url', 'asus') }}"
+                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'active' : '' }} ">
                                     {{ __('frontend.shop') }}
                                 </a>
                             </li>

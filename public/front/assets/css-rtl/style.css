@@ -2914,6 +2914,8 @@ li.menu-item .nav-label.sale-label::before {
 .widget ul {
     padding: 0;
     margin: 0;
+    display: grid;
+    row-gap: 0rem;
 }
 
 .widget.categories-widget .widget-title {

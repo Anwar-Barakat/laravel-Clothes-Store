@@ -41,6 +41,11 @@ return [
     'popular_product'       => 'POPULAR PRODUCTS',
     'default_sorting'       => 'Default Sorting',
     'per_page'              => 'Per Page',
+    'newest_sort'           => 'Sort by newness',
+    'name_a_z_sort'         => 'Sort by name: A to Z',
+    'name_z_a_sort'         => 'Sort by name: Z to A',
+    'price_asc_sort'        => 'Sort by price: low to high',
+    'price_desc_sort'       => 'Sort by price: high to low',
 
 
     // Cart :

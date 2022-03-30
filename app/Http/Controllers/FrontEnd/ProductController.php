@@ -14,7 +14,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($url)
+    public function index($url = 'asus')
     {
         $categoryCount = Category::where('url', $url)->count();
         if ($categoryCount > 0) {
@@ -26,20 +26,38 @@ class ProductController extends Controller
                     $q->select('id', 'name');
                 }
             ])->whereIn('category_id', $categoryDetails->categoryIds)
-                ->where('status', 1)->get();
+                ->where('status', 1);
+
+            // sorting :
+            if (isset($_GET['orderby']) && !empty($_GET['orderby'])) {
+                if ($_GET['orderby'] == 'date')
+                    $categoryProducts =  $categoryProducts->orderBy('created_at', 'DESC');
+
+                elseif ($_GET['orderby'] == 'name_a_z')
+                    $categoryProducts =  $categoryProducts->orderBy('name', 'ASC');
+
+                elseif ($_GET['orderby'] == 'name_z_a')
+                    $categoryProducts =  $categoryProducts->orderBy('name', 'DESC');
+
+                elseif ($_GET['orderby'] == 'price_asc')
+                    $categoryProducts =  $categoryProducts->orderBy('price', 'ASC');
+
+                elseif ($_GET['orderby'] == 'price_desc')
+                    $categoryProducts =  $categoryProducts->orderBy('price', 'DESC');
+            }
+
+            $categoryProducts = $categoryProducts->paginate(3);
 
 
             $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
-
-
-            return view('frontend.shop', [
-                'categoryDetails'   => $categoryDetails,
-                'categoryProducts'  => $categoryProducts,
-                'categoryImageId'   => $categoryImageId
-            ]);
         } else {
-            return redirect()->back();
         }
+
+        return view('frontend.shop', [
+            'categoryDetails'   => $categoryDetails,
+            'categoryProducts'  => $categoryProducts,
+            'categoryImageId'   => $categoryImageId
+        ]);
     }
 
     /**
