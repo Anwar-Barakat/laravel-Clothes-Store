@@ -126,10 +126,10 @@
                                                                     <option value="">{{ __('translation.choose..') }}
                                                                     </option>
                                                                     <option value="1"
-                                                                        {{ $section->status ? 'selected' : '' }}>
+                                                                        {{ old('status', $section->status) == '1' ? 'selected' : '' }}>
                                                                         {{ __('translation.active') }}</option>
                                                                     <option value="0"
-                                                                        {{ $section->status ? '' : 'selected' }}>
+                                                                        {{ old('status', $section->status) == '1' ? 'selected' : '' }}>
                                                                         {{ __('translation.disactive') }}
                                                                     </option>
                                                                 </select>

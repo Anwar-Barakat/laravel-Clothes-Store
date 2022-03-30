@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                         <div class="banner-shop">
-                            <a href="#" class="banner-link">
+                            <a href="{{ $categoryImageId->url }}" class="banner-link">
                                 @if ($categoryImageId->getFirstMediaUrl('categories', 'thumb'))
                                     <figure>
                                         <img class="shop-image"
@@ -174,14 +174,15 @@
                                         <h5 class="section-title">{{ $section->name }} :</h5>
                                         @foreach ($section->categories ?? [] as $category)
                                             <li class="category-item has-child-cate">
-                                                <a href="#" class="cate-link">{{ $category->name }}</a>
+                                                <a href="{{ $category->url }}"
+                                                    class="cate-link">{{ $category->name }}</a>
                                                 @if ($category->subCategories->count() > 0)
                                                     <span class="toggle-control">+</span>
                                                 @endif
                                                 <ul class="sub-cate">
                                                     @foreach ($category->subCategories ?? [] as $subcategory)
                                                         <li class="category-item">
-                                                            <a href="" class="cate-link">
+                                                            <a href="{{ $subcategory->url }}" class="cate-link">
                                                                 - {{ $subcategory->name }}
                                                             </a>
                                                         </li>

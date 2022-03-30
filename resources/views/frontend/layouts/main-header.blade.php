@@ -75,9 +75,9 @@
                         <div class="wrap-search-form">
                             <form action="#" id="form-search-top" name="form-search-top">
                                 @csrf
-                                <a href="javascript:void(0);"
+                                <a href="javascript:void(0);" id="allCats"
                                     class="all_categories">{{ __('frontend.all_categories') }}</a>
-                                <div class="mega-box">
+                                <div class="mega-box" id="megaBox">
                                     <div class="content">
                                         @foreach ($sections as $section)
                                             <div class="main">
@@ -101,13 +101,16 @@
                                                 <ul class="mega-links">
                                                     @foreach ($section->categories ?? [] as $category)
                                                         <li>
-                                                            <a href="">{{ $category->name }}</a>
+                                                            <a href="{{ $category->url }}">
+                                                                {{ $category->name }}
+                                                            </a>
                                                         </li>
                                                         <ul class="sub__mega-links">
                                                             @foreach ($category->subCategories ?? [] as $subcategory)
                                                                 <li>
-                                                                    <a href="">
-                                                                        &nbsp;&raquo;&nbsp;{{ $subcategory->name }}</a>
+                                                                    <a href="{{ $subcategory->url }}">
+                                                                        &nbsp;&raquo;&nbsp;{{ $subcategory->name }}
+                                                                    </a>
                                                                 </li>
                                                             @endforeach
                                                         </ul>
@@ -202,10 +205,4 @@
 
 
 @section('js')
-    <script>
-        $(document).on('click', '.all_categories', function(e) {
-            e.preventDefault();
-            $(".mega-box").toggleClass("active");
-        });
-    </script>
 @endsection

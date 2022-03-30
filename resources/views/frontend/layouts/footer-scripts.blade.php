@@ -58,4 +58,15 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </script>
 @endif
 
+
+
+
+<script>
+    let btn = document.getElementById('allCats');
+    let megaBox = document.getElementById('megaBox');
+    btn.addEventListener('click', () => {
+        megaBox.classList.toggle("active")
+    });
+</script>
+
 @yield('js')

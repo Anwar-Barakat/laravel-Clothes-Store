@@ -58,8 +58,8 @@
                                                 <img src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}"
                                                     alt="{{ $banner->title }}" class="img img-thumbnail">
                                             @else
-                                                <img src="{{ asset('assets/img/banners/banner-default.jpg') }}"
-                                                    alt="{{ $banner->title }}" class="img img-thumbnail">
+                                                <img src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt=""
+                                                    class="img img-thumbnail">
                                             @endif
                                         </td>
                                         <td>
@@ -136,9 +136,8 @@
                                                                             alt="{{ $banner->title }}"
                                                                             class="img img-thumbnail banner-image">
                                                                     @else
-                                                                        <img src="{{ asset('assets/img/banners/4.jpg') }}"
-                                                                            alt="{{ $banner->title }}"
-                                                                            class="img img-thumbnail banner-image">
+                                                                        <img src="{{ asset('assets/img/banners/banner-default.jpg') }}"
+                                                                            alt="" class="img img-thumbnail banner-image">
                                                                     @endif
                                                                 </div>
                                                             </div>

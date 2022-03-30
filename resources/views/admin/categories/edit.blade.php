@@ -62,9 +62,11 @@
                                     <select class="form-control @error('status') is-invalid @enderror" id="status"
                                         name="status">
                                         <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="{{ old('status', $category->status) }}">
+                                        <option value="1"
+                                            {{ old('status', $category->status) == '1' ? 'selected' : '' }}>
                                             {{ __('translation.active') }}</option>
-                                        <option value="{{ old('status', $category->status) }}">
+                                        <option value="0"
+                                            {{ old('status', $category->status) == '1' ? 'selected' : '' }}>
                                             {{ __('translation.disactive') }}</option>
                                     </select>
                                     @error('status')
