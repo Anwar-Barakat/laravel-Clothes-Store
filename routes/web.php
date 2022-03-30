@@ -143,7 +143,7 @@ Route::group(
         Route::group(['as' => 'frontend.'], function () {
             Route::get('/',                     [HomeController::class, 'index'])->name('home');
             Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
-            Route::get('/{url}',                [FrontendProductController::class, 'index'])->name('url');
+            Route::any('/{url}',                [FrontendProductController::class, 'index'])->name('url');
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);
     }

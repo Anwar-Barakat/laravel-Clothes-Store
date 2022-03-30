@@ -39,8 +39,9 @@
                                 ({{ $categoryProducts->count() }})
                             </h1>
                             <div class="wrap-right">
-                                <div class="sort-item orderby ">
-                                    <form id="sortProduct" name="sortProduct">
+                                <form id="sortProduct" name="sortProduct">
+                                    <div class="sort-item orderby ">
+                                        <input type="hidden" id="url" name="url" value="{{ $url }}">
                                         <select name="orderby" id="orderby" class="use-chosen">
                                             <option value="" selected="selected">
                                                 {{ __('frontend.default_sorting') }}
@@ -61,29 +62,28 @@
                                                 @if (isset($_GET['orderby']) && $_GET['orderby'] == 'price_desc') {{ 'selected' }} @endisset>
                                                 {{ __('frontend.price_desc_sort') }}</option>
                                         </select>
-                                    </form>
-                                </div>
-
-                                <div class="sort-item product-per-page">
-                                    <select name="post-per-page" class="use-chosen">
-                                        <option value="12" selected="selected">12 {{ __('frontend.per_page') }}</option>
-                                        <option value="16">16 {{ __('frontend.per_page') }}</option>
-                                        <option value="18">18 {{ __('frontend.per_page') }}</option>
-                                        <option value="21">21 {{ __('frontend.per_page') }}</option>
-                                        <option value="24">24 {{ __('frontend.per_page') }}</option>
-                                        <option value="30">30 {{ __('frontend.per_page') }}</option>
-                                        <option value="32">32 {{ __('frontend.per_page') }}</option>
-                                    </select>
-                                </div>
-
-                                <div class="change-display-mode">
-                                    <a href="javascript:void(0);" class="grid-mode display-mode active">
-                                        <i class="fa fa-th"></i>{{ __('frontend.grid') }}
-                                    </a>
-                                    <a href="javascript:void(0);" class="list-mode display-mode">
-                                        <i class="fa fa-th-list"></i>{{ __('frontend.list') }}
-                                    </a>
-                                </div>
+                                    </div>
+                                    <div class="sort-item product-per-page">
+                                        <select name="post-per-page" class="use-chosen">
+                                            <option value="12" selected="selected">12 {{ __('frontend.per_page') }}
+                                            </option>
+                                            <option value="16">16 {{ __('frontend.per_page') }}</option>
+                                            <option value="18">18 {{ __('frontend.per_page') }}</option>
+                                            <option value="21">21 {{ __('frontend.per_page') }}</option>
+                                            <option value="24">24 {{ __('frontend.per_page') }}</option>
+                                            <option value="30">30 {{ __('frontend.per_page') }}</option>
+                                            <option value="32">32 {{ __('frontend.per_page') }}</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="change-display-mode">
+                                <a href="javascript:void(0);" class="grid-mode display-mode active">
+                                    <i class="fa fa-th"></i>{{ __('frontend.grid') }}
+                                </a>
+                                <a href="javascript:void(0);" class="list-mode display-mode">
+                                    <i class="fa fa-th-list"></i>{{ __('frontend.list') }}
+                                </a>
                             </div>
                         </div>
                         <div dir="ltr" class="cat-titles">
@@ -95,81 +95,9 @@
                             <h5>{{ $categoryDetails->catDetails['description'] }}</h5>
                         </div>
                         <!--end wrap shop control-->
-                        <div class="row">
-                            <ul class="grid-products equal-container product-grid-template">
-                                @forelse ($categoryProducts as $product)
-                                    <li>
-                                        <div class="product product-style-3 equal-elem ">
-                                            <div class="product-thumnail">
-                                                <a href="detail.html" title="{{ $product->name }}">
-                                                    @if ($product->getFirstMediaUrl('image_products', 'small'))
-                                                        <figure>
-                                                            <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
-                                                                alt="{{ $product->name }}">
-                                                        </figure>
-                                                    @else
-                                                        <figure>
-                                                            <img src="{{ asset('assets/img/products/default-image.png') }}"
-                                                                alt="">
-                                                        </figure>
-                                                    @endif
-                                                </a>
-                                            </div>
-                                            <div class="product-info">
-                                                <span class="brand">{{ $product->brand->name }}</span>
-                                                <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
-                                                <div class="wrap-price"><span
-                                                        class="product-price">${{ $product->price }}</span>
-                                                </div>
-                                                <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @empty
-                                    <li class="col-12"
-                                        style="text-align: center;line-height: 8rem;font-size: 2rem;">
-                                        {{ __('msgs.no_products_yet') }}
-                                    </li>
-                                @endforelse
-                            </ul>
-                            <ul class="product-list equal-container product-list-template disactive">
-                                @forelse ($categoryProducts as $product)
-                                    <li>
-                                        <div class="product product-style-3 equal-elem ">
-                                            <div class="product-thumnail">
-                                                <a href="detail.html" title="{{ $product->name }}">
-                                                    @if ($product->getFirstMediaUrl('image_products', 'small'))
-                                                        <figure>
-                                                            <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
-                                                                alt="{{ $product->name }}">
-                                                        </figure>
-                                                    @else
-                                                        <figure>
-                                                            <img src="{{ asset('assets/img/products/default-image.png') }}"
-                                                                alt="">
-                                                        </figure>
-                                                    @endif
-                                                </a>
-                                            </div>
-                                            <div class="product-info">
-                                                <span>{{ $product->brand->name }}</span>
-                                                <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
-                                                <p class="product-description">{!! \Illuminate\Support\Str::limit($product->description, 145, '....') !!}</p>
-                                                <div class="wrap-price"><span
-                                                        class="product-price">${{ $product->price }}</span>
-                                                </div>
-                                                <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @empty
-                                    <li class="col-12"
-                                        style="text-align: center;line-height: 8rem;font-size: 2rem;">
-                                        {{ __('msgs.no_products_yet') }}
-                                    </li>
-                                @endforelse
-                            </ul>
-                        </div>
+
+
+                        @include('frontend.partials.ajax_products')
 
                         <div class="wrap-pagination-info">
                             @if (isset($_GET['orderby']) && !empty($_GET['orderby']))
@@ -280,11 +208,6 @@
                                     <li class="list-item"><a class="filter-link " href="#">l</a></li>
                                     <li class="list-item"><a class="filter-link " href="#">xl</a></li>
                                 </ul>
-                                <div class="widget-banner">
-                                    <figure><img src="{{ asset('front/assets/images/size-banner-widget.jpg') }}"
-                                            width="270" height="331" alt="">
-                                    </figure>
-                                </div>
                             </div>
                         </div><!-- Size -->
 
@@ -387,34 +310,4 @@
 @endsection
 
 @section('js')
-    {{-- List & Grid Menu --}}
-    <script>
-        var gridMode = document.querySelector('.grid-mode');
-        var listMode = document.querySelector('.list-mode');
-
-        gridMode.addEventListener('click', () => {
-            if (!gridMode.classList.contains('active')) {
-                listMode.classList.remove('active');
-                gridMode.classList.add('active');
-            }
-            document.querySelector('.product-list-template').classList.add('disactive');
-            document.querySelector('.product-grid-template').classList.remove('disactive');
-        });
-
-        listMode.addEventListener('click', () => {
-            if (!listMode.classList.contains('active')) {
-                gridMode.classList.remove('active');
-                listMode.classList.add('active');
-            }
-            document.querySelector('.product-grid-template').classList.add('disactive');
-            document.querySelector('.product-list-template').classList.remove('disactive');
-        });
-    </script>
-
-    {{-- Sorting --}}
-    <script>
-        $('#orderby').on('change', function() {
-            $('#sortProduct').submit();
-        });
-    </script>
 @endsection

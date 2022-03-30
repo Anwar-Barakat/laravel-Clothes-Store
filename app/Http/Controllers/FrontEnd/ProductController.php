@@ -14,50 +14,76 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($url = 'asus')
+    public function index(Request $request, $url = null)
     {
-        $categoryCount = Category::where('url', $url)->count();
-        if ($categoryCount > 0) {
-            $categoryDetails    = (object)Category::catDetails($url);
+
+        if ($request->ajax()) {
+            $data = $request->only(['url', 'sort']);
+
+            $url = $data['url'];
+
+            $categoryCount = Category::where('url', $url)->count();
+            if ($categoryCount > 0) {
+                $categoryDetails    = (object)Category::catDetails($url);
 
 
-            $categoryProducts   = (object)Product::with([
-                'brand' => function ($q) {
-                    $q->select('id', 'name');
-                }
-            ])->whereIn('category_id', $categoryDetails->categoryIds)
-                ->where('status', 1);
+                $categoryProducts   = (object)Product::with([
+                    'brand' => function ($q) {
+                        $q->select('id', 'name');
+                    }
+                ])->whereIn('category_id', $categoryDetails->categoryIds)
+                    ->where('status', 1);
 
-            // sorting :
-            if (isset($_GET['orderby']) && !empty($_GET['orderby'])) {
-                if ($_GET['orderby'] == 'date')
-                    $categoryProducts =  $categoryProducts->orderBy('created_at', 'DESC');
+                // sorting :
+                if (isset($data['sort']) && !empty($data['sort'])) {
+                    if ($data['sort'] == 'date')
+                        $categoryProducts =  $categoryProducts->orderBy('created_at', 'DESC');
 
-                elseif ($_GET['orderby'] == 'name_a_z')
-                    $categoryProducts =  $categoryProducts->orderBy('name', 'ASC');
+                    elseif ($data['sort'] == 'name_a_z')
+                        $categoryProducts =  $categoryProducts->orderBy('name', 'ASC');
 
-                elseif ($_GET['orderby'] == 'name_z_a')
-                    $categoryProducts =  $categoryProducts->orderBy('name', 'DESC');
+                    elseif ($data['sort'] == 'name_z_a')
+                        $categoryProducts =  $categoryProducts->orderBy('name', 'DESC');
 
-                elseif ($_GET['orderby'] == 'price_asc')
-                    $categoryProducts =  $categoryProducts->orderBy('price', 'ASC');
+                    elseif ($data['sort'] == 'price_asc')
+                        $categoryProducts =  $categoryProducts->orderBy('price', 'ASC');
 
-                elseif ($_GET['orderby'] == 'price_desc')
-                    $categoryProducts =  $categoryProducts->orderBy('price', 'DESC');
+                    elseif ($data['sort'] == 'price_desc')
+                        $categoryProducts =  $categoryProducts->orderBy('price', 'DESC');
+                } else
+                    $categoryProducts =  $categoryProducts->orderBy('id', 'DESC');
+
+                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
+
+                return view('frontend.partials.ajax_products', [
+                    'categoryDetails'   => $categoryDetails,
+                    'categoryProducts'  => $categoryProducts,
+                    'categoryImageId'   => $categoryImageId,
+                    'url'               => $url
+                ]);
+            }
+        } else {
+            $categoryCount = Category::where('url', $url)->count();
+            if ($categoryCount > 0) {
+                $categoryDetails    = (object)Category::catDetails($url);
+                $categoryProducts   = (object)Product::with([
+                    'brand' => function ($q) {
+                        $q->select('id', 'name');
+                    }
+                ])->whereIn('category_id', $categoryDetails->categoryIds)
+                    ->where('status', 1);
+                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
             }
 
-            $categoryProducts = $categoryProducts->paginate(3);
-
-
-            $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
-        } else {
+            return view('frontend.shop', [
+                'categoryDetails'   => $categoryDetails,
+                'categoryProducts'  => $categoryProducts,
+                'categoryImageId'   => $categoryImageId,
+                'url'               => $url
+            ]);
         }
-
-        return view('frontend.shop', [
-            'categoryDetails'   => $categoryDetails,
-            'categoryProducts'  => $categoryProducts,
-            'categoryImageId'   => $categoryImageId
-        ]);
     }
 
     /**

@@ -2654,6 +2654,10 @@ li.menu-item .nav-label.sale-label::before {
     padding: 4.5px 0;
     background: #f5f5f5;
     margin-top: 33px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 1rem;
 }
 
 .wrap-shop-control .shop-title {
