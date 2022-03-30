@@ -1041,6 +1041,11 @@ li.menu-item .nav-label.sale-label::before {
     bottom: 0;
 }
 
+.product-grid-template .product-info .brand {
+    display: block;
+    text-align: right;
+}
+
 .product .product-thumnail figure {
     display: inline-block;
     overflow: hidden;
@@ -7194,7 +7199,10 @@ table.shop_attributes tbody {
         padding-bottom: 10px;
     }
     .wrap-shop-control .wrap-right {
-        float: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
         width: 100%;
         padding-right: 20px;
     }

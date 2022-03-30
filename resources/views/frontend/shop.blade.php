@@ -20,10 +20,17 @@
                     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                         <div class="banner-shop">
                             <a href="#" class="banner-link">
-                                <figure>
-                                    <img class="shop-image" {{-- src="{{ $categoryDetails->catDetails->getFirstMediaUrl('categories', 'thumb') }}" --}}
-                                        src="{{ asset('front/assets/images/shop-banner.jpg') }}" alt="">
-                                </figure>
+                                @if ($categoryImageId->getFirstMediaUrl('categories', 'thumb'))
+                                    <figure>
+                                        <img class="shop-image"
+                                            src="{{ $categoryImageId->getFirstMediaUrl('categories', 'thumb') }}">
+                                    </figure>
+                                @else
+                                    <figure>
+                                        <img class="shop-image"
+                                            src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt="">
+                                    </figure>
+                                @endif
                             </a>
                         </div>
                         <div class="wrap-shop-control">
@@ -58,25 +65,64 @@
                                 </div>
 
                                 <div class="change-display-mode">
-                                    <a href="#" class="grid-mode display-mode active">
+                                    <a href="javascript:void(0);" class="grid-mode display-mode active">
                                         <i class="fa fa-th"></i>{{ __('frontend.grid') }}
                                     </a>
-                                    <a href="list.html" class="list-mode display-mode">
+                                    <a href="javascript:void(0);" class="list-mode display-mode">
                                         <i class="fa fa-th-list"></i>{{ __('frontend.list') }}
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <h4 dir="ltr">
-                            @php
-                                echo $categoryDetails->breadcrumbs;
-                            @endphp
-                        </h4>
+                        <div dir="ltr" class="cat-titles">
+                            <h4>
+                                @php
+                                    echo $categoryDetails->breadcrumbs;
+                                @endphp
+                            </h4>
+                            <h5>{{ $categoryDetails->catDetails['description'] }}</h5>
+                        </div>
                         <!--end wrap shop control-->
                         <div class="row">
-                            <ul class="product-list grid-products equal-container">
+                            <ul class="grid-products equal-container product-grid-template">
                                 @forelse ($categoryProducts as $product)
-                                    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                    <li>
+                                        <div class="product product-style-3 equal-elem ">
+                                            <div class="product-thumnail">
+                                                <a href="detail.html" title="{{ $product->name }}">
+                                                    @if ($product->getFirstMediaUrl('image_products', 'small'))
+                                                        <figure>
+                                                            <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
+                                                                alt="{{ $product->name }}">
+                                                        </figure>
+                                                    @else
+                                                        <figure>
+                                                            <img src="{{ asset('assets/img/products/default-image.png') }}"
+                                                                alt="">
+                                                        </figure>
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <div class="product-info">
+                                                <span class="brand">{{ $product->brand->name }}</span>
+                                                <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
+                                                <div class="wrap-price"><span
+                                                        class="product-price">${{ $product->price }}</span>
+                                                </div>
+                                                <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @empty
+                                    <li class="col-12"
+                                        style="text-align: center;line-height: 8rem;font-size: 2rem;">
+                                        {{ __('msgs.no_products_yet') }}
+                                    </li>
+                                @endforelse
+                            </ul>
+                            <ul class="product-list equal-container product-list-template disactive">
+                                @forelse ($categoryProducts as $product)
+                                    <li>
                                         <div class="product product-style-3 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="detail.html" title="{{ $product->name }}">
@@ -96,6 +142,7 @@
                                             <div class="product-info">
                                                 <span>{{ $product->brand->name }}</span>
                                                 <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
+                                                <p class="product-description">{!! \Illuminate\Support\Str::limit($product->description, 145, '....') !!}</p>
                                                 <div class="wrap-price"><span
                                                         class="product-price">${{ $product->price }}</span>
                                                 </div>
@@ -320,4 +367,29 @@
 
         </main>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        var gridMode = document.querySelector('.grid-mode');
+        var listMode = document.querySelector('.list-mode');
+
+        gridMode.addEventListener('click', () => {
+            if (!gridMode.classList.contains('active')) {
+                listMode.classList.remove('active');
+                gridMode.classList.add('active');
+            }
+            document.querySelector('.product-list-template').classList.add('disactive');
+            document.querySelector('.product-grid-template').classList.remove('disactive');
+        });
+
+        listMode.addEventListener('click', () => {
+            if (!listMode.classList.contains('active')) {
+                gridMode.classList.remove('active');
+                listMode.classList.add('active');
+            }
+            document.querySelector('.product-grid-template').classList.add('disactive');
+            document.querySelector('.product-list-template').classList.remove('disactive');
+        });
+    </script>
 @endsection

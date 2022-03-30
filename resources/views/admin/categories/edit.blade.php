@@ -34,7 +34,11 @@
                                     <img src="{{ $category->getFirstMediaUrl('categories', 'thumb') }}"
                                         class="img img-thumbnail mb-4 admin-image m-auto">
                                 @else
-                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image">
+                                    <figure>
+                                        <img class="shop-image"
+                                            src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt=""
+                                            style="max-width: 60vw">
+                                    </figure>
                                 @endif
                             </div>
                         </div>
@@ -58,9 +62,9 @@
                                     <select class="form-control @error('status') is-invalid @enderror" id="status"
                                         name="status">
                                         <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="1" {{ old('status', $category->id) }}>
+                                        <option value="{{ old('status', $category->status) }}">
                                             {{ __('translation.active') }}</option>
-                                        <option value="0" {{ old('status', $category->id) }}>
+                                        <option value="{{ old('status', $category->status) }}">
                                             {{ __('translation.disactive') }}</option>
                                     </select>
                                     @error('status')

@@ -21,7 +21,7 @@ class ProductController extends Controller
             $categoryDetails    = (object)Category::catDetails($url);
 
 
-            $categoryProducts   = Product::with([
+            $categoryProducts   = (object)Product::with([
                 'brand' => function ($q) {
                     $q->select('id', 'name');
                 }
@@ -29,9 +29,13 @@ class ProductController extends Controller
                 ->where('status', 1)->get();
 
 
+            $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
+
+
             return view('frontend.shop', [
-                'categoryDetails'  => $categoryDetails,
-                'categoryProducts' => $categoryProducts
+                'categoryDetails'   => $categoryDetails,
+                'categoryProducts'  => $categoryProducts,
+                'categoryImageId'   => $categoryImageId
             ]);
         } else {
             return redirect()->back();

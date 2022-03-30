@@ -28,8 +28,8 @@ class Category extends Model implements HasMedia
     public function registerMediaCollections(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(300)
-            ->height(200);
+            ->width(1040)
+            ->height(500);
     }
 
     public function sluggable(): array
@@ -58,7 +58,7 @@ class Category extends Model implements HasMedia
 
     public static function catDetails($url)
     {
-        $catDetails = Category::select('id', 'parent_id', 'name', 'url')
+        $catDetails = Category::select('id', 'parent_id', 'name', 'url', 'description')
             ->with([
                 'subCategories' => function ($q) {
                     $q->select('id', 'parent_id')->where('status', 1);
