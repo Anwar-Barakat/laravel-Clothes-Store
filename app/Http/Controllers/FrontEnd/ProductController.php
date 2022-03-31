@@ -18,8 +18,7 @@ class ProductController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = $request->only(['url', 'sort']);
-
+            $data = $request->all();
             $url = $data['url'];
 
             $categoryCount = Category::where('url', $url)->count();
@@ -33,6 +32,22 @@ class ProductController extends Controller
                     }
                 ])->whereIn('category_id', $categoryDetails->categoryIds)
                     ->where('status', 1);
+
+                if (isset($data['fabric']) && !empty($data['fabric']))
+                    $categoryProducts->whereIn('products.fabric', $data['fabric']);
+
+                if (isset($data['sleeve']) && !empty($data['sleeve']))
+                    $categoryProducts->whereIn('products.sleeve', $data['sleeve']);
+
+                if (isset($data['pattern']) && !empty($data['pattern']))
+                    $categoryProducts->whereIn('products.pattern', $data['pattern']);
+
+                if (isset($data['fit']) && !empty($data['fit']))
+                    $categoryProducts->whereIn('products.fit', $data['fit']);
+
+                if (isset($data['occasion']) && !empty($data['occasion']))
+                    $categoryProducts->whereIn('products.occasion', $data['occasion']);
+
 
                 // sorting :
                 if (isset($data['sort']) && !empty($data['sort'])) {
@@ -53,7 +68,7 @@ class ProductController extends Controller
                 } else
                     $categoryProducts =  $categoryProducts->orderBy('id', 'DESC');
 
-                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryProducts = $categoryProducts->paginate(9);
                 $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
 
                 return view('frontend.partials.ajax_products', [
@@ -73,7 +88,7 @@ class ProductController extends Controller
                     }
                 ])->whereIn('category_id', $categoryDetails->categoryIds)
                     ->where('status', 1);
-                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryProducts = $categoryProducts->paginate(9);
                 $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
             }
 

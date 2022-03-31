@@ -60,6 +60,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
+@yield('js')
 
 <script>
     let btn = document.getElementById('allCats');
@@ -68,5 +69,3 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         megaBox.classList.toggle("active")
     });
 </script>
-
-@yield('js')

@@ -150,130 +150,63 @@
                             </div>
                         </div><!-- brand widget-->
 
-                        <div class="widget mercado-widget filter-widget price-filter">
-                            <h2 class="widget-title">{{ __('frontend.price') }}</h2>
-                            <div class="widget-content">
-                                <div id="slider-range"></div>
-                                <p>
-                                    <label for="amount">{{ __('frontend.price') }}:</label>
-                                    <input type="text" id="amount" readonly>
-                                    <button class="filter-submit">{{ __('frontend.filter') }}</button>
-                                </p>
-                            </div>
-                        </div><!-- Price-->
                         <hr>
                         <div class="widget mercado-widget filter-widget">
                             <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
-                            <div class="widget-content">
-                                @foreach (App\Models\Product::fabricArray as $fabric)
-                                    <input class="inp-cbx" id="{{ $fabric }}" name="fabric[]"
-                                        type="checkbox" />
-                                    <label class="cbx" for="{{ $fabric }}">
-                                        <span>
-                                            <svg width="12px" height="10px">
-                                                <use xlink:href="#check"></use>
-                                            </svg>
-                                        </span>
+                            <div class="widget-content fabrics">
+                                @foreach (App\Models\Product::fabricArray as $index => $fabric)
+                                    <label for="{{ $fabric }}">
+                                        <input class="fabric" id="{{ $fabric }}" name="fabric[]"
+                                            type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $fabric) }}</span>
                                     </label>
-                                    <!--SVG Sprites-->
-                                    <svg class="inline-svg">
-                                        <symbol id="check" viewbox="0 0 12 10">
-                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </symbol>
-                                    </svg>
                                 @endforeach
                             </div>
                             <hr>
                             <h2 class="widget-title">{{ __('frontend.sleeve') }}</h2>
-                            <div class="widget-content">
-                                @foreach (App\Models\Product::sleeveArray as $sleeve)
-                                    <input class="inp-cbx" id="{{ $sleeve }}" name="sleeve[]"
-                                        type="checkbox" />
-                                    <label class="cbx" for="{{ $sleeve }}">
-                                        <span>
-                                            <svg width="12px" height="10px">
-                                                <use xlink:href="#check"></use>
-                                            </svg>
-                                        </span>
+                            <div class="widget-content sleeve">
+                                @foreach (App\Models\Product::sleeveArray as $index => $sleeve)
+                                    <label for="{{ $sleeve }}">
+                                        <input class="sleeve" id="{{ $sleeve }}" name="sleeve[]"
+                                            type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $sleeve) }}</span>
                                     </label>
-                                    <!--SVG Sprites-->
-                                    <svg class="inline-svg">
-                                        <symbol id="check" viewbox="0 0 12 10">
-                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </symbol>
-                                    </svg>
                                 @endforeach
                             </div>
                             <hr>
                             <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
-                            <div class="widget-content">
-                                @foreach (App\Models\Product::patternArray as $pattern)
-                                    <input class="inp-cbx" id="{{ $pattern }}" name="pattern[]"
-                                        type="checkbox" />
-                                    <label class="cbx" for="{{ $pattern }}">
-                                        <span>
-                                            <svg width="12px" height="10px">
-                                                <use xlink:href="#check"></use>
-                                            </svg>
-                                        </span>
+                            <div class="widget-content pattern">
+                                @foreach (App\Models\Product::patternArray as $index => $pattern)
+                                    <label for="{{ $pattern }}">
+                                        <input class="pattern" id="{{ $pattern }}" name="pattern[]"
+                                            type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $pattern) }}</span>
                                     </label>
-                                    <!--SVG Sprites-->
-                                    <svg class="inline-svg">
-                                        <symbol id="check" viewbox="0 0 12 10">
-                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </symbol>
-                                    </svg>
                                 @endforeach
                             </div>
                             <hr>
                             <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
-                            <div class="widget-content">
-                                @foreach (App\Models\Product::fitArray as $fit)
-                                    <input class="inp-cbx" id="{{ $fit }}" name="fit[]" type="checkbox" />
-                                    <label class="cbx" for="{{ $fit }}">
-                                        <span>
-                                            <svg width="12px" height="10px">
-                                                <use xlink:href="#check"></use>
-                                            </svg>
-                                        </span>
+                            <div class="widget-content fit">
+                                @foreach (App\Models\Product::fitArray as $index => $fit)
+                                    <label for="{{ $fit }}">
+                                        <input class="fit" id="{{ $fit }}" name="fit[]" type="checkbox"
+                                            value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $fit) }}</span>
                                     </label>
-                                    <!--SVG Sprites-->
-                                    <svg class="inline-svg">
-                                        <symbol id="check" viewbox="0 0 12 10">
-                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </symbol>
-                                    </svg>
                                 @endforeach
                             </div>
                             <hr>
                             <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
-                            <div class="widget-content">
-                                @foreach (App\Models\Product::occasionArray as $occusion)
-                                    <input class="inp-cbx" id="{{ $occusion }}" name="occusion[]"
-                                        type="checkbox" />
-                                    <label class="cbx" for="{{ $occusion }}">
-                                        <span>
-                                            <svg width="12px" height="10px">
-                                                <use xlink:href="#check"></use>
-                                            </svg>
-                                        </span>
-                                        <span>{{ __('frontend.' . $occusion) }}</span>
+                            <div class="widget-content occasion">
+                                @foreach (App\Models\Product::occasionArray as $index => $occasion)
+                                    <label for="{{ $occasion }}">
+                                        <input class="occasion" id="{{ $occasion }}" name="occasion[]"
+                                            type="checkbox" value="{{ $index }}" />
+                                        <span>{{ __('frontend.' . $occasion) }}</span>
                                     </label>
-                                    <!--SVG Sprites-->
-                                    <svg class="inline-svg">
-                                        <symbol id="check" viewbox="0 0 12 10">
-                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                        </symbol>
-                                    </svg>
                                 @endforeach
                             </div>
                         </div><!-- Color -->
-
-
                         <div class="widget mercado-widget widget-product">
                             <h2 class="widget-title">{{ __('frontend.popular_product') }}</h2>
                             <div class="widget-content">
@@ -358,19 +291,53 @@
                                 </ul>
                             </div>
                         </div><!-- brand widget-->
-
                     </div>
                     <!--end sitebar-->
-
                 </div>
                 <!--end row-->
-
             </div>
             <!--end container-->
-
         </main>
     </div>
 @endsection
 
-@section('js')
+@section('scripts')
+    <script>
+        $('.fabric , .sleeve ,.pattern,.fit,.occasion').on('click', function() {
+            var sort = $('#orderby option:selected').val();
+            var url = $('#url').val();
+            var fabric = get_filter('fabric');
+            var sleeve = get_filter('sleeve');
+            var pattern = get_filter('pattern');
+            var fit = get_filter('fit');
+            var occasion = get_filter('occasion');
+            $.ajax({
+                type: "post",
+                url: url,
+                data: {
+                    sort: sort,
+                    url: url,
+                    fabric: fabric,
+                    sleeve: sleeve,
+                    pattern: pattern,
+                    fit: fit,
+                    occasion: occasion,
+                },
+                success: function(response) {
+                    $('.productsField').html(response)
+                },
+                error: function() {
+                    alert('fail')
+                }
+            });
+        });
+
+        function get_filter(className) {
+            var filters = [];
+            $('.' + className + ':checked').each(function() {
+                filters.push($(this).val());
+            });
+            return filters;
+        }
+    </script>
 @endsection

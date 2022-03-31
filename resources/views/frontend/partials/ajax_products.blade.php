@@ -102,14 +102,24 @@
         });
         $('#orderby').on('change', function() {
             var sort = $(this).val();
+            var fabric = get_filter('fabric');
+            var sleeve = get_filter('sleeve');
+            var pattern = get_filter('pattern');
+            var fit = get_filter('fit');
+            var occasion = get_filter('occasion');
             var url = $('#url').val();
 
             $.ajax({
                 type: "post",
                 url: url,
                 data: {
-                    url: url,
                     sort: sort,
+                    url: url,
+                    fabric: fabric,
+                    sleeve: sleeve,
+                    pattern: pattern,
+                    fit: fit,
+                    occasion: occasion,
                 },
                 success: function(response) {
                     $('.productsField').html(response);
