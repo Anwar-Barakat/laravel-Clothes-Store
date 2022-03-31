@@ -36,7 +36,7 @@
                         <div class="wrap-shop-control">
                             <h1 class="shop-title">
                                 {{ $categoryDetails->catDetails['name'] }}
-                                ({{ $categoryProducts->count() }})
+                                ({{ $categoryProducts->total() }})
                             </h1>
                             <div class="wrap-right">
                                 <form id="sortProduct" name="sortProduct">
@@ -61,18 +61,6 @@
                                             <option value="price_desc"
                                                 @if (isset($_GET['orderby']) && $_GET['orderby'] == 'price_desc') {{ 'selected' }} @endisset>
                                                 {{ __('frontend.price_desc_sort') }}</option>
-                                        </select>
-                                    </div>
-                                    <div class="sort-item product-per-page">
-                                        <select name="post-per-page" class="use-chosen">
-                                            <option value="12" selected="selected">12 {{ __('frontend.per_page') }}
-                                            </option>
-                                            <option value="16">16 {{ __('frontend.per_page') }}</option>
-                                            <option value="18">18 {{ __('frontend.per_page') }}</option>
-                                            <option value="21">21 {{ __('frontend.per_page') }}</option>
-                                            <option value="24">24 {{ __('frontend.per_page') }}</option>
-                                            <option value="30">30 {{ __('frontend.per_page') }}</option>
-                                            <option value="32">32 {{ __('frontend.per_page') }}</option>
                                         </select>
                                     </div>
                                 </form>
@@ -101,9 +89,9 @@
 
                         <div class="wrap-pagination-info">
                             @if (isset($_GET['orderby']) && !empty($_GET['orderby']))
-                                {{ $categoryProducts->appends(['orderby' => $_GET['orderby']])->links() }}
+                                {!! $categoryProducts->appends(['orderby' => $_GET['orderby']])->links() !!}
                             @else
-                                {{ $categoryProducts->links() }}
+                                {!! $categoryProducts->links() !!}
                             @endif
                         </div>
                     </div>
@@ -173,43 +161,118 @@
                                 </p>
                             </div>
                         </div><!-- Price-->
-
+                        <hr>
                         <div class="widget mercado-widget filter-widget">
-                            <h2 class="widget-title">{{ __('frontend.color') }}</h2>
+                            <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
                             <div class="widget-content">
-                                <ul class="list-style vertical-list has-count-index">
-                                    <li class="list-item"><a class="filter-link " href="#">Red
-                                            <span>(217)</span></a>
-                                    </li>
-                                    <li class="list-item"><a class="filter-link " href="#">Yellow
-                                            <span>(179)</span></a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">Black
-                                            <span>(79)</span></a>
-                                    </li>
-                                    <li class="list-item"><a class="filter-link " href="#">Blue
-                                            <span>(283)</span></a>
-                                    </li>
-                                    <li class="list-item"><a class="filter-link " href="#">Grey
-                                            <span>(116)</span></a>
-                                    </li>
-                                    <li class="list-item"><a class="filter-link " href="#">Pink
-                                            <span>(29)</span></a>
-                                    </li>
-                                </ul>
+                                @foreach (App\Models\Product::fabricArray as $fabric)
+                                    <input class="inp-cbx" id="{{ $fabric }}" name="fabric[]"
+                                        type="checkbox" />
+                                    <label class="cbx" for="{{ $fabric }}">
+                                        <span>
+                                            <svg width="12px" height="10px">
+                                                <use xlink:href="#check"></use>
+                                            </svg>
+                                        </span>
+                                        <span>{{ __('frontend.' . $fabric) }}</span>
+                                    </label>
+                                    <!--SVG Sprites-->
+                                    <svg class="inline-svg">
+                                        <symbol id="check" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                    </svg>
+                                @endforeach
+                            </div>
+                            <hr>
+                            <h2 class="widget-title">{{ __('frontend.sleeve') }}</h2>
+                            <div class="widget-content">
+                                @foreach (App\Models\Product::sleeveArray as $sleeve)
+                                    <input class="inp-cbx" id="{{ $sleeve }}" name="sleeve[]"
+                                        type="checkbox" />
+                                    <label class="cbx" for="{{ $sleeve }}">
+                                        <span>
+                                            <svg width="12px" height="10px">
+                                                <use xlink:href="#check"></use>
+                                            </svg>
+                                        </span>
+                                        <span>{{ __('frontend.' . $sleeve) }}</span>
+                                    </label>
+                                    <!--SVG Sprites-->
+                                    <svg class="inline-svg">
+                                        <symbol id="check" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                    </svg>
+                                @endforeach
+                            </div>
+                            <hr>
+                            <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
+                            <div class="widget-content">
+                                @foreach (App\Models\Product::patternArray as $pattern)
+                                    <input class="inp-cbx" id="{{ $pattern }}" name="pattern[]"
+                                        type="checkbox" />
+                                    <label class="cbx" for="{{ $pattern }}">
+                                        <span>
+                                            <svg width="12px" height="10px">
+                                                <use xlink:href="#check"></use>
+                                            </svg>
+                                        </span>
+                                        <span>{{ __('frontend.' . $pattern) }}</span>
+                                    </label>
+                                    <!--SVG Sprites-->
+                                    <svg class="inline-svg">
+                                        <symbol id="check" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                    </svg>
+                                @endforeach
+                            </div>
+                            <hr>
+                            <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
+                            <div class="widget-content">
+                                @foreach (App\Models\Product::fitArray as $fit)
+                                    <input class="inp-cbx" id="{{ $fit }}" name="fit[]" type="checkbox" />
+                                    <label class="cbx" for="{{ $fit }}">
+                                        <span>
+                                            <svg width="12px" height="10px">
+                                                <use xlink:href="#check"></use>
+                                            </svg>
+                                        </span>
+                                        <span>{{ __('frontend.' . $fit) }}</span>
+                                    </label>
+                                    <!--SVG Sprites-->
+                                    <svg class="inline-svg">
+                                        <symbol id="check" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                    </svg>
+                                @endforeach
+                            </div>
+                            <hr>
+                            <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
+                            <div class="widget-content">
+                                @foreach (App\Models\Product::occasionArray as $occusion)
+                                    <input class="inp-cbx" id="{{ $occusion }}" name="occusion[]"
+                                        type="checkbox" />
+                                    <label class="cbx" for="{{ $occusion }}">
+                                        <span>
+                                            <svg width="12px" height="10px">
+                                                <use xlink:href="#check"></use>
+                                            </svg>
+                                        </span>
+                                        <span>{{ __('frontend.' . $occusion) }}</span>
+                                    </label>
+                                    <!--SVG Sprites-->
+                                    <svg class="inline-svg">
+                                        <symbol id="check" viewbox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                    </svg>
+                                @endforeach
                             </div>
                         </div><!-- Color -->
 
-                        <div class="widget mercado-widget filter-widget">
-                            <h2 class="widget-title">{{ __('frontend.size') }}</h2>
-                            <div class="widget-content">
-                                <ul class="list-style inline-round ">
-                                    <li class="list-item"><a class="filter-link active" href="#">s</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">M</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">l</a></li>
-                                    <li class="list-item"><a class="filter-link " href="#">xl</a></li>
-                                </ul>
-                            </div>
-                        </div><!-- Size -->
 
                         <div class="widget mercado-widget widget-product">
                             <h2 class="widget-title">{{ __('frontend.popular_product') }}</h2>

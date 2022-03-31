@@ -47,6 +47,33 @@ return [
     'price_asc_sort'        => 'Sort by price: low to high',
     'price_desc_sort'       => 'Sort by price: high to low',
 
+    'fabric'                    => 'Fabric',
+    'cotton'                    => 'Cotton',
+    'polyester'                 => 'Polyester',
+    'wool'                      => 'wool',
+
+    'sleeve'                    => 'Seleeve',
+    'full_sleeve'               => 'Full Sleeve',
+    'half_sleeve'               => 'Half Sleeve',
+    'short_sleeve'              => 'Short Sleeve',
+    'sleeveless'                => 'SleeveLess',
+
+    'pattern'                   => 'Pattern',
+    'checked'                   => 'Checked',
+    'plain'                     => 'Plain',
+    'printed'                   => 'Printed',
+    'self'                      => 'Self',
+    'solid'                     => 'Solid',
+
+    'fit'                       => 'Fit',
+    'regular'                   => 'Regular',
+    'slim'                      => 'Slim',
+
+    'occasion'                  => 'Occasion',
+    'casual'                    => 'Casual',
+    'formal'                    => 'Formal',
+    'filters'                   => 'Filters',
+
 
     // Cart :
     'products_name'         => 'Products Name',

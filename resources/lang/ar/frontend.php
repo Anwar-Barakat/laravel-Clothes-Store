@@ -29,6 +29,31 @@ return [
     'price_asc_sort'        => 'الترتيب حسب السعر : الأقل الى الأعلى',
     'price_desc_sort'       => 'الترتيب حسب السعر : الأعلى الى الأقل',
 
+    'fabric'                    => 'الفماش',
+    'cotton'                    => 'قطن',
+    'polyester'                 => 'بوليستر',
+    'wool'                      => 'صوف',
+
+    'sleeve'                    => 'الأكمام',
+    'full_sleeve'               => 'كامل الأكمام',
+    'half_sleeve'               => 'نصف كم',
+    'short_sleeve'              => 'كم قصير',
+    'sleeveless'                => 'بلا أكمام',
+
+    'pattern'                   => 'النمط',
+    'checked'                   => 'مربعات',
+    'plain'                     => 'عادي',
+    'printed'                   => 'مرسوم',
+    'self'                      => 'Self',
+    'solid'                     => 'Solid',
+
+    'fit'                       => 'الملائمة',
+    'regular'                   => 'عادي',
+    'slim'                      => 'ضئيلة',
+
+    'occasion'                  => 'المناسبة',
+    'casual'                    => 'عادي',
+    'formal'                    => 'رسمي',
 
 
     // Shop :
