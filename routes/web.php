@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
-use App\Http\Controllers\Frontend\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;

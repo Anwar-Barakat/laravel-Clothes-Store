@@ -1826,7 +1826,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .wrap-show-advance-info-box {
-    display: inline-block;
+    display: block;
     margin: 0;
     padding: 0;
     max-width: 100%;

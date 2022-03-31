@@ -15,8 +15,8 @@ class SectionSeeder extends Seeder
     {
         $sections = [
             [
-                'en' => 'Electronics',
-                'ar' => 'الألكترونيات',
+                'en' => 'Children',
+                'ar' => 'الأطفال',
             ],
             [
                 'en' => 'Men',

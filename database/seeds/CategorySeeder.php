@@ -20,28 +20,17 @@ class CategorySeeder extends Seeder
         $categoriesRecords = [
             [
                 'parent_id'         => 0,
-                'section_id'        => Section::where('name->en', 'Electronics')->first()->id,
-                'name'              => 'Asus',
+                'section_id'        => Section::where('name->en', 'Children')->first()->id,
+                'name'              => 'T-Shirts',
                 'discount'          => 0,
                 'description'       => $faker->sentence(30),
-                'url'               => 'asus',
+                'url'               => 't-shirts',
                 'meta_title'        => '',
                 'meta_description'  => $faker->sentence(10),
                 'meta_keywords'     => '',
                 'status'            => 1,
             ],
-            [
-                'parent_id'         => 0,
-                'section_id'        => Section::where('name->en', 'Electronics')->first()->id,
-                'name'              => 'HP',
-                'discount'          => 0,
-                'description'       => $faker->sentence(30),
-                'url'               => 'hp',
-                'meta_title'        => '',
-                'meta_description'  => $faker->sentence(10),
-                'meta_keywords'     => '',
-                'status'            => 1,
-            ],
+
             [
                 'parent_id'         => 0,
                 'section_id'        => Section::where('name->en', 'Men')->first()->id,

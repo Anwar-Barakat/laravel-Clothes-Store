@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SectionSeeder::class,
             BrandSeeder::class,
-            CategorySeeder::class,
             BannerSeeder::class,
+            CategorySeeder::class,
 
 
         ]);

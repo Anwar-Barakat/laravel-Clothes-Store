@@ -81,9 +81,9 @@
                                     <div class="content">
                                         @foreach ($sections as $section)
                                             <div class="main">
-                                                @if ($section->getTranslation('name', 'en') == 'Electronics')
+                                                @if ($section->getTranslation('name', 'en') == 'Children')
                                                     <div>
-                                                        <img src="{{ asset('assets/img/cats_mega_menu/electronics.jpg') }}"
+                                                        <img src="{{ asset('assets/img/cats_mega_menu/chidren.jpg') }}"
                                                             alt="" class="mega__menu__image">
                                                     </div>
                                                 @elseif ($section->getTranslation('name', 'en') == 'Men')
@@ -174,7 +174,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.url', 'asus') }}"
+                                <a href="{{ route('frontend.url', 'shoes') }}"
                                     class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'active' : '' }} ">
                                     {{ __('frontend.shop') }}
                                 </a>

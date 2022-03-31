@@ -66,7 +66,7 @@
                                             {{ old('status', $category->status) == '1' ? 'selected' : '' }}>
                                             {{ __('translation.active') }}</option>
                                         <option value="0"
-                                            {{ old('status', $category->status) == '1' ? 'selected' : '' }}>
+                                            {{ old('status', $category->status) == '0' ? 'selected' : '' }}>
                                             {{ __('translation.disactive') }}</option>
                                     </select>
                                     @error('status')

@@ -155,7 +155,7 @@
                             <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
                             <div class="widget-content fabrics">
                                 @foreach (App\Models\Product::fabricArray as $index => $fabric)
-                                    <label for="{{ $fabric }}">
+                                    <label for="{{ $fabric }}" class="material__label">
                                         <input class="fabric" id="{{ $fabric }}" name="fabric[]"
                                             type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $fabric) }}</span>
@@ -166,7 +166,7 @@
                             <h2 class="widget-title">{{ __('frontend.sleeve') }}</h2>
                             <div class="widget-content sleeve">
                                 @foreach (App\Models\Product::sleeveArray as $index => $sleeve)
-                                    <label for="{{ $sleeve }}">
+                                    <label for="{{ $sleeve }}" class="material__label">
                                         <input class="sleeve" id="{{ $sleeve }}" name="sleeve[]"
                                             type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $sleeve) }}</span>
@@ -177,7 +177,7 @@
                             <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
                             <div class="widget-content pattern">
                                 @foreach (App\Models\Product::patternArray as $index => $pattern)
-                                    <label for="{{ $pattern }}">
+                                    <label for="{{ $pattern }}" class="material__label">
                                         <input class="pattern" id="{{ $pattern }}" name="pattern[]"
                                             type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $pattern) }}</span>
@@ -188,7 +188,7 @@
                             <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
                             <div class="widget-content fit">
                                 @foreach (App\Models\Product::fitArray as $index => $fit)
-                                    <label for="{{ $fit }}">
+                                    <label for="{{ $fit }}" class="material__label">
                                         <input class="fit" id="{{ $fit }}" name="fit[]" type="checkbox"
                                             value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $fit) }}</span>
@@ -199,7 +199,7 @@
                             <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
                             <div class="widget-content occasion">
                                 @foreach (App\Models\Product::occasionArray as $index => $occasion)
-                                    <label for="{{ $occasion }}">
+                                    <label for="{{ $occasion }}" class="material__label">
                                         <input class="occasion" id="{{ $occasion }}" name="occasion[]"
                                             type="checkbox" value="{{ $index }}" />
                                         <span>{{ __('frontend.' . $occasion) }}</span>
