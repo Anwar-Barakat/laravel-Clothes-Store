@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Brand;
+use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -38,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
                 'sections'  => Section::with('categories')->get(),
                 'brands'    => Brand::all(),
             ]);
+        });
+
+        View::composer('frontend.partials.popular_products', function ($view) {
+            $view->with('popular_products', Product::latest()->take(4)->get());
         });
     }
 }
