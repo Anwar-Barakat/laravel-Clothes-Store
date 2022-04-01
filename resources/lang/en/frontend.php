@@ -98,5 +98,13 @@ return [
     'description'           => 'Description',
     'additional_info'       => 'Addtional Infomation',
     'review'                => 'Review',
-    'related_products'      =>'Related Products',
+    'related_products'      => 'Related Products',
+    'quantity'              => 'Quantity',
+    'weight'                => 'Weight',
+    'dimension'             => 'Dimension',
+    'code'                  => 'Code',
+    'choose_size'           => 'Choose Size',
+    'color'                 => 'Color',
+
+
 ];

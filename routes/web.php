@@ -143,9 +143,9 @@ Route::group(
         Route::group(['as' => 'frontend.'], function () {
             Route::get('/',                     [HomeController::class, 'index'])->name('home');
             Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
-            Route::get('/details',              [DetailController::class, 'index'])->name('details');
             Route::any('/{url}',                [FrontendProductController::class, 'index'])->name('url');
+            Route::get('/product/{id}',         [DetailController::class, 'index'])->name('details');
         });
-        Route::get('/{page}',                                       [AdminController::class, 'index']);
+        Route::get('/admin/{page}',                                       [AdminController::class, 'index']);
     }
 );

@@ -4,7 +4,7 @@
             <li>
                 <div class="product product-style-3 equal-elem ">
                     <div class="product-thumnail">
-                        <a href="detail.html" title="{{ $product->name }}">
+                        <a href="{{ route('frontend.details', $product->id) }}" title="{{ $product->name }}">
                             @if ($product->getFirstMediaUrl('image_products', 'small'))
                                 <figure>
                                     <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
@@ -19,7 +19,8 @@
                     </div>
                     <div class="product-info">
                         <span class="brand">{{ $product->brand->name }}</span>
-                        <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
+                        <a href="{{ route('frontend.details', $product->id) }}"
+                            class="product-name"><span>{{ $product->name }}</span></a>
                         <div class="wrap-price"><span class="product-price">${{ $product->price }}</span>
                         </div>
                         <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
@@ -37,7 +38,7 @@
             <li>
                 <div class="product product-style-3 equal-elem ">
                     <div class="product-thumnail">
-                        <a href="detail.html" title="{{ $product->name }}">
+                        <a href="{{ route('frontend.details', $product->id) }}" title="{{ $product->name }}">
                             @if ($product->getFirstMediaUrl('image_products', 'small'))
                                 <figure>
                                     <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
@@ -52,7 +53,8 @@
                     </div>
                     <div class="product-info">
                         <span>{{ $product->brand->name }}</span>
-                        <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
+                        <a href="{{ route('frontend.details', $product->id) }}"
+                            class="product-name"><span>{{ $product->name }}</span></a>
                         <p class="product-description">{!! \Illuminate\Support\Str::limit($product->description, 145, '....') !!}</p>
                         <div class="wrap-price"><span class="product-price">${{ $product->price }}</span>
                         </div>

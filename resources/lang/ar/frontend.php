@@ -98,5 +98,10 @@ return [
     'additional_info'       => 'المعلومات الأضافية',
     'review'                => 'مراجعة',
     'related_products'      => 'المنتجات المرتبطة',
-
+    'quantity'              => 'الكمية',
+    'weight'                => 'الوزن',
+    'dimension'             => 'الأبعاد',
+    'code'                  => 'الرمز',
+    'choose_size'           => 'أختر المقاس',
+    'color'                 => 'اللون',
 ];

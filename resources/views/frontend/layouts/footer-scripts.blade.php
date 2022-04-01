@@ -9,8 +9,44 @@
 
 @if (App::getLocale() == 'ar')
     <script src="{{ asset('front/assets/js/arabic-functions.js') }}"></script>
+    <script>
+        $('.master__image .icon.fa-chevron-left').on('click', function() {
+
+            if ($('.thumnails .selected').is(':last-child'))
+                $('.thumnails img').eq(0).click();
+            else
+                $('.thumnails .selected').next().click();
+        });
+
+        $('.master__image .icon.fa-chevron-right').on('click', function() {
+
+            if ($('.thumnails .selected').is(':first-child'))
+                $('.thumnails img:last').click();
+
+            else
+                $('.thumnails .selected').prev().click();
+        });
+    </script>
 @else
     <script src="{{ asset('front/assets/js/functions.js') }}"></script>
+    <script>
+        $('.master__image .icon.fa-chevron-right').on('click', function() {
+
+            if ($('.thumnails .selected').is(':last-child'))
+                $('.thumnails img').eq(0).click();
+            else
+                $('.thumnails .selected').next().click();
+        });
+
+        $('.master__image .icon.fa-chevron-left').on('click', function() {
+
+            if ($('.thumnails .selected').is(':first-child'))
+                $('.thumnails img:last').click();
+
+            else
+                $('.thumnails .selected').prev().click();
+        });
+    </script>
 @endif
 
 <!-- Bootstrap Bundle js -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -12,9 +13,10 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('frontend.detail');
+        $product = Product::with(['category', 'brand', 'attributes'])->findOrFail($id);
+        return view('frontend.detail', ['product'    => $product]);
     }
 
     /**

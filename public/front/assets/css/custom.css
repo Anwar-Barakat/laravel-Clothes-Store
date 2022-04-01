@@ -229,14 +229,15 @@ ul {
     border-radius: 5px;
 }
 
+.material__label+input[type="checkbox"] {
+    background: #00968817;
+    border-radius: 5px;
+}
+
 input[type="checkbox"] {
-    /* Add if not using autoprefixer */
     -webkit-appearance: none;
-    /* Remove most all native input styles */
     appearance: none;
-    /* For iOS < 15 */
     background-color: var(--form-background);
-    /* Not removed via appearance */
     margin: 0;
     font: inherit;
     color: currentColor;
@@ -247,6 +248,7 @@ input[type="checkbox"] {
     transform: translateY(-0.075em);
     display: flex;
     place-content: center;
+    background: #00968830;
 }
 
 input[type="checkbox"]::before {
@@ -279,6 +281,74 @@ input[type="checkbox"]:disabled {
 
 
 /* ****************** Custom Checkbox Input   ********************************* */
+
+
+/* **************************************************************************** */
+
+
+/* **************************************************************************** */
+
+
+/* ************************* custom gallery   ********************************* */
+
+.gellery {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    background-color: white;
+}
+
+.gellery .master__image img {
+    max-width: 100%;
+}
+
+.gellery .thumnails {
+    overflow: hidden;
+    display: flex;
+}
+
+.gellery .thumnails img {
+    border: 1px solid #cccccc45;
+    padding: 0.2rem;
+    transition: 0.4s;
+    opacity: 0.5;
+}
+
+.gellery .thumnails img.selected {
+    border: 1px solid var(--main-color);
+    opacity: 1;
+}
+
+.master__image {
+    margin-bottom: 1.5rem;
+    min-height: 300px;
+    position: relative;
+    margin: auto;
+}
+
+.thumnails img:last-child {
+    margin-right: 0 !important;
+}
+
+.master__image .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.master__image .icon.fa-chevron-right {
+    right: 0;
+}
+
+.master__image .icon.fa-chevron-left {
+    left: 0;
+}
+
+
+/* ************************* custom gallery   ********************************* */
 
 
 /* **************************************************************************** */
