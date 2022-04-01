@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use Illuminate\Support\Facades\Auth;
@@ -142,6 +143,7 @@ Route::group(
         Route::group(['as' => 'frontend.'], function () {
             Route::get('/',                     [HomeController::class, 'index'])->name('home');
             Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
+            Route::get('/details',              [DetailController::class, 'index'])->name('details');
             Route::any('/{url}',                [FrontendProductController::class, 'index'])->name('url');
         });
         Route::get('/{page}',                                       [AdminController::class, 'index']);

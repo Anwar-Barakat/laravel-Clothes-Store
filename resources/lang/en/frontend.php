@@ -89,5 +89,14 @@ return [
     'sale'                  => 'Sale',
     'Bestseller'            => 'BestSeller',
     'all_sections'          => 'All Sections',
-    'quick_view'            => 'quick view'
+    'quick_view'            => 'quick view',
+
+
+    // Details :
+    'detail'                => 'Details',
+    'add_wishlist'          => 'Add Wishlist',
+    'description'           => 'Description',
+    'additional_info'       => 'Addtional Infomation',
+    'review'                => 'Review',
+    'related_products'      =>'Related Products',
 ];

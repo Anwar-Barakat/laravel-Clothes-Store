@@ -14,7 +14,7 @@ return [
     'items'                 => 'أشياء',
     'item'                  => 'غرض',
     'cart'                  => 'الكرت',
-    'wishlist'              => 'قائمة الأعجابات',
+    'wishlist'              => 'قائمة الرغبات',
     'about_us'              => 'من نحن',
     'checkout'              => 'الدفع الألكتروني',
     'contact_us'            => 'تواصل معنا',
@@ -89,4 +89,14 @@ return [
     'all_sections'          => 'جميع الأقسام',
     'color'                 => 'اللون',
     'quick_view'            => 'عرض سريع',
+
+
+    // Details :
+    'detail'                => 'التفاصيل',
+    'add_wishlist'          => 'إضافة لقائمة الرغبات',
+    'description'           => 'الوصف',
+    'additional_info'       => 'المعلومات الأضافية',
+    'review'                => 'مراجعة',
+    'related_products'      => 'المنتجات المرتبطة',
+
 ];
