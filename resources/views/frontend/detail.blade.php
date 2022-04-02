@@ -115,15 +115,107 @@
                                                     <td class="product_weight">1 kg</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Dimensions</th>
-                                                    <td class="product_dimensions">12 x 15 x 23 cm</td>
-                                                </tr>
-                                                <tr>
                                                     <th>{{ __('frontend.color') }}</th>
                                                     <td>
                                                         <p>{{ $product->color }}</p>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <th>{{ __('frontend.code') }}</th>
+                                                    <td>
+                                                        <p>{{ $product->code }}</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>{{ __('frontend.wash_care') }}</th>
+                                                    <td>
+                                                        <p>{{ $product->wash_care }}</p>
+                                                    </td>
+                                                </tr>
+                                                @if (isset($product->fabric))
+                                                    <tr>
+                                                        <th>{{ __('frontend.fabric') }}</th>
+                                                        <td>
+                                                            <p>
+                                                                @if ($product->fabric == '0')
+                                                                    {{ __('frontend.cotton') }}
+                                                                @elseif ($product->fabric == '1')
+                                                                    {{ __('frontend.polyester') }}
+                                                                @elseif ($product->fabric == '2')
+                                                                    {{ __('frontend.wool') }}
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+
+                                                @if (isset($product->sleeve))
+                                                    <tr>
+                                                        <th>{{ __('frontend.sleeve') }}</th>
+                                                        <td>
+                                                            <p>
+                                                                @if ($product->sleeve == '0')
+                                                                    {{ __('frontend.full_sleeve') }}
+                                                                @elseif ($product->sleeve == '1')
+                                                                    {{ __('frontend.half_sleeve') }}
+                                                                @elseif ($product->sleeve == '2')
+                                                                    {{ __('frontend.short_sleeve') }}
+                                                                @elseif ($product->sleeve == '3')
+                                                                    {{ __('frontend.sleeveless') }}
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @if (isset($product->pattern))
+                                                    <tr>
+                                                        <th>{{ __('frontend.pattern') }}</th>
+                                                        <td>
+                                                            <p>
+                                                                @if ($product->pattern == '0')
+                                                                    {{ __('frontend.checked') }}
+                                                                @elseif ($product->pattern == '1')
+                                                                    {{ __('frontend.plain') }}
+                                                                @elseif ($product->pattern == '2')
+                                                                    {{ __('frontend.printed') }}
+                                                                @elseif ($product->pattern == '3')
+                                                                    {{ __('frontend.self') }}
+                                                                @elseif ($product->pattern == '4')
+                                                                    {{ __('frontend.solid') }}
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @if (isset($product->fit))
+                                                    <tr>
+                                                        <th>{{ __('frontend.fit') }}</th>
+                                                        <td>
+                                                            <p>
+                                                                @if ($product->fit == '0')
+                                                                    {{ __('frontend.regular') }}
+                                                                @elseif ($product->fit == '1')
+                                                                    {{ __('frontend.slim') }}
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+                                                @if (isset($product->occasion))
+                                                    <tr>
+                                                        <th>{{ __('frontend.occasion') }}</th>
+                                                        <td>
+                                                            <p>
+                                                                @if ($product->occasion == '0')
+                                                                    {{ __('frontend.casual') }}
+                                                                @elseif ($product->occasion == '1')
+                                                                    {{ __('frontend.formal') }}
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                @endif
+
                                             </tbody>
                                         </table>
                                     </div>

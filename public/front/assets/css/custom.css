@@ -313,6 +313,8 @@ input[type="checkbox"]:disabled {
     padding: 0.2rem;
     transition: 0.4s;
     opacity: 0.5;
+    max-width: 90px !important;
+    cursor: pointer;
 }
 
 .gellery .thumnails img.selected {

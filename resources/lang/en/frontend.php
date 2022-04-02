@@ -105,6 +105,7 @@ return [
     'code'                  => 'Code',
     'choose_size'           => 'Choose Size',
     'color'                 => 'Color',
+    'wash_care'             => 'Wash Care',
 
 
 ];

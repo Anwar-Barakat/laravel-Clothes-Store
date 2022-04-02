@@ -2679,11 +2679,6 @@ li.menu-item .nav-label.sale-label::before {
     margin-top: 1.5px;
 }
 
-.wrap-shop-control .chosen-container .chosen-single {
-    background-color: #ffffff;
-    border: none;
-}
-
 .wrap-shop-control .chosen-container {
     background-color: #ffffff;
     border: 1px solid #e6e6e6;
@@ -7022,15 +7017,6 @@ table.shop_attributes tbody {
 
 /***** CHOSEN STYLE ***********/
 
-.chosen-container .chosen-single {
-    border-radius: 0;
-    border: none;
-    background: transparent;
-    outline: none;
-    box-shadow: none !important;
-    background-image: none !important;
-}
-
 .chosen-container .chosen-drop .chosen-search {
     display: none;
     font-size: 0;
@@ -8228,6 +8214,3 @@ table.shop_attributes tbody {
         border-right: none;
     }
 }
-
-
-/* End Mega Menu */
