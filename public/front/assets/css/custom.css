@@ -297,6 +297,7 @@ input[type="checkbox"]:disabled {
     justify-content: start;
     align-items: flex-start;
     background-color: white;
+    row-gap: 2rem;
 }
 
 .gellery .master__image img {
@@ -356,3 +357,9 @@ input[type="checkbox"]:disabled {
 
 
 /* **************************************************************************** */
+
+.addToCartform {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}

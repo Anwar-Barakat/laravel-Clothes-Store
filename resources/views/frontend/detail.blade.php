@@ -64,17 +64,6 @@
                                         <li>FaceTime HD Camera 7.0 MP Photos</li>
                                     </ul>
                                 </div>
-                                <div class="quantity mt-3">
-                                    <span style="    margin: 0.5rem 0;display: block;">
-                                        {{ __('frontend.size') }}:</span>
-                                    <select name="size" id="getPrice" product-id="{{ $product->id }}"
-                                        class="form-control">
-                                        <option value="">{{ __('frontend.choose_size') }}</option>
-                                        @foreach ($product->attributes as $attribute)
-                                            <option value="{{ $attribute->size }}">{{ $attribute->size }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="wrap-price" @if (App::getLocale() == 'ar') dir="ltr" @endif>
                                     <span class="product-price" id="productPrice">$.{{ $product->price }}
                                     </span>
@@ -84,22 +73,38 @@
                                         <b>{{ __('frontend.in_stock') }}</b>
                                     </p>
                                 </div>
-                                <div class="quantity">
-                                    <span>{{ __('frontend.quantity') }}:</span>
-                                    <div class="quantity-input">
-                                        <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
-
-                                        <a class="btn btn-reduce" href="#"></a>
-                                        <a class="btn btn-increase" href="#"></a>
+                                <form action="{{ route('frontend.cart.store') }}" method="post" class="addToCartform">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <div class="size">
+                                        <span style="    margin: 0.5rem 0;display: block;">
+                                            {{ __('frontend.size') }}:</span>
+                                        <select name="size" id="getPrice" product-id="{{ $product->id }}"
+                                            class="form-control" required>
+                                            <option value="">{{ __('frontend.choose_size') }}</option>
+                                            @foreach ($product->attributes as $attribute)
+                                                <option value="{{ $attribute->size }}">{{ $attribute->size }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="wrap-butons">
-                                    <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
-                                    <div class="wrap-btn">
-                                        <a href="#" class="btn btn-compare">Add Compare</a>
-                                        <a href="#" class="btn btn-wishlist">{{ __('frontend.add_wishlist') }}</a>
+                                    <div class="quantity">
+                                        <span>{{ __('frontend.quantity') }}:</span>
+                                        <div class="quantity-input">
+                                            <input type="number" name="product-quatity" value="1" data-max="120"
+                                                pattern="[0-9]*" required="required">
+                                            <a class="btn btn-reduce" href="#"></a>
+                                            <a class="btn btn-increase" href="#"></a>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="wrap-butons">
+                                        <button type="submit"
+                                            class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</button>
+                                        {{-- <div class="wrap-btn">
+                                            <a href="#" class="btn btn-compare">Add Compare</a>
+                                            <a href="#" class="btn btn-wishlist">{{ __('frontend.add_wishlist') }}</a>
+                                        </div> --}}
+                                    </div>
+                                </form>
                             </div>
                             <div class="advance-info">
                                 <div class="tab-control normal">

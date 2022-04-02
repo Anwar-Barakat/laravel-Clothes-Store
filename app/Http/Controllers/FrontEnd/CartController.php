@@ -39,7 +39,8 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(['product_id', 'size', 'product-quatity']);
+        dd($data);
     }
 
     /**
