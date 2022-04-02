@@ -3061,7 +3061,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .widget-product .products li:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .widget-product .widget-content {

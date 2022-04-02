@@ -315,7 +315,7 @@ input[type="checkbox"]:disabled {
     padding: 1.5rem;
     transition: 0.4s;
     opacity: 0.5;
-    max-width: 90px !important;
+    max-width: 80px !important;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -329,7 +329,6 @@ input[type="checkbox"]:disabled {
     margin-bottom: 1.5rem;
     min-height: 300px;
     position: relative;
-    margin: auto;
 }
 
 .thumnails img:last-child {
@@ -362,4 +361,13 @@ input[type="checkbox"]:disabled {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+}
+
+.invalid-feedback {
+    display: block;
+    color: #f44336;
+}
+
+#toast-container {
+    z-index: 999999999;
 }

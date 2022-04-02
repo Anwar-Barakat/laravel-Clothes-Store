@@ -135,7 +135,7 @@ class ProductController extends Controller
     {
         $product->delete();
         Media::where(['model_id' => $product->id, 'collection_name' => 'image_products'])->delete();
-        Session::flash('alert-type', 'error');
+        Session::flash('alert-type', 'info');
         Session::flash('message', __('msgs.product_delete'));
         return redirect()->route('admin.products.index');
     }

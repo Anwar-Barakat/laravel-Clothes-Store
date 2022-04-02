@@ -16,7 +16,11 @@ class DetailController extends Controller
      */
     public function index($id)
     {
-        $product    = Product::with(['category', 'brand', 'attributes'])->findOrFail($id);
+        $product    = Product::with([
+            'category', 'brand', 'attributes' => function ($query) {
+                $query->where('status', 1);
+            }
+        ])->findOrFail($id);
         $totalStock = ProductAttribute::where('product_id', $id)->sum('stock');
 
         $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();

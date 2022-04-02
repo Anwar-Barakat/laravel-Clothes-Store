@@ -49,4 +49,12 @@ return [
     // FrontEnd :
     'copy_right'                => 'حقوق النشر @2022 متجر الأنوار . جميع الحقوق محفوظة',
     'no_products_yet'           => 'لا يوجد منتجات بعد !!',
+
+
+    'quant_is_anavailable'      => 'الكمية المطلوبة غير متوفرة',
+
+
+    'product_added_to_cart'     => 'تم إضافة المنتجات الى الكرت بنجاح !',
+    'product_already_exists'    => 'المنتج موجود مسبقاً في الكرت ! ',
+
 ];

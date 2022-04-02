@@ -46,4 +46,10 @@ return [
     // FrontEnd :
     'copy_right'                => 'Copyright © 2022 Anwar Store. All rights reserved',
     'no_products_yet'           => 'No Products Yet !!',
+
+    'quant_is_anavailable'      => 'Required quantity is not available',
+
+    'product_added_to_cart'     => 'Products has added to Cart Successfully!!',
+    'product_already_exists'    => 'Product already exists in the cart',
+
 ];

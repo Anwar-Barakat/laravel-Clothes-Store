@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::composer('frontend.partials.popular_products', function ($view) {
-            $view->with('popular_products', Product::latest()->take(4)->get());
+            $view->with('popular_products', Product::limit(5)->inRandomOrder()->get());
         });
     }
 }

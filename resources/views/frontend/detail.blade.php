@@ -86,6 +86,11 @@
                                                 <option value="{{ $attribute->size }}">{{ $attribute->size }}</option>
                                             @endforeach
                                         </select>
+                                        @error('size')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="quantity">
                                         <span>{{ __('frontend.quantity') }}:</span>
