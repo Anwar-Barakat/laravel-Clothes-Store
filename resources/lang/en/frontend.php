@@ -106,6 +106,9 @@ return [
     'choose_size'           => 'Choose Size',
     'color'                 => 'Color',
     'wash_care'             => 'Wash Care',
+    'availability'          => 'Availability',
+    'in_stock'              => 'In Stock',
+    'quantity'              => 'Quantity',
 
 
 ];

@@ -36,7 +36,7 @@
                         <div class="wrap-shop-control">
                             <h1 class="shop-title">
                                 {{ $categoryDetails->catDetails['name'] }}
-                                ({{ $categoryProducts->total() }})
+                                ({{ $categoryProducts->count() }})
                             </h1>
                             <div class="wrap-right">
                                 <form id="sortProduct" name="sortProduct">
@@ -162,17 +162,17 @@
                                     </label>
                                 @endforeach
                             </div>
-                                <hr>
-                                <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
-                                <div class="widget-content pattern">
-                                    @foreach (App\Models\Product::patternArray as $index => $pattern)
-                                        <label for="{{ $pattern }}" class="material__label">
-                                            <input class="pattern" id="{{ $pattern }}" name="pattern[]"
-                                                type="checkbox" value="{{ $index }}" />
-                                            <span>{{ __('frontend.' . $pattern) }}</span>
-                                        </label>
-                                    @endforeach
-                                </div>
+                            <hr>
+                            <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
+                            <div class="widget-content pattern">
+                                @foreach (App\Models\Product::patternArray as $index => $pattern)
+                                    <label for="{{ $pattern }}" class="material__label">
+                                        <input class="pattern" id="{{ $pattern }}" name="pattern[]"
+                                            type="checkbox" value="{{ $index }}" />
+                                        <span>{{ __('frontend.' . $pattern) }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
 
                             <hr>
                             <h2 class="widget-title">{{ __('frontend.fit') }}</h2>

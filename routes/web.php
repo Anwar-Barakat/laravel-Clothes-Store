@@ -141,10 +141,20 @@ Route::group(
         // FrontEnd :
         // ======================================================
         Route::group(['as' => 'frontend.'], function () {
-            Route::get('/',                     [HomeController::class, 'index'])->name('home');
-            Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
-            Route::any('/{url}',                [FrontendProductController::class, 'index'])->name('url');
-            Route::get('/product/{id}',         [DetailController::class, 'index'])->name('details');
+            Route::get('/',                         [HomeController::class, 'index'])->name('home');
+            Route::get('/cart',                     [CartController::class, 'index'])->name('cart');
+
+            // Detail Page :
+            Route::get('/product/{id}',             [DetailController::class, 'index'])->name('details');
+            Route::post('/get-product-price',       [DetailController::class, 'getProductPrice']);
+
+
+
+
+
+
+
+            Route::any('/{url?}',                   [FrontendProductController::class, 'index'])->name('url');
         });
         Route::get('/admin/{page}',                                       [AdminController::class, 'index']);
     }

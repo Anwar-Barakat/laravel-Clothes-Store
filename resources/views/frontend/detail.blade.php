@@ -60,26 +60,28 @@
                                         <li>FaceTime HD Camera 7.0 MP Photos</li>
                                     </ul>
                                 </div>
-                                <div class="wrap-social">
-                                    <select name="" id="" class="form-control">
+                                <div class="quantity mt-3">
+                                    <span style="    margin: 0.5rem 0;display: block;">
+                                        {{ __('frontend.size') }}:</span>
+                                    <select name="size" id="getPrice" product-id="{{ $product->id }}"
+                                        class="form-control">
                                         <option value="">{{ __('frontend.choose_size') }}</option>
                                         @foreach ($product->attributes as $attribute)
-                                            <option value="">{{ $attribute->size }}</option>
+                                            <option value="{{ $attribute->size }}">{{ $attribute->size }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-
-                                <div class="wrap-social">
-                                    <a class="link-socail" href="#">
-                                        <img src="{{ asset('front/assets/images/social-list.png') }}" alt=""></a>
-                                </div>
-                                <div class="wrap-price"><span class="product-price">${{ $product->price }}</span>
+                                <div class="wrap-price" @if (App::getLocale() == 'ar') dir="ltr" @endif>
+                                    <span class="product-price" id="productPrice">$.{{ $product->price }}
+                                    </span>
                                 </div>
                                 <div class="stock-info in-stock">
-                                    <p class="availability">Availability: <b>In Stock</b></p>
+                                    <p class="availability">{{ __('frontend.availability') }}: {{ $totalStock }}
+                                        <b>{{ __('frontend.in_stock') }}</b>
+                                    </p>
                                 </div>
                                 <div class="quantity">
-                                    <span>Quantity:</span>
+                                    <span>{{ __('frontend.quantity') }}:</span>
                                     <div class="quantity-input">
                                         <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
 
@@ -570,6 +572,35 @@
                 $(this).addClass('selected').siblings().removeClass('selected');
                 console.log($(this).attr('src'));
                 $('.master__image img').hide().attr('src', $(this).attr('src')).fadeIn(500);
+            });
+        });
+    </script>
+@endsection
+
+
+@section('js')
+    <script>
+        $('#getPrice').on('change', function() {
+            var productId = $(this).attr('product-id');
+            var size = $(this).val();
+            if (size == "") {
+                alert('select size');
+                return false;
+            }
+
+            $.ajax({
+                type: "post",
+                url: '/get-product-price',
+                data: {
+                    productId: productId,
+                    size: size,
+                },
+                success: function(response) {
+                    $('#productPrice').html('$.' + response);
+                },
+                error: function() {
+                    alert('error')
+                }
             });
         });
     </script>

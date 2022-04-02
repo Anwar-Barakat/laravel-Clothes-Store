@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
 {
@@ -15,9 +14,8 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $url = null)
+    public function index(Request $request, $url)
     {
-        Paginator::useBootstrap();
         if ($request->ajax()) {
             $data = $request->all();
             $url = $data['url'];
@@ -83,6 +81,16 @@ class ProductController extends Controller
             $categoryCount = Category::where('url', $url)->count();
             if ($categoryCount > 0) {
                 $categoryDetails    = (object)Category::catDetails($url);
+                $categoryProducts   = (object)Product::with([
+                    'brand' => function ($q) {
+                        $q->select('id', 'name');
+                    }
+                ])->whereIn('category_id', $categoryDetails->categoryIds)
+                    ->where('status', 1);
+                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
+            } else {
+                $categoryDetails    = (object)Category::catDetails('shoes');
                 $categoryProducts   = (object)Product::with([
                     'brand' => function ($q) {
                         $q->select('id', 'name');

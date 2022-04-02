@@ -6,7 +6,8 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none
+    user-select: none;
+    width: 142px !important;
 }
 
 .chosen-container * {
@@ -18,7 +19,7 @@
     position: absolute;
     top: 100%;
     z-index: 1010;
-    width: 100%;
+    width: 142px !important;
     border: 1px solid #aaa;
     border-top: 0;
     background: #fff;

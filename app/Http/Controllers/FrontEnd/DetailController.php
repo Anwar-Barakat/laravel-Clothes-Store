@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -15,8 +16,9 @@ class DetailController extends Controller
      */
     public function index($id)
     {
-        $product = Product::with(['category', 'brand', 'attributes'])->findOrFail($id);
-        return view('frontend.detail', ['product'    => $product]);
+        $product    = Product::with(['category', 'brand', 'attributes'])->findOrFail($id);
+        $totalStock = ProductAttribute::where('product_id', $id)->sum('stock');
+        return view('frontend.detail', ['product' => $product, 'totalStock' => $totalStock]);
     }
 
     /**
@@ -83,5 +85,15 @@ class DetailController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getProductPrice(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['size', 'productId']);
+
+            $getPrice = ProductAttribute::where('product_id', $data['productId'])->where('size', $data['size'])->first();
+            return $getPrice->price;
+        }
     }
 }

@@ -105,4 +105,8 @@ return [
     'choose_size'           => 'أختر المقاس',
     'color'                 => 'اللون',
     'wash_care'             => 'نوع الغسيل',
+    'availability'          => 'متوفر',
+    'in_stock'              => 'في المصنع',
+    'quantity'              => 'الكمية',
+
 ];

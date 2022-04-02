@@ -97,11 +97,6 @@
 
     {{-- Sorting --}}
     <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
         $('#orderby').on('change', function() {
             var sort = $(this).val();
             var fabric = get_filter('fabric');
