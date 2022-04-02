@@ -18,7 +18,13 @@ class DetailController extends Controller
     {
         $product    = Product::with(['category', 'brand', 'attributes'])->findOrFail($id);
         $totalStock = ProductAttribute::where('product_id', $id)->sum('stock');
-        return view('frontend.detail', ['product' => $product, 'totalStock' => $totalStock]);
+
+        $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();
+        return view('frontend.detail', [
+            'product'           => $product,
+            'totalStock'        => $totalStock,
+            'relatedProducts'   => $relatedProducts,
+        ]);
     }
 
     /**

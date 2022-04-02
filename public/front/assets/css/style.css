@@ -2679,12 +2679,6 @@ li.menu-item .nav-label.sale-label::before {
     margin-top: 1.5px;
 }
 
-.wrap-shop-control .chosen-container {
-    background-color: #ffffff;
-    border: 1px solid #e6e6e6;
-    padding: 1px 0;
-}
-
 .wrap-shop-control .orderby .chosen-container {
     min-width: 153px;
 }

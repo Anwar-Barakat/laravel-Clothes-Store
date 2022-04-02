@@ -306,15 +306,17 @@ input[type="checkbox"]:disabled {
 .gellery .thumnails {
     overflow: hidden;
     display: flex;
+    padding: 0 1rem;
 }
 
 .gellery .thumnails img {
     border: 1px solid #cccccc45;
-    padding: 0.2rem;
+    padding: 1.5rem;
     transition: 0.4s;
     opacity: 0.5;
     max-width: 90px !important;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .gellery .thumnails img.selected {
