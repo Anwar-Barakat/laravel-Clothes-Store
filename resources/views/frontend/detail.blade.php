@@ -73,8 +73,23 @@
                                     </ul>
                                 </div>
                                 <div class="wrap-price" @if (App::getLocale() == 'ar') dir="ltr" @endif>
-                                    <span class="product-price" id="productPrice">$.{{ $product->price }}
-                                    </span>
+                                    @php
+                                        $discount = App\Models\Product::getDiscountedPrice($product->id);
+                                    @endphp
+                                    @if ($discount > 0)
+                                        <ins>
+                                            <p class="product-price" id="productPriceWithDiscAfter">$.{{ $discount }}
+                                            </p>
+                                        </ins>
+                                        <del>
+                                            <p class="product-price" id="productPriceWithDiscBefore">
+                                                $.{{ $product->price }}
+                                            </p>
+                                        </del>
+                                    @else
+                                        <span class="product-price" id="productPriceWithoutDisc">$.{{ $product->price }}
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="stock-info in-stock">
                                     <p class="availability">{{ __('frontend.availability') }}: {{ $totalStock }}
@@ -459,7 +474,13 @@
                     size: size,
                 },
                 success: function(response) {
-                    $('#productPrice').html('$.' + response);
+                    if (response['discountedPrice'] > 0) {
+                        $('#productPriceWithDiscAfter').html('$.' + response['discountedPrice']);
+                        $('#productPriceWithDiscBefore').html('$.' + response['productPrice']);
+
+                    } else {
+                        $('#productPriceWithoutDisc').html('$.' + response['productPrice']);
+                    }
                 },
                 error: function() {
                     alert('error')

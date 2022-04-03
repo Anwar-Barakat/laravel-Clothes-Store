@@ -100,10 +100,11 @@ class DetailController extends Controller
     public function getProductPrice(Request $request)
     {
         if ($request->ajax()) {
-            $data = $request->only(['size', 'productId']);
+            $data                       = $request->only(['size', 'productId']);
 
-            $getPrice = ProductAttribute::where('product_id', $data['productId'])->where('size', $data['size'])->first();
-            return $getPrice->price;
+            $discountedAttribtePrice    = Product::getDiscountedAttributePrice($data['productId'], $data['size']);
+
+            return $discountedAttribtePrice;
         }
     }
 }

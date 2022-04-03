@@ -5188,9 +5188,9 @@ article.single-post blockquote p:last-child::after {
 }
 
 .wrap-product-detail .detail-info .wrap-price {
-    display: inline-block;
-    width: 100%;
-    text-align: right;
+    display: flex;
+    justify-content: end;
+    column-gap: 2rem;
 }
 
 .wrap-product-detail .detail-info .wrap-price .product-price {
