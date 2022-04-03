@@ -21,7 +21,20 @@
                         <span class="brand">{{ $product->brand->name }}</span>
                         <a href="{{ route('frontend.details', $product->id) }}"
                             class="product-name"><span>{{ $product->name }}</span></a>
-                        <div class="wrap-price"><span class="product-price">${{ $product->price }}</span>
+                        <div class="wrap-price">
+                            @php
+                                $discount = App\Models\Product::getDiscountedPrice($product->id);
+                            @endphp
+                            @if ($discount > 0)
+                                <ins>
+                                    <p class="product-price">{{ $discount }}$ </p>
+                                </ins>
+                                <del>
+                                    <p class="product-price">${{ $product->price }}</p>
+                                </del>
+                            @else
+                                <span class="product-price">${{ $product->price }}</span>
+                            @endif
                         </div>
                         <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
                     </div>

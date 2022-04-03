@@ -50,6 +50,25 @@ class Product extends Model implements HasMedia
             ->height(300);
     }
 
+
+    public static function getDiscountedPrice($product_id)
+    {
+        $product    = Product::select('price', 'discount', 'category_id')->where('id', $product_id)->first();
+        $category   = Category::select('discount')->where('id', $product->category_id)->first();
+        if ($product->discount > 0)
+            // 450 = 500 - (500 *10 / 100)
+            $discountedPrice = $product->price  - ($product->price * $product->discount / 100);
+
+        elseif ($category->discount > 0)
+            $discountedPrice = $product->price  - ($product->price * $category->discount / 100);
+
+        else
+            $discountedPrice = 0;
+
+        return $discountedPrice;
+    }
+
+
     public const fabricArray    = ['cotton', 'polyester', 'wool'];
     public const sleeveArray    = ['full_sleeve', 'half_sleeve', 'short_sleeve', 'sleeveless'];
     public const patternArray   = ['checked', 'plain', 'printed', 'self', 'solid'];
