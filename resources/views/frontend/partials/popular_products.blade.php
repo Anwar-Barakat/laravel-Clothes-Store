@@ -7,14 +7,14 @@
                     <div class="product product-widget-style">
                         <div class="thumbnnail">
                             @if ($popular_product->getFirstMediaUrl('image_products', 'small'))
-                                <a href="" title="{{ $popular_product->name }}">
+                                <a href="{{ route('frontend.details',$popular_product->id) }}" title="{{ $popular_product->name }}">
                                     <figure>
                                         <img src="{{ $popular_product->getFirstMediaUrl('image_products', 'small') }}"
                                             alt="{{ $popular_product->name }}" style="max-width: 60px">
                                     </figure>
                                 </a>
                             @else
-                                <a href="" title="{{ $popular_product->name }}">
+                                <a href="{{ route('frontend.details',$popular_product->id) }}" title="{{ $popular_product->name }}">
                                     <figure>
                                         <img src="{{ asset('assets/img/') }}" alt="{{ $popular_product->name }}"
                                             style="max-width: 60px">
@@ -23,9 +23,28 @@
                             @endif
                         </div>
                         <div class="product-info">
-                            <a href="#" class="product-name"><span>{{ $popular_product->name }}</span></a>
-                            <div class="wrap-price"><span
-                                    class="product-price">${{ $popular_product->price }}</span>
+                            <a href="{{ route('frontend.details',$popular_product->id) }}" class="product-name"><span>{{ $popular_product->name }}</span></a>
+                            <div class="wrap-price">
+                                @php
+                                    $discount = App\Models\Product::getDiscountedPrice($popular_product->id);
+                                @endphp
+                                @if ($discount > 0)
+                                    <ins>
+                                        <p class="product-price" id="productPriceWithDiscAfter">
+                                            $.{{ $discount }}
+                                        </p>
+                                    </ins>
+                                    <del>
+                                        <p class="product-price" id="productPriceWithDiscBefore">
+                                            $.{{ $popular_product->price }}
+                                        </p>
+                                    </del>
+                                @else
+                                    <span class="product-price"
+                                        id="productPriceWithoutDisc">$.{{ $popular_product->price }}
+                                    </span>
+                                @endif
+
                             </div>
                         </div>
                     </div>

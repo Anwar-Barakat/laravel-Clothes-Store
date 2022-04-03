@@ -2124,9 +2124,10 @@ li.menu-item .nav-label.sale-label::before {
 
 .product .product-info .wrap-price,
 .product-style-2 .product-info .wrap-price {
-    display: inline-block;
-    width: 100%;
-    text-align: left;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: 1.5rem;
     margin-top: 3px;
 }
 
@@ -3076,7 +3077,8 @@ li.menu-item .nav-label.sale-label::before {
 /*product widget style*/
 
 .product-widget-style {
-    display: table;
+    display: flex;
+    align-items: center;
 }
 
 .product-widget-style .thumbnnail {
@@ -5187,7 +5189,8 @@ article.single-post blockquote p:last-child::after {
 .wrap-product-detail .detail-info .wrap-price {
     display: flex;
     justify-content: start;
-    column-gap: 2rem;
+    align-items: center;
+    column-gap: 1.5rem;
 }
 
 .wrap-product-detail .detail-info .wrap-price .product-price {

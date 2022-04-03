@@ -222,7 +222,8 @@
                                             @foreach ($latestProducts as $latestProduct)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
-                                                        <a href="detail.html" title="{{ $latestProduct->name }}">
+                                                        <a href="{{ route('frontend.details', $latestProduct->id) }}"
+                                                            title="{{ $latestProduct->name }}">
                                                             @if ($latestProduct->getFirstMediaUrl('image_products', 'small'))
                                                                 <figure>
                                                                     <img src="{{ $latestProduct->getFirstMediaUrl('image_products', 'small') }}"
@@ -237,19 +238,37 @@
                                                                 </figure>
                                                             @endif
                                                         </a>
-                                                        {{-- <div class="group-flash">
-                                                        <span class="flash-item new-label">new</span>
-                                                    </div> --}}
+
                                                         <div class="wrap-btn">
-                                                            <a href="#"
+                                                            <a href="{{ route('frontend.details', $latestProduct->id) }}"
                                                                 class="function-link">{{ __('frontend.quick_view') }}</a>
                                                         </div>
                                                     </div>
                                                     <div class="product-info">
-                                                        <a href="#"
+                                                        <a href="{{ route('frontend.details', $latestProduct->id) }}"
                                                             class="product-name"><span>{{ $latestProduct->name }}</span></a>
-                                                        <div class="wrap-price"><span
-                                                                class="product-price">{{ $latestProduct->price }}$</span>
+                                                        <div class="wrap-price">
+                                                            @php
+                                                                $discount = App\Models\Product::getDiscountedPrice($latestProduct->id);
+                                                            @endphp
+                                                            @if ($discount > 0)
+                                                                <ins>
+                                                                    <p class="product-price"
+                                                                        id="productPriceWithDiscAfter">
+                                                                        $.{{ $discount }}
+                                                                    </p>
+                                                                </ins>
+                                                                <del>
+                                                                    <p class="product-price"
+                                                                        id="productPriceWithDiscBefore">
+                                                                        $.{{ $latestProduct->price }}
+                                                                    </p>
+                                                                </del>
+                                                            @else
+                                                                <span class="product-price"
+                                                                    id="productPriceWithoutDisc">$.{{ $latestProduct->price }}
+                                                                </span>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
