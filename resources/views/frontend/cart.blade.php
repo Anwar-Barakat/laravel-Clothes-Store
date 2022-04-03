@@ -26,7 +26,7 @@
                             @endphp
                             @foreach ($userCartProducts as $userCartProduct)
                                 @php
-                                    $price = App\Models\Cart::getProductAttributePrice($userCartProduct->product->id, $userCartProduct->size)->price;
+                                    $price = App\Models\Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
                                 @endphp
                                 <li class="pr-cart-item">
                                     <div class="product-image">
@@ -61,7 +61,12 @@
                                     </div>
                                     <div class="price-field sub-total">
                                         <p class="price">
-                                            ${{ $price }}
+                                            ${{ $price['productPrice'] }}
+                                        </p>
+                                    </div>
+                                    <div class="price-field sub-total">
+                                        <p class="price">
+                                            ${{ $price['discount'] }}
                                         </p>
                                     </div>
                                     <div class="quantity">
@@ -74,7 +79,7 @@
                                     </div>
                                     <div class="price-field sub-total">
                                         <p class="price">
-                                            ${{ $price * $userCartProduct->quantity }}
+                                            ${{ $price['finalPrice'] * $userCartProduct->quantity }}
                                         </p>
                                     </div>
                                     <div class="delete">
@@ -85,7 +90,7 @@
                                     </div>
                                 </li>
                                 @php
-                                    $totalPrice = $totalPrice + $price * $userCartProduct->quantity;
+                                    $totalPrice = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
                                 @endphp
                             @endforeach
                         </ul>
@@ -95,11 +100,11 @@
                         <div class="order-summary">
                             <h4 class="title-box">{{ __('frontend.order_summary') }}</h4>
                             <p class="summary-info"><span class="title">{{ __('frontend.subtotal') }}</span><b
-                                    class="index">$512.00</b></p>
+                                    class="index">${{ $totalPrice ?? 0 }}</b></p>
 
                             <p class="summary-info total-info "><span
                                     class="title">{{ __('frontend.total') }}</span><b
-                                    class="index">${{ $totalPrice ?? 0 }}</b></p>
+                                    class="index">$00</b></p>
                         </div>
                         <div class="checkout-info">
                             <a class="btn btn-checkout" href="checkout.html">{{ __('frontend.checkout') }}</a>
@@ -153,12 +158,25 @@
                                                 <a href="#"
                                                     class="product-name"><span>{{ $featuredPorduct->name }}</span></a>
                                                 <div class="wrap-price">
-                                                    <ins>
-                                                        <p class="product-price">{{ $featuredPorduct->price }}$ </p>
-                                                    </ins>
-                                                    <del>
-                                                        <p class="product-price">$250.00</p>
-                                                    </del>
+                                                    @php
+                                                        $discount = App\Models\Product::getDiscountedPrice($featuredPorduct->id);
+                                                    @endphp
+                                                    @if ($discount > 0)
+                                                        <ins>
+                                                            <p class="product-price" id="productPriceWithDiscAfter">
+                                                                $.{{ $discount }}
+                                                            </p>
+                                                        </ins>
+                                                        <del>
+                                                            <p class="product-price" id="productPriceWithDiscBefore">
+                                                                $.{{ $featuredPorduct->price }}
+                                                            </p>
+                                                        </del>
+                                                    @else
+                                                        <span class="product-price"
+                                                            id="productPriceWithoutDisc">$.{{ $featuredPorduct->price }}
+                                                        </span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

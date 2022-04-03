@@ -474,8 +474,8 @@
                     size: size,
                 },
                 success: function(response) {
-                    if (response['discountedPrice'] > 0) {
-                        $('#productPriceWithDiscAfter').html('$.' + response['discountedPrice']);
+                    if (response['discount'] > 0) {
+                        $('#productPriceWithDiscAfter').html('$.' + response['finalPrice']);
                         $('#productPriceWithDiscBefore').html('$.' + response['productPrice']);
 
                     } else {
