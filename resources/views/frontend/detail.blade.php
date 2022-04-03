@@ -33,8 +33,16 @@
                                     <div class="master__image">
                                         <i class="fa fa-chevron-right icon"></i>
                                         <i class="fa fa-chevron-left icon"></i>
-                                        <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
-                                            alt="{{ $product->name }}">
+                                        @if ($product->getFirstMediaUrl('image_products', 'small'))
+                                            <figure>
+                                                <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}">
+                                            </figure>
+                                        @else
+                                            <figure>
+                                                <img src="{{ asset('assets/img/products/default-image.png') }}" alt="">
+                                            </figure>
+                                        @endif
+
                                     </div>
                                     <div class="thumnails">
                                         <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"

@@ -21,8 +21,11 @@ class CartController extends Controller
     public function index()
     {
         $featuredPorducts       = Product::where(['is_feature' => 'Yes', 'status' => 1])->limit(5)->inRandomOrder()->get();
+        $userCartProducts       = Cart::userCartProducts();
+
         return view('frontend.cart', [
             'featuredPorducts'          => $featuredPorducts,
+            'userCartProducts'          => $userCartProducts,
         ]);
     }
 

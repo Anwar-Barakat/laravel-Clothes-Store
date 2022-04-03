@@ -109,4 +109,12 @@ return [
     'in_stock'              => 'في المصنع',
     'quantity'              => 'الكمية',
 
+
+    // Cart :
+    'products'              => 'المنتجات',
+    'name'                  => 'الاسم',
+    'product'               => 'المنتج',
+    'discount'              => 'الحسم',
+
+
 ];

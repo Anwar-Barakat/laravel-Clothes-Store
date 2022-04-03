@@ -28,7 +28,7 @@ class ProductAttributeController extends Controller
      */
     public function create(Product $product)
     {
-        $productData = Product::with('attributes')->select('id', 'name', 'color', 'code')->findOrFail($product->id);
+        $productData = Product::with('attributes')->select('id', 'name', 'color', 'code', 'price')->findOrFail($product->id);
         return view('admin.products.attributes.add', ['product' => $productData]);
     }
 

@@ -47,6 +47,10 @@
                                     <th>{{ __('translation.color') }}</th>
                                     <td>{{ $product->color }}</td>
                                 </tr>
+                                <tr>
+                                    <th>{{ __('translation.price') }}</th>
+                                    <td>${{ $product->price }}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div><!-- bd -->

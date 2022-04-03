@@ -4592,6 +4592,7 @@ article.single-post blockquote p:last-child::after {
 .wrap-iten-in-cart .products-cart .quantity,
 .wrap-iten-in-cart .products-cart .price-field,
 .wrap-iten-in-cart .products-cart .product-name,
+.wrap-iten-in-cart .products-cart .product-code,
 .wrap-iten-in-cart .products-cart .product-image {
     display: table-cell;
     vertical-align: middle;
@@ -4622,12 +4623,14 @@ article.single-post blockquote p:last-child::after {
     text-align: right;
 }
 
-.wrap-iten-in-cart .products-cart .product-name {
+.wrap-iten-in-cart .products-cart .product-name,
+.wrap-iten-in-cart .products-cart .product-code {
     padding-left: 20px;
 }
 
-.wrap-iten-in-cart .products-cart .product-name a {
-    font-size: 14px;
+.wrap-iten-in-cart .products-cart .product-name a,
+.wrap-iten-in-cart .products-cart .product-code a {
+    font-size: 15px;
     line-height: 20px;
     font-weight: 600;
     color: #333333;
@@ -7514,6 +7517,7 @@ table.shop_attributes tbody {
     .wrap-iten-in-cart .products-cart .delete,
     .wrap-iten-in-cart .products-cart .quantity,
     .wrap-iten-in-cart .products-cart .price-field,
+    .wrap-iten-in-cart .products-cart .product-code,
     .wrap-iten-in-cart .products-cart .product-name,
     .wrap-iten-in-cart .products-cart .product-image {
         display: inline-block;

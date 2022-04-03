@@ -111,4 +111,11 @@ return [
     'quantity'              => 'Quantity',
 
 
+    // Cart :
+    'products'              => 'Products',
+    'name'                  => 'Name',
+    'product'               => 'Product',
+    'discount'              => 'Discount',
+
+
 ];

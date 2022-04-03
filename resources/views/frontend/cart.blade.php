@@ -18,70 +18,76 @@
                     </ul>
                 </div>
                 <div class=" main-content-area">
-
                     <div class="wrap-iten-in-cart">
-                        <h3 class="box-title">{{ __('frontend.products_name') }}</h3>
+                        <h3 class="box-title">{{ __('frontend.products') }} ({{ $userCartProducts->count() }})</h3>
                         <ul class="products-cart">
-                            <li class="pr-cart-item">
-                                <div class="product-image">
-                                    <figure><img src="{{ asset('front/assets/images/products/digitals/digital_18.jpg') }}"
-                                            alt="">
-                                    </figure>
-                                </div>
-                                <div class="product-name">
-                                    <a class="link-to-product" href="#">Radiant-360 R6 Wireless Omnidirectional Speaker
-                                        [White]</a>
-                                </div>
-                                <div class="price-field produtc-price">
-                                    <p class="price">$256.00</p>
-                                </div>
-                                <div class="quantity">
-                                    <div class="quantity-input">
-                                        <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
-                                        <a class="btn btn-increase" href="#"></a>
-                                        <a class="btn btn-reduce" href="#"></a>
+                            @php
+                                $totalPrice = 0;
+                            @endphp
+                            @foreach ($userCartProducts as $userCartProduct)
+                                @php
+                                    $price = App\Models\Cart::getProductAttributePrice($userCartProduct->product->id, $userCartProduct->size)->price;
+                                @endphp
+                                <li class="pr-cart-item">
+                                    <div class="product-image">
+                                        @if ($userCartProduct->product->getFirstMediaUrl('image_products', 'small'))
+                                            <figure>
+                                                <img
+                                                    src="{{ $userCartProduct->product->getFirstMediaUrl('image_products', 'small') }}">
+                                            </figure>
+                                        @else
+                                            <figure>
+                                                <img src="{{ asset('assets/img/products/default-image.png') }}" alt="">
+                                            </figure>
+                                        @endif
                                     </div>
-                                </div>
-                                <div class="price-field sub-total">
-                                    <p class="price">$256.00</p>
-                                </div>
-                                <div class="delete">
-                                    <a href="#" class="btn btn-delete" title="">
-                                        <span>{{ __('frontend.delete_from_cart') }}</span>
-                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="pr-cart-item">
-                                <div class="product-image">
-                                    <figure><img src="{{ asset('front/assets/images/products/digitals/digital_20.jpg') }}"
-                                            alt="">
-                                    </figure>
-                                </div>
-                                <div class="product-name">
-                                    <a class="link-to-product" href="#">Radiant-360 R6 Wireless Omnidirectional Speaker
-                                        [White]</a>
-                                </div>
-                                <div class="price-field produtc-price">
-                                    <p class="price">$256.00</p>
-                                </div>
-                                <div class="quantity">
-                                    <div class="quantity-input">
-                                        <input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*">
-                                        <a class="btn btn-increase" href="#"></a>
-                                        <a class="btn btn-reduce" href="#"></a>
+                                    <div class="product-name" style="width: 20%">
+                                        <div>
+                                            <a class="link-to-product" href="javascript:void(0);">
+                                                {{ __('frontend.name') }} :
+                                                {{ $userCartProduct->product->name }}</a>
+                                        </div>
+                                        {{-- ({{ $userCartProduct->product->code }}) --}}
+                                        <div>
+                                            <a class="link-to-product" href="javascript:void(0);">
+                                                {{ __('frontend.code') }} :
+                                                {{ $userCartProduct->product->code }}</a>
+                                        </div>
+                                        <div>
+                                            <a class="link-to-product" href="javascript:void(0);">
+                                                {{ __('frontend.size') }} :
+                                                {{ $userCartProduct->size }}</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="price-field sub-total">
-                                    <p class="price">$256.00</p>
-                                </div>
-                                <div class="delete">
-                                    <a href="#" class="btn btn-delete" title="">
-                                        <span>{{ __('frontend.delete_from_cart') }}</span>
-                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                            </li>
+                                    <div class="price-field sub-total">
+                                        <p class="price">
+                                            ${{ $price }}
+                                        </p>
+                                    </div>
+                                    <div class="quantity">
+                                        <div class="quantity-input">
+                                            <input type="text" name="product-quatity"
+                                                value="{{ $userCartProduct->quantity }}" data-max="120" pattern="[0-9]*">
+                                            <a class="btn btn-increase" href="#"></a>
+                                            <a class="btn btn-reduce" href="#"></a>
+                                        </div>
+                                    </div>
+                                    <div class="price-field sub-total">
+                                        <p class="price">
+                                            ${{ $price * $userCartProduct->quantity }}
+                                        </p>
+                                    </div>
+                                    <div class="delete">
+                                        <a href="#" class="btn btn-delete" title="">
+                                            <span>{{ __('frontend.delete_from_cart') }}</span>
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                @php
+                                    $totalPrice = $totalPrice + $price * $userCartProduct->quantity;
+                                @endphp
+                            @endforeach
                         </ul>
                     </div>
 
@@ -93,7 +99,7 @@
 
                             <p class="summary-info total-info "><span
                                     class="title">{{ __('frontend.total') }}</span><b
-                                    class="index">$512.00</b></p>
+                                    class="index">${{ $totalPrice ?? 0 }}</b></p>
                         </div>
                         <div class="checkout-info">
                             <a class="btn btn-checkout" href="checkout.html">{{ __('frontend.checkout') }}</a>
