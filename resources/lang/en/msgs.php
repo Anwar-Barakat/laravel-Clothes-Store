@@ -53,5 +53,6 @@ return [
     'product_already_exists'    => 'Product already exists in the cart',
 
     'cant_reduce_quantity'      => 'Product quantity must be 1 or more then',
+    'amount_not_available'      =>'Amount in stock not availables',
 
 ];

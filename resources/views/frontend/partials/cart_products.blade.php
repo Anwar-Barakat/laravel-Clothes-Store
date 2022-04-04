@@ -100,7 +100,6 @@
         $(document).on('click', '.btnProductUpdate', function() {
             if ($(this).hasClass('btn-reduce')) {
                 var quantity = $(this).prev().val();
-
                 if (quantity <= 1) {
                     alert("{{ __('msgs.cant_reduce_quantity') }}");
                     return false;
@@ -112,15 +111,19 @@
                 var quantity = $(this).prev().prev().val();
                 newQuantity = parseInt(quantity) + 1;
             }
+
             var cartId = $(this).attr('cartId');
             $.ajax({
                 type: "post",
                 url: "update-cart-products-quantity",
                 data: {
                     cartId: cartId,
-                    newQuantity: newQuantity
+                    newQuantity: newQuantity,
                 },
                 success: function(response) {
+                    if (response.status == false)
+                        toastr.info("{{ __('msgs.amount_not_available') }}");
+
                     $('#AppendCartProducts').html(response['view']);
                 },
                 error: function() {

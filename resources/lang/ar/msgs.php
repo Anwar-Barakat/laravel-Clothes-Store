@@ -57,5 +57,6 @@ return [
     'product_added_to_cart'     => 'تم إضافة المنتجات الى الكرت بنجاح !',
     'product_already_exists'    => 'المنتج موجود مسبقاً في الكرت ! ',
 
-    'cant_reduce_quantity'      => 'كمية المنتج يجب ان تكون 1 او اكثر',
+    'cant_reduce_quantity'          => 'كمية المنتج يجب ان تكون 1 او اكثر',
+    'amount_not_available'          => 'الكمية في المستودع عير متوفرة',
 ];

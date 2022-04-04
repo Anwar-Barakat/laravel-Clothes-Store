@@ -151,16 +151,29 @@ class CartController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->only(['cartId', 'newQuantity']);
+            $userCartProducts   = Cart::userCartProducts();
 
+            // Checking if the quantity available in stock or not :
+            $cartDetail         = Cart::findOrFail($data['cartId']);
+            $availableInStock   = ProductAttribute::select('stock')->where([
+                'product_id'    => $cartDetail['product_id'],
+                'size'          => $cartDetail['size']
+            ])->first();
+            if ($data['newQuantity'] > $availableInStock->stock) {
+                return response()->json([
+                    'status'    => false,
+                    'view'      => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+                ]);
+            }
 
             Cart::where('id', $data['cartId'])->update([
                 'quantity'  => $data['newQuantity']
             ]);
 
-            $userCartProducts       = Cart::userCartProducts();
 
             return response()->json([
-                'view'  => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+                'status'    => true,
+                'view'      => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
             ]);
         }
     }
