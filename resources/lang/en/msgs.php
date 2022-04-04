@@ -52,4 +52,6 @@ return [
     'product_added_to_cart'     => 'Products has added to Cart Successfully!!',
     'product_already_exists'    => 'Product already exists in the cart',
 
+    'cant_reduce_quantity'      => 'Product quantity must be 1 or more then',
+
 ];

@@ -10,6 +10,7 @@ use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class CartController extends Controller
 {
@@ -144,5 +145,23 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateProductQuantity(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['cartId', 'newQuantity']);
+
+
+            Cart::where('id', $data['cartId'])->update([
+                'quantity'  => $data['newQuantity']
+            ]);
+
+            $userCartProducts       = Cart::userCartProducts();
+
+            return response()->json([
+                'view'  => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+            ]);
+        }
     }
 }

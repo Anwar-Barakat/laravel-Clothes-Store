@@ -18,104 +18,11 @@
                     </ul>
                 </div>
                 <div class=" main-content-area">
-                    <div class="wrap-iten-in-cart">
-                        <h3 class="box-title">{{ __('frontend.products') }} ({{ $userCartProducts->count() }})</h3>
-                        <ul class="products-cart">
-                            @php
-                                $totalPrice = 0;
-                            @endphp
-                            @foreach ($userCartProducts as $userCartProduct)
-                                @php
-                                    $price = App\Models\Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
-                                @endphp
-                                <li class="pr-cart-item">
-                                    <div class="product-image">
-                                        @if ($userCartProduct->product->getFirstMediaUrl('image_products', 'small'))
-                                            <figure>
-                                                <img
-                                                    src="{{ $userCartProduct->product->getFirstMediaUrl('image_products', 'small') }}">
-                                            </figure>
-                                        @else
-                                            <figure>
-                                                <img src="{{ asset('assets/img/products/default-image.png') }}" alt="">
-                                            </figure>
-                                        @endif
-                                    </div>
-                                    <div class="product-name" style="width: 20%">
-                                        <div>
-                                            <a class="link-to-product" href="javascript:void(0);">
-                                                {{ __('frontend.name') }} :
-                                                {{ $userCartProduct->product->name }}</a>
-                                        </div>
-                                        {{-- ({{ $userCartProduct->product->code }}) --}}
-                                        <div>
-                                            <a class="link-to-product" href="javascript:void(0);">
-                                                {{ __('frontend.code') }} :
-                                                {{ $userCartProduct->product->code }}</a>
-                                        </div>
-                                        <div>
-                                            <a class="link-to-product" href="javascript:void(0);">
-                                                {{ __('frontend.size') }} :
-                                                {{ $userCartProduct->size }}</a>
-                                        </div>
-                                    </div>
-                                    <div class="price-field sub-total">
-                                        <p class="price">
-                                            ${{ $price['productPrice'] }}
-                                        </p>
-                                    </div>
-                                    <div class="price-field sub-total">
-                                        <p class="price">
-                                            ${{ $price['discount'] }}
-                                        </p>
-                                    </div>
-                                    <div class="quantity">
-                                        <div class="quantity-input">
-                                            <input type="text" name="product-quatity"
-                                                value="{{ $userCartProduct->quantity }}" data-max="120" pattern="[0-9]*">
-                                            <a class="btn btn-increase" href="#"></a>
-                                            <a class="btn btn-reduce" href="#"></a>
-                                        </div>
-                                    </div>
-                                    <div class="price-field sub-total">
-                                        <p class="price">
-                                            ${{ $price['finalPrice'] * $userCartProduct->quantity }}
-                                        </p>
-                                    </div>
-                                    <div class="delete">
-                                        <a href="#" class="btn btn-delete" title="">
-                                            <span>{{ __('frontend.delete_from_cart') }}</span>
-                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                                @php
-                                    $totalPrice = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
-                                @endphp
-                            @endforeach
-                        </ul>
+                    <div class="wrap-iten-in-cart" id="AppendCartProducts">
+                        @include('frontend.partials.cart_products')
                     </div>
 
-                    <div class="summary">
-                        <div class="order-summary">
-                            <h4 class="title-box">{{ __('frontend.order_summary') }}</h4>
-                            <p class="summary-info"><span class="title">{{ __('frontend.subtotal') }}</span><b
-                                    class="index">${{ $totalPrice ?? 0 }}</b></p>
 
-                            <p class="summary-info total-info "><span
-                                    class="title">{{ __('frontend.total') }}</span><b
-                                    class="index">$00</b></p>
-                        </div>
-                        <div class="checkout-info">
-                            <a class="btn btn-checkout" href="checkout.html">{{ __('frontend.checkout') }}</a>
-                            <a class="link-to-shop" href="shop.html">{{ __('frontend.contiue_shopping') }}<i
-                                    class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="update-clear">
-                            <a class="btn btn-clear" href="#">{{ __('frontend.clear_cart') }}</a>
-                            <a class="btn btn-update" href="#">{{ __('frontend.update_cart') }}</a>
-                        </div>
-                    </div>
 
                     @if ($featuredPorducts->count() > 0)
                         <div class="wrap-show-advance-info-box style-1 box-in-site">
@@ -144,9 +51,6 @@
                                                     @endif
                                                 </a>
                                                 <div class="group-flash">
-                                                    {{-- <span class="flash-item sale-label">
-                                                        {{ __('frontend.sale') }}
-                                                    </span> --}}
                                                 </div>
                                                 <div class="wrap-btn">
                                                     <a href="#" class="function-link">

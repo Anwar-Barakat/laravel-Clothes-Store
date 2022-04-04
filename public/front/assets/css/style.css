@@ -7219,9 +7219,6 @@ table.shop_attributes tbody {
     .shopping-cart .summary .order-summary {
         padding-right: 30px;
     }
-    .wrap-iten-in-cart .products-cart .quantity .quantity-input .btn::before {
-        margin-left: 1px;
-    }
     .wrap-iten-in-cart .products-cart .quantity .quantity-input .btn {
         margin: 6.5px 0 0 10px;
         width: 25px;
