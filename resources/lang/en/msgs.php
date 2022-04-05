@@ -55,4 +55,6 @@ return [
     'cant_reduce_quantity'      => 'Product quantity must be 1 or more then',
     'amount_not_available'      =>'Amount in stock not availables',
 
+    'cart_product_delete'       => 'Cart product has deleted successfully !!',
+
 ];

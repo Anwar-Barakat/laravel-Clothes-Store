@@ -63,7 +63,7 @@
                 </p>
             </div>
             <div class="delete">
-                <a href="#" class="btn btn-delete" title="">
+                <a href="#" class="btn btn-delete btnProductDelete" title="" cartId="{{ $userCartProduct->id }}">
                     <span>{{ __('frontend.delete_from_cart') }}</span>
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
                 </a>
@@ -128,6 +128,25 @@
                 },
                 error: function() {
                     alert('error')
+                }
+            });
+        });
+    </script>
+
+    {{-- Delete The Product from shopping cart --}}
+    <script>
+        $(document).on('click', '.btnProductDelete', function() {
+            var cartId = $(this).attr('cartId');
+            $.ajax({
+                type: "post",
+                url: "delete-cart-product",
+                data: {
+                    cartId: cartId
+                },
+                success: function(response) {
+                    if (response.status == true) {
+                        toastr.info("{{ __('msgs.cart_product_delete') }}");
+                    }
                 }
             });
         });
