@@ -54,4 +54,19 @@ return [
     'cart_product_delete'       => 'Cart product has deleted successfully !!',
     'registered_success'        => 'You have been successfully registered !!',
     'email_already_exists'      => 'Email Already Exists !!',
+
+
+
+    // jQuery Validation :
+    'email_not_valid'           => 'Please enter a valid email address',
+    'enter_your_name'           => 'Please enter your name',
+    'enter_your_mobile'         => 'Please enter your mobile',
+    'min_mobile'                => 'Your mobile must consist of at least 10 numbers',
+    'max_mobile'                => 'Your mobile must consist of at most 10 numbers',
+    'enter_your_password'       => 'Please provide a password',
+    'enter_your_conf__pass'     => 'Please provide a confirmation password',
+    'min_password'              => 'Your password must be at least 8 characters long',
+    'confirm_pass'              => 'Please enter the same password as above',
+    'mobile_not_valid'          => 'Please enter a valid mobile address',
+    'valid_email'               => 'Please Enter Your Valid Email',
 ];

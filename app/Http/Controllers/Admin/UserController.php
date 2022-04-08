@@ -123,4 +123,14 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('frontend.home');
     }
+
+    public function checkEmail(Request $request)
+    {
+        $data           = $request->only(['email']);
+        $emailCount     = User::where('email', $data['email'])->count();
+        if ($emailCount > 0)
+            return "false";
+        else
+            return "true";
+    }
 }

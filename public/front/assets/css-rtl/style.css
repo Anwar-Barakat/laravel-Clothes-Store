@@ -2855,6 +2855,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .left-sidebar .main-content-area {
     float: left !important;
+    width: 100%;
 }
 
 .widget:first-child {
@@ -3509,6 +3510,7 @@ li.menu-item .nav-label.sale-label::before {
 .wrap-login-item .form-item.login-form {
     padding-left: 70px;
     margin-bottom: 65px;
+    width: 100%;
 }
 
 .wrap-login-item .form-item.register-form {
