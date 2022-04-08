@@ -108,8 +108,19 @@ class UserController extends Controller
     }
 
 
-    public function login()
+    public function login(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $data = $request->only(['email', 'password']);
+            if (auth()->attempt(['email' => $data['email'], 'password' => $data['password']])) {
+                Session::flash('message', __('translation.hi_welcome_back'));
+                return redirect()->route('frontend.home');
+            } else {
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.email_or_pass_not_valid'));
+                return redirect()->back();
+            }
+        }
     }
 
 

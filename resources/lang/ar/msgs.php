@@ -57,6 +57,7 @@ return [
     'cart_product_delete'       => 'تم حذف منتج عربة التسوق بنجاح ! ',
     'registered_success'        => 'تم تسجيلك بنجاح !!',
     'email_already_exists'      => 'هذا الأيميل موجود سابقاً !!',
+    'email_or_pass_not_valid'   => 'البريد الإلكتروني أو كلمة المرور غير صالحة',
 
 
     // jQuery Validation :

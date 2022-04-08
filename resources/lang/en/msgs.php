@@ -54,6 +54,7 @@ return [
     'cart_product_delete'       => 'Cart product has deleted successfully !!',
     'registered_success'        => 'You have been successfully registered !!',
     'email_already_exists'      => 'Email Already Exists !!',
+    'email_or_pass_not_valid'   => 'Email or password not valid',
 
 
 

@@ -22,18 +22,19 @@
                         <div class=" main-content-area">
                             <div class="wrap-login-item ">
                                 <div class="login-form form-item form-stl">
-                                    <form name="frm-login" action="{{ route('frontend.login') }}" method="POST">
+                                    <form name="frm-login" action="{{ route('frontend.login') }}" method="POST"
+                                        id="loginForm">
                                         @csrf
                                         <fieldset class="wrap-title">
                                             <h3 class="form-title">{{ __('frontend.login_into_account') }}</h3>
                                         </fieldset>
                                         <fieldset class="wrap-input">
-                                            <label for="frm-login-email_address">{{ __('frontend.email_address') }}:</label>
-                                            <input type="email" id="frm-login-email_address" name="email"
+                                            <label for="email">{{ __('frontend.email_address') }}:</label>
+                                            <input type="email" id="email" name="email"
                                                 title="{{ __('frontend.email_address') }}"
                                                 class="@error('email') is-invalid @enderror" value="{{ old('email') }}"
                                                 required autocomplete="email" autofocus
-                                                placeholder="{{ __('frontend.type_tour_email') }}">
+                                                placeholder="{{ __('frontend.type_your_email') }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -41,11 +42,10 @@
                                             @enderror
                                         </fieldset>
                                         <fieldset class="wrap-input">
-                                            <label for="frm-login-pass">{{ __('frontend.password') }}:</label>
-                                            <input type="password" id="frm-login-pass" name="password"
+                                            <label for="password">{{ __('frontend.password') }}:</label>
+                                            <input type="password" id="password" name="password"
                                                 class="@error('password') is-invalid @enderror" required
                                                 autocomplete="current-password" placeholder="********">
-
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -77,4 +77,32 @@
 
         </main>
     </div>
+@endsection
+@section('js')
+    <script src="{{ asset('front/assets/js/jquery.validate.min.js') }}"></script>
+    <script>
+        // validate signup form on keyup and submit
+        $("#loginForm").validate({
+            rules: {
+                email: {
+                    required: true,
+                    email: true,
+                },
+                password: {
+                    required: true,
+                    minlength: 8
+                },
+            },
+            messages: {
+                email: {
+                    required: "{{ __('msgs.email_not_valid') }} ",
+                    email: "{{ __('msgs.valid_email') }} ",
+                },
+                password: {
+                    required: "{{ __('msgs.enter_your_password') }}",
+                    minlength: "{{ __('msgs.min_password') }}"
+                },
+            }
+        });
+    </script>
 @endsection
