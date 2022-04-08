@@ -117,4 +117,13 @@ return [
     'discount'              => 'الحسم',
 
 
+    // Login/Register :
+    'login_into_account'    => 'تسجيل الدخول الى حسابك',
+    'email_address'         => 'عنوان البريد الألكتروني',
+    'type_tour_email'       => 'أدخل بريدك الألكتروني',
+    'password'              => 'كلمة المرور',
+    'remember_me'           => 'تذكرني',
+    'forgotten_password'    => 'نسيت كلمة المرور',
+
+
 ];

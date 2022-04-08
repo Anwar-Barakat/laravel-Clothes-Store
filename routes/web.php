@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
@@ -141,6 +142,7 @@ Route::group(
         // FrontEnd :
         // ======================================================
         Route::group(['as' => 'frontend.'], function () {
+
             Route::get('/',                                 [HomeController::class, 'index'])->name('home');
 
             // Detail Page :
@@ -152,6 +154,12 @@ Route::group(
             Route::post('add-to-cart',                      [CartController::class, 'store'])->name('cart.store');
             Route::post('update-cart-products-quantity',    [CartController::class, 'updateProductQuantity']);
             Route::post('delete-cart-product',              [CartController::class, 'destroy'])->name('cart.destroy');
+
+            // Login/Regsister :
+            Route::get('/login-form',                        [UserController::class, 'showLoginForm'])->name('form.login');
+            Route::post('/login',                            [UserController::class, 'login'])->name('login');
+            Route::get('/register-form',                     [UserController::class, 'showRegisterForm'])->name('form.register');
+            Route::post('/register',                         [UserController::class, 'store'])->name('register');
 
 
 

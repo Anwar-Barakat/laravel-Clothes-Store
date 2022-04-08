@@ -3673,7 +3673,6 @@ li.menu-item .nav-label.sale-label::before {
     line-height: 19px;
     color: #666666;
     float: right;
-    padding: 1px 29px 0 0;
 }
 
 .wrap-login-item .form-item input[type="checkbox"] {

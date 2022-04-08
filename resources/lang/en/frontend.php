@@ -118,4 +118,14 @@ return [
     'discount'              => 'Discount',
 
 
+    // Login/Register :
+    'login_into_account'    => 'Log in to your account',
+    'email_address'         => 'Email Address',
+    'type_tour_email'       => 'Type your email address',
+    'password'              => 'Password',
+    'remember_me'           => 'remember_me',
+    'forgotten_password'    => 'Forgotten password',
+
+
+
 ];

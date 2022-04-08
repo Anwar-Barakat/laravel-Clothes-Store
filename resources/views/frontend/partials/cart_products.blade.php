@@ -111,6 +111,7 @@
                 var quantity = $(this).prev().prev().val();
                 newQuantity = parseInt(quantity) + 1;
             }
+            alert(newQuantity)
 
             var cartId = $(this).attr('cartId');
             $.ajax({

@@ -174,7 +174,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.url', 'shoes') }}"
+                                <a href="{{ route('frontend.url', 'men-shoes') }}"
                                     class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'active' : '' }} ">
                                     {{ __('frontend.shop') }}
                                 </a>

@@ -8,7 +8,7 @@
     <div class="shopping-cart page">
         <main id="main" class="main-site">
             <div class="container">
-                <div class="wrap-breadcrumb">
+                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
                     <ul>
                         <li class="item-link"><span>{{ __('frontend.cart') }}</span></li>
                         <li class="item-link">

@@ -14,7 +14,7 @@
 
             <div class="container">
 
-                <div class="wrap-breadcrumb">
+                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
                     <ul>
                         <li class="item-link"><span>{{ $product->name }}</span></li>
                         <li class="item-link"><a href="{{ route('frontend.url', $product->category->url) }}">
