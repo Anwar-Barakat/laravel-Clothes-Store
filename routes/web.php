@@ -142,25 +142,36 @@ Route::group(
         // FrontEnd :
         // ======================================================
         Route::group(['as' => 'frontend.'], function () {
-
             Route::get('/',                                 [HomeController::class, 'index'])->name('home');
 
+
+            // **************************************************************
+            // **************************************************************
+            // **************************************************************
             // Detail Page :
             Route::get('/product/{id}',                     [DetailController::class, 'index'])->name('details');
             Route::post('/get-product-price',               [DetailController::class, 'getProductPrice']);
 
+
+            // **************************************************************
+            // **************************************************************
+            // **************************************************************
             // Cart Page :
             Route::get('/cart',                             [CartController::class, 'index'])->name('cart');
             Route::post('add-to-cart',                      [CartController::class, 'store'])->name('cart.store');
             Route::post('update-cart-products-quantity',    [CartController::class, 'updateProductQuantity']);
             Route::post('delete-cart-product',              [CartController::class, 'destroy'])->name('cart.destroy');
 
+
+            // **************************************************************
+            // **************************************************************
+            // **************************************************************
             // Login/Regsister :
             Route::get('/login-form',                        [UserController::class, 'showLoginForm'])->name('form.login');
             Route::post('/login',                            [UserController::class, 'login'])->name('login');
             Route::get('/register-form',                     [UserController::class, 'showRegisterForm'])->name('form.register');
             Route::post('/register',                         [UserController::class, 'store'])->name('register');
-
+            Route::post('/logout',                           [UserController::class, 'logout'])->name('logout');
 
 
 

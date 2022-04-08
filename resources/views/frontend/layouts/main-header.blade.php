@@ -15,14 +15,25 @@
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-                            <li class="menu-item">
-                                <a title="{{ __('frontend.login') }}"
-                                    href="login.html">{{ __('frontend.login') }}</a>
-                            </li>
-                            <li class="menu-item">
-                                <a title="{{ __('frontend.register') }}"
-                                    href="register.html">{{ __('frontend.register') }}</a>
-                            </li>
+                            @if (Auth::check())
+                                <li class="menu-item">
+                                    <a title="{{ __('frontend.logout') }}"
+                                        href="{{ route('frontend.logout') }}">{{ __('frontend.logout') }}</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="{{ __('frontend.dashboard') }}"
+                                        href="">{{ __('frontend.dashboard') }}</a>
+                                </li>
+                            @else
+                                <li class="menu-item">
+                                    <a title="{{ __('frontend.login') }}"
+                                        href="{{ route('frontend.form.login') }}">{{ __('frontend.login') }}</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a title="{{ __('frontend.register') }}"
+                                        href="{{ route('frontend.form.register') }}">{{ __('frontend.register') }}</a>
+                                </li>
+                            @endif
                             <li class="menu-item lang-menu menu-item-has-children parent">
                                 <a title="{{ __('frontend.laguages') }}" href="javascript:void(0);">
                                     {{ __('frontend.laguages') }}

@@ -3563,6 +3563,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .wrap-login-item .form-item input[type="text"],
+.wrap-login-item .form-item input[type="tel"],
 .wrap-login-item .form-item input[type="password"],
 .wrap-login-item .form-item input[type="email"] {
     border: 1px solid #e6e6e6;
@@ -3579,6 +3580,10 @@ li.menu-item .nav-label.sale-label::before {
 .wrap-login-item .form-item input[type="text"]::-moz-placeholder,
 .wrap-login-item .form-item input[type="text"]:-ms-input-placeholder,
 .wrap-login-item .form-item input[type="text"]:-moz-placeholder,
+.wrap-login-item .form-item input[type="tel"]::-webkit-input-placeholder,
+.wrap-login-item .form-item input[type="tel"]::-moz-placeholder,
+.wrap-login-item .form-item input[type="tel"]:-ms-input-placeholder,
+.wrap-login-item .form-item input[type="tel"]:-moz-placeholder,
 .wrap-login-item .form-item input[type="password"]::-webkit-input-placeholder,
 .wrap-login-item .form-item input[type="password"]::-moz-placeholder,
 .wrap-login-item .form-item input[type="password"]:-ms-input-placeholder,
@@ -3721,6 +3726,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .wrap-contacts .contact-box textarea,
 .wrap-contacts .contact-box input[type="text"],
+.wrap-contacts .contact-box input[type="tel"],
 .wrap-contacts .contact-box input[type="email"] {
     width: 100%;
     font-size: 14px;
@@ -3733,6 +3739,7 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .wrap-contacts .contact-box input[type="text"],
+.wrap-contacts .contact-box input[type="tel"],
 .wrap-contacts .contact-box input[type="email"] {
     height: 43px;
     margin-bottom: 11px;

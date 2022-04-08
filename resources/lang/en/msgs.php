@@ -46,15 +46,12 @@ return [
     // FrontEnd :
     'copy_right'                => 'Copyright © 2022 Anwar Store. All rights reserved',
     'no_products_yet'           => 'No Products Yet !!',
-
     'quant_is_anavailable'      => 'Required quantity is not available',
-
     'product_added_to_cart'     => 'Products has added to Cart Successfully!!',
     'product_already_exists'    => 'Product already exists in the cart',
-
     'cant_reduce_quantity'      => 'Product quantity must be 1 or more then',
-    'amount_not_available'      =>'Amount in stock not availables',
-
+    'amount_not_available'      => 'Amount in stock not availables',
     'cart_product_delete'       => 'Cart product has deleted successfully !!',
-
+    'registered_success'        => 'You have been successfully registered !!',
+    'email_already_exists'      => 'Email Already Exists !!',
 ];

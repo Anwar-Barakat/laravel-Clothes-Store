@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -33,9 +37,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data       = $request->only(['name', 'mobile', 'password', 'password_confirmation', 'email']);
+            $userCount  = User::where('email', $data['email'])->count();
+            if ($userCount > 0) {
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.email_already_exists'));
+                return redirect()->back();
+            } else {
+                User::create($data);
+                Session::flash('message', __('msgs.registered_success'));
+
+                if (auth()->attempt(['email' => $data['email'], 'password' => $data['password']])) {
+                    return redirect()->route('frontend.home');
+                }
+            }
+        }
     }
 
     /**
@@ -97,5 +116,11 @@ class UserController extends Controller
     public function showRegisterForm()
     {
         return view('frontend.auth.register');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('frontend.home');
     }
 }

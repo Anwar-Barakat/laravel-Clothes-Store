@@ -23,6 +23,8 @@ return [
     'on_sale'               => 'On Sale',
     'products_categories'   => 'Products Categories',
     'shop_now'              => 'Shop Now',
+    'dashboard'             => 'Dashboard',
+    'logout'                => 'Logout',
 
 
 
@@ -127,9 +129,12 @@ return [
     'forgotten_password'    => 'Forgotten password',
     'register'              => 'Register',
     'create_new_account'    => 'Create New Account',
-    'type_tour_name'        => 'Type your name',
+    'type_your_name'        => 'Type your name',
     'have_an_account'       => 'Have an account',
     'confirm_password'      => 'Confirmation Password',
+    'mobile'                => 'Mobile',
+    'type_your_mobile'      => 'Type your mobile',
+
 
 
 ];

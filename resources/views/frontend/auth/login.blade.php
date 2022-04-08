@@ -28,8 +28,8 @@
                                             <h3 class="form-title">{{ __('frontend.login_into_account') }}</h3>
                                         </fieldset>
                                         <fieldset class="wrap-input">
-                                            <label for="frm-login-uname">{{ __('frontend.email_address') }}:</label>
-                                            <input type="email" id="frm-login-uname" name="email"
+                                            <label for="frm-login-email_address">{{ __('frontend.email_address') }}:</label>
+                                            <input type="email" id="frm-login-email_address" name="email"
                                                 title="{{ __('frontend.email_address') }}"
                                                 class="@error('email') is-invalid @enderror" value="{{ old('email') }}"
                                                 required autocomplete="email" autofocus

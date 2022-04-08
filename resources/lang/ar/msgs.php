@@ -12,9 +12,9 @@ return [
     'category_update'           => 'تم تحديث الفئة بنجاح',
     'category_delete'           => 'تم حذف الفئة بنجاح',
 
-    'banner_add'               => 'تم إضافة الراية بنجاح',
-    'banner_update'            => 'تم تحديث الراية بنجاح',
-    'banner_delete'            => 'تم حذف الراية بنجاح',
+    'banner_add'                => 'تم إضافة الراية بنجاح',
+    'banner_update'             => 'تم تحديث الراية بنجاح',
+    'banner_delete'             => 'تم حذف الراية بنجاح',
 
     'product_add'               => 'تم إضافة المنتج بنجاح',
     'product_update'            => 'تم تحديث المنتج بنجاح',
@@ -49,16 +49,14 @@ return [
     // FrontEnd :
     'copy_right'                => 'حقوق النشر @2022 متجر الأنوار . جميع الحقوق محفوظة',
     'no_products_yet'           => 'لا يوجد منتجات بعد !!',
-
-
     'quant_is_anavailable'      => 'الكمية المطلوبة غير متوفرة',
-
-
     'product_added_to_cart'     => 'تم إضافة المنتجات الى الكرت بنجاح !',
     'product_already_exists'    => 'المنتج موجود مسبقاً في الكرت ! ',
-
     'cant_reduce_quantity'      => 'كمية المنتج يجب ان تكون 1 او اكثر',
     'amount_not_available'      => 'الكمية في المستودع عير متوفرة',
-
     'cart_product_delete'       => 'تم حذف منتج عربة التسوق بنجاح ! ',
+    'registered_success'        => 'تم تسجيلك بنجاح !!',
+    'email_already_exists'      => 'هذا الأيميل موجود سابقاً !!',
+
+
 ];

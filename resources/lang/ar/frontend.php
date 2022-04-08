@@ -23,11 +23,9 @@ return [
     'on_sale'               => 'معروض للبيع',
     'products_categories'   => 'منتجات الفئات',
     'shop_now'              => 'اشتري الأن',
-    'newest_sort'           => 'الترتيب حسب الأحدث',
-    'name_a_z_sort'         => 'الترتيب حسب الأسم : من a الى z',
-    'name_z_a_sort'         => 'الترتيب حسب الأسم : من z الى a',
-    'price_asc_sort'        => 'الترتيب حسب السعر : الأقل الى الأعلى',
-    'price_desc_sort'       => 'الترتيب حسب السعر : الأعلى الى الأقل',
+    'dashboard'             => 'لوحة التحكم',
+    'logout'                => 'تسجيل الخروج',
+
 
     'fabric'                    => 'الفماش',
     'cotton'                    => 'قطن',
@@ -71,6 +69,11 @@ return [
     'popular_product'       => 'المنتجات الشعبية',
     'default_sorting'       => 'الترتيب الأفتراضي',
     'per_page'              => 'لكل صفحة',
+    'newest_sort'           => 'الترتيب حسب الأحدث',
+    'name_a_z_sort'         => 'الترتيب حسب الأسم : من a الى z',
+    'name_z_a_sort'         => 'الترتيب حسب الأسم : من z الى a',
+    'price_asc_sort'        => 'الترتيب حسب السعر : الأقل الى الأعلى',
+    'price_desc_sort'       => 'الترتيب حسب السعر : الأعلى الى الأقل',
 
 
     // Cart :
@@ -125,9 +128,10 @@ return [
     'remember_me'           => 'تذكرني',
     'forgotten_password'    => 'نسيت كلمة المرور',
     'create_new_account'    => 'إنشاء حساب جديد',
-    'type_tour_name'        => 'أدخل الأسم',
+    'type_your_name'        => 'أدخل الأسم',
     'have_an_account'       => 'هل لديك حساب ',
     'confirm_password'      => 'تأكيد كلمة المرور',
-
+    'mobile'                => 'رقم الموبايل',
+    'type_your_mobile'      => 'أدخل رقم الموبايل',
 
 ];
