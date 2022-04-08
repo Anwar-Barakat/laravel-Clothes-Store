@@ -120,10 +120,14 @@ return [
     // Login/Register :
     'login_into_account'    => 'تسجيل الدخول الى حسابك',
     'email_address'         => 'عنوان البريد الألكتروني',
-    'type_tour_email'       => 'أدخل بريدك الألكتروني',
+    'type_your_email'       => 'أدخل بريدك الألكتروني',
     'password'              => 'كلمة المرور',
     'remember_me'           => 'تذكرني',
     'forgotten_password'    => 'نسيت كلمة المرور',
+    'create_new_account'    => 'إنشاء حساب جديد',
+    'type_tour_name'        => 'أدخل الأسم',
+    'have_an_account'       => 'هل لديك حساب ',
+    'confirm_password'      => 'تأكيد كلمة المرور',
 
 
 ];

@@ -87,10 +87,15 @@ class UserController extends Controller
     {
         return view('frontend.auth.login');
     }
+
+
     public function login()
     {
     }
+
+
     public function showRegisterForm()
     {
+        return view('frontend.auth.register');
     }
 }

@@ -121,11 +121,15 @@ return [
     // Login/Register :
     'login_into_account'    => 'Log in to your account',
     'email_address'         => 'Email Address',
-    'type_tour_email'       => 'Type your email address',
+    'type_your_email'       => 'Type your email address',
     'password'              => 'Password',
     'remember_me'           => 'remember_me',
     'forgotten_password'    => 'Forgotten password',
-
+    'register'              => 'Register',
+    'create_new_account'    => 'Create New Account',
+    'type_tour_name'        => 'Type your name',
+    'have_an_account'       => 'Have an account',
+    'confirm_password'      => 'Confirmation Password',
 
 
 ];

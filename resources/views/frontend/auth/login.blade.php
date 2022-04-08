@@ -29,7 +29,7 @@
                                         </fieldset>
                                         <fieldset class="wrap-input">
                                             <label for="frm-login-uname">{{ __('frontend.email_address') }}:</label>
-                                            <input type="text" id="frm-login-uname" name="email"
+                                            <input type="email" id="frm-login-uname" name="email"
                                                 title="{{ __('frontend.email_address') }}"
                                                 class="@error('email') is-invalid @enderror" value="{{ old('email') }}"
                                                 required autocomplete="email" autofocus
