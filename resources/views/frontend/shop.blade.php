@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="home-page home-01">
+    <div class="home-page home-01 ">
         <main id="main" class="main-site left-sidebar">
             <div class="container">
                 <div class="wrap-breadcrumb">
@@ -16,7 +16,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="row" style="display: flex;flex-direction: row-reverse;">
+                <div class="row">
                     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                         <div class="banner-shop">
                             <a href="{{ $categoryImageId->url }}" class="banner-link">
@@ -98,9 +98,12 @@
 
                                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
                                         <div class="widget mercado-widget categories-widget">
-                                            <h2 class="widget-title">{{ __('frontend.all_sections') }}</h2>
+                                            <div class="title d-flex">
+                                                <h2 class="widget-title">{{ __('frontend.all_sections') }}</h2>
+                                                <i class="fa fa-chevron-up"></i>
+                                            </div>
                                             <div class="widget-content">
-                                                <ul class="list-category">
+                                                <ul class="list-category" id="categories_list">
                                                     @foreach ($sections as $section)
                                                         <h5 class="section-title">{{ $section->name }} :</h5>
                                                         @foreach ($section->categories ?? [] as $category)
@@ -128,10 +131,14 @@
                                         </div><!-- Categories widget-->
                                         <hr>
 
-                                        <div class="widget mercado-widget filter-widget brand-widget">
-                                            <h2 class="widget-title">{{ __('frontend.brands') }}</h2>
+                                        <div class="widget mercado-widget brands-widget brand-widget">
+                                            <div class="title d-flex">
+                                                <h2 class="widget-title">{{ __('frontend.brands') }}</h2>
+                                                <i class="fa fa-chevron-up"></i>
+                                            </div>
                                             <div class="widget-content">
-                                                <ul class="list-style vertical-list list-limited" data-show="6">
+                                                <ul class="list-style vertical-list list-limited" data-show="6"
+                                                    id="brands_list">
                                                     @foreach ($brands as $index => $brand)
                                                         <li class="list-item {{ $index >= 3 ? 'default-hiden' : '' }}">
                                                             <a class="filter-link " href="#">
@@ -152,7 +159,10 @@
 
                                         <hr>
                                         <div class="widget mercado-widget filter-widget">
-                                            <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
+                                            <div class="title d-flex">
+                                                <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
                                             <div class="widget-content fabrics">
                                                 @foreach (App\Models\Product::fabricArray as $index => $fabric)
                                                     <label for="{{ $fabric }}" class="material__label">
@@ -163,7 +173,12 @@
                                                 @endforeach
                                             </div>
                                             <hr>
-                                            <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
+                                        </div>
+                                        <div class="widget mercado-widget filter-widget">
+                                            <div class="title d-flex">
+                                                <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
                                             <div class="widget-content pattern">
                                                 @foreach (App\Models\Product::patternArray as $index => $pattern)
                                                     <label for="{{ $pattern }}" class="material__label">
@@ -173,9 +188,14 @@
                                                     </label>
                                                 @endforeach
                                             </div>
+                                        </div>
+                                        <div class="widget mercado-widget filter-widget">
 
                                             <hr>
-                                            <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
+                                            <div class="title d-flex">
+                                                <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
                                             <div class="widget-content fit">
                                                 @foreach (App\Models\Product::fitArray as $index => $fit)
                                                     <label for="{{ $fit }}" class="material__label">
@@ -185,8 +205,13 @@
                                                     </label>
                                                 @endforeach
                                             </div>
+                                        </div>
+                                        <div class="widget mercado-widget filter-widget">
                                             <hr>
-                                            <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
+                                            <div class="title d-flex">
+                                                <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
+                                                <i class="fa fa-chevron-down"></i>
+                                            </div>
                                             <div class="widget-content occasion">
                                                 @foreach (App\Models\Product::occasionArray as $index => $occasion)
                                                     <label for="{{ $occasion }}" class="material__label">
@@ -250,5 +275,22 @@
             });
             return filters;
         }
+    </script>
+
+
+    {{-- Toggle Chevron down --}}
+    <script>
+        $('.categories-widget .fa').on('click', function() {
+            $(this).toggleClass('fa-chevron-up fa-chevron-down');
+            $('#categories_list').slideToggle();
+        });
+        $('.brands-widget .fa').on('click', function() {
+            $(this).toggleClass('fa-chevron-up fa-chevron-down');
+            $('#brands_list').slideToggle();
+        })
+        $('.filter-widget .fa').on('click', function() {
+            $(this).toggleClass('fa-chevron-up fa-chevron-down');
+            $(this).parent().next().slideToggle();
+        })
     </script>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
 {
@@ -16,6 +17,7 @@ class ProductController extends Controller
      */
     public function index(Request $request, $url)
     {
+        Paginator::useBootstrapThree();
         if ($request->ajax()) {
             $data = $request->all();
             $url = $data['url'];

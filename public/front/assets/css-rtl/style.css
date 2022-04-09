@@ -2132,7 +2132,7 @@ li.menu-item .nav-label.sale-label::before {
 .product .product-info .wrap-price,
 .product-style-2 .product-info .wrap-price {
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     column-gap: 1.5rem;
     margin-top: 3px;
@@ -2170,6 +2170,10 @@ li.menu-item .nav-label.sale-label::before {
     font-size: 13px !important;
     color: #aaaaaa;
     text-decoration: line-through;
+}
+
+.product .product-thumnail {
+    width: 90%;
 }
 
 .product .product-thumnail,
@@ -2855,7 +2859,6 @@ li.menu-item .nav-label.sale-label::before {
 
 .left-sidebar .main-content-area {
     float: left !important;
-    width: 100%;
 }
 
 .widget:first-child {
@@ -2883,7 +2886,6 @@ li.menu-item .nav-label.sale-label::before {
     margin: 0;
     width: 100%;
     text-align: right;
-    margin-bottom: 16px;
     float: left;
 }
 
@@ -2900,14 +2902,13 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .widget ul {
-    padding: 0;
+    padding: 4px 2px 0;
     margin: 0;
     display: grid;
     row-gap: 0rem;
 }
 
 .widget.categories-widget .widget-title {
-    padding-bottom: 13px;
     border-bottom: none;
     margin-bottom: 0;
 }

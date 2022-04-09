@@ -201,16 +201,11 @@ ul {
 
 /* ****************** Custom Checkbox Input   ********************************* */
 
+.widget-content.sleeve,
+.widget-content.pattern,
 .widget-content.fabrics,
 .widget-content.fit,
 .widget-content.occasion {
-    display: flex;
-    justify-content: start;
-    column-gap: 2rem;
-}
-
-.widget-content.sleeve,
-.widget-content.pattern {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
@@ -373,3 +368,71 @@ label.error {
 #toast-container {
     z-index: 999999999;
 }
+
+
+/* **************************************************************************** */
+
+
+/* ******************************* Shop Page  ********************************* */
+
+.categories-widget .title {
+    margin-top: 3px;
+}
+
+.categories-widget .title,
+.filter-widget .title,
+.brands-widget .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f1f1;
+    padding: 10px 3px;
+    margin-bottom: 9px;
+    border-radius: 4px;
+}
+
+.categories-widget .title i,
+.filter-widget .title i,
+.brands-widget .title i {
+    cursor: pointer;
+}
+
+.widget-content.sleeve,
+.widget-content.pattern,
+.widget-content.fabrics,
+.widget-content.fit,
+.widget-content.occasion {
+    display: none;
+}
+
+#categories_list,
+#brands_list {
+    display: block;
+}
+
+.product {
+    position: relative;
+}
+
+.product::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
+    clip-path: circle(20px at 126% 67%);
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.product:hover::after {
+    clip-path: circle(20px at 90% 67%);
+}
+
+
+/* ******************************* Shop Page  ********************************* */
+
+
+/* **************************************************************************** */

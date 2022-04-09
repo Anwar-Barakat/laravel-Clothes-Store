@@ -2165,6 +2165,10 @@ li.menu-item .nav-label.sale-label::before {
     text-decoration: line-through;
 }
 
+.product .product-thumnail {
+    width: 90%;
+}
+
 .product .product-thumnail,
 .product-style-2 .product-thumnail {
     position: relative;
@@ -2843,7 +2847,6 @@ li.menu-item .nav-label.sale-label::before {
 
 .left-sidebar .main-content-area {
     float: right !important;
-    width: 100%;
 }
 
 .widget:first-child {
@@ -2871,7 +2874,6 @@ li.menu-item .nav-label.sale-label::before {
     margin: 0;
     width: 100%;
     text-align: left;
-    margin-bottom: 16px;
     float: left;
 }
 
@@ -2888,14 +2890,13 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .widget ul {
-    padding: 0;
+    padding: 4px 2px 0;
     margin: 0;
     display: grid;
     row-gap: 0rem;
 }
 
 .widget.categories-widget .widget-title {
-    padding-bottom: 13px;
     border-bottom: none;
     margin-bottom: 0;
 }

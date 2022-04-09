@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/owl.carousel.min.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/chosen.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/style.css') }}">
     <style>
