@@ -134,4 +134,8 @@ return [
     'mobile'                => 'رقم الموبايل',
     'type_your_mobile'      => 'أدخل رقم الموبايل',
 
+    // Email Registered Page:
+    'email_register'        => 'البريد الألكتروني المسجل',
+    'dear'                  => 'عزيزي',
+
 ];

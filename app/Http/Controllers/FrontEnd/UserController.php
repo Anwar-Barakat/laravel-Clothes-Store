@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -59,6 +60,17 @@ class UserController extends Controller
                             'user_id'   => $user_id,
                         ]);
                     }
+
+                    $email          = $data['email'];
+                    $messageData    = [
+                        'name'      => $data['name'],
+                        'mobile'    => $data['mobile'],
+                        'email'     => $data['email'],
+                    ];
+                    Mail::send('frontend.emails.register', $messageData, function ($message) use ($email) {
+                        $message->to($email)->subject('welcome to Laravel eCommerce Webiste');
+                    });
+
                     return redirect()->route('frontend.cart');
                 }
             }

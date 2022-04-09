@@ -136,5 +136,8 @@ return [
     'type_your_mobile'      => 'Type your mobile',
 
 
+    // Email Registered Page:
+    'email_register'        => 'Email Registered',
+    'dear'                  => 'Dear',
 
 ];

@@ -9,11 +9,11 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\FrontEnd\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -174,7 +174,6 @@ Route::group(
             Route::post('/logout',                          [UserController::class, 'logout'])->name('logout');
             Route::get('check-email',                       [UserController::class, 'checkEmail']);
             Route::post('check-email',                      [UserController::class, 'checkEmail']);
-
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
