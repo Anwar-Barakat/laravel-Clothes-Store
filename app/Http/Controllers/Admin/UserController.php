@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,14 @@ class UserController extends Controller
                 Session::flash('message', __('msgs.registered_success'));
 
                 if (auth()->attempt(['email' => $data['email'], 'password' => $data['password']])) {
-                    return redirect()->route('frontend.home');
+                    if (!empty(Session::get('session_id'))) {
+                        $user_id    = Auth::user()->id;
+                        $session_id = Session::get('session_id');
+                        Cart::where('session_id', $session_id)->update([
+                            'user_id'   => $user_id,
+                        ]);
+                    }
+                    return redirect()->route('frontend.cart');
                 }
             }
         }
@@ -114,7 +122,16 @@ class UserController extends Controller
             $data = $request->only(['email', 'password']);
             if (auth()->attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 Session::flash('message', __('translation.hi_welcome_back'));
-                return redirect()->route('frontend.home');
+
+                if (!empty(Session::get('session_id'))) {
+                    $user_id    = Auth::user()->id;
+                    $session_id = Session::get('session_id');
+                    Cart::where('session_id', $session_id)->update([
+                        'user_id'   => $user_id,
+                    ]);
+                }
+
+                return redirect()->route('frontend.cart');
             } else {
                 Session::flash('alert-type', 'info');
                 Session::flash('message', __('msgs.email_or_pass_not_valid'));

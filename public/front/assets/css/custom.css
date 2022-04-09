@@ -129,7 +129,7 @@ ul {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin: auto;
     text-align: center;
-    column-gap: 5rem;
+    column-gap: 6rem;
     padding: 15px;
 }
 

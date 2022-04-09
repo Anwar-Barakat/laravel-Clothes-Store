@@ -89,11 +89,19 @@ class CartController extends Controller
         }
 
 
+        // if user is logged in :
+        if (Auth::check())
+            $user_id = Auth::user()->id;
+        else
+            $user_id = null;
+
+
 
         // Inserting :
         Cart::create([
             'session_id'    => $session_id,
             'product_id'    => $data['product_id'],
+            'user_id'       => $user_id,
             'size'          => $data['size'],
             'quantity'      => $data['product-quatity']
         ]);
