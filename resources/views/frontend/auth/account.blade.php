@@ -208,13 +208,13 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12">
                                                 <fieldset class="wrap-input">
-                                                    <label for="new_password">{{ __('frontend.new_password') }}:</label>
-                                                    <input type="password" id="new_password"
-                                                        title="{{ __('frontend.new_password') }}" name="new_password"
-                                                        class="@error('new_password') is-invalid @enderror"
+                                                    <label for="password">{{ __('frontend.new_password') }}:</label>
+                                                    <input type="password" id="password"
+                                                        title="{{ __('frontend.password') }}" name="password"
+                                                        class="@error('password') is-invalid @enderror"
                                                         placeholder="********">
 
-                                                    @error('new_password')
+                                                    @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -239,8 +239,7 @@
                                                 </fieldset>
                                             </div>
                                         </div>
-                                        <input type="submit" class="btn btn-submit"
-                                            value="{{ __('frontend.register') }}">
+                                        <input type="submit" class="btn btn-submit" value="{{ __('buttons.update') }}">
                                     </form>
                                 </div>
                             </div>
