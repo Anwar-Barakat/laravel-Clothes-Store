@@ -26,26 +26,47 @@
                                         <fieldset class="wrap-title">
                                             <h3 class="form-title">{{ __('frontend.update_info') }}</h3>
                                         </fieldset>
-                                        <fieldset class="wrap-input">
-                                            <label for="email">{{ __('frontend.email_address') }}:</label>
-                                            <input type="email" title="{{ __('frontend.email_address') }}"
-                                                value="{{ old('email') }}" readonly>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </fieldset>
                                         <div class="row">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <fieldset class="wrap-input">
+                                                    <label for="email">{{ __('frontend.email_address') }}:</label>
+                                                    <input type="email" title="{{ __('frontend.email_address') }}"
+                                                        value="{{ Auth::user()->email }}" readonly>
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </fieldset>
+                                            </div>
                                             <div class="col-lg-6 col-sm-12">
                                                 <fieldset class="wrap-input">
                                                     <label for="name">{{ __('frontend.name') }}:</label>
                                                     <input type="text" id="name" name="name"
                                                         title="{{ __('frontend.name') }}"
                                                         class="@error('name') is-invalid @enderror"
-                                                        value="{{ old('name') }}" autocomplete="name" autofocus
-                                                        placeholder="{{ __('frontend.type_your_name') }}">
+                                                        value="{{ old('name', Auth::user()->name) }}" autocomplete="name"
+                                                        autofocus placeholder="{{ __('frontend.type_your_name') }}"
+                                                        pattern="[A-Za-z]+">
                                                     @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-12">
+                                                <fieldset class="wrap-input">
+                                                    <label for="pincode">{{ __('frontend.pincode') }}:</label>
+                                                    <input type="tel" id="pincode" name="pincode"
+                                                        title="{{ __('frontend.pincode') }}"
+                                                        class=" @error('pincode') is-invalid @enderror"
+                                                        value="{{ old('pincode', Auth::user()->pincode) }}"
+                                                        autocomplete="pincode" autofocus
+                                                        placeholder="{{ __('frontend.type_your_pincode') }}">
+                                                    @error('pincode')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -58,7 +79,8 @@
                                                     <input type="tel" id="mobile" name="mobile"
                                                         title="{{ __('frontend.mobile') }}"
                                                         class=" @error('mobile') is-invalid @enderror"
-                                                        value="{{ old('mobile') }}" autocomplete="mobile" autofocus
+                                                        value="{{ old('mobile', Auth::user()->mobile) }}"
+                                                        autocomplete="mobile" autofocus
                                                         placeholder="{{ __('frontend.type_your_mobile') }}">
                                                     @error('mobile')
                                                         <span class="invalid-feedback" role="alert">
@@ -75,7 +97,8 @@
                                                     <input type="text" id="address" name="address"
                                                         title="{{ __('frontend.address') }}"
                                                         class="@error('address') is-invalid @enderror"
-                                                        value="{{ old('address') }}" autocomplete="address"
+                                                        value="{{ old('address', Auth::user()->address) }}"
+                                                        autocomplete="address"
                                                         placeholder="{{ __('frontend.type_your_address') }}">
                                                     @error('address')
                                                         <span class="invalid-feedback" role="alert">
@@ -90,8 +113,8 @@
                                                     <input type="tel" id="city" name="city"
                                                         title="{{ __('frontend.city') }}"
                                                         class=" @error('city') is-invalid @enderror"
-                                                        value="{{ old('city') }}" autocomplete="city" autofocus
-                                                        placeholder="{{ __('frontend.type_your_city') }}">
+                                                        value="{{ old('city', Auth::user()->city) }}" autocomplete="city"
+                                                        autofocus placeholder="{{ __('frontend.type_your_city') }}">
                                                     @error('city')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -103,13 +126,14 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12">
                                                 <fieldset class="wrap-input">
-                                                    <label for="country">{{ __('frontend.country') }}:</label>
-                                                    <input type="text" id="country" name="country"
-                                                        title="{{ __('frontend.country') }}"
-                                                        class="@error('country') is-invalid @enderror"
-                                                        value="{{ old('country') }}" autocomplete="country"
-                                                        placeholder="{{ __('frontend.type_your_country') }}">
-                                                    @error('country')
+                                                    <label for="state">{{ __('frontend.state') }}:</label>
+                                                    <input type="text" id="state" name="state"
+                                                        title="{{ __('frontend.state') }}"
+                                                        class="@error('state') is-invalid @enderror"
+                                                        value="{{ old('state', Auth::user()->state) }}"
+                                                        autocomplete="state"
+                                                        placeholder="{{ __('frontend.type_your_state') }}">
+                                                    @error('state')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -118,13 +142,14 @@
                                             </div>
                                             <div class="col-lg-6 col-sm-12">
                                                 <fieldset class="wrap-input">
-                                                    <label for="pincode">{{ __('frontend.pincode') }}:</label>
-                                                    <input type="tel" id="pincode" name="pincode"
-                                                        title="{{ __('frontend.pincode') }}"
-                                                        class=" @error('pincode') is-invalid @enderror"
-                                                        value="{{ old('pincode') }}" autocomplete="pincode" autofocus
-                                                        placeholder="{{ __('frontend.type_your_pincode') }}">
-                                                    @error('pincode')
+                                                    <label for="country">{{ __('frontend.country') }}:</label>
+                                                    <input type="text" id="country" name="country"
+                                                        title="{{ __('frontend.country') }}"
+                                                        class="@error('country') is-invalid @enderror"
+                                                        value="{{ old('country', Auth::user()->country) }}"
+                                                        autocomplete="country"
+                                                        placeholder="{{ __('frontend.type_your_country') }}">
+                                                    @error('country')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -161,7 +186,7 @@
                                                     <label for="email">{{ __('frontend.email_address') }}:</label>
                                                     <input type="email" id="email"
                                                         title="{{ __('frontend.email_address') }}"
-                                                        value="{{ old('email') }}" autocomplete="email" readonly>
+                                                        value="{{ Auth::user()->email }}" autocomplete="email" readonly>
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-6 col-sm-12">
@@ -233,7 +258,7 @@
     <script src="{{ asset('front/assets/js/jquery.validate.min.js') }}"></script>
     <script>
         // validate signup form on keyup and submit
-        $("#registerForm").validate({
+        $("#UpdateAccountDetails").validate({
             rules: {
                 name: "required",
                 mobile: {
@@ -241,20 +266,6 @@
                     minlength: 10,
                     maxlength: 10,
                     digits: true
-                },
-                email: {
-                    required: true,
-                    email: true,
-                    remote: "check-email"
-                },
-                password: {
-                    required: true,
-                    minlength: 8
-                },
-                password_confirmation: {
-                    required: true,
-                    minlength: 8,
-                    equalTo: "#password"
                 },
             },
             messages: {
@@ -264,20 +275,6 @@
                     minlength: "{{ __('msgs.min_mobile') }}",
                     maxlength: "{{ __('msgs.max_mobile') }}",
                     digits: "{{ __('msgs.mobile_not_valid') }}",
-                },
-                email: {
-                    required: "{{ __('msgs.email_not_valid') }} ",
-                    email: "{{ __('msgs.valid_email') }} ",
-                    remote: "{{ __('msgs.email_already_exists') }} ",
-                },
-                password: {
-                    required: "{{ __('msgs.enter_your_password') }}",
-                    minlength: "{{ __('msgs.min_password') }}"
-                },
-                password_confirmation: {
-                    required: "{{ __('msgs.enter_your_conf__pass') }}",
-                    minlength: "{{ __('msgs.min_password') }}",
-                    equalTo: "{{ __('msgs.confirm_pass') }}"
                 },
             }
         });

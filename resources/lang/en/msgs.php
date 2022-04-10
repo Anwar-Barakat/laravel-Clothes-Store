@@ -1,49 +1,44 @@
 <?php
 return [
 
+    // *================================================
+    // * Backend :
+    // *================================================
     'update_admin_password'     => 'Admin Password Has Updated Successfully !!',
     'update_admin_details'      => 'Admin Details Has Updated Successfully !!',
     'no_matching'               => 'No matching records found',
-
     'section_added'             => 'Section Has Added Successfully !!',
     'section_updated'           => 'Section Has Updated Successfully !!',
-
     'category_add'              => 'Category Has Added Successfuly !!',
     'category_update'           => 'Category Has Updated Successfuly !!',
     'category_delete'           => 'Category Has Deleted Succesfully !!',
-
     'banner_add'                => 'Banner Has Added Successfuly !!',
     'banner_update'             => 'Banner Has Updated Successfuly !!',
     'banner_delete'             => 'Banner Has Deleted Succesfully !!',
-
     'product_add'               => 'Product Has Added Successfuly !!',
     'product_update'            => 'Product Has Updated Successfuly !!',
     'product_delete'            => 'Product Has Deleted Succesfully !!',
-
     'browser_error'             => 'Your browser does not support the video tag.',
-
     'sku_already_exists'        => 'SKU Value Already Exists !!',
     'size_already_exists'       => 'Size Value Already Exists !!',
-
     'attributes_add'            => 'Product Attributes Has Added Successfuly !!',
     'attributes_update'         => 'Product Attributes Has Updated Successfuly !!',
     'attributes_delete'         => 'Product Attributes Has Deleted Successfuly !!',
-
     'product_attachments_add'       => 'Product Attachments Has Added Successfuly !!',
     'product_attachment_delete'     => 'Product Attachment Has Deleted Successfuly !!',
     'product_attachments_delete'    => 'Product Attachments Has Deleted Successfuly !!',
-
-
     'are_your_sure'                 => 'Are you sure?',
     'yes_delete'                    => 'Yes, Delete !',
-
     'brand_added'                   => 'Brand Has Added Successfully !!',
     'brand_updated'                 => 'Brand Has Updated Successfully !!',
 
 
 
 
-    // FrontEnd :
+
+    // *================================================
+    // * FrontEnd :
+    // *================================================
     'copy_right'                => 'Copyright © 2022 Anwar Store. All rights reserved',
     'no_products_yet'           => 'No Products Yet !!',
     'quant_is_anavailable'      => 'Required quantity is not available',
@@ -55,10 +50,19 @@ return [
     'registered_success'        => 'You have been successfully registered !!',
     'email_already_exists'      => 'Email Already Exists !!',
     'email_or_pass_not_valid'   => 'Email or password not valid',
+    'confirm_email'             => 'Confirm your eCommerce account',
+    'please_confirm_email'      => 'Please Confirm your eCommerce account',
+    'email_confirmed'           => 'Your account has been successfully confirmed',
+    'already_cofirm'            => 'The account is already activated !',
+    'update_user_password'      => 'Password Has Updated Successfully !!',
+    'update_user_details'       => 'Details Has Updated Successfully !!',
 
 
 
-    // jQuery Validation :
+
+    // *================================================
+    // * jQuery Validation :
+    // *================================================
     'email_not_valid'           => 'Please enter a valid email address',
     'enter_your_name'           => 'Please enter your name',
     'enter_your_mobile'         => 'Please enter your mobile',
@@ -70,8 +74,5 @@ return [
     'confirm_pass'              => 'Please enter the same password as above',
     'mobile_not_valid'          => 'Please enter a valid mobile address',
     'valid_email'               => 'Please Enter Your Valid Email',
-    'confirm_email'             => 'Confirm your eCommerce account',
-    'please_confirm_email'      => 'Please Confirm your eCommerce account',
-    'email_confirmed'           => 'Your account has been successfully confirmed',
-    'already_cofirm'            => 'The account is already activated !',
+    'valid_name'                => 'Please Enter Your Valid Name',
 ];

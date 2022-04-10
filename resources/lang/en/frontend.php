@@ -147,7 +147,7 @@ return [
     'update_info'               => 'Update account detail',
     'update_account_password'   => 'Update account password',
     'address'                   => 'Address',
-    'type_your_address'         => 'Yype your address',
+    'type_your_address'         => 'Type your address',
     'city'                      => 'City',
     'country'                   => 'Country',
     'state'                     => 'State',
