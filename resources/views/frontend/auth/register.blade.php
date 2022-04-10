@@ -20,7 +20,7 @@
                         <div class=" main-content-area" style="width: 100%">
                             <div class="wrap-login-item ">
                                 <div class="login-form form-item form-stl">
-                                    <form name="frm-login" id="registerForm" action="{{ route('frontend.register') }}"
+                                    <form name="registerForm" id="registerForm" action="{{ route('frontend.register') }}"
                                         method="POST">
                                         @csrf
                                         <fieldset class="wrap-title">

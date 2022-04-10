@@ -81,19 +81,6 @@ class UserController extends Controller
                 //             'user_id'   => $user_id,
                 //         ]);
                 //     }
-
-                //     $email          = $data['email'];
-                //     $messageData    = [
-                //         'name'      => $data['name'],
-                //         'mobile'    => $data['mobile'],
-                //         'email'     => $data['email'],
-                //     ];
-                //     Mail::send('frontend.emails.register', $messageData, function ($message) use ($email) {
-                //         $message->to($email)->subject('welcome to Laravel eCommerce Webiste');
-                //     });
-                //     Mail::to($email)->send(new RegisterMail($messageData));
-
-                //     return redirect()->route('frontend.cart');
                 // }
             }
         }
@@ -226,7 +213,8 @@ class UserController extends Controller
 
     public function logout()
     {
+        Session::flush();
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('frontend.form.login');
     }
 }

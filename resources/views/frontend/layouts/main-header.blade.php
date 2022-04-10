@@ -21,8 +21,8 @@
                                         href="{{ route('frontend.logout') }}">{{ __('frontend.logout') }}</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a title="{{ __('frontend.dashboard') }}"
-                                        href="">{{ __('frontend.dashboard') }}</a>
+                                    <a title="{{ __('frontend.account') }}"
+                                        href="{{ route('frontend.user.account') }}">{{ __('frontend.account') }}</a>
                                 </li>
                             @else
                                 <li class="menu-item">

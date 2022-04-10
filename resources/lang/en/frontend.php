@@ -140,4 +140,23 @@ return [
     'email_register'        => 'Email Registered',
     'dear'                  => 'Dear',
 
+
+    // Account Page :
+    'account'                   => 'Account',
+    'my_account'                => 'My Account',
+    'update_info'               => 'Update account detail',
+    'update_account_password'   => 'Update account password',
+    'address'                   => 'Address',
+    'type_your_address'         => 'Yype your address',
+    'city'                      => 'City',
+    'country'                   => 'Country',
+    'state'                     => 'State',
+    'pincode'                   => 'Pincode',
+    'type_your_pincode'         => 'Type your pincode',
+    'current_password'          => 'Current password',
+    'rtpe_current_password'     => 'Type current password',
+    'new_password'              => 'New Password',
+    'type_new_password'         => 'Type new password'
+
+
 ];

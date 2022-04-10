@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -171,11 +172,15 @@ Route::group(
             Route::post('/login',                           [UserController::class, 'login'])->name('login');
             Route::get('/register-form',                    [UserController::class, 'showRegisterForm'])->name('form.register');
             Route::post('/register',                        [UserController::class, 'store'])->name('register');
-            Route::post('/logout',                          [UserController::class, 'logout'])->name('logout');
-            Route::get('check-email',                       [UserController::class, 'checkEmail']);
-            Route::post('check-email',                      [UserController::class, 'checkEmail']);
+            Route::get('/logout',                           [UserController::class, 'logout'])->name('logout');
+            Route::get('/check-email',                      [UserController::class, 'checkEmail']);
+            Route::post('/check-email',                     [UserController::class, 'checkEmail']);
             Route::get('/confirm/{code}',                   [UserController::class, 'confirmationEmail']);
             Route::post('/confirm/{code}',                  [UserController::class, 'confirmationEmail']);
+            Route::get('/account',                          [UserAccountController::class, 'account'])->name('user.account');
+            Route::post('/update-account-details',          [UserAccountController::class, 'updateAccountDetails'])->name('user.account.details.update');
+            Route::post('/update-account-password',         [UserAccountController::class, 'updateAccountPassword'])->name('user.account.password.update');
+
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });

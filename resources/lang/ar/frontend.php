@@ -134,8 +134,26 @@ return [
     'mobile'                => 'رقم الموبايل',
     'type_your_mobile'      => 'أدخل رقم الموبايل',
 
+
     // Email Registered Page:
     'email_register'        => 'البريد الألكتروني المسجل',
     'dear'                  => 'عزيزي',
 
+
+    // Account Page :
+    'account'                   => 'الحساب',
+    'my_account'                => 'حسابي',
+    'address'                   => 'العنوان',
+    'update_info'               => 'تحديث تفاصيل الحساب',
+    'update_account_password'   => 'تحديث كلمة المرور',
+    'type_your_address'         => 'ادخل العنوان',
+    'city'                      => 'المدينة',
+    'country'                   => 'الدولة',
+    'state'                     => 'الولاية',
+    'pincode'                   => 'الرقم السري',
+    'type_your_pincode'         => 'ادخل الرقم السري',
+    'current_password'          => 'كلمة المرور الحالية',
+    'rtpe_current_password'     => 'أدخل كلمة المرور الحالية',
+    'new_password'              => 'كلمة المرور الجديدة',
+    'type_new_password'         => 'ادخل كلمة المرور الجديدة'
 ];
