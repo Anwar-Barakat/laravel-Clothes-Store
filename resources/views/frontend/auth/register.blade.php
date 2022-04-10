@@ -17,7 +17,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-xs-12 col-md-offset-1">
-                        <div class=" main-content-area">
+                        <div class=" main-content-area" style="width: 100%">
                             <div class="wrap-login-item ">
                                 <div class="login-form form-item form-stl">
                                     <form name="frm-login" id="registerForm" action="{{ route('frontend.register') }}"

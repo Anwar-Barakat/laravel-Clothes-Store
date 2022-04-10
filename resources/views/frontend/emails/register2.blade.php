@@ -129,10 +129,10 @@
             <div class="content">
                 <h1 class="name">
                     {{ __('frontend.dear') }}
-                    {{ $name }}</h1>
+                    {{ $details['name'] }}</h1>
                 <ul class="contact">
-                    <li><i class="fas fa-phone icon"></i>{{ $mobile }}</li>
-                    <li><i class="fas fa-envelope icon"></i>{{ $email }}</li>
+                    <li><i class="fas fa-phone icon"></i>{{ $details['mobile'] }}</li>
+                    <li><i class="fas fa-envelope icon"></i>{{ $details['email'] }}</li>
                     <li><i class="fas fa-map-marked icon"></i>our Addree</li>
                 </ul>
             </div>

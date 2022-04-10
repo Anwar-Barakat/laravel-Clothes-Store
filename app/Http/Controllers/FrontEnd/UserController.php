@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Mail\RegisterMail;
 use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -70,6 +71,7 @@ class UserController extends Controller
                     Mail::send('frontend.emails.register', $messageData, function ($message) use ($email) {
                         $message->to($email)->subject('welcome to Laravel eCommerce Webiste');
                     });
+                    Mail::to($email)->send(new RegisterMail($messageData));
 
                     return redirect()->route('frontend.cart');
                 }
