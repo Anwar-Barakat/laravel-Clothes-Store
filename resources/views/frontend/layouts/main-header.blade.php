@@ -154,7 +154,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="wrap-icon-section show-up-after-1024">
+                        <div class="wrap-icon-section show-up-after-1024" id="menu__toggle">
                             <a href="#" class="mobile-navigation">
                                 <span></span>
                                 <span></span>

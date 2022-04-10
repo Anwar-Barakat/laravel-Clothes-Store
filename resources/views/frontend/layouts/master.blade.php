@@ -12,12 +12,44 @@
 <body class="home-page home-01 ">
 
     <!-- mobile menu -->
-    <div class="mercado-clone-wrap">
-        <div class="mercado-panels-actions-wrap">
-            <a class="mercado-close-btn mercado-close-panels" href="#">x</a>
-        </div>
-        <div class="mercado-panels"></div>
+    <div id="navbar__link">
+        <ul>
+            <li>
+                <a href="{{ route('frontend.home') }}"
+                    class=" {{ request()->routeIs('frontend.home') ? 'active' : '' }}">
+                    {{ __('frontend.home') }}
+                </a>
+            </li>
+            <li>
+                <a href="" class="link-term mercado-item-title ">
+                    {{ __('frontend.about_us') }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('frontend.url', 'men-shoes') }}"
+                    class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'active' : '' }} ">
+                    {{ __('frontend.shop') }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('frontend.cart') }}"
+                    class="link-term mercado-item-title {{ request()->routeIs('frontend.cart') ? 'active' : '' }}">
+                    {{ __('frontend.cart') }}
+                </a>
+            </li>
+            <li>
+                <a href="checkout.html" class="link-term mercado-item-title">
+                    {{ __('frontend.checkout') }}
+                </a>
+            </li>
+            <li>
+                <a href="contact-us.html" class="link-term mercado-item-title">
+                    {{ __('frontend.contact_us') }}
+                </a>
+            </li>
+        </ul>
     </div>
+
 
     <!--header-->
     @include('frontend.layouts.main-header')
@@ -28,6 +60,15 @@
 
     @include('frontend.layouts.footer-scripts')
     @yield('scripts')
+
+    <script>
+        const toggle = document.getElementById('menu__toggle');
+        const navbarLink = document.getElementById('navbar__link');
+        toggle.onclick = function() {
+            toggle.classList.toggle('active');
+            navbarLink.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
