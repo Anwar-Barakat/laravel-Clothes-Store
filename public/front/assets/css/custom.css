@@ -423,6 +423,7 @@ label.error {
     bottom: -100%;
     right: 0;
     width: 100%;
+    text-align: center;
     -webkit-transition: all 0.5s ease-in;
     -moz-transition: all 0.5s ease-in;
     -o-transition: all 0.5s ease-in;

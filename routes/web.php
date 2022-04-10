@@ -174,7 +174,8 @@ Route::group(
             Route::post('/logout',                          [UserController::class, 'logout'])->name('logout');
             Route::get('check-email',                       [UserController::class, 'checkEmail']);
             Route::post('check-email',                      [UserController::class, 'checkEmail']);
-
+            Route::get('/confirm/{code}',                   [UserController::class, 'confirmationEmail']);
+            Route::post('/confirm/{code}',                  [UserController::class, 'confirmationEmail']);
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });

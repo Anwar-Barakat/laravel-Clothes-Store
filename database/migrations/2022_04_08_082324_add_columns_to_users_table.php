@@ -32,7 +32,7 @@ class AddColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('status')->default('1');
+            $table->dropColumn('status')->default('0');
             $table->dropColumn('address');
             $table->dropColumn('city');
             $table->dropColumn('state');

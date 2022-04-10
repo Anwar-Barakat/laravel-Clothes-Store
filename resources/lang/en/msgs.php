@@ -70,4 +70,8 @@ return [
     'confirm_pass'              => 'Please enter the same password as above',
     'mobile_not_valid'          => 'Please enter a valid mobile address',
     'valid_email'               => 'Please Enter Your Valid Email',
+    'confirm_email'             => 'Confirm your eCommerce account',
+    'please_confirm_email'      => 'Please Confirm your eCommerce account',
+    'email_confirmed'           => 'Your account has been successfully confirmed',
+    'already_cofirm'            => 'The account is already activated !',
 ];
