@@ -102,7 +102,7 @@
                                                 </fieldset>
                                             </div>
                                         </div>
-                                        <input type="submit" class="btn btn-submit"
+                                        <input type="submit" class="button-30" role="button"
                                             value="{{ __('frontend.register') }}">
                                     </form>
                                 </div>

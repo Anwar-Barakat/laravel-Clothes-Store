@@ -177,11 +177,12 @@ Route::group(
             Route::post('/check-email',                     [UserController::class, 'checkEmail']);
             Route::get('/confirm/{code}',                   [UserController::class, 'confirmationEmail']);
             Route::post('/confirm/{code}',                  [UserController::class, 'confirmationEmail']);
-            Route::get('/account',                          [UserAccountController::class, 'account'])->name('user.account');
-            Route::post('/update-account-details',          [UserAccountController::class, 'updateAccountDetails'])->name('user.account.details.update');
-            Route::post('/update-account-password',         [UserAccountController::class, 'updateAccountPassword'])->name('user.account.password.update');
-            Route::post('/check-current-password',          [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
-
+            Route::group(['middleware' => ['auth']], function () {
+                Route::get('/account',                          [UserAccountController::class, 'account'])->name('user.account');
+                Route::post('/update-account-details',          [UserAccountController::class, 'updateAccountDetails'])->name('user.account.details.update');
+                Route::post('/update-account-password',         [UserAccountController::class, 'updateAccountPassword'])->name('user.account.password.update');
+                Route::post('/check-current-password',          [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
+            });
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });

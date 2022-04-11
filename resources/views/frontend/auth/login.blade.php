@@ -62,7 +62,7 @@
                                             <a class="link-function left-position" href="#"
                                                 title="{{ __('frontend.forgotten_password') }}?">{{ __('frontend.forgotten_password') }}?</a>
                                         </fieldset>
-                                        <input type="submit" class="btn btn-submit" value="{{ __('frontend.login') }}">
+                                        <input type="submit" class="button-30" role="button" value="{{ __('frontend.login') }}">
                                     </form>
                                 </div>
                             </div>
