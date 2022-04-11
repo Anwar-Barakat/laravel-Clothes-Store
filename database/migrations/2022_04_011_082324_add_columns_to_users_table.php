@@ -18,8 +18,8 @@ class AddColumnsToUsersTable extends Migration
             $table->string('address')->after('status');
             $table->string('city')->after('address');
             $table->string('state')->after('city');
-            $table->string('country')->after('state');
-            $table->string('pincode')->after('country');
+            $table->foreignId('country_id')->after('state');
+            $table->string('pincode')->after('country_id');
             $table->string('mobile')->after('pincode');
         });
     }
@@ -36,7 +36,7 @@ class AddColumnsToUsersTable extends Migration
             $table->dropColumn('address');
             $table->dropColumn('city');
             $table->dropColumn('state');
-            $table->dropColumn('country');
+            $table->dropColumn('country_id');
             $table->dropColumn('pincode');
             $table->dropColumn('mobile');
         });

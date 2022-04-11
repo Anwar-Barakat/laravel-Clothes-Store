@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    @dump($countries)
+
     <div class="home-page home-01">
         <main id="main" class="main-site left-sidebar">
             <div class="container">
@@ -141,14 +143,18 @@
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-6 col-sm-12">
-                                                <fieldset class="wrap-input">
-                                                    <label for="country">{{ __('frontend.country') }}:</label>
-                                                    <input type="text" id="country" name="country"
-                                                        title="{{ __('frontend.country') }}"
-                                                        class="@error('country') is-invalid @enderror"
-                                                        value="{{ old('country', Auth::user()->country) }}"
-                                                        autocomplete="country"
-                                                        placeholder="{{ __('frontend.type_your_country') }}">
+                                                <fieldset class="wrap-input country">
+                                                    <label for="country_id">{{ __('frontend.country') }}:</label>
+                                                    <select name="country_id" id="country_id" class="use-chosen">
+                                                        <option value="">{{ __('frontend.choose_country') }}</option>
+                                                        @foreach ($countries as $country)
+                                                            <option value="{{ $country->id }}"
+                                                                {{ $country->id == Auth::user()->country_id ? 'selected' : '' }}>
+                                                                {{ $country->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+
                                                     @error('country')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -251,7 +257,6 @@
         </main>
     </div>
 @endsection
-
 
 @section('js')
     <script src="{{ asset('front/assets/js/jquery.validate.min.js') }}"></script>

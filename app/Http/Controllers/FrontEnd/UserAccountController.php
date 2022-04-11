@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserDetailRequest;
 use App\Http\Requests\UpdateUserPasswordRequest;
+use App\Models\Country;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,13 +16,14 @@ class UserAccountController extends Controller
 {
     public function account()
     {
-        return view('frontend.auth.account');
+        $countries = Country::where('status', 1)->get();
+        return view('frontend.auth.account', ['countries' => $countries]);
     }
 
     public function updateAccountDetails(UpdateUserDetailRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data = $request->only(['name', 'country', 'city', 'state', 'mobile', 'address', 'pincode']);
+            $data = $request->only(['name', 'country_id', 'city', 'state', 'mobile', 'address', 'pincode']);
             User::where('id', Auth::user()->id)->update($data);
             Session::flash('message', __('msgs.update_user_details'));
             return redirect()->back();

@@ -155,5 +155,7 @@ return [
     'current_password'          => 'كلمة المرور الحالية',
     'rtpe_current_password'     => 'أدخل كلمة المرور الحالية',
     'new_password'              => 'كلمة المرور الجديدة',
-    'type_new_password'         => 'ادخل كلمة المرور الجديدة'
+    'type_new_password'         => 'ادخل كلمة المرور الجديدة',
+    'choose_country'            => 'اختر الدولة ',
+    'choose'                    => 'اختر..',
 ];

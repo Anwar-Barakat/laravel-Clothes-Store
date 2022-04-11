@@ -156,7 +156,9 @@ return [
     'current_password'          => 'Current password',
     'rtpe_current_password'     => 'Type current password',
     'new_password'              => 'New Password',
-    'type_new_password'         => 'Type new password'
+    'type_new_password'         => 'Type new password',
+    'choose_country'            => 'Choose Country',
+    'choose'                    => 'Choose..',
 
 
 ];

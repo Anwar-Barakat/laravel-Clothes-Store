@@ -418,6 +418,12 @@ label.error {
 
 /* **************************************************************************** */
 
+
+/* **************************************************************************** */
+
+
+/* ******************************* Navbar Menu  ******************************* */
+
 #navbar__link {
     position: fixed;
     bottom: -100%;
@@ -461,4 +467,43 @@ label.error {
     display: flex;
     opacity: 1;
     bottom: 0px;
+}
+
+
+/* ******************************* Navbar Menu  ******************************* */
+
+
+/* **************************************************************************** */
+
+.country .chosen-container {
+    display: block;
+    width: 100% !important;
+    height: 3rem;
+}
+
+.country .chosen-container-single .chosen-single {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 43px;
+}
+
+.country .chosen-container-single .chosen-single div {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: block;
+    width: 18px;
+    height: 100%;
+    transform: translateY(-25%);
+}
+
+.country .chosen-container .chosen-drop {
+    top: 147%;
+    z-index: 1010;
+    width: 100% !important;
+}
+
+.country .wrap-login-item .form-item input[type="text"] {
+    height: unset !important;
 }

@@ -26,7 +26,7 @@ class UpdateUserDetailRequest extends FormRequest
         return [
             'name'          => 'required|regex:/^[\pL\s\-]+$/u',
             'mobile'        => 'required|numeric|min:9',
-            'country'       => 'required',
+            'country_id'    => 'required',
             'city'          => 'required',
             'state'         => 'required',
             'address'       => 'required',
