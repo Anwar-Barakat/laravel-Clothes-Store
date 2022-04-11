@@ -46,4 +46,13 @@ class UserAccountController extends Controller
             return redirect()->back();
         }
     }
+
+    public function checkCurrentPassword(Request $request)
+    {
+        $data = $request->only(['current_password']);
+        if (Hash::check($data['current_password'], Auth::user()->password))
+            echo "true";
+        else
+            echo 'false';
+    }
 }

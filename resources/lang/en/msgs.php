@@ -69,10 +69,13 @@ return [
     'min_mobile'                => 'Your mobile must consist of at least 10 numbers',
     'max_mobile'                => 'Your mobile must consist of at most 10 numbers',
     'enter_your_password'       => 'Please provide a password',
+    'current_password'          => 'Please Enter Current Password',
     'enter_your_conf__pass'     => 'Please provide a confirmation password',
     'min_password'              => 'Your password must be at least 8 characters long',
+    'max_password'              => 'Your password must be at most 25 characters long',
     'confirm_pass'              => 'Please enter the same password as above',
     'mobile_not_valid'          => 'Please enter a valid mobile address',
     'valid_email'               => 'Please Enter Your Valid Email',
     'valid_name'                => 'Please Enter Your Valid Name',
+    'enter_new_password'        => 'Enter New Password',
 ];

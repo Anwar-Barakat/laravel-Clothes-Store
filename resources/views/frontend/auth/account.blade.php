@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-    @dump($countries)
-
     <div class="home-page home-01">
         <main id="main" class="main-site left-sidebar">
             <div class="container">
@@ -112,7 +110,7 @@
                                             <div class="col-lg-6 col-sm-12">
                                                 <fieldset class="wrap-input">
                                                     <label for="city">{{ __('frontend.city') }}:</label>
-                                                    <input type="tel" id="city" name="city"
+                                                    <input type="text" id="city" name="city"
                                                         title="{{ __('frontend.city') }}"
                                                         class=" @error('city') is-invalid @enderror"
                                                         value="{{ old('city', Auth::user()->city) }}" autocomplete="city"
@@ -164,7 +162,8 @@
                                             </div>
                                         </div>
 
-                                        <input type="submit" class="btn btn-submit" value="{{ __('buttons.update') }}">
+                                        <input type="submit" class="button-30" role="button"
+                                            value="{{ __('buttons.update') }}">
                                     </form>
                                 </div>
                             </div>
@@ -202,6 +201,9 @@
                                                     <input type="password" id="current_password" name="current_password"
                                                         class="@error('current_password') is-invalid @enderror"
                                                         placeholder="********">
+                                                    <span id="checkCurrentPasswordResult"
+                                                        style="display: block;margin-top: 0.5rem;">
+                                                    </span>
 
                                                     @error('current_password')
                                                         <span class="invalid-feedback" role="alert">
@@ -245,7 +247,8 @@
                                                 </fieldset>
                                             </div>
                                         </div>
-                                        <input type="submit" class="btn btn-submit" value="{{ __('buttons.update') }}">
+                                        <input type="submit" class="button-30" role="button"
+                                            value="{{ __('buttons.update') }}">
                                     </form>
                                 </div>
                             </div>
@@ -261,7 +264,6 @@
 @section('js')
     <script src="{{ asset('front/assets/js/jquery.validate.min.js') }}"></script>
     <script>
-        // validate signup form on keyup and submit
         $("#UpdateAccountDetails").validate({
             rules: {
                 name: "required",
@@ -281,6 +283,64 @@
                     digits: "{{ __('msgs.mobile_not_valid') }}",
                 },
             }
+        });
+        $("#UpdateAccountPassword").validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 25,
+                },
+                password_confirmation: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 25,
+                    equalTo: "#password"
+                },
+            },
+            messages: {
+                password: {
+                    required: "{{ __('msgs.enter_new_password') }}",
+                    minlength: "{{ __('msgs.min_password') }}",
+                    maxlength: "{{ __('msgs.max_password') }}",
+                },
+                password_confirmation: {
+                    required: "{{ __('msgs.enter_your_conf__pass') }}",
+                    minlength: "{{ __('msgs.min_password') }}",
+                    maxlength: "{{ __('msgs.max_password') }}",
+                    equalTo: "{{ __('msgs.confirm_pass') }}"
+                },
+            }
+        });
+    </script>
+
+    <script>
+        $('#current_password').keyup(() => {
+            var current_password = $('#current_password').val();
+            $.ajax({
+                type: 'post',
+                url: '/check-current-password',
+                data: {
+                    current_password: current_password
+                },
+                success: function(response) {
+                    if (response == 'true') {
+                        $('#checkCurrentPasswordResult').html(
+                            '<font class="text-success">{{ __('translation.currnet_pwd_true') }}</font>'
+                        );
+                        $('#current_password').css('border-color', '#22c03c');
+                    } else {
+                        $('#checkCurrentPasswordResult').html(
+                            '<font class="text-danger">{{ __('translation.currnet_pwd_false') }}</font>'
+                        );
+                        $('#current_password').css('border-color', '#ee335e');
+                    }
+
+                },
+                error: function() {
+                    alert('error')
+                }
+            });
         });
     </script>
 @endsection
