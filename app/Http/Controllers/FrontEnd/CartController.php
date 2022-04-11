@@ -186,10 +186,11 @@ class CartController extends Controller
                 'quantity'  => $data['newQuantity']
             ]);
 
-
+            $totalCartProducts = totalProducts();
             return response()->json([
-                'status'    => true,
-                'view'      => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+                'status'            => true,
+                'totalCartProducts' => $totalCartProducts,
+                'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
             ]);
         }
     }

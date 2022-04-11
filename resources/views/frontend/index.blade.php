@@ -255,18 +255,18 @@
                                                                 <ins>
                                                                     <p class="product-price"
                                                                         id="productPriceWithDiscAfter">
-                                                                        $.{{ $discount }}
+                                                                        ${{ $discount }}
                                                                     </p>
                                                                 </ins>
                                                                 <del>
                                                                     <p class="product-price"
                                                                         id="productPriceWithDiscBefore">
-                                                                        $.{{ $latestProduct->price }}
+                                                                        ${{ $latestProduct->price }}
                                                                     </p>
                                                                 </del>
                                                             @else
                                                                 <span class="product-price"
-                                                                    id="productPriceWithoutDisc">$.{{ $latestProduct->price }}
+                                                                    id="productPriceWithoutDisc">${{ $latestProduct->price }}
                                                                 </span>
                                                             @endif
                                                         </div>

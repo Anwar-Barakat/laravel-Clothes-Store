@@ -36,7 +36,8 @@
                                     @foreach ($featuredPorducts as $featuredPorduct)
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
-                                                <a href="#" title="{{ $featuredPorduct->name }}">
+                                                <a href="{{ route('frontend.details', $featuredPorduct->id) }}"
+                                                    title="{{ $featuredPorduct->name }}">
                                                     @if ($featuredPorduct->getFirstMediaUrl('image_products', 'small'))
                                                         <figure>
                                                             <img src="{{ $featuredPorduct->getFirstMediaUrl('image_products', 'small') }}"
@@ -59,7 +60,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-info">
-                                                <a href="#"
+                                                <a href="{{ route('frontend.details', $featuredPorduct->id) }}"
                                                     class="product-name"><span>{{ $featuredPorduct->name }}</span></a>
                                                 <div class="wrap-price">
                                                     @php
@@ -68,17 +69,17 @@
                                                     @if ($discount > 0)
                                                         <ins>
                                                             <p class="product-price" id="productPriceWithDiscAfter">
-                                                                $.{{ $discount }}
+                                                                ${{ $discount }}
                                                             </p>
                                                         </ins>
                                                         <del>
                                                             <p class="product-price" id="productPriceWithDiscBefore">
-                                                                $.{{ $featuredPorduct->price }}
+                                                                ${{ $featuredPorduct->price }}
                                                             </p>
                                                         </del>
                                                     @else
                                                         <span class="product-price"
-                                                            id="productPriceWithoutDisc">$.{{ $featuredPorduct->price }}
+                                                            id="productPriceWithoutDisc">${{ $featuredPorduct->price }}
                                                         </span>
                                                     @endif
                                                 </div>

@@ -53,21 +53,6 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="menu-item menu-item-has-children parent">
-                                <a title="{{ __('frontend.currency') }}" href="#">{{ __('frontend.currency') }}<i
-                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                <ul class="submenu curency">
-                                    <li class="menu-item">
-                                        <a title="Pound (GBP)" href="#">Pound (GBP)</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Euro (EUR)" href="#">Euro (EUR)</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a title="Dollar (USD)" href="#">Dollar (USD)</a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -146,10 +131,13 @@
                             </a>
                         </div>
                         <div class="wrap-icon-section minicart">
-                            <a href="#" class="link-direction">
+                            <a href="{{ route('frontend.cart') }}" class="link-direction">
                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">4 {{ __('frontend.items') }}</span>
+                                    <span class="index">
+                                        <span id="totalProducts">{{ totalProducts() }}</span>
+                                        {{ __('frontend.items') }}
+                                    </span>
                                     <span class="title">{{ __('frontend.cart') }}</span>
                                 </div>
                             </a>

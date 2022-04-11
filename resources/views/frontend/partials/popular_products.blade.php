@@ -31,17 +31,17 @@
                                 @if ($discount > 0)
                                     <ins>
                                         <p class="product-price" id="productPriceWithDiscAfter">
-                                            $.{{ $discount }}
+                                            ${{ $discount }}
                                         </p>
                                     </ins>
                                     <del>
                                         <p class="product-price" id="productPriceWithDiscBefore">
-                                            $.{{ $popular_product->price }}
+                                            ${{ $popular_product->price }}
                                         </p>
                                     </del>
                                 @else
                                     <span class="product-price"
-                                        id="productPriceWithoutDisc">$.{{ $popular_product->price }}
+                                        id="productPriceWithoutDisc">${{ $popular_product->price }}
                                     </span>
                                 @endif
 

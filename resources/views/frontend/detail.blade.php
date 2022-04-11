@@ -78,16 +78,16 @@
                                     @endphp
                                     @if ($discount > 0)
                                         <ins>
-                                            <p class="product-price" id="productPriceWithDiscAfter">$.{{ $discount }}
+                                            <p class="product-price" id="productPriceWithDiscAfter">${{ $discount }}
                                             </p>
                                         </ins>
                                         <del>
                                             <p class="product-price" id="productPriceWithDiscBefore">
-                                                $.{{ $product->price }}
+                                                ${{ $product->price }}
                                             </p>
                                         </del>
                                     @else
-                                        <span class="product-price" id="productPriceWithoutDisc">$.{{ $product->price }}
+                                        <span class="product-price" id="productPriceWithoutDisc">${{ $product->price }}
                                         </span>
                                     @endif
                                 </div>

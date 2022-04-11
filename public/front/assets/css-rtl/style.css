@@ -5160,6 +5160,7 @@ article.single-post blockquote p:last-child::after {
     padding: 4.5px 10px;
     text-align: center;
     width: 100%;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px;
 }
 
 .wrap-product-detail .detail-info .wrap-butons .add-to-cart:hover {

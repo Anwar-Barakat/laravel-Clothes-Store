@@ -105,7 +105,6 @@
                     return false;
                 } else
                     newQuantity = parseInt(quantity) - 1;
-
             }
             if ($(this).hasClass('btn-increase')) {
                 var quantity = $(this).prev().prev().val();
@@ -124,7 +123,7 @@
                 success: function(response) {
                     if (response.status == false)
                         toastr.info("{{ __('msgs.amount_not_available') }}");
-
+                    $('#totalProducts').html(response['totalCartProducts']);
                     $('#AppendCartProducts').html(response['view']);
                 },
                 error: function() {
