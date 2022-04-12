@@ -124,12 +124,24 @@
 
             {{-- Coupons --}}
             <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.coupons.index') }}">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                     <i class="fas fa-dollar-sign icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.coupons') }}</span>
+                    <i class="angle fe fe-chevron-down"></i>
                 </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.coupons.index') }}">
+                            {{ __('translation.all_coupons') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.coupons.create') }}">
+                            {{ __('translation.add_coupon') }}
+                        </a>
+                    </li>
+                </ul>
             </li>
-
 
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg

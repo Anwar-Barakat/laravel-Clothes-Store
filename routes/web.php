@@ -138,6 +138,8 @@ Route::group(
                 // **************************************************************
                 // Coupons :
                 Route::get('coupons/index',                                     [CouponController::class, 'index'])->name('coupons.index');
+                Route::get('create-coupon',                                     [CouponController::class, 'create'])->name('coupons.create');
+                Route::post('store-coupon',                                     [CouponController::class, 'store'])->name('coupons.store');
                 Route::post('update-coupon-status',                             [CouponController::class, 'updateCouponStatus']);
 
 
@@ -194,8 +196,8 @@ Route::group(
                 Route::post('/check-current-password',          [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
             });
 
+            Route::get('/{page}',                                       [AdminController::class, 'index']);
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });
-        Route::get('/admin/{page}',                                       [AdminController::class, 'index']);
     }
 );

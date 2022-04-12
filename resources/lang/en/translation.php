@@ -193,8 +193,20 @@ return [
     // Coupons :
     'coupons'                   => 'Coupons',
     'code'                      => 'Code',
+    'enter_code'                => 'Enter The Code',
     'type'                      => 'Type',
+    'Multiple Times'            => 'Multiple Times',
+    'Single Times'              => 'Single Times',
     'amount'                    => 'Amount',
     'expiration_date'           => 'Expiration Date',
+    'add_coupon'                => 'Add Coupon',
+    'all_coupons'               => 'Display Coupons',
+    'option'                    => 'Options',
+    'Automatic'                 => 'Automatic',
+    'Manual'                    => 'Manual',
+    'amount_type'               => 'Amount Type',
+    'Percentage'                => 'Percentage',
+    'Fixed'                     => 'Fixed',
+    'users'                     => 'Users',
 
 ];

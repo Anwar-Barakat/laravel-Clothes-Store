@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\Section;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -26,7 +28,12 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Section::with('categories')->get();
+        $users      = User::select('email')->where('status', 1)->get();
+        return view('admin.coupons.add', [
+            'categories'    => $categories,
+            'users'         => $users
+        ]);
     }
 
     /**

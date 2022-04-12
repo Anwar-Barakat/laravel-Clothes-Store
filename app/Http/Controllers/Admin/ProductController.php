@@ -39,12 +39,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-
         $categories = Section::with('categories')->get();
-        // $categories = json_decode(json_encode($categories), true);
-        // echo "<pre>";
-        // print_r($categories);
-        // die;
         return view('admin.products.add', ['categories' => $categories]);
     }
 
