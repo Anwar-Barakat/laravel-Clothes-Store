@@ -60,7 +60,7 @@
                                     <label for="code">{{ __('translation.code') }}</label>
                                     <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
                                         id="code" value="{{ old('code') }}"
-                                        placeholder="{{ __('translation.enter_code') }}" required>
+                                        placeholder="{{ __('translation.enter_code') }}">
                                     @error('code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

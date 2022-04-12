@@ -7,6 +7,8 @@ use App\Models\Coupon;
 use App\Models\Section;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class CouponController extends Controller
 {
@@ -44,7 +46,25 @@ class CouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['option', 'code', 'categories', 'users', 'amount_type', 'amount', 'type', 'expiration_date']);
+
+            if (isset($data['users'])) {
+                $data['users'] = implode(',', $data['users'] ?? []);
+            }
+            if (isset($data['categories']))
+                $data['categories'] = implode(',', $data['categories'] ?? []);
+
+            if ($data['option'] == 'Automatic')
+                $data['code'] = Str::random(10);
+
+            Coupon::create($data);
+            Session::flash('message', __('msgs.coupno_add'));
+            return redirect()->back();
+
+
+            return $data;
+        }
     }
 
     /**

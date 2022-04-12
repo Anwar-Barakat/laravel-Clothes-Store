@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,12 +22,17 @@ class Coupon extends Model
         'status',
     ];
 
+    protected $casts = [
+        'expiration_date' => 'datetime',
+    ];
+
 
     public function getAmountAttribute()
     {
-        if ($this->attributes['amount_type'] == '0')
+        $amount = '';
+        if ($this->attributes['amount_type'] == 'Percentage')
             $amount = $this->attributes['amount'] . '%';
-        elseif ($this->attributes['amount_type'] == '1')
+        elseif ($this->attributes['amount_type'] == 'Fixed')
             $amount = $this->attributes['amount'] . '$';
 
         return $amount;
