@@ -99,7 +99,20 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     let btn = document.getElementById('allCats');
     let megaBox = document.getElementById('megaBox');
-    btn.addEventListener('click', () => {
-        megaBox.classList.toggle("active")
+    btn.addEventListener('click', (e) => {
+        if (e.target.id != "allCats") {
+            megaBox.fadeOut();
+        } else {
+            megaBox.classList.toggle("active")
+        }
     });
+</script>
+
+<script>
+    const toggle = document.getElementById('menu__toggle');
+    const navbarLink = document.getElementById('navbar__link');
+    toggle.onclick = function() {
+        toggle.classList.toggle('active');
+        navbarLink.classList.toggle('active');
+    }
 </script>

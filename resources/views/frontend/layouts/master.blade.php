@@ -61,14 +61,7 @@
     @include('frontend.layouts.footer-scripts')
     @yield('scripts')
 
-    <script>
-        const toggle = document.getElementById('menu__toggle');
-        const navbarLink = document.getElementById('navbar__link');
-        toggle.onclick = function() {
-            toggle.classList.toggle('active');
-            navbarLink.classList.toggle('active');
-        }
-    </script>
+
 </body>
 
 </html>

@@ -8,6 +8,14 @@
     <div class="home-page home-01">
         <main id="main">
             <div class="container">
+                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
+                    <ul>
+                        <li class="item-link">
+                            <a href="{{ route('frontend.home') }}" class="link">{{ __('frontend.home') }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <!--MAIN SLIDE-->
                 @include('frontend.banners.index')
 
@@ -159,7 +167,8 @@
                         <div class="product product-style-2 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('front/assets/images/products/digitals/digital_04.jpg') }}"
+                                    <figure><img
+                                            src="{{ asset('front/assets/images/products/digitals/digital_04.jpg') }}"
                                             width="800" height="800" alt="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     </figure>
                                 </a>

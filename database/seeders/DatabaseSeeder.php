@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Country;
 use Database\Seeders\CountrySeeder;
 use Illuminate\Database\Seeder;
@@ -19,8 +21,8 @@ class DatabaseSeeder extends Seeder
             // BrandSeeder::class,
             // BannerSeeder::class,
             // CategorySeeder::class,
-            CountrySeeder::class
-
+            // CountrySeeder::class,
+            CouponSeeder::class
         ]);
     }
 }

@@ -14,13 +14,13 @@ class AddColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('status')->after('name');
-            $table->string('address')->after('status');
-            $table->string('city')->after('address');
-            $table->string('state')->after('city');
-            $table->foreignId('country_id')->after('state');
-            $table->string('pincode')->after('country_id');
-            $table->string('mobile')->after('pincode');
+            $table->tinyInteger('status')->after('name')->default(0);
+            $table->string('address')->after('status')->nullable();
+            $table->string('city')->after('address')->nullable();
+            $table->string('state')->after('city')->nullable();
+            $table->foreignId('country_id')->after('state')->nullable();
+            $table->string('pincode')->after('country_id')->nullable();
+            $table->string('mobile')->after('pincode')->nullable();
         });
     }
 
@@ -32,7 +32,7 @@ class AddColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('status')->default('0');
+            $table->dropColumn('status');
             $table->dropColumn('address');
             $table->dropColumn('city');
             $table->dropColumn('state');

@@ -866,7 +866,8 @@ li.menu-item .nav-label.sale-label::before {
 }
 
 .header-style-1 .primary-nav-section {
-    background: #444444;
+    background: #f9f9f9;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
 }
 
 .primary {
@@ -890,24 +891,24 @@ li.menu-item .nav-label.sale-label::before {
 
 .primary>.menu-item:not(.home-icon)>a {
     font-weight: 700;
-    color: #f1f1f1;
+    color: #666;
     text-transform: uppercase;
     padding: 11px 23px;
 }
 
 .primary>.menu-item:not(first-child) {
-    border-right: 1px solid #555555;
+    border-right: 2px solid #009788;
 }
 
 .primary>.menu-item:not(.home-icon):hover {
     background: #555555;
 }
 
-.primary .menu-item>a:focus,
 .primary .menu-item>a:active,
-.primary .menu-item>a:visited,
-.primary .menu-item:hover>a {
-    background: transparent !important;
+.primary>.menu-item:not(.home-icon)>a.active,
+.link-term.mercado-item-title.active .home-link,
+.link-term.mercado-item-title.active .fa {
+    color: white;
 }
 
 .custom-col-5 {

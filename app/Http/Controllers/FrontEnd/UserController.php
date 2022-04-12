@@ -50,6 +50,7 @@ class UserController extends Controller
     {
         if ($request->isMethod('post')) {
             $data           = $request->only(['name', 'mobile', 'password', 'password_confirmation', 'email']);
+            $data['status'] = 0;
             $userCount  = User::where('email', $data['email'])->count();
             if ($userCount > 0) {
                 Session::flash('alert-type', 'info');
@@ -72,16 +73,6 @@ class UserController extends Controller
                 Session::flash('alert-type', 'info');
                 Session::flash('message', __('msgs.please_confirm_email'));
                 return redirect()->route('frontend.form.login');
-
-                // if (auth()->attempt(['email' => $data['email'], 'password' => $data['password']])) {
-                //     if (!empty(Session::get('session_id'))) {
-                //         $user_id    = Auth::user()->id;
-                //         $session_id = Session::get('session_id');
-                //         Cart::where('session_id', $session_id)->update([
-                //             'user_id'   => $user_id,
-                //         ]);
-                //     }
-                // }
             }
         }
     }
@@ -150,15 +141,13 @@ class UserController extends Controller
                     return redirect()->back();
                 } else {
                     Session::flash('message', __('translation.hi_welcome_back'));
-                    return redirect()->route('frontend.cart');
-                }
-
-                if (!empty(Session::get('session_id'))) {
-                    $user_id    = Auth::user()->id;
-                    $session_id = Session::get('session_id');
-                    Cart::where('session_id', $session_id)->update([
-                        'user_id'   => $user_id,
-                    ]);
+                    if (!empty(Session::get('session_id'))) {
+                        $user_id    = Auth::user()->id;
+                        $session_id = Session::get('session_id');
+                        Cart::where('session_id', $session_id)->update([
+                            'user_id'   => $user_id,
+                        ]);
+                    }
                     return redirect()->route('frontend.cart');
                 }
             } else {
