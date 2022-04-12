@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
@@ -47,7 +48,7 @@ Route::group(
         // ======================================================
         // BackFrontEnd :
         // ======================================================
-        Route::prefix('/admin')->as('admin.')->group(function () {
+        Route::prefix('/admin/')->as('admin.')->group(function () {
             Route::group(['middleware' => 'admin'], function () {
                 Route::get('/dashboard', function () {
                     return view('index');
@@ -130,6 +131,15 @@ Route::group(
                 Route::post('brands/add',                                       [BrandController::class, 'store'])->name('brands.store');
                 Route::post('brands/update/{brand}',                            [BrandController::class, 'update'])->name('brands.update');
                 Route::post('update-brand-status',                              [BrandController::class, 'updateBrandStatus']);
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Coupons :
+                Route::get('coupons/index',                                     [CouponController::class, 'index'])->name('coupons.index');
+                Route::post('update-coupon-status',                             [CouponController::class, 'updateCouponStatus']);
+
 
 
 

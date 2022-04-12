@@ -122,6 +122,14 @@
                 </ul>
             </li>
 
+            {{-- Coupons --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.coupons.index') }}">
+                    <i class="fas fa-dollar-sign icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.coupons') }}</span>
+                </a>
+            </li>
+
 
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg

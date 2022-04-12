@@ -194,5 +194,10 @@ return [
     'alternative'               => 'البديل',
     'title'                     => 'العنوان',
 
-
+    // Coupons :
+    'coupons'                   => 'القسائم',
+    'code'                      => 'الرمز',
+    'type'                      => 'النوع',
+    'amount'                    => 'الكمية',
+    'expiration_date'           => 'تاريخ الإنتهاء',
 ];

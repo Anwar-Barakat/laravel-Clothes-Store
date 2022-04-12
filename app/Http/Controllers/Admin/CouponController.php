@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreBrandRequest;
-use App\Http\Requests\UpdateBrandRequest;
-use App\Models\Brand;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class BrandController extends Controller
+class CouponController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('admin.brands.index', ['brands'  => Brand::all()]);
+        $coupons = Coupon::all();
+        return view('admin.coupons.index', ['coupons' => $coupons]);
     }
 
     /**
@@ -37,20 +35,9 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBrandRequest $request)
+    public function store(Request $request)
     {
-        if ($request->isMethod('post')) {
-            $data = $request->only(['name_ar', 'name_en', 'status']);
-            Brand::create([
-                'name'      => [
-                    'ar'        => $data['name_ar'],
-                    'en'        => $data['name_en'],
-                ],
-                'status'    => $data['status']
-            ]);
-            Session::flash('message', __('msgs.brand_added'));
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -82,20 +69,9 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(Request $request, $id)
     {
-        if ($request->isMethod('post')) {
-            $data = $request->only(['name_ar', 'name_en', 'status']);
-            $brand->update([
-                'name'      => [
-                    'ar'        => $data['name_ar'],
-                    'en'        => $data['name_en'],
-                ],
-                'status'    => $data['status']
-            ]);
-            Session::flash('message', __('msgs.brand_updated'));
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -109,20 +85,21 @@ class BrandController extends Controller
         //
     }
 
-    public function updateBrandStatus(Request $request)
+
+    public function updateCouponStatus(Request $request)
     {
         if ($request->ajax()) {
-            $data = $request->only(['status', 'brand_id']);
+            $data = $request->only(['status', 'coupon_id']);
             if ($data['status'] == 1)
                 $status = 0;
             else
                 $status = 1;
-            Brand::where('id', $data['brand_id'])->update([
+            Coupon::where('id', $data['coupon_id'])->update([
                 'status'    => $status
             ]);
             return response()->json([
                 'status'        => $status,
-                'brand_id'    => $data['brand_id']
+                'coupon_id'    => $data['coupon_id']
             ]);
         }
     }

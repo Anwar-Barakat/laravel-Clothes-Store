@@ -190,4 +190,11 @@ return [
     'alternative'               => 'Alternative',
 
 
+    // Coupons :
+    'coupons'                   => 'Coupons',
+    'code'                      => 'Code',
+    'type'                      => 'Type',
+    'amount'                    => 'Amount',
+    'expiration_date'           => 'Expiration Date',
+
 ];
