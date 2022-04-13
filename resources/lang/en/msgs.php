@@ -34,7 +34,7 @@ return [
     'coupno_add'                    => 'Coupon Has Added Successfuly !!',
     'coupno_update'                 => 'Coupon Has Updated Successfuly !!',
     'coupno_delete'                 => 'Coupon Has Deleted Successfuly !!',
-
+    'code_not_valid'                => 'coupon code is invalid !!',
 
 
 

@@ -92,6 +92,8 @@ return [
     'Bestseller'            => 'BestSeller',
     'all_sections'          => 'All Sections',
     'quick_view'            => 'quick view',
+    'add_coupon'            => 'Add Coupon',
+    'enter_coupon_code'     => 'Type Coupon Code',
 
 
     // Details :

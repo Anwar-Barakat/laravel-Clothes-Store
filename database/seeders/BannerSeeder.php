@@ -34,10 +34,10 @@ class BannerSeeder extends Seeder
         foreach ($banners as $banner) {
             if (is_null(Banner::where('title->en', $banner['en'])->where('title->ar', $banner['ar'])->first()))
                 Banner::create([
-                    'title' => $banner,
-                    'link'      => '',
+                    'title'         => $banner,
+                    'link'          => '',
                     'alternative'   => '',
-                    'status' => 1
+                    'status'        => 1
                 ]);
         }
     }

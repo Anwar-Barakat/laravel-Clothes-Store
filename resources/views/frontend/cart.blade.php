@@ -22,6 +22,39 @@
                         @include('frontend.partials.cart_products')
                     </div>
 
+                    <div class="summary">
+                        <div class="row">
+                            <div class="order-summary">
+                                <h4 class="title-box">{{ __('frontend.add_coupon') }}</h4>
+                            </div>
+                        </div>
+                        <form name="addCouponForm" action="javascript:void(0);" method="POST" id="addCouponForm"
+                            @if (Auth::check()) user="1" @endif>
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <label for="code">{{ __('frontend.code') }}:</label>
+                                    <input type="text" id="code" name="code" title="{{ __('frontend.code') }}"
+                                        class="form-control @error('code') is-invalid @enderror" value="{{ old('code') }}"
+                                        required autocomplete="code" autofocus
+                                        placeholder="{{ __('frontend.enter_coupon_code') }}"
+                                        style="margin-top: 10px;height: 40px;">
+                                    @error('code')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 ">
+                                    <div class="checkout-info">
+                                        <input type="submit" class="btn btn-checkout" value="{{ __('buttons.add') }}"
+                                            style="margin-top:3.25rem;">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
 
                     @if ($featuredPorducts->count() > 0)
@@ -100,4 +133,41 @@
 
         </main>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(function() {
+            $('#addCouponForm').submit(function() {
+                var user = $(this).attr('user');
+                if (user == '1') {
+
+                } else {
+                    alert('please logged in before');
+                    return false;
+                }
+                var code = $('#code').val();
+                $.ajax({
+                    type: "post",
+                    url: "/add-coupon",
+                    data: {
+                        code: code
+                    },
+                    success: function(response) {
+                        if (response.status == false)
+                            toastr.info("{{ __('msgs.code_not_valid') }}");
+
+                        $('#totalProducts').html(response['totalCartProducts']);
+                        $('#AppendCartProducts').html(response['view']);
+
+                        if (response.status == true)
+                            alert('hi')
+                    },
+                    error: function() {
+                        alert('error')
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

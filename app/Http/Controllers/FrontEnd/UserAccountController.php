@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserDetailRequest;
 use App\Http\Requests\UpdateUserPasswordRequest;
+use App\Models\Cart;
 use App\Models\Country;
+use App\Models\Coupon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class UserAccountController extends Controller
 {
@@ -54,5 +57,26 @@ class UserAccountController extends Controller
             echo "true";
         else
             echo 'false';
+    }
+
+    public function addCouponOnCart(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $data           = $request->only(['code']);
+            $couponCount    = Coupon::where('code', $data['code'])->count();
+            if ($couponCount  == 0) {
+                $userCartProducts   = Cart::userCartProducts();
+                $totalCartProducts  = totalProducts();
+                return response()->json([
+                    'status'            => false,
+                    'totalCartProducts' => $totalCartProducts,
+                    'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+                ]);
+            } else {
+                return response()->json([
+                    'status'    => true,
+                ]);
+            }
+        }
     }
 }

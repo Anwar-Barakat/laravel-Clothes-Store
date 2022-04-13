@@ -92,6 +92,8 @@ return [
     'all_sections'          => 'جميع الأقسام',
     'color'                 => 'اللون',
     'quick_view'            => 'عرض سريع',
+    'add_coupon'            => 'اضافة قسيمة',
+    'enter_coupon_code'     => 'ادخل رمز القسيمة',
 
 
     // Details :

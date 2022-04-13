@@ -197,10 +197,11 @@ Route::group(
                 Route::post('/update-account-details',          [UserAccountController::class, 'updateAccountDetails'])->name('user.account.details.update');
                 Route::post('/update-account-password',         [UserAccountController::class, 'updateAccountPassword'])->name('user.account.password.update');
                 Route::post('/check-current-password',          [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
+                Route::post('/add-coupon',                      [UserAccountController::class, 'addCouponOnCart']);
             });
 
-            Route::get('/{page}',                                       [AdminController::class, 'index']);
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });
     }
 );
+Route::get('/{page}',                                       [AdminController::class, 'index']);
