@@ -27,6 +27,7 @@ class Coupon extends Model
     ];
 
 
+
     public function getAmountAttribute()
     {
         $amount = '';
@@ -36,5 +37,26 @@ class Coupon extends Model
             $amount = $this->attributes['amount'] . '$';
 
         return $amount;
+    }
+
+    public function getAmountWithoutTypeAttribute()
+    {
+        return $this->attributes['amount'];
+    }
+
+    public function getTypeAttribute()
+    {
+        $type = '';
+        if ($this->attributes['type'] == 'Multiple Times')
+            $type = __('translation.multiple_times');
+        elseif ($this->attributes['type'] == 'Single Times')
+            $type = __('translation.single_times');
+
+        return $type;
+    }
+
+    public function getExpirationDateAttribute($value)
+    {
+        return Carbon::parse($this->attributes['expiration_date'])->format('Y-m-d');
     }
 }

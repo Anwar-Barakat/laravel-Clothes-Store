@@ -87,7 +87,8 @@
                                                                 {{ __('translation.disactive') }}
                                                             </a>
                                                         @endif
-                                                        <a href="" title="{{ __('buttons.update') }}"
+                                                        <a href="{{ route('admin.coupons.edit', $coupon) }}"
+                                                            title="{{ __('buttons.update') }}"
                                                             class="text-primary dropdown-item">
                                                             <i class="fas fa-edit"></i>
                                                             {{ __('buttons.edit') }}

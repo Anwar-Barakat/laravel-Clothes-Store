@@ -18,7 +18,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('admin.brands.index', ['brands'  => Brand::all()]);
+        return view('admin.brands.index', ['brands'  => Brand::latest()->get()]);
     }
 
     /**

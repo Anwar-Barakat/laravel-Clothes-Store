@@ -195,8 +195,8 @@ return [
     'code'                      => 'Code',
     'enter_code'                => 'Enter The Code',
     'type'                      => 'Type',
-    'Multiple Times'            => 'Multiple Times',
-    'Single Times'              => 'Single Times',
+    'multiple_times'            => 'Multiple Times',
+    'single_times'              => 'Single Times',
     'amount'                    => 'Amount',
     'expiration_date'           => 'Expiration Date',
     'add_coupon'                => 'Add Coupon',
@@ -208,5 +208,6 @@ return [
     'Percentage'                => 'Percentage',
     'Fixed'                     => 'Fixed',
     'users'                     => 'Users',
+    'edit_coupon'               => 'Edit Coupon'
 
 ];

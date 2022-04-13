@@ -25,14 +25,12 @@ class StoreCouponRequest extends FormRequest
     {
         return [
             'option'            => 'required|in:Automatic,Manual',
-            'code'              => 'required|min:5',
             'categories'        => 'required',
             'users'             => 'required',
             'type'              => 'required|in:Multiple Times,Single Times',
             'amount_type'       => 'required|in:Percentage,Fixed',
             'amount'            => 'required|numeric',
             'expiration_date'   => 'required|date',
-            'status'            => 'required',
         ];
     }
 }

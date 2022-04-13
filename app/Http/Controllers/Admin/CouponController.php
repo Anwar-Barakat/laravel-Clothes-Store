@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCouponRequest;
 use App\Models\Coupon;
 use App\Models\Section;
 use App\Models\User;
@@ -19,7 +20,7 @@ class CouponController extends Controller
      */
     public function index()
     {
-        $coupons = Coupon::all();
+        $coupons = Coupon::latest()->get();
         return view('admin.coupons.index', ['coupons' => $coupons]);
     }
 
@@ -44,7 +45,7 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCouponRequest $request)
     {
         if ($request->isMethod('post')) {
             $data = $request->only(['option', 'code', 'categories', 'users', 'amount_type', 'amount', 'type', 'expiration_date']);
@@ -58,9 +59,10 @@ class CouponController extends Controller
             if ($data['option'] == 'Automatic')
                 $data['code'] = Str::random(10);
 
+
             Coupon::create($data);
             Session::flash('message', __('msgs.coupno_add'));
-            return redirect()->back();
+            return redirect()->route('admin.coupons.index');
 
 
             return $data;
@@ -84,9 +86,19 @@ class CouponController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Coupon $coupon)
     {
-        //
+        $categories     = Section::with('categories')->get();
+        $users          = User::select('email')->where('status', 1)->get();
+        $selectCats     = explode(',', $coupon->categories);
+        $selectUsers    = explode(',', $coupon->users);
+        return view('admin.coupons.edit', [
+            'coupon'        => $coupon,
+            'categories'    => $categories,
+            'selectCats'    => $selectCats,
+            'users'         => $users,
+            'selectUsers'   => $selectUsers,
+        ]);
     }
 
     /**

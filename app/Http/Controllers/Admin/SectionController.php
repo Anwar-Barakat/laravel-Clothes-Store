@@ -13,7 +13,7 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::all();
+        $sections = Section::latest()->get();
         return view('admin.sections.index', ['sections'  => $sections]);
     }
 

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.add_coupon'))
+@section('title', __('translation.edit_coupon'))
 @section('css')
     <!-- Internal Select2 css -->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
@@ -18,7 +18,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.add_coupon') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.edit_coupon') }}</span>
             </div>
         </div>
     </div>
@@ -30,45 +30,17 @@
         <div class="col-sm-12">
             <div class="card  box-shadow-0">
                 <div class="card-header">
-                    <h4 class="card-title mb-1">{{ __('translation.add_coupon') }}</h4>
+                    <h4 class="card-title mb-1">{{ __('translation.edit_coupon') }}</h4>
                 </div>
                 <div class="card-body pt-0">
                     <form class="form-horizontal" method="POST" action="{{ route('admin.coupons.store') }}"
                         enctype="multipart/form-data" name="couponForm" id="couponForm">
                         @csrf
-                        {{-- @if ($errors->any())
-                            {{ implode('', $errors->all('<div>:message</div>')) }}
-                        @endif --}}
                         <div class="row">
                             <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
-                                    <label for="couponOption">{{ __('translation.option') }}</label>
-                                    <select class="form-control @error('option') is-invalid @enderror" id="couponOption"
-                                        name="option">
-                                        <option value="">{{ __('translation.choose..') }}</option>
-                                        <option value="Automatic" {{ old('option') == 'Automatic' ? 'selected' : '' }}>
-                                            {{ __('translation.Automatic') }}</option>
-                                        <option value="Manual" {{ old('option') == 'Manual' ? 'selected' : '' }}>
-                                            {{ __('translation.Manual') }}</option>
-                                    </select>
-                                    @error('option')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-xl-6" id="couponCode" style="display: none">
-                                <div class="form-group">
-                                    <label for="code">{{ __('translation.code') }}</label>
-                                    <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
-                                        id="code" value="{{ old('code') }}"
-                                        placeholder="{{ __('translation.enter_code') }}">
-                                    @error('code')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <label>{{ __('translation.code') }}</label>
+                                    <input type="text" class="form-control" value="{{ $coupon->code }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -84,12 +56,12 @@
                                             <optgroup label="{{ $section->name }}"></optgroup>
                                             @foreach ($section->categories ?? [] as $category)
                                                 <option value="{{ $category->id }}"
-                                                    {{ old('categories') == $category->id ? 'selected' : '' }}>
+                                                    {{ in_array($category->id, $selectCats) ? 'selected' : '' }}>
                                                     &nbsp;&raquo;&nbsp; {{ $category->name }}
                                                 </option>
                                                 @foreach ($category->subCategories ?? [] as $subcategory)
                                                     <option value="{{ $subcategory->id }}"
-                                                        {{ old('categories') == $subcategory->id ? 'selected' : '' }}>
+                                                        {{ in_array($subcategory->id, $selectCats) ? 'selected' : '' }}>
                                                         &nbsp;&raquo;&nbsp; &nbsp;&raquo;&nbsp;
                                                         {{ $subcategory->name }}
                                                     </option>
@@ -112,7 +84,8 @@
                                         @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->email }}">
+                                            <option value="{{ $user->email }}"
+                                                {{ in_array($user->email, $selectUsers) ? 'selected' : '' }}>
                                                 {{ $user->email }}
                                             </option>
                                         @endforeach
@@ -133,9 +106,10 @@
                                         name="amount_type">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         <option value="Percentage"
-                                            {{ old('amount_type') == 'Percentage' ? 'selected' : '' }}>
+                                            {{ old('amount_type', $coupon->amount_type) == 'Percentage' ? 'selected' : '' }}>
                                             {{ __('translation.Percentage') }} (%)</option>
-                                        <option value="Fixed" {{ old('amount_type') == 'Fixed' ? 'selected' : '' }}>
+                                        <option value="Fixed"
+                                            {{ old('amount_type', $coupon->amount_type) == 'Fixed' ? 'selected' : '' }}>
                                             {{ __('translation.Fixed') }} ($)</option>
                                     </select>
                                     @error('amount_type')
@@ -154,7 +128,7 @@
                                         </div>
                                         <input name="amount" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('amount') is-invalid @enderror" type="number"
-                                            value="{{ old('amount') }}">
+                                            value="{{ old('amount', $coupon->amount_without_type) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -175,10 +149,10 @@
                                         name="type">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         <option value="Multiple Times"
-                                            {{ old('type') == 'Multiple Times' ? 'selected' : '' }}>
+                                            {{ old('type', $coupon->type) == 'Multiple Times' ? 'selected' : '' }}>
                                             {{ __('translation.multiple_times') }}</option>
                                         <option value="Single Times"
-                                            {{ old('type') == 'Single Times' ? 'selected' : '' }}>
+                                            {{ old('type', $coupon->type) == 'Single Times' ? 'selected' : '' }}>
                                             {{ __('translation.single_times') }}</option>
                                     </select>
                                     @error('type')
@@ -200,7 +174,7 @@
                                         <input
                                             class="form-control fc-datepicker  @error('expiration_date') is-invalid @enderror"
                                             placeholder="MM/DD/YYYY" type="text" name="expiration_date"
-                                            value="{{ old('expiration_date') }}">
+                                            value="{{ old('expiration_date', $coupon->expiration_date) }}">
                                         @error('expiration_date')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

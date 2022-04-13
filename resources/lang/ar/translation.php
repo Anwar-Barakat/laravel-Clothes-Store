@@ -199,8 +199,8 @@ return [
     'code'                      => 'الرمز',
     'enter_code'                => 'ادخل الرمز',
     'type'                      => 'النوع',
-    'Multiple Times'            => 'عدة مرات',
-    'Single Times'              => 'مرة واحدة',
+    'multiple_times'            => 'عدة مرات',
+    'single_times'              => 'مرة واحدة',
     'amount'                    => 'المبلغ',
     'expiration_date'           => 'تاريخ الإنتهاء',
     'add_coupon'                => 'اضافة قسيمة',
@@ -212,4 +212,5 @@ return [
     'Percentage'                => 'بالمية',
     'Fixed'                     => 'عملة موحدة',
     'users'                     => 'المستخدمين',
+    'edit_coupon'               => 'تعديل القسيمة'
 ];

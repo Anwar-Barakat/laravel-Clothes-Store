@@ -141,6 +141,8 @@ Route::group(
                 Route::get('create-coupon',                                     [CouponController::class, 'create'])->name('coupons.create');
                 Route::post('store-coupon',                                     [CouponController::class, 'store'])->name('coupons.store');
                 Route::post('update-coupon-status',                             [CouponController::class, 'updateCouponStatus']);
+                Route::get('edit-coupon/{coupon}',                              [CouponController::class, 'edit'])->name('coupons.edit');
+                Route::post('update-coupon/{coupon}',                           [CouponController::class, 'update'])->name('coupons.update');
 
 
 
