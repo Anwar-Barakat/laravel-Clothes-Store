@@ -31,7 +31,10 @@ return [
     'yes_delete'                    => 'Yes, Delete !',
     'brand_added'                   => 'Brand Has Added Successfully !!',
     'brand_updated'                 => 'Brand Has Updated Successfully !!',
-    'coupno_add'                => 'Coupon Has Added Successfuly !!',
+    'coupno_add'                    => 'Coupon Has Added Successfuly !!',
+    'coupno_update'                 => 'Coupon Has Updated Successfuly !!',
+    'coupno_delete'                 => 'Coupon Has Deleted Successfuly !!',
+
 
 
 

@@ -33,7 +33,10 @@
                     <h4 class="card-title mb-1">{{ __('translation.edit_coupon') }}</h4>
                 </div>
                 <div class="card-body pt-0">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.coupons.store') }}"
+                    @if ($errors->any())
+                        {{ implode('', $errors->all('<div>:message</div>')) }}
+                    @endif
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.coupons.update', $coupon) }}"
                         enctype="multipart/form-data" name="couponForm" id="couponForm">
                         @csrf
                         <div class="row">
@@ -102,7 +105,7 @@
                             <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="amountType">{{ __('translation.amount_type') }}</label>
-                                    <select class="form-control @error('option') is-invalid @enderror" id="amountType"
+                                    <select class="form-control @error('amount_type') is-invalid @enderror" id="amountType"
                                         name="amount_type">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         <option value="Percentage"
@@ -187,7 +190,7 @@
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
                                 <button type="submit" class="button-30"
-                                    role="button">{{ __('buttons.add') }}</button>
+                                    role="button">{{ __('buttons.update') }}</button>
                             </div>
                         </div>
                     </form>
@@ -229,17 +232,4 @@
     </script>
 
 
-    <script>
-        $(document).ready(function() {
-            $('#couponOption').change(function() {
-                var $option = $(this).find('option:selected');
-                var value = $option.val();
-                if (value == 'Manual')
-                    $('#couponCode').fadeIn();
-                else
-                    $('#couponCode').fadeOut();
-
-            });
-        });
-    </script>
 @endsection

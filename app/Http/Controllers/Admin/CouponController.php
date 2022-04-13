@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCouponRequest;
+use App\Http\Requests\UpdateCouponRequest;
 use App\Models\Coupon;
 use App\Models\Section;
 use App\Models\User;
@@ -108,9 +109,21 @@ class CouponController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCouponRequest $request, Coupon $coupon)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['categories', 'users', 'amount_type', 'amount', 'type', 'expiration_date']);
+
+            if (isset($data['users'])) {
+                $data['users'] = implode(',', $data['users'] ?? []);
+            }
+            if (isset($data['categories']))
+                $data['categories'] = implode(',', $data['categories'] ?? []);
+
+            $coupon->update($data);
+            Session::flash('message', __('msgs.coupno_update'));
+            return redirect()->route('admin.coupons.index');
+        }
     }
 
     /**
@@ -119,9 +132,12 @@ class CouponController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Coupon $coupon)
     {
-        //
+        $coupon->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.coupno_delete'));
+        return redirect()->route('admin.coupons.index');
     }
 
 

@@ -143,6 +143,7 @@ Route::group(
                 Route::post('update-coupon-status',                             [CouponController::class, 'updateCouponStatus']);
                 Route::get('edit-coupon/{coupon}',                              [CouponController::class, 'edit'])->name('coupons.edit');
                 Route::post('update-coupon/{coupon}',                           [CouponController::class, 'update'])->name('coupons.update');
+                Route::get('delete-coupon/{coupon}',                            [CouponController::class, 'destroy'])->name('coupons.destroy');
 
 
 

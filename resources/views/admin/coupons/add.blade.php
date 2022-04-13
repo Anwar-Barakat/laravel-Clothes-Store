@@ -129,7 +129,7 @@
                             <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="amountType">{{ __('translation.amount_type') }}</label>
-                                    <select class="form-control @error('option') is-invalid @enderror" id="amountType"
+                                    <select class="form-control @error('amount_type') is-invalid @enderror" id="amountType"
                                         name="amount_type">
                                         <option value="">{{ __('translation.choose..') }}</option>
                                         <option value="Percentage"

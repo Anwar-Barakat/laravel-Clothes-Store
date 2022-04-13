@@ -30,12 +30,14 @@ return [
     'product_attachments_add'       => 'تم اضافة مرفقات المنتج بنجاح !!',
     'product_attachment_delete'     => 'تم حذف المرفق بنجاح !!',
     'product_attachments_delete'    => 'تم حذف مرفقات المنتج بنجاح !!',
-    'are_your_sure'             => 'هل أنت متأكد من عملية الحذف ؟',
-    'yes_delete'                => 'تعم, احذف !',
-    'delete_all_attachs'        => 'هل أنت متأكد من حذف جميع المرفقات ؟',
-    'brnad_added'               => 'تم إضافة الشعار بنجاح',
-    'brnad_updated'             => 'تم تحديث الشعار بنجاح',
-
+    'are_your_sure'                 => 'هل أنت متأكد من عملية الحذف ؟',
+    'yes_delete'                    => 'تعم, احذف !',
+    'delete_all_attachs'            => 'هل أنت متأكد من حذف جميع المرفقات ؟',
+    'brnad_added'                   => 'تم إضافة الشعار بنجاح',
+    'brnad_updated'                 => 'تم تحديث الشعار بنجاح',
+    'coupon_add'                    => 'تم إضافة القسيمة بنجاح',
+    'coupon_update'                 => 'تم تحديث القسيمة بنجاح',
+    'coupon_delete'                 => 'تم حذف القسيمة بنجاح',
 
 
 
