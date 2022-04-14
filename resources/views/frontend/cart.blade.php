@@ -23,10 +23,8 @@
                     </div>
 
                     <div class="summary">
-                        <div class="row">
-                            <div class="order-summary">
-                                <h4 class="title-box">{{ __('frontend.add_coupon') }}</h4>
-                            </div>
+                        <div class="order-summary" style="display: block">
+                            <h4 class="title-box">{{ __('frontend.add_coupon') }}</h4>
                         </div>
                         <form name="addCouponForm" action="javascript:void(0);" method="POST" id="addCouponForm"
                             @if (Auth::check()) user="1" @endif>
@@ -169,11 +167,13 @@
                         if (response.status == 'user not found here')
                             toastr.info("{{ __('msgs.user_not_found_here') }}");
 
-                        $('#totalProducts').html(response['totalCartProducts']);
-                        $('#AppendCartProducts').html(response['view']);
-
-                        if (response.status == true)
-                            alert('hi')
+                        if (response.status == true) {
+                            $('#totalProducts').html(response['totalCartProducts']);
+                            $('#AppendCartProducts').html(response['view']);
+                            toastr.success("{{ __('msgs.coupon_apply') }}");
+                            $('#couponAmount').html(response.couponAmount);
+                            $('#lastTotalPrice').html(response.lastTotalPrice);
+                        }
                     },
                     error: function() {
                         alert('error')

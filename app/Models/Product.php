@@ -77,14 +77,14 @@ class Product extends Model implements HasMedia
         $category           = Category::select('discount')->where('id', $product->category_id)->first();
 
         if ($product->discount > 0) {
-            $finalPrice    = $productAttribute->price  - ($productAttribute->price * $product->discount / 100);
-            $discount           = $productAttribute->price - $finalPrice;
+            $finalPrice     = $productAttribute->price  - ($productAttribute->price * $product->discount / 100);
+            $discount       = $productAttribute->price - $finalPrice;
         } elseif ($category->discount > 0) {
-            $finalPrice    = $productAttribute->price  - ($productAttribute->price * $category->discount / 100);
-            $discount           = $productAttribute->price - $finalPrice;
+            $finalPrice     = $productAttribute->price  - ($productAttribute->price * $category->discount / 100);
+            $discount       = $productAttribute->price - $finalPrice;
         } else {
-            $finalPrice    = $productAttribute->price ;
-            $discount           = 0.00;
+            $finalPrice     = $productAttribute->price;
+            $discount       = 0.00;
         }
 
         return [

@@ -40,7 +40,7 @@ return [
     'coupon_code_is_expire'         => 'Coupon code is expire !!',
     'cat_not_found_here'            => 'This coupon code is not for one of the selected products !!',
     'user_not_found_here'           => 'This coupon code is not for you !!',
-
+    'coupon_apply'                  => 'Coupon code has successfully applied, you are availing discount !',
 
 
 

@@ -94,6 +94,7 @@ return [
     'quick_view'            => 'quick view',
     'add_coupon'            => 'Add Coupon',
     'enter_coupon_code'     => 'Type Coupon Code',
+    'coupon_discount'       => 'Coupon discount',
 
 
     // Details :

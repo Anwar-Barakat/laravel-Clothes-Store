@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserPasswordRequest;
 use App\Models\Cart;
 use App\Models\Country;
 use App\Models\Coupon;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,24 +84,49 @@ class UserAccountController extends Controller
 
 
                 $selectedCats   = explode(',', $codeDetails->categories);
-                foreach ($userCartProducts as $key => $item) {
-                    if (!in_array($item->product->categoy_id, $selectedCats))
-                        $statusType = 'cat not found here';
-                }
 
                 $selectedUsers  = explode(',', $codeDetails->users);
                 foreach ($selectedUsers as $key => $email)
                     $usersId = collect(User::where('email', $email)->get()->modelKeys())->toArray();
+
+
+                $totalAmount = 0;
                 foreach ($userCartProducts as $key => $item) {
                     if (!in_array($item->user_id, $usersId))
                         $statusType = 'user not found here';
+                    if (!in_array($item->product->category_id, $selectedCats))
+                        $statusType = 'cat not found here';
+
+                    // calculate the final amount for all selected products :
+                    $attrPrice      = Product::getDiscountedAttributePrice($item['product_id'], $item['size']);
+                    $totalAmount    = $totalAmount + ($attrPrice['finalPrice'] * $item['quantity']);
                 }
             }
-            return response()->json([
-                'status'            => $statusType,
-                'totalCartProducts' => $totalCartProducts,
-                'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
-            ]);
+            if (!empty($statusType))
+                return response()->json([
+                    'status'            => $statusType,
+                    'totalCartProducts' => $totalCartProducts,
+                    'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+                ]);
+            else {
+                if ($codeDetails->amount_type == 'Fixed')
+                    $couponAmount = $codeDetails->amount;
+                else
+                    $couponAmount = ($totalAmount * (int)$codeDetails->amount / 100);
+
+                $lastTotalPrice   = $totalAmount - $couponAmount;
+
+                Session::put('couponAmount', $couponAmount);
+                Session::put('couponCode', $data['code']);
+
+                return response()->json([
+                    'status'            => true,
+                    'totalCartProducts' => $totalCartProducts,
+                    'couponAmount'      => $couponAmount,
+                    'lastTotalPrice'    => $lastTotalPrice,
+                    'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+                ]);
+            }
         }
     }
 }

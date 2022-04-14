@@ -94,6 +94,7 @@ return [
     'quick_view'            => 'عرض سريع',
     'add_coupon'            => 'اضافة قسيمة',
     'enter_coupon_code'     => 'ادخل رمز القسيمة',
+    'coupon_discount'       => 'خصم القسيمة',
 
 
     // Details :

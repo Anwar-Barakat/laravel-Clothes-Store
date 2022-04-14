@@ -77,11 +77,22 @@
 <div class="summary">
     <div class="order-summary">
         <h4 class="title-box">{{ __('frontend.order_summary') }}</h4>
-        <p class="summary-info"><span class="title">{{ __('frontend.subtotal') }}</span><b
-                class="index">${{ $totalPrice ?? 0 }}</b></p>
-
-        <p class="summary-info total-info "><span class="title">{{ __('frontend.total') }}</span><b
-                class="index">$00</b></p>
+        <p class="summary-info">
+            <span class="title">{{ __('frontend.subtotal') }}</span>
+            <b class="index">${{ $totalPrice ?? 0 }}</b>
+        </p>
+        <p class="summary-info" style="margin: 10px 0">
+            <span class="title">{{ __('frontend.coupon_discount') }}</span>
+            <b class="index">$
+                <b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b>
+            </b>
+        </p>
+        <p class="summary-info total-info ">
+            <span class="title">{{ __('frontend.total') }}</span>
+            <b class="index">$
+                <b id="lastTotalPrice">{{ $totalPrice - Session::get('couponAmount') ?? '00' }}</b>
+            </b>
+        </p>
     </div>
     <div class="checkout-info">
         <a class="btn btn-checkout" href="checkout.html">{{ __('frontend.checkout') }}</a>
