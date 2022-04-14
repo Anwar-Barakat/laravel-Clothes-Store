@@ -88,7 +88,10 @@
             </b>
         </p>
         <p class="summary-info total-info ">
-            <span class="title">{{ __('frontend.total') }}</span>
+            <span class="title" style="font-size: 13px">
+                {{ __('frontend.total') }} =
+                ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }})
+            </span>
             <b class="index">$
                 <b id="lastTotalPrice">{{ $totalPrice - Session::get('couponAmount') ?? '00' }}</b>
             </b>

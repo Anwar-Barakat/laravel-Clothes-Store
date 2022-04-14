@@ -82,20 +82,27 @@ class UserAccountController extends Controller
                 if ($expirationDate < date('Y-m-d'))
                     $statusType = 'is expire';
 
+                if (!empty($codeDetails->categories))
+                    $selectedCats   = explode(',', $codeDetails->categories);
 
-                $selectedCats   = explode(',', $codeDetails->categories);
+                if (!empty($codeDetails->users))
+                    $selectedUsers  = explode(',', $codeDetails->users);
 
-                $selectedUsers  = explode(',', $codeDetails->users);
                 foreach ($selectedUsers as $key => $email)
                     $usersId = collect(User::where('email', $email)->get()->modelKeys())->toArray();
 
 
                 $totalAmount = 0;
                 foreach ($userCartProducts as $key => $item) {
-                    if (!in_array($item->user_id, $usersId))
-                        $statusType = 'user not found here';
-                    if (!in_array($item->product->category_id, $selectedCats))
-                        $statusType = 'cat not found here';
+                    // if users field is empty will exeption error:
+                    if (!empty($codeDetails->users)) {
+                        if (!in_array($item->user_id, $usersId))
+                            $statusType = 'user not found here';
+                    }
+                    if (!empty($codeDetails->categories)) {
+                        if (!in_array($item->product->category_id, $selectedCats))
+                            $statusType = 'cat not found here';
+                    }
 
                     // calculate the final amount for all selected products :
                     $attrPrice      = Product::getDiscountedAttributePrice($item['product_id'], $item['size']);
@@ -106,6 +113,7 @@ class UserAccountController extends Controller
                 return response()->json([
                     'status'            => $statusType,
                     'totalCartProducts' => $totalCartProducts,
+                    'couponAmount'      => 00,
                     'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
                 ]);
             else {

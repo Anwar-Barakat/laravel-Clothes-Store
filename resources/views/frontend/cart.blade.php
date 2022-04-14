@@ -171,7 +171,7 @@
                             $('#totalProducts').html(response['totalCartProducts']);
                             $('#AppendCartProducts').html(response['view']);
                             toastr.success("{{ __('msgs.coupon_apply') }}");
-                            $('#couponAmount').html(response.couponAmount);
+                            $('#couponAmount').html(response.couponAmount );
                             $('#lastTotalPrice').html(response.lastTotalPrice);
                         }
                     },
