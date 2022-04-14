@@ -34,8 +34,12 @@ return [
     'coupno_add'                    => 'Coupon Has Added Successfuly !!',
     'coupno_update'                 => 'Coupon Has Updated Successfuly !!',
     'coupno_delete'                 => 'Coupon Has Deleted Successfuly !!',
-    'code_not_valid'                => 'coupon code is invalid !!',
-
+    'logged_in_for_coupon'          => 'Please, Logged in to apply the Coupon',
+    'coupon_code_not_valid'         => 'Coupon code is invalid !!',
+    'coupon_code_not_active'        => 'Coupon code is not active !!',
+    'coupon_code_is_expire'         => 'Coupon code is expire !!',
+    'cat_not_found_here'            => 'This coupon code is not for one of the selected products !!',
+    'user_not_found_here'           => 'This coupon code is not for you !!',
 
 
 

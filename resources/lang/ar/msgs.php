@@ -38,7 +38,13 @@ return [
     'coupon_add'                    => 'تم إضافة القسيمة بنجاح',
     'coupon_update'                 => 'تم تحديث القسيمة بنجاح',
     'coupon_delete'                 => 'تم حذف القسيمة بنجاح',
-    'code_not_valid'                => 'رمز القسيمة غير صالح !!',
+    'logged_in_for_coupon'          => 'من فضلك ، قم بتسجيل الدخول لتطبيق القسيمة',
+    'coupon_code_not_valid'         => 'رمز القسيمة غير صالح !!',
+    'coupon_code_not_active'        => 'رمز القسيمة غير قعال حالياً !!',
+    'coupon_code_is_expire'         => 'رمز القسيمة منتهي الصلاحية  !!',
+    'cat_not_found_here'            => 'هذه القسيمة ليس لأحد المنتجات المختارة !!',
+    'user_not_found_here'           => 'هذه القسيمة ليس لك !!',
+
 
 
 

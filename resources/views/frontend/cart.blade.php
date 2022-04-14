@@ -143,7 +143,7 @@
                 if (user == '1') {
 
                 } else {
-                    alert('please logged in before');
+                    toastr.info("{{ __('msgs.logged_in_for_coupon') }}");
                     return false;
                 }
                 var code = $('#code').val();
@@ -154,8 +154,20 @@
                         code: code
                     },
                     success: function(response) {
-                        if (response.status == false)
-                            toastr.info("{{ __('msgs.code_not_valid') }}");
+                        if (response.status == 'not valid')
+                            toastr.info("{{ __('msgs.coupon_code_not_valid') }}");
+
+                        if (response.status == 'not active')
+                            toastr.info("{{ __('msgs.coupon_code_not_active') }}");
+
+                        if (response.status == 'is expire')
+                            toastr.info("{{ __('msgs.coupon_code_is_expire') }}");
+
+                        if (response.status == 'cat not found here')
+                            toastr.info("{{ __('msgs.cat_not_found_here') }}");
+
+                        if (response.status == 'user not found here')
+                            toastr.info("{{ __('msgs.user_not_found_here') }}");
 
                         $('#totalProducts').html(response['totalCartProducts']);
                         $('#AppendCartProducts').html(response['view']);

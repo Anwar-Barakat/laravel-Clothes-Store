@@ -19,14 +19,14 @@ class UserAccountController extends Controller
 {
     public function account()
     {
-        $countries = Country::where('status', 1)->get();
+        $countries  = Country::where('status', 1)->get();
         return view('frontend.auth.account', ['countries' => $countries]);
     }
 
     public function updateAccountDetails(UpdateUserDetailRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data = $request->only(['name', 'country_id', 'city', 'state', 'mobile', 'address', 'pincode']);
+            $data   = $request->only(['name', 'country_id', 'city', 'state', 'mobile', 'address', 'pincode']);
             User::where('id', Auth::user()->id)->update($data);
             Session::flash('message', __('msgs.update_user_details'));
             return redirect()->back();
@@ -36,7 +36,7 @@ class UserAccountController extends Controller
     public function updateAccountPassword(UpdateUserPasswordRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data = $request->only(['current_password', 'password', 'password_confirmation']);
+            $data   = $request->only(['current_password', 'password', 'password_confirmation']);
             if (Hash::check($data['current_password'], Auth::user()->password)) {
                 User::where('id', Auth::user()->id)->update([
                     'password'  => bcrypt($data['password']),
@@ -52,7 +52,7 @@ class UserAccountController extends Controller
 
     public function checkCurrentPassword(Request $request)
     {
-        $data = $request->only(['current_password']);
+        $data       = $request->only(['current_password']);
         if (Hash::check($data['current_password'], Auth::user()->password))
             echo "true";
         else
@@ -61,22 +61,46 @@ class UserAccountController extends Controller
 
     public function addCouponOnCart(Request $request)
     {
+        $statusType = '';
         if ($request->isMethod('post')) {
-            $data           = $request->only(['code']);
-            $couponCount    = Coupon::where('code', $data['code'])->count();
+            $data               = $request->only(['code']);
+            $couponCount        = Coupon::where('code', $data['code'])->count();
+            $userCartProducts   = Cart::userCartProducts();
+            $totalCartProducts  = totalProducts();
+
+
             if ($couponCount  == 0) {
-                $userCartProducts   = Cart::userCartProducts();
-                $totalCartProducts  = totalProducts();
-                return response()->json([
-                    'status'            => false,
-                    'totalCartProducts' => $totalCartProducts,
-                    'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
-                ]);
+                $statusType     = 'not valid';
             } else {
-                return response()->json([
-                    'status'    => true,
-                ]);
+                $codeDetails    = Coupon::where('code', $data['code'])->first();
+                if ($codeDetails->status == 0)
+                    $statusType = 'not active';
+
+
+                $expirationDate = $codeDetails->expiration_date;
+                if ($expirationDate < date('Y-m-d'))
+                    $statusType = 'is expire';
+
+
+                $selectedCats   = explode(',', $codeDetails->categories);
+                foreach ($userCartProducts as $key => $item) {
+                    if (!in_array($item->product->categoy_id, $selectedCats))
+                        $statusType = 'cat not found here';
+                }
+
+                $selectedUsers  = explode(',', $codeDetails->users);
+                foreach ($selectedUsers as $key => $email)
+                    $usersId = collect(User::where('email', $email)->get()->modelKeys())->toArray();
+                foreach ($userCartProducts as $key => $item) {
+                    if (!in_array($item->user_id, $usersId))
+                        $statusType = 'user not found here';
+                }
             }
+            return response()->json([
+                'status'            => $statusType,
+                'totalCartProducts' => $totalCartProducts,
+                'view'              => (string)View::make('frontend.partials.cart_products')->with(compact('userCartProducts'))
+            ]);
         }
     }
 }
