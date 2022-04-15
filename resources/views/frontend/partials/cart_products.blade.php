@@ -3,29 +3,31 @@
     @php
         $totalPrice = 0;
     @endphp
-    <li class="pr-cart-item">
-        <div class="product-image" style="width: 10%">
-            {{ __('frontend.product') }}
-        </div>
-        <div class="product-name" style="text-align: center">
-            {{ __('frontend.detail') }}
-        </div>
-        <div class="price-field sub-total">
-            {{ __('frontend.price') }}
-        </div>
-        <div class="price-field sub-total">
-            {{ __('frontend.discount') }}
-        </div>
-        <div class="quantity">
-            {{ __('frontend.update_quantity') }}
-        </div>
-        <div class="price-field sub-total">
-            {{ __('frontend.price_after_discount') }}
-        </div>
-        <div class="delete">
-            {{ __('buttons.delete') }}
-        </div>
-    </li>
+    @if ($userCartProducts->count() > 0)
+        <li class="pr-cart-item">
+            <div class="product-image" style="width: 10%">
+                {{ __('frontend.product') }}
+            </div>
+            <div class="product-name" style="text-align: center">
+                {{ __('frontend.detail') }}
+            </div>
+            <div class="price-field sub-total">
+                {{ __('frontend.price') }}
+            </div>
+            <div class="price-field sub-total">
+                {{ __('frontend.discount') }}
+            </div>
+            <div class="quantity">
+                {{ __('frontend.update_quantity') }}
+            </div>
+            <div class="price-field sub-total">
+                {{ __('frontend.price_after_discount') }}
+            </div>
+            <div class="delete">
+                {{ __('buttons.delete') }}
+            </div>
+        </li>
+    @endif
     @foreach ($userCartProducts as $userCartProduct)
         @php
             $price = App\Models\Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);

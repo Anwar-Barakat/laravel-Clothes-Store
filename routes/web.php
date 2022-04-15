@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CheckoutController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
@@ -201,6 +202,12 @@ Route::group(
             });
 
 
+            // **************************************************************
+            // **************************************************************
+            // **************************************************************
+            // Checkout :
+            Route::get('/checkout-create',                   [CheckoutController::class, 'create'])->name('checkout.create');
+            Route::post('/checkout-store',                   [CheckoutController::class, 'store'])->name('checkout.store');
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
