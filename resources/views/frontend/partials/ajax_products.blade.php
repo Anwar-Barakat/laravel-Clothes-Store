@@ -36,7 +36,8 @@
                                 <span class="product-price">${{ $product->price }}</span>
                             @endif
                         </div>
-                        <a href="#" class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
+                        <a href="{{ route('frontend.details', $product->id) }}"
+                            class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
                     </div>
                 </div>
             </li>

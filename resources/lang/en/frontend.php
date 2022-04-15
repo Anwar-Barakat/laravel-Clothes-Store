@@ -95,6 +95,8 @@ return [
     'add_coupon'            => 'Add Coupon',
     'enter_coupon_code'     => 'Type Coupon Code',
     'coupon_discount'       => 'Coupon discount',
+    'update_quantity'       => 'Update quantity',
+    'price_after_discount'  => 'Price after discount',
 
 
     // Details :

@@ -3,6 +3,29 @@
     @php
         $totalPrice = 0;
     @endphp
+    <li class="pr-cart-item">
+        <div class="product-image" style="width: 10%">
+            {{ __('frontend.product') }}
+        </div>
+        <div class="product-name" style="text-align: center">
+            {{ __('frontend.detail') }}
+        </div>
+        <div class="price-field sub-total">
+            {{ __('frontend.price') }}
+        </div>
+        <div class="price-field sub-total">
+            {{ __('frontend.discount') }}
+        </div>
+        <div class="quantity">
+            {{ __('frontend.update_quantity') }}
+        </div>
+        <div class="price-field sub-total">
+            {{ __('frontend.price_after_discount') }}
+        </div>
+        <div class="delete">
+            {{ __('buttons.delete') }}
+        </div>
+    </li>
     @foreach ($userCartProducts as $userCartProduct)
         @php
             $price = App\Models\Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
@@ -99,7 +122,8 @@
     </div>
     <div class="checkout-info">
         <a class="btn btn-checkout" href="checkout.html">{{ __('frontend.checkout') }}</a>
-        <a class="link-to-shop" href="shop.html">{{ __('frontend.contiue_shopping') }}<i
+        <a class="link-to-shop"
+            href="{{ route('frontend.url', 'men-shoes') }}">{{ __('frontend.contiue_shopping') }}<i
                 class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
     </div>
     <div class="update-clear">

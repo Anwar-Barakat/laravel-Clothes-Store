@@ -47,16 +47,15 @@ ul {
         left: 15px;
         z-index: 1000000000;
         color: white;
-        background: var(--main-color);
-        border: 1px solid var(--main-color);
         border-radius: 5px;
+        background: #f9f9f9;
+        box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(0 0 0 / 20%) 0px -3px 0px inset;
     }
     .header .main-info-area .right-section .show-up-after-1024 a {
-        border: 1px solid var(--main-color);
         border-radius: 5px;
     }
     .header .main-info-area .right-section .show-up-after-1024 span {
-        background-color: white;
+        background-color: #009688;
     }
     .mercado-panel li {
         padding: 0;

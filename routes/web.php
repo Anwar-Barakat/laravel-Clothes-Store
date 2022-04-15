@@ -200,6 +200,9 @@ Route::group(
                 Route::post('/add-coupon',                      [UserAccountController::class, 'addCouponOnCart']);
             });
 
+
+
+
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });
     }

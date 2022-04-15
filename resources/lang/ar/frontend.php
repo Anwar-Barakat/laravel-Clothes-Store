@@ -95,6 +95,8 @@ return [
     'add_coupon'            => 'اضافة قسيمة',
     'enter_coupon_code'     => 'ادخل رمز القسيمة',
     'coupon_discount'       => 'خصم القسيمة',
+    'update_quantity'       => 'تحديث الكمية',
+    'price_after_discount'  => 'السعر بعد الخصم',
 
 
     // Details :
