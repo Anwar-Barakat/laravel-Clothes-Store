@@ -1,4 +1,4 @@
-<h3 class="box-title">{{ __('frontend.products') }} ({{ $userCartProducts->count() }})</h3>
+<h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
 <ul class="products-cart">
     @php
         $totalPrice = 0;
@@ -123,7 +123,8 @@
         </p>
     </div>
     <div class="checkout-info">
-        <a class="btn btn-checkout" href="checkout.html">{{ __('frontend.checkout') }}</a>
+        <a class="btn btn-checkout"
+            href="{{ route('frontend.checkout.index') }}">{{ __('frontend.checkout') }}</a>
         <a class="link-to-shop"
             href="{{ route('frontend.url', 'men-shoes') }}">{{ __('frontend.contiue_shopping') }}<i
                 class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>

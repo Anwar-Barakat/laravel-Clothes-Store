@@ -166,4 +166,12 @@ return [
     'choose'                    => 'Choose..',
 
 
+    // Checkout :
+    'delivery_address'          => 'Delivery Address',
+    'add_delivery_address'      => 'Add Delivery Address',
+    'add_delivery_details'      => 'Add Delivery Address Details',
+    'no_delivery_address'       => 'There is no delivery address yet !!',
+    'enter_your_name'           => 'Enter your name',
+    'town'                      => 'Town',
+    'type_your_city'            => 'Type your town or city',
 ];

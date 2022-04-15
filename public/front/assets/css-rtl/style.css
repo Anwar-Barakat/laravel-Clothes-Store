@@ -8152,6 +8152,8 @@ table.shop_attributes tbody {
 .wrap-search-form .all_categories {
     width: 100%;
     display: block;
+    letter-spacing: 1px;
+    color: var(--main-color);
 }
 
 .wrap-search-form .mega-box {

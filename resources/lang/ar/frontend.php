@@ -163,4 +163,16 @@ return [
     'type_new_password'         => 'ادخل كلمة المرور الجديدة',
     'choose_country'            => 'اختر الدولة ',
     'choose'                    => 'اختر..',
+
+    'delivery_address'          => 'عنوان التسليم',
+    'add_delivery_address'      => 'إضافة عنوان التسليم',
+    'add_delivery_details'      => 'إضافة تفاصيل عنوان التسليم',
+    'no_delivery_address'       => 'لا يوجد عنوان توصيل حتى الان !!',
+    'enter_your_name'           => 'ادخل الاسم',
+    'town'                      => 'بلدة',
+    'type_your_city'            => 'ادخل اسم البلدة او المدينة',
+
+
+
+
 ];

@@ -5,13 +5,13 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CheckoutController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\FrontEnd\DeliveryAddressController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
@@ -206,8 +206,8 @@ Route::group(
             // **************************************************************
             // **************************************************************
             // Checkout :
-            Route::get('/checkout-create',                   [CheckoutController::class, 'create'])->name('checkout.create');
-            Route::post('/checkout-store',                   [CheckoutController::class, 'store'])->name('checkout.store');
+            Route::get('/checkout/index',                    [DeliveryAddressController::class, 'index'])->name('checkout.index');
+            Route::post('/checkout-store',                   [DeliveryAddressController::class, 'store'])->name('checkout.store');
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
