@@ -427,6 +427,10 @@ label.error {
     color: #f44336 !important;
 }
 
+.invalid-feedback.country_alert {
+    margin-top: 1.6rem;
+}
+
 #toast-container {
     z-index: 999999999;
 }

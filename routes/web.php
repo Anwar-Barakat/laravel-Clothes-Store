@@ -206,8 +206,8 @@ Route::group(
             // **************************************************************
             // **************************************************************
             // Checkout :
-            Route::get('/checkout/index',                    [DeliveryAddressController::class, 'index'])->name('checkout.index');
-            Route::post('/checkout-store',                   [DeliveryAddressController::class, 'store'])->name('checkout.store');
+            Route::get('/delivery-addressess/index',            [DeliveryAddressController::class, 'index'])->name('delivery.address.index');
+            Route::post('/delivery-addressess/store',           [DeliveryAddressController::class, 'store'])->name('delivery.address.store');
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');

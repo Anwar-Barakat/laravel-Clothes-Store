@@ -17,7 +17,7 @@ class DeliveryAddress extends Model
         'address',
         'city',
         'state',
-        'country',
+        'country_id',
         'pincode',
         'status',
     ];
@@ -25,5 +25,10 @@ class DeliveryAddress extends Model
     public static function deliveryAddress()
     {
         return DeliveryAddress::where('user_id', Auth::user()->id)->get();
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 }

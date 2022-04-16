@@ -21,9 +21,9 @@ class CreateDeliveryAddressesTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('state');
-            $table->string('country');
+            $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('pincode');
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
     <div class="shopping-cart page">
         <main id="main" class="main-site">
             <div class="container">
-                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
+                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <ul>
                         <li class="item-link"><span>{{ __('frontend.cart') }}</span></li>
                         <li class="item-link">
@@ -60,7 +60,7 @@
                             <h3 class="title-box">
                                 {{ __('frontend.most_viewed') }} ({{ $featuredPorducts->count() }})
                             </h3>
-                            <div class="wrap-products" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
+                            <div class="wrap-products" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                                 <div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5"
                                     data-loop="false" data-nav="true" data-dots="false"
                                     data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}'>

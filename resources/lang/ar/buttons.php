@@ -8,6 +8,7 @@ return [
     'edit'                      => 'تعديل',
     'close'                     => 'إغلاق',
     'download'                  => 'تحميل المرفق',
+    'check'                     => 'اختيار',
 
     'delete_row'                => 'حذف سطر',
     'add_row'                   => 'إضافة سطر',

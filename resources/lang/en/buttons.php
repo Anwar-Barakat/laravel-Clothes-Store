@@ -8,6 +8,7 @@ return [
     'edit'                      => 'Edit',
     'close'                     => 'Close',
     'download'                  => 'Download',
+    'check'                     => 'Check',
 
     'delete_row'                => 'Delete Row',
     'add_row'                   => 'Add Row',

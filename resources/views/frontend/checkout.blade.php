@@ -8,7 +8,7 @@
     <div class="shopping-cart page">
         <main id="main" class="main-site">
             <div class="container">
-                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="ltr"@else dir="ltr" @endif>
+                <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <ul>
                         <li class="item-link"><span>{{ __('frontend.delivery_address') }}</span></li>
                         <li class="item-link">
@@ -17,21 +17,21 @@
                         </li>
                     </ul>
                 </div>
-                <div class=" main-content-area">
+                <div class=" main-content-area" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <div class="wrap-iten-in-cart" id="AppendCartProducts">
                         <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
                         <ul class="products-cart">
                             @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
                                 <li class="pr-cart-item">
-                                    <div class="product-image">
-                                        {{ __('frontend.product') }}
-                                    </div>
+                                    {{ __('frontend.check_your_address') }}
                                 </li>
                             @endif
                             @forelse (App\Models\DeliveryAddress::deliveryAddress() as $address)
-                                <li class="pr-cart-item">
-                                    <div class="product-image">
-                                        {{ __('frontend.product') }}
+                                <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
+                                    <input class="fit" id="address{{ $address->id }}" name="address_id"
+                                        type="radio" value="address{{ $address->id }}">
+                                    {{ $address->name }},{{ $address->address }},{{ $address->city }},{{ $address->state }}
+                                    {{ $address->country->name }}
                                 </li>
                             @empty
                                 <li class="pr-cart-item">
@@ -46,11 +46,14 @@
                     <div class="summary">
                         <div class="wrap-address-billing">
                             <h3 class="box-title">{{ __('frontend.add_delivery_details') }}</h3>
-                            <form action="#" method="get" name="frm-billing">
+                            <form action="{{ route('frontend.delivery.address.store') }}" method="post"
+                                name="frm-billing">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <p class="row-in-form">
                                     <label for="name">{{ __('frontend.name') }}</label>
                                     <input id="name" class="@error('name') is-invalid @enderror" type="text" name="name"
-                                        value="{{ old('name') }}" placeholder="{{ __('frontend.enter_your_name') }}"
+                                        value="{{ old('name') }}" placeholder="{{ __('frontend.type_your_name') }}"
                                         title="{{ __('frontend.name') }}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -89,8 +92,25 @@
                                     <input id="city" type="text" name="city" value="{{ old('city') }}"
                                         class="@error('city') is-invalid @enderror" title="{{ __('frontend.city') }}"
                                         placeholder="{{ __('frontend.type_your_city') }}">
+                                    @error('city')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </p>
-
+                                <p class="row-in-form">
+                                    <label for="state">
+                                        {{ __('frontend.state') }} / {{ __('frontend.town') }}
+                                    </label>
+                                    <input id="state" type="text" name="state" value="{{ old('state') }}"
+                                        class="@error('state') is-invalid @enderror" title="{{ __('frontend.state') }}"
+                                        placeholder="{{ __('frontend.type_your_state') }}">
+                                    @error('state')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </p>
                                 <p class="row-in-form country">
                                     <label for="country_id">{{ __('frontend.country') }}</label>
                                     <select name="country_id" id="country_id" class="use-chosen">
@@ -102,12 +122,12 @@
                                         @endforeach
                                     </select>
                                     @error('country_id')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback country_alert" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </p>
-                                <p class="row-in-form">
+                                <p class="row-in-form" style="width: 100%">
                                     <label for="pincode">{{ __('frontend.pincode') }}</label>
                                     <input id="pincode" type="number" name="pincode" value="{{ old('pincode') }}"
                                         class="@error('pincode') is-invalid @enderror"
@@ -119,8 +139,12 @@
                                         </span>
                                     @enderror
                                 </p>
-                                <input type="submit" class="button-30" role="button"
-                                    value="{{ __('buttons.add') }}">
+                                <p class="row-in-form" style="width: 100%; display: flex;column-gap: 8rem;">
+                                    <a href="{{ route('frontend.cart') }}" class="button-30"
+                                        role="button">{{ __('frontend.return_to_cart') }}</a>
+                                    <input type="submit" class="button-30" role="button"
+                                        value="{{ __('buttons.add') }}">
+                                </p>
                             </form>
                         </div>
                     </div>

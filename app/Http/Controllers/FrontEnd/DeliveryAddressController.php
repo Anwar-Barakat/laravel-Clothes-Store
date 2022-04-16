@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDeliveryAddressRequest;
 use App\Models\Cart;
+use App\Models\DeliveryAddress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DeliveryAddressController extends Controller
 {
@@ -34,9 +37,14 @@ class DeliveryAddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDeliveryAddressRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['user_id', 'name', 'mobile', 'address', 'city', 'state', 'country_id', 'pincode', 'status',]);
+            DeliveryAddress::create($data);
+            Session::flash('message', __('msgs.delivery_address_add'));
+            return redirect()->back();
+        }
     }
 
     /**
