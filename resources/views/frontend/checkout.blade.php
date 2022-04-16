@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    {{ __('frontend.cart') }}
+    {{ __('frontend.checkout') }}
 @endsection
 
 @section('css')
@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <ul>
-                        <li class="item-link"><span>{{ __('frontend.cart') }}</span></li>
+                        <li class="item-link"><span>{{ __('frontend.checkout') }}</span></li>
                         <li class="item-link">
                             <a href="{{ route('frontend.home') }}" class="link">{{ __('frontend.home') }}
                             </a>
@@ -25,47 +25,42 @@
 
 
                 <div class=" main-content-area">
-                    <div class="wrap-iten-in-cart" id="AppendCartProducts">
-                        @include('frontend.partials.cart_products')
-                    </div>
-
-                    <div class="summary">
-                        <div class="order-summary" style="display: block">
-                            <h4 class="title-box">{{ __('frontend.add_coupon') }}</h4>
+                    <form action="{{ route('frontend.checkout.store') }}" method="POST" name="checkoutForm"
+                        id="checkoutForm">
+                        @csrf
+                        <div class="wrap-iten-in-cart" id="AppendCartProducts">
+                            @include('frontend.partials.cart_products')
                         </div>
-                        <form name="addCouponForm" action="javascript:void(0);" method="POST" id="addCouponForm"
-                            @if (Auth::check()) user="1" @endif>
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <label for="code">{{ __('frontend.code') }}:</label>
-                                    <input type="text" id="code" name="code" title="{{ __('frontend.code') }}"
-                                        class="form-control @error('code') is-invalid @enderror" value="{{ old('code') }}"
-                                        required autocomplete="code" autofocus
-                                        placeholder="{{ __('frontend.enter_coupon_code') }}"
-                                        style="margin-top: 10px;height: 40px;">
-                                    @error('code')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
 
-                                <div class="col-md-6 col-sm-12 ">
-                                    <div class="checkout-info">
-                                        <input type="submit" class="btn btn-checkout" value="{{ __('buttons.add') }}"
-                                            style="margin-top:3.25rem;">
-                                    </div>
+                        <div class="summary">
+                            <div class="order-summary" style="display: block">
+                                <h4 class="title-box">{{ __('frontend.payment_methods') }}</h4>
+                            </div>
+                            <div class="payment-method-container">
+                                <div>
+                                    <input type="radio" name="paymeny_method" id="cod" value="cod" required>
+                                    <label for="cod">
+                                        <img src="{{ asset('front/assets/images/payments/cod.png') }}" width="80" alt="">
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="paymeny_method" id="paypal" value="paypal" required>
+                                    <label for="paypal">
+                                        <img src="{{ asset('front/assets/images/payments/paypal.png') }}" alt=""
+                                            width="80">
+                                    </label>
                                 </div>
                             </div>
-                        </form>
-                        <div class="checkout-info">
-                            <a href="{{ route('frontend.checkout.index') }}"
-                                class="btn btn-checkout">{{ __('frontend.checkout') }}</a>
+                            @error('paymeny_method')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <div class="checkout-info">
+                                <input type="submit" class="btn btn-checkout" value="{{ __('frontend.place_order') }}">
+                            </div>
                         </div>
-                    </div>
-
-
+                    </form>
 
                     @if ($featuredPorducts->count() > 0)
                         <div class="wrap-show-advance-info-box style-1 box-in-site">
@@ -145,55 +140,6 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(function() {
-            $('#addCouponForm').submit(function() {
-                var user = $(this).attr('user');
-                if (user == '1') {
-
-                } else {
-                    toastr.info("{{ __('msgs.logged_in_for_coupon') }}");
-                    return false;
-                }
-                var code = $('#code').val();
-                $.ajax({
-                    type: "post",
-                    url: "/add-coupon",
-                    data: {
-                        code: code
-                    },
-                    success: function(response) {
-                        if (response.status == 'not valid')
-                            toastr.info("{{ __('msgs.coupon_code_not_valid') }}");
-
-                        if (response.status == 'not active')
-                            toastr.info("{{ __('msgs.coupon_code_not_active') }}");
-
-                        if (response.status == 'is expire')
-                            toastr.info("{{ __('msgs.coupon_code_is_expire') }}");
-
-                        if (response.status == 'cat not found here')
-                            toastr.info("{{ __('msgs.cat_not_found_here') }}");
-
-                        if (response.status == 'user not found here')
-                            toastr.info("{{ __('msgs.user_not_found_here') }}");
-
-                        if (response.status == true) {
-                            $('#totalProducts').html(response['totalCartProducts']);
-                            $('#AppendCartProducts').html(response['view']);
-                            toastr.success("{{ __('msgs.coupon_apply') }}");
-                            $('#couponAmount').html(response.couponAmount);
-                            $('#lastTotalPrice').html(response.lastTotalPrice);
-                        }
-                    },
-                    error: function() {
-                        alert('error')
-                    }
-                });
-            });
-        });
-    </script>
-
     {{-- Confirmation Delete Delivery address --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

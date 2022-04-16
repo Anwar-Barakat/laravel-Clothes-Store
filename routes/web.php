@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\FrontEnd\DeliveryAddressController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
@@ -205,13 +206,21 @@ Route::group(
             // **************************************************************
             // **************************************************************
             // **************************************************************
-            // Checkout :
+            // Delivery Addresses :
             Route::get('/delivery-addressess/create',               [DeliveryAddressController::class, 'create'])->name('delivery.address.create');
             Route::post('/delivery-addressess/store',               [DeliveryAddressController::class, 'store'])->name('delivery.address.store');
             Route::get('/delivery-addressess/{deliveryAddress}',    [DeliveryAddressController::class, 'edit'])->name('delivery.address.edit');
             Route::post('/delivery-addressess/{deliveryAddress}',   [DeliveryAddressController::class, 'update'])->name('delivery.address.update');
             Route::get('/delivery-addressess-delete/{id}',          [DeliveryAddressController::class, 'destroy'])->name('delivery.address.destroy');
-            Route::post('/checkout',                                [DeliveryAddressController::class, 'checkout'])->name('checkout');
+
+
+
+            // **************************************************************
+            // **************************************************************
+            // **************************************************************
+            // Checkout :
+            Route::get('/checkout/index',                           [CheckoutController::class, 'index'])->name('checkout.index');
+            Route::post('/checkout/store',                          [CheckoutController::class, 'store'])->name('checkout.store');
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');

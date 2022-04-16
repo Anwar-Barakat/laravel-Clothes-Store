@@ -101,9 +101,4 @@ class DeliveryAddressController extends Controller
         Session::flash('message', __('msgs.delivery_address_delete'));
         return redirect()->route('frontend.cart');
     }
-
-    public function checkout(Request $request)
-    {
-        return $request;
-    }
 }

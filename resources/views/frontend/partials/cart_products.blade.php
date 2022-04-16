@@ -8,7 +8,7 @@
         @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
             <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
                 <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
-                    required value="address{{ $deliveryAddress->id }}">
+                    required value="{{ $deliveryAddress->id }}">
                 <label for="address{{ $deliveryAddress->id }}">
                     {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
                     {{ $deliveryAddress->country->name }}
@@ -24,6 +24,7 @@
                     </a>)
                 </label>
             </li>
+
         @empty
             <li class="pr-cart-item">
                 <div class="product-image">
@@ -31,6 +32,11 @@
                 </div>
             </li>
         @endforelse
+        @error('address_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
     </ul>
 </div>
 <hr>
@@ -154,7 +160,8 @@
                 ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }})
             </span>
             <b class="index">$
-                <b id="lastTotalPrice">{{ $totalPrice - Session::get('couponAmount') ?? '00' }}</b>
+                <b id="lastTotalPrice">{{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}</b>
+                {{ session()->put('grandPrice', $grandPrice) }}
             </b>
         </p>
     </div>
