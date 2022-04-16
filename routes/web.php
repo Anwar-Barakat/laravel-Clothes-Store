@@ -211,7 +211,7 @@ Route::group(
             Route::get('/delivery-addressess/{deliveryAddress}',    [DeliveryAddressController::class, 'edit'])->name('delivery.address.edit');
             Route::post('/delivery-addressess/{deliveryAddress}',   [DeliveryAddressController::class, 'update'])->name('delivery.address.update');
             Route::get('/delivery-addressess-delete/{id}',          [DeliveryAddressController::class, 'destroy'])->name('delivery.address.destroy');
-
+            Route::post('/checkout',                                [DeliveryAddressController::class, 'checkout'])->name('checkout');
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');

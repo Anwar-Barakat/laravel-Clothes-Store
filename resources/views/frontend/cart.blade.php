@@ -23,42 +23,6 @@
                     </ul>
                 </div>
 
-                <div class="wrap-iten-in-cart" id="AppendCartProducts">
-                    <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
-                    <ul class="products-cart">
-                        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
-                            <li class="pr-cart-item">
-                                {{ __('frontend.check_your_address') }}
-                            </li>
-                        @endif
-                        @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
-                            <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
-                                <input class="" id="address{{ $deliveryAddress->id }}" name="address_id"
-                                    type="radio" value="address{{ $deliveryAddress->id }}">
-                                <label for="address{{ $deliveryAddress->id }}">
-                                    {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
-                                    {{ $deliveryAddress->country->name }}
-                                    (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
-                                        class="text text-success">
-                                        {{ __('buttons.edit') }}
-                                        <i class="fa fa-edit"></i>
-                                    </a>/
-                                    <a href="javascript:void(0);" class="confirmationDelete text-danger"
-                                        data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
-                                        {{ __('buttons.delete') }}
-                                        <i class="fa fa-trash"></i>
-                                    </a>)
-                                </label>
-                            </li>
-                        @empty
-                            <li class="pr-cart-item">
-                                <div class="product-image">
-                                    {{ __('frontend.no_delivery_address') }}
-                                </div>
-                            </li>
-                        @endforelse
-                    </ul>
-                </div>
 
                 <div class=" main-content-area">
                     <div class="wrap-iten-in-cart" id="AppendCartProducts">
@@ -76,8 +40,8 @@
                                 <div class="col-md-6 col-sm-12">
                                     <label for="code">{{ __('frontend.code') }}:</label>
                                     <input type="text" id="code" name="code" title="{{ __('frontend.code') }}"
-                                        class="form-control @error('code') is-invalid @enderror"
-                                        value="{{ old('code') }}" required autocomplete="code" autofocus
+                                        class="form-control @error('code') is-invalid @enderror" value="{{ old('code') }}"
+                                        required autocomplete="code" autofocus
                                         placeholder="{{ __('frontend.enter_coupon_code') }}"
                                         style="margin-top: 10px;height: 40px;">
                                     @error('code')
@@ -95,6 +59,29 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="summary">
+                        <div class="order-summary" style="display: block">
+                            <h4 class="title-box">{{ __('frontend.payment_methods') }}</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 payment-method-container">
+                                <div>
+                                    <input type="radio" name="paymeny_method" id="cod">
+                                    <label for="cod">
+                                        <img src="{{ asset('front/assets/images/payments/cod.png') }}" width="80" alt="">
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="paymeny_method" id="paypal">
+                                    <label for="paypal">
+                                        <img src="{{ asset('front/assets/images/payments/paypal.png') }}" alt=""
+                                            width="80">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -166,7 +153,6 @@
                             <!--End wrap-products-->
                         </div>
                     @endif
-
                 </div>
                 <!--end main content area-->
             </div>

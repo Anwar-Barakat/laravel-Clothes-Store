@@ -1,3 +1,39 @@
+<div class="wrap-iten-in-cart" id="AppendCartProducts">
+    <ul class="products-cart">
+        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
+            <li class="pr-cart-item" style="padding:13px">
+                {{ __('frontend.check_your_address') }}
+            </li>
+        @endif
+        @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
+            <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
+                <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
+                    required value="address{{ $deliveryAddress->id }}">
+                <label for="address{{ $deliveryAddress->id }}">
+                    {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
+                    {{ $deliveryAddress->country->name }}
+                    (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
+                        class="text text-success">
+                        {{ __('buttons.edit') }}
+                        <i class="fa fa-edit"></i>
+                    </a>/
+                    <a href="javascript:void(0);" class="confirmationDelete text-danger"
+                        data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
+                        {{ __('buttons.delete') }}
+                        <i class="fa fa-trash"></i>
+                    </a>)
+                </label>
+            </li>
+        @empty
+            <li class="pr-cart-item">
+                <div class="product-image">
+                    {{ __('frontend.no_delivery_address') }}
+                </div>
+            </li>
+        @endforelse
+    </ul>
+</div>
+<hr>
 <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
 <ul class="products-cart">
     @php
@@ -99,7 +135,7 @@
         @endphp
     @endforeach
 </ul>
-<div class="summary">
+<div class="summary order_summerized">
     <div class="order-summary">
         <h4 class="title-box">{{ __('frontend.order_summary') }}</h4>
         <p class="summary-info">
@@ -124,14 +160,10 @@
     </div>
     <div class="checkout-info">
         <a class="btn btn-checkout"
-            href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.checkout') }}</a>
-        <a class="link-to-shop"
+            href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.add_delivery_address') }}</a>
+        <a class="btn btn-checkout"
             href="{{ route('frontend.url', 'men-shoes') }}">{{ __('frontend.contiue_shopping') }}<i
                 class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-    </div>
-    <div class="update-clear">
-        <a class="btn btn-clear" href="#">{{ __('frontend.clear_cart') }}</a>
-        <a class="btn btn-update" href="#">{{ __('frontend.update_cart') }}</a>
     </div>
 </div>
 

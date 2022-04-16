@@ -465,6 +465,24 @@ a.text-danger:focus {
     font-size: 25px;
 }
 
+.order_summerized {
+    display: flex !important;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.shopping-cart .order_summerized .order-summary {
+    width: 50%;
+}
+
+.payment-method-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    column-gap: 4rem;
+}
+
 
 /* **************************************************************************** */
 

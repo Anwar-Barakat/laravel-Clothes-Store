@@ -178,4 +178,6 @@ return [
     'return_to_cart'            => 'Return to cart',
     'check_your_address'        => 'Please, Check Your Address',
     'update_delivery_address'   => 'Update delivery address',
+    'payment_methods'           => 'Payment methods',
+    'place_order'               => 'Place order',
 ];

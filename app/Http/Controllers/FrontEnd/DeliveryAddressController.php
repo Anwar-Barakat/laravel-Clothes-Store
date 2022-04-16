@@ -44,7 +44,7 @@ class DeliveryAddressController extends Controller
             $data = $request->only(['user_id', 'name', 'mobile', 'address', 'city', 'state', 'country_id', 'pincode', 'status',]);
             DeliveryAddress::create($data);
             Session::flash('message', __('msgs.delivery_address_add'));
-            return redirect()->back();
+            return redirect()->route('frontend.cart');
         }
     }
 
@@ -100,5 +100,10 @@ class DeliveryAddressController extends Controller
         Session::flash('alert-type', 'info');
         Session::flash('message', __('msgs.delivery_address_delete'));
         return redirect()->route('frontend.cart');
+    }
+
+    public function checkout(Request $request)
+    {
+        return $request;
     }
 }

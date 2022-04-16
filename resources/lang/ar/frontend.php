@@ -175,5 +175,7 @@ return [
     'return_to_cart'            => 'عودة لكرت الشراء',
     'check_your_address'        => 'من فضلك اختر العنوان المطلوب',
     'update_delivery_address'   => 'تحديث عنوان التوصيل',
+    'payment_methods'           => 'طرق الدفع الألكتروني',
+    'place_order'               => 'وضع الطلب الأن',
 
 ];

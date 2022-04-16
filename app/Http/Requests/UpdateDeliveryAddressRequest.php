@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateDeliveryAddressRequest extends FormRequest
 {
@@ -26,12 +27,12 @@ class UpdateDeliveryAddressRequest extends FormRequest
         return [
             'user_id'       => 'required',
             'name'          => 'required|min:3|regex:/^[\pL\s\-]+$/u',
-            'mobile'        => 'required|min:10|max:10',
+            'mobile'        => ['required', 'digits:10', 'numeric', Rule::unique('delivery_addresses')->ignore($this->deliveryAddress->id)],
             'address'       => 'required|min:3',
             'city'          => 'required|min:3|regex:/^[\pL\s\-]+$/u',
             'state'         => 'required|min:3|regex:/^[\pL\s\-]+$/u',
             'country_id'    => 'required',
-            'pincode'       => 'required',
+            'pincode'       => 'required|digits:6',
         ];
     }
 }
