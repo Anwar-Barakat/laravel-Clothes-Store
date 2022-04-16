@@ -18,31 +18,6 @@
                     </ul>
                 </div>
                 <div class=" main-content-area" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
-                    <div class="wrap-iten-in-cart" id="AppendCartProducts">
-                        <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
-                        <ul class="products-cart">
-                            @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
-                                <li class="pr-cart-item">
-                                    {{ __('frontend.check_your_address') }}
-                                </li>
-                            @endif
-                            @forelse (App\Models\DeliveryAddress::deliveryAddress() as $address)
-                                <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
-                                    <input class="fit" id="address{{ $address->id }}" name="address_id"
-                                        type="radio" value="address{{ $address->id }}">
-                                    {{ $address->name }},{{ $address->address }},{{ $address->city }},{{ $address->state }}
-                                    {{ $address->country->name }}
-                                </li>
-                            @empty
-                                <li class="pr-cart-item">
-                                    <div class="product-image">
-                                        {{ __('frontend.no_delivery_address') }}
-                                    </div>
-                                </li>
-                            @endforelse
-                        </ul>
-                    </div>
-
                     <div class="summary">
                         <div class="wrap-address-billing">
                             <h3 class="box-title">{{ __('frontend.add_delivery_details') }}</h3>
@@ -100,7 +75,7 @@
                                 </p>
                                 <p class="row-in-form">
                                     <label for="state">
-                                        {{ __('frontend.state') }} / {{ __('frontend.town') }}
+                                        {{ __('frontend.state') }}
                                     </label>
                                     <input id="state" type="text" name="state" value="{{ old('state') }}"
                                         class="@error('state') is-invalid @enderror" title="{{ __('frontend.state') }}"
@@ -157,5 +132,3 @@
     </div>
 @endsection
 
-@section('scripts')
-@endsection

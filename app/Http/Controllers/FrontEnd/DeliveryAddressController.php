@@ -18,8 +18,6 @@ class DeliveryAddressController extends Controller
      */
     public function index()
     {
-        $userCartProducts   = Cart::userCartProducts();
-        return view('frontend.checkout', ['userCartProducts' => $userCartProducts]);
     }
 
     /**
@@ -29,6 +27,8 @@ class DeliveryAddressController extends Controller
      */
     public function create()
     {
+        $userCartProducts   = Cart::userCartProducts();
+        return view('frontend.checkout', ['userCartProducts' => $userCartProducts]);
     }
 
     /**
@@ -64,9 +64,9 @@ class DeliveryAddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(DeliveryAddress $deliveryAddress)
     {
-        //
+        return view('frontend.delivery-address.edit', ['deliveryAddress' => $deliveryAddress]);
     }
 
     /**

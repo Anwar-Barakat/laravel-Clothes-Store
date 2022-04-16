@@ -17,6 +17,63 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="wrap-iten-in-cart" id="AppendCartProducts">
+                    <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
+                    <ul class="products-cart">
+                        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
+                            <li class="pr-cart-item">
+                                {{ __('frontend.check_your_address') }}
+                            </li>
+                        @endif
+                        @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
+                            <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
+                                <input class="" id="address{{ $deliveryAddress->id }}" name="address_id"
+                                    type="radio" value="address{{ $deliveryAddress->id }}">
+                                <label for="address{{ $deliveryAddress->id }}">
+                                    {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
+                                    {{ $deliveryAddress->country->name }}
+                                    (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
+                                        class="text text-success">
+                                        {{ __('buttons.edit') }}
+                                        <i class="fa fa-edit"></i>
+                                    </a>)
+                                </label>
+                            </li>
+                            {{-- Edit Delivery Address Modal --}}
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        @empty
+                            <li class="pr-cart-item">
+                                <div class="product-image">
+                                    {{ __('frontend.no_delivery_address') }}
+                                </div>
+                            </li>
+                        @endforelse
+                    </ul>
+                </div>
+
                 <div class=" main-content-area">
                     <div class="wrap-iten-in-cart" id="AppendCartProducts">
                         @include('frontend.partials.cart_products')
@@ -33,8 +90,8 @@
                                 <div class="col-md-6 col-sm-12">
                                     <label for="code">{{ __('frontend.code') }}:</label>
                                     <input type="text" id="code" name="code" title="{{ __('frontend.code') }}"
-                                        class="form-control @error('code') is-invalid @enderror" value="{{ old('code') }}"
-                                        required autocomplete="code" autofocus
+                                        class="form-control @error('code') is-invalid @enderror"
+                                        value="{{ old('code') }}" required autocomplete="code" autofocus
                                         placeholder="{{ __('frontend.enter_coupon_code') }}"
                                         style="margin-top: 10px;height: 40px;">
                                     @error('code')
@@ -171,7 +228,7 @@
                             $('#totalProducts').html(response['totalCartProducts']);
                             $('#AppendCartProducts').html(response['view']);
                             toastr.success("{{ __('msgs.coupon_apply') }}");
-                            $('#couponAmount').html(response.couponAmount );
+                            $('#couponAmount').html(response.couponAmount);
                             $('#lastTotalPrice').html(response.lastTotalPrice);
                         }
                     },

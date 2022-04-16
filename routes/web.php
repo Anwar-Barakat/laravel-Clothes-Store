@@ -206,9 +206,10 @@ Route::group(
             // **************************************************************
             // **************************************************************
             // Checkout :
-            Route::get('/delivery-addressess/index',            [DeliveryAddressController::class, 'index'])->name('delivery.address.index');
-            Route::post('/delivery-addressess/store',           [DeliveryAddressController::class, 'store'])->name('delivery.address.store');
-
+            Route::get('/delivery-addressess/create',               [DeliveryAddressController::class, 'create'])->name('delivery.address.create');
+            Route::post('/delivery-addressess/store',               [DeliveryAddressController::class, 'store'])->name('delivery.address.store');
+            Route::get('/delivery-addressess/{deliveryAddress}',    [DeliveryAddressController::class, 'edit'])->name('delivery.address.edit');
+            Route::post('/delivery-addressess/{deliveryAddress}',   [DeliveryAddressController::class, 'update'])->name('delivery.address.update');
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });

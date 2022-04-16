@@ -435,6 +435,15 @@ label.error {
     z-index: 999999999;
 }
 
+.text-success {
+    color: #8bc34a;
+}
+
+a.text-success:hover,
+a.text-success:focus {
+    color: #4caf50;
+}
+
 
 /* **************************************************************************** */
 

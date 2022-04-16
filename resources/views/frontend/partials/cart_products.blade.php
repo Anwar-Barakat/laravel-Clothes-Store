@@ -124,7 +124,7 @@
     </div>
     <div class="checkout-info">
         <a class="btn btn-checkout"
-            href="{{ route('frontend.delivery.address.index') }}">{{ __('frontend.checkout') }}</a>
+            href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.checkout') }}</a>
         <a class="link-to-shop"
             href="{{ route('frontend.url', 'men-shoes') }}">{{ __('frontend.contiue_shopping') }}<i
                 class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
