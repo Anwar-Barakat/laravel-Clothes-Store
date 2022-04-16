@@ -20,7 +20,9 @@
                 <div class=" main-content-area" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <div class="summary">
                         <div class="wrap-address-billing">
-                            <h3 class="box-title">{{ __('frontend.add_delivery_details') }}</h3>
+                            <fieldset class="wrap-address-billing">
+                                <h3 class="box-title">{{ __('frontend.add_delivery_details') }}</h3>
+                            </fieldset>
                             <form action="{{ route('frontend.delivery.address.store') }}" method="post"
                                 name="frm-billing">
                                 @csrf
@@ -30,7 +32,7 @@
                                     <input id="name" class="@error('name') is-invalid @enderror" type="text" name="name"
                                         value="{{ old('name') }}" placeholder="{{ __('frontend.type_your_name') }}"
                                         title="{{ __('frontend.name') }}">
-                                    @error('email')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -131,4 +133,3 @@
         </main>
     </div>
 @endsection
-

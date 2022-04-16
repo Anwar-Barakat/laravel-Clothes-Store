@@ -23,8 +23,8 @@
                                     <form name="UpdateAccountDetails" id="UpdateAccountDetails"
                                         action="{{ route('frontend.user.account.details.update') }}" method="POST">
                                         @csrf
-                                        <fieldset class="wrap-title">
-                                            <h3 class="form-title">{{ __('frontend.update_info') }}</h3>
+                                        <fieldset class="wrap-address-billing">
+                                            <h3 class="box-title">{{ __('frontend.update_info') }}</h3>
                                         </fieldset>
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12">

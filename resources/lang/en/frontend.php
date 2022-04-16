@@ -177,5 +177,5 @@ return [
     'type_your_city'            => 'Type your town or city',
     'return_to_cart'            => 'Return to cart',
     'check_your_address'        => 'Please, Check Your Address',
-
+    'update_delivery_address'   => 'Update delivery address',
 ];

@@ -25,8 +25,8 @@
                                     <form name="frm-login" action="{{ route('frontend.login') }}" method="POST"
                                         id="loginForm">
                                         @csrf
-                                        <fieldset class="wrap-title">
-                                            <h3 class="form-title">{{ __('frontend.login_into_account') }}</h3>
+                                        <fieldset class="wrap-address-billing">
+                                            <h3 class="box-title">{{ __('frontend.login_into_account') }}</h3>
                                         </fieldset>
                                         <fieldset class="wrap-input">
                                             <label for="email">{{ __('frontend.email_address') }}:</label>
@@ -62,7 +62,8 @@
                                             <a class="link-function left-position" href="#"
                                                 title="{{ __('frontend.forgotten_password') }}?">{{ __('frontend.forgotten_password') }}?</a>
                                         </fieldset>
-                                        <input type="submit" class="button-30" role="button" value="{{ __('frontend.login') }}">
+                                        <input type="submit" class="button-30" role="button"
+                                            value="{{ __('frontend.login') }}">
                                     </form>
                                 </div>
                             </div>

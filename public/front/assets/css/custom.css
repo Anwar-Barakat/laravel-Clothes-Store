@@ -444,6 +444,27 @@ a.text-success:focus {
     color: #4caf50;
 }
 
+a.text-danger {
+    color: #fc685eee;
+}
+
+a.text-danger:hover,
+a.text-danger:focus {
+    color: #f44336;
+}
+
+.swal2-icon.swal2-warning.swal2-icon-show {
+    font-size: 1rem;
+}
+
+.swal2-container.swal2-center>.swal2-popup {
+    padding: 2rem;
+}
+
+.swal2-modal .swal2-title {
+    font-size: 25px;
+}
+
 
 /* **************************************************************************** */
 

@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    {{ __('frontend.delivery_address') }}
+    {{ __('frontend.update_delivery_address') }}
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <ul>
-                        <li class="item-link"><span>{{ __('frontend.delivery_address') }}</span></li>
+                        <li class="item-link"><span>{{ __('frontend.update_delivery_address') }}</span></li>
                         <li class="item-link">
                             <a href="{{ route('frontend.home') }}" class="link">{{ __('frontend.home') }}
                             </a>
@@ -20,8 +20,10 @@
                 <div class=" main-content-area" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <div class="summary">
                         <div class="wrap-address-billing">
-                            <h3 class="box-title">{{ __('frontend.add_delivery_details') }}</h3>
-                            <form action="{{ route('frontend.delivery.address.store') }}" method="post"
+                            <fieldset class="wrap-address-billing">
+                                <h3 class="box-title">{{ __('frontend.update_delivery_address') }}</h3>
+                            </fieldset>
+                            <form action="{{ route('frontend.delivery.address.update', $deliveryAddress) }}" method="post"
                                 name="frm-billing">
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
@@ -31,7 +33,7 @@
                                         value="{{ old('name', $deliveryAddress->name) }}"
                                         placeholder="{{ __('frontend.type_your_name') }}"
                                         title="{{ __('frontend.name') }}">
-                                    @error('email')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -96,8 +98,8 @@
                                     <select name="country_id" id="country_id" class="use-chosen">
                                         <option value="">{{ __('frontend.choose_country') }}</option>
                                         @foreach (App\Models\Country::where('status', 1)->get() as $country)
-                                            <option value="{{ old('country_id', $country->id) }}">
-                                                {{ $deliveryAddress->country_id == $country->id ? 'selected' : '' }}
+                                            <option value="{{ old('country_id', $country->id) }}"
+                                                {{ $deliveryAddress->country_id == $country->id ? 'selected' : '' }}>
                                                 {{ $country->name }}
                                             </option>
                                         @endforeach
@@ -125,7 +127,7 @@
                                     <a href="{{ route('frontend.cart') }}" class="button-30"
                                         role="button">{{ __('frontend.return_to_cart') }}</a>
                                     <input type="submit" class="button-30" role="button"
-                                        value="{{ __('buttons.add') }}">
+                                        value="{{ __('buttons.update') }}">
                                 </p>
                             </form>
                         </div>

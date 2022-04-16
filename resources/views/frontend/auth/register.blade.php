@@ -23,8 +23,8 @@
                                     <form name="registerForm" id="registerForm" action="{{ route('frontend.register') }}"
                                         method="POST">
                                         @csrf
-                                        <fieldset class="wrap-title">
-                                            <h3 class="form-title">{{ __('frontend.create_new_account') }}</h3>
+                                        <fieldset class="wrap-address-billing">
+                                            <h3 class="box-title">{{ __('frontend.create_new_account') }}</h3>
                                         </fieldset>
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-12">

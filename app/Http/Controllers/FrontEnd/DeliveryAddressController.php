@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDeliveryAddressRequest;
+use App\Http\Requests\UpdateDeliveryAddressRequest;
 use App\Models\Cart;
 use App\Models\DeliveryAddress;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class DeliveryAddressController extends Controller
     public function create()
     {
         $userCartProducts   = Cart::userCartProducts();
-        return view('frontend.checkout', ['userCartProducts' => $userCartProducts]);
+        return view('frontend.delivery-address.add', ['userCartProducts' => $userCartProducts]);
     }
 
     /**
@@ -76,9 +77,14 @@ class DeliveryAddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDeliveryAddressRequest $request, DeliveryAddress $deliveryAddress)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data = $request->only(['user_id', 'name', 'mobile', 'address', 'city', 'state', 'country_id', 'pincode', 'status',]);
+            $deliveryAddress->update($data);
+            Session::flash('message', __('msgs.delivery_address_update'));
+            return redirect()->route('frontend.cart');
+        }
     }
 
     /**
@@ -89,6 +95,10 @@ class DeliveryAddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deliveryAddress = DeliveryAddress::findOrFail($id);
+        $deliveryAddress->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.delivery_address_delete'));
+        return redirect()->route('frontend.cart');
     }
 }

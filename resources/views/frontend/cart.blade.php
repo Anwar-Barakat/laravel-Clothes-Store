@@ -4,6 +4,11 @@
     {{ __('frontend.cart') }}
 @endsection
 
+@section('css')
+    {{-- Sweat Alert 2 --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+@endsection
+
 @section('content')
     <div class="shopping-cart page">
         <main id="main" class="main-site">
@@ -37,33 +42,14 @@
                                         class="text text-success">
                                         {{ __('buttons.edit') }}
                                         <i class="fa fa-edit"></i>
+                                    </a>/
+                                    <a href="javascript:void(0);" class="confirmationDelete text-danger"
+                                        data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
+                                        {{ __('buttons.delete') }}
+                                        <i class="fa fa-trash"></i>
                                     </a>)
                                 </label>
                             </li>
-                            {{-- Edit Delivery Address Modal --}}
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ...
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         @empty
                             <li class="pr-cart-item">
                                 <div class="product-image">
@@ -236,6 +222,27 @@
                         alert('error')
                     }
                 });
+            });
+        });
+    </script>
+
+    {{-- Confirmation Delete Category --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/delivery-addressess-delete/' + $(this).data('delivery');
+                }
             });
         });
     </script>

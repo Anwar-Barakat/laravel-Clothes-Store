@@ -174,6 +174,6 @@ return [
     'type_your_city'            => 'ادخل اسم البلدة او المدينة',
     'return_to_cart'            => 'عودة لكرت الشراء',
     'check_your_address'        => 'من فضلك اختر العنوان المطلوب',
-
+    'update_delivery_address'   => 'تحديث عنوان التوصيل',
 
 ];
