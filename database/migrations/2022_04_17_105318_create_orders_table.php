@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeliveryAddressesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,24 @@ class CreateDeliveryAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_addresses', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
+            $table->string('email');
             $table->string('mobile');
             $table->string('address');
             $table->string('city');
             $table->string('state');
             $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('pincode');
-            $table->tinyInteger('status')->default(1);
+            $table->float('shipping_cart');
+            $table->string('coupon_code');
+            $table->float('coupon_amount');
+            $table->tinyInteger('status');
+            $table->string('payment_method');
+            $table->string('payment_gateway');
+            $table->float('grand_amount');
             $table->timestamps();
         });
     }
@@ -35,6 +42,6 @@ class CreateDeliveryAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_addresses');
+        Schema::dropIfExists('orders');
     }
 }

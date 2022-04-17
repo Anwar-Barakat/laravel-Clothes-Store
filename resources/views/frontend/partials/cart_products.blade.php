@@ -1,45 +1,48 @@
-<div class="wrap-iten-in-cart" id="AppendCartProducts">
-    <ul class="products-cart">
-        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
-            <li class="pr-cart-item" style="padding:13px">
-                {{ __('frontend.check_your_address') }}
-            </li>
-        @endif
-        @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
-            <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
-                <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
-                    required value="{{ $deliveryAddress->id }}">
-                <label for="address{{ $deliveryAddress->id }}">
-                    {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
-                    {{ $deliveryAddress->country->name }}
-                    (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
-                        class="text text-success">
-                        {{ __('buttons.edit') }}
-                        <i class="fa fa-edit"></i>
-                    </a>/
-                    <a href="javascript:void(0);" class="confirmationDelete text-danger"
-                        data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
-                        {{ __('buttons.delete') }}
-                        <i class="fa fa-trash"></i>
-                    </a>)
-                </label>
-            </li>
+@auth
+    <div class="wrap-iten-in-cart" id="AppendCartProducts">
+        <ul class="products-cart">
+            @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
+                <li class="pr-cart-item" style="padding:13px">
+                    {{ __('frontend.check_your_address') }}
+                </li>
+            @endif
+            @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
+                <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
+                    <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
+                        required value="{{ $deliveryAddress->id }}">
+                    <label for="address{{ $deliveryAddress->id }}">
+                        {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
+                        {{ $deliveryAddress->country->name }}
+                        (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
+                            class="text text-success">
+                            {{ __('buttons.edit') }}
+                            <i class="fa fa-edit"></i>
+                        </a>/
+                        <a href="javascript:void(0);" class="confirmationDelete text-danger"
+                            data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
+                            {{ __('buttons.delete') }}
+                            <i class="fa fa-trash"></i>
+                        </a>)
+                    </label>
+                </li>
 
-        @empty
-            <li class="pr-cart-item">
-                <div class="product-image">
-                    {{ __('frontend.no_delivery_address') }}
-                </div>
-            </li>
-        @endforelse
-        @error('address_id')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </ul>
-</div>
-<hr>
+            @empty
+                <li class="pr-cart-item">
+                    <div class="product-image">
+                        {{ __('frontend.no_delivery_address') }}
+                    </div>
+                </li>
+            @endforelse
+            @error('address_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </ul>
+    </div>
+    <hr>
+@endauth
+
 <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
 <ul class="products-cart">
     @php
