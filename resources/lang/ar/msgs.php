@@ -48,7 +48,7 @@ return [
     'delivery_address_add'          => 'تم إضافة عنوان التوصيل بنجاح',
     'delivery_address_update'       => 'تم تحديث عنوان التوصيل بنجاح',
     'delivery_address_delete'       => 'تم حذف عنوان التوصيل بنجاح',
-
+    'order_place_add'               => 'تم وضع الطلب بنجاح',
 
 
 

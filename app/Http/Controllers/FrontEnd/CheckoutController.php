@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutRequest;
 use App\Models\Cart;
+use App\Models\DeliveryAddress;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
@@ -46,7 +51,63 @@ class CheckoutController extends Controller
     public function store(StoreCheckoutRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data = $request->only(['paymeny_method', 'address_id']);
+            $data = $request->only(['payment_gateway', 'address_id']);
+
+            if ($data['payment_gateway'] == 'COD')
+                $payment_method = 'COD';
+            else
+                $payment_method = 'Prepaid';
+
+            DB::beginTransaction();
+
+            $deliveryAddress = DeliveryAddress::where('id', $data['address_id'])->first();
+            $order          = Order::create([
+                'user_id'           => Auth::user()->id,
+                'name'              => $deliveryAddress->name,
+                'email'             => Auth::user()->email,
+                'mobile'            => $deliveryAddress->mobile,
+                'address'           => $deliveryAddress->address,
+                'city'              => $deliveryAddress->city,
+                'state'             => $deliveryAddress->state,
+                'country_id'        => $deliveryAddress->country_id,
+                'pincode'           => $deliveryAddress->pincode,
+                'coupon_code'       => Session::get('couponCode'),
+                'coupon_amount'     => Session::get('couponAmount'),
+                'status'            => 'new',
+                'payment_method'    => $payment_method,
+                'payment_gateway'   => $data['payment_gateway'],
+                'grand_amount'      => Session::get('grandPrice'),
+                'shipping_cart'     => 0,
+            ]);
+
+            $order_id           = DB::getPdo()->lastInsertId();
+
+
+            $cartProducts       = Cart::where('user_id', Auth::user()->id)->get();
+            foreach ($cartProducts as $key => $item) {
+                $productDetails         = Product::select('name', 'code', 'color')->where('id', $item->id)->first();
+                $getDiscountAttrPrice   = Product::getDiscountedAttributePrice($item['product_id'], $item->size);
+
+                OrderProduct::create([
+                    'order_id'          => $order_id,
+                    'user_id'           => Auth::user()->id,
+                    'product_id'        => $item->product_id,
+                    'product_code'      => $productDetails->code,
+                    'product_name'      => $productDetails->name,
+                    'product_color'     => $productDetails->color,
+                    'product_size'      => $item->size,
+                    'product_quantity'  => $item->quantity,
+                    'product_price'     => $getDiscountAttrPrice['finalPrice'],
+                ]);
+            }
+
+
+            Cart::where('user_id', Auth::user()->id)->delete();
+
+            DB::commit();
+
+            Session::flash('message', __('msgs.order_place_add'));
+            return redirect()->route('frontend.cart');
         }
     }
 

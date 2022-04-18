@@ -24,7 +24,6 @@ class StoreCheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'paymeny_method'    => 'required',
             'address_id'        => 'required',
         ];
     }

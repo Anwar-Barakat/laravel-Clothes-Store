@@ -24,10 +24,10 @@ class CreateOrdersTable extends Migration
             $table->string('state');
             $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('pincode');
-            $table->float('shipping_cart');
-            $table->string('coupon_code');
-            $table->float('coupon_amount');
-            $table->tinyInteger('status');
+            $table->float('shipping_cart')->default(0);
+            $table->string('coupon_code')->nullable();
+            $table->float('coupon_amount')->nullable();
+            $table->string('status');
             $table->string('payment_method');
             $table->string('payment_gateway');
             $table->float('grand_amount');

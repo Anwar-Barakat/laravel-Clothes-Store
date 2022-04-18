@@ -23,7 +23,9 @@
                     </ul>
                 </div>
 
-
+                @if ($errors->any())
+                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                @endif
                 <div class=" main-content-area">
                     <form action="{{ route('frontend.checkout.store') }}" method="POST" name="checkoutForm"
                         id="checkoutForm">
@@ -38,20 +40,20 @@
                             </div>
                             <div class="payment-method-container">
                                 <div>
-                                    <input type="radio" name="paymeny_method" id="cod" value="cod" required>
-                                    <label for="cod">
+                                    <input type="radio" name="payment_gateway" id="COD" value="COD" required>
+                                    <label for="COD">
                                         <img src="{{ asset('front/assets/images/payments/cod.png') }}" width="80" alt="">
                                     </label>
                                 </div>
                                 <div>
-                                    <input type="radio" name="paymeny_method" id="paypal" value="paypal" required>
-                                    <label for="paypal">
+                                    <input type="radio" name="payment_gateway" id="Paypal" value="Paypal" required>
+                                    <label for="Paypal">
                                         <img src="{{ asset('front/assets/images/payments/paypal.png') }}" alt=""
                                             width="80">
                                     </label>
                                 </div>
                             </div>
-                            @error('paymeny_method')
+                            @error('payment_gateway')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

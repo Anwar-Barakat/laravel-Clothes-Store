@@ -41,9 +41,7 @@ return [
     'cat_not_found_here'            => 'This coupon code is not for one of the selected products !!',
     'user_not_found_here'           => 'This coupon code is not for you !!',
     'coupon_apply'                  => 'Coupon code has successfully applied, you are availing discount !',
-    'delivery_address_add'          => 'Delivery Address Has Added Successfuly !!',
-    'delivery_address_update'       => 'Delivery Address Has Updated Successfuly !!',
-    'delivery_address_delete'       => 'Delivery Address Has Deleted Successfuly !!',
+    'order_place_add'               => 'order has placed successfully',
 
 
 
