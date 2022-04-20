@@ -191,5 +191,12 @@ return [
     'order_products'            => 'منتجات الطلب',
     'grand_total'               => 'المجموع الأجمالي',
     'created_at'                => 'تاريخ الطلب',
+    'offer_details'             => 'تفاصيل العرض',
+    'product_name'              => 'اسم المنتج',
+    'product_code'              => 'رمز المنتج',
+    'product_color'             => 'لون المنتج',
+    'product_size'              => 'قياس المنتج',
+    'product_quantity'          => 'كمية المنتج',
+
 
 ];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,7 +50,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $orderDetails   = Order::with('orderProduct')->where('id', $id)->first();
+        return view('frontend.orders.show', ['orderDetails' => $orderDetails]);
     }
 
     /**

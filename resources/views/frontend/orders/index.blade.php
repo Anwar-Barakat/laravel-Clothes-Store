@@ -35,7 +35,9 @@
                                     @foreach ($orders as $order)
                                         <tr class="alert" role="alert">
                                             <td>
-                                                {{ $loop->iteration }}
+                                                <a href="{{ route('frontend.orders.show', $order->id) }}">
+                                                    {{ $loop->iteration }}
+                                                </a>
                                             </td>
                                             <td>
                                                 @foreach ($order->orderProduct as $item)
