@@ -55,8 +55,10 @@ class CheckoutController extends Controller
 
             if ($data['payment_gateway'] == 'COD')
                 $payment_method = 'COD';
-            else
+            else {
+                return "Coming soon,thanks";
                 $payment_method = 'Prepaid';
+            }
 
             DB::beginTransaction();
 
@@ -83,6 +85,7 @@ class CheckoutController extends Controller
             $order_id           = DB::getPdo()->lastInsertId();
 
 
+
             $cartProducts       = Cart::where('user_id', Auth::user()->id)->get();
             foreach ($cartProducts as $key => $item) {
                 $productDetails         = Product::select('name', 'code', 'color')->where('id', $item->id)->first();
@@ -100,11 +103,16 @@ class CheckoutController extends Controller
                     'product_price'     => $getDiscountAttrPrice['finalPrice'],
                 ]);
             }
-
-
-            Cart::where('user_id', Auth::user()->id)->delete();
+            Session::put('order_id', $order_id);
 
             DB::commit();
+
+            if ($payment_method == 'COD') {
+                return redirect()->route('frontend.checkout.thanks');
+            } else {
+                return "prepaid coming soon!!";
+            }
+
 
             Session::flash('message', __('msgs.order_place_add'));
             return redirect()->route('frontend.cart');
@@ -154,5 +162,15 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function thanks()
+    {
+        if (Session::has('order_id')) {
+            Cart::where('user_id', Auth::user()->id)->delete();
+            return view('frontend.thanks');
+        } else {
+            return redirect()->route('frontend.cart');
+        }
     }
 }

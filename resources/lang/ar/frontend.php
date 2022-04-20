@@ -178,4 +178,11 @@ return [
     'payment_methods'           => 'طرق الدفع الألكتروني',
     'place_order'               => 'وضع الطلب الأن',
 
+    // Thanks :
+    'thanks'                    => 'الشكر',
+    'thanks_line_1'             => 'شكرا لطلبك',
+    'thanks_line_2'             => 'رقم الطلب الخاص بك هو',
+    'thanks_line_3'             => 'والمبلغ الأجمالي',
+    'your_address'              => 'العناوين',
+
 ];

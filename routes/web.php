@@ -221,6 +221,7 @@ Route::group(
             // Checkout :
             Route::get('/checkout/index',                           [CheckoutController::class, 'index'])->name('checkout.index');
             Route::post('/checkout/store',                          [CheckoutController::class, 'store'])->name('checkout.store');
+            Route::get('/checkout/thanks',                          [CheckoutController::class, 'thanks'])->name('checkout.thanks');
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');

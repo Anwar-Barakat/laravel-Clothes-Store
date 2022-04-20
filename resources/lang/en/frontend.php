@@ -180,4 +180,15 @@ return [
     'update_delivery_address'   => 'Update delivery address',
     'payment_methods'           => 'Payment methods',
     'place_order'               => 'Place order',
+
+    // Thanks :
+    'thanks'                    => 'Thanks',
+    'thanks_line_1'             => 'Your order has been placed successfully',
+    'thanks_line_2'             => 'Your order number is ',
+    'thanks_line_3'             => 'and grand total is',
+    'your_address'              => 'Your address',
+
+
+
+
 ];

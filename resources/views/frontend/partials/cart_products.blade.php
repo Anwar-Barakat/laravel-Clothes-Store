@@ -3,13 +3,20 @@
         <ul class="products-cart">
             @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
                 <li class="pr-cart-item" style="padding:13px">
-                    {{ __('frontend.check_your_address') }}
+                    @if (request()->routeIs('frontend.cart'))
+                        {{ __('frontend.your_address') }}
+                    @else
+                        {{ __('frontend.check_your_address') }}
+                    @endif
                 </li>
             @endif
             @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
                 <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
-                    <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
-                        required value="{{ $deliveryAddress->id }}">
+                    @if (request()->routeIs('frontend.cart'))
+                    @else
+                        <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
+                            required value="{{ $deliveryAddress->id }}">
+                    @endif
                     <label for="address{{ $deliveryAddress->id }}">
                         {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
                         {{ $deliveryAddress->country->name }}
@@ -25,7 +32,6 @@
                         </a>)
                     </label>
                 </li>
-
             @empty
                 <li class="pr-cart-item">
                     <div class="product-image">
@@ -63,7 +69,11 @@
                 {{ __('frontend.discount') }}
             </div>
             <div class="quantity">
-                {{ __('frontend.update_quantity') }}
+                @if (request()->routeIs('frontend.cart'))
+                    {{ __('frontend.update_quantity') }}
+                @else
+                    {{ __('frontend.quantity') }}
+                @endif
             </div>
             <div class="price-field sub-total">
                 {{ __('frontend.price_after_discount') }}
@@ -95,7 +105,6 @@
                         {{ __('frontend.name') }} :
                         {{ $userCartProduct->product->name }}</a>
                 </div>
-                {{-- ({{ $userCartProduct->product->code }}) --}}
                 <div>
                     <a class="link-to-product" href="javascript:void(0);">
                         {{ __('frontend.code') }} :
@@ -118,14 +127,18 @@
                 </p>
             </div>
             <div class="quantity">
-                <div class="quantity-input">
-                    <input type="text" name="product-quatity" value="{{ $userCartProduct->quantity }}" data-max="120"
-                        pattern="[0-9]*">
-                    <a class="btnProductUpdate btn btn-reduce" href="javascript:void(0)"
-                        cartId="{{ $userCartProduct->id }}"></a>
-                    <a class="btnProductUpdate btn btn-increase" href="javascript:void(0)"
-                        cartId="{{ $userCartProduct->id }}"></a>
-                </div>
+                @if (request()->routeIs('frontend.cart'))
+                    <div class="quantity-input">
+                        <input type="text" name="product-quatity" value="{{ $userCartProduct->quantity }}"
+                            data-max="120" pattern="[0-9]*">
+                        <a class="btnProductUpdate btn btn-reduce" href="javascript:void(0)"
+                            cartId="{{ $userCartProduct->id }}"></a>
+                        <a class="btnProductUpdate btn btn-increase" href="javascript:void(0)"
+                            cartId="{{ $userCartProduct->id }}"></a>
+                    </div>
+                @else
+                    <a href="javascript:void(0)">{{ $userCartProduct->quantity }}</a>
+                @endif
             </div>
             <div class="price-field sub-total">
                 <p class="price">
@@ -164,13 +177,15 @@
             </span>
             <b class="index">$
                 <b id="lastTotalPrice">{{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}</b>
-                {{ session()->put('grandPrice', $grandPrice) }}
+                {{ Session::put('grandPrice', $grandPrice) }}
             </b>
         </p>
     </div>
     <div class="checkout-info">
-        <a class="btn btn-checkout"
-            href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.add_delivery_address') }}</a>
+        @auth
+            <a class="btn btn-checkout"
+                href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.add_delivery_address') }}</a>
+        @endauth
         <a class="btn btn-checkout"
             href="{{ route('frontend.url', 'men-shoes') }}">{{ __('frontend.contiue_shopping') }}<i
                 class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
