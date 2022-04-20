@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\FrontEnd\DeliveryAddressController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
@@ -61,6 +62,7 @@ Route::group(
                 Route::match(['get', 'post'], 'update-detail',                  [AdminSettingController::class, 'updateDetails'])->name('update.details');
 
 
+
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************
@@ -69,6 +71,7 @@ Route::group(
                 Route::post('sections/add',                                     [SectionController::class, 'store'])->name('sections.store');
                 Route::post('sections/update/{section}',                        [SectionController::class, 'update'])->name('sections.update');
                 Route::post('update-section-status',                            [SectionController::class, 'updateSectionStatus']);
+
 
 
                 // **************************************************************
@@ -80,6 +83,7 @@ Route::group(
                 Route::post('banners/update/{banner}',                          [BannerController::class, 'update'])->name('banners.update');
                 Route::post('update-banner-status',                             [BannerController::class, 'updateBannerStatus']);
                 Route::get('delete-banner/{id}',                            [BannerController::class, 'destroy'])->name('banners.destroy');
+
 
 
                 // **************************************************************
@@ -96,6 +100,7 @@ Route::group(
                 Route::post('append-categories-level',                          [CategoryController::class, 'appendCategoriesLevel']);
 
 
+
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************
@@ -108,7 +113,6 @@ Route::group(
                 Route::post('update-product/{product}',                         [ProductController::class, 'update'])->name('products.update');
                 Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('products.destroy');
                 Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
-
 
                 // Product Attributes :
                 Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('product.attributes.create');
@@ -125,6 +129,7 @@ Route::group(
                 Route::get('delete-product-attachments/{id}',                   [ProductImageController::class, 'destroyAllProductAttachments'])->name('product.images.all.destroy');
 
 
+
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************
@@ -133,6 +138,7 @@ Route::group(
                 Route::post('brands/add',                                       [BrandController::class, 'store'])->name('brands.store');
                 Route::post('brands/update/{brand}',                            [BrandController::class, 'update'])->name('brands.update');
                 Route::post('update-brand-status',                              [BrandController::class, 'updateBrandStatus']);
+
 
 
                 // **************************************************************
@@ -171,6 +177,7 @@ Route::group(
             Route::post('/get-product-price',               [DetailController::class, 'getProductPrice']);
 
 
+
             // **************************************************************
             // **************************************************************
             // **************************************************************
@@ -179,6 +186,7 @@ Route::group(
             Route::post('add-to-cart',                      [CartController::class, 'store'])->name('cart.store');
             Route::post('update-cart-products-quantity',    [CartController::class, 'updateProductQuantity']);
             Route::post('delete-cart-product',              [CartController::class, 'destroy'])->name('cart.destroy');
+
 
 
             // **************************************************************
@@ -203,6 +211,7 @@ Route::group(
             });
 
 
+
             // **************************************************************
             // **************************************************************
             // **************************************************************
@@ -222,6 +231,15 @@ Route::group(
             Route::get('/checkout/index',                           [CheckoutController::class, 'index'])->name('checkout.index');
             Route::post('/checkout/store',                          [CheckoutController::class, 'store'])->name('checkout.store');
             Route::get('/checkout/thanks',                          [CheckoutController::class, 'thanks'])->name('checkout.thanks');
+
+
+
+            // **************************************************************
+            // **************************************************************
+            // **************************************************************
+            // Orders :
+            Route::get('orders/index',                              [OrderController::class, 'index'])->name('orders.index');
+
 
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');

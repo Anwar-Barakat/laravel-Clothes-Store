@@ -19,6 +19,7 @@
                 <!--MAIN SLIDE-->
                 @include('frontend.banners.index')
 
+                <a href="{{ route('frontend.orders.index') }}">order</a>
                 <!--On Sale-->
                 <div class="wrap-show-advance-info-box style-1 has-countdown">
                     <h3 class="title-box">{{ __('frontend.on_sale') }}</h3>
@@ -142,7 +143,8 @@
                         <div class="product product-style-2 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('front/assets/images/products/fashions/fashion_05.jpg') }}"
+                                    <figure><img
+                                            src="{{ asset('front/assets/images/products/fashions/fashion_05.jpg') }}"
                                             width="800" height="800" alt="T-Shirt Raw Hem Organic Boro Constrast Denim">
                                     </figure>
                                 </a>

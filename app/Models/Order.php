@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,4 +28,16 @@ class Order extends Model
         'payment_gateway',
         'grand_amount',
     ];
+
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($this->attributes['created_at'])->diffForHumans();
+    }
+
+
+    public function orderProduct()
+    {
+        return $this->hasMany(OrderProduct::class, 'order_id');
+    }
 }

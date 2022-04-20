@@ -3,6 +3,23 @@
     font-family: 'Cairo', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #99b19c;
+}
+
  :root {
     --main-color: #009688
 }
@@ -249,6 +266,14 @@ ul {
 .button-30:active {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
+}
+
+#sticky-wrapper {
+    width: 100%;
+}
+
+.border-bottom {
+    border-bottom: unset !important;
 }
 
 
@@ -626,10 +651,10 @@ a.text-danger:focus {
 /* **************************************************************************** */
 
 
-/* ******************************* Navbar  ************************************ */
+/* ******************************* Cutom Table  ************************************ */
 
 
-/* ******************************* Navbar  ************************************ */
+/* ******************************* Cutom Table  ************************************ */
 
 
 /* **************************************************************************** */

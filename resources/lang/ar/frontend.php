@@ -185,4 +185,11 @@ return [
     'thanks_line_3'             => 'والمبلغ الأجمالي',
     'your_address'              => 'العناوين',
 
+    // Orders:
+    'orders'                    => 'الطلبات',
+    'the_orders'                => 'الطلبات',
+    'order_products'            => 'منتجات الطلب',
+    'grand_total'               => 'المجموع الأجمالي',
+    'created_at'                => 'تاريخ الطلب',
+
 ];

@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="shopping-cart page">
+    <div class="shopping-cart page" >
         <main id="main" class="main-site">
             <div class="container">
                 <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>

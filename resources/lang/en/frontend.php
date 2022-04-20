@@ -189,6 +189,14 @@ return [
     'your_address'              => 'Your address',
 
 
+    // Orders:
+    'orders'                    => 'Orders',
+    'the_orders'                => 'The Orders',
+    'order_products'            => 'Order products',
+    'grand_total'               => 'Grand total',
+    'created_at'                => 'Created at',
+
+
 
 
 ];
