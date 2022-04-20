@@ -10975,11 +10975,16 @@ h5,
 }
 
 .table-wrap {
-    overflow-x: scroll;
+    overflow-x: hidden;
+}
+
+@media screen and (max-width:991px) {
+    .table-wrap {
+        overflow-x: scroll;
+    }
 }
 
 .table {
-    min-width: 1000px !important;
     width: 100%;
     background: #fff;
     -webkit-box-shadow: 0px 5px 12px -12px rgba(0, 0, 0, 0.29);

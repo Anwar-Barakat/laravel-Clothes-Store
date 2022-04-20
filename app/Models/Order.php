@@ -35,6 +35,10 @@ class Order extends Model
         return Carbon::parse($this->attributes['created_at'])->diffForHumans();
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 
     public function orderProduct()
     {

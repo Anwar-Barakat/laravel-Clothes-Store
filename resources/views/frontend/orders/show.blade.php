@@ -47,6 +47,78 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="table-wrap">
+                            <h4 class="mb-4 mt-5 text-center">{{ __('frontend.order_details') }}</h4>
+                            <table class="table">
+                                <tbody>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.order_date') }}</td>
+                                        <td>{{ $orderDetails->created_at }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.order_status') }}</td>
+                                        <td>{{ $orderDetails->status }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.grand_total') }}</td>
+                                        <td>{{ $orderDetails->grand_amount }}$</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.shipping_charges') }}</td>
+                                        <td>{{ $orderDetails->shipping_cart }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.coupon_code') }}</td>
+                                        <td>{{ $orderDetails->coupon_code ?? '-' }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.coupon_amount') }}</td>
+                                        <td>{{ $orderDetails->coupon_amount ?? '-' }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.payment_methods') }}</td>
+                                        <td>{{ $orderDetails->payment_method }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div class="table-wrap">
+                            <h4 class="mb-4 mt-5 text-center">{{ __('frontend.delivery_address') }}</h4>
+                            <table class="table border">
+                                <tbody>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.name') }}</td>
+                                        <td>{{ $orderDetails->name }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.address') }}</td>
+                                        <td>{{ $orderDetails->address }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.state') }}</td>
+                                        <td>{{ $orderDetails->state }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.country') }}</td>
+                                        <td>{{ $orderDetails->country->name }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.mobile') }}</td>
+                                        <td>{{ $orderDetails->mobile ?? '-' }}</td>
+                                    </tr>
+                                    <tr class="alert" role="alert">
+                                        <td>{{ __('frontend.pincode') }}</td>
+                                        <td>{{ $orderDetails->pincode }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

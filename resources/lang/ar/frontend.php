@@ -197,6 +197,11 @@ return [
     'product_color'             => 'لون المنتج',
     'product_size'              => 'قياس المنتج',
     'product_quantity'          => 'كمية المنتج',
-
+    'order_details'             => 'تفاصيل الطلب',
+    'order_date'                => 'تاريخ الطلب',
+    'order_status'              => 'حالة الطلب',
+    'shipping_charges'          => 'الشحن',
+    'coupon_code'               => 'كود القسيمة',
+    'coupon_amount'             => 'قيمة القسيمة'
 
 ];

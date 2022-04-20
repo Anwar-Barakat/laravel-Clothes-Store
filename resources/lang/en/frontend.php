@@ -201,7 +201,12 @@ return [
     'product_color'             => 'Product color',
     'product_size'              => 'Product size',
     'product_quantity'          => 'Product quantity',
-
+    'order_details'             => 'Order details',
+    'order_date'                => 'Order date',
+    'order_status'              => 'Order status',
+    'shipping_charges'          => 'Shipping charges',
+    'coupon_code'               => 'Coupon code',
+    'coupon_amount'             => 'Coupon amount'
 
 
 ];
