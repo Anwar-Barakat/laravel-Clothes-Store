@@ -206,7 +206,8 @@ return [
     'order_status'              => 'Order status',
     'shipping_charges'          => 'Shipping charges',
     'coupon_code'               => 'Coupon code',
-    'coupon_amount'             => 'Coupon amount'
+    'coupon_amount'             => 'Coupon amount',
+    'view_details'              => 'View details',
 
 
 ];

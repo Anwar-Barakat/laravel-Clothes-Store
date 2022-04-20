@@ -10978,6 +10978,18 @@ h5,
     overflow-x: hidden;
 }
 
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: unset !important;
+}
+
 @media screen and (max-width:991px) {
     .table-wrap {
         overflow-x: scroll;
@@ -11013,8 +11025,6 @@ h5,
     border: none;
     padding: 30px;
     font-size: 14px;
-    background: #fff;
-    border-bottom: 4px solid #f8f9fd;
     vertical-align: middle;
 }
 

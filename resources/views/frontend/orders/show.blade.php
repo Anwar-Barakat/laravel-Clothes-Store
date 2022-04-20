@@ -20,10 +20,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-wrap">
-                            <table class="table">
+                            <table class="table ">
                                 <thead class="thead-primary">
                                     <tr>
                                         <th>#</th>
+                                        <th>{{ __('frontend.product') }}</th>
                                         <th>{{ __('frontend.product_name') }}</th>
                                         <th>{{ __('frontend.product_code') }}</th>
                                         <th>{{ __('frontend.product_color') }}</th>
@@ -35,11 +36,27 @@
                                     @foreach ($orderDetails->orderProduct as $product)
                                         <tr class="alert" role="alert">
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>
+                                                <div class="img">
+                                                    @if ($product->product->getFirstMediaUrl('image_products', 'small'))
+                                                        <a href="{{ route('frontend.details', $product->product_id) }}">
+                                                            <img width="80"
+                                                                src="{{ $product->product->getFirstMediaUrl('image_products', 'small') }}"
+                                                                alt="" class="img img-thumbnail">
+                                                        </a>
+                                                    @else
+                                                        <img width="80" src="{{ asset('assets/img/1.jpg') }}" alt=""
+                                                            class="img img-thumbnail">
+                                                    @endif
+
+                                                </div>
+                                            </td>
                                             <td>{{ $product->product_name }}</td>
                                             <td>{{ $product->product_code }}</td>
                                             <td>{{ $product->product_color }}</td>
                                             <td>{{ $product->product_size }}</td>
                                             <td>{{ $product->product_quantity }}</td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -51,7 +68,7 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="table-wrap">
                             <h4 class="mb-4 mt-5 text-center">{{ __('frontend.order_details') }}</h4>
-                            <table class="table">
+                            <table class="table table-striped">
                                 <tbody>
                                     <tr class="alert" role="alert">
                                         <td>{{ __('frontend.order_date') }}</td>
@@ -88,7 +105,7 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="table-wrap">
                             <h4 class="mb-4 mt-5 text-center">{{ __('frontend.delivery_address') }}</h4>
-                            <table class="table border">
+                            <table class="table table-striped">
                                 <tbody>
                                     <tr class="alert" role="alert">
                                         <td>{{ __('frontend.name') }}</td>

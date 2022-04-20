@@ -20,24 +20,22 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-wrap">
-                            <table class="table">
-                                <thead class="thead-primary">
+                            <table class="table table-striped">
+                                <thead class="thead-primary ">
                                     <tr>
                                         <th>#</th>
                                         <th>{{ __('frontend.order_products') }}</th>
                                         <th>{{ __('frontend.payment_methods') }}</th>
                                         <th>{{ __('frontend.grand_total') }}</th>
                                         <th>{{ __('frontend.created_at') }}</th>
-                                        {{-- <th>&nbsp;</th> --}}
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
                                         <tr class="alert" role="alert">
                                             <td>
-                                                <a href="{{ route('frontend.orders.show', $order->id) }}">
-                                                    {{ $loop->iteration }}
-                                                </a>
+                                                {{ $loop->iteration }}
                                             </td>
                                             <td>
                                                 @foreach ($order->orderProduct as $item)
@@ -54,9 +52,12 @@
                                             <td>
                                                 {{ $order->created_at }}
                                             </td>
-                                            {{-- <td>
-                                                <div class="img"></div>
-                                            </td> --}}
+                                            <td>
+                                                <a href="{{ route('frontend.orders.show', $order->id) }}"
+                                                    class="btn btn-primary btn-sm">
+                                                    {{ __('frontend.view_details') }}
+                                                </a>
+                                            </td>
                                             {{-- <td>
                                                 <div class="email">
                                                     <span>Sneakers Shoes 2020 For Men </span>

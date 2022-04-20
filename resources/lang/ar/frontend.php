@@ -202,6 +202,8 @@ return [
     'order_status'              => 'حالة الطلب',
     'shipping_charges'          => 'الشحن',
     'coupon_code'               => 'كود القسيمة',
-    'coupon_amount'             => 'قيمة القسيمة'
+    'coupon_amount'             => 'قيمة القسيمة',
+    'view_details'              => 'عرض التفاصيل',
+
 
 ];
