@@ -28,9 +28,6 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.orders') }}</h4>
-                        <a href="" class="button-30">
-                            {{ __('buttons.add') }}
-                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -38,15 +35,15 @@
                         <table class="table text-md-nowrap" id="orders">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.order_number') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.order_date') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.customer_name') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.customer_email') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.ordered_products') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.order_amount') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.order_status') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.payment_method') }}</th>
-                                    <th class=" border-bottom-0 tr-class-action">
+                                    <th class="border-bottom-0">{{ __('translation.order_number') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.order_date') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.customer_name') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.customer_email') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.ordered_products') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.order_amount') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.order_status') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.payment_method') }}</th>
+                                    <th class="border-bottom-0 tr-class-action">
                                         {{ __('translation.actions') }}
                                     </th>
                                 </tr>
@@ -70,7 +67,23 @@
                                         <td>{{ $order->status }}</td>
                                         <td>{{ $order->payment_method }}</td>
                                         <td>
-
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
+                                                    type="button">{{ __('translation.actions') }} <i
+                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <a href="{{ route('admin.orders.show', $order) }}"
+                                                            class="dropdown-item" title="{{ __('buttons.edit') }}">
+                                                            <i class="fas fa-eye text-warning"></i>
+                                                            {{ __('translation.view_details') }}
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -235,5 +235,7 @@ return [
     'ordered_products'          => 'Ordered products',
     'order_amount'              => 'Order amount',
     'payment_method'            => 'Payment method',
-
+    'number'                    => 'number',
+    'delivery_details'          => 'Delivery details',
+    'product'                   => 'Product',
 ];

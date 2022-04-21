@@ -239,5 +239,8 @@ return [
     'order_amount'              => 'تكلفة الطلب',
     'ordered_products'          => 'المنتجات المطلوبة',
     'payment_method'            => 'طريقة الدفع',
+    'number'                    => 'رقم',
+    'delivery_details'          => 'تفاصيل التوصيل',
+    'product'                   => 'المنتج',
 
 ];

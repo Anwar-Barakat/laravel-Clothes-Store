@@ -46,9 +46,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        $orderDetails = Order::with('orderProduct')->where('id', $order->id)->first();
+        return view('admin.orders.show', ['orderDetails' => $orderDetails]);
     }
 
     /**
