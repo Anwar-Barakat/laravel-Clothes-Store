@@ -17,6 +17,8 @@ return [
     'all_products'              => 'Display Products',
     'add_product'               => 'Add Product',
     'banners'                   => 'Banners',
+    'all_orders'                => 'Display orders',
+    'orders'                    => 'Orders',
 
 
     // dashboard :
@@ -208,6 +210,30 @@ return [
     'Percentage'                => 'Percentage',
     'Fixed'                     => 'Fixed',
     'users'                     => 'Users',
-    'edit_coupon'               => 'Edit Coupon'
+    'edit_coupon'               => 'Edit Coupon',
+
+    // orders:
+    'order_number'              => 'Order number',
+    'order_products'            => 'Order products',
+    'grand_total'               => 'Grand total',
+    'created_at'                => 'Created at',
+    'offer_details'             => 'Offer details',
+    'product_name'              => 'Product name',
+    'product_code'              => 'Product code',
+    'product_color'             => 'Product color',
+    'product_size'              => 'Product size',
+    'product_quantity'          => 'Product quantity',
+    'order_details'             => 'Order details',
+    'order_date'                => 'Order date',
+    'order_status'              => 'Order status',
+    'shipping_charges'          => 'Shipping charges',
+    'coupon_code'               => 'Coupon code',
+    'coupon_amount'             => 'Coupon amount',
+    'view_details'              => 'View details',
+    'customer_name'             => 'Customer name',
+    'customer_email'            => 'Customer email',
+    'ordered_products'          => 'Ordered products',
+    'order_amount'              => 'Order amount',
+    'payment_method'            => 'Payment method',
 
 ];

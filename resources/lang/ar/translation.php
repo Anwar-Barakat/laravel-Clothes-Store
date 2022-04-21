@@ -17,6 +17,8 @@ return [
     'all_products'              => 'عرض المنتجات',
     'add_product'               => 'إضافة منتج',
     'banners'                   => 'الرايات',
+    'all_orders'                => 'عرض الطلبات',
+    'orders'                    => 'الطلبات',
 
 
 
@@ -212,5 +214,30 @@ return [
     'Percentage'                => 'بالمية',
     'Fixed'                     => 'عملة موحدة',
     'users'                     => 'المستخدمين',
-    'edit_coupon'               => 'تعديل القسيمة'
+    'edit_coupon'               => 'تعديل القسيمة',
+
+    // orders:
+    'order_number'              => 'رقم الطلب',
+    'order_products'            => 'منتجات الطلب',
+    'grand_total'               => 'المجموع الأجمالي',
+    'created_at'                => 'تاريخ الطلب',
+    'offer_details'             => 'تفاصيل العرض',
+    'product_name'              => 'اسم المنتج',
+    'product_code'              => 'رمز المنتج',
+    'product_color'             => 'لون المنتج',
+    'product_size'              => 'قياس المنتج',
+    'product_quantity'          => 'كمية المنتج',
+    'order_details'             => 'تفاصيل الطلب',
+    'order_date'                => 'تاريخ الطلب',
+    'order_status'              => 'حالة الطلب',
+    'shipping_charges'          => 'الشحن',
+    'coupon_code'               => 'كود القسيمة',
+    'coupon_amount'             => 'قيمة القسيمة',
+    'view_details'              => 'عرض التفاصيل',
+    'customer_name'             => 'اسم الزبون',
+    'customer_email'            => 'ايميل الزبون',
+    'order_amount'              => 'تكلفة الطلب',
+    'ordered_products'          => 'المنتجات المطلوبة',
+    'payment_method'            => 'طريقة الدفع',
+
 ];

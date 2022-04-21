@@ -143,6 +143,23 @@
                 </ul>
             </li>
 
+
+            {{-- Orders --}}
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                    <i class="fas fa-shopping-bag icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.orders') }}</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.orders.index') }}">
+                            {{ __('translation.all_orders') }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
@@ -154,6 +155,13 @@ Route::group(
                 Route::post('update-coupon/{coupon}',                           [CouponController::class, 'update'])->name('coupons.update');
                 Route::get('delete-coupon/{coupon}',                            [CouponController::class, 'destroy'])->name('coupons.destroy');
 
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Orders :
+                Route::get('orders/index',                                      [AdminOrderController::class, 'index'])->name('orders.index');
 
 
 
