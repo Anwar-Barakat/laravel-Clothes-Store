@@ -40,6 +40,11 @@ class Order extends Model
         return $this->belongsTo(Country::class, 'country_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function orderProduct()
     {
         return $this->hasMany(OrderProduct::class, 'order_id');

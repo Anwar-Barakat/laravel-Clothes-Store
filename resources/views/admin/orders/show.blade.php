@@ -74,8 +74,7 @@
             </div>
         </div>
     </div>
-
-    <div class="row mb-5">
+    <div class="row mb-2">
         <div class="col-xl-6 col-sm-12">
             <div class="card">
                 <div class="card-header pb-0">
@@ -90,31 +89,31 @@
                         <table class="table table-striped mg-b-0 text-md-nowrap">
                             <tbody>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.order_date') }}</td>
+                                    <td scope="row">{{ __('translation.order_date') }}</td>
                                     <td>{{ $orderDetails->created_at }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.order_status') }}</td>
+                                    <td scope="row">{{ __('translation.order_status') }}</td>
                                     <td>{{ $orderDetails->status }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.grand_total') }}</td>
+                                    <td scope="row">{{ __('translation.grand_total') }}</td>
                                     <td>{{ $orderDetails->grand_amount }}$</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.shipping_charges') }}</td>
+                                    <td scope="row">{{ __('translation.shipping_charges') }}</td>
                                     <td>{{ $orderDetails->shipping_cart }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.coupon_code') }}</td>
+                                    <td scope="row">{{ __('translation.coupon_code') }}</td>
                                     <td>{{ $orderDetails->coupon_code ?? '-' }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.coupon_amount') }}</td>
+                                    <td scope="row">{{ __('translation.coupon_amount') }}</td>
                                     <td>{{ $orderDetails->coupon_amount ?? '-' }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.payment_methods') }}</td>
+                                    <td scope="row">{{ __('translation.payment_methods') }}</td>
                                     <td>{{ $orderDetails->payment_method }}</td>
                                 </tr>
                             </tbody>
@@ -136,28 +135,125 @@
                         <table class="table table-striped mg-b-0 text-md-nowrap">
                             <tbody>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.name') }}</td>
+                                    <td scope="row">{{ __('translation.name') }}</td>
                                     <td>{{ $orderDetails->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.address') }}</td>
+                                    <td scope="row">{{ __('translation.address') }}</td>
                                     <td>{{ $orderDetails->address }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.state') }}</td>
+                                    <td scope="row">{{ __('translation.state') }}</td>
                                     <td>{{ $orderDetails->state }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.country') }}</td>
+                                    <td scope="row">{{ __('translation.country') }}</td>
                                     <td>{{ $orderDetails->country->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.mobile') }}</td>
+                                    <td scope="row">{{ __('translation.mobile') }}</td>
                                     <td>{{ $orderDetails->mobile ?? '-' }}</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">{{ __('frontend.pincode') }}</td>
+                                    <td scope="row">{{ __('translation.pincode') }}</td>
                                     <td>{{ $orderDetails->pincode }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- bd -->
+                </div><!-- bd -->
+            </div><!-- bd -->
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-xl-6 col-sm-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0">{{ __('translation.customer_details') }}</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped mg-b-0 text-md-nowrap">
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{ __('translation.name') }}</td>
+                                    <td>{{ $orderDetails->user->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.email') }}</td>
+                                    <td>{{ $orderDetails->user->email }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- bd -->
+                </div><!-- bd -->
+            </div><!-- bd -->
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0">{{ __('translation.update_order_status') }}</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="status">{{ __('translation.status') }}</label>
+                        <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                            <option value="">{{ __('translation.choose..') }}</option>
+                            <option value="new">{{ __('translation.new') }}</option>
+                            <option value="pending">{{ __('translation.pending') }}</option>
+                        </select>
+                        @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div><!-- bd -->
+            </div><!-- bd -->
+        </div>
+        <div class="col-xl-6 col-sm-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0">{{ __('translation.delivery_details') }}</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped mg-b-0 text-md-nowrap">
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{ __('translation.name') }}</td>
+                                    <td>{{ $orderDetails->user->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.address') }}</td>
+                                    <td>{{ $orderDetails->user->address }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.city') }}</td>
+                                    <td>{{ $orderDetails->user->state }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.state') }}</td>
+                                    <td>{{ $orderDetails->user->state }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.country') }}</td>
+                                    <td>{{ $orderDetails->user->country->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.mobile') }}</td>
+                                    <td>{{ $orderDetails->user->mobile ?? '-' }}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ __('translation.pincode') }}</td>
+                                    <td>{{ $orderDetails->user->pincode }}</td>
                                 </tr>
                             </tbody>
                         </table>

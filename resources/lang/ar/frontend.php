@@ -204,6 +204,7 @@ return [
     'coupon_code'               => 'كود القسيمة',
     'coupon_amount'             => 'قيمة القسيمة',
     'view_details'              => 'عرض التفاصيل',
-
+    'new'                       => 'جديد',
+    'pending'                   => 'قيد الانتظار',
 
 ];

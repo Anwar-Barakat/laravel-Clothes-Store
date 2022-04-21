@@ -76,7 +76,7 @@
                                     </tr>
                                     <tr class="alert" role="alert">
                                         <td>{{ __('frontend.order_status') }}</td>
-                                        <td>{{ $orderDetails->status }}</td>
+                                        <td>{{ __('frontend.' . $orderDetails->status) }}</td>
                                     </tr>
                                     <tr class="alert" role="alert">
                                         <td>{{ __('frontend.grand_total') }}</td>

@@ -208,6 +208,8 @@ return [
     'coupon_code'               => 'Coupon code',
     'coupon_amount'             => 'Coupon amount',
     'view_details'              => 'View details',
+    'new'                       => 'New',
+    'pending'                   => 'Pending',
 
 
 ];
