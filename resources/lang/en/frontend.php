@@ -210,6 +210,12 @@ return [
     'view_details'              => 'View details',
     'new'                       => 'New',
     'pending'                   => 'Pending',
+    'hold'                      => 'hold',
+    'cancelled'                 => 'cancelled',
+    'in_process'                => 'in process',
+    'paid'                      => 'paid',
+    'shipped'                   => 'shipped',
+    'deliverd'                  => 'deliverd',
 
 
 ];

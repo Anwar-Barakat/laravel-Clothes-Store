@@ -254,5 +254,10 @@ return [
     'update_order_status'       => 'تحديث حالة الطلب',
     'new'                       => 'جديد',
     'pending'                   => 'قيد الانتظار',
-
+    'hold'                      => 'إمساك',
+    'cancelled'                 => 'مُلغى',
+    'in_process'                => 'قيد المعالجة',
+    'paid'                      => 'مدفوعة',
+    'shipped'                   => 'منقول',
+    'deliverd'                  => 'سُلم',
 ];

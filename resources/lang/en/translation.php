@@ -250,4 +250,11 @@ return [
     'update_order_status'       => 'Update order status',
     'new'                       => 'New',
     'pending'                   => 'Pending',
+    'hold'                      => 'hold',
+    'cancelled'                 => 'cancelled',
+    'in_process'                => 'in process',
+    'paid'                      => 'paid',
+    'shipped'                   => 'shipped',
+    'deliverd'                  => 'deliverd',
+
 ];
