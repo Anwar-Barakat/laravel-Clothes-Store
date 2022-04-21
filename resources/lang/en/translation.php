@@ -252,7 +252,7 @@ return [
     'pending'                   => 'Pending',
     'hold'                      => 'hold',
     'cancelled'                 => 'cancelled',
-    'in_process'                => 'in process',
+    'in process'                => 'in process',
     'paid'                      => 'paid',
     'shipped'                   => 'shipped',
     'deliverd'                  => 'deliverd',

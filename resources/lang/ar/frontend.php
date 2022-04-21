@@ -206,5 +206,11 @@ return [
     'view_details'              => 'عرض التفاصيل',
     'new'                       => 'جديد',
     'pending'                   => 'قيد الانتظار',
+    'hold'                      => 'إمساك',
+    'cancelled'                 => 'مُلغى',
+    'in process'                => 'قيد المعالجة',
+    'paid'                      => 'مدفوعة',
+    'shipped'                   => 'منقول',
+    'deliverd'                  => 'سُلم',
 
 ];

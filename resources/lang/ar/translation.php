@@ -256,7 +256,7 @@ return [
     'pending'                   => 'قيد الانتظار',
     'hold'                      => 'إمساك',
     'cancelled'                 => 'مُلغى',
-    'in_process'                => 'قيد المعالجة',
+    'in process'                => 'قيد المعالجة',
     'paid'                      => 'مدفوعة',
     'shipped'                   => 'منقول',
     'deliverd'                  => 'سُلم',

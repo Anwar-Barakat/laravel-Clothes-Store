@@ -163,6 +163,7 @@ Route::group(
                 // Orders :
                 Route::get('orders/index',                                      [AdminOrderController::class, 'index'])->name('orders.index');
                 Route::get('orders/show/{order}',                               [AdminOrderController::class, 'show'])->name('orders.show');
+                Route::post('orders/update',                                    [AdminOrderController::class, 'update'])->name('orders.update');
 
 
 

@@ -31,17 +31,7 @@ return [
     'yes_delete'                    => 'Yes, Delete !',
     'brand_added'                   => 'Brand Has Added Successfully',
     'brand_updated'                 => 'Brand Has Updated Successfully',
-    'coupno_add'                    => 'Coupon Has Added Successfuly',
-    'coupno_update'                 => 'Coupon Has Updated Successfuly',
-    'coupno_delete'                 => 'Coupon Has Deleted Successfuly',
-    'logged_in_for_coupon'          => 'Please, Logged in to apply the Coupon',
-    'coupon_code_not_valid'         => 'Coupon code is invalid !!',
-    'coupon_code_not_active'        => 'Coupon code is not active !!',
-    'coupon_code_is_expire'         => 'Coupon code is expire !!',
-    'cat_not_found_here'            => 'This coupon code is not for one of the selected products !!',
-    'user_not_found_here'           => 'This coupon code is not for you !!',
-    'coupon_apply'                  => 'Coupon code has successfully applied, you are availing discount !',
-    'order_place_add'               => 'order has placed successfully',
+    'order_status'                  => 'Order status Has Updated Successfully',
 
 
 
@@ -65,7 +55,17 @@ return [
     'already_cofirm'                => 'The account is already activated !',
     'update_user_password'          => 'Password Has Updated Successfully !!',
     'update_user_details'           => 'Details Has Updated Successfully !!',
-
+    'coupno_add'                    => 'Coupon Has Added Successfuly',
+    'coupno_update'                 => 'Coupon Has Updated Successfuly',
+    'coupno_delete'                 => 'Coupon Has Deleted Successfuly',
+    'logged_in_for_coupon'          => 'Please, Logged in to apply the Coupon',
+    'coupon_code_not_valid'         => 'Coupon code is invalid !!',
+    'coupon_code_not_active'        => 'Coupon code is not active !!',
+    'coupon_code_is_expire'         => 'Coupon code is expire !!',
+    'cat_not_found_here'            => 'This coupon code is not for one of the selected products !!',
+    'user_not_found_here'           => 'This coupon code is not for you !!',
+    'coupon_apply'                  => 'Coupon code has successfully applied, you are availing discount !',
+    'order_place_add'               => 'order has placed successfully',
 
 
 

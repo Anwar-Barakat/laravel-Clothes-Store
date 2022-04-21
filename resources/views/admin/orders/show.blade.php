@@ -199,19 +199,33 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="status">{{ __('translation.status') }}</label>
-                        <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                            <option value="">{{ __('translation.choose..') }}</option>
-                            <option value="new">{{ __('translation.new') }}</option>
-                            <option value="pending">{{ __('translation.pending') }}</option>
-                        </select>
-                        @error('status')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                    <form action="{{ route('admin.orders.update') }}" method="POST">
+                        @csrf
+                        <input type="hidden" value="{{ $orderDetails->id }}" name="order_id">
+                        <div class="form-group">
+                            <label for="status">{{ __('translation.status') }}</label>
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                                <option value="">{{ __('translation.choose..') }}</option>
+                                @foreach (App\Models\OrderStatus::where('status', 1)->get() as $status)
+                                    <option value="{{ $status->name }}"
+                                        {{ $orderDetails->status == $status->name ? 'selected' : '' }}>
+                                        {{ __('translation.' . $status->name) }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-0 mt-3 justify-content-end">
+                            <div>
+                                <button type="submit" class="button-30"
+                                    role="button">{{ __('buttons.update') }}</button>
+                            </div>
+                        </div>
+                    </form>
                 </div><!-- bd -->
             </div><!-- bd -->
         </div>

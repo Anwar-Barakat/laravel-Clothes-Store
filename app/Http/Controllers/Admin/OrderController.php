@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -73,9 +74,16 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['status', 'order_id']);
+            Order::where('id', $data['order_id'])->update([
+                'status'    => $data['status']
+            ]);
+            Session::flash('message', __('msgs.order_status'));
+            return redirect()->back();
+        }
     }
 
     /**

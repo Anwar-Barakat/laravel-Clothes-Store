@@ -35,20 +35,8 @@ return [
     'delete_all_attachs'            => 'هل أنت متأكد من حذف جميع المرفقات ؟',
     'brnad_added'                   => 'تم إضافة الشعار بنجاح',
     'brnad_updated'                 => 'تم تحديث الشعار بنجاح',
-    'coupon_add'                    => 'تم إضافة القسيمة بنجاح',
-    'coupon_update'                 => 'تم تحديث القسيمة بنجاح',
-    'coupon_delete'                 => 'تم حذف القسيمة بنجاح',
-    'logged_in_for_coupon'          => 'من فضلك ، قم بتسجيل الدخول لتطبيق القسيمة',
-    'coupon_code_not_valid'         => 'رمز القسيمة غير صالح !!',
-    'coupon_code_not_active'        => 'رمز القسيمة غير قعال حالياً !!',
-    'coupon_code_is_expire'         => 'رمز القسيمة منتهي الصلاحية  !!',
-    'cat_not_found_here'            => 'هذه القسيمة ليس لأحد المنتجات المختارة !!',
-    'user_not_found_here'           => 'هذه القسيمة ليس لك !!',
-    'coupon_apply'                  => 'تم تطبيق رمز القسيمة بنجاح ، أنت تستفيد من الخصم !',
-    'delivery_address_add'          => 'تم إضافة عنوان التوصيل بنجاح',
-    'delivery_address_update'       => 'تم تحديث عنوان التوصيل بنجاح',
-    'delivery_address_delete'       => 'تم حذف عنوان التوصيل بنجاح',
-    'order_place_add'               => 'تم وضع الطلب بنجاح',
+    'order_status'                  => 'تم تحديث حالة الطلب بنجاح',
+
 
 
 
@@ -72,7 +60,20 @@ return [
     'already_cofirm'                => ' الحساب مفعل مسبقا !',
     'update_user_password'          => 'تم تحديث كلمة المرور بنجاح',
     'update_user_details'           => 'تم تحديث البيانات بنجاح',
-
+    'coupon_add'                    => 'تم إضافة القسيمة بنجاح',
+    'coupon_update'                 => 'تم تحديث القسيمة بنجاح',
+    'coupon_delete'                 => 'تم حذف القسيمة بنجاح',
+    'logged_in_for_coupon'          => 'من فضلك ، قم بتسجيل الدخول لتطبيق القسيمة',
+    'coupon_code_not_valid'         => 'رمز القسيمة غير صالح !!',
+    'coupon_code_not_active'        => 'رمز القسيمة غير قعال حالياً !!',
+    'coupon_code_is_expire'         => 'رمز القسيمة منتهي الصلاحية  !!',
+    'cat_not_found_here'            => 'هذه القسيمة ليس لأحد المنتجات المختارة !!',
+    'user_not_found_here'           => 'هذه القسيمة ليس لك !!',
+    'coupon_apply'                  => 'تم تطبيق رمز القسيمة بنجاح ، أنت تستفيد من الخصم !',
+    'delivery_address_add'          => 'تم إضافة عنوان التوصيل بنجاح',
+    'delivery_address_update'       => 'تم تحديث عنوان التوصيل بنجاح',
+    'delivery_address_delete'       => 'تم حذف عنوان التوصيل بنجاح',
+    'order_place_add'               => 'تم وضع الطلب بنجاح',
 
 
 
