@@ -261,4 +261,8 @@ return [
     'shipped'                   => 'منقول',
     'deliverd'                  => 'سُلم',
     'in'                        => 'في',
+    'courier_name'              => 'اسم البريد السريع',
+    'tracking_number'           => 'رقم التعقب',
+    'type_courier_name'         => 'ادخل رقم التعقب',
+    'type_tracking_number'      => 'ادخل اسم البريد السريع',
 ];

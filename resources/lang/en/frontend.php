@@ -216,6 +216,8 @@ return [
     'paid'                      => 'paid',
     'shipped'                   => 'shipped',
     'deliverd'                  => 'deliverd',
+    'courier_name'              => 'Courier name',
+    'tracking_number'           => 'Tracking number',
 
 
 ];

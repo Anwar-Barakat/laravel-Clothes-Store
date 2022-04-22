@@ -29,6 +29,12 @@
                     <h3 class="mb-4 text-center">Hello {{ $orderDetails->user->name }}</h3>
                     <p>your order number : {{ $orderDetails->id }}, status has been updated to {{ $status }}
                     </p>
+                    @if (!empty($courier_name) && !empty($tracking_number))
+                        <p>
+                            Courier name is : {{ $courier_name }},
+                            And Tracking number is : {{ $tracking_number }}
+                        </p>
+                    @endif
                     <p>order details are below : </p>
                     <div class="table-wrap">
                         <table class="table table-striped">

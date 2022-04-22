@@ -10984,8 +10984,7 @@ h5,
 .table>thead>tr>td,
 .table>tbody>tr>td,
 .table>tfoot>tr>td {
-    padding: 8px;
-    line-height: 1.42857143;
+    padding: 11px !important;
     vertical-align: top;
     border-top: unset !important;
 }
@@ -10993,6 +10992,7 @@ h5,
 @media screen and (max-width:991px) {
     .table-wrap {
         overflow-x: scroll;
+        white-space: nowrap !important;
     }
 }
 
@@ -11034,7 +11034,7 @@ h5,
 
 .table tbody td .img {
     width: 100px;
-    height: 80px;
+    height: 100px;
 }
 
 .table tbody td .email span {

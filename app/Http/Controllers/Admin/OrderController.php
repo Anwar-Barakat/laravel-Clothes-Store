@@ -83,17 +83,32 @@ class OrderController extends Controller
     {
         if ($request->isMethod('post')) {
             $data           = $request->only(['status', 'order_id']);
-            Order::where('id', $data['order_id'])->update([
-                'status'    => $data['status']
-            ]);
+            if (!empty($request->courier_name) && !empty($request->tracking_number) && $data['status'] == 'shipped') {
+                $data['courier_name']       = $request->courier_name;
+                $data['tracking_number']    = $request->tracking_number;
+                Order::where('id', $data['order_id'])->update([
+                    'status'                => $data['status'],
+                    'courier_name'          => $data['courier_name'],
+                    'tracking_number'       => $data['tracking_number'],
+                ]);
+            } else {
+                Order::where('id', $data['order_id'])->update([
+                    'status'                => $data['status'],
+                    'courier_name'          => '',
+                    'tracking_number'       => '',
+                ]);
+            }
 
 
 
-            $orderDetails       = Order::with(['orderProduct', 'user'])->where('id', $data['order_id'])->first();
-            $email              = $orderDetails->user->email;
+
+            $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $data['order_id'])->first();
+            $email                  = $orderDetails->user->email;
             $messageData = [
-                'orderDetails'  => $orderDetails,
-                'status'        => $data['status']
+                'orderDetails'      => $orderDetails,
+                'status'            => $data['status'],
+                'courier_name'      => $data['courier_name'],
+                'tracking_number'   => $data['tracking_number'],
             ];
             Mail::send('frontend.emails.order_status', $messageData, function ($message) use ($email) {
                 $message->to($email)->subject('Order Placed - Laravel eCommerce Webiste');
@@ -102,7 +117,9 @@ class OrderController extends Controller
 
             OrderLog::create([
                 'order_id'          => $data['order_id'],
-                'order_status'      => $data['status']
+                'order_status'      => $data['status'],
+                'courier_name'      => $data['courier_name'],
+                'tracking_number'   => $data['tracking_number'],
             ]);
 
 

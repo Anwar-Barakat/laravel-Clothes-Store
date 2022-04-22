@@ -257,5 +257,8 @@ return [
     'shipped'                   => 'shipped',
     'deliverd'                  => 'deliverd',
     'in'                        => 'In',
-
+    'courier_name'              => 'Courier name',
+    'tracking_number'           => 'Tracking number',
+    'type_courier_name'         => 'Type Courier name',
+    'type_tracking_number'      => 'Type Tracking number',
 ];

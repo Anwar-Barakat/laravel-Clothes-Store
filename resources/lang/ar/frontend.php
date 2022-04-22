@@ -212,5 +212,7 @@ return [
     'paid'                      => 'مدفوعة',
     'shipped'                   => 'منقول',
     'deliverd'                  => 'سُلم',
+    'courier_name'              => 'اسم البريد السريع',
+    'tracking_number'           => 'رقم التعقب',
 
 ];

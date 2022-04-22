@@ -50,11 +50,9 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             @if ($product->product->getFirstMediaUrl('image_products', 'small'))
-                                                <a href="{{ route('frontend.details', $product->product_id) }}">
-                                                    <img width="80"
-                                                        src="{{ $product->product->getFirstMediaUrl('image_products', 'small') }}"
-                                                        alt="" class="img img-thumbnail">
-                                                </a>
+                                                <img width="80"
+                                                    src="{{ $product->product->getFirstMediaUrl('image_products', 'small') }}"
+                                                    alt="" class="img img-thumbnail">
                                             @else
                                                 <img width="80" src="{{ asset('assets/img/1.jpg') }}" alt=""
                                                     class="img img-thumbnail">
@@ -220,6 +218,35 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="form-group courier_name">
+                                    <label for="courier_name">{{ __('translation.courier_name') }}</label>
+                                    <input type="text" class="form-control @error('courier_name') is-invalid @enderror"
+                                        id="courier_name" name="courier_name" value="{{ $orderDetails->courier_name }}"
+                                        placeholder="{{ __('translation.type_courier_name') }}">
+                                    @error('courier_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="form-group tracking_number">
+                                    <label for="tracking_number">{{ __('translation.tracking_number') }}</label>
+                                    <input type="text" class="form-control @error('tracking_number') is-invalid @enderror"
+                                        id="tracking_number" name="tracking_number"
+                                        value="{{ $orderDetails->tracking_number }}"
+                                        placeholder="{{ __('translation.type_tracking_number') }}">
+                                    @error('tracking_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
                                 <button type="submit" class="button-30"
@@ -232,7 +259,7 @@
                         <hr>
                         <div class="mt-3">
                             @foreach ($orderLogs as $orderLog)
-                                <div>
+                                <div class="mb-1">
                                     {{ __('translation.' . $orderLog->order_status) }} {{ __('translation.in') }}
                                     :
                                     {{ $orderLog->created_at }}
@@ -322,61 +349,22 @@
         });
     </script>
 
-    {{-- turn on/off the Product status --}}
     <script>
-        $(document).on("click", ".updateProductStatus", function() {
-            var status = $(this).attr('status');
-            var product_id = $(this).attr('product_id');
-            var active = '{{ __('translation.active') }} ';
-            var disactiev = '{{ __('translation.disactive') }} ';
-            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-            $.ajax({
-                type: 'post',
-                url: '/admin/update-product-status',
-                data: {
-                    status: status,
-                    product_id: product_id,
-                },
-                success: function(response) {
-                    if (response['status'] == 0) {
-                        $('#product-' + response['product_id'])
-                            .attr('status', `${response['status']}`);
-                        $('#product-' + response['product_id']).text(disactiev);
-                        $('#product-' + response['product_id']).attr('style',
-                            'color : #ee335e  !important');
-                        $('#product-' + response['product_id']).prepend(
-                            '<i class="fas fa-power-off text-danger"></i> ');
-                    } else {
-                        $('#product-' + response['product_id'])
-                            .attr('status', `${response['status']}`);
-                        $('#product-' + response['product_id']).text(active);
-                        $('#product-' + response['product_id']).attr('style',
-                            'color : #22c03c   !important');
-                        $('#product-' + response['product_id']).prepend(
-                            '<i class="fas fa-power-off text-success"></i> ');
-
-                    }
-                },
-                error: function() {},
-            });
-        });
-    </script>
-
-    {{-- Confirmation Delete Attribute --}}
-    <script>
-        $(document).on("click", ".confirmationDelete", function() {
-            Swal.fire({
-                title: '{{ __('msgs.are_your_sure') }}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: '{{ __('buttons.close') }}',
-                confirmButtonText: '{{ __('msgs.yes_delete') }}',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = '/admin/delete-product/' + $(this).data('product');
+        $(document).ready(function() {
+            if ($('#status').val() == 'shipped') {
+                $('.courier_name').show();
+                $('.tracking_number').show();
+            } else {
+                $('.courier_name').hide();
+                $('.tracking_number').hide();
+            }
+            $('#status').on('change', function() {
+                if (this.value == 'shipped') {
+                    $('.courier_name').show();
+                    $('.tracking_number').show();
+                } else {
+                    $('.courier_name').hide();
+                    $('.tracking_number').hide();
                 }
             });
         });

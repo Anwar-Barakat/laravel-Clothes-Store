@@ -34,21 +34,18 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($orderDetails->orderProduct as $product)
-                                        <tr class="alert" role="alert">
+                                        <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <div class="img">
                                                     @if ($product->product->getFirstMediaUrl('image_products', 'small'))
-                                                        <a href="{{ route('frontend.details', $product->product_id) }}">
-                                                            <img width="80"
-                                                                src="{{ $product->product->getFirstMediaUrl('image_products', 'small') }}"
-                                                                alt="" class="img img-thumbnail">
-                                                        </a>
+                                                        <img width="80"
+                                                            src="{{ $product->product->getFirstMediaUrl('image_products', 'small') }}"
+                                                            alt="" class="img img-thumbnail">
                                                     @else
                                                         <img width="80" src="{{ asset('assets/img/1.jpg') }}" alt=""
                                                             class="img img-thumbnail">
                                                     @endif
-
                                                 </div>
                                             </td>
                                             <td>{{ $product->product_name }}</td>
@@ -70,31 +67,41 @@
                             <h4 class="mb-4 mt-5 text-center">{{ __('frontend.order_details') }}</h4>
                             <table class="table table-striped">
                                 <tbody>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.order_date') }}</td>
                                         <td>{{ $orderDetails->created_at }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.order_status') }}</td>
                                         <td>{{ __('frontend.' . $orderDetails->status) }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    @if ($orderDetails->status == 'shipped')
+                                        <tr>
+                                            <td>{{ __('frontend.courier_name') }}</td>
+                                            <td>{{ $orderDetails->courier_name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('frontend.tracking_number') }}</td>
+                                            <td>{{ $orderDetails->tracking_number }}</td>
+                                        </tr>
+                                    @endif
+                                    <tr>
                                         <td>{{ __('frontend.grand_total') }}</td>
                                         <td>{{ $orderDetails->grand_amount }}$</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.shipping_charges') }}</td>
                                         <td>{{ $orderDetails->shipping_cart }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.coupon_code') }}</td>
                                         <td>{{ $orderDetails->coupon_code ?? '-' }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.coupon_amount') }}</td>
                                         <td>{{ $orderDetails->coupon_amount ?? '-' }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.payment_methods') }}</td>
                                         <td>{{ $orderDetails->payment_method }}</td>
                                     </tr>
@@ -107,27 +114,27 @@
                             <h4 class="mb-4 mt-5 text-center">{{ __('frontend.delivery_address') }}</h4>
                             <table class="table table-striped">
                                 <tbody>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.name') }}</td>
                                         <td>{{ $orderDetails->name }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.address') }}</td>
                                         <td>{{ $orderDetails->address }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.state') }}</td>
                                         <td>{{ $orderDetails->state }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.country') }}</td>
                                         <td>{{ $orderDetails->country->name }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.mobile') }}</td>
                                         <td>{{ $orderDetails->mobile ?? '-' }}</td>
                                     </tr>
-                                    <tr class="alert" role="alert">
+                                    <tr>
                                         <td>{{ __('frontend.pincode') }}</td>
                                         <td>{{ $orderDetails->pincode }}</td>
                                     </tr>
