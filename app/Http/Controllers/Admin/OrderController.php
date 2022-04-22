@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -81,6 +83,16 @@ class OrderController extends Controller
             Order::where('id', $data['order_id'])->update([
                 'status'    => $data['status']
             ]);
+            $message = 'Dear customer, your order #' . $data['order_id'] . ' status has been updated to ' . $data['status'];
+            $orderDetails       = Order::with(['orderProduct', 'user'])->where('id', $data['order_id'])->first();
+            $email              = $orderDetails->user->email;
+            $messageData = [
+                'orderDetails'  => $orderDetails,
+                'status'        => $data['status']
+            ];
+            Mail::send('frontend.emails.order_status', $messageData, function ($message) use ($email) {
+                $message->to($email)->subject('Order Placed - Laravel eCommerce Webiste');
+            });
             Session::flash('message', __('msgs.order_status'));
             return redirect()->back();
         }

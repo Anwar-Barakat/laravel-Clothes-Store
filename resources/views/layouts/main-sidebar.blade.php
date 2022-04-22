@@ -125,7 +125,7 @@
             {{-- Coupons --}}
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
-                    <i class="fas fa-dollar-sign icon_sidebar side-menu__icon"></i>
+                    <i class="fas fa-coins icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.coupons') }}</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
