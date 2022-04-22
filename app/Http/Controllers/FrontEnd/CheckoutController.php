@@ -12,6 +12,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
@@ -108,6 +109,15 @@ class CheckoutController extends Controller
             DB::commit();
 
             if ($payment_method == 'COD') {
+                $orderDetails       = Order::with(['orderProduct', 'user'])->where('id', $order_id)->first();
+                $email              = Auth::user()->email;
+                $messageData = [
+                    'orderDetails'  => $orderDetails
+                ];
+                Mail::send('frontend.emails.order', $messageData, function ($message) use ($email) {
+                    $message->to($email)->subject('Order Placed - Laravel eCommerce Webiste');
+                });
+
                 return redirect()->route('frontend.checkout.thanks');
             } else {
                 return "prepaid coming soon!!";
