@@ -199,6 +199,7 @@
                     </div>
                 </div>
                 <div class="card-body">
+
                     <form action="{{ route('admin.orders.update') }}" method="POST">
                         @csrf
                         <input type="hidden" value="{{ $orderDetails->id }}" name="order_id">
@@ -226,6 +227,19 @@
                             </div>
                         </div>
                     </form>
+
+                    @if ($orderLogs->count() > 0)
+                        <hr>
+                        <div class="mt-3">
+                            @foreach ($orderLogs as $orderLog)
+                                <div>
+                                    {{ __('translation.' . $orderLog->order_status) }} {{ __('translation.in') }}
+                                    :
+                                    {{ $orderLog->created_at }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div><!-- bd -->
             </div><!-- bd -->
         </div>

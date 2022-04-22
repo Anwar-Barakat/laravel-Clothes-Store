@@ -256,5 +256,6 @@ return [
     'paid'                      => 'paid',
     'shipped'                   => 'shipped',
     'deliverd'                  => 'deliverd',
+    'in'                        => 'In',
 
 ];
