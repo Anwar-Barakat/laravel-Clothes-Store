@@ -164,7 +164,7 @@ Route::group(
                 Route::get('orders/index',                                      [AdminOrderController::class, 'index'])->name('orders.index');
                 Route::get('orders/show/{order}',                               [AdminOrderController::class, 'show'])->name('orders.show');
                 Route::post('orders/update',                                    [AdminOrderController::class, 'update'])->name('orders.update');
-
+                Route::get('order-invoice/{order}',                             [AdminOrderController::class, 'orderInvoce'])->name('orders.order.invoice');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
@@ -252,9 +252,9 @@ Route::group(
             Route::get('orders/index',                              [OrderController::class, 'index'])->name('orders.index');
             Route::get('orders/show/{id}',                          [OrderController::class, 'show'])->name('orders.show');
 
+            Route::get('/{page}',                                       [AdminController::class, 'index']);
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });
     }
 );
-Route::get('/{page}',                                       [AdminController::class, 'index']);

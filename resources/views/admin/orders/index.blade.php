@@ -73,15 +73,20 @@
                                                     type="button">{{ __('translation.actions') }} <i
                                                         class="fas fa-caret-down ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
-                                                    <form action="" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a href="{{ route('admin.orders.show', $order) }}"
-                                                            class="dropdown-item" title="{{ __('buttons.edit') }}">
-                                                            <i class="fas fa-eye text-warning"></i>
-                                                            {{ __('translation.view_details') }}
+                                                    <a href="{{ route('admin.orders.show', $order) }}"
+                                                        class="dropdown-item half-gap"
+                                                        title="{{ __('translation.edit') }}">
+                                                        <i class="fas fa-eye text-warning"></i>
+                                                        {{ __('translation.view_details') }}
+                                                    </a>
+                                                    @if ($order->status == 'shipped' || $order->status == 'deliverd')
+                                                        <a href="{{ route('admin.orders.order.invoice', $order) }}"
+                                                            class="dropdown-item half-gap"
+                                                            title="{{ __('translation.order_invoice') }}">
+                                                            <i class="fas fa-file-invoice text-success"></i>
+                                                            {{ __('translation.order_invoice') }}
                                                         </a>
-                                                    </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>

@@ -138,4 +138,11 @@ class OrderController extends Controller
     {
         //
     }
+
+
+    public function orderInvoce(Order $order)
+    {
+        $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $order['id'])->first();
+        return view('admin.orders.invoice', ['orderDetails' => $orderDetails]);
+    }
 }

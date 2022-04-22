@@ -64,6 +64,16 @@ font-family: 'Cairo', sans-serif !important;
     bottom: 0;
 }
 
+.half-gap {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+table.dataTable.no-footer tr:first-child {
+    white-space: nowrap !important;
+}
+
 .fa-chevron-up {
     padding-top: 0;
     font-size: 20px;
