@@ -33,6 +33,7 @@ return [
     'electronic'                => 'Electronics',
     'brands'                    => 'Brands',
     'price'                     => 'Price',
+    'unit_price'                => 'Unit price',
     'filter'                    => 'Filter',
     'show_more'                 => 'Show More',
     'size'                      => 'Size',
@@ -97,6 +98,7 @@ return [
     'coupon_discount'           => 'Coupon discount',
     'update_quantity'           => 'Update quantity',
     'price_after_discount'      => 'Price after discount',
+    'no_product'                => 'No Products yet !',
 
 
     // Details :

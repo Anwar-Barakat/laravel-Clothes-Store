@@ -58,26 +58,6 @@
                                                     {{ __('frontend.view_details') }}
                                                 </a>
                                             </td>
-                                            {{-- <td>
-                                                <div class="email">
-                                                    <span>Sneakers Shoes 2020 For Men </span>
-                                                    <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-                                                </div>
-                                            </td>
-                                            <td>$44.99</td> --}}
-                                            {{-- <td class="quantity">
-                                                <div class="input-group">
-                                                    <input type="text" name="quantity"
-                                                        class="quantity form-control input-number" value="2" min="1"
-                                                        max="100">
-                                                </div>
-                                            </td> --}}
-                                            {{-- <td>
-                                            <button type="button" class="close" data-dismiss="alert"
-                                                aria-label="Close">
-                                                <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                            </button>
-                                        </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

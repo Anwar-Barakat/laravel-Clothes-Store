@@ -541,7 +541,7 @@ a.text-danger:focus {
 .widget-content.fabrics,
 .widget-content.fit,
 .widget-content.occasion {
-    display: none;
+    display: block;
 }
 
 #categories_list,

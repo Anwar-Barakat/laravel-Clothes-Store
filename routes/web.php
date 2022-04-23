@@ -252,9 +252,9 @@ Route::group(
             Route::get('orders/index',                              [OrderController::class, 'index'])->name('orders.index');
             Route::get('orders/show/{id}',                          [OrderController::class, 'show'])->name('orders.show');
 
-            Route::get('/{page}',                                       [AdminController::class, 'index']);
 
             Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
         });
     }
 );
+Route::get('/{page}',                                       [AdminController::class, 'index']);

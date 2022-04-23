@@ -59,6 +59,7 @@ return [
     'electronic'                => 'الألكترونيات',
     'brands'                    => 'الشعارات',
     'price'                     => 'السعر',
+    'unit_price'                => 'السعر الموحد',
     'filter'                    => 'فلتر',
     'show_more'                 => 'رؤية المزيد',
     'size'                      => 'القياس',
@@ -97,6 +98,7 @@ return [
     'coupon_discount'           => 'خصم القسيمة',
     'update_quantity'           => 'تحديث الكمية',
     'price_after_discount'      => 'السعر بعد الخصم',
+    'no_product'                => 'لا يوجد منتجات بعد !',
 
 
     // Details :

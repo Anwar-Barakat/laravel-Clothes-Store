@@ -1,15 +1,15 @@
 @auth
     <div class="wrap-iten-in-cart" id="AppendCartProducts">
-        <ul class="products-cart">
-            @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
-                <li class="pr-cart-item" style="padding:13px">
-                    @if (request()->routeIs('frontend.cart'))
-                        {{ __('frontend.your_address') }}
-                    @else
-                        {{ __('frontend.check_your_address') }}
-                    @endif
-                </li>
-            @endif
+        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
+            <h3 class="box-title">
+                @if (request()->routeIs('frontend.cart'))
+                    {{ __('frontend.your_address') }}
+                @else
+                    {{ __('frontend.check_your_address') }}
+                @endif
+            </h3>
+        @endif
+        <ul class="p-0">
             @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
                 <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
                     @if (request()->routeIs('frontend.cart'))
@@ -83,7 +83,7 @@
             </div>
         </li>
     @endif
-    @foreach ($userCartProducts as $userCartProduct)
+    @forelse ($userCartProducts as $userCartProduct)
         @php
             $price = App\Models\Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
         @endphp
@@ -118,15 +118,15 @@
             </div>
             <div class="price-field sub-total">
                 <p class="price">
-                    ${{ $price['productPrice'] }}
+                    {{ $price['productPrice'] * $userCartProduct->quantity }}$
                 </p>
             </div>
             <div class="price-field sub-total">
                 <p class="price">
-                    ${{ $price['discount'] }}
+                    {{ $price['discount'] * $userCartProduct->quantity }}$
                 </p>
             </div>
-            <div class="quantity">
+            <div class="quantity text-center">
                 @if (request()->routeIs('frontend.cart'))
                     <div class="quantity-input">
                         <input type="text" name="product-quatity" value="{{ $userCartProduct->quantity }}"
@@ -142,7 +142,7 @@
             </div>
             <div class="price-field sub-total">
                 <p class="price">
-                    ${{ $price['finalPrice'] * $userCartProduct->quantity }}
+                    {{ $price['finalPrice'] * $userCartProduct->quantity }}$
                 </p>
             </div>
             <div class="delete">
@@ -155,19 +155,25 @@
         @php
             $totalPrice = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
         @endphp
-    @endforeach
+    @empty
+        <li class="pr-cart-item">
+            <div class="product-image">
+                {{ __('frontend.no_product') }}
+            </div>
+        </li>
+    @endforelse
 </ul>
 <div class="summary order_summerized">
     <div class="order-summary">
         <h4 class="title-box">{{ __('frontend.order_summary') }}</h4>
         <p class="summary-info">
             <span class="title">{{ __('frontend.subtotal') }}</span>
-            <b class="index">${{ $totalPrice ?? 0 }}</b>
+            <b class="index">{{ $totalPrice ?? 0 }}$</b>
         </p>
         <p class="summary-info" style="margin: 10px 0">
             <span class="title">{{ __('frontend.coupon_discount') }}</span>
-            <b class="index">$
-                <b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b>
+            <b class="index">
+                <b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}$</b>
             </b>
         </p>
         <p class="summary-info total-info ">
@@ -175,8 +181,10 @@
                 {{ __('frontend.total') }} =
                 ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }})
             </span>
-            <b class="index">$
-                <b id="lastTotalPrice">{{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}</b>
+            <b class="index">
+                <b id="lastTotalPrice">
+                    {{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}$
+                </b>
                 {{ Session::put('grandPrice', $grandPrice) }}
             </b>
         </p>
@@ -186,9 +194,10 @@
             <a class="btn btn-checkout"
                 href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.add_delivery_address') }}</a>
         @endauth
-        <a class="btn btn-checkout"
-            href="{{ route('frontend.url', 'men-shoes') }}">{{ __('frontend.contiue_shopping') }}<i
-                class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        <a class="btn btn-checkout" href="{{ route('frontend.url', 'men-shoes') }}">
+            {{ __('frontend.contiue_shopping') }} &nbsp;
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </a>
     </div>
 </div>
 
