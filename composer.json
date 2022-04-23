@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
         "mcamara/laravel-localization": "^1.7",
+        "milon/barcode": "^9.0",
         "spatie/laravel-medialibrary": "9.0.0",
         "spatie/laravel-translatable": "*"
     },

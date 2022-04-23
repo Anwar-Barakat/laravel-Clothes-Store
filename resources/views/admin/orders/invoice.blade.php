@@ -41,6 +41,14 @@
                                         {{ __('translation.payment_method') }}:
                                         {{ $orderDetails->payment_method }}<br>
                                         {{ __('translation.created_at') }}: {{ $orderDetails->created_at }}<br>
+                                    <div class="d-flex align-items-center mt-3" style="column-gap: 1rem">
+                                        <span> {{ __('translation.barcode') }} :</span>
+                                        <span>
+                                            @php
+                                                echo DNS1D::getBarcodeHTML($orderDetails->id, 'C39');
+                                            @endphp
+                                        </span>
+                                    </div>
                                     </p>
                                 </div>
                             </div>
@@ -84,6 +92,7 @@
                                         <th class="tx-center">{{ __('translation.quantity') }}</th>
                                         <th class="tx-right">{{ __('translation.unit_price') }}</th>
                                         <th class="tx-right">{{ __('translation.amount') }}</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,6 +110,13 @@
                                                 {{ __('translation.code') }} : {{ $product->product_code }}<br>
                                                 {{ __('translation.color') }} : {{ $product->product_color }}<br>
                                                 {{ __('translation.size') }} : {{ $product->product_size }}<br>
+                                                <div class="d-flex align-items-center">
+                                                    <span>
+                                                        @php
+                                                            echo DNS1D::getBarcodeHTML($product->product_code, 'C39');
+                                                        @endphp
+                                                    </span>
+                                                </div>
                                             </td>
                                             <td class="tx-center">{{ $product->product_quantity }}</td>
                                             <td class="tx-right">${{ $product->product_price }}</td>

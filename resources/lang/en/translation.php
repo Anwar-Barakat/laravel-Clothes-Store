@@ -272,4 +272,5 @@ return [
     'sub_amount'                => 'Sub-Total',
     'shipping'                  => 'Shipping',
     'total_due'                 => 'Total Due',
+    'barcode'                   => 'Barcode',
 ];
