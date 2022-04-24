@@ -86,6 +86,12 @@
                                                             <i class="fas fa-file-invoice text-success"></i>
                                                             {{ __('translation.order_invoice') }}
                                                         </a>
+                                                        <a href="{{ route('admin.orders.order.print', $order) }}"
+                                                            class="dropdown-item half-gap"
+                                                            title="{{ __('translation.print_invoice') }}">
+                                                            <i class="fas fa-file-pdf text-primary"></i>
+                                                            {{ __('translation.print_invoice') }}
+                                                        </a>
                                                     @endif
                                                 </div>
                                             </div>

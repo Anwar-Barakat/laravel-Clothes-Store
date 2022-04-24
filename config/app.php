@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Milon\Barcode\BarcodeServiceProvider::class,
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,6 +229,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
+        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class
+
     ],
 
 ];

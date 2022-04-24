@@ -53,8 +53,8 @@
                                                 {{ $order->created_at }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('frontend.orders.show', $order->id) }}"
-                                                    class="btn btn-primary btn-sm">
+                                                <a href="{{ route('frontend.orders.show', $order->id) }}">
+                                                    <i class="fa fa-eye text-warning"></i>
                                                     {{ __('frontend.view_details') }}
                                                 </a>
                                             </td>

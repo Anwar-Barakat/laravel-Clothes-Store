@@ -4606,7 +4606,7 @@ article.single-post blockquote p:last-child::after {
     background: #009688;
     color: white;
     font-size: 14px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     box-shadow: rgb(0 0 0 / 30%) 0px 10px 13px -3px, rgb(0 0 0 / 20%) 0px -4px 0px inset;
     text-align: center;
 }
@@ -4614,7 +4614,7 @@ article.single-post blockquote p:last-child::after {
 .wrap-iten-in-cart .products-cart .pr-cart-item {
     list-style: none;
     display: table;
-    padding: 20px 10px;
+    padding: 10px 10px;
     width: 100%;
 }
 

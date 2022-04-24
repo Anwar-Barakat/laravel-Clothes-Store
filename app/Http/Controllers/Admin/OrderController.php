@@ -145,4 +145,10 @@ class OrderController extends Controller
         $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $order['id'])->first();
         return view('admin.orders.invoice', ['orderDetails' => $orderDetails]);
     }
+
+    public function orderPrint(Order $order)
+    {
+        $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $order['id'])->first();
+        return view('admin.orders.invoice_print', ['orderDetails' => $orderDetails]);
+    }
 }
