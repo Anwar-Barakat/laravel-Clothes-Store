@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Pdf;
 
 class OrderController extends Controller
 {
@@ -137,18 +138,5 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function orderInvoce(Order $order)
-    {
-        $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $order['id'])->first();
-        return view('admin.orders.invoice', ['orderDetails' => $orderDetails]);
-    }
-
-    public function orderPrint(Order $order)
-    {
-        $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $order['id'])->first();
-        return view('admin.orders.invoice_print', ['orderDetails' => $orderDetails]);
     }
 }

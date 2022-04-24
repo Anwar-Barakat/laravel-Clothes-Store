@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\OrderInvoiceController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
@@ -164,8 +165,9 @@ Route::group(
                 Route::get('orders/index',                                      [AdminOrderController::class, 'index'])->name('orders.index');
                 Route::get('orders/show/{order}',                               [AdminOrderController::class, 'show'])->name('orders.show');
                 Route::post('orders/update',                                    [AdminOrderController::class, 'update'])->name('orders.update');
-                Route::get('order-invoice/{order}',                             [AdminOrderController::class, 'orderInvoce'])->name('orders.order.invoice');
-                Route::get('order-print/{order}',                               [AdminOrderController::class, 'orderPrint'])->name('orders.order.print');
+
+                Route::get('order-invoice/{order}',                             [OrderInvoiceController::class, 'show'])->name('orders.invoice.show');
+                Route::get('order-invoice-pdf/{order}',                         [OrderInvoiceController::class, 'printPdfInvoice'])->name('orders.invoice.pdf');
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
             });

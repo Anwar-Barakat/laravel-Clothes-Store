@@ -69,28 +69,27 @@
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
-                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
-                                                    type="button">{{ __('translation.actions') }} <i
-                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     <a href="{{ route('admin.orders.show', $order) }}"
                                                         class="dropdown-item half-gap"
-                                                        title="{{ __('translation.edit') }}">
+                                                        title="{{ __('translation.view_order_details') }}">
                                                         <i class="fas fa-eye text-warning"></i>
-                                                        {{ __('translation.view_details') }}
+                                                        {{ __('translation.view_order_details') }}
                                                     </a>
                                                     @if ($order->status == 'shipped' || $order->status == 'deliverd')
-                                                        <a href="{{ route('admin.orders.order.invoice', $order) }}"
+                                                        <a href="{{ route('admin.orders.invoice.show', $order) }}"
                                                             class="dropdown-item half-gap"
-                                                            title="{{ __('translation.order_invoice') }}">
+                                                            title="{{ __('translation.view_order_invoice') }}">
                                                             <i class="fas fa-file-invoice text-success"></i>
-                                                            {{ __('translation.order_invoice') }}
+                                                            {{ __('translation.view_order_invoice') }}
                                                         </a>
-                                                        <a href="{{ route('admin.orders.order.print', $order) }}"
+                                                        <a href="{{ route('admin.orders.invoice.pdf', $order) }}"
                                                             class="dropdown-item half-gap"
-                                                            title="{{ __('translation.print_invoice') }}">
+                                                            title="{{ __('translation.print_pdf_invoice') }}">
                                                             <i class="fas fa-file-pdf text-primary"></i>
-                                                            {{ __('translation.print_invoice') }}
+                                                            {{ __('translation.print_pdf_invoice') }}
                                                         </a>
                                                     @endif
                                                 </div>

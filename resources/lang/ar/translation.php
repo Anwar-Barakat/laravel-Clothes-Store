@@ -234,6 +234,9 @@ return [
     'coupon_code'               => 'كود القسيمة',
     'coupon_amount'             => 'قيمة القسيمة',
     'view_details'              => 'عرض التفاصيل',
+    'view_order_details'        => 'عرض تفاصيل الطلب',
+    'view_order_invoice'        => 'عرض تفاصيل الفاتورة',
+    'print_pdf_invoice'         => 'طباعة الفاتورة pdf',
     'customer_name'             => 'اسم العميل',
     'customer_email'            => 'ايميل العميل',
     'customer_details'          => 'تفاصيل العميل',
@@ -279,4 +282,9 @@ return [
     'barcode'                   => 'الرمز الشريطي',
     'print_invoice'             => 'طباعة الفاتورة',
     'print'                     => 'طباعة',
+    'invoice_to'                => 'فاتورة إلى',
+    'invoice_number'            => 'رقم الفاتورة',
+    'total'                     => 'المبلغ',
+    'notice'                    => 'ملاحظة',
+    'thank_you'                 => 'شكراً لك'
 ];

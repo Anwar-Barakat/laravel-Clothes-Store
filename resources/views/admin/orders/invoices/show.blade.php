@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.print_invoice'))
+@section('title', __('translation.order_invoice'))
 @section('css')
     <style>
         @media print {
@@ -16,7 +16,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.print_invoice') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.order_invoice') }}</span>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                 <div class="card card-invoice">
                     <div class="card-body">
                         <div class="invoice-header">
-                            <h1 class="invoice-title">{{ __('translation.print_invoice') }}</h1>
+                            <h1 class="invoice-title">{{ __('translation.invoice') }}</h1>
                             <div class="billed-from">
                                 <h6>{{ __('translation.order_number') }} #{{ $orderDetails->id }}</h6>
                             </div><!-- billed-from -->
@@ -168,8 +168,9 @@
                             </table>
                         </div>
                         <hr class="mg-b-40">
-                        <a href="#" class="btn btn-danger float-left mt-3 mr-2" onclick="printDiv()" id="printBtn">
-                            <i class="mdi mdi-printer ml-1"></i>{{ __('translation.print') }}
+                        <a href="javascript:void(0);" class="btn btn-danger float-left mt-3 mr-2" onclick="printDiv()"
+                            id="printBtn">
+                            <i class="mdi mdi-printer ml-1"></i> {{ __('translation.print') }}
                         </a>
                     </div>
                 </div>

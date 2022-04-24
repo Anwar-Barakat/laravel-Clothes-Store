@@ -230,6 +230,9 @@ return [
     'coupon_code'               => 'Coupon code',
     'coupon_amount'             => 'Coupon amount',
     'view_details'              => 'View details',
+    'view_order_details'        => 'view order details',
+    'view_order_invoice'        => 'View order invoice',
+    'print_pdf_invoice'         => 'Print pdf invoice',
     'customer_name'             => 'Customer name',
     'customer_email'            => 'Customer email',
     'customer_details'          => 'Customer details',
@@ -275,5 +278,10 @@ return [
     'barcode'                   => 'Barcode',
     'print_invoice'             => 'Print Invoice',
     'print'                     => 'Print',
+    'invoice_to'                => 'INVOICE TO',
+    'invoice_number'            => 'Invoice Number',
+    'total'                     => 'Total',
+    'notice'                    => 'NOTICE',
+    'thank_you'                 =>'Thank you'
 
 ];
