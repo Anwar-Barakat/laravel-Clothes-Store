@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="shopping-cart page" >
+    <div class="shopping-cart page">
         <main id="main" class="main-site">
             <div class="container">
                 <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
@@ -177,6 +177,9 @@
 
                         if (response.status == 'user not found here')
                             toastr.info("{{ __('msgs.user_not_found_here') }}");
+
+                        if (response.status == 'code already availated')
+                            toastr.info("{{ __('msgs.code_already_availated') }}");
 
                         if (response.status == true) {
                             $('#totalProducts').html(response['totalCartProducts']);

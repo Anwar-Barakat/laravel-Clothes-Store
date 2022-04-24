@@ -66,6 +66,7 @@ return [
     'user_not_found_here'           => 'This coupon code is not for you !!',
     'coupon_apply'                  => 'Coupon code has successfully applied, you are availing discount !',
     'order_place_add'               => 'order has placed successfully',
+    'code_already_availated'        => 'This coupon code is already availed by you !',
 
 
 

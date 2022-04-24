@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserPasswordRequest;
 use App\Models\Cart;
 use App\Models\Country;
 use App\Models\Coupon;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -81,6 +82,12 @@ class UserAccountController extends Controller
                 $expirationDate = $codeDetails->expiration_date;
                 if ($expirationDate < date('Y-m-d'))
                     $statusType = 'is expire';
+
+                if ($codeDetails->type == 'Single Times') {
+                    $couponCount    = Order::where(['coupon_code' => $data['code'], 'user_id' => Auth::user()->id])->count();
+                    if ($couponCount == 1)
+                        $statusType = 'code already availated';
+                }
 
                 if (!empty($codeDetails->categories))
                     $selectedCats   = explode(',', $codeDetails->categories);

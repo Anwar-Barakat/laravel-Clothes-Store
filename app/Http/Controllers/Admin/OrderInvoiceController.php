@@ -48,7 +48,7 @@ class OrderInvoiceController extends Controller
     public function show(Order $order)
     {
         $orderDetails   = Order::with(['orderProduct', 'user'])->where('id', $order['id'])->first();
-        return view('admin.orders.invoices.pdf', ['orderDetails' => $orderDetails]);
+        return view('admin.orders.invoices.show', ['orderDetails' => $orderDetails]);
     }
 
     /**

@@ -2,12 +2,14 @@
     <div class="wrap-iten-in-cart" id="AppendCartProducts">
         @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
             <h3 class="box-title">
-                {{ __('frontend.your_address') }}
+                {{ __('frontend.check_your_address') }}
             </h3>
         @endif
         <ul class="p-0">
             @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
                 <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
+                    <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
+                        required value="{{ $deliveryAddress->id }}">
                     <label for="address{{ $deliveryAddress->id }}">
                         {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
                         {{ $deliveryAddress->country->name }}
@@ -60,7 +62,7 @@
                 {{ __('frontend.discount') }}
             </div>
             <div class="quantity">
-                {{ __('frontend.update_quantity') }}
+                {{ __('frontend.quantity') }}
             </div>
             <div class="price-field sub-total">
                 {{ __('frontend.price_after_discount') }}
@@ -113,15 +115,8 @@
                     ${{ $price['discount'] * $userCartProduct->quantity }}
                 </p>
             </div>
-            <div class="quantity text-center">
-                <div class="quantity-input">
-                    <input type="text" name="product-quatity" value="{{ $userCartProduct->quantity }}" data-max="120"
-                        pattern="[0-9]*">
-                    <a class="btnProductUpdate btn btn-reduce" href="javascript:void(0)"
-                        cartId="{{ $userCartProduct->id }}"></a>
-                    <a class="btnProductUpdate btn btn-increase" href="javascript:void(0)"
-                        cartId="{{ $userCartProduct->id }}"></a>
-                </div>
+            <div class="price-field text-center">
+                <p href="javascript:void(0)">{{ $userCartProduct->quantity }}</p>
             </div>
             <div class="price-field sub-total">
                 <p class="price">

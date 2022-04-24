@@ -31,7 +31,7 @@
                         id="checkoutForm">
                         @csrf
                         <div class="wrap-iten-in-cart" id="AppendCartProducts">
-                            @include('frontend.partials.cart_products')
+                            @include('frontend.partials.checkout_products')
                         </div>
 
                         <div class="summary">
