@@ -288,6 +288,6 @@ return [
 
     // Shipping Charges :
     'updated_at'                => 'Update At',
-
+    'type_shipping_charges'     => 'Type shipping charges'
 
 ];

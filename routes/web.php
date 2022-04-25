@@ -175,7 +175,11 @@ Route::group(
                 // **************************************************************
                 // **************************************************************
                 // Shipping Charges :
-                Route::get('shipping-charges/index',                            [ShippingChargeController::class, 'index'])->name('shipping-charge.index');
+                Route::get('shipping-charges/index',                            [ShippingChargeController::class, 'index'])->name('shipping-charges.index');
+                Route::post('shipping-charges/update/{shippingCharge}',         [ShippingChargeController::class, 'update'])->name('shipping-charges.update');
+                Route::post('update-shipping-charges-status',                   [ShippingChargeController::class, 'updateStatus']);
+
+
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
             });

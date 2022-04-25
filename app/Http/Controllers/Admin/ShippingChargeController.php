@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateShippingChargeRequest;
 use App\Models\ShippingCharge;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Session;
 
 class ShippingChargeController extends Controller
 {
@@ -16,7 +18,7 @@ class ShippingChargeController extends Controller
      */
     public function index()
     {
-        $shippingCharges = ShippingCharge::latest()->paginate(10);
+        $shippingCharges = ShippingCharge::with('country')->paginate(10);
         return view('admin.shipping-charges.index', ['shippingCharges' => $shippingCharges]);
     }
 
@@ -70,9 +72,14 @@ class ShippingChargeController extends Controller
      * @param  \App\Models\ShippingCharge  $shippingCharge
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShippingCharge $shippingCharge)
+    public function update(UpdateShippingChargeRequest $request, ShippingCharge $shippingCharge)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only('shipping_charges');
+            $shippingCharge->update(['shipping_charges' => $data['shipping_charges']]);
+            Session::flash('message', __('msgs.shipping_charges_update'));
+            return redirect()->route('admin.shipping-charges.index');
+        }
     }
 
     /**
@@ -84,5 +91,24 @@ class ShippingChargeController extends Controller
     public function destroy(ShippingCharge $shippingCharge)
     {
         //
+    }
+
+
+    public function updateStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['status', 'shippingCharge_id']);
+            if ($data['status'] == 1)
+                $status = 0;
+            else
+                $status = 1;
+            ShippingCharge::where('id', $data['shippingCharge_id'])->update([
+                'status'                => $status
+            ]);
+            return response()->json([
+                'status'                => $status,
+                'shippingCharge_id'     => $data['shippingCharge_id']
+            ]);
+        }
     }
 }

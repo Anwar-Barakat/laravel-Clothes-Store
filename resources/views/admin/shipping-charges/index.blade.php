@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="sections">
+                        <table class="table text-md-nowrap display" id="shipping_charges">
                             <thead>
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
@@ -64,8 +64,8 @@
                                                         <a href="javascript:void(0);"
                                                             title="{{ __('translation.update_status') }}"
                                                             class="updateShippingChargeStatus text-success dropdown-item"
-                                                            id="product-{{ $shippingCharge->id }}"
-                                                            product_id="{{ $shippingCharge->id }}"
+                                                            id="shippingCharge-{{ $shippingCharge->id }}"
+                                                            shippingCharge_id="{{ $shippingCharge->id }}"
                                                             status="{{ $shippingCharge->status }}">
                                                             <i class="fas fa-power-off"></i>
                                                             {{ __('translation.active') }}
@@ -74,21 +74,76 @@
                                                         <a href="javascript:void(0);"
                                                             title="{{ __('translation.update_status') }}"
                                                             class="updateShippingChargeStatus text-danger  dropdown-item"
-                                                            id="product-{{ $shippingCharge->id }}"
-                                                            product_id="{{ $shippingCharge->id }}"
+                                                            id="shippingCharge-{{ $shippingCharge->id }}"
+                                                            shippingCharge_id="{{ $shippingCharge->id }}"
                                                             status="{{ $shippingCharge->status }}">
                                                             <i class="fas fa-power-off "></i>
                                                             {{ __('translation.disactive') }}
                                                         </a>
                                                     @endif
-                                                    <a href="" class="dropdown-item" title="{{ __('buttons.edit') }}">
+                                                    <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                        title="{{ __('buttons.update') }}"
+                                                        data-target="#editShippingCharge{{ $shippingCharge->id }}"
+                                                        class="dropdown-item">
                                                         <i class="fas fa-edit text-primary"></i>
-                                                        {{ __('buttons.edit') }}
+                                                        {{ __('buttons.update') }}
                                                     </a>
                                                     </form>
                                                 </div>
                                             </div>
                                         </td>
+                                        {{-- Edit Shipping Charges Modal --}}
+                                        <div class="modal fade" id="editShippingCharge{{ $shippingCharge->id }}"
+                                            tabindex="-1" role="dialog"
+                                            aria-labelledby="editShippingCharge{{ $shippingCharge->id }}Label"
+                                            aria-hidden="true" data-effect="effect-super-scaled">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ __('translation.update_section') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form
+                                                            action="{{ route('admin.shipping-charges.update', $shippingCharge) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="country_id">{{ __('translation.country') }}</label>
+                                                                <input type="text" class="form-control"
+                                                                    value="{{ $shippingCharge->country->name }}"
+                                                                    readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="shipping_charges">{{ __('translation.shipping_charges') }}</label>
+                                                                <input type="text"
+                                                                    class="form-control  @error('shipping_charges') is-invalid @enderror"
+                                                                    id="shipping_charges" name="shipping_charges"
+                                                                    value="{{ old('shipping_charges', $shippingCharge->shipping_charges) }}"
+                                                                    placeholder="{{ __('translation.type_shipping_charges') }}">
+                                                                @error('shipping_charges')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary modal-effect"
+                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">{{ __('buttons.update') }}</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -121,7 +176,7 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
     <script>
-        $('#shipping_charges').DataTable({
+        $('.display').DataTable({
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
@@ -134,4 +189,45 @@
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
 
+
+    {{-- turn on/off the Shipping Charges status --}}
+    <script>
+        $(document).on("click", ".updateShippingChargeStatus", function() {
+            var status = $(this).attr('status');
+            var shippingCharge_id = $(this).attr('shippingCharge_id');
+            var active = '{{ __('translation.active') }} ';
+            var disactiev = '{{ __('translation.disactive') }} ';
+            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+            $.ajax({
+                type: 'post',
+                url: '/admin/update-shipping-charges-status',
+                data: {
+                    status: status,
+                    shippingCharge_id: shippingCharge_id,
+                },
+                success: function(response) {
+                    if (response['status'] == 0) {
+                        $('#shippingCharge-' + response['shippingCharge_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#shippingCharge-' + response['shippingCharge_id']).text(disactiev);
+                        $('#shippingCharge-' + response['shippingCharge_id']).attr('style',
+                            'color : #ee335e  !important');
+                        $('#shippingCharge-' + response['shippingCharge_id']).prepend(
+                            '<i class="fas fa-power-off text-danger"></i> ');
+                    } else {
+                        $('#shippingCharge-' + response['shippingCharge_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#shippingCharge-' + response['shippingCharge_id']).text(active);
+                        $('#shippingCharge-' + response['shippingCharge_id']).attr('style',
+                            'color : #22c03c   !important');
+                        $('#shippingCharge-' + response['shippingCharge_id']).prepend(
+                            '<i class="fas fa-power-off text-success"></i> ');
+
+                    }
+                },
+                error: function() {},
+            });
+        });
+    </script>
 @endsection

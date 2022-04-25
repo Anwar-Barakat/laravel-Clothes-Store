@@ -32,6 +32,7 @@ return [
     'brand_added'                   => 'Brand Has Added Successfully',
     'brand_updated'                 => 'Brand Has Updated Successfully',
     'order_status'                  => 'Order status Has Updated Successfully',
+    'shipping_charges_update'       => 'Shipping Charges Updated Successfully',
 
 
 

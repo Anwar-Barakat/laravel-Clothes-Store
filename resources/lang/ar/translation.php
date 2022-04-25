@@ -291,6 +291,7 @@ return [
 
     // Shipping Charges :
     'updated_at'                => 'التحديث في',
+    'type_shipping_charges'     => 'ادخل رسوم الشحن',
 
 
 ];

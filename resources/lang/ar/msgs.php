@@ -36,7 +36,8 @@ return [
     'brnad_added'                   => 'تم إضافة الشعار بنجاح',
     'brnad_updated'                 => 'تم تحديث الشعار بنجاح',
     'order_status'                  => 'تم تحديث حالة الطلب بنجاح',
-    'code_already_availated'        => 'لقد استفدت بالفعل من رمز القسيمة هذا !',
+    'shipping_charges_update'       => 'تم تحديث رسوم الشحن بنجاح',
+
 
 
 
@@ -75,6 +76,7 @@ return [
     'delivery_address_update'       => 'تم تحديث عنوان التوصيل بنجاح',
     'delivery_address_delete'       => 'تم حذف عنوان التوصيل بنجاح',
     'order_place_add'               => 'تم وضع الطلب بنجاح',
+    'code_already_availated'        => 'لقد استفدت بالفعل من رمز القسيمة هذا !',
 
 
 
