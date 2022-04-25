@@ -125,14 +125,16 @@ class UserAccountController extends Controller
                 ]);
             else {
                 if ($codeDetails->amount_type == 'Fixed')
-                    $couponAmount = $codeDetails->amount;
+                    $couponAmount = ((int)$codeDetails->amount);
                 else
                     $couponAmount = ($totalAmount * (int)$codeDetails->amount / 100);
 
-                $lastTotalPrice   = $totalAmount - $couponAmount;
+                $lastTotalPrice   = ((int)$totalAmount - (int)$couponAmount);
 
                 Session::put('couponAmount', $couponAmount);
                 Session::put('couponCode', $data['code']);
+
+
 
                 return response()->json([
                     'status'            => true,

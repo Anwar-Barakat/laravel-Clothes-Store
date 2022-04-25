@@ -69,9 +69,6 @@
             <div class="price-field sub-total">
                 {{ __('frontend.price_after_discount') }}
             </div>
-            <div class="delete">
-                {{ __('buttons.delete') }}
-            </div>
         </li>
     @endif
     @forelse ($userCartProducts as $userCartProduct)
@@ -124,12 +121,6 @@
                 <p class="price">
                     ${{ $price['finalPrice'] * $userCartProduct->quantity }}
                 </p>
-            </div>
-            <div class="delete">
-                <a href="#" class="btn btn-delete btnProductDelete" title="" cartId="{{ $userCartProduct->id }}">
-                    <span>{{ __('frontend.delete_from_cart') }}</span>
-                    <i class="fa fa-times-circle" aria-hidden="true"></i>
-                </a>
             </div>
         </li>
         @php
