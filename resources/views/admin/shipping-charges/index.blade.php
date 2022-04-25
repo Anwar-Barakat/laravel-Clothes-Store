@@ -148,7 +148,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $shippingCharges->onEachSide(1)->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>

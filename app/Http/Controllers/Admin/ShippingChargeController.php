@@ -18,7 +18,7 @@ class ShippingChargeController extends Controller
      */
     public function index()
     {
-        $shippingCharges = ShippingCharge::with('country')->paginate(10);
+        $shippingCharges = ShippingCharge::with('country')->get();
         return view('admin.shipping-charges.index', ['shippingCharges' => $shippingCharges]);
     }
 

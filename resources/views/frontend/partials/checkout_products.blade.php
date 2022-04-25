@@ -1,15 +1,17 @@
 @auth
     <div class="wrap-iten-in-cart" id="AppendCartProducts">
-        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
+        @if ($deliveryAddresses->count() > 0)
             <h3 class="box-title">
                 {{ __('frontend.check_your_address') }}
             </h3>
         @endif
         <ul class="p-0">
-            @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
+            @forelse ($deliveryAddresses  as $deliveryAddress)
                 <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
                     <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
-                        required value="{{ $deliveryAddress->id }}">
+                        required value="{{ $deliveryAddress->id }}"
+                        shipping_charges="{{ $deliveryAddress->shippingCharges }}" totalPrice="{{ $totalPrice }}"
+                        couponAmount="{{ Session::get('couponAmount') ?? 0 }}">
                     <label for="address{{ $deliveryAddress->id }}">
                         {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
                         {{ $deliveryAddress->country->name }}
@@ -150,8 +152,14 @@
         </p>
         <p class="summary-info" style="margin: 10px 0">
             <span class="title">{{ __('frontend.coupon_discount') }}</span>
-            <b class="index">$
+            <b class="index">-$
                 <b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b>
+            </b>
+        </p>
+        <p class="summary-info" style="margin: 10px 0">
+            <span class="title">{{ __('frontend.shipping_charges') }}</span>
+            <b class="index">+$
+                <b id="shippingChargesPos"></b>
             </b>
         </p>
         <p class="summary-info total-info ">
@@ -180,44 +188,6 @@
 </div>
 
 @section('js')
-    {{-- Update Cart Products --}}
-    <script>
-        $(document).on('click', '.btnProductUpdate', function() {
-            if ($(this).hasClass('btn-reduce')) {
-                var quantity = $(this).prev().val();
-                if (quantity <= 1) {
-                    alert("{{ __('msgs.cant_reduce_quantity') }}");
-                    return false;
-                } else
-                    newQuantity = parseInt(quantity) - 1;
-            }
-            if ($(this).hasClass('btn-increase')) {
-                var quantity = $(this).prev().prev().val();
-                newQuantity = parseInt(quantity) + 1;
-            }
-            alert(newQuantity)
-
-            var cartId = $(this).attr('cartId');
-            $.ajax({
-                type: "post",
-                url: "update-cart-products-quantity",
-                data: {
-                    cartId: cartId,
-                    newQuantity: newQuantity,
-                },
-                success: function(response) {
-                    if (response.status == false)
-                        toastr.info("{{ __('msgs.amount_not_available') }}");
-                    $('#totalProducts').html(response['totalCartProducts']);
-                    $('#AppendCartProducts').html(response['view']);
-                },
-                error: function() {
-                    alert('error')
-                }
-            });
-        });
-    </script>
-
     {{-- Delete The Product from shopping cart --}}
     <script>
         $(document).on('click', '.btnProductDelete', function() {
@@ -234,6 +204,19 @@
                     }
                 }
             });
+        });
+    </script>
+
+
+    {{-- Calculate shipping charges and update grand amount --}}
+    <script>
+        $('input[name=address_id]').bind('change', function() {
+            var shipping__charges = $(this).attr('shipping_charges');
+            var coupon__amount = $(this).attr('couponAmount');
+            var total__price = $(this).attr('totalPrice');
+            $('#shippingChargesPos').html(shipping__charges);
+            var grand__total = parseInt(total__price) + parseInt(shipping__charges);
+            $('#lastTotalPrice').html(grand__total)
         });
     </script>
 @endsection

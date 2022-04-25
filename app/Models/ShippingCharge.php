@@ -21,6 +21,14 @@ class ShippingCharge extends Model
         return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
     }
 
+    public static function getShippingCharges($country_id)
+    {
+        $shippingDetails    = ShippingCharge::where('country_id', $country_id)->first();
+        $shippingCharges    = $shippingDetails->shipping_charges;
+        return $shippingCharges;
+    }
+
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

@@ -9,6 +9,7 @@ use App\Models\DeliveryAddress;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\ShippingCharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -26,10 +27,23 @@ class CheckoutController extends Controller
     {
         $featuredPorducts       = Product::where(['is_feature' => 'Yes', 'status' => 1])->limit(5)->inRandomOrder()->get();
         $userCartProducts       = Cart::userCartProducts();
+        $deliveryAddresses      = DeliveryAddress::deliveryAddress();
+
+        foreach ($deliveryAddresses as $key => $value) {
+            $shippingCharges    = ShippingCharge::getShippingCharges($value->country_id);
+            $deliveryAddresses[$key]['shippingCharges'] = $shippingCharges;
+        }
+        $totalPrice = 0;
+        foreach ($userCartProducts as $userCartProduct) {
+            $price = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
+            $totalPrice = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
+        }
 
         return view('frontend.checkout', [
             'featuredPorducts'          => $featuredPorducts,
             'userCartProducts'          => $userCartProducts,
+            'deliveryAddresses'         => $deliveryAddresses,
+            'totalPrice'                => $totalPrice,
         ]);
     }
 
