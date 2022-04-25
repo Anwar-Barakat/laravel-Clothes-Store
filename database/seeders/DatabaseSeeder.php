@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             // BannerSeeder::class,
             // CategorySeeder::class,
             // CountrySeeder::class,
-            OrderStatusSeeder::class
+            // OrderStatusSeeder::class,
+            // ShippingChargeSeeder::class,
         ]);
     }
 }

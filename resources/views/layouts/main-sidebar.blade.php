@@ -160,6 +160,16 @@
                 </ul>
             </li>
 
+
+            {{-- Shipping charges --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.shipping-charge.index') }}">
+                    <i class="fas fa-shipping-fast icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.shipping_charges') }}</span>
+                </a>
+            </li>
+
+
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">

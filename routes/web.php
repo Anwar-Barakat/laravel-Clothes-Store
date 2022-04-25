@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\ShippingChargeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\FrontEnd\DeliveryAddressController;
@@ -21,7 +22,6 @@ use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
-use App\Models\OrderProduct;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -168,6 +168,14 @@ Route::group(
 
                 Route::get('order-invoice/{order}',                             [OrderInvoiceController::class, 'show'])->name('orders.invoice.show');
                 Route::get('order-invoice-pdf/{order}',                         [OrderInvoiceController::class, 'printPdfInvoice'])->name('orders.invoice.pdf');
+
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Shipping Charges :
+                Route::get('shipping-charges/index',                            [ShippingChargeController::class, 'index'])->name('shipping-charge.index');
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
             });

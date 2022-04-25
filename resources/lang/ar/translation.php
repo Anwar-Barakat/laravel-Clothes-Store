@@ -19,6 +19,7 @@ return [
     'banners'                   => 'الرايات',
     'all_orders'                => 'عرض الطلبات',
     'orders'                    => 'الطلبات',
+    'shipping_charges'          => 'رسوم الشحن',
 
 
 
@@ -286,5 +287,10 @@ return [
     'invoice_number'            => 'رقم الفاتورة',
     'total'                     => 'المبلغ',
     'notice'                    => 'ملاحظة',
-    'thank_you'                 => 'شكراً لك'
+    'thank_you'                 => 'شكراً لك',
+
+    // Shipping Charges :
+    'updated_at'                => 'التحديث في',
+
+
 ];

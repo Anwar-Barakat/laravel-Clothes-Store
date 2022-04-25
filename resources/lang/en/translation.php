@@ -282,6 +282,12 @@ return [
     'invoice_number'            => 'Invoice Number',
     'total'                     => 'Total',
     'notice'                    => 'NOTICE',
-    'thank_you'                 =>'Thank you'
+    'thank_you'                 => 'Thank you',
+    'shipping_charges'          => 'Shipping charges',
+
+
+    // Shipping Charges :
+    'updated_at'                => 'Update At',
+
 
 ];
