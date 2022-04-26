@@ -54,7 +54,7 @@
                                 @endforeach
                                 <tr class="alert" role="alert">
                                     <td>shipping Charges</td>
-                                    <td> {{ $orderDetails->shipping_cart }}</td>
+                                    <td> ${{ $orderDetails->shipping_cart }}</td>
                                 </tr>
                                 <tr class="alert" role="alert">
                                     <td>Coupon Discount</td>
