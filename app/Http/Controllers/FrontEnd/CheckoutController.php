@@ -35,8 +35,9 @@ class CheckoutController extends Controller
         }
         $totalPrice = 0;
         foreach ($userCartProducts as $userCartProduct) {
-            $price = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
-            $totalPrice = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
+            $price              = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
+            $totalPrice         = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
+            Session::put('totalPrice', $totalPrice);
         }
 
         return view('frontend.checkout', [
@@ -77,7 +78,13 @@ class CheckoutController extends Controller
 
             DB::beginTransaction();
 
-            $deliveryAddress = DeliveryAddress::where('id', $data['address_id'])->first();
+            $deliveryAddress    = DeliveryAddress::where('id', $data['address_id'])->first();
+
+            $shippingCharges    = ShippingCharge::getShippingCharges($deliveryAddress->country_id);
+
+            $grandPrice         = Session::get('totalPrice') + $shippingCharges - Session::get('couponAmount');
+            Session::put('grandPrice', $grandPrice);
+
             $order          = Order::create([
                 'user_id'           => Auth::user()->id,
                 'name'              => $deliveryAddress->name,
@@ -88,13 +95,13 @@ class CheckoutController extends Controller
                 'state'             => $deliveryAddress->state,
                 'country_id'        => $deliveryAddress->country_id,
                 'pincode'           => $deliveryAddress->pincode,
+                'shipping_cart'     => $shippingCharges,
                 'coupon_code'       => Session::get('couponCode'),
                 'coupon_amount'     => Session::get('couponAmount'),
                 'status'            => 'new',
                 'payment_method'    => $payment_method,
                 'payment_gateway'   => $data['payment_gateway'],
                 'grand_amount'      => Session::get('grandPrice'),
-                'shipping_cart'     => 0,
             ]);
 
             $order_id           = DB::getPdo()->lastInsertId();
@@ -103,14 +110,14 @@ class CheckoutController extends Controller
 
             $cartProducts       = Cart::where('user_id', Auth::user()->id)->get();
             foreach ($cartProducts as $key => $item) {
-                $productDetails         = Product::select('name', 'code', 'color')->where('id', $item->id)->first();
+                $productDetails         = Product::select('name', 'code', 'color')->where('id', $item->product_id)->first();
                 $getDiscountAttrPrice   = Product::getDiscountedAttributePrice($item['product_id'], $item->size);
 
                 OrderProduct::create([
                     'order_id'          => $order_id,
                     'user_id'           => Auth::user()->id,
                     'product_id'        => $item->product_id,
-                    'product_code'      => $productDetails->code,
+                    'product_code'      => 'sadasd',
                     'product_name'      => $productDetails->name,
                     'product_color'     => $productDetails->color,
                     'product_size'      => $item->size,
