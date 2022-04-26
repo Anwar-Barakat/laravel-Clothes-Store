@@ -73,6 +73,8 @@ class UserAccountController extends Controller
 
             if ($couponCount  == 0) {
                 $statusType     = 'not valid';
+                Session::forget(['couponCode', 'couponAmount']);
+                Session::save();
             } else {
                 $codeDetails    = Coupon::where('code', $data['code'])->first();
                 if ($codeDetails->status == 0)

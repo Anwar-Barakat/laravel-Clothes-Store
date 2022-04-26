@@ -156,7 +156,8 @@
         <p class="summary-info total-info ">
             <span class="title" style="font-size: 13px">
                 {{ __('frontend.total') }} =
-                ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }})
+                ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }} +
+                {{ __('frontend.shipping_charges') }})
             </span>
             <b class="index">$
                 <b id="lastTotalPrice">

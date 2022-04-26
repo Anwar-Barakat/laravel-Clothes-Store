@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h2>{{ __('frontend.thanks_line_1') }}</h2>
-                        <p>{{ __('frontend.thanks_line_2') }} {{ Session::get('OrderId') }}
+                        <p>{{ __('frontend.thanks_line_2') }} {{ Session::get('order_id') }}
                             {{ __('frontend.thanks_line_3') }} {{ Session::get('grandPrice') }}$</p>
                         <a href="{{ route('frontend.url', 'men-shoes') }}" class="btn btn-submit btn-submitx">
                             {{ __('frontend.contiue_shopping') }}
@@ -37,10 +37,16 @@
 @endsection
 
 @php
-Session::forget('order_id');
-Session::save();
+Illuminate\Support\Facades\Session::forget('order_id');
+Illuminate\Support\Facades\Session::save();
 
-Session::forget('grandPrice');
-Session::save();
+Illuminate\Support\Facades\Session::forget('grandPrice');
+Illuminate\Support\Facades\Session::save();
+
+Illuminate\Support\Facades\Session::forget('couponCode');
+Illuminate\Support\Facades\Session::save();
+
+Illuminate\Support\Facades\Session::forget('couponAmount');
+Illuminate\Support\Facades\Session::save();
 
 @endphp
