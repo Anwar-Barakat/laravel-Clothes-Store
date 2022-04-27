@@ -65,9 +65,8 @@
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
-                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
-                                                    type="button">{{ __('translation.actions') }} <i
-                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     <form action="{{ route('admin.banners.destroy', $banner) }}"
                                                         method="post">

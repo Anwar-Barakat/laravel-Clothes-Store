@@ -24,11 +24,11 @@ class Cart extends Model
     {
         if (Auth::check())
             $userCartProducts = Cart::with(['product' => function ($query) {
-                $query->select('id', 'name', 'price', 'code', 'color', 'category_id');
+                $query->select('id', 'name', 'price', 'code', 'color', 'weight', 'category_id');
             }])->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         else
             $userCartProducts = Cart::with(['product' => function ($query) {
-                $query->select('id', 'name', 'price', 'code', 'color');
+                $query->select('id', 'name', 'price', 'code', 'color','weight');
             }])->where('session_id', Session::get('session_id'))->orderBy('id', 'DESC')->get();
         return $userCartProducts;
     }

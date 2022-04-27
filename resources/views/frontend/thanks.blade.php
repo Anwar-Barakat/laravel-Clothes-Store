@@ -49,4 +49,10 @@ Illuminate\Support\Facades\Session::save();
 Illuminate\Support\Facades\Session::forget('couponAmount');
 Illuminate\Support\Facades\Session::save();
 
+Illuminate\Support\Facades\Session::forget('totalWeight');
+Illuminate\Support\Facades\Session::save();
+
+Illuminate\Support\Facades\Session::forget('totalPrice');
+Illuminate\Support\Facades\Session::save();
+
 @endphp

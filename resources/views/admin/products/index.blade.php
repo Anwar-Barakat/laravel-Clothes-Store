@@ -46,9 +46,7 @@
                                     <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.color') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.image') }}</th>
-                                    <th class=" border-bottom-0 tr-class-action">
-                                        {{ __('translation.actions') }}
-                                    </th>
+                                    <th class=" border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,9 +72,8 @@
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
-                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
-                                                    type="button">{{ __('translation.actions') }} <i
-                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     <form action="{{ route('admin.categories.destroy', $product) }}"
                                                         method="post">

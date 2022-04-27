@@ -23,7 +23,6 @@
                     </ul>
                 </div>
 
-
                 <div class=" main-content-area">
                     <div class="wrap-iten-in-cart" id="AppendCartProducts">
                         @include('frontend.partials.cart_products')

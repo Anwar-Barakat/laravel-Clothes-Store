@@ -120,7 +120,7 @@
                                     <label for="weight">{{ __('translation.weight') }}</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">{{ __('translation.kg') }}</span>
+                                            <span class="input-group-text">{{ __('translation.g') }}</span>
                                         </div>
                                         <input name="weight" class="form-control @error('weight') is-invalid @enderror"
                                             type="number" value="{{ old('weight') }}">

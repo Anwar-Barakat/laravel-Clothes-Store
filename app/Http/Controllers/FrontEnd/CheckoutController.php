@@ -29,15 +29,21 @@ class CheckoutController extends Controller
         $userCartProducts       = Cart::userCartProducts();
         $deliveryAddresses      = DeliveryAddress::deliveryAddress();
 
-        foreach ($deliveryAddresses as $key => $value) {
-            $shippingCharges    = ShippingCharge::getShippingCharges($value->country_id);
-            $deliveryAddresses[$key]['shippingCharges'] = $shippingCharges;
-        }
+
         $totalPrice = 0;
+        $totalWeight = 0;
         foreach ($userCartProducts as $userCartProduct) {
             $price              = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
             $totalPrice         = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
             Session::put('totalPrice', $totalPrice);
+
+            $totalWeight        += $userCartProduct->product->weight;
+            Session::put('totalWeight', $totalWeight);
+        }
+
+        foreach ($deliveryAddresses as $key => $value) {
+            $shippingCharges                            = ShippingCharge::getShippingCharges($totalWeight, $value->country_id);
+            $deliveryAddresses[$key]['shippingCharges'] = $shippingCharges;
         }
 
         return view('frontend.checkout', [
@@ -80,7 +86,7 @@ class CheckoutController extends Controller
 
             $deliveryAddress    = DeliveryAddress::where('id', $data['address_id'])->first();
 
-            $shippingCharges    = ShippingCharge::getShippingCharges($deliveryAddress->country_id);
+            $shippingCharges    = ShippingCharge::getShippingCharges(Session::get('totalWeight'), $deliveryAddress->country_id);
 
             $grandPrice         = Session::get('totalPrice') + $shippingCharges - Session::get('couponAmount');
             Session::put('grandPrice', $grandPrice);

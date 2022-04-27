@@ -128,19 +128,18 @@
                                                                             value="{{ $shippingCharge->country->name }}"
                                                                             readonly>
                                                                     </div>
-
                                                                 </div>
                                                                 <div class="col-md-12 col-xl-6">
                                                                     <div class="form-group">
                                                                         <label
                                                                             for="zero_500g">{{ __('translation.shipping_charges') }}
-                                                                            (0-500)
+                                                                            (0-500g)
                                                                         </label>
                                                                         <input type="number"
                                                                             class="form-control  @error('zero_500g') is-invalid @enderror"
                                                                             id="zero_500g" name="zero_500g"
                                                                             value="{{ old('zero_500g', $shippingCharge->zero_500g) }}"
-                                                                            placeholder="{{ __('translation.type_zero_500g') }} (0-500)">
+                                                                            placeholder="{{ __('translation.type_zero_500g') }} (0-500g)">
                                                                         @error('zero_500g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -154,13 +153,13 @@
                                                                     <div class="form-group">
                                                                         <label for="_501_1000g">
                                                                             {{ __('translation.shipping_charges') }}
-                                                                            (501-1000)
+                                                                            (501-1000g)
                                                                         </label>
                                                                         <input type="number"
                                                                             class="form-control  @error('_501_1000g') is-invalid @enderror"
                                                                             id="_501_1000g" name="_501_1000g"
                                                                             value="{{ old('_501_1000g', $shippingCharge->_501_1000g) }}"
-                                                                            placeholder="{{ __('translation.type__501_1000g') }} (501-1000)">
+                                                                            placeholder="{{ __('translation.type__501_1000g') }} (501-1000g)">
                                                                         @error('_501_1000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -172,12 +171,12 @@
                                                                     <div class="form-group">
                                                                         <label
                                                                             for="_1001_2000g">{{ __('translation.shipping_charges') }}
-                                                                            (1001-2000)</label>
+                                                                            (1001-2000g)</label>
                                                                         <input type="number"
                                                                             class="form-control  @error('_1001_2000g') is-invalid @enderror"
                                                                             id="_1001_2000g" name="_1001_2000g"
                                                                             value="{{ old('_1001_2000g', $shippingCharge->_1001_2000g) }}"
-                                                                            placeholder="{{ __('translation.type__1001_2000g') }} (1001-2000)">
+                                                                            placeholder="{{ __('translation.type__1001_2000g') }} (1001-2000g)">
                                                                         @error('_1001_2000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -191,13 +190,13 @@
                                                                     <div class="form-group">
                                                                         <label for="_2001_5000g">
                                                                             {{ __('translation.shipping_charges') }}
-                                                                            (1001-2000)
+                                                                            (2001-5000g)
                                                                         </label>
                                                                         <input type="number"
                                                                             class="form-control  @error('_2001_5000g') is-invalid @enderror"
                                                                             id="_2001_5000g" name="_2001_5000g"
                                                                             value="{{ old('_2001_5000g', $shippingCharge->_2001_5000g) }}"
-                                                                            placeholder="{{ __('translation.type__2001_5000g') }} (1001-2000)">
+                                                                            placeholder="{{ __('translation.type__2001_5000g') }} (2001-5000g)">
                                                                         @error('_2001_5000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>

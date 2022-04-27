@@ -75,7 +75,7 @@ class ShippingChargeController extends Controller
     public function update(UpdateShippingChargeRequest $request, ShippingCharge $shippingCharge)
     {
         if ($request->isMethod('post')) {
-            $data   = $request->only(['zero_500g', '_501_1000g', '_1001_2000g', '_2001_5000g', 'above_5000g',]);
+            $data   = $request->only(['zero_500g', '_501_1000g', '_1001_2000g', '_2001_5000g', 'above_5000g']);
             $shippingCharge->update($data);
             Session::flash('message', __('msgs.shipping_charges_update'));
             return redirect()->route('admin.shipping-charges.index');

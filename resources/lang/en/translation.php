@@ -111,7 +111,7 @@ return [
     'enter_product_code'        => 'Enter Product Code',
     'price'                     => 'Price',
     'weight'                    => 'Weight',
-    'kg'                        => 'kg',
+    'g'                         => 'g',
     'video'                     => 'video',
     'wash_care'                 => 'Wash Care',
 
