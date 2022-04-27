@@ -288,6 +288,8 @@ return [
 
     // Shipping Charges :
     'updated_at'                => 'Update At',
-    'type_shipping_charges'     => 'Type shipping charges'
+    'type_shipping_charges'     => 'Type shipping charges',
+    'above_5000g'               => 'Above 5000g',
+    'update_shipping_charges'   => 'Update shipping charges',
 
 ];

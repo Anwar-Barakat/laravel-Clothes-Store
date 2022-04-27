@@ -24,7 +24,11 @@ class UpdateShippingChargeRequest extends FormRequest
     public function rules()
     {
         return [
-            'shipping_charges'      => ['required', 'numeric']
+            'zero_500g'         => ['required', 'numeric'],
+            '_501_1000g'        => ['required', 'numeric'],
+            '_1001_2000g'       => ['required', 'numeric'],
+            '_2001_5000g'       => ['required', 'numeric'],
+            'above_5000g'       => ['required', 'numeric'],
         ];
     }
 }

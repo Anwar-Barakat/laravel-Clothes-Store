@@ -41,7 +41,11 @@
                                 <tr>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.country') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.shipping_charges') }}</th>
+                                    <th class="wd-15p border-bottom-0">0-500g</th>
+                                    <th class="wd-15p border-bottom-0">501-1000g</th>
+                                    <th class="wd-15p border-bottom-0">1001-2000g</th>
+                                    <th class="wd-15p border-bottom-0">2001-5000g</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.above_5000g') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.updated_at') }}</th>
                                     <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
@@ -51,14 +55,17 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $shippingCharge->country->name }}</td>
-                                        <td>${{ $shippingCharge->shipping_charges }}</td>
+                                        <td>${{ $shippingCharge->zero_500g }}</td>
+                                        <td>${{ $shippingCharge->_501_1000g }}</td>
+                                        <td>${{ $shippingCharge->_1001_2000g }}</td>
+                                        <td>${{ $shippingCharge->_2001_5000g }}</td>
+                                        <td>${{ $shippingCharge->above_5000g }}</td>
                                         <td>{{ $shippingCharge->updated_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
-                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
-                                                    type="button">{{ __('translation.actions') }} <i
-                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                    class="btn ripple btn-secondary" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                     @if ($shippingCharge->status == 1)
                                                         <a href="javascript:void(0);"
@@ -97,11 +104,11 @@
                                             tabindex="-1" role="dialog"
                                             aria-labelledby="editShippingCharge{{ $shippingCharge->id }}Label"
                                             aria-hidden="true" data-effect="effect-super-scaled">
-                                            <div class="modal-dialog" role="document">
+                                            <div class="modal-dialog" role="document" style="max-width: 750px;">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">
-                                                            {{ __('translation.update_section') }}</h5>
+                                                            {{ __('translation.update_shipping_charges') }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -112,26 +119,109 @@
                                                             action="{{ route('admin.shipping-charges.update', $shippingCharge) }}"
                                                             method="post">
                                                             @csrf
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="country_id">{{ __('translation.country') }}</label>
-                                                                <input type="text" class="form-control"
-                                                                    value="{{ $shippingCharge->country->name }}"
-                                                                    readonly>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="country_id">{{ __('translation.country') }}</label>
+                                                                        <input type="text" class="form-control"
+                                                                            value="{{ $shippingCharge->country->name }}"
+                                                                            readonly>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="zero_500g">{{ __('translation.shipping_charges') }}
+                                                                            (0-500)
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control  @error('zero_500g') is-invalid @enderror"
+                                                                            id="zero_500g" name="zero_500g"
+                                                                            value="{{ old('zero_500g', $shippingCharge->zero_500g) }}"
+                                                                            placeholder="{{ __('translation.type_zero_500g') }} (0-500)">
+                                                                        @error('zero_500g')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label
-                                                                    for="shipping_charges">{{ __('translation.shipping_charges') }}</label>
-                                                                <input type="text"
-                                                                    class="form-control  @error('shipping_charges') is-invalid @enderror"
-                                                                    id="shipping_charges" name="shipping_charges"
-                                                                    value="{{ old('shipping_charges', $shippingCharge->shipping_charges) }}"
-                                                                    placeholder="{{ __('translation.type_shipping_charges') }}">
-                                                                @error('shipping_charges')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label for="_501_1000g">
+                                                                            {{ __('translation.shipping_charges') }}
+                                                                            (501-1000)
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control  @error('_501_1000g') is-invalid @enderror"
+                                                                            id="_501_1000g" name="_501_1000g"
+                                                                            value="{{ old('_501_1000g', $shippingCharge->_501_1000g) }}"
+                                                                            placeholder="{{ __('translation.type__501_1000g') }} (501-1000)">
+                                                                        @error('_501_1000g')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="_1001_2000g">{{ __('translation.shipping_charges') }}
+                                                                            (1001-2000)</label>
+                                                                        <input type="number"
+                                                                            class="form-control  @error('_1001_2000g') is-invalid @enderror"
+                                                                            id="_1001_2000g" name="_1001_2000g"
+                                                                            value="{{ old('_1001_2000g', $shippingCharge->_1001_2000g) }}"
+                                                                            placeholder="{{ __('translation.type__1001_2000g') }} (1001-2000)">
+                                                                        @error('_1001_2000g')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label for="_2001_5000g">
+                                                                            {{ __('translation.shipping_charges') }}
+                                                                            (1001-2000)
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control  @error('_2001_5000g') is-invalid @enderror"
+                                                                            id="_2001_5000g" name="_2001_5000g"
+                                                                            value="{{ old('_2001_5000g', $shippingCharge->_2001_5000g) }}"
+                                                                            placeholder="{{ __('translation.type__2001_5000g') }} (1001-2000)">
+                                                                        @error('_2001_5000g')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="above_5000g">{{ __('translation.shipping_charges') }}
+                                                                            {{ __('translation.above_5000g') }}</label>
+                                                                        <input type="number"
+                                                                            class="form-control  @error('above_5000g') is-invalid @enderror"
+                                                                            id="above_5000g" name="above_5000g"
+                                                                            value="{{ old('above_5000g', $shippingCharge->above_5000g) }}"
+                                                                            placeholder="{{ __('translation.type_above_5000g') }} {{ __('translation.above_5000g') }}">
+                                                                        @error('above_5000g')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary modal-effect"

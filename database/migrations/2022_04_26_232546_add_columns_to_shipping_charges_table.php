@@ -14,11 +14,11 @@ class AddColumnsToShippingChargesTable extends Migration
     public function up()
     {
         Schema::table('shipping_charges', function (Blueprint $table) {
-            $table->string('0_500')->after('country_id');
-            $table->string('501_1000')->after('0_500');
-            $table->string('1001_2000')->after('501_1000');
-            $table->string('2001_5000')->after('1001_2000');
-            $table->string('above_5000')->after('2001_5000');
+            $table->float('zero_500g')->after('country_id');
+            $table->float('_501_1000g')->after('zero_500g');
+            $table->float('_1001_2000g')->after('_501_1000g');
+            $table->float('_2001_5000g')->after('_1001_2000g');
+            $table->float('above_5000g')->after('_2001_5000g');
         });
     }
 
@@ -30,11 +30,11 @@ class AddColumnsToShippingChargesTable extends Migration
     public function down()
     {
         Schema::table('shipping_charges', function (Blueprint $table) {
-            $table->dropColumn('0_500');
-            $table->dropColumn('501_1000');
-            $table->dropColumn('1001_2000');
-            $table->dropColumn('2001_5000');
-            $table->dropColumn('above_5000');
+            $table->dropColumn('zero_500g');
+            $table->dropColumn('_501_1000g');
+            $table->dropColumn('_1001_2000g');
+            $table->dropColumn('_2001_5000g');
+            $table->dropColumn('above_5000g');
         });
     }
 }

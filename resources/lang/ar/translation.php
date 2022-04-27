@@ -292,6 +292,9 @@ return [
     // Shipping Charges :
     'updated_at'                => 'التحديث في',
     'type_shipping_charges'     => 'ادخل رسوم الشحن',
+    'above_5000g'               => 'اكثر من 5000g',
+    'update_shipping_charges'   => 'تحديث رسوم الشحن',
+
 
 
 ];
