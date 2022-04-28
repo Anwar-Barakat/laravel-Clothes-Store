@@ -62,10 +62,10 @@
                                         </td>
                                         <td>
                                             <div class="dropdown dropup">
-                                                <button aria-expanded="false" aria-haspopup="true" style="font-size: 11px"
-                                                    class="btn ripple btn-secondary" data-toggle="dropdown"
-                                                    type="button">{{ __('translation.actions') }} <i
-                                                        class="fas fa-caret-down ml-1"></i></button>
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                    class="main__btn-actions  ripple" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars"></i>
+                                                </button>
                                                 <div class="dropdown-menu tx-13">
                                                     <form action="{{ route('admin.categories.destroy', $category) }}"
                                                         method="post">

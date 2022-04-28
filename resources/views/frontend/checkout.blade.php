@@ -39,13 +39,13 @@
                                 <h4 class="title-box">{{ __('frontend.payment_methods') }}</h4>
                             </div>
                             <div class="payment-method-container">
-                                <div>
+                                <div class="order-summary__payments">
                                     <input type="radio" name="payment_gateway" id="COD" value="COD" required>
                                     <label for="COD">
                                         <img src="{{ asset('front/assets/images/payments/cod.png') }}" width="80" alt="">
                                     </label>
                                 </div>
-                                <div>
+                                <div class="order-summary__payments">
                                     <input type="radio" name="payment_gateway" id="Paypal" value="Paypal" required>
                                     <label for="Paypal">
                                         <img src="{{ asset('front/assets/images/payments/paypal.png') }}" alt=""

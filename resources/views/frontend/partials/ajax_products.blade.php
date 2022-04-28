@@ -28,7 +28,7 @@
                             @endphp
                             @if ($discount > 0)
                                 <ins>
-                                    <p class="product-price">{{ $discount }}$ </p>
+                                    <p class="product-price">${{ $discount }} </p>
                                 </ins>
                                 <del>
                                     <p class="product-price">${{ $product->price }}</p>

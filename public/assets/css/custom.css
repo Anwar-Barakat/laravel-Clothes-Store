@@ -5,6 +5,18 @@
 font-family: 'Cairo', sans-serif !important;
 } */
 
+.main__btn-actions {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    background: none;
+    border-radius: 50%;
+    border: 1px solid gray;
+    color: gray;
+}
+
 .swal2-icon.swal2-warning.swal2-icon-show {
     font-size: 1rem;
 }

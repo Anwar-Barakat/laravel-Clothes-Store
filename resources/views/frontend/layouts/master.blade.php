@@ -38,7 +38,8 @@
                 </a>
             </li>
             <li>
-                <a href="checkout.html" class="link-term mercado-item-title">
+                <a href="checkout.html"
+                    class="link-term mercado-item-title {{ request()->routeIs('frontend.checkout.index') ? 'button-30' : '' }}">
                     {{ __('frontend.checkout') }}
                 </a>
             </li>

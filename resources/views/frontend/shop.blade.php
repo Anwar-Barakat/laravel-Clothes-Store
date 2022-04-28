@@ -100,7 +100,7 @@
                                         <div class="widget mercado-widget categories-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.all_sections') }}</h2>
-                                                <i class="fas fa-chevron-up"></i>
+                                                <i class="fas fa-chevron-up icon"></i>
                                             </div>
                                             <div class="widget-content">
                                                 <ul class="list-category" id="categories_list">
@@ -134,7 +134,7 @@
                                         <div class="widget mercado-widget brands-widget brand-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.brands') }}</h2>
-                                                <i class="fas fa-chevron-up"></i>
+                                                <i class="fas fa-chevron-up icon"></i>
                                             </div>
                                             <div class="widget-content">
                                                 <ul class="list-style vertical-list list-limited" data-show="6"
@@ -161,7 +161,7 @@
                                         <div class="widget mercado-widget filter-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down icon"></i>
                                             </div>
                                             <div class="widget-content fabrics">
                                                 @foreach (App\Models\Product::fabricArray as $index => $fabric)
@@ -177,7 +177,7 @@
                                         <div class="widget mercado-widget filter-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down icon"></i>
                                             </div>
                                             <div class="widget-content pattern">
                                                 @foreach (App\Models\Product::patternArray as $index => $pattern)
@@ -194,7 +194,7 @@
                                             <hr>
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down icon"></i>
                                             </div>
                                             <div class="widget-content fit">
                                                 @foreach (App\Models\Product::fitArray as $index => $fit)
@@ -210,7 +210,7 @@
                                             <hr>
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down icon"></i>
                                             </div>
                                             <div class="widget-content occasion">
                                                 @foreach (App\Models\Product::occasionArray as $index => $occasion)
@@ -280,15 +280,15 @@
 
     {{-- Toggle Chevron down --}}
     <script>
-        $('.categories-widget .fa').on('click', function() {
+        $('.categories-widget .icon').on('click', function() {
             $(this).toggleClass('fa-chevron-up fa-chevron-down');
             $('#categories_list').slideToggle();
         });
-        $('.brands-widget .fa').on('click', function() {
+        $('.brands-widget .icon').on('click', function() {
             $(this).toggleClass('fa-chevron-up fa-chevron-down');
             $('#brands_list').slideToggle();
         })
-        $('.filter-widget .fa').on('click', function() {
+        $('.filter-widget .icon').on('click', function() {
             $(this).toggleClass('fa-chevron-up fa-chevron-down');
             $(this).parent().next().slideToggle();
         })
