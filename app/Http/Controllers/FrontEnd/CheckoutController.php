@@ -9,6 +9,7 @@ use App\Models\DeliveryAddress;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use App\Models\ShippingCharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,45 +92,56 @@ class CheckoutController extends Controller
             $grandPrice         = Session::get('totalPrice') + $shippingCharges - Session::get('couponAmount');
             Session::put('grandPrice', $grandPrice);
 
-            $order          = Order::create([
-                'user_id'           => Auth::user()->id,
-                'name'              => $deliveryAddress->name,
-                'email'             => Auth::user()->email,
-                'mobile'            => $deliveryAddress->mobile,
-                'address'           => $deliveryAddress->address,
-                'city'              => $deliveryAddress->city,
-                'state'             => $deliveryAddress->state,
-                'country_id'        => $deliveryAddress->country_id,
-                'pincode'           => $deliveryAddress->pincode,
-                'shipping_cart'     => $shippingCharges,
-                'coupon_code'       => Session::get('couponCode'),
-                'coupon_amount'     => Session::get('couponAmount'),
-                'status'            => 'new',
-                'payment_method'    => $payment_method,
-                'payment_gateway'   => $data['payment_gateway'],
-                'grand_amount'      => Session::get('grandPrice'),
+            $order              = Order::create([
+                'user_id'               => Auth::user()->id,
+                'name'                  => $deliveryAddress->name,
+                'email'                 => Auth::user()->email,
+                'mobile'                => $deliveryAddress->mobile,
+                'address'               => $deliveryAddress->address,
+                'city'                  => $deliveryAddress->city,
+                'state'                 => $deliveryAddress->state,
+                'country_id'            => $deliveryAddress->country_id,
+                'pincode'               => $deliveryAddress->pincode,
+                'shipping_cart'         => $shippingCharges,
+                'coupon_code'           => Session::get('couponCode'),
+                'coupon_amount'         => Session::get('couponAmount'),
+                'status'                => 'new',
+                'payment_method'        => $payment_method,
+                'payment_gateway'       => $data['payment_gateway'],
+                'grand_amount'          => Session::get('grandPrice'),
             ]);
 
             $order_id           = DB::getPdo()->lastInsertId();
 
 
 
-            $cartProducts       = Cart::where('user_id', Auth::user()->id)->get();
+            $cartProducts               = Cart::where('user_id', Auth::user()->id)->get();
             foreach ($cartProducts as $key => $item) {
                 $productDetails         = Product::select('name', 'code', 'color')->where('id', $item->product_id)->first();
                 $getDiscountAttrPrice   = Product::getDiscountedAttributePrice($item['product_id'], $item->size);
 
                 OrderProduct::create([
-                    'order_id'          => $order_id,
-                    'user_id'           => Auth::user()->id,
-                    'product_id'        => $item->product_id,
-                    'product_code'      => 'sadasd',
-                    'product_name'      => $productDetails->name,
-                    'product_color'     => $productDetails->color,
-                    'product_size'      => $item->size,
-                    'product_quantity'  => $item->quantity,
-                    'product_price'     => $getDiscountAttrPrice['finalPrice'],
+                    'order_id'              => $order_id,
+                    'user_id'               => Auth::user()->id,
+                    'product_id'            => $item->product_id,
+                    'product_code'          => $productDetails->code,
+                    'product_name'          => $productDetails->name,
+                    'product_color'         => $productDetails->color,
+                    'product_size'          => $item->size,
+                    'product_quantity'      => $item->quantity,
+                    'product_price'         => $getDiscountAttrPrice['finalPrice'],
                 ]);
+                if ($payment_method == 'COD') {
+                    $getProductStock        = ProductAttribute::where([
+                        'product_id'        => $item->product_id,
+                        'size'              => $item->size
+                    ])->first();
+
+
+                    $newStock               =  $getProductStock->stock - $item->quantity;
+
+                    ProductAttribute::where(['product_id' => $item->product_id, 'size' => $item->size])->update(['stock' => $newStock]);
+                }
             }
             Session::put('order_id', $order_id);
 

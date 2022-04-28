@@ -32,7 +32,7 @@
 									<ul class="dropdown-menu dropdown-menu-right">
 										<li><i class="fa fa-user-circle"></i> View profile</li>
 										<li><i class="fa fa-users"></i>Add friends</li>
-										<li><i class="fa fa-plus"></i> Add to group</li>
+										<li><i class="fas fa-plus"></i> Add to group</li>
 										<li><i class="fa fa-ban"></i> Block</li>
 									</ul>
 								</li>

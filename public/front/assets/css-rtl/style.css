@@ -4786,10 +4786,11 @@ article.single-post blockquote p:last-child::after {
     display: inline-block;
     background-color: #fdfdfd;
     width: 100%;
-    border: 1px solid #e6e6e6;
+    border: 2px solid #e6e6e6;
     padding: 25px 40px 21px 40px;
     display: table;
     margin-top: 20px;
+    box-shadow: #9e9e9eb0 0px 1px 1px, #9e9e9e26 0px 0px 1px 1px, 1px 3px 2px rgb(0 0 0 / 4%);
 }
 
 .shopping-cart .summary .order-summary {
@@ -4949,7 +4950,6 @@ article.single-post blockquote p:last-child::after {
 .box-in-site.wrap-show-advance-info-box .wrap-products {
     border: 1px solid #e6e6e6;
     margin-top: 10px;
-    padding-top: 39px;
 }
 
 .box-in-site.wrap-show-advance-info-box .title-box {

@@ -163,7 +163,7 @@
                                     <span class="home-link">
                                         {{ __('frontend.home') }}
                                     </span>
-                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <i class="fas fa-home" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li class="menu-item">

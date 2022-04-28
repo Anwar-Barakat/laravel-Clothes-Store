@@ -67,10 +67,10 @@
                             </div>
                             <div class="change-display-mode">
                                 <a href="javascript:void(0);" class="grid-mode display-mode active">
-                                    <i class="fa fa-th"></i>{{ __('frontend.grid') }}
+                                    <i class="fas fa-th"></i>{{ __('frontend.grid') }}
                                 </a>
                                 <a href="javascript:void(0);" class="list-mode display-mode">
-                                    <i class="fa fa-th-list"></i>{{ __('frontend.list') }}
+                                    <i class="fas fa-th-list"></i>{{ __('frontend.list') }}
                                 </a>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                                         <div class="widget mercado-widget categories-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.all_sections') }}</h2>
-                                                <i class="fa fa-chevron-up"></i>
+                                                <i class="fas fa-chevron-up"></i>
                                             </div>
                                             <div class="widget-content">
                                                 <ul class="list-category" id="categories_list">
@@ -134,7 +134,7 @@
                                         <div class="widget mercado-widget brands-widget brand-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.brands') }}</h2>
-                                                <i class="fa fa-chevron-up"></i>
+                                                <i class="fas fa-chevron-up"></i>
                                             </div>
                                             <div class="widget-content">
                                                 <ul class="list-style vertical-list list-limited" data-show="6"
@@ -147,10 +147,10 @@
                                                         </li>
                                                     @endforeach
                                                     <li class="list-item">
-                                                        <a data-label='{{ __('frontend.show_more') }}<i class="fa fa-angle-up" aria-hidden="true"></i>'
+                                                        <a data-label='{{ __('frontend.show_more') }}<i class="fas fa-angle-up" aria-hidden="true"></i>'
                                                             class="btn-control control-show-more" href="#">
                                                             {{ __('frontend.show_more') }}
-                                                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -161,7 +161,7 @@
                                         <div class="widget mercado-widget filter-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.fabric') }}</h2>
-                                                <i class="fa fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down"></i>
                                             </div>
                                             <div class="widget-content fabrics">
                                                 @foreach (App\Models\Product::fabricArray as $index => $fabric)
@@ -177,7 +177,7 @@
                                         <div class="widget mercado-widget filter-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.pattern') }}</h2>
-                                                <i class="fa fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down"></i>
                                             </div>
                                             <div class="widget-content pattern">
                                                 @foreach (App\Models\Product::patternArray as $index => $pattern)
@@ -194,7 +194,7 @@
                                             <hr>
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.fit') }}</h2>
-                                                <i class="fa fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down"></i>
                                             </div>
                                             <div class="widget-content fit">
                                                 @foreach (App\Models\Product::fitArray as $index => $fit)
@@ -210,7 +210,7 @@
                                             <hr>
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.occasion') }}</h2>
-                                                <i class="fa fa-chevron-down"></i>
+                                                <i class="fas fa-chevron-down"></i>
                                             </div>
                                             <div class="widget-content occasion">
                                                 @foreach (App\Models\Product::occasionArray as $index => $occasion)
