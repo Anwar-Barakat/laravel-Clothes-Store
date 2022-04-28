@@ -35,8 +35,8 @@ ul {
     padding: 4px;
 }
 
-.primary .menu-item.home-icon i {
-    color: #666666;
+.primary .menu-item.home-icon>a i {
+    font-size: 18px;
 }
 
 .section-title {

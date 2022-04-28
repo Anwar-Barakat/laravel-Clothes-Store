@@ -882,11 +882,6 @@ li.menu-item .nav-label.sale-label::before {
     position: static;
 }
 
-.primary .menu-item.home-icon i {
-    font-size: 19px;
-    color: #ffffff;
-}
-
 .primary .menu-item.home-icon>a {
     padding: 10px 20px;
 }
@@ -908,8 +903,13 @@ li.menu-item .nav-label.sale-label::before {
 
 .primary>.menu-item:not(.home-icon):hover a,
 .primary .menu-item.home-icon>a:hover span,
-.primary .menu-item.home-icon>a:hover i {
+.primary .menu-item.home-icon>a:hover i,
+.link-term.mercado-item-title.active i {
     color: white;
+}
+
+.primary .menu-item.home-icon>a i {
+    color: gray;
 }
 
 .nav>li>a:hover,

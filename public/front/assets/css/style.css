@@ -880,11 +880,6 @@ li.menu-item .nav-label.sale-label::before {
     position: static;
 }
 
-.primary .menu-item.home-icon i {
-    font-size: 19px;
-    color: #ffffff;
-}
-
 .primary .menu-item.home-icon>a {
     padding: 10px 20px;
 }

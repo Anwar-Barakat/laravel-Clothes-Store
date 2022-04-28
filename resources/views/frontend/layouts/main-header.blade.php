@@ -161,9 +161,8 @@
                                 <a href="{{ route('frontend.home') }}"
                                     class="link-term mercado-item-title {{ request()->routeIs('frontend.home') ? 'active' : '' }}">
                                     <span class="home-link">
-                                        {{ __('frontend.home') }}
+                                        {{ __('frontend.home') }} <i class="fas fa-home" aria-hidden="true"></i>
                                     </span>
-                                    <i class="fas fa-home" aria-hidden="true"></i>
                                 </a>
                             </li>
                             <li class="menu-item">
