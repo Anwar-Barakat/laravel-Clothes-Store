@@ -96,11 +96,11 @@
                                 </tr>
                                 <tr>
                                     <td scope="row">{{ __('translation.grand_total') }}</td>
-                                    <td>{{ $orderDetails->grand_amount }}$</td>
+                                    <td>${{ $orderDetails->grand_amount }}</td>
                                 </tr>
                                 <tr>
                                     <td scope="row">{{ __('translation.shipping_charges') }}</td>
-                                    <td>{{ $orderDetails->shipping_cart }}</td>
+                                    <td>${{ $orderDetails->shipping_cart }}</td>
                                 </tr>
                                 <tr>
                                     <td scope="row">{{ __('translation.coupon_code') }}</td>
@@ -108,7 +108,7 @@
                                 </tr>
                                 <tr>
                                     <td scope="row">{{ __('translation.coupon_amount') }}</td>
-                                    <td>{{ $orderDetails->coupon_amount ?? '-' }}</td>
+                                    <td>${{ $orderDetails->coupon_amount ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td scope="row">{{ __('translation.payment_methods') }}</td>

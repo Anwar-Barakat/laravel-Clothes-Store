@@ -1,18 +1,19 @@
 <div class="row productsField">
     <ul class="grid-products equal-container product-grid-template">
         @forelse ($categoryProducts as $product)
-            <li>
+            <li class="product-list__item">
                 <div class="product product-style-3 equal-elem ">
                     <div class="product-thumnail">
                         <a href="{{ route('frontend.details', $product->id) }}" title="{{ $product->name }}">
                             @if ($product->getFirstMediaUrl('image_products', 'small'))
                                 <figure>
                                     <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
-                                        alt="{{ $product->name }}">
+                                        alt="{{ $product->name }}" width="90%">
                                 </figure>
                             @else
                                 <figure>
-                                    <img src="{{ asset('assets/img/products/default-image.png') }}" alt="">
+                                    <img src="{{ asset('assets/img/products/default-image.png') }}" alt=""
+                                        width="90%">
                                 </figure>
                             @endif
                         </a>
@@ -37,7 +38,7 @@
                             @endif
                         </div>
                         <a href="{{ route('frontend.details', $product->id) }}"
-                            class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</a>
+                            class="main-button">{{ __('frontend.add_to_cart') }}</a>
                     </div>
                 </div>
             </li>
@@ -56,11 +57,12 @@
                             @if ($product->getFirstMediaUrl('image_products', 'small'))
                                 <figure>
                                     <img src="{{ $product->getFirstMediaUrl('image_products', 'small') }}"
-                                        alt="{{ $product->name }}">
+                                        alt="{{ $product->name }}" width="90%">
                                 </figure>
                             @else
                                 <figure>
-                                    <img src="{{ asset('assets/img/products/default-image.png') }}" alt="">
+                                    <img src="{{ asset('assets/img/products/default-image.png') }}" alt=""
+                                        width="90%">
                                 </figure>
                             @endif
                         </a>

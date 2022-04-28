@@ -89,7 +89,7 @@ class ProductController extends Controller
                     }
                 ])->whereIn('category_id', $categoryDetails->categoryIds)
                     ->where('status', 1);
-                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryProducts = $categoryProducts->paginate(12);
                 $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
             } else {
                 $categoryDetails    = (object)Category::catDetails('shoes');
@@ -99,7 +99,7 @@ class ProductController extends Controller
                     }
                 ])->whereIn('category_id', $categoryDetails->categoryIds)
                     ->where('status', 1);
-                $categoryProducts = $categoryProducts->paginate(3);
+                $categoryProducts = $categoryProducts->paginate(12);
                 $categoryImageId = Category::findOrFail($categoryDetails->catDetails['id']);
             }
 

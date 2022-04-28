@@ -161,7 +161,7 @@
                                                 </fieldset>
                                             </div>
                                         </div>
-                                        <input type="submit" class="button-30" role="button"
+                                        <input type="submit" class="button-30 mt-sm-5" role="button"
                                             value="{{ __('buttons.update') }}">
                                     </form>
                                 </div>

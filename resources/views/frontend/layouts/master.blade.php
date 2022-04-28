@@ -16,7 +16,7 @@
         <ul>
             <li>
                 <a href="{{ route('frontend.home') }}"
-                    class=" {{ request()->routeIs('frontend.home') ? 'active' : '' }}">
+                    class=" {{ request()->routeIs('frontend.home') ? 'button-30' : '' }}">
                     {{ __('frontend.home') }}
                 </a>
             </li>
@@ -27,13 +27,13 @@
             </li>
             <li>
                 <a href="{{ route('frontend.url', 'men-shoes') }}"
-                    class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'active' : '' }} ">
+                    class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'button-30' : '' }} ">
                     {{ __('frontend.shop') }}
                 </a>
             </li>
             <li>
                 <a href="{{ route('frontend.cart') }}"
-                    class="link-term mercado-item-title {{ request()->routeIs('frontend.cart') ? 'active' : '' }}">
+                    class="link-term mercado-item-title {{ request()->routeIs('frontend.cart') ? 'button-30' : '' }}">
                     {{ __('frontend.cart') }}
                 </a>
             </li>
