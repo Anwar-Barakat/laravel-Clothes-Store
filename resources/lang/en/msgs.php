@@ -71,6 +71,7 @@ return [
     'delivery_address_delete'       => 'Delivery Address Has Deleted Successfuly',
     'order_place_add'               => 'order has placed successfully',
     'code_already_availated'        => 'This coupon code is already availed by you !',
+    'remove_product_from_cart'      => 'Product is not available, so has been removing from cart ',
 
 
 

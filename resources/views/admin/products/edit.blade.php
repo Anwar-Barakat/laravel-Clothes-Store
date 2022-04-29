@@ -234,7 +234,7 @@
                                     <img src="{{ $product->getFirstMediaUrl('image_products', 'medium') }}"
                                         class="img img-thumbnail mb-4 admin-image product_edit_image">
                                 @else
-                                    <img src="{{ asset('assets/img/1.jpg') }}"
+                                    <img src="{{ asset('assets/img/products/default-image.png') }}"
                                         class="img img-thumbnail mb-4 admin-image product_edit_image"
                                         alt="Alternative Image">
                                 @endif
@@ -249,8 +249,8 @@
                                         {{ __('msgs.browser_error') }}
                                     </video>
                                 @else
-                                    <img src="{{ asset('assets/img/1.jpg') }}" class="img img-thumbnail mb-4 admin-image"
-                                        alt="Alternative Vedio">
+                                    <img src="{{ asset('assets/img/products/default-image.png') }}"
+                                        class="img img-thumbnail mb-4 admin-image" alt="Alternative Vedio">
                                 @endif
                             </div>
                         </div>

@@ -74,7 +74,22 @@ class CheckoutController extends Controller
     public function store(StoreCheckoutRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data = $request->only(['payment_gateway', 'address_id']);
+            $data                   = $request->only(['payment_gateway', 'address_id']);
+            $userCartProducts       = Cart::userCartProducts();
+            foreach ($userCartProducts as $key => $product) {
+                // get the cart products status :
+                $product_status     = Product::where('id', $product->product_id)->first();
+                if ($product_status->status == 0) {
+                    Product::deleteCartProduct($product->product_id);
+
+                    Session::flash('alert-type', 'info');
+                    Session::flash('message',  __($product->name . 'msgs.remove_product_from_cart'));
+                    return redirect()->route('frontend.cart');
+                } else {
+                    return 'bad';
+                    die;
+                }
+            }
 
             if ($data['payment_gateway'] == 'COD')
                 $payment_method = 'COD';

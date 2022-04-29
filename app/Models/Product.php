@@ -102,6 +102,13 @@ class Product extends Model implements HasMedia
     public const occasionArray  = ['casual', 'formal'];
 
 
+
+    public static function deleteCartProduct($product_id)
+    {
+        Cart::where('product_id', $product_id)->delete();
+    }
+
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');

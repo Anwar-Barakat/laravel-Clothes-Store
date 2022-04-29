@@ -77,6 +77,7 @@ return [
     'delivery_address_delete'       => 'تم حذف عنوان التوصيل بنجاح',
     'order_place_add'               => 'تم وضع الطلب بنجاح',
     'code_already_availated'        => 'لقد استفدت بالفعل من رمز القسيمة هذا !',
+    'remove_product_from_cart'      => 'المنتج غير متوفر ، لذلك تم إزالته من سلة التسوق',
 
 
 

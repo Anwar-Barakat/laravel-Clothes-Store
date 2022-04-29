@@ -183,7 +183,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="checkout.html"
+                                <a href="{{ route('frontend.checkout.index') }}"
                                     class="link-term mercado-item-title  {{ request()->routeIs('frontend.checkout.index') ? 'active' : '' }}">
                                     {{ __('frontend.checkout') }}
                                 </a>
