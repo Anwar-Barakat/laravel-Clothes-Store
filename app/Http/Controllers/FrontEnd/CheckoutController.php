@@ -76,18 +76,36 @@ class CheckoutController extends Controller
         if ($request->isMethod('post')) {
             $data                   = $request->only(['payment_gateway', 'address_id']);
             $userCartProducts       = Cart::userCartProducts();
-            foreach ($userCartProducts as $key => $product) {
-                // get the cart products status :
-                $product_status     = Product::where('id', $product->product_id)->first();
-                if ($product_status->status == 0) {
-                    Product::deleteCartProduct($product->product_id);
+            foreach ($userCartProducts as $key => $item) {
+                //* Prevent disabled products to order :
+                $item_status        = Product::where('id', $item->product_id)->first();
+                if ($item_status->status == 0) {
+                    Product::deleteCartProduct($item->product_id);
 
                     Session::flash('alert-type', 'info');
-                    Session::flash('message',  __($product->name . 'msgs.remove_product_from_cart'));
+                    Session::flash('message',  __($item->name . 'msgs.remove_product_from_cart'));
                     return redirect()->route('frontend.cart');
-                } else {
-                    return 'bad';
-                    die;
+                }
+
+                //* Prevent out of stock products to order :
+                $item_stock         = ProductAttribute::where(['product_id' => $item->product_id, 'size' => $item->size])->first();
+                if ($item_stock->stock == 0) {
+                    Product::deleteCartProduct($item->product_id);
+
+                    Session::flash('alert-type', 'info');
+                    Session::flash('message',  __($item->name . 'msgs.remove_product_from_cart'));
+                    return redirect()->route('frontend.cart');
+                }
+
+
+                //* Prevent disabled or deleted product attribute to order:
+                $getProductAttrCount    =  ProductAttribute::where(['product_id' => $item->product_id, 'size' => $item->size, 'status' => 1])->count();
+                if ($getProductAttrCount == 0) {
+                    Product::deleteCartProduct($item->product_id);
+
+                    Session::flash('alert-type', 'info');
+                    Session::flash('message',  __($item->name . 'msgs.remove_product_from_cart'));
+                    return redirect()->route('frontend.cart');
                 }
             }
 
