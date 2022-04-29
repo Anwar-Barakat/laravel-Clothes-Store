@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutRequest;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\DeliveryAddress;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -79,28 +80,16 @@ class CheckoutController extends Controller
             foreach ($userCartProducts as $key => $item) {
                 //* Prevent disabled products to order :
                 $item_status        = Product::where('id', $item->product_id)->first();
-                if ($item_status->status == 0) {
-                    Product::deleteCartProduct($item->product_id);
-
-                    Session::flash('alert-type', 'info');
-                    Session::flash('message',  __($item->name . 'msgs.remove_product_from_cart'));
-                    return redirect()->route('frontend.cart');
-                }
 
                 //* Prevent out of stock products to order :
                 $item_stock         = ProductAttribute::where(['product_id' => $item->product_id, 'size' => $item->size])->first();
-                if ($item_stock->stock == 0) {
-                    Product::deleteCartProduct($item->product_id);
-
-                    Session::flash('alert-type', 'info');
-                    Session::flash('message',  __($item->name . 'msgs.remove_product_from_cart'));
-                    return redirect()->route('frontend.cart');
-                }
-
 
                 //* Prevent disabled or deleted product attribute to order:
                 $getProductAttrCount    =  ProductAttribute::where(['product_id' => $item->product_id, 'size' => $item->size, 'status' => 1])->count();
-                if ($getProductAttrCount == 0) {
+
+                //* Prevent disabled categories product to order:
+                $getCategoryStatus      = Category::where('id', $item->product->category_id)->first();
+                if ($item_status->status == 0 || $item_stock->stock == 0 || $getProductAttrCount == 0 || $getCategoryStatus->status == 0) {
                     Product::deleteCartProduct($item->product_id);
 
                     Session::flash('alert-type', 'info');
