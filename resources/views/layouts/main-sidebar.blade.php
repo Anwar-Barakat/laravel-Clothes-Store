@@ -60,6 +60,14 @@
 
             <li class="side-item side-item-category">{{ __('translation.general') }}</li>
 
+            {{-- users --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.users.index') }}">
+                    <i class="fas fa-users icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.users') }}</span>
+                </a>
+            </li>
+
             {{-- sections --}}
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.sections.index') }}">
@@ -163,7 +171,7 @@
 
             {{-- Shipping charges --}}
             <li class="slide">
-            <a class="side-menu__item" href="{{ route('admin.shipping-charges.index') }}">
+                <a class="side-menu__item" href="{{ route('admin.shipping-charges.index') }}">
                     <i class="fas fa-shipping-fast icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.shipping_charges') }}</span>
                 </a>
@@ -195,7 +203,8 @@
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-morris')) }}">Morris Charts</a>
                     </li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-flot')) }}">Flot Charts</a></li>
+                    <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-flot')) }}">Flot Charts</a>
+                    </li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-chartjs')) }}">ChartJS</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-echart')) }}">Echart</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-sparkline')) }}">Sparkline</a>

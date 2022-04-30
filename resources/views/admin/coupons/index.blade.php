@@ -158,6 +158,9 @@
             var activeIc = `<i class="fas fa-power-off text-success"></i>`;
             var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: 'post',
                 url: '/admin/update-coupon-status',
                 data: {

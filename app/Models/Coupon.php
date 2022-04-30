@@ -28,16 +28,16 @@ class Coupon extends Model
 
 
 
-    // public function getAmountAttribute()
-    // {
-    //     $amount = '';
-    //     if ($this->attributes['amount_type'] == 'Percentage')
-    //         $amount = $this->attributes['amount'] . '%';
-    //     elseif ($this->attributes['amount_type'] == 'Fixed')
-    //         $amount = $this->attributes['amount'] . '$';
+    public function getAmountAttribute()
+    {
+        $amount = '';
+        if ($this->attributes['amount_type'] == 'Percentage')
+            $amount = $this->attributes['amount'] . '%';
+        elseif ($this->attributes['amount_type'] == 'Fixed')
+            $amount = $this->attributes['amount'] . '$';
 
-    //     return $amount;
-    // }
+        return $amount;
+    }
 
     public function getAmountWithoutTypeAttribute()
     {

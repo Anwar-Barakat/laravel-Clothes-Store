@@ -37,15 +37,6 @@
 <script src="{{ URL::asset('assets/js/eva-icons.min.js') }}"></script>
 
 
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
-
-
 @yield('js')
 <!-- Sticky js -->
 <script src="{{ URL::asset('assets/js/sticky.js') }}"></script>

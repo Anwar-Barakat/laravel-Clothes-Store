@@ -291,7 +291,7 @@
         });
     </script>
 
-    {{-- turn on/off the Attribute status --}}
+    {{-- turn on/off the Product Attribute status --}}
     <script>
         $(document).on("click", ".updateAttributeStatus", function() {
             var status = $(this).attr('status');
@@ -302,6 +302,9 @@
             var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
 
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: 'post',
                 url: '/admin/update-attribute-status',
                 data: {

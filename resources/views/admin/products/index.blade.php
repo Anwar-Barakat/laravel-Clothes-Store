@@ -38,14 +38,14 @@
                         <table class="table text-md-nowrap" id="products">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.name') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.section') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.category') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.brand') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.color') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.image') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.id') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.name') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.section') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.category') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.brand') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.code') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.color') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.image') }}</th>
                                     <th class=" border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
@@ -54,9 +54,21 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td><a href="" class="tag tag-green">{{ $product->section->name }}</a></td>
-                                        <td><a href="" class="tag tag-cyan">{{ $product->category->name }}</a></td>
-                                        <td><a href="" class="tag tag-primary">{{ $product->brand->name }}</a></td>
+                                        <td>
+                                            <a href="javascript:void(0);"
+                                                class="tag tag-green">{{ $product->section->name }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="tag tag-cyan">
+                                                {{ $product->category->name }}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="tag tag-primary">
+                                                {{ $product->brand->name }}
+                                            </a>
+                                        </td>
                                         <td>{{ $product->code }}</td>
                                         <td>{{ $product->color }}</td>
                                         <td>
@@ -180,6 +192,9 @@
             var activeIc = `<i class="fas fa-power-off text-success"></i>`;
             var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: 'post',
                 url: '/admin/update-product-status',
                 data: {

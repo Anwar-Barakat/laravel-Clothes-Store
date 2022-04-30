@@ -222,6 +222,7 @@ return [
     'order_products'            => 'منتجات الطلب',
     'grand_total'               => 'المجموع الأجمالي',
     'created_at'                => 'تاريخ الطلب',
+    'created'                   => 'أنشئ في',
     'offer_details'             => 'تفاصيل العرض',
     'product_name'              => 'اسم المنتج',
     'product_code'              => 'رمز المنتج',

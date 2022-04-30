@@ -149,7 +149,7 @@
         });
     </script>
 
-    {{-- turn on/off the section status --}}
+    {{-- turn on/off the category status --}}
     <script>
         $(document).on("click", ".updateCategoryStatus", function() {
             var status = $(this).attr('status');
@@ -159,6 +159,9 @@
             var activeIc = `<i class="fas fa-power-off text-success"></i>`;
             var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: 'post',
                 url: '/admin/update-category-status',
                 data: {

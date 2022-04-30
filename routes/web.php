@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ShippingChargeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\FrontEnd\DeliveryAddressController;
@@ -63,6 +64,15 @@ Route::group(
                 Route::post('check-current-password',                           [AdminSettingController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
                 Route::post('update-password',                                  [AdminSettingController::class, 'updatePassword'])->name('update.password');
                 Route::match(['get', 'post'], 'update-detail',                  [AdminSettingController::class, 'updateDetails'])->name('update.details');
+
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Sections :
+                Route::get('users/index',                                    [AdminUserController::class, 'index'])->name('users.index');
+                Route::post('update-user-status',                            [AdminUserController::class, 'updateUserStatus']);
 
 
 

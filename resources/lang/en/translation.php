@@ -217,6 +217,7 @@ return [
     'order_products'            => 'Order products',
     'grand_total'               => 'Grand total',
     'created_at'                => 'Created at',
+    'created'                   => 'Created at',
     'offer_details'             => 'Offer details',
     'product_name'              => 'Product name',
     'product_code'              => 'Product code',
