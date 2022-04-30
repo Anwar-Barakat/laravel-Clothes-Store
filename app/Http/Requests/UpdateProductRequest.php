@@ -29,6 +29,7 @@ class UpdateProductRequest extends FormRequest
             'name'                  => 'required|regex:/^[\pL\s\-]+$/u',
             'code'                  => 'required|regex:/^[\w-]*$/',
             'color'                 => 'required|regex:/^[\pL\s\-]+$/u',
+            'group_code'            => 'required|regex:/^[\w-]*$/',
             'price'                 => 'required|numeric',
             'discount'              => 'required|numeric',
             'weight'                => 'required|numeric',

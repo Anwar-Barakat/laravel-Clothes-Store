@@ -99,16 +99,21 @@ return [
     'edit_category'             => 'Edit Category',
 
 
-    // Products :
+
+    // *================================================
+    // * Products :
+    // *================================================
     'color'                     => 'Color',
+    'group_code'                => 'Group color',
+    'enter_product_group_code'  => 'Type group code',
     'code'                      => 'Code',
     'category'                  => 'Category',
     'product_name'              => 'Product Name',
-    'enter_product_name'        => 'Enter Product Name',
+    'enter_product_name'        => 'Type Product Name',
     'product_color'             => 'Product Color',
-    'enter_product_color'       => 'Enter Product Color',
+    'enter_product_color'       => 'Type Product Color',
     'product_code'              => 'product Code',
-    'enter_product_code'        => 'Enter Product Code',
+    'enter_product_code'        => 'Type Product Code',
     'price'                     => 'Price',
     'weight'                    => 'Weight',
     'g'                         => 'g',

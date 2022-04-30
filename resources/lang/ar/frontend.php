@@ -118,6 +118,7 @@ return [
     'availability'              => 'متوفر',
     'in_stock'                  => 'في المصنع',
     'quantity'                  => 'الكمية',
+    'similar_products'          => 'المنتجات المتشابهة',
 
 
     // Cart :

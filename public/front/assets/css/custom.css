@@ -371,7 +371,7 @@ input[type="checkbox"]:disabled {
 /* **************************************************************************** */
 
 
-/* ************************* custom gallery   ********************************* */
+/* ************************* Details Page   ********************************* */
 
 .gellery {
     display: flex;
@@ -399,7 +399,7 @@ input[type="checkbox"]:disabled {
     opacity: 0.5;
     max-width: 80px !important;
     cursor: pointer;
-    border-radius: 50%;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 40%);
 }
 
 .gellery .thumnails img.selected {
@@ -411,6 +411,8 @@ input[type="checkbox"]:disabled {
     margin-bottom: 1.5rem;
     min-height: 300px;
     position: relative;
+    margin: auto;
+    padding: 0 3rem;
 }
 
 .thumnails img:last-child {
@@ -433,8 +435,20 @@ input[type="checkbox"]:disabled {
     left: 0;
 }
 
+.main-form,
+.similar_products {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    column-gap: 2rem;
+}
 
-/* ************************* custom gallery   ********************************* */
+.similar_products .similar_products-img {
+    box-shadow: 0 2px 2px rgb(0 0 0 / 40%);
+}
+
+
+/* ************************* Details Page   ********************************* */
 
 
 /* **************************************************************************** */
@@ -707,6 +721,18 @@ a.main-button:hover {
 
 
 /* ******************************* Cart Shopping  ************************************ */
+
+
+/* **************************************************************************** */
+
+
+/* **************************************************************************** */
+
+
+/* *******************************  Page  ************************************ */
+
+
+/* *******************************  Page  ************************************ */
 
 
 /* **************************************************************************** */

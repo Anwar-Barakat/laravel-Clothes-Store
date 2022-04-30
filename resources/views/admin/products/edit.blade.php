@@ -30,7 +30,7 @@
                         @csrf
 
                         <div class="row">
-                            <div class="col-sm-12 col-xl-4">
+                            <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
@@ -43,7 +43,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-xl-4">
+                            <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="code">{{ __('translation.code') }}</label>
                                     <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
@@ -56,7 +56,9 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-xl-4">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-6">
                                 <div class="form-group">
                                     <label for="color">{{ __('translation.color') }}</label>
                                     <input type="text" name="color"
@@ -64,6 +66,72 @@
                                         value="{{ old('color', $product->color) }}"
                                         placeholder="{{ __('translation.enter_product_color') }}">
                                     @error('color')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="group_code">{{ __('translation.group_code') }}</label>
+                                    <input type="text" name="group_code"
+                                        class="form-control @error('group_code') is-invalid @enderror" id="group_code"
+                                        value="{{ old('group_code', $product->group_code) }}"
+                                        placeholder="{{ __('translation.enter_product_group_code') }}">
+                                    @error('group_code')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">{{ __('translation.categories') }}</p>
+                                    <select name="category_id" id="category_id"
+                                        class="form-control @error('category_id') is-invalid @enderror">
+                                        <option value="">{{ __('translation.choose..') }}</option>
+                                        @foreach ($categories as $section)
+                                            <optgroup label="{{ $section->name }}"></optgroup>
+                                            @foreach ($section->categories ?? [] as $category)
+                                                <option value="{{ $category->id }}"
+                                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                                    &nbsp;&raquo;&nbsp; {{ $category->name }}
+                                                </option>
+                                                @foreach ($category->subCategories ?? [] as $subcategory)
+                                                    <option value="{{ $subcategory->id }}"
+                                                        {{ old('category_id', $product->category_id) == $subcategory->id ? 'selected' : '' }}>
+                                                        &nbsp;&raquo;&nbsp; &nbsp;&raquo;&nbsp;
+                                                        {{ $subcategory->name }}
+                                                    </option>
+                                                @endforeach
+                                            @endforeach
+                                        @endforeach
+                                    </select>
+                                    @error('category_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">{{ __('translation.brand') }}</p>
+                                    <select name="brand_id" id="brand_id"
+                                        class="form-control @error('brand_id') is-invalid @enderror">
+                                        <option value="">{{ __('translation.choose..') }}</option>
+                                        @foreach (App\Models\Brand::all() as $brand)
+                                            <option value="{{ $brand->id }}"
+                                                {{ old('brand_id', $product->brand_id) == strval($brand->id) ? 'selected' : '' }}>
+                                                {{ $brand->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('brand_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -137,62 +205,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-6">
-                                <div class="form-group">
-                                    <p class="mg-b-10">{{ __('translation.categories') }}</p>
-                                    <select name="category_id" id="category_id"
-                                        class="form-control @error('category_id') is-invalid @enderror">
-                                        <option value="">{{ __('translation.choose..') }}</option>
-                                        @foreach ($categories as $section)
-                                            <optgroup label="{{ $section->name }}"></optgroup>
-                                            @foreach ($section->categories ?? [] as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
-                                                    &nbsp;&raquo;&nbsp; {{ $category->name }}
-                                                </option>
-                                                @foreach ($category->subCategories ?? [] as $subcategory)
-                                                    <option value="{{ $subcategory->id }}"
-                                                        {{ old('category_id', $product->category_id) == $subcategory->id ? 'selected' : '' }}>
-                                                        &nbsp;&raquo;&nbsp; &nbsp;&raquo;&nbsp;
-                                                        {{ $subcategory->name }}
-                                                    </option>
-                                                @endforeach
-                                            @endforeach
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-xl-6">
-                                <div class="form-group">
-                                    <p class="mg-b-10">{{ __('translation.brand') }}</p>
-                                    <select name="brand_id" id="brand_id"
-                                        class="form-control @error('brand_id') is-invalid @enderror">
-                                        <option value="">{{ __('translation.choose..') }}</option>
-                                        @foreach (App\Models\Brand::all() as $brand)
-                                            <option value="{{ $brand->id }}"
-                                                {{ old('brand_id', $product->brand_id) == strval($brand->id) ? 'selected' : '' }}>
-                                                {{ $brand->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    @error('brand_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-
                         <hr>
-
                         <h4 class="card-title mb-3">{{ __('translation.attachments') }} :</h4>
                         <div class="row">
                             <div class="col-xl-6 col-sm-12">

@@ -72,6 +72,25 @@
                                         <li>FaceTime HD Camera 7.0 MP Photos</li>
                                     </ul>
                                 </div>
+
+                                @if (isset($groupProducts) && $groupProducts->count() > 0)
+                                    <h2 class="product-name">{{ __('frontend.similar_products') }}</h2>
+                                    <div class="similar_products">
+                                        @foreach ($groupProducts as $groupProduct)
+                                            @foreach ($groupProduct->getMedia('image_products') as $key => $image)
+                                                <div class="swiper-slide">
+                                                    <a href="{{ route('frontend.details', $groupProduct->id) }}">
+                                                        <img src="{{ $image->getUrl('small') }}" width="80px"
+                                                            title="{{ $groupProduct->name }}"
+                                                            class="similar_products-img" />
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
+                                    </div>
+                                @endif
+                                <hr>
+
                                 <div class="wrap-price" @if (App::getLocale() == 'ar') dir="ltr" @endif>
                                     @php
                                         $discount = App\Models\Product::getDiscountedPrice($product->id);
@@ -99,29 +118,32 @@
                                 <form action="{{ route('frontend.cart.store') }}" method="post" class="addToCartform">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                    <div class="size">
-                                        <span style="    margin: 0.5rem 0;display: block;">
-                                            {{ __('frontend.size') }}:</span>
-                                        <select name="size" id="getPrice" product-id="{{ $product->id }}"
-                                            class="form-control" required>
-                                            <option value="">{{ __('frontend.choose_size') }}</option>
-                                            @foreach ($product->attributes as $attribute)
-                                                <option value="{{ $attribute->size }}">{{ $attribute->size }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('size')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="quantity">
-                                        <span>{{ __('frontend.quantity') }}:</span>
-                                        <div class="quantity-input">
-                                            <input type="number" name="product-quatity" value="1" data-max="120"
-                                                pattern="[0-9]*" required="required">
-                                            <a class="btn btn-reduce" href="#"></a>
-                                            <a class="btn btn-increase" href="#"></a>
+                                    <div class="main-form">
+                                        <div class="size">
+                                            <span style="    margin: 0.5rem 0;display: block;">
+                                                {{ __('frontend.size') }}:</span>
+                                            <select name="size" id="getPrice" product-id="{{ $product->id }}"
+                                                class="form-control" required>
+                                                <option value="">{{ __('frontend.choose_size') }}</option>
+                                                @foreach ($product->attributes as $attribute)
+                                                    <option value="{{ $attribute->size }}">{{ $attribute->size }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('size')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="quantity">
+                                            <span>{{ __('frontend.quantity') }}:</span>
+                                            <div class="quantity-input">
+                                                <input type="number" name="product-quatity" value="1" data-max="120"
+                                                    pattern="[0-9]*" required="required">
+                                                <a class="btn btn-reduce" href="#"></a>
+                                                <a class="btn btn-increase" href="#"></a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="wrap-butons">
@@ -437,7 +459,7 @@
     <script>
         $(function() {
             var numberOfThumbnails = $('.thumnails').children().length;
-            var marginBetweenThumbnails = '0.5';
+            var marginBetweenThumbnails = '1';
             var totalMargin = (numberOfThumbnails - 1) * marginBetweenThumbnails;
             var thumnailsWidth = (100 - totalMargin) / numberOfThumbnails;
 

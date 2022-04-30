@@ -118,6 +118,7 @@ return [
     'availability'              => 'Availability',
     'in_stock'                  => 'In Stock',
     'quantity'                  => 'Quantity',
+    'similar_products'          => 'Similar products',
 
 
     // Cart :

@@ -16,18 +16,28 @@ class DetailController extends Controller
      */
     public function index($id)
     {
-        $product    = Product::with([
+        $product            = Product::with([
             'category', 'brand', 'attributes' => function ($query) {
                 $query->where('status', 1);
             }
         ])->findOrFail($id);
-        $totalStock = ProductAttribute::where('product_id', $id)->sum('stock');
+        $totalStock         = ProductAttribute::where('product_id', $id)->sum('stock');
+
+        $groupProducts      = Product::select('id', 'name')
+            ->where('id', '!=', $id)
+            ->where('group_code', $product->group_code)
+            ->where('group_code', '!=', '')
+            ->where('status', 1)
+            ->limit(4)
+            ->get();
+
 
         $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();
         return view('frontend.detail', [
             'product'           => $product,
             'totalStock'        => $totalStock,
             'relatedProducts'   => $relatedProducts,
+            'groupProducts'     => $groupProducts,
         ]);
     }
 

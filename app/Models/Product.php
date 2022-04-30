@@ -17,6 +17,7 @@ class Product extends Model implements HasMedia
         'name',
         'code',
         'color',
+        'group_code',
         'price',
         'discount',
         'weight',
