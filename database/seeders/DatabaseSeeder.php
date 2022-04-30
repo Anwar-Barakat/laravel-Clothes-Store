@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CmsPage;
 use App\Models\Country;
 use Database\Seeders\CountrySeeder;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
             // CategorySeeder::class,
             // CountrySeeder::class,
             // OrderStatusSeeder::class,
-            ShippingChargeSeeder::class,
+            // ShippingChargeSeeder::class,
+            CmsPageSeeder::class,
         ]);
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\OrderInvoiceController;
@@ -189,6 +190,13 @@ Route::group(
                 Route::post('shipping-charges/update/{shippingCharge}',         [ShippingChargeController::class, 'update'])->name('shipping-charges.update');
                 Route::post('update-shipping-charges-status',                   [ShippingChargeController::class, 'updateStatus']);
 
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Shipping Charges :
+                Route::get('cms-pages/index',                                   [CmsPageController::class, 'index'])->name('cms-pages.index');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');

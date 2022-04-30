@@ -178,6 +178,16 @@
             </li>
 
 
+            {{-- CMS Pages --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.cms-pages.index') }}">
+                    <i class="fas fa-paste icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.cms_pages') }}</span>
+                </a>
+            </li>
+
+
+
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg
                         xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24">

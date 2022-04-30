@@ -39,7 +39,7 @@ class CheckoutController extends Controller
             $totalPrice         = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
             Session::put('totalPrice', $totalPrice);
 
-            $totalWeight        += $userCartProduct->product->weight;
+            $totalWeight        += ($userCartProduct->product->weight * $userCartProduct->quantity);
             Session::put('totalWeight', $totalWeight);
         }
 

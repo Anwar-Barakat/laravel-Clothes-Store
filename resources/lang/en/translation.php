@@ -298,4 +298,10 @@ return [
     'above_5000g'               => 'Above 5000g',
     'update_shipping_charges'   => 'Update shipping charges',
 
+
+
+    // *================================================
+    // * CMS Pages :
+    // *================================================
+    'cms_pages'                 => 'CMS Pages',
 ];
