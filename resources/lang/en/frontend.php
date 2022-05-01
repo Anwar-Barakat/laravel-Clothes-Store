@@ -223,4 +223,9 @@ return [
     'tracking_number'           => 'Tracking number',
 
 
+
+    // *================================================
+    // * About US Page :
+    // *================================================
+    'interesting_facts'         => 'Interesting Facts',
 ];

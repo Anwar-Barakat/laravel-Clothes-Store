@@ -21,7 +21,8 @@
                 </a>
             </li>
             <li>
-                <a href="" class="link-term mercado-item-title ">
+                <a href="{{ route('frontend.about-us') }}"
+                    class="link-term mercado-item-title {{ request()->routeIs('frontend.about-us') ? 'button-30' : '' }}">
                     {{ __('frontend.about_us') }}
                 </a>
             </li>
@@ -38,7 +39,7 @@
                 </a>
             </li>
             <li>
-                <a href="checkout.html"
+                <a href="{{ route('frontend.checkout.index') }}"
                     class="link-term mercado-item-title {{ request()->routeIs('frontend.checkout.index') ? 'button-30' : '' }}">
                     {{ __('frontend.checkout') }}
                 </a>

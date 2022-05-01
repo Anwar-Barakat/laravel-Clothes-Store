@@ -166,7 +166,8 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="" class="link-term mercado-item-title ">
+                                <a href="{{ route('frontend.about-us') }}"
+                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.about-us') ? 'active' : '' }}">
                                     {{ __('frontend.about_us') }}
                                 </a>
                             </li>
