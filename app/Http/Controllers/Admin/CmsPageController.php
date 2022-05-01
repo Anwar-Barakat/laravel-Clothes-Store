@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCmsPageRequest;
+use App\Http\Requests\UpdateCmsPageRequest;
 use App\Models\CmsPage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
@@ -81,9 +82,14 @@ class CmsPageController extends Controller
      * @param  \App\Models\CmsPage  $cmsPage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CmsPage $cmsPage)
+    public function update(UpdateCmsPageRequest $request, CmsPage $cmsPage)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data                   = $request->only(['title', 'description', 'meta_title', 'meta_description', 'meta_keywords']);
+            $cmsPage->update($data);
+            Session::flash('message', __('msgs.cms_page_update'));
+            return redirect()->route('admin.cms-pages.index');
+        }
     }
 
     /**
@@ -92,9 +98,12 @@ class CmsPageController extends Controller
      * @param  \App\Models\CmsPage  $cmsPage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CmsPage $cmsPage)
+    public function destroy($id)
     {
-        //
+        CmsPage::findOrFail($id)->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.cms_page_delete'));
+        return redirect()->route('admin.cms-pages.index');
     }
 
     public function updateStatus(Request $request)

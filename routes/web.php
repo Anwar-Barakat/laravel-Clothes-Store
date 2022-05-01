@@ -96,7 +96,7 @@ Route::group(
                 Route::post('banners/add',                                      [BannerController::class, 'store'])->name('banners.store');
                 Route::post('banners/update/{banner}',                          [BannerController::class, 'update'])->name('banners.update');
                 Route::post('update-banner-status',                             [BannerController::class, 'updateBannerStatus']);
-                Route::get('delete-banner/{id}',                            [BannerController::class, 'destroy'])->name('banners.destroy');
+                Route::get('delete-banner/{id}',                                [BannerController::class, 'destroy'])->name('banners.destroy');
 
 
 
@@ -198,6 +198,7 @@ Route::group(
                 Route::get('cms-pages/index',                                   [CmsPageController::class, 'index'])->name('cms-pages.index');
                 Route::post('update-cms-pages-status',                          [CmsPageController::class, 'updateStatus']);
                 Route::post('cms-pages/add',                                    [CmsPageController::class, 'store'])->name('cms-pages.store');
+                Route::get('delete-cms-pages/{id}',                             [CmsPageController::class, 'destroy'])->name('cms-pages.destroy');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');

@@ -104,6 +104,124 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        {{-- Add New Cms Page Modal --}}
+                                        <div class="modal effect-rotate-left" id="editCmsPage{{ $cms_page->id }}"
+                                            tabindex="-1" role="dialog" aria-labelledby="editCmsPageLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document" style="max-width: 700px;">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">
+                                                            {{ __('translation.edit_cms_page') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('admin.cms-pages.store') }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="title">{{ __('translation.title') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('title') is-invalid @enderror"
+                                                                            id="edit_title" name="title"
+                                                                            value="{{ old('title', $cms_page->title) }}"
+                                                                            placeholder="{{ __('translation.type_title') }}">
+                                                                        @error('title')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="meta_title">{{ __('translation.meta_title') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('meta_title') is-invalid @enderror"
+                                                                            id="edit_meta_title" name="meta_title"
+                                                                            value="{{ old('title', $cms_page->meta_title) }}"
+                                                                            placeholder="{{ __('translation.type_meta_title') }}">
+                                                                        @error('meta_title')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="meta_description">{{ __('translation.meta_description') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('meta_description') is-invalid @enderror"
+                                                                            id="edit_meta_description"
+                                                                            name="meta_description"
+                                                                            value="{{ old('title', $cms_page->meta_description) }}"
+                                                                            placeholder="{{ __('translation.type_meta_description') }}">
+                                                                        @error('meta_description')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12 col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="meta_keywords">{{ __('translation.meta_keywords') }}</label>
+                                                                        <input type="text"
+                                                                            class="form-control  @error('meta_keywords') is-invalid @enderror"
+                                                                            id="edit_meta_keywords" name="meta_keywords"
+                                                                            value="{{ old('title', $cms_page->meta_keywords) }}"
+                                                                            placeholder="{{ __('translation.type_meta_keywords') }}">
+                                                                        @error('meta_keywords')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-xl-12">
+                                                                    <div class="form-group">
+                                                                        <label
+                                                                            for="description">{{ __('translation.desc') }}</label>
+                                                                        <textarea type="text" class="form-control  @error('description') is-invalid @enderror" id="edit_description"
+                                                                            name="description" rows="3"
+                                                                            value="{{ old('title', $cms_page->description) }}"
+                                                                            placeholder="{{ __('translation.type_description') }}"></textarea>
+                                                                        @error('title')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">{{ __('buttons.update') }}</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -132,7 +250,8 @@
                                 <div class="form-group">
                                     <label for="title">{{ __('translation.title') }}</label>
                                     <input type="text" class="form-control  @error('title') is-invalid @enderror" id="title"
-                                        name="title" placeholder="{{ __('translation.type_title') }}">
+                                        value="{{ old('title') }}" name="title"
+                                        placeholder="{{ __('translation.type_title') }}">
                                     @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -144,7 +263,7 @@
                                 <div class="form-group">
                                     <label for="meta_title">{{ __('translation.meta_title') }}</label>
                                     <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
-                                        id="meta_title" name="meta_title"
+                                        id="meta_title" name="meta_title" value="{{ old('meta_title') }}"
                                         placeholder="{{ __('translation.type_meta_title') }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
@@ -160,6 +279,7 @@
                                     <label for="meta_description">{{ __('translation.meta_description') }}</label>
                                     <input type="text" class="form-control  @error('meta_description') is-invalid @enderror"
                                         id="meta_description" name="meta_description"
+                                        value="{{ old('meta_description') }}"
                                         placeholder="{{ __('translation.type_meta_description') }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
@@ -172,7 +292,7 @@
                                 <div class="form-group">
                                     <label for="meta_keywords">{{ __('translation.meta_keywords') }}</label>
                                     <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
-                                        id="meta_keywords" name="meta_keywords"
+                                        id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}"
                                         placeholder="{{ __('translation.type_meta_keywords') }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
@@ -186,8 +306,8 @@
                             <div class="col-md-12 col-xl-12">
                                 <div class="form-group">
                                     <label for="description">{{ __('translation.desc') }}</label>
-                                    <textarea type="text" class="form-control  @error('description') is-invalid @enderror"
-                                        id="description" name="description"
+                                    <textarea type="text" class="form-control  @error('description') is-invalid @enderror" id="description"
+                                        name="description" rows="3" value="{{ old('description') }}"
                                         placeholder="{{ __('translation.type_description') }}"></textarea>
                                     @error('title')
                                         <span class="invalid-feedback" role="alert">
@@ -302,7 +422,7 @@
                 confirmButtonText: '{{ __('msgs.yes_delete') }}',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/admin/delete-cms_page/' + $(this).data('cms_page');
+                    window.location.href = '/admin/delete-cms-pages/' + $(this).data('cms_page');
                 }
             });
         });

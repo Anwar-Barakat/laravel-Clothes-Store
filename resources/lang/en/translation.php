@@ -195,6 +195,7 @@ return [
     'title_en'                  => 'English Title',
     'link'                      => 'Link',
     'alternative'               => 'Alternative',
+    'title'                     => 'Title',
 
 
     // Coupons :
@@ -305,6 +306,7 @@ return [
     // *================================================
     'cms_pages'                 => 'CMS Pages',
     'add_new_cms_page'          => 'Add new cms page',
+    'edit_cms_page'             => 'Edit cms page',
     'type_title'                => 'Type title',
     'type_description'          => 'Type description',
     'type_meta_title'           => 'Type meta title',
