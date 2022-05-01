@@ -60,13 +60,7 @@
 
             <li class="side-item side-item-category">{{ __('translation.general') }}</li>
 
-            {{-- users --}}
-            <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.users.index') }}">
-                    <i class="fas fa-users icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.users') }}</span>
-                </a>
-            </li>
+
 
             {{-- sections --}}
             <li class="slide">
@@ -177,6 +171,13 @@
                 </a>
             </li>
 
+            {{-- users --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.users.index') }}">
+                    <i class="fas fa-users icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.users') }}</span>
+                </a>
+            </li>
 
             {{-- CMS Pages --}}
             <li class="slide">

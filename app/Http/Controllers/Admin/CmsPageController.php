@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCmsPageRequest;
 use App\Models\CmsPage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CmsPageController extends Controller
 {
@@ -35,9 +38,18 @@ class CmsPageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCmsPageRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data                   = $request->only(['title', 'description', 'meta_title', 'meta_description', 'meta_keywords']);
+            $data['status']         = 1;
+            $data['url']            = SlugService::createSlug(CmsPage::class, 'url', $data['title']);
+
+
+            CmsPage::create($data);
+            Session::flash('message', __('msgs.cms_page_add'));
+            return redirect()->route('admin.cms-pages.index');
+        }
     }
 
     /**
@@ -83,5 +95,23 @@ class CmsPageController extends Controller
     public function destroy(CmsPage $cmsPage)
     {
         //
+    }
+
+    public function updateStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['status', 'cms_page_id']);
+            if ($data['status'] == 1)
+                $status = 0;
+            else
+                $status = 1;
+            CmsPage::where('id', $data['cms_page_id'])->update([
+                'status'                => $status
+            ]);
+            return response()->json([
+                'status'                => $status,
+                'cms_page_id'           => $data['cms_page_id']
+            ]);
+        }
     }
 }

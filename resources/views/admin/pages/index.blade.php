@@ -42,11 +42,11 @@
                         <table class="table text-md-nowrap" id="pages">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.title') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.url') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.created') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.id') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.title') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.url') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.created') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,6 +113,103 @@
             </div>
         </div>
     </div>
+    {{-- Add New Cms Page Modal --}}
+    <div class="modal effect-rotate-left" id="addNewCmsPage" tabindex="-1" role="dialog"
+        aria-labelledby="addNewCmsPageLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 700px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('translation.add_new_cms_page') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.cms-pages.store') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="title">{{ __('translation.title') }}</label>
+                                    <input type="text" class="form-control  @error('title') is-invalid @enderror" id="title"
+                                        name="title" placeholder="{{ __('translation.type_title') }}">
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="meta_title">{{ __('translation.meta_title') }}</label>
+                                    <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
+                                        id="meta_title" name="meta_title"
+                                        placeholder="{{ __('translation.type_meta_title') }}">
+                                    @error('meta_title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="meta_description">{{ __('translation.meta_description') }}</label>
+                                    <input type="text" class="form-control  @error('meta_description') is-invalid @enderror"
+                                        id="meta_description" name="meta_description"
+                                        placeholder="{{ __('translation.type_meta_description') }}">
+                                    @error('meta_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="meta_keywords">{{ __('translation.meta_keywords') }}</label>
+                                    <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
+                                        id="meta_keywords" name="meta_keywords"
+                                        placeholder="{{ __('translation.type_meta_keywords') }}">
+                                    @error('meta_keywords')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-xl-12">
+                                <div class="form-group">
+                                    <label for="description">{{ __('translation.desc') }}</label>
+                                    <textarea type="text" class="form-control  @error('description') is-invalid @enderror"
+                                        id="description" name="description"
+                                        placeholder="{{ __('translation.type_description') }}"></textarea>
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">{{ __('buttons.close') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('buttons.add') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <!-- Internal Data tables -->
@@ -162,7 +259,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: 'post',
-                url: '/admin/update-cms_page-status',
+                url: '/admin/update-cms-pages-status',
                 data: {
                     status: status,
                     cms_page_id: cms_page_id,

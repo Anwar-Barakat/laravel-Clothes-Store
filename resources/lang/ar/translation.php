@@ -306,4 +306,10 @@ return [
     // * CMS Pages :
     // *================================================
     'cms_pages'                 => 'صفحات إدارة المحتوى',
+    'add_new_cms_page'          => 'إضافة صفحة جديدة',
+    'type_title'                => 'أدخل العنوان',
+    'type_description'          => 'أدخل الوصف',
+    'type_meta_title'           => 'أدخل عنوان الميتا',
+    'type_meta_description'     => 'أدخل وصف الميتا',
+    'type_meta_keywords'        => 'أدخل كلمات المفتاحية للميتا',
 ];

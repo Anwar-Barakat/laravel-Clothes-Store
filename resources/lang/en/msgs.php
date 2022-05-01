@@ -33,7 +33,9 @@ return [
     'brand_updated'                 => 'Brand Has Updated Successfully',
     'order_status'                  => 'Order status Has Updated Successfully',
     'shipping_charges_update'       => 'Shipping Charges Updated Successfully',
-
+    'cms_page_add'                  => 'CMS Page Has Added Successfuly',
+    'cms_page_update'               => 'CMS Page Has Updated Successfuly',
+    'cms_page_delete'               => 'CMS Page Has Deleted Succesfully',
 
 
     // *================================================

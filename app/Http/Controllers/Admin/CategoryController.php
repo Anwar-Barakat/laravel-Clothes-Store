@@ -46,8 +46,8 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only(['name', 'section_id', 'parent_id', 'discount', 'description', 'status', 'meta_title', 'meta_description', 'meta_keywords', 'image']);
-        $data['url'] = SlugService::createSlug(Category::class, 'url', $data['name']);
+        $data                   = $request->only(['name', 'section_id', 'parent_id', 'discount', 'description', 'status', 'meta_title', 'meta_description', 'meta_keywords', 'image']);
+        $data['url']            = SlugService::createSlug(Category::class, 'url', $data['name']);
         $validatedData = $request->validate([
             'name'              => 'required|min:3',
             'section_id'        => 'required',

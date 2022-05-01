@@ -119,7 +119,6 @@ Route::group(
                 // **************************************************************
                 // **************************************************************
                 //Products :
-                // Route::resource('products',                                     ProductController::class);
                 Route::get('products/index',                                    [ProductController::class, 'index'])->name('products.index');
                 Route::get('create-product',                                    [ProductController::class, 'create'])->name('products.create');
                 Route::post('store-product',                                    [ProductController::class, 'store'])->name('products.store');
@@ -195,8 +194,10 @@ Route::group(
                 // **************************************************************
                 // **************************************************************
                 // **************************************************************
-                // Shipping Charges :
+                // Cms Pages :
                 Route::get('cms-pages/index',                                   [CmsPageController::class, 'index'])->name('cms-pages.index');
+                Route::post('update-cms-pages-status',                          [CmsPageController::class, 'updateStatus']);
+                Route::post('cms-pages/add',                                    [CmsPageController::class, 'store'])->name('cms-pages.store');
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');

@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CmsPage extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'title',
@@ -19,6 +20,15 @@ class CmsPage extends Model
         'meta_keywords',
         'status',
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'url' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
 
     public function getCreatedAtAttribute($value)

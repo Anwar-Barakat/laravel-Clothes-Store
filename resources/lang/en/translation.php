@@ -304,4 +304,11 @@ return [
     // * CMS Pages :
     // *================================================
     'cms_pages'                 => 'CMS Pages',
+    'add_new_cms_page'          => 'Add new cms page',
+    'type_title'                => 'Type title',
+    'type_description'          => 'Type description',
+    'type_meta_title'           => 'Type meta title',
+    'type_meta_description'     => 'Type meta description',
+    'type_meta_keywords'        => 'Type meta keywords',
+
 ];
