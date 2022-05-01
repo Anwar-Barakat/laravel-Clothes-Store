@@ -190,7 +190,8 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="contact-us.html" class="link-term mercado-item-title">
+                                <a href="{{ route('frontend.contact-us.index') }}"
+                                    class="link-term mercado-item-title {{ request()->routeIs('frontend.contact-us.index') ? 'active' : '' }}">
                                     {{ __('frontend.contact_us') }}
                                 </a>
                             </li>

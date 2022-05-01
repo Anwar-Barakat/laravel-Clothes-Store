@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreContactUsRequest;
 use App\Models\CmsPage;
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-class AboutUsController extends Controller
+class ContactUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +18,9 @@ class AboutUsController extends Controller
      */
     public function index()
     {
-        $aboutUs    = CmsPage::where('url', 'about-us')->first();
-        if (isset($aboutUs) && !empty($aboutUs))
-            return view('frontend.pages.about-us', ['aboutUs' => $aboutUs]);
+        $contactUs      = CmsPage::where('url', 'contact-us')->first();
+        if (isset($contactUs) && !empty($contactUs))
+            return view('frontend.pages.contact-us', ['contactUs' => $contactUs]);
         else
             abort(404);
     }
@@ -38,9 +41,15 @@ class AboutUsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContactUsRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data       = $request->only(['name', 'phone', 'comment', 'email']);
+
+            ContactUs::create($data);
+            Session::flash('message', __('msgs.contact_us_add'));
+            return redirect()->back();
+        }
     }
 
     /**

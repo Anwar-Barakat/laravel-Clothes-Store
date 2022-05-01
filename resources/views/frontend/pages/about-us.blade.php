@@ -11,9 +11,7 @@
     <div class="inner-page about-us">
         <!--main area-->
         <main id="main" class="main-site">
-
             <div class="container">
-
                 <div class="wrap-breadcrumb" @if (App::getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif>
                     <ul>
                         <li class="item-link"><span>{{ __('frontend.about_us') }}</span></li>

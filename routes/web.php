@@ -15,9 +15,10 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\ShippingChargeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-use App\Http\Controllers\Front\AboutUsController;
+use App\Http\Controllers\FrontEnd\AboutUsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\FrontEnd\ContactUsController;
 use App\Http\Controllers\FrontEnd\DeliveryAddressController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
@@ -214,6 +215,8 @@ Route::group(
         Route::group(['as' => 'frontend.'], function () {
             Route::get('/',                                 [HomeController::class, 'index'])->name('home');
             Route::get('/about-us',                         [AboutUsController::class, 'index'])->name('about-us');
+            Route::get('/contact-us',                       [ContactUsController::class, 'index'])->name('contact-us.index');
+            Route::post('/contact-us/store',                [ContactUsController::class, 'store'])->name('contact-us.store');
 
 
             // **************************************************************

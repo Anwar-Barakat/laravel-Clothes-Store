@@ -228,4 +228,18 @@ return [
     // * About US Page :
     // *================================================
     'interesting_facts'         => 'Interesting Facts',
+
+
+
+    // *================================================
+    // * Contact US Page :
+    // *================================================
+    'leave_a_messsage'          => 'Leave a Message',
+    'comment'                   => 'Comment',
+    'contact_detail'            => 'Contact Detail',
+    'mail_office'               => 'Mail Office',
+    'type_phone'                => 'Type phone',
+    'type_name'                 => 'Type name',
+    'type_email'                => 'Type email',
+    'type_comment'              => 'Type comment',
 ];

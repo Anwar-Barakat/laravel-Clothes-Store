@@ -9,6 +9,7 @@ return [
     'close'                     => 'إغلاق',
     'download'                  => 'تحميل المرفق',
     'check'                     => 'اختيار',
+    'submit'                    => 'إرسال',
 
     'delete_row'                => 'حذف سطر',
     'add_row'                   => 'إضافة سطر',

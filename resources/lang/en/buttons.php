@@ -9,6 +9,8 @@ return [
     'close'                     => 'Close',
     'download'                  => 'Download',
     'check'                     => 'Check',
+    'submit'                    => 'Submit',
+
 
     'delete_row'                => 'Delete Row',
     'add_row'                   => 'Add Row',
