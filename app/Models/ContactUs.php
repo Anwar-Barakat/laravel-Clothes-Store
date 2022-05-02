@@ -15,6 +15,7 @@ class ContactUs extends Model
         'email',
         'phone',
         'comment',
+        'status',
     ];
 
 

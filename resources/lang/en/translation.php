@@ -313,4 +313,11 @@ return [
     'type_meta_description'     => 'Type meta description',
     'type_meta_keywords'        => 'Type meta keywords',
 
+
+
+    // *================================================
+    // * Contact Us Page :
+    // *================================================
+    'contact_us'                => 'Contact Us',
+    'contact_us_messages'       => 'Contact us messages',
 ];

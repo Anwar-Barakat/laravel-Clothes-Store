@@ -44,7 +44,9 @@ class ContactUsController extends Controller
     public function store(StoreContactUsRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data       = $request->only(['name', 'phone', 'comment', 'email']);
+            $data               = $request->only(['name', 'phone', 'comment', 'email']);
+            $data['status']     = 0;
+
 
             ContactUs::create($data);
             Session::flash('message', __('msgs.contact_us_add'));

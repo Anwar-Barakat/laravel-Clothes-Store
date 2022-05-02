@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.coupons'))
+@section('title', __('translation.contact_us'))
 @section('css')
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -15,7 +15,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.coupons') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.contact_us') }}</span>
             </div>
         </div>
     </div>
@@ -27,10 +27,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mg-b-0">{{ __('translation.coupons') }}</h4>
-                        <a href="{{ route('admin.coupons.create') }}" class="button-30 ">
-                            {{ __('buttons.add') }}
-                        </a>
+                        <h4 class="card-title mg-b-0">{{ __('translation.contact_us_messages') }}</h4>
                     </div>
                 </div>
                 @if ($errors->any())
@@ -38,25 +35,23 @@
                 @endif
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="coupons">
+                        <table class="table text-md-nowrap" id="messages">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.id') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.code') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.type') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.amount') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.expiration_date') }}</th>
-                                    <th class="wd-15p border-bottom-0">{{ __('translation.actions') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.id') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.name') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.email') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.mobile') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($coupons as $coupon)
+                                @foreach ($contactUs as $message)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $coupon->code }}</td>
-                                        <td>{{ $coupon->type }}</td>
-                                        <td>{{ $coupon->amount }}</td>
-                                        <td>{{ $coupon->expiration_date }}</td>
+                                        <td>{{ $message->name }}</td>
+                                        <td>{{ $message->email }}</td>
+                                        <td>{{ $message->phone }}</td>
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true"
@@ -66,36 +61,35 @@
                                                 <div class="dropdown-menu tx-13">
                                                     <form method="post">
                                                         @csrf
-                                                        @if ($coupon->status == 1)
+                                                        @if ($message->status == 1)
                                                             <a href="javascript:void(0);"
-                                                                class="updateCouponStatus text-success dropdown-item"
+                                                                class="updateMessageStatus text-success dropdown-item"
                                                                 title="{{ __('translation.update_status') }}"
-                                                                id="coupon-{{ $coupon->id }}"
-                                                                coupon_id="{{ $coupon->id }}"
-                                                                status="{{ $coupon->status }}">
+                                                                id="message-{{ $message->id }}"
+                                                                message_id="{{ $message->id }}"
+                                                                status="{{ $message->status }}">
                                                                 <i class="fas fa-power-off"></i>
                                                                 {{ __('translation.active') }}
                                                             </a>
                                                         @else
                                                             <a href="javascript:void(0);"
-                                                                class="updateCouponStatus text-danger dropdown-item"
+                                                                class="updateMessageStatus text-danger dropdown-item"
                                                                 title="{{ __('translation.update_status') }}"
-                                                                id="coupon-{{ $coupon->id }}"
-                                                                coupon_id="{{ $coupon->id }}"
-                                                                status="{{ $coupon->status }}">
+                                                                id="message-{{ $message->id }}"
+                                                                message_id="{{ $message->id }}"
+                                                                status="{{ $message->status }}">
                                                                 <i class="fas fa-power-off text-danger"></i>
                                                                 {{ __('translation.disactive') }}
                                                             </a>
                                                         @endif
-                                                        <a href="{{ route('admin.coupons.edit', $coupon) }}"
-                                                            title="{{ __('buttons.update') }}"
+                                                        <a href="" title="{{ __('buttons.update') }}"
                                                             class="text-primary dropdown-item">
                                                             <i class="fas fa-edit"></i>
                                                             {{ __('buttons.edit') }}
                                                         </a>
                                                         <a href="javascript:void(0);"
                                                             class="dropdown-item confirmationDelete"
-                                                            data-coupon="{{ $coupon->id }}"
+                                                            data-message="{{ $message->id }}"
                                                             title="{{ __('buttons.delete') }}">
                                                             <i class="fas fa-trash text-danger"></i>
                                                             {{ __('buttons.delete') }}
@@ -135,7 +129,7 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
     <script>
-        $('#coupons').DataTable({
+        $('#messages').DataTable({
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
@@ -148,11 +142,11 @@
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
 
-    {{-- turn on/off the coupon status --}}
+    {{-- turn on/off the message status --}}
     <script>
-        $(document).on("click", ".updateCouponStatus", function() {
+        $(document).on("click", ".updateMessageStatus", function() {
             var status = $(this).attr('status');
-            var coupon_id = $(this).attr('coupon_id');
+            var message_id = $(this).attr('message_id');
             var active = '{{ __('translation.active') }} ';
             var disactiev = '{{ __('translation.disactive') }} ';
             var activeIc = `<i class="fas fa-power-off text-success"></i>`;
@@ -162,27 +156,27 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: 'post',
-                url: '/admin/update-coupon-status',
+                url: '/admin/update-message-status',
                 data: {
                     status: status,
-                    coupon_id: coupon_id,
+                    message_id: message_id,
                 },
                 success: function(response) {
                     if (response['status'] == 0) {
-                        $('#coupon-' + response['coupon_id'])
+                        $('#message-' + response['message_id'])
                             .attr('status', `${response['status']}`);
-                        $('#coupon-' + response['coupon_id']).text(disactiev);
-                        $('#coupon-' + response['coupon_id']).attr('style',
+                        $('#message-' + response['message_id']).text(disactiev);
+                        $('#message-' + response['message_id']).attr('style',
                             'color : #ee335e  !important');
-                        $('#coupon-' + response['coupon_id']).prepend(
+                        $('#message-' + response['message_id']).prepend(
                             '<i class="fas fa-power-off text-danger"></i> ');
                     } else {
-                        $('#coupon-' + response['coupon_id'])
+                        $('#message-' + response['message_id'])
                             .attr('status', `${response['status']}`);
-                        $('#coupon-' + response['coupon_id']).text(active);
-                        $('#coupon-' + response['coupon_id']).attr('style',
+                        $('#message-' + response['message_id']).text(active);
+                        $('#message-' + response['message_id']).attr('style',
                             'color : #22c03c   !important');
-                        $('#coupon-' + response['coupon_id']).prepend(
+                        $('#message-' + response['message_id']).prepend(
                             '<i class="fas fa-power-off text-success"></i> ');
 
                     }
@@ -192,7 +186,7 @@
         });
     </script>
 
-    {{-- Confirmation Delete coupon --}}
+    {{-- Confirmation Delete message --}}
     <script>
         $(document).on("click", ".confirmationDelete", function() {
             Swal.fire({
@@ -205,7 +199,7 @@
                 confirmButtonText: '{{ __('msgs.yes_delete') }}',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/admin/delete-coupon/' + $(this).data('coupon');
+                    window.location.href = '/admin/delete-messages/' + $(this).data('message');
                 }
             });
         });

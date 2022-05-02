@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CmsPageController;
+use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\OrderInvoiceController;
@@ -201,6 +202,17 @@ Route::group(
                 Route::post('update-cms-pages-status',                          [CmsPageController::class, 'updateStatus']);
                 Route::post('cms-pages/add',                                    [CmsPageController::class, 'store'])->name('cms-pages.store');
                 Route::get('delete-cms-pages/{id}',                             [CmsPageController::class, 'destroy'])->name('cms-pages.destroy');
+
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Contact Us :
+                Route::get('contact-us/index',                                  [AdminContactUsController::class, 'index'])->name('contact-us.index');
+                Route::post('update-message-status',                            [AdminContactUsController::class, 'updateStatus']);
+                Route::get('delete-messages/{id}',                              [AdminContactUsController::class, 'destroy'])->name('cms-pages.destroy');
+
 
 
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');

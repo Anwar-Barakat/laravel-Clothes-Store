@@ -20,7 +20,7 @@ class CmsPageController extends Controller
     public function index()
     {
         $cms_pages      = CmsPage::latest()->get();
-        return view('admin.pages.index', ['cms_pages' => $cms_pages]);
+        return view('admin.cms-pages.index', ['cms_pages' => $cms_pages]);
     }
 
     /**

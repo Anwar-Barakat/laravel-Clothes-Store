@@ -188,6 +188,15 @@
             </li>
 
 
+            {{-- Contact Us --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.contact-us.index') }}">
+                    <i class="far fa-comments icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.contact_us_messages') }}</span>
+                </a>
+            </li>
+
+
 
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg
