@@ -82,10 +82,12 @@
                                                                 {{ __('translation.disactive') }}
                                                             </a>
                                                         @endif
-                                                        <a href="" title="{{ __('buttons.update') }}"
-                                                            class="text-primary dropdown-item">
-                                                            <i class="fas fa-edit"></i>
-                                                            {{ __('buttons.edit') }}
+                                                        <a href="javascript:void(0);"
+                                                            title="{{ __('translation.view_details') }}"
+                                                            class="dropdown-item" role="button" data-toggle="modal"
+                                                            data-target="#displayMesssage{{ $message->id }}">
+                                                            <i class="fas fa-eye text-warning"></i>
+                                                            {{ __('translation.display_details') }}
                                                         </a>
                                                         <a href="javascript:void(0);"
                                                             class="dropdown-item confirmationDelete"
@@ -98,6 +100,82 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        {{-- display message Modal --}}
+                                        <div class="modal fade" id="displayMesssage{{ $message->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="displayMesssage{{ $message->id }}Label"
+                                            aria-hidden="true" data-effect="effect-super-scaled">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ __('translation.message_details') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        for="name">{{ __('translation.name') }}</label>
+                                                                    <input type="text" class="form-control" id="name"
+                                                                        value="{{ $message->name }}" disabled readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        for="email">{{ __('translation.email') }}</label>
+                                                                    <input type="text" class="form-control" id="email"
+                                                                        value="{{ $message->email }}" disabled readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        for="phone">{{ __('translation.mobile') }}</label>
+                                                                    <input type="text" class="form-control" id="phone"
+                                                                        value="{{ $message->phone }}" disabled readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        for="status">{{ __('translation.status') }}</label>
+                                                                    <select class="form-control " id="status" disabled
+                                                                        readonly>
+                                                                        <option value="1"
+                                                                            {{ $message->status == '1' ? 'selected' : '' }}>
+                                                                            {{ __('translation.active') }}</option>
+                                                                        <option value="0"
+                                                                            {{ $message->status == '1' ? 'selected' : '' }}>
+                                                                            {{ __('translation.disactive') }}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        for="comment">{{ __('translation.comment') }}</label>
+                                                                    <textarea type="text" class="form-control" id="comment" disabled readonly>{{ $message->comment }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary modal-effect"
+                                                                data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -320,4 +320,8 @@ return [
     // *================================================
     'contact_us'                => 'Contact Us',
     'contact_us_messages'       => 'Contact us messages',
+    'display_details'           => 'display details',
+    'message_details'           => 'Message details',
+    'comment'                   => 'Message',
+
 ];
