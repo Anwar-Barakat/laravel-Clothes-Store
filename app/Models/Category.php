@@ -58,7 +58,7 @@ class Category extends Model implements HasMedia
 
     public static function catDetails($url)
     {
-        $catDetails = Category::select('id', 'parent_id', 'name', 'url', 'description')
+        $catDetails = Category::select('id', 'parent_id', 'name', 'url', 'description', 'meta_title', 'meta_description', 'meta_keywords')
             ->with([
                 'subCategories' => function ($q) {
                     $q->select('id', 'parent_id')->where('status', 1);

@@ -1,7 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    {{ __('frontend.detail') }}
+    {{ $product->name }}
+@endsection
+
+@section('meta_description')
+    {{ $product->description }}
+@endsection
+
+@section('meta_keywords')
+    {{ $product->name }}
 @endsection
 
 @section('css')

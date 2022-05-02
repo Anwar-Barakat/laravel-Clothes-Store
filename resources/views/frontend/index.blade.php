@@ -2,7 +2,15 @@
 
 @section('title')
     {{ __('frontend.home') }}
-@stop
+@endsection
+
+@section('meta_description')
+    {{ __('frontend.meta_keywords') }}
+@endsection
+
+@section('meta_keywords')
+    {{ __('frontend.meta_keywords') }}
+@endsection
 
 @section('content')
     <div class="home-page home-01">
@@ -98,7 +106,8 @@
                         <div class="product product-style-2 equal-elem ">
                             <div class="product-thumnail">
                                 <a href="detail.html" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                    <figure><img src="{{ asset('front/assets/images/products/digitals/digital_17.jpg') }}"
+                                    <figure><img
+                                            src="{{ asset('front/assets/images/products/digitals/digital_17.jpg') }}"
                                             width="800" height="800" alt=""></figure>
                                 </a>
                                 <div class="group-flash">

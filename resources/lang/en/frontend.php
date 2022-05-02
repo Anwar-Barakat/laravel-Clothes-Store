@@ -25,7 +25,8 @@ return [
     'shop_now'                  => 'Shop Now',
     'dashboard'                 => 'Dashboard',
     'logout'                    => 'Logout',
-
+    'meta_desc'                 => 'E-commerce website for selling clothes online',
+    'meta_keywords'             => "Online store, clothing website, children's clothing, women's clothing, men's clothing, online store",
 
 
     // Shop :
@@ -99,6 +100,8 @@ return [
     'update_quantity'           => 'Update quantity',
     'price_after_discount'      => 'Price after discount',
     'no_product'                => 'No Products yet !',
+    'cart_description'          => 'Show shopping card details ',
+
 
 
     // Details :

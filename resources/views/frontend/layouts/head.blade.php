@@ -1,4 +1,6 @@
 <title>{{ __('frontend.ecommerce') }} | @yield('title')</title>
+<meta name="description" content="@yield('meta_description')">
+<meta name="keyowrds" content="@yield('meta_keywords')">
 <link rel="shortcut icon" href="{{ asset('front/assets/images/favicon.png') }}" type="image/x-icon">
 <link rel="icon" href="{{ asset('front/assets/images/favicon.png') }}" type="image/x-icon">
 <link

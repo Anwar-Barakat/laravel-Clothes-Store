@@ -4,6 +4,14 @@
     {{ __('frontend.cart') }}
 @endsection
 
+@section('meta_description')
+    {{ __('frontend.cart_description') }}
+@endsection
+
+@section('meta_keywords')
+    {{ __('frontend.meta_keywords') }}
+@endsection
+
 @section('css')
     {{-- Sweat Alert 2 --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">

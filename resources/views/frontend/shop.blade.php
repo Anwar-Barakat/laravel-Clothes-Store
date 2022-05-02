@@ -4,6 +4,14 @@
     {{ __('frontend.shop') }}
 @endsection
 
+@section('meta_description')
+    {{ $categoryDetails->catDetails['meta_description'] ?? __('frontend.meta_keywords') }}
+@endsection
+
+@section('meta_keywords')
+    {{ $categoryDetails->catDetails['meta_keywords'] ?? __('frontend.meta_keywords') }}
+@endsection
+
 @section('content')
     <div class="home-page home-01 ">
         <main id="main" class="main-site left-sidebar">

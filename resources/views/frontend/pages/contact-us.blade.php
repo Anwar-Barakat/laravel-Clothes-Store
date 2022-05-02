@@ -1,7 +1,15 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-    {{ __('frontend.contact_us') }}
+    {{ $contactUs->meta_title }}
+@endsection
+
+@section('meta_description')
+    {{ $contactUs->meta_description }}
+@endsection
+
+@section('meta_keywords')
+    {{ $contactUs->meta_keywords }}
 @endsection
 
 @section('css')

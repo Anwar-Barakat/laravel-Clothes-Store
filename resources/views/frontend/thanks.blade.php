@@ -4,6 +4,14 @@
     {{ __('frontend.thanks') }}
 @endsection
 
+@section('meta_description')
+    {{ __('frontend.meta_keywords') }}
+@endsection
+
+@section('meta_keywords')
+    {{ __('frontend.meta_keywords') }}
+@endsection
+
 
 @section('content')
     <div class="inner-page about-us" style="min-height: calc(100vh - 225px);">
