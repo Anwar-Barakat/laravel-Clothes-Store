@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
             // CountrySeeder::class,
             // OrderStatusSeeder::class,
             // ShippingChargeSeeder::class,
-            CmsPageSeeder::class,
+            // CmsPageSeeder::class,
+            // SettingsSeeder::class,
+
         ]);
     }
 }

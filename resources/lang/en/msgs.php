@@ -38,6 +38,7 @@ return [
     'cms_page_delete'               => 'CMS Page Has Deleted Succesfully',
     'contact_us_add'                => 'The Message has added successfully',
     'contact_us_delete'             => 'The Message has deleted successfully',
+    'settings_update'               => 'The Settings has updated successfully',
 
 
     // *================================================

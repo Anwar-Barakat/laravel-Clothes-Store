@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ShippingChargeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\FrontEnd\AboutUsController;
@@ -68,6 +69,15 @@ Route::group(
                 Route::post('check-current-password',                           [AdminSettingController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
                 Route::post('update-password',                                  [AdminSettingController::class, 'updatePassword'])->name('update.password');
                 Route::match(['get', 'post'], 'update-detail',                  [AdminSettingController::class, 'updateDetails'])->name('update.details');
+
+
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Settings :
+                Route::get('website-settings/index',                            [SettingController::class, 'index'])->name('settings.index');
+                Route::post('website-settings/update/{setting}',                [SettingController::class, 'update'])->name('settings.update');
 
 
 

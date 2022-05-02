@@ -20,6 +20,7 @@ return [
     'all_orders'                => 'عرض الطلبات',
     'orders'                    => 'الطلبات',
     'shipping_charges'          => 'رسوم الشحن',
+    'website_settings'          => 'إعدادات الموقع',
 
 
 
@@ -58,6 +59,13 @@ return [
     'name'                      => 'الاسم',
     'admin_phone'               => 'رقم الموبايل',
     'image'                     => 'الصورة الشخصية',
+
+
+    // Settings Page:
+    'min_cart_value'            => 'قيمة كرت الشراء الدنيا',
+    'max_cart_value'            => 'قيمة كرت الشراء العليا',
+    'type_min_cart_value'      => 'ادخل قيمة كرت الشراء الدنيا',
+    'type_max_cart_value'      => 'ادخل قيمة كرت الشراء العليا',
 
 
     // Sections :

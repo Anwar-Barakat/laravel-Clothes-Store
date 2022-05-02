@@ -11,6 +11,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use App\Models\ProductAttribute;
+use App\Models\Setting;
 use App\Models\ShippingCharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,12 +43,16 @@ class CheckoutController extends Controller
             $totalWeight        += ($userCartProduct->product->weight * $userCartProduct->quantity);
             Session::put('totalWeight', $totalWeight);
         }
-        if ($totalPrice < 5) {
+
+        $setting    = Setting::where('id', 1)->first();
+
+        if ($totalPrice < $setting->min_cart_value) {
             Session::flash('alert-type', 'info');
             Session::flash('message',  __('msgs.min_cart_amount'));
             return redirect()->route('frontend.cart');
         }
-        if ($totalPrice > 650) {
+
+        if ($totalPrice > $setting->max_cart_value) {
             Session::flash('alert-type', 'info');
             Session::flash('message',  __('msgs.max_cart_amount'));
             return redirect()->route('frontend.cart');

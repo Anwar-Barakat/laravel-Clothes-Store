@@ -19,7 +19,7 @@ return [
     'banners'                   => 'Banners',
     'all_orders'                => 'Display orders',
     'orders'                    => 'Orders',
-
+    'website_settings'          => 'Website settings',
 
     // dashboard :
     'hi_welcome_back'           => 'Hi, Welcome Back!',
@@ -56,6 +56,13 @@ return [
     'name'                      => 'Name',
     'admin_phone'               => 'Phone',
     'image'                     => 'Image',
+
+
+    // Settings Page:
+    'min_cart_value'            => 'Minimum cart value',
+    'max_cart_value'            => 'Maximum cart value',
+    'type_min_cart_value'       => 'type minimum cart value',
+    'type_max_cart_value'       => 'type maximum cart value',
 
 
     // Sections :

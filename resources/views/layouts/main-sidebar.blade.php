@@ -43,17 +43,26 @@
             </li>
             {{-- admin Settings --}}
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ route('admin.settings') }}">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                     <i class="fas fa-cogs icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.admin_settings') }}</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
-                    <li><a class="slide-item"
-                            href="{{ route('admin.settings') }}">{{ __('translation.change_password') }}</a>
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.settings') }}">
+                            {{ __('translation.change_password') }}
+                        </a>
                     </li>
-                    <li><a class="slide-item"
-                            href="{{ route('admin.update.details') }}">{{ __('translation.change_admin_detail') }}</a>
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.update.details') }}">
+                            {{ __('translation.change_admin_detail') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.settings.index') }}">
+                            {{ __('translation.website_settings') }}
+                        </a>
                     </li>
                 </ul>
             </li>

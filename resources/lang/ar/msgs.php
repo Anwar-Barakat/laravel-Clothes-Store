@@ -42,6 +42,7 @@ return [
     'cms_page_delete'               => 'تم حذف صفحة إدارة المحتوى بنجاح',
     'contact_us_add'                => 'تم ارسال الرسالة بمجاح',
     'contact_us_delete'             => 'تم حذف الرسالة بمجاح',
+    'settings_update'               => 'تم تحديث الأعدادات بنجاح',
 
 
 
