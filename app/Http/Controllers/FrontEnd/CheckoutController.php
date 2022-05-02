@@ -42,6 +42,16 @@ class CheckoutController extends Controller
             $totalWeight        += ($userCartProduct->product->weight * $userCartProduct->quantity);
             Session::put('totalWeight', $totalWeight);
         }
+        if ($totalPrice < 5) {
+            Session::flash('alert-type', 'info');
+            Session::flash('message',  __('msgs.min_cart_amount'));
+            return redirect()->route('frontend.cart');
+        }
+        if ($totalPrice > 650) {
+            Session::flash('alert-type', 'info');
+            Session::flash('message',  __('msgs.max_cart_amount'));
+            return redirect()->route('frontend.cart');
+        }
 
         foreach ($deliveryAddresses as $key => $value) {
             $shippingCharges                            = ShippingCharge::getShippingCharges($totalWeight, $value->country_id);

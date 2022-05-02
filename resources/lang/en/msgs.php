@@ -76,6 +76,8 @@ return [
     'order_place_add'               => 'order has placed successfully',
     'code_already_availated'        => 'This coupon code is already availed by you !',
     'remove_product_from_cart'      => 'Product is not available, so has been removing from cart ',
+    'min_cart_amount'               => 'Minimum cart amount must be 5 dollar',
+    'max_cart_amount'               => 'Maximum cart amount must be 650 dollar',
 
 
 
