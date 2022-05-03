@@ -41,11 +41,12 @@
                     <span class="side-menu__label">{{ __('translation.dashboard') }}</span>
                 </a>
             </li>
-            {{-- admin Settings --}}
+
+            {{-- settings --}}
             <li class="slide">
                 <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                     <i class="fas fa-cogs icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.admin_settings') }}</span>
+                    <span class="side-menu__label">{{ __('translation.settings') }}</span>
                     <i class="angle fe fe-chevron-down"></i>
                 </a>
                 <ul class="slide-menu">
@@ -62,6 +63,22 @@
                     <li>
                         <a class="slide-item" href="{{ route('admin.settings.index') }}">
                             {{ __('translation.website_settings') }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- admin - sub admins --}}
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                    <i class="fas fa-user-shield icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.admins') }}</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.index') }}">
+                            {{ __('translation.display_admins') }}
                         </a>
                     </li>
                 </ul>
@@ -314,7 +331,8 @@
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'spinners')) }}">Spinners</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'media-object')) }}">Media Object</a>
                     </li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'typography')) }}">Typography</a></li>
+                    <li><a class="slide-item" href="{{ url('/' . ($page = 'typography')) }}">Typography</a>
+                    </li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'tooltip')) }}">Tooltip</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'toast')) }}">Toast</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'tags')) }}">Tags</a></li>

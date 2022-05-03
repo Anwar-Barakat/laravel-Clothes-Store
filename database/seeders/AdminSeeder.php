@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
                 'email'             => 'brkatanwar0@admin.com',
                 'email_verified_at' => Carbon::now(),
                 'password'          => bcrypt('adminadmin'),
-                'type'              => 'admin',
+                'type'              => 'super-admin',
                 'mobile'            => '+963' . random_int(100000000, 999999999),
                 'image'             => '',
                 'status'            => 1
@@ -52,7 +52,7 @@ class AdminSeeder extends Seeder
                 'email'             => 'subadmin@admin.com',
                 'email_verified_at' => Carbon::now(),
                 'password'          => bcrypt('adminadmin'),
-                'type'              => 'subadmin',
+                'type'              => 'sub-admin',
                 'mobile'            => '+963' . random_int(100000000, 999999999),
                 'image'             => '',
                 'status'            => 1

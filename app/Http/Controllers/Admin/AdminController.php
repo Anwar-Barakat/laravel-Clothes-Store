@@ -3,22 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminLoginRequest;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        if (view()->exists($id)) {
-            return view($id);
-        } else {
-            return view('404');
-        }
-
-        return view($id);
+        $admins     = Admin::latest()->get();
+        return view('admin.admins.index', ['admins' => $admins]);
     }
 
     public function login(Request $request)

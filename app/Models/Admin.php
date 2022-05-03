@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
@@ -42,5 +43,11 @@ class Admin extends Authenticatable implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(300)
             ->height(150);
+    }
+
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
     }
 }

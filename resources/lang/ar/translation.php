@@ -21,6 +21,9 @@ return [
     'orders'                    => 'الطلبات',
     'shipping_charges'          => 'رسوم الشحن',
     'website_settings'          => 'إعدادات الموقع',
+    'admins'                    => 'المشرفين',
+    'settings'                  => 'الأعدادات',
+    'display_admins'            => 'عرض المشرفين',
 
 
 
@@ -51,7 +54,7 @@ return [
     'email'                     => 'البريد الألكتروني',
     'admin_type'                => 'نوعية الأدمن',
     'current_password'          => 'كلمة المرور الحالية',
-    'password'              => 'كلمة المرور الجديدة',
+    'password'                  => 'كلمة المرور الجديدة',
     'password_confirmation'     => 'تأكيد كلمة المرور',
     'currnet_pwd_true'          => 'كلمة المرور الحالية صحيحة ',
     'currnet_pwd_false'         => 'كلمة المرور الحالية غير صحيحة',
@@ -64,8 +67,14 @@ return [
     // Settings Page:
     'min_cart_value'            => 'قيمة كرت الشراء الدنيا',
     'max_cart_value'            => 'قيمة كرت الشراء العليا',
-    'type_min_cart_value'      => 'ادخل قيمة كرت الشراء الدنيا',
-    'type_max_cart_value'      => 'ادخل قيمة كرت الشراء العليا',
+    'type_min_cart_value'       => 'ادخل قيمة كرت الشراء الدنيا',
+    'type_max_cart_value'       => 'ادخل قيمة كرت الشراء العليا',
+
+
+    // Admins/subAdmins :
+    'admin'                     => 'مشرف',
+    'super-admin'               => 'المشرف الأساسي',
+    'sub-admin'                 => 'المشرف الفرعي',
 
 
     // Sections :

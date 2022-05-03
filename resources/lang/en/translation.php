@@ -20,6 +20,9 @@ return [
     'all_orders'                => 'Display orders',
     'orders'                    => 'Orders',
     'website_settings'          => 'Website settings',
+    'admins'                    => 'Admins',
+    'settings'                  => 'Settings',
+    'display_admins'            => 'Display admins',
 
     // dashboard :
     'hi_welcome_back'           => 'Hi, Welcome Back!',

@@ -65,6 +65,7 @@ Route::group(
                 Route::get('/dashboard', function () {
                     return view('index');
                 })->name('dashboard');
+                Route::get('admins/index',                                      [AdminController::class, 'index'])->name('index');
                 Route::get('settings',                                          [AdminSettingController::class, 'settings'])->name('settings');
                 Route::post('check-current-password',                           [AdminSettingController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
                 Route::post('update-password',                                  [AdminSettingController::class, 'updatePassword'])->name('update.password');
