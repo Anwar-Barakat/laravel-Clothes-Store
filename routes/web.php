@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\OrderInvoiceController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -239,6 +240,15 @@ Route::group(
 
 
 
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
+                // Contact Us :
+                Route::get('currencies/index',                                  [CurrencyController::class, 'index'])->name('currencies.index');
+
+
+
+
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
             });
             Route::match(['get', 'post'], '/login',                             [AdminController::class, 'login'])->name('login');
@@ -332,4 +342,5 @@ Route::group(
         });
     }
 );
+
 Route::get('/{page}',                                       [AdminController::class, 'index']);

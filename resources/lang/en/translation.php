@@ -77,7 +77,7 @@ return [
     'edit_admin'                => 'Edit Admin',
     'type_admin_name'           => 'Type admin name',
     'type_admin_email'          => 'Type admin email',
-    'type_password_confirmation'=> 'Type password confirmation',
+    'type_password_confirmation' => 'Type password confirmation',
 
 
 
@@ -347,4 +347,11 @@ return [
     'message_details'           => 'Message details',
     'comment'                   => 'Message',
 
+
+
+    // *================================================
+    // * Currencies Page :
+    // *================================================
+    'currencies'                => 'Currencies',
+    'rate'                      => 'Rate',
 ];

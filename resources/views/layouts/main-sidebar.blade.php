@@ -227,6 +227,13 @@
             </li>
 
 
+            {{-- Currencies --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.currencies.index') }}">
+                    <i class="fas fa-money-bill-alt icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.currencies') }}</span>
+                </a>
+            </li>
 
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg
