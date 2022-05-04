@@ -68,21 +68,25 @@
                 </ul>
             </li>
 
-            {{-- admin - sub admins --}}
-            <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
-                    <i class="fas fa-user-shield icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.admins') }}</span>
-                    <i class="angle fe fe-chevron-down"></i>
-                </a>
-                <ul class="slide-menu">
-                    <li>
-                        <a class="slide-item" href="{{ route('admin.index') }}">
-                            {{ __('translation.display_admins') }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @if (auth()->guard('admin')->user()->type == 'super-admin' ||
+                auth()->guard('admin')->user()->type == 'admin')
+                {{-- admin - sub admins --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                        <i class="fas fa-user-shield icon_sidebar side-menu__icon"></i>
+                        <span class="side-menu__label">{{ __('translation.admins') }}</span>
+                        <i class="angle fe fe-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a class="slide-item" href="{{ route('admin.admins.index') }}">
+                                {{ __('translation.display_admins') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
 
             <li class="side-item side-item-category">{{ __('translation.general') }}</li>
 

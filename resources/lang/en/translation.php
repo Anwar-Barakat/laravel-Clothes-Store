@@ -68,6 +68,19 @@ return [
     'type_max_cart_value'       => 'type maximum cart value',
 
 
+    // Admins/subAdmins :
+    'admin'                     => 'Admin',
+    'super-admin'               => 'Super Admin',
+    'sub-admin'                 => 'Sub Admin',
+    'add_roles_perm'            => 'Add Permissions & roles',
+    'add_admin'                 => 'Add Admin',
+    'edit_admin'                => 'Edit Admin',
+    'type_admin_name'           => 'Type admin name',
+    'type_admin_email'          => 'Type admin email',
+    'type_password_confirmation'=> 'Type password confirmation',
+
+
+
     // Sections :
     'id'                        => 'Id',
     'status'                    => 'Status',

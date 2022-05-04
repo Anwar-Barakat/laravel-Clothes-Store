@@ -28,10 +28,9 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.admins') }}</h4>
-                        <button type="button" class="button-30 modal-effect" data-effect="effect-rotate-left" role="button"
-                            data-toggle="modal" data-target="#addNewSection">
+                        <a href="{{ route('admin.admins.create') }}" class="button-30 ">
                             {{ __('buttons.add') }}
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -62,21 +61,45 @@
                                         <td>{{ __('translation.' . $admin->type) }}</td>
                                         <td>{{ $admin->created_at }}</td>
                                         <td>
-                                            @if ($admin->status == 1)
-                                                <a href="javascript:void(0);" class="updateAdminStatus text-success p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="admin-{{ $admin->id }}" admin_id="{{ $admin->id }}"
-                                                    status="{{ $admin->status }}">
-                                                    <i class="fas fa-power-off"></i>
-                                                </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateAdminStatus text-danger p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="admin-{{ $admin->id }}" admin_id="{{ $admin->id }}"
-                                                    status="{{ $admin->status }}">
-                                                    <i class="fas fa-power-off text-danger"></i>
-                                                </a>
-                                            @endif
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                    class="main__btn-actions  ripple" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    @if ($admin->status == 1)
+                                                        <a href="javascript:void(0);"
+                                                            title="{{ __('translation.update_status') }}"
+                                                            class="updateAdminStatus text-success dropdown-item"
+                                                            id="admin-{{ $admin->id }}" admin_id="{{ $admin->id }}"
+                                                            status="{{ $admin->status }}">
+                                                            <i class="fas fa-power-off"></i>
+                                                            {{ __('translation.active') }}
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0);"
+                                                            title="{{ __('translation.update_status') }}"
+                                                            class="updateAdminStatus text-danger dropdown-item"
+                                                            id="admin-{{ $admin->id }}" admin_id="{{ $admin->id }}"
+                                                            status="{{ $admin->status }}">
+                                                            <i class="fas fa-power-off "></i>
+                                                            {{ __('translation.disactive') }}
+                                                        </a>
+                                                    @endif
+                                                    <a href="javascript:void(0);"
+                                                        title="{{ __('translation.add_roles_perm') }}"
+                                                        class="dropdown-item">
+                                                        <i class="fas fa-lock text-primary"></i>
+                                                        {{ __('translation.add_roles_perm') }}
+                                                    </a>
+                                                    <a href="javascript:void(0);" class="dropdown-item confirmationDelete"
+                                                        data-admin="{{ $admin->id }}"
+                                                        title="{{ __('buttons.delete') }}">
+                                                        <i class="fas fa-trash text-danger"></i>
+                                                        {{ __('buttons.delete') }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -124,39 +147,44 @@
 
     {{-- turn on/off the admin status --}}
     <script>
-        $(document).ready(() => {
-            $('.updateAdminStatus').click(function() {
-                var status = $(this).attr('status');
-                var admin_id = $(this).attr('admin_id');
-                var active = '{{ __('translation.active') }} ';
-                var disactiev = '{{ __('translation.disactive') }} ';
-                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'post',
-                    url: '/admin/update-admin-status',
-                    data: {
-                        status: status,
-                        admin_id: admin_id,
-                    },
-                    success: function(response) {
-                        if (response['status'] == 0) {
-                            $('#admin-' + response['admin_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#admin-' + response['admin_id']).html(
-                                '<i class="fas fa-power-off text-danger"></i> ');
-                        } else {
-                            $('#admin-' + response['admin_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#admin-' + response['admin_id']).html(
-                                '<i class="fas fa-power-off text-success"></i> ');
-                        }
-                    },
-                    error: function() {},
-                });
+        $(document).on("click", ".updateAdminStatus", function() {
+            var status = $(this).attr('status');
+            var admin_id = $(this).attr('admin_id');
+            var active = '{{ __('translation.active') }} ';
+            var disactiev = '{{ __('translation.disactive') }} ';
+            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'post',
+                url: '/admin/update-admin-status',
+                data: {
+                    status: status,
+                    admin_id: admin_id,
+                },
+                success: function(response) {
+                    if (response['status'] == 0) {
+                        $('#admin-' + response['admin_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#admin-' + response['admin_id']).text(disactiev);
+                        $('#admin-' + response['admin_id']).attr('style',
+                            'color : #ee335e  !important');
+                        $('#admin-' + response['admin_id']).prepend(
+                            '<i class="fas fa-power-off text-danger"></i> ');
+                    } else {
+                        $('#admin-' + response['admin_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#admin-' + response['admin_id']).text(active);
+                        $('#admin-' + response['admin_id']).attr('style',
+                            'color : #22c03c   !important');
+                        $('#admin-' + response['admin_id']).prepend(
+                            '<i class="fas fa-power-off text-success"></i> ');
+
+                    }
+                },
+                error: function() {},
             });
         });
     </script>

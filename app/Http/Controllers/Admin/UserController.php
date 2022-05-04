@@ -85,7 +85,7 @@ class UserController extends Controller
         //
     }
 
-    public function updateUserStatus(Request $request)
+    public function updateStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->only(['status', 'user_id']);

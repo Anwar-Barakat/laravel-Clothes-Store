@@ -35,15 +35,6 @@
                     <span class="login100-form-title">
                         {{ __('translation.admin_login') }}
                     </span>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="list-unstyled mb-0">
-                                @foreach ($errors->all() as $error)
-                                    <li class="mb-0">- {{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <div class="wrap-input100">
                         <input class="input100 @error('email') is-invalid @enderror" type="email" id="email" name="email"
                             value="{{ old('email') }}" autocomplete="email"

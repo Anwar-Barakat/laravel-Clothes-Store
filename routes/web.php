@@ -65,7 +65,17 @@ Route::group(
                 Route::get('/dashboard', function () {
                     return view('index');
                 })->name('dashboard');
-                Route::get('admins/index',                                      [AdminController::class, 'index'])->name('index');
+
+                // **************************************************************
+                // **************************************************************
+                // **************************************************************
+                // Admins :
+                Route::get('admins/index',                                      [AdminController::class, 'index'])->name('admins.index');
+                Route::get('admins/create',                                     [AdminController::class, 'create'])->name('admins.create');
+                Route::post('admins/store',                                     [AdminController::class, 'store'])->name('admins.store');
+                Route::post('update-admin-status',                              [AdminController::class, 'updateStatus']);
+
+
                 Route::get('settings',                                          [AdminSettingController::class, 'settings'])->name('settings');
                 Route::post('check-current-password',                           [AdminSettingController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
                 Route::post('update-password',                                  [AdminSettingController::class, 'updatePassword'])->name('update.password');
@@ -87,7 +97,7 @@ Route::group(
                 // **************************************************************
                 // Sections :
                 Route::get('users/index',                                    [AdminUserController::class, 'index'])->name('users.index');
-                Route::post('update-user-status',                            [AdminUserController::class, 'updateUserStatus']);
+                Route::post('update-user-status',                            [AdminUserController::class, 'updateStatus']);
 
 
 

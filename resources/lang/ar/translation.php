@@ -72,9 +72,17 @@ return [
 
 
     // Admins/subAdmins :
-    'admin'                     => 'مشرف',
-    'super-admin'               => 'المشرف الأساسي',
-    'sub-admin'                 => 'المشرف الفرعي',
+    'admin'                         => 'مشرف',
+    'super-admin'                   => 'المشرف الأساسي',
+    'sub-admin'                     => 'المشرف الفرعي',
+    'add_roles_perm'                => 'إضافة صلاحيات و أدوار',
+    'add_admin'                     => 'إضافة مشرف',
+    'edit_admin'                    => 'تعديل المشرف',
+    'type_admin_name'               => 'ادخل اسم الأدمن',
+    'type_admin_email'              => 'ادخل البريد الألكتروني',
+    'type_password_confirmation'    => 'ادخل تاكيد كلمة المرور',
+    'type_mobile'                   => 'ادخل رقم الموبايل',
+
 
 
     // Sections :
