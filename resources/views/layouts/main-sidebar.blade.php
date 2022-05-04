@@ -22,7 +22,7 @@
                             class="avatar-status profile-status bg-green"></span>
                     @else
                         <img alt="user-img" class="avatar avatar-xl brround" style="object-fit: cover"
-                            src="{{ asset('assets/img/mastercard.png') }}"><span
+                            src="{{ asset('admin/images/avatars/admin.png') }}"><span
                             class="avatar-status profile-status bg-green"></span>
                     @endif
 

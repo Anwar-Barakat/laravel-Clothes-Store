@@ -66,13 +66,16 @@ Route::group(
                     return view('index');
                 })->name('dashboard');
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Admins :
                 Route::get('admins/index',                                      [AdminController::class, 'index'])->name('admins.index');
                 Route::get('admins/create',                                     [AdminController::class, 'create'])->name('admins.create');
                 Route::post('admins/store',                                     [AdminController::class, 'store'])->name('admins.store');
+                Route::get('admins/edit/{admin}',                               [AdminController::class, 'edit'])->name('admins.edit');
+                Route::post('admins/update/{admin}',                            [AdminController::class, 'update'])->name('admins.update');
+                Route::get('delete-admin/{id}',                                 [AdminController::class, 'destroy'])->name('admins.destroy');
                 Route::post('update-admin-status',                              [AdminController::class, 'updateStatus']);
 
 
@@ -83,27 +86,27 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Settings :
                 Route::get('website-settings/index',                            [SettingController::class, 'index'])->name('settings.index');
                 Route::post('website-settings/update/{setting}',                [SettingController::class, 'update'])->name('settings.update');
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Sections :
-                Route::get('users/index',                                    [AdminUserController::class, 'index'])->name('users.index');
-                Route::post('update-user-status',                            [AdminUserController::class, 'updateStatus']);
+                Route::get('users/index',                                       [AdminUserController::class, 'index'])->name('users.index');
+                Route::post('update-user-status',                               [AdminUserController::class, 'updateStatus']);
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Sections :
                 Route::get('sections/index',                                    [SectionController::class, 'index'])->name('sections.index');
                 Route::post('sections/add',                                     [SectionController::class, 'store'])->name('sections.store');
@@ -112,9 +115,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Banner :
                 Route::get('banners/index',                                     [BannerController::class, 'index'])->name('banners.index');
                 Route::post('banners/add',                                      [BannerController::class, 'store'])->name('banners.store');
@@ -124,9 +127,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Categories :
                 Route::get('categories/index',                                  [CategoryController::class, 'index'])->name('categories.index');
                 Route::get('create-category',                                   [CategoryController::class, 'create'])->name('categories.create');
@@ -139,9 +142,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 //Products :
                 Route::get('products/index',                                    [ProductController::class, 'index'])->name('products.index');
                 Route::get('create-product',                                    [ProductController::class, 'create'])->name('products.create');
@@ -167,9 +170,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Brands :
                 Route::get('brands/index',                                      [BrandController::class, 'index'])->name('brands.index');
                 Route::post('brands/add',                                       [BrandController::class, 'store'])->name('brands.store');
@@ -178,9 +181,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Coupons :
                 Route::get('coupons/index',                                     [CouponController::class, 'index'])->name('coupons.index');
                 Route::get('create-coupon',                                     [CouponController::class, 'create'])->name('coupons.create');
@@ -192,9 +195,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Orders :
                 Route::get('orders/index',                                      [AdminOrderController::class, 'index'])->name('orders.index');
                 Route::get('orders/show/{order}',                               [AdminOrderController::class, 'show'])->name('orders.show');
@@ -205,9 +208,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Shipping Charges :
                 Route::get('shipping-charges/index',                            [ShippingChargeController::class, 'index'])->name('shipping-charges.index');
                 Route::post('shipping-charges/update/{shippingCharge}',         [ShippingChargeController::class, 'update'])->name('shipping-charges.update');
@@ -215,9 +218,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Cms Pages :
                 Route::get('cms-pages/index',                                   [CmsPageController::class, 'index'])->name('cms-pages.index');
                 Route::post('update-cms-pages-status',                          [CmsPageController::class, 'updateStatus']);
@@ -226,9 +229,9 @@ Route::group(
 
 
 
-                // **************************************************************
-                // **************************************************************
-                // **************************************************************
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
                 // Contact Us :
                 Route::get('contact-us/index',                                  [AdminContactUsController::class, 'index'])->name('contact-us.index');
                 Route::post('update-message-status',                            [AdminContactUsController::class, 'updateStatus']);
@@ -246,86 +249,86 @@ Route::group(
         // FrontEnd :
         // ======================================================
         Route::group(['as' => 'frontend.'], function () {
-            Route::get('/',                                 [HomeController::class, 'index'])->name('home');
-            Route::get('/about-us',                         [AboutUsController::class, 'index'])->name('about-us');
-            Route::get('/contact-us',                       [ContactUsController::class, 'index'])->name('contact-us.index');
-            Route::post('/contact-us/store',                [ContactUsController::class, 'store'])->name('contact-us.store');
+            Route::get('/',                                                 [HomeController::class, 'index'])->name('home');
+            Route::get('/about-us',                                         [AboutUsController::class, 'index'])->name('about-us');
+            Route::get('/contact-us',                                       [ContactUsController::class, 'index'])->name('contact-us.index');
+            Route::post('/contact-us/store',                                [ContactUsController::class, 'store'])->name('contact-us.store');
 
 
-            // **************************************************************
-            // **************************************************************
-            // **************************************************************
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // Detail Page :
-            Route::get('/product/{id}',                     [DetailController::class, 'index'])->name('details');
-            Route::post('/get-product-price',               [DetailController::class, 'getProductPrice']);
+            Route::get('/product/{id}',                                     [DetailController::class, 'index'])->name('details');
+            Route::post('/get-product-price',                               [DetailController::class, 'getProductPrice']);
 
 
 
-            // **************************************************************
-            // **************************************************************
-            // **************************************************************
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // Cart Page :
-            Route::get('/cart',                             [CartController::class, 'index'])->name('cart');
-            Route::post('add-to-cart',                      [CartController::class, 'store'])->name('cart.store');
-            Route::post('update-cart-products-quantity',    [CartController::class, 'updateProductQuantity']);
-            Route::post('delete-cart-product',              [CartController::class, 'destroy'])->name('cart.destroy');
+            Route::get('/cart',                                                 [CartController::class, 'index'])->name('cart');
+            Route::post('add-to-cart',                                      [CartController::class, 'store'])->name('cart.store');
+            Route::post('update-cart-products-quantity',                    [CartController::class, 'updateProductQuantity']);
+            Route::post('delete-cart-product',                              [CartController::class, 'destroy'])->name('cart.destroy');
 
 
 
-            // **************************************************************
-            // **************************************************************
-            // **************************************************************
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // Login/Regsister :
-            Route::get('/login-form',                       [UserController::class, 'showLoginForm'])->name('form.login');
-            Route::post('/login',                           [UserController::class, 'login'])->name('login');
-            Route::get('/register-form',                    [UserController::class, 'showRegisterForm'])->name('form.register');
-            Route::post('/register',                        [UserController::class, 'store'])->name('register');
-            Route::get('/logout',                           [UserController::class, 'logout'])->name('logout');
-            Route::get('/check-email',                      [UserController::class, 'checkEmail']);
-            Route::post('/check-email',                     [UserController::class, 'checkEmail']);
-            Route::get('/confirm/{code}',                   [UserController::class, 'confirmationEmail']);
-            Route::post('/confirm/{code}',                  [UserController::class, 'confirmationEmail']);
+            Route::get('/login-form',                                       [UserController::class, 'showLoginForm'])->name('form.login');
+            Route::post('/login',                                           [UserController::class, 'login'])->name('login');
+            Route::get('/register-form',                                    [UserController::class, 'showRegisterForm'])->name('form.register');
+            Route::post('/register',                                        [UserController::class, 'store'])->name('register');
+            Route::get('/logout',                                           [UserController::class, 'logout'])->name('logout');
+            Route::get('/check-email',                                      [UserController::class, 'checkEmail']);
+            Route::post('/check-email',                                     [UserController::class, 'checkEmail']);
+            Route::get('/confirm/{code}',                                   [UserController::class, 'confirmationEmail']);
+            Route::post('/confirm/{code}',                                  [UserController::class, 'confirmationEmail']);
             Route::group(['middleware' => ['auth']], function () {
-                Route::get('/account',                          [UserAccountController::class, 'account'])->name('user.account');
-                Route::post('/update-account-details',          [UserAccountController::class, 'updateAccountDetails'])->name('user.account.details.update');
-                Route::post('/update-account-password',         [UserAccountController::class, 'updateAccountPassword'])->name('user.account.password.update');
-                Route::post('/check-current-password',          [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
-                Route::post('/add-coupon',                      [UserAccountController::class, 'addCouponOnCart']);
+                Route::get('/account',                                      [UserAccountController::class, 'account'])->name('user.account');
+                Route::post('/update-account-details',                      [UserAccountController::class, 'updateAccountDetails'])->name('user.account.details.update');
+                Route::post('/update-account-password',                     [UserAccountController::class, 'updateAccountPassword'])->name('user.account.password.update');
+                Route::post('/check-current-password',                      [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
+                Route::post('/add-coupon',                                  [UserAccountController::class, 'addCouponOnCart']);
             });
 
 
 
-            // **************************************************************
-            // **************************************************************
-            // **************************************************************
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // Delivery Addresses :
-            Route::get('/delivery-addressess/create',               [DeliveryAddressController::class, 'create'])->name('delivery.address.create');
-            Route::post('/delivery-addressess/store',               [DeliveryAddressController::class, 'store'])->name('delivery.address.store');
-            Route::get('/delivery-addressess/{deliveryAddress}',    [DeliveryAddressController::class, 'edit'])->name('delivery.address.edit');
-            Route::post('/delivery-addressess/{deliveryAddress}',   [DeliveryAddressController::class, 'update'])->name('delivery.address.update');
-            Route::get('/delivery-addressess-delete/{id}',          [DeliveryAddressController::class, 'destroy'])->name('delivery.address.destroy');
+            Route::get('/delivery-addressess/create',                       [DeliveryAddressController::class, 'create'])->name('delivery.address.create');
+            Route::post('/delivery-addressess/store',                       [DeliveryAddressController::class, 'store'])->name('delivery.address.store');
+            Route::get('/delivery-addressess/{deliveryAddress}',            [DeliveryAddressController::class, 'edit'])->name('delivery.address.edit');
+            Route::post('/delivery-addressess/{deliveryAddress}',           [DeliveryAddressController::class, 'update'])->name('delivery.address.update');
+            Route::get('/delivery-addressess-delete/{id}',                  [DeliveryAddressController::class, 'destroy'])->name('delivery.address.destroy');
 
 
 
-            // **************************************************************
-            // **************************************************************
-            // **************************************************************
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // Checkout :
-            Route::get('/checkout/index',                           [CheckoutController::class, 'index'])->name('checkout.index');
-            Route::post('/checkout/store',                          [CheckoutController::class, 'store'])->name('checkout.store');
-            Route::get('/checkout/thanks',                          [CheckoutController::class, 'thanks'])->name('checkout.thanks');
+            Route::get('/checkout/index',                                   [CheckoutController::class, 'index'])->name('checkout.index');
+            Route::post('/checkout/store',                                  [CheckoutController::class, 'store'])->name('checkout.store');
+            Route::get('/checkout/thanks',                                  [CheckoutController::class, 'thanks'])->name('checkout.thanks');
 
 
 
-            // **************************************************************
-            // **************************************************************
-            // **************************************************************
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // Orders :
-            Route::get('orders/index',                              [OrderController::class, 'index'])->name('orders.index');
-            Route::get('orders/show/{id}',                          [OrderController::class, 'show'])->name('orders.show');
+            Route::get('orders/index',                                      [OrderController::class, 'index'])->name('orders.index');
+            Route::get('orders/show/{id}',                                  [OrderController::class, 'show'])->name('orders.show');
 
 
-            Route::any('/{url?}',                           [FrontendProductController::class, 'index'])->name('url');
+            Route::any('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');
         });
     }
 );

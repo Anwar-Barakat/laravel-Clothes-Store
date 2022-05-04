@@ -40,6 +40,11 @@ return [
     'contact_us_delete'             => 'The Message has deleted successfully',
     'settings_update'               => 'The Settings has updated successfully',
     'admin_add'                     => 'Admin has added successfully',
+    'admin_update'                  => 'Admin has updated successfully',
+    'admin_delete'                  => 'Admin has Deleted successfully',
+
+
+
 
     // *================================================
     // * FrontEnd :

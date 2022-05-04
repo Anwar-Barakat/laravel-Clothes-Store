@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class AdminController extends Controller
 {
@@ -22,7 +24,7 @@ class AdminController extends Controller
         return view('admin.admins.add');
     }
 
-    public function store(Request $request)
+    public function store(StoreAdminRequest $request)
     {
         if ($request->isMethod('post')) {
             $data   = $request->only(['name', 'email', 'password', 'type', 'mobile', 'status']);
@@ -40,6 +42,31 @@ class AdminController extends Controller
 
     public function edit(Admin $admin)
     {
+        return view('admin.admins.edit', compact('admin'));
+    }
+
+    public function update(Request $request, Admin $admin)
+    {
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['name', 'password', 'type', 'mobile', 'status']);
+            $admin->update($data);
+            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                $admin->clearMediaCollection('avatars');
+                $admin->addMediaFromRequest('image')->toMediaCollection('avatars');
+            }
+            Session::flash('message', __('msgs.admin_update'));
+            return redirect()->route('admin.admins.index');
+        }
+    }
+
+    public function destroy($id)
+    {
+        $admin = Admin::findOrFail($id);
+        $admin->delete();
+        Media::where(['model_id' => $admin->id, 'collection_name' => 'avatars'])->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.admin_delete'));
+        return redirect()->route('admin.admins.index');
     }
 
     public function updateStatus(Request $request)

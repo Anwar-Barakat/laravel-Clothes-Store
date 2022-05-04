@@ -89,8 +89,13 @@
                                                     <a href="javascript:void(0);"
                                                         title="{{ __('translation.add_roles_perm') }}"
                                                         class="dropdown-item">
-                                                        <i class="fas fa-lock text-primary"></i>
+                                                        <i class="fas fa-lock text-secondary"></i>
                                                         {{ __('translation.add_roles_perm') }}
+                                                    </a>
+                                                    <a href="{{ route('admin.admins.edit', $admin) }}"
+                                                        title="{{ __('buttons.update') }}" class="dropdown-item">
+                                                        <i class="fas fa-edit text-primary"></i>
+                                                        {{ __('buttons.update') }}
                                                     </a>
                                                     <a href="javascript:void(0);" class="dropdown-item confirmationDelete"
                                                         data-admin="{{ $admin->id }}"
@@ -185,6 +190,26 @@
                     }
                 },
                 error: function() {},
+            });
+        });
+    </script>
+
+
+    {{-- Confirmation Delete Category --}}
+    <script>
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/delete-admin/' + $(this).data('admin');
+                }
             });
         });
     </script>
