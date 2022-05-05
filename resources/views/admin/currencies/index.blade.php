@@ -34,6 +34,9 @@
                         </button>
                     </div>
                 </div>
+                @if ($errors->any())
+                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                @endif
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="currencies">
@@ -50,31 +53,129 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $currency->code }}</td>
-                                        <td>${{ $currency->rate }}</td>
+                                        <td>${{ number_format($currency->rate, 4) }}</td>
                                         <td>
-                                            @if ($currency->status == 1)
-                                                <a href="javascript:void(0);" class="updateCurrencyStatus text-success p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="currency-{{ $currency->id }}"
-                                                    currency_id="{{ $currency->id }}"
-                                                    status="{{ $currency->status }}">
-                                                    <i class="fas fa-power-off"></i>
-                                                </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateCurrencyStatus text-danger p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="currency-{{ $currency->id }}"
-                                                    currency_id="{{ $currency->id }}"
-                                                    status="{{ $currency->status }}">
-                                                    <i class="fas fa-power-off text-danger"></i>
-                                                </a>
-                                            @endif
-                                            <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                title="{{ __('buttons.update') }}"
-                                                data-target="#editCurrency{{ $currency->id }}" class="text-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                    class="main__btn-actions  ripple" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    @if ($currency->status == 1)
+                                                        <a href="javascript:void(0);"
+                                                            class="updateCurrencyStatus text-success dropdown-item"
+                                                            title="{{ __('translation.update_status') }}"
+                                                            id="currency-{{ $currency->id }}"
+                                                            currency_id="{{ $currency->id }}"
+                                                            status="{{ $currency->status }}">
+                                                            <i class="fas fa-power-off"></i>
+                                                            {{ __('translation.active') }}
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0);"
+                                                            class="updateCurrencyStatus text-danger dropdown-item"
+                                                            title="{{ __('translation.update_status') }}"
+                                                            id="currency-{{ $currency->id }}"
+                                                            currency_id="{{ $currency->id }}"
+                                                            status="{{ $currency->status }}">
+                                                            <i class="fas fa-power-off text-danger"></i>
+                                                            {{ __('translation.disactive') }}
+                                                        </a>
+                                                    @endif
+
+                                                    <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                        title="{{ __('buttons.update') }}"
+                                                        data-target="#editCurrency{{ $currency->id }}"
+                                                        class="text-primary dropdown-item">
+                                                        <i class="fas fa-edit"></i>
+                                                        {{ __('buttons.update') }}
+                                                    </a>
+                                                    <a href="javascript:void(0);" class="dropdown-item confirmationDelete"
+                                                        data-currency="{{ $currency->id }}"
+                                                        title="{{ __('buttons.delete') }}">
+                                                        <i class="fas fa-trash text-danger"></i>
+                                                        {{ __('buttons.delete') }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
+                                        {{-- edit Currency Modal --}}
+                                        <div class="modal effect-rotate-left" id="editCurrency{{ $currency->id }}"
+                                            tabindex="-1" role="dialog"
+                                            aria-labelledby="editCurrencyLabel{{ $currency->id }}" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ __('translation.edit_currency') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('admin.currencies.store') }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="code">{{ __('translation.currency_code') }}</label>
+                                                                <input type="text"
+                                                                    class="form-control  @error('code') is-invalid @enderror"
+                                                                    id="code" name="code"
+                                                                    placeholder="{{ __('translation.type_currency_code') }}"
+                                                                    value="{{ old('code', $currency->code) }}">
+                                                                @error('code')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="rate">{{ __('translation.rate') }}</label>
+                                                                <input type="text"
+                                                                    class="form-control  @error('rate') is-invalid @enderror"
+                                                                    id="rate" name="rate"
+                                                                    placeholder="{{ __('translation.rate_within_dollar') }}"
+                                                                    value="{{ old('code', $currency->rate) }}">
+                                                                @error('rate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="status">{{ __('translation.status') }}</label>
+                                                                <select
+                                                                    class="form-control @error('status') is-invalid @enderror"
+                                                                    id="status" name="status">
+                                                                    <option value="">{{ __('translation.choose..') }}
+                                                                    </option>
+                                                                    <option value="1"
+                                                                        {{ old('status', $currency->status) == '1' ? 'selected' : '' }}>
+                                                                        {{ __('translation.active') }}</option>
+                                                                    <option value="0"
+                                                                        {{ old('status', $currency->status) == '0' ? 'selected' : '' }}>
+                                                                        {{ __('translation.disactive') }}</option>
+                                                                </select>
+                                                                @error('status')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">{{ __('buttons.update') }}</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -85,8 +186,8 @@
         </div>
     </div>
     {{-- Add New Currency Modal --}}
-    <div class="modal effect-rotate-left" id="addNewCurrency" tabindex="-1" role="dialog" aria-labelledby="addNewbrandLabel"
-        aria-hidden="true">
+    <div class="modal effect-rotate-left" id="addNewCurrency" tabindex="-1" role="dialog"
+        aria-labelledby="addNewCurrencyLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -101,7 +202,8 @@
                         <div class="form-group">
                             <label for="code">{{ __('translation.currency_code') }}</label>
                             <input type="text" class="form-control  @error('code') is-invalid @enderror" id="code"
-                                name="code" placeholder="{{ __('translation.type_currency_code') }}">
+                                name="code" placeholder="{{ __('translation.type_currency_code') }}"
+                                value="{{ old('code') }}">
                             @error('code')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -111,7 +213,8 @@
                         <div class="form-group">
                             <label for="rate">{{ __('translation.rate') }}</label>
                             <input type="text" class="form-control  @error('rate') is-invalid @enderror" id="rate"
-                                name="rate" placeholder="{{ __('translation.rate_within_dollar') }}">
+                                name="rate" placeholder="{{ __('translation.rate_within_dollar') }}"
+                                value="{{ old('rate') }}">
                             @error('rate')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -211,6 +314,25 @@
                     }
                 },
                 error: function() {},
+            });
+        });
+    </script>
+
+    {{-- Confirmation Delete Currency --}}
+    <script>
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/delete-currency/' + $(this).data('currency');
+                }
             });
         });
     </script>

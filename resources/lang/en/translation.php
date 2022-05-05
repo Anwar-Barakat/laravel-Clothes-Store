@@ -359,5 +359,6 @@ return [
     'type_currency_code'        => 'Type currency code',
     'rate'                      => 'Rate',
     'rate_within_dollar'        => 'Rate within dollar',
+    'edit_currency'             => 'Edit currency',
 
 ];

@@ -79,7 +79,12 @@ class CurrencyController extends Controller
      */
     public function update(UpdateCurrencyRequest $request, Currency $currency)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['code', 'rate', 'status']);
+            $currency->update($data);
+            Session::flash('message', __('msgs.currency_update'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -88,9 +93,13 @@ class CurrencyController extends Controller
      * @param  \App\Models\Currency  $currency
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Currency $currency)
+    public function destroy($id)
     {
-        //
+        $currency = Currency::findOrFail($id);
+        $currency->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.currency_delete'));
+        return redirect()->route('admin.currencies.index');
     }
 
 

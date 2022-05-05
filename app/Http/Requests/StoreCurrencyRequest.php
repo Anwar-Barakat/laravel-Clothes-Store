@@ -24,8 +24,8 @@ class StoreCurrencyRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'      => ['required', 'regex:/^[\pL\s\-]+$/u', 'min:3'],
-            'rate'      => ['required', 'numeric'],
+            'code'      => ['required', 'regex:/^[\pL\s\-]+$/u'],
+            'rate'      => ['required', 'bail', 'gt:0'],
             'status'    => ['required', 'in:0,1']
         ];
     }

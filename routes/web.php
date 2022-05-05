@@ -236,7 +236,7 @@ Route::group(
                 // Contact Us :
                 Route::get('contact-us/index',                                  [AdminContactUsController::class, 'index'])->name('contact-us.index');
                 Route::post('update-message-status',                            [AdminContactUsController::class, 'updateStatus']);
-                Route::get('delete-messages/{id}',                              [AdminContactUsController::class, 'destroy'])->name('cms-pages.destroy');
+                Route::get('delete-message/{id}',                               [AdminContactUsController::class, 'destroy'])->name('cms-pages.destroy');
 
 
 
@@ -246,6 +246,7 @@ Route::group(
                 // Currencies Us :
                 Route::get('currencies/index',                                  [CurrencyController::class, 'index'])->name('currencies.index');
                 Route::post('Currencies/store',                                 [CurrencyController::class, 'store'])->name('currencies.store');
+                Route::get('delete-currency/{id}',                              [CurrencyController::class, 'destroy'])->name('currencies.destroy');
                 Route::post('update-currency-status',                           [CurrencyController::class, 'updateStatus']);
 
 

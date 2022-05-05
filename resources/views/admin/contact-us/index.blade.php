@@ -277,7 +277,7 @@
                 confirmButtonText: '{{ __('msgs.yes_delete') }}',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/admin/delete-messages/' + $(this).data('message');
+                    window.location.href = '/admin/delete-message/' + $(this).data('message');
                 }
             });
         });

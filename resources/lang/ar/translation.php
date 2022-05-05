@@ -362,6 +362,7 @@ return [
     'type_currency_code'        => 'ادخل رمز النسبة',
     'rate'                      => 'النسبة',
     'rate_within_dollar'        => 'النسبة مقابل الدولار',
+    'edit_currency'             => 'تعديل العملة',
 
 
 

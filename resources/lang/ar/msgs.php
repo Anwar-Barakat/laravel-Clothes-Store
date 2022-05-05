@@ -48,6 +48,8 @@ return [
     'admin_update'                  => 'تم تحديث الأدمن بنجاح',
     'admin_delete'                  => 'تم حذف الأدمن بنجاح',
     'currency_add'                  => 'تم اضافة العملة بنجاح',
+    'currency_delete'               => 'تم حذف العملة بنجاح',
+    'currency_update'               => 'تم تحديث العملة بنجاح',
 
 
 

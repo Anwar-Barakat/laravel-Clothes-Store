@@ -13,7 +13,7 @@ class UpdateCurrencyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateCurrencyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code'      => ['required', 'regex:/^[\pL\s\-]+$/u'],
+            'rate'      => ['required', 'bail', 'gt:0'],
+            'status'    => ['required', 'in:0,1']
         ];
     }
 }

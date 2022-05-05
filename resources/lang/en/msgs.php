@@ -43,6 +43,8 @@ return [
     'admin_update'                  => 'Admin has updated successfully',
     'admin_delete'                  => 'Admin has Deleted successfully',
     'currency_add'                  => 'Currency Has Added Successfully',
+    'currency_delete'               => 'Currency Has Deleted Successfully',
+    'currency_update'               => 'Currency Has updated Successfully',
 
 
 
