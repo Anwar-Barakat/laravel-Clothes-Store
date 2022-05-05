@@ -114,7 +114,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('admin.currencies.store') }}"
+                                                        <form action="{{ route('admin.currencies.update', $currency) }}"
                                                             method="post">
                                                             @csrf
                                                             <div class="form-group">

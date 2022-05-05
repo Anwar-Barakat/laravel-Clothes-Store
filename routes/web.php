@@ -245,7 +245,8 @@ Route::group(
                 // *************************************************************
                 // Currencies Us :
                 Route::get('currencies/index',                                  [CurrencyController::class, 'index'])->name('currencies.index');
-                Route::post('Currencies/store',                                 [CurrencyController::class, 'store'])->name('currencies.store');
+                Route::post('currencies/store',                                 [CurrencyController::class, 'store'])->name('currencies.store');
+                Route::post('currencies/update/{currency}',                     [CurrencyController::class, 'update'])->name('currencies.update');
                 Route::get('delete-currency/{id}',                              [CurrencyController::class, 'destroy'])->name('currencies.destroy');
                 Route::post('update-currency-status',                           [CurrencyController::class, 'updateStatus']);
 

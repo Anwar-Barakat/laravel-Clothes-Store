@@ -33,7 +33,6 @@
                     </ul>
                 </div>
                 <div class="row">
-
                     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                         <div class="wrap-product-detail">
                             <div class="detail-media">
@@ -80,9 +79,9 @@
                                         <li>FaceTime HD Camera 7.0 MP Photos</li>
                                     </ul>
                                 </div>
-
+                                <br>
                                 @if (isset($groupProducts) && $groupProducts->count() > 0)
-                                    <h2 class="product-name">{{ __('frontend.similar_products') }}</h2>
+                                    <h4 class="mt-2">{{ __('frontend.similar_products') }}</h4>
                                     <div class="similar_products">
                                         @foreach ($groupProducts as $groupProduct)
                                             @foreach ($groupProduct->getMedia('image_products') as $key => $image)
@@ -118,6 +117,20 @@
                                         </span>
                                     @endif
                                 </div>
+                                <br>
+                                <table class="table table-striped">
+                                    @foreach ($getCurrencies as $currency)
+                                        <tr @if (App::getLocale() == 'ar') dir="ltr" @endif>
+                                            <td>
+                                                {{ $currency->code }}
+                                            </td>
+                                            <td>
+                                                {{ number_format($product->price / $currency->rate, 2) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+
                                 <div class="stock-info in-stock">
                                     <p class="availability">{{ __('frontend.availability') }}: {{ $totalStock }}
                                         <b>{{ __('frontend.in_stock') }}</b>
@@ -157,10 +170,6 @@
                                     <div class="wrap-butons">
                                         <button type="submit"
                                             class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</button>
-                                        {{-- <div class="wrap-btn">
-                                            <a href="#" class="btn btn-compare">Add Compare</a>
-                                            <a href="#" class="btn btn-wishlist">{{ __('frontend.add_wishlist') }}</a>
-                                        </div> --}}
                                     </div>
                                 </form>
                             </div>

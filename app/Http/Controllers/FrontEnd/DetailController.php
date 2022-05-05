@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\Currency;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
@@ -32,12 +33,16 @@ class DetailController extends Controller
             ->get();
 
 
+        $getCurrencies      = Currency::select('code', 'rate')->where('status', 1)->get();
+
+
         $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();
         return view('frontend.detail', [
             'product'           => $product,
             'totalStock'        => $totalStock,
             'relatedProducts'   => $relatedProducts,
             'groupProducts'     => $groupProducts,
+            'getCurrencies'     => $getCurrencies
         ]);
     }
 

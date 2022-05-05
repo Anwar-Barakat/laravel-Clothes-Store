@@ -16,7 +16,7 @@ class CurrencySeeder extends Seeder
     {
         $currenciesRecords = [
             [
-                'code'      => 'USD',
+                'code'      => 'USA',
                 'rate'      => 1,
             ],
             [
