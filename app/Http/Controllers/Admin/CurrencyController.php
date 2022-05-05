@@ -6,6 +6,8 @@ use App\Models\Currency;
 use App\Http\Requests\StoreCurrencyRequest;
 use App\Http\Requests\UpdateCurrencyRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CurrencyController extends Controller
 {
@@ -38,7 +40,12 @@ class CurrencyController extends Controller
      */
     public function store(StoreCurrencyRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['code', 'rate', 'status']);
+            Currency::create($data);
+            Session::flash('message', __('msgs.currency_add'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -84,5 +91,24 @@ class CurrencyController extends Controller
     public function destroy(Currency $currency)
     {
         //
+    }
+
+
+    public function updateStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['status', 'currency_id']);
+            if ($data['status'] == 1)
+                $status = 0;
+            else
+                $status = 1;
+            Currency::where('id', $data['currency_id'])->update([
+                'status'                => $status
+            ]);
+            return response()->json([
+                'status'                => $status,
+                'currency_id'           => $data['currency_id']
+            ]);
+        }
     }
 }

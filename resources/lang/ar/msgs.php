@@ -31,6 +31,7 @@ return [
     'product_attachment_delete'     => 'تم حذف المرفق بنجاح',
     'product_attachments_delete'    => 'تم حذف مرفقات المنتج بنجاح',
     'are_your_sure'                 => 'هل أنت متأكد من عملية الحذف ؟',
+    'brand_add'                     => 'تم اضافة الشعار بنجاح',
     'yes_delete'                    => 'تعم, احذف !',
     'delete_all_attachs'            => 'هل أنت متأكد من حذف جميع المرفقات ؟',
     'brnad_added'                   => 'تم إضافة الشعار بنجاح',
@@ -46,6 +47,7 @@ return [
     'admin_add'                     => 'تم إضافة الأدمن بنجاح',
     'admin_update'                  => 'تم تحديث الأدمن بنجاح',
     'admin_delete'                  => 'تم حذف الأدمن بنجاح',
+    'currency_add'                  => 'تم اضافة العملة بنجاح',
 
 
 

@@ -48,7 +48,7 @@ class BrandController extends Controller
                 ],
                 'status'    => $data['status']
             ]);
-            Session::flash('message', __('msgs.brand_added'));
+            Session::flash('message', __('msgs.brand_add'));
             return redirect()->back();
         }
     }

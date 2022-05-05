@@ -29,7 +29,7 @@ return [
     'product_attachments_delete'    => 'Product Attachments Has Deleted Successfuly',
     'are_your_sure'                 => 'Are you sure?',
     'yes_delete'                    => 'Yes, Delete !',
-    'brand_added'                   => 'Brand Has Added Successfully',
+    'brand_add'                     => 'Brand Has Added Successfully',
     'brand_updated'                 => 'Brand Has Updated Successfully',
     'order_status'                  => 'Order status Has Updated Successfully',
     'shipping_charges_update'       => 'Shipping Charges Updated Successfully',
@@ -42,6 +42,7 @@ return [
     'admin_add'                     => 'Admin has added successfully',
     'admin_update'                  => 'Admin has updated successfully',
     'admin_delete'                  => 'Admin has Deleted successfully',
+    'currency_add'                  => 'Currency Has Added Successfully',
 
 
 

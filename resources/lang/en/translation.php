@@ -354,4 +354,10 @@ return [
     // *================================================
     'currencies'                => 'Currencies',
     'rate'                      => 'Rate',
+    'add_new_currency'          => 'add new currency',
+    'currency_code'             => 'Currency code',
+    'type_currency_code'        => 'Type currency code',
+    'rate'                      => 'Rate',
+    'rate_within_dollar'        => 'Rate within dollar',
+
 ];

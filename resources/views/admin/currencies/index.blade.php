@@ -84,6 +84,65 @@
             </div>
         </div>
     </div>
+    {{-- Add New Currency Modal --}}
+    <div class="modal effect-rotate-left" id="addNewCurrency" tabindex="-1" role="dialog" aria-labelledby="addNewbrandLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('translation.add_new_currency') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.currencies.store') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="code">{{ __('translation.currency_code') }}</label>
+                            <input type="text" class="form-control  @error('code') is-invalid @enderror" id="code"
+                                name="code" placeholder="{{ __('translation.type_currency_code') }}">
+                            @error('code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="rate">{{ __('translation.rate') }}</label>
+                            <input type="text" class="form-control  @error('rate') is-invalid @enderror" id="rate"
+                                name="rate" placeholder="{{ __('translation.rate_within_dollar') }}">
+                            @error('rate')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="status">{{ __('translation.status') }}</label>
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                                <option value="">{{ __('translation.choose..') }}</option>
+                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
+                                    {{ __('translation.active') }}</option>
+                                <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
+                                    {{ __('translation.disactive') }}</option>
+                            </select>
+                            @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">{{ __('buttons.close') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('buttons.add') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <!-- Internal Data tables -->

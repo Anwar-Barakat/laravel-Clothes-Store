@@ -176,7 +176,7 @@ Route::group(
                 // *************************************************************
                 // Brands :
                 Route::get('brands/index',                                      [BrandController::class, 'index'])->name('brands.index');
-                Route::post('brands/add',                                       [BrandController::class, 'store'])->name('brands.store');
+                Route::post('brands/store',                                     [BrandController::class, 'store'])->name('brands.store');
                 Route::post('brands/update/{brand}',                            [BrandController::class, 'update'])->name('brands.update');
                 Route::post('update-brand-status',                              [BrandController::class, 'updateBrandStatus']);
 
@@ -243,8 +243,10 @@ Route::group(
                 // *************************************************************
                 // *************************************************************
                 // *************************************************************
-                // Contact Us :
+                // Currencies Us :
                 Route::get('currencies/index',                                  [CurrencyController::class, 'index'])->name('currencies.index');
+                Route::post('Currencies/store',                                 [CurrencyController::class, 'store'])->name('currencies.store');
+                Route::post('update-currency-status',                           [CurrencyController::class, 'updateStatus']);
 
 
 

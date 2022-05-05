@@ -185,43 +185,6 @@ textarea {
 /* **************************************************************************** */
 
 
-/* ************************** TableDates Custom Css  ************************** */
-
-.dataTables_wrapper .dataTables_paginate .page-item.disabled .page-link,
-.dataTables_paginate .page-item.active .page-link {
-    padding: 0 !important;
-    width: fit-content;
-    padding: 6px 9px !important;
-    height: fit-content;
-    font-size: 14px;
-}
-
-div.dataTables_wrapper div.dataTables_info {
-    font-size: 14px;
-}
-
-div.table-responsive>div.dataTables_wrapper>div.row {
-    align-items: center;
-}
-
-div.table-responsive>div.dataTables_wrapper>div.row>div[class^="col-"]:last-child {
-    padding: 0 .8rem 0 0.15rem;
-}
-
-div.dataTables_wrapper div.dataTables_filter input {
-    margin-left: 0;
-}
-
-
-/* ************************** TableDates Custom Css  ************************** */
-
-
-/* **************************************************************************** */
-
-
-/* **************************************************************************** */
-
-
 /* **************** MultField Form Product Attributes  ************************ */
 
 .multattributesform {
