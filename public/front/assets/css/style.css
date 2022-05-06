@@ -242,7 +242,7 @@ textarea {
 
 .mercado-panels-actions-wrap .mercado-prev-panel:before {
     content: "\f104";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
 }
 
 .mercado-panels-actions-wrap .mercado-current-panel-title {
@@ -279,7 +279,7 @@ textarea {
 
 .mercado-next-panel:before {
     content: "\f105";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
 }
 
 .mercado-panel>ul>li>a {
@@ -636,7 +636,7 @@ textarea {
 
 .center-section .wrap-search-form .wrap-list-cate .link-control::after {
     content: '\f0dd';
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     display: inline-block;
     position: absolute;
     top: 7px;
@@ -1990,7 +1990,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .wrap-show-advance-info-box>.wrap-countdown::before {
     content: "\f017";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 24px;
     line-height: 21px;
     color: #000000;
@@ -2007,7 +2007,6 @@ li.menu-item .nav-label.sale-label::before {
     display: inline-block;
     padding: 19px 9px 13px 9px;
     border: 1px solid transparent;
-    margin-bottom: 9px;
     -webkit-transition: all 0.5s ease 0s;
     -moz-transition: all 0.5s ease 0s;
     -ms-transition: all 0.5s ease 0s;
@@ -2992,7 +2991,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .widget.filter-widget .vertical-list li a:not(.btn-control)::after {
     content: "\f00c";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     display: inline-block;
     float: left;
     margin-top: 0;
@@ -3319,7 +3318,7 @@ li.menu-item .nav-label.sale-label::before {
 .wrap-product-detail .detail-info .short-desc li::before,
 .product-list-style .product-info .desc li::before {
     content: "\f111";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 6px;
     line-height: 20px;
     color: #666666;
@@ -3484,7 +3483,7 @@ li.menu-item .nav-label.sale-label::before {
     font-size: 14px;
     line-height: 20px;
     color: #666666;
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     margin-right: 6px;
 }
 
@@ -3670,7 +3669,7 @@ li.menu-item .nav-label.sale-label::before {
 
 .wrap-login-item .form-item input[type="checkbox"]+span::after {
     content: "\f00c";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     display: block;
     top: 0;
     left: -21px;
@@ -4217,7 +4216,7 @@ article.single-post .info .post-attrs li:not(:last-child)::after,
 article.single-post .info .post-attrs li a.link-commnet-post::before,
 .wrap-articles article .info .post-attrs li a.link-commnet-post::before {
     content: "\f075";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 13px;
     line-height: 24px;
     color: #888888;
@@ -4874,7 +4873,7 @@ article.single-post blockquote p:last-child::after {
 .row-in-form .checkbox-field input[type="checkbox"]+span::after,
 .summary .checkout-info .checkbox-field input[type="checkbox"]+span::after {
     content: "\f00c";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     display: block;
     top: 0;
     left: -21px;
@@ -5192,7 +5191,7 @@ article.single-post blockquote p:last-child::after {
 
 .wrap-product-detail .detail-info .wrap-btn .btn::before {
     content: "\f079";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 14px;
     line-height: 20px;
     color: #666666;
@@ -5356,7 +5355,7 @@ article.single-post blockquote p:last-child::after {
 
 .star-rating::before {
     content: "\f005\f005\f005\f005\f005";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 15px;
     color: #e6e6e6;
 }
@@ -5372,7 +5371,7 @@ article.single-post blockquote p:last-child::after {
 
 .star-rating span:before {
     content: "\f005\f005\f005\f005\f005";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 15px;
     color: #efce4a;
 }
@@ -5399,6 +5398,7 @@ article.single-post blockquote p:last-child::after {
     width: -webkit-calc(50% - 15px);
     width: -moz-calc(50% - 15px);
     float: left;
+    margin-bottom: 17px;
 }
 
 #review_form_wrapper #review_form .comment-form p.comment-form-author {
@@ -5410,6 +5410,7 @@ article.single-post blockquote p:last-child::after {
     display: inline-block;
     float: left;
     width: 100%;
+    margin-bottom: 17px;
 }
 
 #review_form_wrapper #review_form .comment-form p.form-submit input[type=submit] {
@@ -5429,13 +5430,13 @@ article.single-post blockquote p:last-child::after {
     background-color: #333333;
 }
 
-#review_form_wrapper #review_form .comment-form textarea[name=comment] {
+#review_form_wrapper #review_form .comment-form textarea[name=review] {
     display: block;
     width: 100%;
     border: 1px solid #e6e6e6;
     outline: none;
     padding: 10px;
-    margin-bottom: 17px;
+    resize: none;
 }
 
 #review_form_wrapper #review_form .comment-form p input[type=text],
@@ -5446,7 +5447,6 @@ article.single-post blockquote p:last-child::after {
     outline: none;
     height: 39px;
     padding: 2px 10px;
-    margin-bottom: 17px;
 }
 
 .wrap-product-detail .comment-form-rating>span {
@@ -5456,10 +5456,6 @@ article.single-post blockquote p:last-child::after {
     float: left;
     margin-right: 7px;
     color: #666;
-}
-
-.wrap-product-detail .comment-form-rating~p {
-    margin-bottom: 0 !important;
 }
 
 .wrap-product-detail .comment-form-rating p.stars {
@@ -5480,7 +5476,7 @@ article.single-post blockquote p:last-child::after {
 
 .comment-form-rating .stars label::before {
     content: "\f005";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     font-size: 15px;
     /*color: #e6e6e6;*/
     color: #efce4a;
@@ -5758,7 +5754,7 @@ table.shop_attributes tbody {
 
 .choose-payment-methods .payment-method input[type=radio]+span::after {
     content: "\f00c";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     display: block;
     font-size: 12px;
     top: -1px;
@@ -6006,7 +6002,7 @@ table.shop_attributes tbody {
 
 .header-toggle .primary .menu-item.menu-item-has-children::after {
     content: "\f105";
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
     display: inline-block;
     font-size: 13px;
     color: #666666;
@@ -7421,7 +7417,7 @@ table.shop_attributes tbody {
     }
     .wrap-newletter-footer .btn-submit::before {
         content: "\f1d8";
-        font-family: FontAwesome;
+        font-family: 'Font Awesome 5 Free';
         font-size: 20px;
         color: #ffffff;
         line-height: 45px;

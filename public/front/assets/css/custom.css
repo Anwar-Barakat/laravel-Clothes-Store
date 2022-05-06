@@ -389,7 +389,7 @@ input[type="checkbox"]:disabled {
 .gellery .thumnails {
     overflow: hidden;
     display: flex;
-    padding: 0 1rem;
+    padding: 4px 1rem;
 }
 
 .gellery .thumnails img {

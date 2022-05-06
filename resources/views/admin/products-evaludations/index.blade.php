@@ -28,10 +28,6 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.products_evaluations') }}</h4>
-                        <button type="button" class="button-30 modal-effect" data-effect="effect-rotate-left" role="button"
-                            data-toggle="modal" data-target="#addNewSection">
-                            {{ __('buttons.add') }}
-                        </button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -51,13 +47,37 @@
                                 @foreach ($ratings as $rating)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $rating->product->name }}</td>
                                         <td>
                                             <a href="javascript:void(0);" class="tag tag-green">
                                                 {{ $rating->user->email }}
                                             </a>
                                         </td>
-                                        <td>{{ $rating->product->name }}</td>
-                                        <td>{{ $rating->rating }}</td>
+                                        <td>
+                                            @if ($rating->rating == 1)
+                                                <i class="fas fa-star text-warning"></i>
+                                            @elseif ($rating->rating == 2)
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            @elseif ($rating->rating == 3)
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            @elseif ($rating->rating == 4)
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            @elseif ($rating->rating == 5)
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            @else
+                                                <i class="fas fa-star-half-alt text-warning"></i>
+                                            @endif
+                                        </td>
                                         <td>{{ $rating->created_at }}</td>
                                         <td>
                                             @if ($rating->status == 1)

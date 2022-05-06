@@ -64,11 +64,11 @@
                             </div>
                             <div class="detail-info">
                                 <div class="product-rating">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
                                     <a href="#" class="count-review">(05 review)</a>
                                 </div>
                                 <h2 class="product-name">{{ $product->name }}</h2>
@@ -302,9 +302,7 @@
                                         </table>
                                     </div>
                                     <div class="tab-content-item " id="review">
-
                                         <div class="wrap-review-form">
-
                                             <div id="comments">
                                                 <h2 class="woocommerce-Reviews-title">{{ $product->name }}</span></h2>
                                                 <ol class="commentlist">
@@ -340,18 +338,27 @@
                                             <div id="review_form_wrapper">
                                                 <div id="review_form">
                                                     <div id="respond" class="comment-respond">
-
-                                                        <form action="#" method="post" id="commentform"
-                                                            class="comment-form" novalidate="">
+                                                        <form action="{{ route('frontend.ratings.store') }}"
+                                                            method="post" id="commentform" class="comment-form"
+                                                            novalidate="">
+                                                            @csrf
+                                                            @if ($errors->any())
+                                                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                                                            @endif
+                                                            <input type="hidden" name="product_id"
+                                                                value="{{ $product->id }}">
+                                                            <input type="hidden" name="user_id"
+                                                                value="{{ Auth::user()->id ?? '' }}">
                                                             <p class="comment-notes">
-                                                                <span id="email-notes">Your email address will not be
-                                                                    published.</span> Required fields are marked <span
-                                                                    class="required">*</span>
+                                                                <span
+                                                                    id="email-notes">{{ __('translation.review_email_notes') }}
+                                                                </span>
+                                                                {{ __('translation.review_email_notes_2') }}
+                                                                <span class="required">*</span>
                                                             </p>
                                                             <div class="comment-form-rating">
-                                                                <span>Your rating</span>
+                                                                <span>{{ __('translation.your_rating') }}</span>
                                                                 <p class="stars">
-
                                                                     <label for="rated-1"></label>
                                                                     <input type="radio" id="rated-1" name="rating"
                                                                         value="1">
@@ -367,27 +374,53 @@
                                                                     <label for="rated-5"></label>
                                                                     <input type="radio" id="rated-5" name="rating" value="5"
                                                                         checked="checked">
+                                                                    @error('rating')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                    @enderror
                                                                 </p>
                                                             </div>
                                                             <p class="comment-form-author">
-                                                                <label for="author">Name <span
+                                                                <label for="author">{{ __('frontend.name') }} <span
                                                                         class="required">*</span></label>
-                                                                <input id="author" name="author" type="text" value="">
+                                                                <input id="author" name="name" type="text"
+                                                                    class=" @error('name') is-invalid @enderror"
+                                                                    value="{{ old('name') }}">
+                                                                @error('name')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </p>
                                                             <p class="comment-form-email">
-                                                                <label for="email">Email <span
-                                                                        class="required">*</span></label>
-                                                                <input id="email" name="email" type="email" value="">
+                                                                <label for="email">{{ __('frontend.email_address') }}
+                                                                    <span class="required">*</span></label>
+                                                                <input id="email" name="email" type="email"
+                                                                    class=" @error('email') is-invalid @enderror"
+                                                                    value="{{ old('email') }}">
+                                                                @error('email')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </p>
                                                             <p class="comment-form-comment">
-                                                                <label for="comment">Your review <span
-                                                                        class="required">*</span>
+                                                                <label for="comment">{{ __('translation.your_review') }}
+                                                                    <span class="required">*</span>
                                                                 </label>
-                                                                <textarea id="comment" name="comment" cols="45" rows="8"></textarea>
+                                                                <textarea id="comment" name="review" class=" @error('review') is-invalid @enderror" cols="45"
+                                                                    rows="4">{{ old('review') }}</textarea>
+                                                                @error('review')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
                                                             </p>
                                                             <p class="form-submit">
                                                                 <input name="submit" type="submit" id="submit"
-                                                                    class="submit" value="Submit">
+                                                                    class="submit"
+                                                                    value="{{ __('buttons.submit') }}">
                                                             </p>
                                                         </form>
 

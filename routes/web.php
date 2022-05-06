@@ -28,6 +28,7 @@ use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\Frontend\RatingController as FrontendRatingController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -342,6 +343,14 @@ Route::group(
             Route::get('/checkout/index',                                   [CheckoutController::class, 'index'])->name('checkout.index');
             Route::post('/checkout/store',                                  [CheckoutController::class, 'store'])->name('checkout.store');
             Route::get('/checkout/thanks',                                  [CheckoutController::class, 'thanks'])->name('checkout.thanks');
+
+
+
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
+            // Rating :
+            Route::post('/ratings/store',                                  [FrontendRatingController::class, 'store'])->name('ratings.store');
 
 
 

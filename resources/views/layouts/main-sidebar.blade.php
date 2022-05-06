@@ -226,7 +226,7 @@
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.ratings.index') }}">
                     <i class="fas fa-bookmark icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.ratings') }}</span>
+                    <span class="side-menu__label">{{ __('translation.products_evaluations') }}</span>
                 </a>
             </li>
 
