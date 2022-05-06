@@ -100,21 +100,6 @@
                 </a>
             </li>
 
-            {{-- Brands --}}
-            <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.brands.index') }}">
-                    <i class="fas fa-sign icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.brands') }}</span>
-                </a>
-            </li>
-
-            {{-- Banners --}}
-            <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.banners.index') }}">
-                    <i class="fab fa-buffer icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.banners') }}</span>
-                </a>
-            </li>
 
             {{-- categories --}}
             <li class="slide">
@@ -154,27 +139,6 @@
                 </ul>
             </li>
 
-            {{-- Coupons --}}
-            <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
-                    <i class="fas fa-coins icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.coupons') }}</span>
-                    <i class="angle fe fe-chevron-down"></i>
-                </a>
-                <ul class="slide-menu">
-                    <li>
-                        <a class="slide-item" href="{{ route('admin.coupons.index') }}">
-                            {{ __('translation.all_coupons') }}
-                        </a>
-                    </li>
-                    <li>
-                        <a class="slide-item" href="{{ route('admin.coupons.create') }}">
-                            {{ __('translation.add_coupon') }}
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
 
             {{-- Orders --}}
             <li class="slide">
@@ -201,11 +165,68 @@
                 </a>
             </li>
 
+
+            {{-- Coupons --}}
+            <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                    <i class="fas fa-coins icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.coupons') }}</span>
+                    <i class="angle fe fe-chevron-down"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.coupons.index') }}">
+                            {{ __('translation.all_coupons') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a class="slide-item" href="{{ route('admin.coupons.create') }}">
+                            {{ __('translation.add_coupon') }}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            {{-- Currencies --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.currencies.index') }}">
+                    <i class="fas fa-money-bill-alt icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.currencies') }}</span>
+                </a>
+            </li>
+
+
+            {{-- Brands --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.brands.index') }}">
+                    <i class="fas fa-sign icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.brands') }}</span>
+                </a>
+            </li>
+
+            {{-- Banners --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.banners.index') }}">
+                    <i class="fab fa-buffer icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.banners') }}</span>
+                </a>
+            </li>
+
+
             {{-- users --}}
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.users.index') }}">
                     <i class="fas fa-users icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.users') }}</span>
+                </a>
+            </li>
+
+            {{-- ratings --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.ratings.index') }}">
+                    <i class="fas fa-bookmark icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.ratings') }}</span>
                 </a>
             </li>
 
@@ -227,13 +248,8 @@
             </li>
 
 
-            {{-- Currencies --}}
-            <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.currencies.index') }}">
-                    <i class="fas fa-money-bill-alt icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.currencies') }}</span>
-                </a>
-            </li>
+
+
 
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}"><svg

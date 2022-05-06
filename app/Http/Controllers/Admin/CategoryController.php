@@ -19,25 +19,6 @@ class CategoryController extends Controller
     }
 
 
-    public function updateCategoryStatus(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = $request->only(['status', 'category_id']);
-            if ($data['status'] == 1)
-                $status = 0;
-            else
-                $status = 1;
-            Category::where('id', $data['category_id'])->update([
-                'status'    => $status
-            ]);
-            return response()->json([
-                'status'        => $status,
-                'category_id'   => $data['category_id']
-            ]);
-        }
-    }
-
-
     public function create()
     {
         $sections = Section::all();
@@ -115,6 +96,26 @@ class CategoryController extends Controller
         Session::flash('message', __('msgs.category_delete'));
         return redirect()->route('admin.categories.index');
     }
+
+
+    public function updateStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['status', 'category_id']);
+            if ($data['status'] == 1)
+                $status = 0;
+            else
+                $status = 1;
+            Category::where('id', $data['category_id'])->update([
+                'status'    => $status
+            ]);
+            return response()->json([
+                'status'        => $status,
+                'category_id'   => $data['category_id']
+            ]);
+        }
+    }
+    
 
     public function appendCategoriesLevel(Request $request)
     {

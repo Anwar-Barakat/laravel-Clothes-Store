@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Rating;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Requests\UpdateRatingRequest;
+use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
@@ -16,7 +17,8 @@ class RatingController extends Controller
      */
     public function index()
     {
-        //
+        $ratings = Rating::with(['user', 'product'])->latest()->get();
+        return view('admin.products-evaludations.index', ['ratings' => $ratings]);
     }
 
     /**
@@ -83,5 +85,23 @@ class RatingController extends Controller
     public function destroy(Rating $rating)
     {
         //
+    }
+
+    public function updateStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->only(['status', 'rating_id']);
+            if ($data['status'] == 1)
+                $status = 0;
+            else
+                $status = 1;
+            Rating::where('id', $data['rating_id'])->update([
+                'status'        => $status
+            ]);
+            return response()->json([
+                'status'        => $status,
+                'rating_id'     => $data['rating_id']
+            ]);
+        }
     }
 }

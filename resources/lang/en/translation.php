@@ -361,4 +361,12 @@ return [
     'rate_within_dollar'        => 'Rate within dollar',
     'edit_currency'             => 'Edit currency',
 
+
+
+    // *================================================
+    // * Ratings Page :
+    // *================================================
+    'products_evaluations'      => 'Products evaluations',
+    'ratings'                   => 'Ratings'
+
 ];

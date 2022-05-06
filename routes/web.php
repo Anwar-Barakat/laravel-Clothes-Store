@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\OrderInvoiceController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\RatingController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ShippingChargeController;
@@ -99,7 +100,7 @@ Route::group(
                 // *************************************************************
                 // *************************************************************
                 // *************************************************************
-                // Sections :
+                // Users :
                 Route::get('users/index',                                       [AdminUserController::class, 'index'])->name('users.index');
                 Route::post('update-user-status',                               [AdminUserController::class, 'updateStatus']);
 
@@ -138,7 +139,7 @@ Route::group(
                 Route::get('edit-category/{category}',                          [CategoryController::class, 'edit'])->name('categories.edit');
                 Route::post('update-category/{category}',                       [CategoryController::class, 'update'])->name('categories.update');
                 Route::get('delete-category/{category}',                        [CategoryController::class, 'destroy'])->name('categories.destroy');
-                Route::post('update-category-status',                           [CategoryController::class, 'updateCategoryStatus']);
+                Route::post('update-category-status',                           [CategoryController::class, 'updateStatus']);
                 Route::post('append-categories-level',                          [CategoryController::class, 'appendCategoriesLevel']);
 
 
@@ -155,19 +156,28 @@ Route::group(
                 Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('products.destroy');
                 Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
 
-                // Product Attributes :
+                //? Product Attributes :
                 Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('product.attributes.create');
                 Route::post('store-attributes',                                 [ProductAttributeController::class, 'store'])->name('product.attributes.store');
                 Route::post('update-attributes/{product}',                      [ProductAttributeController::class, 'update'])->name('product.attributes.update');
                 Route::post('update-attribute-status',                          [ProductAttributeController::class, 'updateAttributeStatus']);
                 Route::get('delete-attribute/{id}',                             [ProductAttributeController::class, 'destroy'])->name('product.attributes.destroy');
 
-                // Product Images :
+                //? Product Images :
                 Route::get('create-images/{product}',                           [ProductImageController::class, 'create'])->name('product.images.create');
                 Route::post('store-images',                                     [ProductImageController::class, 'store'])->name('product.images.store');
                 Route::get('delete-image/{id}',                                 [ProductImageController::class, 'destroy'])->name('product.images.destroy');
                 Route::get('download-image/{id}',                               [ProductImageController::class, 'download'])->name('product.images.download');
                 Route::get('delete-product-attachments/{id}',                   [ProductImageController::class, 'destroyAllProductAttachments'])->name('product.images.all.destroy');
+
+
+
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
+                // Ratings :
+                Route::get('ratings/index',                                     [RatingController::class,'index'])->name('ratings.index');
+                Route::post('update-rating-status',                             [RatingController::class, 'updateStatus']);
 
 
 

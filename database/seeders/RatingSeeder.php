@@ -31,6 +31,8 @@ class RatingSeeder extends Seeder
                 'review'        => $faker->paragraph(),
                 'rating'        => 4,
                 'status'        => 1,
+                'created_at'    => now(),
+                'updated_at'    => now(),
             ],
             [
                 'user_id'       => $userIds->random(),
@@ -38,6 +40,8 @@ class RatingSeeder extends Seeder
                 'review'        => $faker->paragraph(),
                 'rating'        => 3,
                 'status'        => 1,
+                'created_at'    => now(),
+                'updated_at'    => now(),
             ],
             [
                 'user_id'       => $userIds->random(),
@@ -45,6 +49,8 @@ class RatingSeeder extends Seeder
                 'review'        => $faker->paragraph(),
                 'rating'        => 5,
                 'status'        => 1,
+                'created_at'    => now(),
+                'updated_at'    => now(),
             ],
         ];
 
