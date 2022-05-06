@@ -115,10 +115,21 @@ class DetailController extends Controller
     public function getProductPrice(Request $request)
     {
         if ($request->ajax()) {
-            $data                       = $request->only(['size', 'productId']);
+            $data                                   = $request->only(['size', 'productId']);
+            $discountedAttribtePrice                = Product::getDiscountedAttributePrice($data['productId'], $data['size']);
 
-            $discountedAttribtePrice    = Product::getDiscountedAttributePrice($data['productId'], $data['size']);
-
+            $getCurrencies                          = Currency::select('code', 'rate')->where('status', 1)->get();
+            $discountedAttribtePrice['currency']    = '';
+            foreach ($getCurrencies as  $currency) {
+                $discountedAttribtePrice['currency'] .= '<tr>';
+                $discountedAttribtePrice['currency'] .= '<td>';
+                $discountedAttribtePrice['currency'] .= $currency->code;
+                $discountedAttribtePrice['currency'] .= '</td>';
+                $discountedAttribtePrice['currency'] .= '<td>';
+                $discountedAttribtePrice['currency'] .= round($discountedAttribtePrice['finalPrice'] / $currency->rate, 2);
+                $discountedAttribtePrice['currency'] .= '</td>';
+                $discountedAttribtePrice['currency'] .= '</th>';
+            }
             return $discountedAttribtePrice;
         }
     }

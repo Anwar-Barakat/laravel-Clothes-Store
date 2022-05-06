@@ -125,7 +125,11 @@
                                                 {{ $currency->code }}
                                             </td>
                                             <td>
-                                                {{ number_format($product->price / $currency->rate, 2) }}
+                                                @if ($discount > 0)
+                                                    {{ number_format($discount / $currency->rate, 2) }}
+                                                @else
+                                                    {{ number_format($product->price / $currency->rate, 2) }}
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -516,9 +520,12 @@
                     if (response['discount'] > 0) {
                         $('#productPriceWithDiscAfter').html('$.' + response['finalPrice']);
                         $('#productPriceWithDiscBefore').html('$.' + response['productPrice']);
+                        $('.table.table-striped').html(response['currency']);
+
 
                     } else {
                         $('#productPriceWithoutDisc').html('$.' + response['productPrice']);
+                        $('.table.table-striped').html(response['currency']);
                     }
                 },
                 error: function() {
