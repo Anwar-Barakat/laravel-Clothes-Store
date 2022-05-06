@@ -109,7 +109,7 @@ class BrandController extends Controller
         //
     }
 
-    public function updateBrandStatus(Request $request)
+    public function updateStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->only(['status', 'brand_id']);

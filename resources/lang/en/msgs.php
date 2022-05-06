@@ -45,6 +45,7 @@ return [
     'currency_add'                  => 'Currency Has Added Successfully',
     'currency_delete'               => 'Currency Has Deleted Successfully',
     'currency_update'               => 'Currency Has updated Successfully',
+    'rating_delete'                 => 'Rating Has Deleted Successfully',
 
 
 

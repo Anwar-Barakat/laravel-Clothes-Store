@@ -7,6 +7,7 @@ use App\Models\Rating;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Requests\UpdateRatingRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class RatingController extends Controller
 {
@@ -82,9 +83,13 @@ class RatingController extends Controller
      * @param  \App\Models\Rating  $rating
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rating $rating)
+    public function destroy($id)
     {
-        //
+        $rating = Rating::findOrFail($id);
+        $rating->delete();
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.coupno_delete'));
+        return redirect()->route('admin.ratings.index');
     }
 
     public function updateStatus(Request $request)

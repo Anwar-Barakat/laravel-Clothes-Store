@@ -141,7 +141,7 @@ class CouponController extends Controller
     }
 
 
-    public function updateCouponStatus(Request $request)
+    public function updateStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->only(['status', 'coupon_id']);

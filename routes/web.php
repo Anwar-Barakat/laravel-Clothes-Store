@@ -113,7 +113,7 @@ Route::group(
                 Route::get('sections/index',                                    [SectionController::class, 'index'])->name('sections.index');
                 Route::post('sections/add',                                     [SectionController::class, 'store'])->name('sections.store');
                 Route::post('sections/update/{section}',                        [SectionController::class, 'update'])->name('sections.update');
-                Route::post('update-section-status',                            [SectionController::class, 'updateSectionStatus']);
+                Route::post('update-section-status',                            [SectionController::class, 'updateStatus']);
 
 
 
@@ -154,7 +154,7 @@ Route::group(
                 Route::get('edit-product/{product}',                            [ProductController::class, 'edit'])->name('products.edit');
                 Route::post('update-product/{product}',                         [ProductController::class, 'update'])->name('products.update');
                 Route::get('delete-product/{product}',                          [ProductController::class, 'destroy'])->name('products.destroy');
-                Route::post('update-product-status',                            [ProductController::class, 'updateProductStatus']);
+                Route::post('update-product-status',                            [ProductController::class, 'updateStatus']);
 
                 //? Product Attributes :
                 Route::get('create-attributes/{product}',                       [ProductAttributeController::class, 'create'])->name('product.attributes.create');
@@ -176,7 +176,8 @@ Route::group(
                 // *************************************************************
                 // *************************************************************
                 // Ratings :
-                Route::get('ratings/index',                                     [RatingController::class,'index'])->name('ratings.index');
+                Route::get('ratings/index',                                     [RatingController::class, 'index'])->name('ratings.index');
+                Route::get('delete-rating/{id}',                                [RatingController::class, 'destroy'])->name('ratings.destroy');
                 Route::post('update-rating-status',                             [RatingController::class, 'updateStatus']);
 
 
@@ -188,7 +189,7 @@ Route::group(
                 Route::get('brands/index',                                      [BrandController::class, 'index'])->name('brands.index');
                 Route::post('brands/store',                                     [BrandController::class, 'store'])->name('brands.store');
                 Route::post('brands/update/{brand}',                            [BrandController::class, 'update'])->name('brands.update');
-                Route::post('update-brand-status',                              [BrandController::class, 'updateBrandStatus']);
+                Route::post('update-brand-status',                              [BrandController::class, 'updateStatus']);
 
 
 
@@ -199,7 +200,7 @@ Route::group(
                 Route::get('coupons/index',                                     [CouponController::class, 'index'])->name('coupons.index');
                 Route::get('create-coupon',                                     [CouponController::class, 'create'])->name('coupons.create');
                 Route::post('store-coupon',                                     [CouponController::class, 'store'])->name('coupons.store');
-                Route::post('update-coupon-status',                             [CouponController::class, 'updateCouponStatus']);
+                Route::post('update-coupon-status',                             [CouponController::class, 'updateStatus']);
                 Route::get('edit-coupon/{coupon}',                              [CouponController::class, 'edit'])->name('coupons.edit');
                 Route::post('update-coupon/{coupon}',                           [CouponController::class, 'update'])->name('coupons.update');
                 Route::get('delete-coupon/{coupon}',                            [CouponController::class, 'destroy'])->name('coupons.destroy');

@@ -47,7 +47,7 @@ class SectionController extends Controller
         return redirect()->back();
     }
 
-    public function updateSectionStatus(Request $request)
+    public function updateStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->only(['status', 'section_id']);

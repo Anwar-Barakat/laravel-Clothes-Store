@@ -135,7 +135,7 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 
-    public function updateProductStatus(Request $request)
+    public function updateStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->only(['status', 'product_id']);

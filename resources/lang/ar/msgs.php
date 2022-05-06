@@ -50,6 +50,7 @@ return [
     'currency_add'                  => 'تم اضافة العملة بنجاح',
     'currency_delete'               => 'تم حذف العملة بنجاح',
     'currency_update'               => 'تم تحديث العملة بنجاح',
+    'rating_delete'                 => 'تم حذف التقييم بنجاح',
 
 
 

@@ -75,6 +75,10 @@
                                                     <i class="fas fa-power-off text-danger"></i>
                                                 </a>
                                             @endif
+                                            <a href="javascript:void(0);" class="confirmationDelete"
+                                                data-rating="{{ $rating->id }}" title="{{ __('buttons.delete') }}">
+                                                <i class="fas fa-trash text-danger"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -155,6 +159,26 @@
                     },
                     error: function() {},
                 });
+            });
+        });
+    </script>
+
+
+    {{-- Confirmation Delete Banner --}}
+    <script>
+        $(document).on("click", ".confirmationDelete", function() {
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/admin/delete-rating/' + $(this).data('rating');
+                }
             });
         });
     </script>
