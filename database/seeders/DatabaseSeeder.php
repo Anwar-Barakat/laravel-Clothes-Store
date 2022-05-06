@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             // ShippingChargeSeeder::class,
             // CmsPageSeeder::class,
             // SettingsSeeder::class,
-            CurrencySeeder::class,
+            // CurrencySeeder::class,
+            RatingSeeder::class,
 
         ]);
     }
