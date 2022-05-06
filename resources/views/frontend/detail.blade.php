@@ -64,12 +64,32 @@
                             </div>
                             <div class="detail-info">
                                 <div class="product-rating">
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <i class="fas fa-star" aria-hidden="true"></i>
-                                    <a href="#" class="count-review">(05 review)</a>
+                                    @if ($avgStarRating == 1)
+                                        <i class="fas fa-star text-warning"></i>
+                                    @elseif ($avgStarRating == 2)
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    @elseif ($avgStarRating == 3)
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    @elseif ($avgStarRating == 4)
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    @elseif ($avgStarRating == 5)
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    @else
+                                        <i class="fas fa-star-half-alt text-warning">
+                                        </i>
+                                    @endif
+                                    <a href="javascript:void(0);" class="count-review">({{ $ratingCount }}
+                                        {{ __('translation.reviews') }})</a>
                                 </div>
                                 <h2 class="product-name">{{ $product->name }}</h2>
                                 <div class="short-desc">
@@ -312,7 +332,7 @@
                                                                 <div id="comment-20" class="comment_container">
                                                                     <img alt=""
                                                                         src="{{ asset('front/assets/images/icons/user-detault-icons.png') }}"
-                                                                        height="80" width="80">
+                                                                        height="60px" width="60px">
                                                                     <div class="comment-text">
                                                                         @if ($rating->rating == 1)
                                                                             <i class="fas fa-star text-warning"></i>
@@ -471,10 +491,6 @@
                                                             </a>
                                                         @endif
                                                     </a>
-                                                    <div class="group-flash">
-                                                        <span
-                                                            class="flash-item new-label">{{ __('frontend.new') }}</span>
-                                                    </div>
                                                     <div class="wrap-btn">
                                                         <a href="{{ route('frontend.details', $relatedProduct->id) }}"
                                                             class="function-link">{{ __('frontend.quick_view') }}</a>

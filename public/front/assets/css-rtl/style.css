@@ -2144,7 +2144,7 @@ li.menu-item .nav-label.sale-label::before {
 .product .product-info .wrap-price,
 .product-style-2 .product-info .wrap-price {
     display: flex;
-    justify-content: start;
+    justify-content: end;
     align-items: center;
     margin-top: 3px;
 }

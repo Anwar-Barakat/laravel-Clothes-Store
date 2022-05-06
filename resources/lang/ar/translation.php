@@ -375,6 +375,7 @@ return [
     'review_email_notes'        => 'لن يتم نشر عنوان بريدك الإلكتروني.',
     'review_email_notes_2'      => 'الحقول المطلوبة محددة',
     'your_review'               => 'مراجعتك',
+    'reviews'                   => 'مراجعات',
 
 
 

@@ -36,7 +36,11 @@ class DetailController extends Controller
 
         $getCurrencies      = Currency::select('code', 'rate')->where('status', 1)->get();
 
-        $ratings            = Rating::with(['user'])->where('product_id', $id)->get();
+        $ratings            = Rating::with(['user'])->where(['status' => 1, 'product_id' => $id])->latest()->get();
+        $ratingSum          = Rating::where(['status' => 1, 'product_id' => $id])->sum('rating');
+        $ratingCount        = Rating::where(['status' => 1, 'product_id' => $id])->count();
+        $avgStarRating      = round($ratingSum / $ratingCount);
+
 
 
         $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();
@@ -46,7 +50,9 @@ class DetailController extends Controller
             'relatedProducts'   => $relatedProducts,
             'groupProducts'     => $groupProducts,
             'getCurrencies'     => $getCurrencies,
-            'ratings'           => $ratings
+            'ratings'           => $ratings,
+            'ratingCount'       => $ratingCount,
+            'avgStarRating'     => $avgStarRating
         ]);
     }
 

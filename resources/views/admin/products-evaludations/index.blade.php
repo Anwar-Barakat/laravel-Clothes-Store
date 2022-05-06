@@ -35,12 +35,12 @@
                         <table class="table text-md-nowrap" id="evaluations">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">{{ __('translation.id') }}</th>
-                                    <th class="border-bottom-0">{{ __('translation.product') }}</th>
+                                    <th class=" border-bottom-0">{{ __('translation.id') }}</th>
+                                    <th class=" border-bottom-0">{{ __('translation.product') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.customer_email') }}</th>
-                                    <th class="border-bottom-0">{{ __('translation.ratings') }}</th>
+                                    <th class="wd-15p border-bottom-0">{{ __('translation.ratings') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.created') }}</th>
-                                    <th class="border-bottom-0">{{ __('translation.actions') }}</th>
+                                    <th class=" border-bottom-0">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
