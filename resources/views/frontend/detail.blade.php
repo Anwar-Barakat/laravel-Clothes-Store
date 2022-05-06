@@ -303,37 +303,58 @@
                                     </div>
                                     <div class="tab-content-item " id="review">
                                         <div class="wrap-review-form">
-                                            <div id="comments">
-                                                <h2 class="woocommerce-Reviews-title">{{ $product->name }}</span></h2>
-                                                <ol class="commentlist">
-                                                    <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
-                                                        id="li-comment-20">
-                                                        <div id="comment-20" class="comment_container">
-                                                            <img alt="" src="assets/images/author-avata.jpg" height="80"
-                                                                width="80">
-                                                            <div class="comment-text">
-                                                                <div class="star-rating">
-                                                                    <span class="width-80-percent">Rated <strong
-                                                                            class="rating">5</strong> out of
-                                                                        5</span>
+                                            @if ($ratings->count() > 0)
+                                                @foreach ($ratings as $rating)
+                                                    <div id="comments">
+                                                        <ol class="commentlist">
+                                                            <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1"
+                                                                id="li-comment-20">
+                                                                <div id="comment-20" class="comment_container">
+                                                                    <img alt=""
+                                                                        src="{{ asset('front/assets/images/icons/user-detault-icons.png') }}"
+                                                                        height="80" width="80">
+                                                                    <div class="comment-text">
+                                                                        @if ($rating->rating == 1)
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                        @elseif ($rating->rating == 2)
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                        @elseif ($rating->rating == 3)
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                        @elseif ($rating->rating == 4)
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                        @elseif ($rating->rating == 5)
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                            <i class="fas fa-star text-warning"></i>
+                                                                        @else
+                                                                            <i class="fas fa-star-half-alt text-warning">
+                                                                            </i>
+                                                                        @endif
+                                                                        <p class="meta">
+                                                                            <strong
+                                                                                class="woocommerce-review__author">{{ $rating->user->name }}</strong>
+                                                                            <span class="woocommerce-review__dash">–</span>
+                                                                            <time class="woocommerce-review__published-date"
+                                                                                datetime="2008-02-14 20:00">{{ $rating->created_at }}</time>
+                                                                        </p>
+                                                                        <div class="description">
+                                                                            <p>{{ $rating->review }}</p>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <p class="meta">
-                                                                    <strong
-                                                                        class="woocommerce-review__author">admin</strong>
-                                                                    <span class="woocommerce-review__dash">–</span>
-                                                                    <time class="woocommerce-review__published-date"
-                                                                        datetime="2008-02-14 20:00">Tue, Aug 15, 2017</time>
-                                                                </p>
-                                                                <div class="description">
-                                                                    <p>Pellentesque habitant morbi tristique senectus et
-                                                                        netus
-                                                                        et malesuada fames ac turpis egestas.</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ol>
-                                            </div><!-- #comments -->
+                                                            </li>
+                                                        </ol>
+                                                    </div><!-- #comments -->
+                                                @endforeach
+                                            @endif
 
                                             <div id="review_form_wrapper">
                                                 <div id="review_form">
@@ -381,30 +402,6 @@
                                                                     @enderror
                                                                 </p>
                                                             </div>
-                                                            <p class="comment-form-author">
-                                                                <label for="author">{{ __('frontend.name') }} <span
-                                                                        class="required">*</span></label>
-                                                                <input id="author" name="name" type="text"
-                                                                    class=" @error('name') is-invalid @enderror"
-                                                                    value="{{ old('name') }}">
-                                                                @error('name')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </p>
-                                                            <p class="comment-form-email">
-                                                                <label for="email">{{ __('frontend.email_address') }}
-                                                                    <span class="required">*</span></label>
-                                                                <input id="email" name="email" type="email"
-                                                                    class=" @error('email') is-invalid @enderror"
-                                                                    value="{{ old('email') }}">
-                                                                @error('email')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                @enderror
-                                                            </p>
                                                             <p class="comment-form-comment">
                                                                 <label for="comment">{{ __('translation.your_review') }}
                                                                     <span class="required">*</span>

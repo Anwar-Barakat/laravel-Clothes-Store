@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Currency;
 use App\Models\Product;
 use App\Models\ProductAttribute;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -35,6 +36,8 @@ class DetailController extends Controller
 
         $getCurrencies      = Currency::select('code', 'rate')->where('status', 1)->get();
 
+        $ratings            = Rating::with(['user'])->where('product_id', $id)->get();
+
 
         $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();
         return view('frontend.detail', [
@@ -42,7 +45,8 @@ class DetailController extends Controller
             'totalStock'        => $totalStock,
             'relatedProducts'   => $relatedProducts,
             'groupProducts'     => $groupProducts,
-            'getCurrencies'     => $getCurrencies
+            'getCurrencies'     => $getCurrencies,
+            'ratings'           => $ratings
         ]);
     }
 

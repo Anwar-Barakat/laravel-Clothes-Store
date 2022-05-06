@@ -1725,12 +1725,12 @@ a.text-info:focus {
 }
 
 .text-warning {
-    color: #8a6d3b
+    color: #efce4a
 }
 
 a.text-warning:hover,
 a.text-warning:focus {
-    color: #66512c
+    color: #fcd32e
 }
 
 .text-danger {
@@ -3498,11 +3498,11 @@ select[multiple].input-lg {
 .has-warning.checkbox label,
 .has-warning.radio-inline label,
 .has-warning.checkbox-inline label {
-    color: #8a6d3b
+    color: #efce4a
 }
 
 .has-warning .form-control {
-    border-color: #8a6d3b;
+    border-color: #efce4a;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
 }
@@ -3514,13 +3514,13 @@ select[multiple].input-lg {
 }
 
 .has-warning .input-group-addon {
-    color: #8a6d3b;
-    border-color: #8a6d3b;
+    color: #efce4a;
+    border-color: #efce4a;
     background-color: #fcf8e3
 }
 
 .has-warning .form-control-feedback {
-    color: #8a6d3b
+    color: #efce4a
 }
 
 .has-error .help-block,
@@ -6099,7 +6099,7 @@ a.thumbnail.active {
 .alert-warning {
     background-color: #fcf8e3;
     border-color: #faebcc;
-    color: #8a6d3b
+    color: #efce4a
 }
 
 .alert-warning hr {
@@ -6459,13 +6459,13 @@ button.list-group-item-info.active:focus {
 }
 
 .list-group-item-warning {
-    color: #8a6d3b;
+    color: #efce4a;
     background-color: #fcf8e3
 }
 
 a.list-group-item-warning,
 button.list-group-item-warning {
-    color: #8a6d3b
+    color: #efce4a
 }
 
 a.list-group-item-warning .list-group-item-heading,
@@ -6477,7 +6477,7 @@ a.list-group-item-warning:hover,
 button.list-group-item-warning:hover,
 a.list-group-item-warning:focus,
 button.list-group-item-warning:focus {
-    color: #8a6d3b;
+    color: #efce4a;
     background-color: #faf2cc
 }
 
@@ -6488,8 +6488,8 @@ button.list-group-item-warning.active:hover,
 a.list-group-item-warning.active:focus,
 button.list-group-item-warning.active:focus {
     color: #fff;
-    background-color: #8a6d3b;
-    border-color: #8a6d3b
+    background-color: #efce4a;
+    border-color: #efce4a
 }
 
 .list-group-item-danger {
@@ -6907,7 +6907,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-warning>.panel-heading {
-    color: #8a6d3b;
+    color: #efce4a;
     background-color: #fcf8e3;
     border-color: #faebcc
 }
@@ -6918,7 +6918,7 @@ button.list-group-item-danger.active:focus {
 
 .panel-warning>.panel-heading .badge {
     color: #fcf8e3;
-    background-color: #8a6d3b
+    background-color: #efce4a
 }
 
 .panel-warning>.panel-footer+.panel-collapse>.panel-body {

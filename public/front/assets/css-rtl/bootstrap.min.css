@@ -1725,12 +1725,12 @@ a.text-info:focus {
 }
 
 .text-warning {
-    color: #8a6d3b
+    color: #efce4a
 }
 
 a.text-warning:hover,
 a.text-warning:focus {
-    color: #66512c
+    color: #fcd32e
 }
 
 .text-danger {

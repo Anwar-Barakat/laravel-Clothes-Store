@@ -45,7 +45,7 @@ class RatingController extends Controller
             return redirect()->back();
         } else {
             if ($request->isMethod('post')) {
-                $data               = $request->only(['name', 'email', 'user_id', 'product_id', 'review', 'rating']);
+                $data               = $request->only(['user_id', 'product_id', 'review', 'rating']);
                 Rating::create($data);
                 Session::flash('message', __('msgs.rating_add'));
                 return redirect()->back();

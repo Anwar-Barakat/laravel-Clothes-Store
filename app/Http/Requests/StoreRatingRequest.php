@@ -24,8 +24,6 @@ class StoreRatingRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => 'required|regex:/^[\pL\s\-]+$/u',
-            'email'             => 'required|email',
             'product_id'        => 'required',
             'review'            => 'required|min:10',
             'rating'            => 'required',
