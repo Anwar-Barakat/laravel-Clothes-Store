@@ -91,13 +91,13 @@
                                         @endif
                                         <a href="javascript:void(0);" class="count-review">
                                             ({{ $ratingCount }}
-                                            {{ __('translation.reviews') }})</a>
+                                            {{ __('frontend.reviews') }})</a>
                                     </div>
                                 @else
                                     <div class="product-rating">
                                         <a href="javascript:void(0);" class="count-review">
                                             (0
-                                            {{ __('translation.reviews') }})
+                                            {{ __('frontend.reviews') }})
                                         </a>
                                     </div>
                                 @endif
@@ -217,6 +217,10 @@
                                     <a href="#add_infomation"
                                         class="tab-control-item">{{ __('frontend.additional_info') }}</a>
                                     <a href="#review" class="tab-control-item">{{ __('frontend.review') }}</a>
+                                    @if ($product->getFirstMediaUrl('video_products'))
+                                        <a href="#attachment_video"
+                                            class="tab-control-item">{{ __('frontend.attachment_video') }}</a>
+                                    @endif
                                 </div>
                                 <div class="tab-contents">
                                     <div class="tab-content-item active" id="description">
@@ -405,13 +409,13 @@
                                                                 value="{{ Auth::user()->id ?? '' }}">
                                                             <p class="comment-notes">
                                                                 <span
-                                                                    id="email-notes">{{ __('translation.review_email_notes') }}
+                                                                    id="email-notes">{{ __('frontend.review_email_notes') }}
                                                                 </span>
-                                                                {{ __('translation.review_email_notes_2') }}
+                                                                {{ __('frontend.review_email_notes_2') }}
                                                                 <span class="required">*</span>
                                                             </p>
                                                             <div class="comment-form-rating">
-                                                                <span>{{ __('translation.your_rating') }}</span>
+                                                                <span>{{ __('frontend.your_rating') }}</span>
                                                                 <p class="stars">
                                                                     <label for="rated-1"></label>
                                                                     <input type="radio" id="rated-1" name="rating"
@@ -436,7 +440,7 @@
                                                                 </p>
                                                             </div>
                                                             <p class="comment-form-comment">
-                                                                <label for="comment">{{ __('translation.your_review') }}
+                                                                <label for="comment">{{ __('frontend.your_review') }}
                                                                     <span class="required">*</span>
                                                                 </label>
                                                                 <textarea id="comment" name="review" class=" @error('review') is-invalid @enderror" cols="45"
@@ -459,6 +463,17 @@
                                             </div><!-- #review_form_wrapper -->
 
                                         </div>
+                                    </div>
+                                    <div class="tab-content-item" id="attachment_video">
+                                        @if ($product->getFirstMediaUrl('video_products'))
+                                            <video class="img img-thumbnail mb-4 admin-image" controls>
+                                                <source src="{{ $product->getFirstMediaUrl('video_products') }}"
+                                                    type="video/mp4">
+                                                <source src="{{ $product->getFirstMediaUrl('video_products') }}"
+                                                    type="video/ogg">
+                                                {{ __('msgs.browser_error') }}
+                                            </video>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

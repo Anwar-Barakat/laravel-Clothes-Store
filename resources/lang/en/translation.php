@@ -368,12 +368,8 @@ return [
     // *================================================
     'products_evaluations'      => 'Products evaluations',
     'ratings'                   => 'Ratings',
-    'your_rating'               => 'Your rating',
-    'review_email_notes'        => 'Your email address will not be published.',
-    'review_email_notes_2'      => 'Required fields are marked ',
-    'your_review'               => 'Your review',
-    'reviews'                   => 'Reviews',
-    'no_reviews'                => 'no reviews'
+    'display_rating'            => 'Display rating',
+    'review'                    => 'Review',
 
 
 ];

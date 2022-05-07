@@ -10,6 +10,7 @@ return [
     'download'                  => 'Download',
     'check'                     => 'Check',
     'submit'                    => 'Submit',
+    'display'                   => 'Display',
 
 
     'delete_row'                => 'Delete Row',

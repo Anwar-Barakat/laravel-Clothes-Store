@@ -122,6 +122,13 @@ return [
     'in_stock'                  => 'In Stock',
     'quantity'                  => 'Quantity',
     'similar_products'          => 'Similar products',
+    'attachment_video'          => 'Attachment video',
+    'your_rating'               => 'Your rating',
+    'review_email_notes'        => 'Your email address will not be published.',
+    'review_email_notes_2'      => 'Required fields are marked ',
+    'your_review'               => 'Your review',
+    'reviews'                   => 'Reviews',
+    'no_reviews'                => 'no reviews',
 
 
     // Cart :

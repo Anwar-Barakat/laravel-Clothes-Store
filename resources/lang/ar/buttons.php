@@ -10,6 +10,7 @@ return [
     'download'                  => 'تحميل المرفق',
     'check'                     => 'اختيار',
     'submit'                    => 'إرسال',
+    'display'                   => 'إظهار',
 
     'delete_row'                => 'حذف سطر',
     'add_row'                   => 'إضافة سطر',

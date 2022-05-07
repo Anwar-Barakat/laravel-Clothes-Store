@@ -80,26 +80,83 @@
                                         </td>
                                         <td>{{ $rating->created_at }}</td>
                                         <td>
-                                            @if ($rating->status == 1)
-                                                <a href="javascript:void(0);" class="updateRatingStatus text-success p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="rating-{{ $rating->id }}" rating_id="{{ $rating->id }}"
-                                                    status="{{ $rating->status }}">
-                                                    <i class="fas fa-power-off"></i>
-                                                </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateRatingStatus text-danger p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="rating-{{ $rating->id }}" rating_id="{{ $rating->id }}"
-                                                    status="{{ $rating->status }}">
-                                                    <i class="fas fa-power-off text-danger"></i>
-                                                </a>
-                                            @endif
-                                            <a href="javascript:void(0);" class="confirmationDelete"
-                                                data-rating="{{ $rating->id }}" title="{{ __('buttons.delete') }}">
-                                                <i class="fas fa-trash text-danger"></i>
-                                            </a>
+                                            <div class="dropdown dropup">
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                    class="main__btn-actions  ripple" data-toggle="dropdown" type="button">
+                                                    <i class="fas fa-bars"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    @if ($rating->status == 1)
+                                                        <a href="javascript:void(0);"
+                                                            class="updateRatingStatus text-success dropdown-item"
+                                                            title="{{ __('translation.update_status') }}"
+                                                            id="rating-{{ $rating->id }}"
+                                                            rating_id="{{ $rating->id }}"
+                                                            status="{{ $rating->status }}">
+                                                            <i class="fas fa-power-off"></i>
+                                                            {{ __('translation.active') }}
+                                                        </a>
+                                                    @else
+                                                        <a href="javascript:void(0);"
+                                                            class="updateRatingStatus text-danger dropdown-item"
+                                                            title="{{ __('translation.update_status') }}"
+                                                            id="rating-{{ $rating->id }}"
+                                                            rating_id="{{ $rating->id }}"
+                                                            status="{{ $rating->status }}">
+                                                            <i class="fas fa-power-off text-danger"></i>
+                                                            {{ __('translation.disactive') }}
+                                                        </a>
+                                                    @endif
+
+                                                    <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                        title="{{ __('buttons.update') }}"
+                                                        data-target="#displayRating{{ $rating->id }}"
+                                                        class="text-default dropdown-item">
+                                                        <i class="fas fa-eye text-warning"></i>
+                                                        {{ __('buttons.display') }}
+                                                    </a>
+                                                    <a href="javascript:void(0);" class="dropdown-item confirmationDelete"
+                                                        data-rating="{{ $rating->id }}"
+                                                        title="{{ __('buttons.delete') }}">
+                                                        <i class="fas fa-trash text-danger"></i>
+                                                        {{ __('buttons.delete') }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
+                                        {{-- display rating Modal --}}
+                                        <div class="modal effect-rotate-left" id="displayRating{{ $rating->id }}"
+                                            tabindex="-1" role="dialog"
+                                            aria-labelledby="displayRating{{ $rating->id }}Label" aria-hidden="true">
+                                            <div class="modal-dialog displayRatingModal" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ __('translation.display_rating') }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label
+                                                                        for="review">{{ __('translation.review') }}</label>
+                                                                    <textarea type="text" class="form-control" id="review" disabled readonly>{{ $rating->review }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary modal-effect"
+                                                                data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -146,45 +203,50 @@
 
     {{-- turn on/off the rating status --}}
     <script>
-        $(document).ready(() => {
-            $('.updateRatingStatus').click(function() {
-                var status = $(this).attr('status');
-                var rating_id = $(this).attr('rating_id');
-                var active = '{{ __('translation.active') }} ';
-                var disactiev = '{{ __('translation.disactive') }} ';
-                var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-                var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'post',
-                    url: '/admin/update-rating-status',
-                    data: {
-                        status: status,
-                        rating_id: rating_id,
-                    },
-                    success: function(response) {
-                        if (response['status'] == 0) {
-                            $('#rating-' + response['rating_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#rating-' + response['rating_id']).html(
-                                '<i class="fas fa-power-off text-danger"></i> ');
-                        } else {
-                            $('#rating-' + response['rating_id'])
-                                .attr('status', `${response['status']}`);
-                            $('#rating-' + response['rating_id']).html(
-                                '<i class="fas fa-power-off text-success"></i> ');
-                        }
-                    },
-                    error: function() {},
-                });
+        $(document).on("click", ".updateRatingStatus", function() {
+            var status = $(this).attr('status');
+            var rating_id = $(this).attr('rating_id');
+            var active = '{{ __('translation.active') }} ';
+            var disactiev = '{{ __('translation.disactive') }} ';
+            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
+            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'post',
+                url: '/admin/update-rating-status',
+                data: {
+                    status: status,
+                    rating_id: rating_id,
+                },
+                success: function(response) {
+                    if (response['status'] == 0) {
+                        $('#rating-' + response['rating_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#rating-' + response['rating_id']).text(disactiev);
+                        $('#rating-' + response['rating_id']).attr('style',
+                            'color : #ee335e  !important');
+                        $('#rating-' + response['rating_id']).prepend(
+                            '<i class="fas fa-power-off text-danger"></i> ');
+                    } else {
+                        $('#rating-' + response['rating_id'])
+                            .attr('status', `${response['status']}`);
+                        $('#rating-' + response['rating_id']).text(active);
+                        $('#rating-' + response['rating_id']).attr('style',
+                            'color : #22c03c   !important');
+                        $('#rating-' + response['rating_id']).prepend(
+                            '<i class="fas fa-power-off text-success"></i> ');
+
+                    }
+                },
+                error: function() {},
             });
         });
     </script>
 
 
-    {{-- Confirmation Delete Banner --}}
+    {{-- Confirmation Delete Rating --}}
     <script>
         $(document).on("click", ".confirmationDelete", function() {
             Swal.fire({
