@@ -207,6 +207,9 @@
                                     <div class="wrap-butons">
                                         <button type="submit"
                                             class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</button>
+                                        <div class="wrap-btn">
+                                            <a href="#" class="btn-wishlist">Add Wishlist</a>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -379,7 +382,8 @@
                                                                             <strong
                                                                                 class="woocommerce-review__author">{{ $rating->user->name }}</strong>
                                                                             <span class="woocommerce-review__dash">–</span>
-                                                                            <time class="woocommerce-review__published-date"
+                                                                            <time
+                                                                                class="woocommerce-review__published-date"
                                                                                 datetime="2008-02-14 20:00">{{ $rating->created_at }}</time>
                                                                         </p>
                                                                         <div class="description">

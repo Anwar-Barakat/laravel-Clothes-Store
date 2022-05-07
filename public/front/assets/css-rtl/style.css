@@ -5187,8 +5187,7 @@ article.single-post blockquote p:last-child::after {
     color: #fff;
 }
 
-.wrap-product-detail .detail-info .wrap-btn .btn {
-    float: right;
+.wrap-product-detail .detail-info .wrap-btn .btn-wishlist {
     padding: 0;
     margin: 0;
     font-size: 14px;
@@ -5197,22 +5196,14 @@ article.single-post blockquote p:last-child::after {
     text-transform: capitalize;
 }
 
-.wrap-product-detail .detail-info .wrap-btn .btn::before {
-    content: "\f079";
+.wrap-product-detail .detail-info .wrap-btn .btn-wishlist::before {
+    content: "\f004";
     font-family: 'Font Awesome 5 Free';
     font-size: 14px;
     line-height: 20px;
     color: #666666;
     display: inline-block;
     margin-left: 6px;
-}
-
-.wrap-product-detail .detail-info .wrap-btn .btn.btn-wishlist {
-    float: left;
-}
-
-.wrap-product-detail .detail-info .wrap-btn .btn.btn-wishlist::before {
-    content: "\f004";
 }
 
 .wrap-product-detail .detail-info .wrap-price span.product-price {

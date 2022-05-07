@@ -123,9 +123,12 @@
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
                             <a href="#" class="link-direction">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                <i class="fas fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">0 {{ __('frontend.items') }}</span>
+                                    <span class="index">
+                                        {{ App\Models\Wishlist::countWishlist($product->id) }}
+                                        {{ __('frontend.items') }}
+                                    </span>
                                     <span class="title"> {{ __('frontend.wishlist') }}</span>
                                 </div>
                             </a>

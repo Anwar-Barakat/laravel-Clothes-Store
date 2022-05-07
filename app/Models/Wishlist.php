@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Wishlist extends Model
 {
@@ -13,4 +14,13 @@ class Wishlist extends Model
         'user_id',
         'product_id',
     ];
+
+    public static function countWishlist($product_id)
+    {
+        $countWishlist = 0;
+        if (Auth::check())
+            $countWishlist  = Wishlist::where(['user_id' => Auth::user()->id, 'product_id' => $product_id])->count();
+
+        return $countWishlist;
+    }
 }
