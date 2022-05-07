@@ -373,6 +373,7 @@ return [
     'review_email_notes_2'      => 'Required fields are marked ',
     'your_review'               => 'Your review',
     'reviews'                   => 'Reviews',
+    'no_reviews'                => 'no reviews'
 
 
 ];

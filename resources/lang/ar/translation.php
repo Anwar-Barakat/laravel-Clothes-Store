@@ -376,7 +376,7 @@ return [
     'review_email_notes_2'      => 'الحقول المطلوبة محددة',
     'your_review'               => 'مراجعتك',
     'reviews'                   => 'مراجعات',
-
+    'no_reviews'                => 'لا يوجد مراجعات',
 
 
 ];

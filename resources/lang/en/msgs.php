@@ -90,6 +90,7 @@ return [
     'max_cart_amount'               => 'Maximum cart amount must be 650 dollar',
     'rating_add'                    => 'Rating Has Added Successfuly',
     'login_to_rate'                 => 'Login to rate this product',
+    'review_already_exists'         => 'Your rating already exists for that product',
 
 
 

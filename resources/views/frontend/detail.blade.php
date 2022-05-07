@@ -63,34 +63,45 @@
                                 </div>
                             </div>
                             <div class="detail-info">
-                                <div class="product-rating">
-                                    @if ($avgStarRating == 1)
-                                        <i class="fas fa-star text-warning"></i>
-                                    @elseif ($avgStarRating == 2)
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                    @elseif ($avgStarRating == 3)
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                    @elseif ($avgStarRating == 4)
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                    @elseif ($avgStarRating == 5)
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                        <i class="fas fa-star text-warning"></i>
-                                    @else
-                                        <i class="fas fa-star-half-alt text-warning">
-                                        </i>
-                                    @endif
-                                    <a href="javascript:void(0);" class="count-review">({{ $ratingCount }}
-                                        {{ __('translation.reviews') }})</a>
-                                </div>
+                                @if (isset($avgStarRating) && !empty($avgStarRating))
+                                    <div class="product-rating">
+                                        @if ($avgStarRating == 1)
+                                            <i class="fas fa-star text-warning"></i>
+                                        @elseif ($avgStarRating == 2)
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                        @elseif ($avgStarRating == 3)
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                        @elseif ($avgStarRating == 4)
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                        @elseif ($avgStarRating == 5)
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                        @else
+                                            <i class="fas fa-star-half-alt text-warning">
+                                            </i>
+                                        @endif
+                                        <a href="javascript:void(0);" class="count-review">
+                                            ({{ $ratingCount }}
+                                            {{ __('translation.reviews') }})</a>
+                                    </div>
+                                @else
+                                    <div class="product-rating">
+                                        <a href="javascript:void(0);" class="count-review">
+                                            (0
+                                            {{ __('translation.reviews') }})
+                                        </a>
+                                    </div>
+                                @endif
+
                                 <h2 class="product-name">{{ $product->name }}</h2>
                                 <div class="short-desc">
                                     <ul>
@@ -124,16 +135,18 @@
                                     @endphp
                                     @if ($discount > 0)
                                         <ins>
-                                            <p class="product-price" id="productPriceWithDiscAfter">${{ $discount }}
+                                            <p class="product-price" id="productPriceWithDiscAfter">
+                                                ${{ number_format($discount, 2) }}
                                             </p>
                                         </ins>
                                         <del>
                                             <p class="product-price" id="productPriceWithDiscBefore">
-                                                ${{ $product->price }}
+                                                ${{ number_format($product->price, 2) }}
                                             </p>
                                         </del>
                                     @else
-                                        <span class="product-price" id="productPriceWithoutDisc">${{ $product->price }}
+                                        <span class="product-price"
+                                            id="productPriceWithoutDisc">${{ number_format($product->price, 2) }}
                                         </span>
                                     @endif
                                 </div>

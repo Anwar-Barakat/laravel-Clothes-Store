@@ -39,9 +39,11 @@ class DetailController extends Controller
         $ratings            = Rating::with(['user'])->where(['status' => 1, 'product_id' => $id])->latest()->get();
         $ratingSum          = Rating::where(['status' => 1, 'product_id' => $id])->sum('rating');
         $ratingCount        = Rating::where(['status' => 1, 'product_id' => $id])->count();
-        $avgStarRating      = round($ratingSum / $ratingCount);
 
-
+        if ($ratingCount != 0)
+            $avgStarRating      = round($ratingSum / $ratingCount);
+        else
+            $avgStarRating = 0;
 
         $relatedProducts = Product::where('category_id', $product->category->id)->where('id', '!=', $product->id)->limit(5)->inRandomOrder()->get();
         return view('frontend.detail', [

@@ -39,17 +39,25 @@ class RatingController extends Controller
      */
     public function store(StoreRatingRequest $request)
     {
-        if (!Auth::check()) {
-            Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.login_to_rate'));
-            return redirect()->back();
-        } else {
-            if ($request->isMethod('post')) {
-                $data               = $request->only(['user_id', 'product_id', 'review', 'rating']);
-                Rating::create($data);
-                Session::flash('message', __('msgs.rating_add'));
+
+        if ($request->isMethod('post')) {
+            $data                   = $request->only(['product_id', 'review', 'rating']);
+            if (!Auth::check()) {
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.login_to_rate'));
                 return redirect()->back();
             }
+
+            $ratingCount            = Rating::where(['user_id' => Auth::user()->id, 'product_id' => $data['product_id']])->count();
+            if ($ratingCount > 0) {
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.review_already_exists'));
+            } else {
+                $data['user_id']    = Auth::user()->id;
+                Rating::create($data);
+                Session::flash('message', __('msgs.rating_add'));
+            }
+            return redirect()->back();
         }
     }
 
