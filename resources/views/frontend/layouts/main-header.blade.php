@@ -125,8 +125,12 @@
                             <a href="#" class="link-direction">
                                 <i class="fas fa-heart" aria-hidden="true"></i>
                                 <div class="left-info">
-                                    <span class="index">
-                                        {{ App\Models\Wishlist::countWishlist($product->id) }}
+                                    <span class="index wishlistItemsCount">
+                                        @if (Auth::check())
+                                            {{ App\Models\Wishlist::where('user_id', Auth::user()->id)->get()->count() }}
+                                        @else
+                                            0
+                                        @endif
                                         {{ __('frontend.items') }}
                                     </span>
                                     <span class="title"> {{ __('frontend.wishlist') }}</span>

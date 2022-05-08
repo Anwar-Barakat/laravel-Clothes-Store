@@ -129,6 +129,8 @@ return [
     'your_review'               => 'Your review',
     'reviews'                   => 'Reviews',
     'no_reviews'                => 'no reviews',
+    'added_to_wishlist'         => 'Has been added to wishlist',
+
 
 
     // Cart :

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Wishlist;
 use App\Http\Requests\StoreWishlistRequest;
 use App\Http\Requests\UpdateWishlistRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class WishlistController extends Controller
 {
@@ -37,7 +39,34 @@ class WishlistController extends Controller
      */
     public function store(StoreWishlistRequest $request)
     {
-        //
+        if ($request->ajax()) {
+            $data = $request->only('product_id');
+            if (!Auth::check())
+                return 'login-to-add-wishlist';
+
+            $countWishlist          = Wishlist::countWishlist($data['product_id']);
+            if ($countWishlist == 0) {
+                $data['user_id']    = Auth::user()->id;
+                Wishlist::create($data);
+
+
+                $wishlistItemsCount = Wishlist::where('user_id', Auth::user()->id)->count();
+                return response()->json([
+                    'status'                => true,
+                    'action'                => 'add',
+                    'wishlistItemsCount'    => $wishlistItemsCount
+                ]);
+            } else {
+                Wishlist::where(['user_id' => Auth::user()->id, 'product_id' => $data['product_id']])->delete();
+
+                $wishlistItemsCount = Wishlist::where('user_id', Auth::user()->id)->count();
+                return response()->json([
+                    'status'                => true,
+                    'action'                => 'remove',
+                    'wishlistItemsCount'    => $wishlistItemsCount
+                ]);
+            }
+        }
     }
 
     /**

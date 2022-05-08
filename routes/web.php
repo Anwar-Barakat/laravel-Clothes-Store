@@ -31,6 +31,7 @@ use App\Http\Controllers\Frontend\ProductController as FrontendProductController
 use App\Http\Controllers\Frontend\RatingController as FrontendRatingController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
+use App\Http\Controllers\FrontEnd\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -360,6 +361,11 @@ Route::group(
             // Orders :
             Route::get('orders/index',                                      [OrderController::class, 'index'])->name('orders.index');
             Route::get('orders/show/{id}',                                  [OrderController::class, 'show'])->name('orders.show');
+
+
+            // wishlists :
+            Route::post('/update-wishlist',                                 [WishlistController::class, 'store']);
+
 
 
             Route::any('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');

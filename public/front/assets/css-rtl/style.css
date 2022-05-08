@@ -3499,13 +3499,9 @@ li.menu-item .nav-label.sale-label::before {
     content: "\f079";
 }
 
-.product-list-style .advance-info .wrap-btn .btn.btn-wishlist {
+.product-list-style .advance-info .wrap-btn .btn.wishlist-button {
     text-align: left;
     float: left;
-}
-
-.product-list-style .advance-info .wrap-btn .btn-wishlist::before {
-    content: "\f004";
 }
 
 .wrap-login-item {
@@ -5187,23 +5183,13 @@ article.single-post blockquote p:last-child::after {
     color: #fff;
 }
 
-.wrap-product-detail .detail-info .wrap-btn .btn-wishlist {
+.wrap-product-detail .detail-info .wrap-btn .wishlist-button {
     padding: 0;
     margin: 0;
     font-size: 14px;
     line-height: 40px;
     color: #888888;
     text-transform: capitalize;
-}
-
-.wrap-product-detail .detail-info .wrap-btn .btn-wishlist::before {
-    content: "\f004";
-    font-family: 'Font Awesome 5 Free';
-    font-size: 14px;
-    line-height: 20px;
-    color: #666666;
-    display: inline-block;
-    margin-left: 6px;
 }
 
 .wrap-product-detail .detail-info .wrap-price span.product-price {

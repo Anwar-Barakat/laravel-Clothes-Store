@@ -58,6 +58,7 @@ return [
     'quant_is_anavailable'          => 'Required quantity is not available',
     'product_added_to_cart'         => 'Products has added to Cart Successfully!!',
     'product_already_exists'        => 'Product already exists in the cart',
+    'exists_in_wishlist'            => 'Product already exists in the wishlist',
     'cant_reduce_quantity'          => 'Product quantity must be 1 or more then',
     'amount_not_available'          => 'Amount in stock not availables',
     'cart_product_delete'           => 'Cart product has deleted successfully !!',
@@ -90,6 +91,7 @@ return [
     'max_cart_amount'               => 'Maximum cart amount must be 650 dollar',
     'rating_add'                    => 'Rating Has Added Successfuly',
     'login_to_rate'                 => 'Login to rate this product',
+    'login_to_add_wishlist'         => 'Login to add this product to wishlists',
     'review_already_exists'         => 'Your rating already exists for that product',
 
 

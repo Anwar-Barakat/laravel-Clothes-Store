@@ -208,7 +208,27 @@
                                         <button type="submit"
                                             class="btn add-to-cart">{{ __('frontend.add_to_cart') }}</button>
                                         <div class="wrap-btn">
-                                            <a href="#" class="btn-wishlist">Add Wishlist</a>
+                                            @if (Auth::check())
+                                                @if (App\Models\Wishlist::where(['user_id' => Auth::user()->id, 'product_id' => $product->id])->first())
+                                                    <a href="javascript:void(0);" class="wishlist-button"
+                                                        productId="{{ $product->id }}">
+                                                        <i class="fas fa-heart"></i>
+                                                        {{ __('frontend.added_to_wishlist') }}
+                                                    </a>
+                                                @else
+                                                    <a href="javascript:void(0);" class="wishlist-button"
+                                                        productId="{{ $product->id }}">
+                                                        <i class="far fa-heart"></i>
+                                                        {{ __('frontend.add_wishlist') }}
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <a href="javascript:void(0);" class="wishlist-button"
+                                                    productId="{{ $product->id }}">
+                                                    <i class="far fa-heart"></i>
+                                                    {{ __('frontend.add_wishlist') }}
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </form>
@@ -611,5 +631,49 @@
                 }
             });
         });
+    </script>
+
+
+    <script>
+        $('.wishlist-button').on('click', function() {
+            var product_id = $(this).attr('productId');
+            var added = '{{ __('frontend.added_to_wishlist') }} ';
+            var removed = '{{ __('frontend.add_wishlist') }} ';
+            var items = '{{ __('frontend.items') }} ';
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "post",
+                url: "/update-wishlist",
+                data: {
+                    product_id: product_id
+                },
+                success: function(response) {
+                    if (response == 'login-to-add-wishlist')
+                        toastr.info("{{ __('msgs.login_to_add_wishlist') }}");
+
+                    else if (response == 'product-already-exists-in-wishlist')
+                        toastr.info("{{ __('msgs.exists_in_wishlist') }}");
+
+                    else {
+                        if (response.action == 'add') {
+                            $(`a[productId=${product_id}]`).html('<i class="fa fa-heart"></i> ' +
+                                added);
+                            $('.wishlistItemsCount').html(response.wishlistItemsCount + items);
+
+                        } else if (response.action == 'remove') {
+                            $(`a[productId=${product_id}]`).html(
+                                '<i class="far fa-heart"></i>' + removed);
+                            $('.wishlistItemsCount').html(response.wishlistItemsCount + items)
+                        }
+                    }
+
+                },
+                error: function() {
+                    alert('fail')
+                },
+            });
+        })
     </script>
 @endsection

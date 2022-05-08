@@ -129,6 +129,7 @@ return [
     'your_review'               => 'مراجعتك',
     'reviews'                   => 'مراجعات',
     'no_reviews'                => 'لا يوجد مراجعات',
+    'added_to_wishlist'         => 'موجودة في قائمة الرغبات',
 
 
 
