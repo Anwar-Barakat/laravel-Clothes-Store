@@ -91,7 +91,8 @@ return [
     'max_cart_amount'               => 'Maximum cart amount must be 650 dollar',
     'rating_add'                    => 'Rating Has Added Successfuly',
     'login_to_rate'                 => 'Login to rate this product',
-    'login_to_add_wishlist'         => 'Login to add this product to wishlists',
+    'login_to_add_wishlist'         => 'Login to add this product to wishlist',
+    'login_to_display_wishlist'     => 'Login to display your product wishlist',
     'review_already_exists'         => 'Your rating already exists for that product',
 
 

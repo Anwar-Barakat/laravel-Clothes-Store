@@ -254,4 +254,12 @@ return [
     'type_name'                 => 'Type name',
     'type_email'                => 'Type email',
     'type_comment'              => 'Type comment',
+
+
+
+    // *================================================
+    // * Wishlist Page :
+    // *================================================
+    'wishlist_products'         => 'Wishlist products',
+    'actions'                   => 'Actions',
 ];

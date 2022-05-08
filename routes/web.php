@@ -362,9 +362,13 @@ Route::group(
             Route::get('orders/index',                                      [OrderController::class, 'index'])->name('orders.index');
             Route::get('orders/show/{id}',                                  [OrderController::class, 'show'])->name('orders.show');
 
-
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
             // wishlists :
+            Route::get('wishlists/index',                                   [WishlistController::class, 'index'])->name('wishlist.index');
             Route::post('/update-wishlist',                                 [WishlistController::class, 'store']);
+
 
 
 

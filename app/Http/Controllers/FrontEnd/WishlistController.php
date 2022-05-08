@@ -18,7 +18,21 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::check()) {
+            $userWishlist   = Wishlist::with([
+                'product' => function ($q) {
+                    $q->select('id', 'name', 'code', 'color', 'price');
+                }
+            ])->where('user_id', Auth::user()->id)
+                ->orderBy('id', 'desc')
+                ->paginate();
+
+            return view('frontend.wishlist.index', ['userWishlist' => $userWishlist]);
+        } else {
+            Session::flash('alert-type', 'info');
+            Session::flash('message', __('msgs.login_to_display_wishlist'));
+            return redirect()->back();
+        }
     }
 
     /**

@@ -24,11 +24,12 @@
                                 <thead class="thead-primary ">
                                     <tr>
                                         <th>#</th>
+                                        <th>{{ __('frontend.products') }}</th>
                                         <th>{{ __('frontend.order_products') }}</th>
                                         <th>{{ __('frontend.payment_methods') }}</th>
                                         <th>{{ __('frontend.grand_total') }}</th>
                                         <th>{{ __('frontend.created_at') }}</th>
-                                        <th>&nbsp;</th>
+                                        <th>{{ __('frontend.actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,6 +40,22 @@
                                             </td>
                                             <td>
                                                 @foreach ($order->orderProduct as $item)
+                                                    @if ($item->product->getFirstMediaUrl('image_products', 'small'))
+                                                        <figure class="mb-2">
+                                                            <img src="{{ $item->product->getFirstMediaUrl('image_products', 'small') }}"
+                                                                width="80" alt="{{ $item->product->name }}">
+                                                        </figure>
+                                                    @else
+                                                        <figure>
+                                                            <img src="{{ asset('assets/img/1.jpg') }}" width="80"
+                                                                alt="{{ $item->product->name }}">
+                                                        </figure>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach ($order->orderProduct as $index => $item)
+                                                    <p>{{ $item->product_name }}</p>
                                                     <p>{{ $item->product_code }}</p>
                                                     <p>{{ $item->product_color }}</p>
                                                 @endforeach
@@ -55,13 +72,13 @@
                                             <td>
                                                 <a href="{{ route('frontend.orders.show', $order->id) }}">
                                                     <i class="fa fa-eye text-warning"></i>
-                                                    {{ __('frontend.view_details') }}
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $orders->links() }}
                         </div>
                     </div>
                 </div>

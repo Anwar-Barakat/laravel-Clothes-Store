@@ -23,4 +23,9 @@ class Wishlist extends Model
 
         return $countWishlist;
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }
