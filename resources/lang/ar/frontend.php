@@ -234,6 +234,7 @@ return [
     'courier_name'              => 'اسم البريد السريع',
     'tracking_number'           => 'رقم التعقب',
     'no_orders'                 => 'لا يوجد طلبات بعد',
+    'cancel_order'              => 'إالغاء الطلب',
 
 
 

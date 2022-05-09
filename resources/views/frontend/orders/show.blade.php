@@ -13,8 +13,20 @@
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-6 text-center mb-4">
+                    <div class="col-md-12  mb-4 d-flex justify-content-between">
                         <h2 class="heading-section">{{ __('frontend.offer_details') }}</h2>
+                        @php
+                            $Order = App\Models\Order::select('status')
+                                ->where('id', $orderDetails->id)
+                                ->first();
+                            $status = $Order->status;
+                        @endphp
+                        @if ($status == 'new')
+                            <div class="w-10">
+                                <a href="javascript:void(0);" order_id="{{ $orderDetails->id }}"
+                                    class="main-button cancelOrder">{{ __('frontend.cancel_order') }}</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
@@ -87,7 +99,7 @@
                                     @endif
                                     <tr>
                                         <td>{{ __('frontend.grand_total') }}</td>
-                                        <td>{{ $orderDetails->grand_amount }}$</td>
+                                        <td>${{ $orderDetails->grand_amount }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ __('frontend.shipping_charges') }}</td>
@@ -152,4 +164,27 @@
 @section('scripts')
     <script src="{{ asset('assets/table/js/popper.js') }}"></script>
     <script src="{{ asset('assets/table/js/main.js') }}"></script>
+
+
+
+    {{-- Confirmation Cancel Order --}}
+    <script>
+        $(document).on("click", ".cancelOrder", function() {
+            var order_id = $(this).attr('order_id');
+            alert(order_id)
+            Swal.fire({
+                title: '{{ __('msgs.are_your_sure') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: '{{ __('buttons.close') }}',
+                confirmButtonText: '{{ __('msgs.yes_delete') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `/orders/destroy/${order_id}`;
+                }
+            });
+        });
+    </script>
 @endsection

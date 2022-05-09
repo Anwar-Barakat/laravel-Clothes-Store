@@ -1,6 +1,10 @@
 {{-- Fontawesome --}}
 <link rel="stylesheet" href="{{ asset('admin/js/admin-login-register/all.min.js') }}">
 
+{{-- Sweet Alert 2 --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script src="{{ asset('front/assets/js/jquery-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 <script src="{{ asset('front/assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4') }}"></script>
 <script src="{{ asset('front/assets/js/bootstrap.min.js') }}"></script>

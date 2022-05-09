@@ -359,8 +359,11 @@ Route::group(
             // *************************************************************
             // *************************************************************
             // Orders :
-            Route::get('orders/index',                                      [OrderController::class, 'index'])->name('orders.index');
-            Route::get('orders/show/{id}',                                  [OrderController::class, 'show'])->name('orders.show');
+            Route::get('/orders/index',                                     [OrderController::class, 'index'])->name('orders.index');
+            Route::get('/orders/show/{id}',                                 [OrderController::class, 'show'])->name('orders.show');
+            Route::get('/orders/destroy/{id}',                              [OrderController::class, 'destroy'])->name('orders.destroy');
+
+
 
             // *************************************************************
             // *************************************************************

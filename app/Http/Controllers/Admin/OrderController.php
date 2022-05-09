@@ -108,8 +108,8 @@ class OrderController extends Controller
             $messageData = [
                 'orderDetails'      => $orderDetails,
                 'status'            => $data['status'],
-                'courier_name'      => $data['courier_name'],
-                'tracking_number'   => $data['tracking_number'],
+                'courier_name'      => $data['courier_name'] ?? '',
+                'tracking_number'   => $data['tracking_number'] ?? '',
             ];
             Mail::send('frontend.emails.order_status', $messageData, function ($message) use ($email) {
                 $message->to($email)->subject('Order Placed - Laravel eCommerce Webiste');
@@ -119,8 +119,8 @@ class OrderController extends Controller
             OrderLog::create([
                 'order_id'          => $data['order_id'],
                 'order_status'      => $data['status'],
-                'courier_name'      => $data['courier_name'],
-                'tracking_number'   => $data['tracking_number'],
+                'courier_name'      => $data['courier_name']  ?? '',
+                'tracking_number'   => $data['tracking_number']  ?? '',
             ]);
 
 

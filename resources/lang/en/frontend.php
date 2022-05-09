@@ -237,6 +237,7 @@ return [
     'courier_name'              => 'Courier name',
     'tracking_number'           => 'Tracking number',
     'no_orders'                 => 'No orders yet',
+    'cancel_order'              => 'Cancel Order',
 
 
 

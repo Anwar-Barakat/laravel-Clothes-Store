@@ -29,6 +29,11 @@ class Order extends Model
         'grand_amount',
     ];
 
+    public static function getOrderStatus($order_id)
+    {
+        $getOrderStatus     = Order::where('id', $order_id)->pluck('status');
+        return $getOrderStatus;
+    }
 
     public function getCreatedAtAttribute($value)
     {
