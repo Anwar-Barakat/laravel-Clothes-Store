@@ -15,7 +15,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-4">
                         <h2 class="heading-section">
-                            {{ __('frontend.wishlist_products') }} ({{ count($userWishlist) }})
+                            {{ __('frontend.wishlist_products') }}
                         </h2>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($userWishlist as $item)
-                                        <tr class="alert" role="alert">
+                                    @forelse ($userWishlist as $item)
+                                        <tr id="wishlist-{{ $item->id }}">
                                             <td>
                                                 {{ $loop->iteration }}
                                             </td>
@@ -60,15 +60,20 @@
                                                 {{ $item->product->price }}$
                                             </td>
                                             <td class="wishlist-actions">
-                                                <a href="{{ route('frontend.orders.show', $item->id) }}">
+                                                <a href="{{ route('frontend.details', $item->product->id) }}">
                                                     <i class="fas fa-eye text-warning"></i>
                                                 </a>
-                                                <a href="{{ route('frontend.orders.show', $item->id) }}">
+                                                <a href="javascript:void(0);" class="wishlistItemDelete"
+                                                    wishlist_id={{ $item->id }}>
                                                     <i class="fas fa-trash-alt text-danger"></i>
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">{{ __('frontend.no_wishlist') }}</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             {{ $userWishlist->links() }}
@@ -81,7 +86,35 @@
 @endsection
 
 
-@section('scripts')
+@section('js')
     <script src="{{ asset('assets/table/js/popper.js') }}"></script>
     <script src="{{ asset('assets/table/js/main.js') }}"></script>
+
+    {{-- Delete wishlist item --}}
+    <script>
+        $(document).on('click', '.wishlistItemDelete', function(param) {
+            var wishlist_id = $(this).attr('wishlist_id');
+            var items = '{{ __('frontend.items') }} ';
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "post",
+                url: "/delete-wishlist-item",
+                data: {
+                    wishlist_id: wishlist_id
+                },
+                success: function(response) {
+                    if (response.status == true) {
+                        $('.wishlistItemsCount').html(response.wishlistItemsCount + items);
+                        $(`tr#wishlist-${wishlist_id}`).remove();
+                        toastr.info("{{ __('msgs.admin_add') }}");
+                    }
+                },
+                error: function() {
+                    alert('fail')
+                }
+            });
+        });
+    </script>
 @endsection

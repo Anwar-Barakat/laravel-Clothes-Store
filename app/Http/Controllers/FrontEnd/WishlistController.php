@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Wishlist;
 use App\Http\Requests\StoreWishlistRequest;
 use App\Http\Requests\UpdateWishlistRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -19,13 +20,7 @@ class WishlistController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $userWishlist   = Wishlist::with([
-                'product' => function ($q) {
-                    $q->select('id', 'name', 'code', 'color', 'price');
-                }
-            ])->where('user_id', Auth::user()->id)
-                ->orderBy('id', 'desc')
-                ->paginate();
+            $userWishlist   = Wishlist::userWishlistItems();
 
             return view('frontend.wishlist.index', ['userWishlist' => $userWishlist]);
         } else {
@@ -123,8 +118,21 @@ class WishlistController extends Controller
      * @param  \App\Models\Wishlist  $wishlist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Wishlist $wishlist)
+    public function destroy(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $data               = $request->only(['wishlist_id']);
+            Wishlist::where('id', $data['wishlist_id'])->delete();
+
+            $wishlistItemsCount = Wishlist::where('user_id', Auth::user()->id)->count();
+            $userWishlist       = Wishlist::userWishlistItems();
+
+
+            return response()->json([
+                'status'                => true,
+                'userWishlist'          => $userWishlist,
+                'wishlistItemsCount'    => $wishlistItemsCount
+            ]);
+        }
     }
 }

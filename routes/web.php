@@ -368,7 +368,7 @@ Route::group(
             // wishlists :
             Route::get('wishlists/index',                                   [WishlistController::class, 'index'])->name('wishlist.index');
             Route::post('/update-wishlist',                                 [WishlistController::class, 'store']);
-
+            Route::post('/delete-wishlist-item',                            [WishlistController::class, 'destroy']);
 
 
 

@@ -33,7 +33,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($orders as $order)
+                                    @forelse ($orders as $order)
                                         <tr class="alert" role="alert">
                                             <td>
                                                 {{ $loop->iteration }}
@@ -75,7 +75,11 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center">{{ __('frontend.no_orders') }}</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             {{ $orders->links() }}

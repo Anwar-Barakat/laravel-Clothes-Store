@@ -24,6 +24,19 @@ class Wishlist extends Model
         return $countWishlist;
     }
 
+    public static function userWishlistItems()
+    {
+        $userWishlist   = Wishlist::with([
+            'product' => function ($q) {
+                $q->select('id', 'name', 'code', 'color', 'price');
+            }
+        ])->where('user_id', Auth::user()->id)
+            ->orderBy('id', 'desc')
+            ->paginate();
+
+        return $userWishlist;
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');

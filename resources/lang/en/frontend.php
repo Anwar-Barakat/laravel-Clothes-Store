@@ -204,7 +204,10 @@ return [
     'your_address'              => 'Your address',
 
 
-    // Orders:
+
+    // *================================================
+    // * Orders Page :
+    // *================================================
     'orders'                    => 'Orders',
     'the_orders'                => 'The Orders',
     'order_products'            => 'Order products',
@@ -233,6 +236,7 @@ return [
     'deliverd'                  => 'deliverd',
     'courier_name'              => 'Courier name',
     'tracking_number'           => 'Tracking number',
+    'no_orders'                 => 'No orders yet',
 
 
 
@@ -262,4 +266,5 @@ return [
     // *================================================
     'wishlist_products'         => 'Wishlist products',
     'actions'                   => 'Actions',
+    'no_wishlist'               => 'No wishlist yet',
 ];
