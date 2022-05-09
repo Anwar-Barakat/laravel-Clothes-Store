@@ -86,7 +86,7 @@
 @endsection
 
 
-@section('js')
+@section('scripts')
     <script src="{{ asset('assets/table/js/popper.js') }}"></script>
     <script src="{{ asset('assets/table/js/main.js') }}"></script>
 

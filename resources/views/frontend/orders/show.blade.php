@@ -166,12 +166,14 @@
     <script src="{{ asset('assets/table/js/main.js') }}"></script>
 
 
-
+    {{-- toastr --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- Confirmation Cancel Order --}}
     <script>
         $(document).on("click", ".cancelOrder", function() {
             var order_id = $(this).attr('order_id');
-            alert(order_id)
             Swal.fire({
                 title: '{{ __('msgs.are_your_sure') }}',
                 icon: 'warning',

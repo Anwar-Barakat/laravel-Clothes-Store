@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
-use App\Models\OrderProduct;
+use App\Models\OrderLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -85,6 +86,24 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        return $id;
+        $userIdAuth     = Auth::user()->id;
+        $userIdOrder    = Order::where('id', $id)->first();
+
+        if ($userIdAuth == $userIdOrder->user_id) {
+            Order::where('id', $id)->update(['status' => 'cancelled']);
+
+            OrderLog::create([
+                'order_id'          => $id,
+                'order_status'      => 'cancelled'
+            ]);
+
+            Session::flash('alert-type', 'info');
+            Session::flash('message', __('msgs.order_cancel'));
+            return redirect()->route('frontend.orders.index');
+        } else {
+            Session::flash('alert-type', 'error');
+            Session::flash('message', __('msgs.order_cancel_invalid'));
+            return redirect()->route('frontend.orders.index');
+        }
     }
 }

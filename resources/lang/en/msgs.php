@@ -95,7 +95,8 @@ return [
     'login_to_display_wishlist'     => 'Login to display your product wishlist',
     'review_already_exists'         => 'Your rating already exists for that product',
     'wishlist_item_delete'          => 'Wishlist item has been deleted',
-
+    'order_cancel'                  => 'Order has been cancelled successfully',
+    'order_cancel_invalid'          => 'Your order cancellation process is not valid !!',
 
 
 
