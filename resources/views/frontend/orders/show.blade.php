@@ -48,9 +48,11 @@
                                 <select name="product_info" id="product_info" class="form-control" required>
                                     <option value="">{{ __('frontend.choose') }}</option>
                                     @foreach ($orderDetails->orderProduct as $product)
-                                        <option value="{{ $product->product_code }}-{{ $product->product_size }}">
-                                            {{ $product->product_code }}-{{ $product->product_size }}
-                                        </option>
+                                        @if ($product->product_status != 'returned')
+                                            <option value="{{ $product->product_code }} {{ $product->product_size }}">
+                                                {{ $product->product_code }}-{{ $product->product_size }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 @error('product_info')
@@ -59,14 +61,15 @@
                                     </span>
                                 @enderror
                             </fieldset>
+
                             <fieldset class="wrap-input country">
                                 <label for="reason">{{ __('frontend.cause') }}:</label>
                                 <select name="reason" id="reason" class="form-control" required>
                                     <option value="">{{ __('frontend.choose') }}</option>
                                     <option value="performance or quality adequate">
                                         {{ __('frontend.performance or quality adequate') }}</option>
-                                    <option value="product damaged,but shipping box ok">
-                                        {{ __('frontend.product damaged,but shipping box ok') }}
+                                    <option value="product damaged but shipping box ok">
+                                        {{ __('frontend.product damaged but shipping box ok') }}
                                     </option>
                                     <option value="item arrived too late">
                                         {{ __('frontend.item arrived too late') }}
@@ -152,6 +155,7 @@
                                         <th>{{ __('frontend.product_color') }}</th>
                                         <th>{{ __('frontend.product_size') }}</th>
                                         <th>{{ __('frontend.product_quantity') }}</th>
+                                        <th>{{ __('frontend.product_status') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -175,7 +179,7 @@
                                             <td>{{ $product->product_color }}</td>
                                             <td>{{ $product->product_size }}</td>
                                             <td>{{ $product->product_quantity }}</td>
-
+                                            <td>{{ $product->product_status ?? '-' }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

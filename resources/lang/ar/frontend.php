@@ -216,6 +216,7 @@ return [
     'product_color'             => 'لون المنتج',
     'product_size'              => 'قياس المنتج',
     'product_quantity'          => 'كمية المنتج',
+    'product_status'            => 'حالة المنتج',
     'order_details'             => 'تفاصيل الطلب',
     'order_date'                => 'تاريخ الطلب',
     'order_status'              => 'حالة الطلب',
@@ -241,7 +242,7 @@ return [
 
 
     'performance or quality adequate'           => 'أداء أو جودة كافية',
-    'product damaged,but shipping box ok'       => 'المنتج تالف ، ولكن صندوق الشحن جيد',
+    'product damaged but shipping box ok'       => 'المنتج تالف ، ولكن صندوق الشحن جيد',
     'item arrived too late'                     => 'وصل المنتج متأخرأ جداً',
     'wrong item was send'                       => 'منتج خاطئ تم ارساله',
     'item defective or does not work'           => 'المنتج معيب أو لا يعمل',

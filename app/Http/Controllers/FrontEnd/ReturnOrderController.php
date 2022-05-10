@@ -7,6 +7,9 @@ use App\Models\ReturnOrder;
 use App\Http\Requests\StoreReturnOrderRequest;
 use App\Http\Requests\UpdateReturnOrderRequest;
 use App\Models\Order;
+use App\Models\OrderProduct;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ReturnOrderController extends Controller
 {
@@ -39,7 +42,34 @@ class ReturnOrderController extends Controller
     public function store(StoreReturnOrderRequest $request, Order $order)
     {
         if ($request->isMethod('post')) {
-            $data       = $request->only(['product_info', 'reason', 'comment']);
+            $data                       = $request->only(['product_info', 'reason', 'comment']);
+            $data['user_id']            = Auth::user()->id;
+            $data['order_id']           = $order->id;
+
+            if ($data['order_id'] == $data['order_id']) {
+
+                $productAttr    = explode(' ', $data['product_info']);
+                $data['product_code']   = $productAttr[0];
+                $data['product_size']   = $productAttr[1];
+
+
+                OrderProduct::where([
+                    'order_id'          => $data['order_id'],
+                    'product_code'      => $data['product_code'],
+                    'product_size'      => $data['product_size']
+                ])->update([
+                    'product_status'    => 'returned'
+                ]);
+
+                ReturnOrder::create($data);
+
+                Session::flash('alert-type', __('msgs.order_return'));
+                return redirect()->route('frontend.orders.index');
+            } else {
+                Session::flash('alert-type', 'error');
+                Session::flash('alert-type', __('msgs.order_return_invalid'));
+                return redirect()->route('frontend.orders.index');
+            }
         }
     }
 

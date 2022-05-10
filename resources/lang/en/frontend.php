@@ -219,6 +219,7 @@ return [
     'product_color'             => 'Product color',
     'product_size'              => 'Product size',
     'product_quantity'          => 'Product quantity',
+    'product_status'            => 'Product status',
     'order_details'             => 'Order details',
     'order_date'                => 'Order date',
     'order_status'              => 'Order status',
@@ -246,7 +247,7 @@ return [
 
 
     'performance or quality adequate'           => 'performance or quality adequate',
-    'product damaged,but shipping box ok'       => 'product damaged,but shipping box ok',
+    'product damaged but shipping box ok'       => 'product damaged,but shipping box ok',
     'item arrived too late'                     => 'item arrived too late',
     'wrong item was send'                       => 'wrong item was send',
     'item defective or does not work'           => 'item defective or does not work',

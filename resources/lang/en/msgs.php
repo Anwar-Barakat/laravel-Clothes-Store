@@ -96,7 +96,9 @@ return [
     'review_already_exists'         => 'Your rating already exists for that product',
     'wishlist_item_delete'          => 'Wishlist item has been deleted',
     'order_cancel'                  => 'Order has been cancelled successfully',
+    'order_return'                  => 'Order has been returned successfully',
     'order_cancel_invalid'          => 'Your order cancellation process is not valid !!',
+    'order_return_invalid'          => 'Your order returning process is not valid !!',
 
 
 

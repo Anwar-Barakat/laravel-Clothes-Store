@@ -43,11 +43,13 @@
                                                     @if ($item->product->getFirstMediaUrl('image_products', 'small'))
                                                         <figure class="mb-2">
                                                             <img src="{{ $item->product->getFirstMediaUrl('image_products', 'small') }}"
-                                                                width="80" alt="{{ $item->product->name }}">
+                                                                width="80" class="img img-thumbnail"
+                                                                alt="{{ $item->product->name }}">
                                                         </figure>
                                                     @else
                                                         <figure>
                                                             <img src="{{ asset('assets/img/1.jpg') }}" width="80"
+                                                                class="img img-thumbnail"
                                                                 alt="{{ $item->product->name }}">
                                                         </figure>
                                                     @endif

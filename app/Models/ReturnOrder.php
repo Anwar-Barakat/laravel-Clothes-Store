@@ -14,7 +14,8 @@ class ReturnOrder extends Model
         'user_id',
         'product_size',
         'product_code',
-        'return_reason',
+        'reason',
         'status',
+        'comment',
     ];
 }

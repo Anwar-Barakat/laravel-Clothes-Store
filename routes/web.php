@@ -376,7 +376,7 @@ Route::group(
 
 
 
-            Route::any('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');
+            Route::post('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');
         });
     }
 );

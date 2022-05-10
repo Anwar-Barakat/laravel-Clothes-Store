@@ -42,6 +42,7 @@
                                     <th class="border-bottom-0">{{ __('translation.product_color') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.product_size') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.product_quantity') }}</th>
+                                    <th class="border-bottom-0">{{ __('translation.product_status') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,6 +64,7 @@
                                         <td>{{ $product->product_color }}</td>
                                         <td>{{ $product->product_size }}</td>
                                         <td>{{ $product->product_quantity }}</td>
+                                        <td>{{ $product->product_status }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

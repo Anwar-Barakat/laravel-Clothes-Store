@@ -101,7 +101,9 @@ return [
     'review_already_exists'         => 'تقييمك موجود بالفعل لهذا المنتج',
     'wishlist_item_delete'          => 'تم حذف المنتج من قائمة الرغبات',
     'order_cancel'                  => 'تم إلغاء الطلب بنجاح',
+    'order_return'                  => 'تم إرجاع الطلب بنجاح',
     'order_cancel_invalid'          => 'عملية إلغاء طلبك غير صالحة !!',
+    'order_return_invalid'          => 'عملية إرجاع طلبك غير صالحة !!',
 
 
 
