@@ -570,7 +570,7 @@ a.text-danger:focus {
     margin-bottom: 2rem;
 }
 
-a.main-button {
+.main-button {
     display: inline-block;
     width: 100%;
     font-size: 14px;
@@ -590,7 +590,7 @@ a.main-button {
     position: relative;
 }
 
-a.main-button:hover {
+.main-button:hover {
     background: var(--main-color);
     color: white;
     border: 1px solid var(--main-color);

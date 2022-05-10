@@ -257,13 +257,17 @@
 
                     @if ($orderLogs->count() > 0)
                         <hr>
-                        <div class="mt-3">
+                        <div class="mt-3" style="max-height: 200px;overflow: scroll;">
                             @foreach ($orderLogs as $orderLog)
                                 <div class="mb-1">
                                     {{ __('translation.' . $orderLog->order_status) }} {{ __('translation.in') }}
                                     :
                                     {{ $orderLog->created_at }}
+                                    @if (!empty($orderLog->reason))
+                                        <p>{{ __('translation.cause') }} : {{ $orderLog->reason ?? '-' }}</p>
+                                    @endif
                                 </div>
+                                <br>
                             @endforeach
                         </div>
                     @endif

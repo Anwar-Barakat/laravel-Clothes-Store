@@ -314,6 +314,7 @@ return [
     'notice'                    => 'NOTICE',
     'thank_you'                 => 'Thank you',
     'shipping_charges'          => 'Shipping charges',
+    'cause'                     => 'cause',
 
 
     // Shipping Charges :

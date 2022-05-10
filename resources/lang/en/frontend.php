@@ -238,6 +238,8 @@ return [
     'tracking_number'           => 'Tracking number',
     'no_orders'                 => 'No orders yet',
     'cancel_order'              => 'Cancel Order',
+    'add_cancelling_cause'      => 'Adding cancelling cause',
+    'cause'                     => 'Cause',
 
 
 

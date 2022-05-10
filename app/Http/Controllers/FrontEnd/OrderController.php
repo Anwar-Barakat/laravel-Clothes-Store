@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReasonCancellingRequest;
 use App\Models\Order;
 use App\Models\OrderLog;
 use Illuminate\Http\Request;
@@ -84,26 +85,33 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ReasonCancellingRequest $request, $id)
     {
-        $userIdAuth     = Auth::user()->id;
-        $userIdOrder    = Order::where('id', $id)->first();
+        if ($request->isMethod('post')) {
+            $data = $request->only(['reason']);
 
-        if ($userIdAuth == $userIdOrder->user_id) {
-            Order::where('id', $id)->update(['status' => 'cancelled']);
 
-            OrderLog::create([
-                'order_id'          => $id,
-                'order_status'      => 'cancelled'
-            ]);
+            $userIdAuth     = Auth::user()->id;
+            $userIdOrder    = Order::where('id', $id)->first();
 
-            Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.order_cancel'));
-            return redirect()->route('frontend.orders.index');
-        } else {
-            Session::flash('alert-type', 'error');
-            Session::flash('message', __('msgs.order_cancel_invalid'));
-            return redirect()->route('frontend.orders.index');
+            if ($userIdAuth == $userIdOrder->user_id) {
+                Order::where('id', $id)->update(['status' => 'cancelled']);
+
+                OrderLog::create([
+                    'order_id'          => $id,
+                    'order_status'      => 'cancelled',
+                    'reason'             => $data['reason'],
+                    'updated_by'        => 'customer',
+                ]);
+
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.order_cancel'));
+                return redirect()->route('frontend.orders.index');
+            } else {
+                Session::flash('alert-type', 'error');
+                Session::flash('message', __('msgs.order_cancel_invalid'));
+                return redirect()->route('frontend.orders.index');
+            }
         }
     }
 }

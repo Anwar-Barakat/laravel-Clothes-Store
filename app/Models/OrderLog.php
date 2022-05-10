@@ -13,6 +13,8 @@ class OrderLog extends Model
     protected $fillable = [
         'order_id',
         'order_status',
+        'reason',
+        'updated_by',
     ];
 
     public function getCreatedAtAttribute($value)

@@ -13,7 +13,7 @@
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-12  mb-4 d-flex justify-content-between">
+                    <div class="col-md-12  mb-4 d-flex justify-content-between align-items-center">
                         <h2 class="heading-section">{{ __('frontend.offer_details') }}</h2>
                         @php
                             $Order = App\Models\Order::select('status')
@@ -22,11 +22,68 @@
                             $status = $Order->status;
                         @endphp
                         @if ($status == 'new')
-                            <div class="w-10">
-                                <a href="javascript:void(0);" order_id="{{ $orderDetails->id }}"
-                                    class="main-button cancelOrder">{{ __('frontend.cancel_order') }}</a>
+                            <div class="w-20">
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#addNewCancellingCause"
+                                    class="main-button ">{{ __('frontend.cancel_order') }}</a>
                             </div>
+
+                            {{-- <!-- Modal -->
+                            <div class="modal fade" id="addNewCancellingCause" tabindex="-1" role="dialog"
+                                aria-labelledby="addNewCancellingCauseTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="">
+                                                hi
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
                         @endif
+                    </div>
+                </div>
+                @if ($errors->any())
+                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                @endif
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="{{ route('frontend.orders.destroy', $orderDetails) }}" method="POST">
+                            @csrf
+                            <fieldset class="wrap-input country">
+                                <label for="reason">{{ __('frontend.cause') }}:</label>
+                                <select name="reason" id="reason" class="form-control">
+                                    <option value="">{{ __('frontend.choose') }}</option>
+                                    <option value="order created by mistake">order created by mistake</option>
+                                    <option value="item not arrive on time">item not arrive on time</option>
+                                    <option value="shipping cost too high">shipping cost too high</option>
+                                    <option value="found cheaper somewhere else">found cheaper somewhere else</option>
+                                </select>
+
+                                @error('reason')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </fieldset>
+
+                            <fieldset class="wrap-input country">
+                                <button type="submit" order_id="{{ $orderDetails->id }}"
+                                    class="main-button">{{ __('frontend.cancel_order') }}</button>
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
@@ -164,29 +221,4 @@
 @section('scripts')
     <script src="{{ asset('assets/table/js/popper.js') }}"></script>
     <script src="{{ asset('assets/table/js/main.js') }}"></script>
-
-
-    {{-- toastr --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- Confirmation Cancel Order --}}
-    <script>
-        $(document).on("click", ".cancelOrder", function() {
-            var order_id = $(this).attr('order_id');
-            Swal.fire({
-                title: '{{ __('msgs.are_your_sure') }}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: '{{ __('buttons.close') }}',
-                confirmButtonText: '{{ __('msgs.yes_delete') }}',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = `/orders/destroy/${order_id}`;
-                }
-            });
-        });
-    </script>
 @endsection

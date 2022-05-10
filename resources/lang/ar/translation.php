@@ -318,6 +318,9 @@ return [
     'total'                     => 'المبلغ',
     'notice'                    => 'ملاحظة',
     'thank_you'                 => 'شكراً لك',
+    'cause'                     => 'السبب',
+
+    
 
     // Shipping Charges :
     'updated_at'                => 'التحديث في',

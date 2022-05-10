@@ -119,8 +119,8 @@ class OrderController extends Controller
             OrderLog::create([
                 'order_id'          => $data['order_id'],
                 'order_status'      => $data['status'],
-                'courier_name'      => $data['courier_name']  ?? '',
-                'tracking_number'   => $data['tracking_number']  ?? '',
+                'reason'            => 'No reason !',
+                'updated_by'        => 'admin',
             ]);
 
 

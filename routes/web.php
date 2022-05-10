@@ -361,17 +361,16 @@ Route::group(
             // Orders :
             Route::get('/orders/index',                                     [OrderController::class, 'index'])->name('orders.index');
             Route::get('/orders/show/{id}',                                 [OrderController::class, 'show'])->name('orders.show');
-            Route::get('/orders/cancel/{id}',                               [OrderController::class, 'destroy'])->name('orders.destroy');
-
+            Route::post('/orders/cancel/{id}',                              [OrderController::class, 'destroy'])->name('orders.destroy');
 
 
             // *************************************************************
             // *************************************************************
             // *************************************************************
             // wishlists :
-            Route::get('wishlists/index',                                   [WishlistController::class, 'index'])->name('wishlist.index');
-            Route::post('/update-wishlist',                                 [WishlistController::class, 'store']);
-            Route::post('/delete-wishlist-item',                            [WishlistController::class, 'destroy']);
+            Route::get('/wishlist/index',                                   [WishlistController::class, 'index'])->name('wishlist.index');
+            Route::post('/wishlist-update',                                 [WishlistController::class, 'store']);
+            Route::post('/wishlist-delete-item',                            [WishlistController::class, 'destroy']);
 
 
 

@@ -1,6 +1,11 @@
 <title>{{ __('frontend.ecommerce') }} | @yield('title')</title>
 <meta name="description" content="@yield('meta_description')">
 <meta name="keyowrds" content="@yield('meta_keywords')">
+
+
+{{-- Fontawesome --}}
+<link rel="stylesheet" href="{{ asset('admin/css/admin-login-register/all.min.css') }}">
+
 <link rel="shortcut icon" href="{{ asset('front/assets/images/favicon.png') }}" type="image/x-icon">
 <link rel="icon" href="{{ asset('front/assets/images/favicon.png') }}" type="image/x-icon">
 <link
@@ -14,8 +19,7 @@
     integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-{{-- Fontawesome --}}
-<link rel="stylesheet" href="{{ asset('admin/css/admin-login-register/all.min.css') }}">
+
 @yield('css')
 @if (App::getLocale() == 'ar')
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css-rtl/animate.css') }}">
