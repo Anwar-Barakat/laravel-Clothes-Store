@@ -23,36 +23,17 @@
                         @endphp
                         @if ($status == 'new')
                             <div class="w-20">
-                                <a href="javascript:void(0);" data-toggle="modal" data-target="#addNewCancellingCause"
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#cancellingOrder"
                                     class="main-button ">{{ __('frontend.cancel_order') }}</a>
                             </div>
-
-                            {{-- <!-- Modal -->
-                            <div class="modal fade" id="addNewCancellingCause" tabindex="-1" role="dialog"
-                                aria-labelledby="addNewCancellingCauseTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="">
-                                                hi
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         @endif
+                        @if ($status == 'delivered')
+                            <div class="w-20">
+                                <a href="javascript:void(0);" data-toggle="modal" data-target="#returningOrder"
+                                    class="main-button ">{{ __('frontend.return_order') }}</a>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 @if ($errors->any())
@@ -60,16 +41,88 @@
                 @endif
                 <div class="row">
                     <div class="col-md-6">
+                        <form action="{{ route('frontend.orders.return.store', $orderDetails) }}" method="POST">
+                            @csrf
+                            <fieldset class="wrap-input country">
+                                <label for="product_info">{{ __('frontend.products') }}:</label>
+                                <select name="product_info" id="product_info" class="form-control" required>
+                                    <option value="">{{ __('frontend.choose') }}</option>
+                                    @foreach ($orderDetails->orderProduct as $product)
+                                        <option value="{{ $product->product_code }}-{{ $product->product_size }}">
+                                            {{ $product->product_code }}-{{ $product->product_size }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('product_info')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </fieldset>
+                            <fieldset class="wrap-input country">
+                                <label for="reason">{{ __('frontend.cause') }}:</label>
+                                <select name="reason" id="reason" class="form-control" required>
+                                    <option value="">{{ __('frontend.choose') }}</option>
+                                    <option value="performance or quality adequate">
+                                        {{ __('frontend.performance or quality adequate') }}</option>
+                                    <option value="product damaged,but shipping box ok">
+                                        {{ __('frontend.product damaged,but shipping box ok') }}
+                                    </option>
+                                    <option value="item arrived too late">
+                                        {{ __('frontend.item arrived too late') }}
+                                    </option>
+                                    <option value="wrong item was send">
+                                        {{ __('frontend.wrong item was send') }}
+                                    </option>
+                                    <option value="item defective or does not work">
+                                        {{ __('frontend.item defective or does not work') }}
+                                    </option>
+                                </select>
+                                @error('reason')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </fieldset>
+                            <fieldset class="wrap-input country">
+                                <label for="comment">{{ __('frontend.comment') }}:</label>
+                                <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="{{ __('frontend.type_comment') }}"
+                                    required>{{ old('comment') }}</textarea>
+                                @error('comment')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </fieldset>
+
+                            <fieldset class="wrap-input country">
+                                <button type="submit" order_id="{{ $orderDetails->id }}"
+                                    class="main-button">{{ __('frontend.return_order') }}</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
                         <form action="{{ route('frontend.orders.destroy', $orderDetails) }}" method="POST">
                             @csrf
                             <fieldset class="wrap-input country">
                                 <label for="reason">{{ __('frontend.cause') }}:</label>
-                                <select name="reason" id="reason" class="form-control">
+                                <select name="reason" id="reason" class="form-control" required>
                                     <option value="">{{ __('frontend.choose') }}</option>
-                                    <option value="order created by mistake">order created by mistake</option>
-                                    <option value="item not arrive on time">item not arrive on time</option>
-                                    <option value="shipping cost too high">shipping cost too high</option>
-                                    <option value="found cheaper somewhere else">found cheaper somewhere else</option>
+                                    <option value="order created by mistake">
+                                        {{ __('frontend.order created by mistake') }}
+                                    </option>
+                                    <option value="item not arrive on time">
+                                        {{ __('frontend.item not arrive on time') }}
+                                    </option>
+                                    <option value="shipping cost too high">
+                                        {{ __('frontend.shipping cost too high') }}
+                                    </option>
+                                    <option value="found cheaper somewhere else">
+                                        {{ __('frontend.found cheaper somewhere else') }}
+                                    </option>
                                 </select>
 
                                 @error('reason')

@@ -46,7 +46,7 @@ class OrderStatusSeeder extends Seeder
                 'status'            => 1
             ],
             [
-                'name'              => 'deliverd',
+                'name'              => 'delivered',
                 'status'            => 1
             ],
         ];

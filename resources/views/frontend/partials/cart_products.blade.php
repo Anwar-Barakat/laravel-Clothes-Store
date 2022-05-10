@@ -76,11 +76,13 @@
             <div class="product-image" style="width: 10%">
                 @if ($userCartProduct->product->getFirstMediaUrl('image_products', 'small'))
                     <figure>
-                        <img src="{{ $userCartProduct->product->getFirstMediaUrl('image_products', 'small') }}">
+                        <img src="{{ $userCartProduct->product->getFirstMediaUrl('image_products', 'small') }}"
+                            class="img img-thumbnail">
                     </figure>
                 @else
                     <figure>
-                        <img src="{{ asset('assets/img/products/default-image.png') }}" alt="">
+                        <img src="{{ asset('assets/img/products/default-image.png') }}" alt=""
+                            class="img img-thumbnail">
                     </figure>
                 @endif
             </div>

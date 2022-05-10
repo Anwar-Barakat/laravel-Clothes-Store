@@ -288,7 +288,7 @@ return [
     'in process'                => 'in process',
     'paid'                      => 'paid',
     'shipped'                   => 'shipped',
-    'deliverd'                  => 'deliverd',
+    'delivered'                 => 'delivered',
     'in'                        => 'In',
     'courier_name'              => 'Courier name',
     'tracking_number'           => 'Tracking number',
@@ -315,6 +315,18 @@ return [
     'thank_you'                 => 'Thank you',
     'shipping_charges'          => 'Shipping charges',
     'cause'                     => 'cause',
+
+
+
+    'performance or quality adequate'           => 'performance or quality adequate',
+    'product damaged,but shipping box ok'       => 'product damaged,but shipping box ok',
+    'item arrived too late'                     => 'item arrived too late',
+    'wrong item was send'                       => 'wrong item was send',
+    'item defective or does not work'           => 'item defective or does not work',
+    'order created by mistake'                  => 'order created by mistake',
+    'item not arrive on time'                   => 'item not arrive on time',
+    'shipping cost too high'                    => 'shipping cost too high',
+    'found cheaper somewhere else'              => 'found cheaper somewhere else',
 
 
     // Shipping Charges :

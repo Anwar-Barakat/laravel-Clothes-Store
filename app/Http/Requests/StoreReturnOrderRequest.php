@@ -13,7 +13,7 @@ class StoreReturnOrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreReturnOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'product_info'  => 'required',
+            'reason'        => 'required|in:performance or quality adequate,product damaged,but shipping box ok,item arrived too late,wrong item was send,item defective or does not work',
+            'comment'       => 'required|min:10',
         ];
     }
 }

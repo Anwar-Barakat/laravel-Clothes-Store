@@ -79,7 +79,7 @@
                                                         <i class="fas fa-eye text-warning"></i>
                                                         {{ __('translation.view_order_details') }}
                                                     </a>
-                                                    @if ($order->status == 'shipped' || $order->status == 'deliverd')
+                                                    @if ($order->status == 'shipped' || $order->status == 'delivered')
                                                         <a href="{{ route('admin.orders.invoice.show', $order) }}"
                                                             class="dropdown-item half-gap"
                                                             title="{{ __('translation.view_order_invoice') }}">

@@ -293,7 +293,7 @@ return [
     'in process'                => 'قيد المعالجة',
     'paid'                      => 'مدفوعة',
     'shipped'                   => 'منقول',
-    'deliverd'                  => 'سُلم',
+    'delivered'                  => 'سُلم',
     'in'                        => 'في',
     'courier_name'              => 'اسم البريد السريع',
     'tracking_number'           => 'رقم التعقب',
@@ -320,7 +320,18 @@ return [
     'thank_you'                 => 'شكراً لك',
     'cause'                     => 'السبب',
 
-    
+
+    'performance or quality adequate'           => 'أداء أو جودة كافية',
+    'product damaged,but shipping box ok'       => 'المنتج تالف ، ولكن صندوق الشحن جيد',
+    'item arrived too late'                     => 'وصل المنتج متأخرأ جداً',
+    'wrong item was send'                       => 'المنتج خاطئ تم ارساله',
+    'item defective or does not work'           => 'المنتج معيب أو لا يعمل',
+    'order created by mistake'                  => 'الطلب تم إنشاؤه عن طريق الخطأ',
+    'item not arrive on time'                   => 'المنتج لا يصل في الوقت المحدد',
+    'shipping cost too high'                    => 'تكلفة الشحن مرتفعة للغاية',
+    'found cheaper somewhere else'              => 'وجدت أرخص في مكان آخر',
+
+
 
     // Shipping Charges :
     'updated_at'                => 'التحديث في',

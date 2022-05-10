@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FrontEnd;
 
+use App\Http\Controllers\Controller;
 use App\Models\ReturnOrder;
 use App\Http\Requests\StoreReturnOrderRequest;
 use App\Http\Requests\UpdateReturnOrderRequest;
+use App\Models\Order;
 
 class ReturnOrderController extends Controller
 {
@@ -34,9 +36,11 @@ class ReturnOrderController extends Controller
      * @param  \App\Http\Requests\StoreReturnOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReturnOrderRequest $request)
+    public function store(StoreReturnOrderRequest $request, Order $order)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data       = $request->only(['product_info', 'reason', 'comment']);
+        }
     }
 
     /**

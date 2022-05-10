@@ -230,13 +230,26 @@ return [
     'in process'                => 'قيد المعالجة',
     'paid'                      => 'مدفوعة',
     'shipped'                   => 'منقول',
-    'deliverd'                  => 'سُلم',
+    'delivered'                 => 'سُلم',
     'courier_name'              => 'اسم البريد السريع',
     'tracking_number'           => 'رقم التعقب',
     'no_orders'                 => 'لا يوجد طلبات بعد',
     'cancel_order'              => 'إالغاء الطلب',
     'add_cancelling_cause'      => 'إضافة سبب الإلغاء',
     'cause'                     => 'السبب',
+    'return_order'              => 'إرجاع الطلب',
+
+
+    'performance or quality adequate'           => 'أداء أو جودة كافية',
+    'product damaged,but shipping box ok'       => 'المنتج تالف ، ولكن صندوق الشحن جيد',
+    'item arrived too late'                     => 'وصل المنتج متأخرأ جداً',
+    'wrong item was send'                       => 'منتج خاطئ تم ارساله',
+    'item defective or does not work'           => 'المنتج معيب أو لا يعمل',
+    'order created by mistake'                  => 'الطلب تم إنشاؤه عن طريق الخطأ',
+    'item not arrive on time'                   => 'المنتج لا يصل في الوقت المحدد',
+    'shipping cost too high'                    => 'تكلفة الشحن مرتفعة للغاية',
+    'found cheaper somewhere else'              => 'وجدت أرخص في مكان آخر',
+
 
 
     // *================================================

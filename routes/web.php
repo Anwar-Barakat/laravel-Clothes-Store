@@ -29,6 +29,7 @@ use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\RatingController as FrontendRatingController;
+use App\Http\Controllers\FrontEnd\ReturnOrderController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\WishlistController;
@@ -363,6 +364,7 @@ Route::group(
             Route::get('/orders/show/{id}',                                 [OrderController::class, 'show'])->name('orders.show');
             Route::post('/orders/cancel/{id}',                              [OrderController::class, 'destroy'])->name('orders.destroy');
 
+            Route::post('/returnOrders/store/{order}',                      [ReturnOrderController::class, 'store'])->name('orders.return.store');
 
             // *************************************************************
             // *************************************************************
