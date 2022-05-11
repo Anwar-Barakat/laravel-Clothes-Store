@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\ReturnOrder;
 use App\Http\Requests\StoreReturnOrderRequest;
 use App\Http\Requests\UpdateReturnOrderRequest;
+use App\Models\OrderProduct;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ReturnOrderController extends Controller
 {
@@ -16,8 +20,8 @@ class ReturnOrderController extends Controller
      */
     public function index()
     {
-        $return_orders  = ReturnOrder::latest()->paginate(10);
-        return view('admin.orders.return.index', ['return_orders' => $return_orders]);
+        $returnOrders  = ReturnOrder::latest()->paginate(10);
+        return view('admin.orders.return.index', ['returnOrders' => $returnOrders]);
     }
 
     /**
@@ -72,7 +76,33 @@ class ReturnOrderController extends Controller
      */
     public function update(UpdateReturnOrderRequest $request, ReturnOrder $returnOrder)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['status']);
+
+            // update status in return_orders table:
+            $returnOrder->update(['status' => $data['status']]);
+
+
+            // update status in order_products table:
+            OrderProduct::where([
+                'order_id'      => $returnOrder->order_id,
+                'product_code'  => $returnOrder->product_code,
+                'product_size'  => $returnOrder->product_size
+            ])->update(['product_status' => 'return ' . $data['status']]);
+
+
+            // Send Email:
+            $email          = $returnOrder->user->email;
+            $returnStatus   = $data['status'];
+            $messageData    = ['returnOrder' => $returnOrder];
+
+            Mail::send('admin.emails.return_order', $messageData, function ($message) use ($email, $returnStatus) {
+                $message->to($email)->subject("Return Order $returnStatus");
+            });
+
+            Session::flash('message', __('msgs.return_order_status_update'));
+            return redirect()->route('admin.return.orders.index');
+        }
     }
 
     /**

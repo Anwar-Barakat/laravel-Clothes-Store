@@ -222,8 +222,8 @@ Route::group(
                 Route::get('order-invoice/{order}',                             [OrderInvoiceController::class, 'show'])->name('orders.invoice.show');
                 Route::get('order-invoice-pdf/{order}',                         [OrderInvoiceController::class, 'printPdfInvoice'])->name('orders.invoice.pdf');
 
-                Route::get('return-orders/index',                               [AdminReturnOrderController::class,'index'])->name('return.orders.index');
-
+                Route::get('return-orders/index',                               [AdminReturnOrderController::class, 'index'])->name('return.orders.index');
+                Route::post('return-orders/update/{returnOrder}',               [AdminReturnOrderController::class, 'update'])->name('return.orders.update');
 
                 // *************************************************************
                 // *************************************************************

@@ -58,7 +58,7 @@ class ReturnOrderController extends Controller
                     'product_code'      => $data['product_code'],
                     'product_size'      => $data['product_size']
                 ])->update([
-                    'product_status'    => 'returned'
+                    'product_status'    => 'return initiated'
                 ]);
 
                 ReturnOrder::create($data);

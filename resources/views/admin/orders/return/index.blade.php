@@ -40,29 +40,27 @@
                                     <th class="border-bottom-0">{{ __('translation.customer_email') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.product_size') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.product_code') }}</th>
-                                    <th class="border-bottom-0">{{ __('translation.return_reason') }}</th>
                                     <th class="border-bottom-0">{{ __('translation.return_date') }}</th>
                                     <th class="border-bottom-0 wd-15p">{{ __('translation.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($return_orders as $order)
+                                @foreach ($returnOrders as $returnOrder)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('admin.orders.show', $order->order_id) }}">
-                                                {{ $order->order_id }}
+                                            <a href="{{ route('admin.orders.show', $returnOrder->order_id) }}">
+                                                {{ $returnOrder->order_id }}
                                             </a>
                                         </td>
                                         <td>
                                             <a href="javascript:void(0)" target="_blank" class="tag tag-green">
-                                                {{ $order->user->email }}
+                                                {{ $returnOrder->user->email }}
                                             </a>
                                         </td>
-                                        <td>{{ $order->product_size }}</td>
-                                        <td>{{ $order->product_code }}</td>
-                                        <td>{{ __('translation.' . $order->reason) }}</td>
-                                        <td>{{ $order->created_at }}</td>
+                                        <td>{{ $returnOrder->product_size }}</td>
+                                        <td>{{ $returnOrder->product_code }}</td>
+                                        <td>{{ $returnOrder->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button aria-expanded="false" aria-haspopup="true"
@@ -72,7 +70,7 @@
                                                 <div class="dropdown-menu tx-13">
                                                     <a href="javascript:void(0);" role="button" data-toggle="modal"
                                                         title="{{ __('buttons.display') }}"
-                                                        data-target="#showReturnOrder{{ $order->id }}"
+                                                        data-target="#showReturnOrder{{ $returnOrder->id }}"
                                                         class="dropdown-item">
                                                         <i class="fas fa-eye text-warning "></i>
                                                         {{ __('translation.view_details') }}
@@ -82,8 +80,9 @@
 
                                         </td>
                                         {{-- View Details Modal --}}
-                                        <div class="modal fade" id="showReturnOrder{{ $order->id }}" tabindex="-1"
-                                            role="dialog" aria-labelledby="showReturnOrder{{ $order->id }}Label"
+                                        <div class="modal fade" id="showReturnOrder{{ $returnOrder->id }}"
+                                            tabindex="-1" role="dialog"
+                                            aria-labelledby="showReturnOrder{{ $returnOrder->id }}Label"
                                             aria-hidden="true" data-effect="effect-super-scaled">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
@@ -95,43 +94,57 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label
-                                                                for="comment">{{ __('translation.return_comment') }}</label>
-                                                            <textarea type="text" class="form-control" id="comment" readonly disabled>{{ $order->comment }}</textarea>
+                                                    <form
+                                                        action="{{ route('admin.return.orders.update', $returnOrder) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label for="reason">
+                                                                    {{ __('translation.return_reason') }}</label>
+                                                                <input type="text" class="form-control" id="reason"
+                                                                    readonly disabled
+                                                                    value="{{ __('translation.' . $returnOrder->reason) }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="comment">{{ __('translation.return_comment') }}</label>
+                                                                <textarea type="text" class="form-control" id="comment" readonly disabled>{{ $returnOrder->comment }}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label
+                                                                    for="status">{{ __('translation.status') }}</label>
+                                                                <select name="status" id="" class="form-control">
+                                                                    <option value="">{{ __('translation.choose..') }}
+                                                                    </option>
+                                                                    <option value="approved"
+                                                                        {{ $returnOrder->status == 'approved' ? 'selected' : '' }}>
+                                                                        {{ __('translation.approved') }}
+                                                                    </option>
+                                                                    <option value="rejected"
+                                                                        {{ $returnOrder->status == 'rejected' ? 'selected' : '' }}>
+                                                                        {{ __('translation.rejected') }}
+                                                                    </option>
+                                                                    <option value="pending"
+                                                                        {{ $returnOrder->status == 'pending' ? 'selected' : '' }}>
+                                                                        {{ __('translation.pending') }}
+                                                                    </option>
+                                                                </select>
+                                                                @error('status')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary modal-effect"
+                                                                    data-dismiss="modal">{{ __('buttons.close') }}</button>
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    {{ __('buttons.update') }}
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label for="status">{{ __('translation.status') }}</label>
-                                                            <select name="status" id="" class="form-control">
-                                                                <option value="">{{ __('translation.choose..') }}
-                                                                </option>
-                                                                <option value="approved"
-                                                                    {{ $order->status == 'approved' ? 'selected' : '' }}>
-                                                                    {{ __('translation.approved') }}
-                                                                </option>
-                                                                <option value="rejected"
-                                                                    {{ $order->status == 'rejected' ? 'selected' : '' }}>
-                                                                    {{ __('translation.rejected') }}
-                                                                </option>
-                                                                <option value="pending"
-                                                                    {{ $order->status == 'pending' ? 'selected' : '' }}>
-                                                                    {{ __('translation.pending') }}
-                                                                </option>
-                                                            </select>
-                                                            @error('status')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary modal-effect"
-                                                                data-dismiss="modal">{{ __('buttons.close') }}</button>
-                                                            <button type="submit"
-                                                                class="btn btn-primary">{{ __('buttons.update') }}</button>
-                                                        </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
