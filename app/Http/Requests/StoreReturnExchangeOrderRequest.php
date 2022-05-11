@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreReturnOrderRequest extends FormRequest
+class StoreReturnExchangeOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class StoreReturnOrderRequest extends FormRequest
     {
         return [
             'product_info'  => 'required',
-            'reason'        => 'required|in:performance or quality adequate,product damaged but shipping box ok,item arrived too late,wrong item was send,item defective or does not work',
+            'reason'        => 'required|in:performance or quality adequate,product damaged but shipping box ok,item arrived too late,wrong item was send,item defective or does not work,required smaller size,required larger size',
             'comment'       => 'required|min:10',
         ];
     }

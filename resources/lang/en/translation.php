@@ -338,6 +338,8 @@ return [
     'item not arrive on time'                   => 'item not arrive on time',
     'shipping cost too high'                    => 'shipping cost too high',
     'found cheaper somewhere else'              => 'found cheaper somewhere else',
+    'required larger size'                      => 'required larger size',
+    'required smaller size'                     => 'required smaller size',
 
 
     // Shipping Charges :

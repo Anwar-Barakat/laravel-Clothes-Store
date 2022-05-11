@@ -239,6 +239,13 @@ return [
     'add_cancelling_cause'      => 'إضافة سبب الإلغاء',
     'cause'                     => 'السبب',
     'return_order'              => 'إرجاع الطلب',
+    'exchange'                  => 'تغيير',
+    'return'                    => 'إرجاع',
+    'order'                     => 'الطلب',
+    'return_exchange'           => 'تبادل العودة',
+    'required_size'             => 'الحجم المطلوب',
+    'no_sizes'                  => 'لا يوجد قياسات حالياً',
+
 
 
     'performance or quality adequate'           => 'أداء أو جودة كافية',
@@ -250,6 +257,8 @@ return [
     'item not arrive on time'                   => 'المنتج لا يصل في الوقت المحدد',
     'shipping cost too high'                    => 'تكلفة الشحن مرتفعة للغاية',
     'found cheaper somewhere else'              => 'وجدت أرخص في مكان آخر',
+    'required larger size'                      => 'المطلوب قياس اكبر',
+    'required smaller size'                     => 'المطلوب قياس اصغر',
 
 
 

@@ -30,7 +30,8 @@
                         @if ($status == 'delivered')
                             <div class="w-20">
                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#returningOrder"
-                                    class="main-button ">{{ __('frontend.return_order') }}</a>
+                                    class="main-button ">{{ __('frontend.return') }}/{{ __('frontend.exchange') }}
+                                    {{ __('frontend.order') }}</a>
                             </div>
                         @endif
 
@@ -43,6 +44,21 @@
                     <div class="col-md-6">
                         <form action="{{ route('frontend.orders.return.store', $orderDetails) }}" method="POST">
                             @csrf
+                            <fieldset class="wrap-input country">
+                                <label for="return_exchange">{{ __('frontend.return_exchange') }}:</label>
+                                <select name="return_exchange" class="form-control" required id="returnExchange">
+                                    <option value="">{{ __('frontend.choose') }}</option>
+                                    <option value="return">{{ __('frontend.return') }}</option>
+                                    <option value="exchange">{{ __('frontend.exchange') }}</option>
+                                </select>
+                                @error('return_exchange')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </fieldset>
+                            <br>
+                            <br>
                             <fieldset class="wrap-input country">
                                 <label for="product_info">{{ __('frontend.products') }}:</label>
                                 <select name="product_info" id="product_info" class="form-control" required>
@@ -61,6 +77,13 @@
                                     </span>
                                 @enderror
                             </fieldset>
+                            <br>
+                            <br>
+                            <fieldset class="wrap-input country productSize" style="display: none" id="AppendProductSizes">
+                                @include('frontend.partials.append_sizes')
+                            </fieldset>
+                            <br>
+                            <br>
 
                             <fieldset class="wrap-input country">
                                 <label for="reason">{{ __('frontend.cause') }}:</label>
@@ -80,6 +103,12 @@
                                     <option value="item defective or does not work">
                                         {{ __('frontend.item defective or does not work') }}
                                     </option>
+                                    <option value="required smaller size">
+                                        {{ __('frontend.required smaller size') }}
+                                    </option>
+                                    <option value="required larger size">
+                                        {{ __('frontend.required larger size') }}
+                                    </option>
                                 </select>
                                 @error('reason')
                                     <span class="invalid-feedback" role="alert">
@@ -87,6 +116,9 @@
                                     </span>
                                 @enderror
                             </fieldset>
+                            <br>
+                            <br>
+
                             <fieldset class="wrap-input country">
                                 <label for="comment">{{ __('frontend.comment') }}:</label>
                                 <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="{{ __('frontend.type_comment') }}"
@@ -100,7 +132,9 @@
 
                             <fieldset class="wrap-input country">
                                 <button type="submit" order_id="{{ $orderDetails->id }}"
-                                    class="main-button">{{ __('frontend.return_order') }}</button>
+                                    class="main-button returnExchangeBtn">
+                                    {{ __('frontend.return') }}/{{ __('frontend.exchange') }}
+                                    {{ __('frontend.order') }}</button>
                             </fieldset>
                         </form>
                     </div>
@@ -278,4 +312,48 @@
 @section('scripts')
     <script src="{{ asset('assets/table/js/popper.js') }}"></script>
     <script src="{{ asset('assets/table/js/main.js') }}"></script>
+
+    <script>
+        $('#returnExchange').change(function(e) {
+            e.preventDefault();
+            var returnExchange = $(this).val();
+            var returnBtn = '{{ __('frontend.return') }}';
+            var exchangeBtn = '{{ __('frontend.exchange') }}';
+            var order = '{{ __('frontend.order') }}';
+            if (returnExchange == 'exchange') {
+                $('.productSize').show();
+                $('.returnExchangeBtn').html(exchangeBtn + ' ' + order)
+            } else if (returnExchange == 'return') {
+                $('.productSize').hide();
+                $('.returnExchangeBtn').html(returnBtn + ' ' + order)
+            }
+        });
+
+        $('#product_info').change(function(e) {
+            e.preventDefault();
+            var product_info = $(this).val();
+            var return_exchange = $('#returnExchange').val();
+            if (return_exchange == 'exchange') {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "post",
+                    url: "/get-product-sizes",
+                    data: {
+                        product_info: product_info
+                    },
+                    success: function(response) {
+                        if (response.status == true)
+                            $('#AppendProductSizes').html(response['view']);
+
+                    },
+                    error: function() {
+                        alert('fail')
+                    }
+                });
+            }
+
+        });
+    </script>
 @endsection

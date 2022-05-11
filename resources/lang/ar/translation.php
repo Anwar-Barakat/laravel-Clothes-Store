@@ -338,6 +338,8 @@ return [
     'item not arrive on time'                   => 'المنتج لا يصل في الوقت المحدد',
     'shipping cost too high'                    => 'تكلفة الشحن مرتفعة للغاية',
     'found cheaper somewhere else'              => 'وجدت أرخص في مكان آخر',
+    'required larger size'                      => 'المطلوب قياس اكبر',
+    'required smaller size'                     => 'المطلوب قياس اصغر',
 
 
 

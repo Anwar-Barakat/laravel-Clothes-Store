@@ -242,7 +242,12 @@ return [
     'add_cancelling_cause'      => 'Adding cancelling cause',
     'cause'                     => 'Cause',
     'return_order'              => 'Return order',
-
+    'exchange'                  => 'Exhange',
+    'return'                    => 'Return',
+    'order'                     => 'order',
+    'return_exchange'           => 'return exchange',
+    'required_size'             => 'required size',
+    'no_sizes'                  => 'no sizes yet!',
 
 
 
@@ -255,6 +260,8 @@ return [
     'item not arrive on time'                   => 'item not arrive on time',
     'shipping cost too high'                    => 'shipping cost too high',
     'found cheaper somewhere else'              => 'found cheaper somewhere else',
+    'required larger size'                      => 'required larger size',
+    'required smaller size'                     => 'required smaller size',
 
 
 

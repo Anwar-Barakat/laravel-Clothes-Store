@@ -98,8 +98,11 @@ return [
     'wishlist_item_delete'          => 'Wishlist item has been deleted',
     'order_cancel'                  => 'Order has been cancelled successfully',
     'order_return'                  => 'Order has been returned successfully',
+    'order_exchange'                => 'Order has been exchanged successfully',
     'order_cancel_invalid'          => 'Your order cancellation process is not valid !!',
     'order_return_invalid'          => 'Your order returning process is not valid !!',
+    'return_order_status_update'    => 'Your order status has been updated successfully',
+    'order_return_exchange_invalid' => 'Your order returning or exchanging process is not valid !!',
 
 
 

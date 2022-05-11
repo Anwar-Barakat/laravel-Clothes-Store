@@ -367,6 +367,9 @@ Route::group(
             Route::post('/orders/cancel/{id}',                              [OrderController::class, 'destroy'])->name('orders.destroy');
 
             Route::post('/returnOrders/store/{order}',                      [ReturnOrderController::class, 'store'])->name('orders.return.store');
+            Route::post('/get-product-sizes',                               [ReturnOrderController::class, 'getProductSizes']);
+
+
 
             // *************************************************************
             // *************************************************************
