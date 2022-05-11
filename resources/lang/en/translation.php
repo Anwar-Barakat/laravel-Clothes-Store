@@ -1,6 +1,8 @@
 <?php
 return [
-    // Sidebar Page :
+    // !================================================
+    // ! Sidebar Page :
+    // !================================================
     'dashboard'                 => 'Dashboard',
     'ecommerce'                 => 'E-commerce',
     'categories'                => 'Categories',
@@ -23,6 +25,8 @@ return [
     'admins'                    => 'Admins',
     'settings'                  => 'Settings',
     'display_admins'            => 'Display admins',
+    'return_orders'             => 'Return orders',
+
 
     // dashboard :
     'hi_welcome_back'           => 'Hi, Welcome Back!',
@@ -123,9 +127,9 @@ return [
 
 
 
-    // *================================================
-    // * Products :
-    // *================================================
+    // !================================================
+    // ! Products :
+    // !================================================
     'color'                     => 'Color',
     'group_code'                => 'Group color',
     'enter_product_group_code'  => 'Type group code',
@@ -142,29 +146,24 @@ return [
     'g'                         => 'g',
     'video'                     => 'video',
     'wash_care'                 => 'Wash Care',
-
     'fabric'                    => 'Fabric',
     'cotton'                    => 'Cotton',
     'polyester'                 => 'Polyester',
     'wool'                      => 'wool',
-
     'sleeve'                    => 'Seleeve',
     'full_sleeve'               => 'Full Sleeve',
     'half_sleeve'               => 'Half Sleeve',
     'short_sleeve'              => 'Short Sleeve',
     'sleeveless'                => 'SleeveLess',
-
     'pattern'                   => 'Pattern',
     'checked'                   => 'Checked',
     'plain'                     => 'Plain',
     'printed'                   => 'Printed',
     'self'                      => 'Self',
     'solid'                     => 'Solid',
-
     'fit'                       => 'Fit',
     'regular'                   => 'Regular',
     'slim'                      => 'Slim',
-
     'occasion'                  => 'Occasion',
     'casual'                    => 'Casual',
     'formal'                    => 'Formal',
@@ -241,7 +240,11 @@ return [
     'users'                     => 'Users',
     'edit_coupon'               => 'Edit Coupon',
 
-    // orders:
+
+
+    // !================================================
+    // ! Orders Page :
+    // !================================================
     'order_number'              => 'Order number',
     'order_products'            => 'Order products',
     'grand_total'               => 'Grand total',
@@ -290,6 +293,8 @@ return [
     'paid'                      => 'paid',
     'shipped'                   => 'shipped',
     'delivered'                 => 'delivered',
+    'rejected'                  => 'Rejected',
+    'approved'                  => 'Approved',
     'in'                        => 'In',
     'courier_name'              => 'Courier name',
     'tracking_number'           => 'Tracking number',
@@ -316,6 +321,11 @@ return [
     'thank_you'                 => 'Thank you',
     'shipping_charges'          => 'Shipping charges',
     'cause'                     => 'cause',
+    'return_reason'             => 'Return reason',
+    'return_date'               => 'Return date',
+    'return_comment'            => 'Return comment',
+
+
 
 
 
@@ -338,9 +348,9 @@ return [
 
 
 
-    // *================================================
-    // * CMS Pages :
-    // *================================================
+    // !================================================
+    // ! CMS Pages :
+    // !================================================
     'cms_pages'                 => 'CMS Pages',
     'add_new_cms_page'          => 'Add new cms page',
     'edit_cms_page'             => 'Edit cms page',
@@ -352,9 +362,9 @@ return [
 
 
 
-    // *================================================
-    // * Contact Us Page :
-    // *================================================
+    // !================================================
+    // ! Contact Us Page :
+    // !================================================
     'contact_us'                => 'Contact Us',
     'contact_us_messages'       => 'Contact us messages',
     'display_details'           => 'display details',
@@ -363,9 +373,9 @@ return [
 
 
 
-    // *================================================
-    // * Currencies Page :
-    // *================================================
+    // !================================================
+    // ! Currencies Page :
+    // !================================================
     'currencies'                => 'Currencies',
     'rate'                      => 'Rate',
     'add_new_currency'          => 'add new currency',
@@ -377,9 +387,9 @@ return [
 
 
 
-    // *================================================
-    // * Ratings Page :
-    // *================================================
+    // !================================================
+    // ! Ratings Page :
+    // !================================================
     'products_evaluations'      => 'Products evaluations',
     'ratings'                   => 'Ratings',
     'display_rating'            => 'Display rating',

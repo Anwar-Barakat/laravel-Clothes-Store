@@ -645,7 +645,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: "post",
-                url: "/update-wishlist",
+                url: "/wishlist-update",
                 data: {
                     product_id: product_id
                 },

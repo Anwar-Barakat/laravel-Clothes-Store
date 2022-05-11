@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\RatingController;
+use App\Http\Controllers\Admin\ReturnOrderController as AdminReturnOrderController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ShippingChargeController;
@@ -221,6 +222,7 @@ Route::group(
                 Route::get('order-invoice/{order}',                             [OrderInvoiceController::class, 'show'])->name('orders.invoice.show');
                 Route::get('order-invoice-pdf/{order}',                         [OrderInvoiceController::class, 'printPdfInvoice'])->name('orders.invoice.pdf');
 
+                Route::get('return-orders/index',                               [AdminReturnOrderController::class,'index'])->name('return.orders.index');
 
 
                 // *************************************************************
@@ -376,7 +378,7 @@ Route::group(
 
 
 
-            Route::post('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');
+            Route::any('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');
         });
     }
 );

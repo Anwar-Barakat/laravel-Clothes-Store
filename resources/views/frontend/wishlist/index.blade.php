@@ -100,7 +100,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type: "post",
-                url: "/delete-wishlist-item",
+                url: "/wishlist-delete-item",
                 data: {
                     wishlist_id: wishlist_id
                 },
