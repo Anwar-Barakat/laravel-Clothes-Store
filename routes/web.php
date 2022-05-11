@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\ExchangeOrderController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\OrderInvoiceController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -151,7 +152,7 @@ Route::group(
                 // *************************************************************
                 // *************************************************************
                 // *************************************************************
-                //Products :
+                //?Products :
                 Route::get('products/index',                                    [ProductController::class, 'index'])->name('products.index');
                 Route::get('create-product',                                    [ProductController::class, 'create'])->name('products.create');
                 Route::post('store-product',                                    [ProductController::class, 'store'])->name('products.store');
@@ -224,6 +225,11 @@ Route::group(
 
                 Route::get('return-orders/index',                               [AdminReturnOrderController::class, 'index'])->name('return.orders.index');
                 Route::post('return-orders/update/{returnOrder}',               [AdminReturnOrderController::class, 'update'])->name('return.orders.update');
+
+                Route::get('exchange-orders/index',                             [ExchangeOrderController::class, 'index'])->name('exchange.orders.index');
+                Route::post('exchange-orders/update/{exchangeOrder}',           [ExchangeOrderController::class, 'update'])->name('exchange.orders.update');
+
+
 
                 // *************************************************************
                 // *************************************************************

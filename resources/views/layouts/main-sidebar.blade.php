@@ -165,6 +165,14 @@
                 </a>
             </li>
 
+            {{-- order exchanging --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.exchange.orders.index') }}">
+                    <i class="fas fa-exchange-alt icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.exchange_orders') }}</span>
+                </a>
+            </li>
+
 
             {{-- Shipping charges --}}
             <li class="slide">

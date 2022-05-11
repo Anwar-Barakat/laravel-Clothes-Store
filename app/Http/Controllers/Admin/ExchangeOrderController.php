@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\ExchangeOrder;
 use App\Http\Requests\StoreExchangeOrderRequest;
 use App\Http\Requests\UpdateExchangeOrderRequest;
@@ -15,7 +16,8 @@ class ExchangeOrderController extends Controller
      */
     public function index()
     {
-        //
+        $exchangeOrders  = ExchangeOrder::latest()->get();
+        return view('admin.orders.exchange.index', ['exchangeOrders' => $exchangeOrders]);
     }
 
     /**

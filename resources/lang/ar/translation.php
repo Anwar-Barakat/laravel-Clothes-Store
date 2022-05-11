@@ -325,8 +325,13 @@ return [
     'thank_you'                 => 'شكراً لك',
     'cause'                     => 'السبب',
     'return_reason'             => 'سبب التراجع',
+    'exchange_reason'           => 'سبب التغيير',
     'return_date'               => 'تاريخ التراجع',
+    'exchange_date'             => 'تاريخ التغيير',
     'return_comment'            => 'تعليق التراجع',
+    'exchange_comment'          => 'تعليق التغيير',
+    'exchange_orders'           => 'تغيير الطلبات',
+    'required_size'             => 'القياس المطلوب',
 
 
     'performance or quality adequate'           => 'أداء أو جودة كافية',

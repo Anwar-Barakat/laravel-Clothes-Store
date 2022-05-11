@@ -322,8 +322,13 @@ return [
     'shipping_charges'          => 'Shipping charges',
     'cause'                     => 'cause',
     'return_reason'             => 'Return reason',
+    'exchange_reason'           => 'Exchange reason',
     'return_date'               => 'Return date',
+    'exchange_date'             => 'Exchange date',
     'return_comment'            => 'Return comment',
+    'exchange_comment'          => 'Exchange comment',
+    'exchange_orders'           => 'Exchange orders',
+    'required_size'             => 'Required size',
 
 
 
