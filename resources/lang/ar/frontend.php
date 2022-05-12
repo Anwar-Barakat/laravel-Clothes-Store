@@ -1,7 +1,10 @@
 <?php
 return [
 
-    // Home Page :
+
+    // !================================================
+    // ! Home Page :
+    // !================================================
     'ecommerce'                 => 'متجر الكتروني',
     'home'                      => 'الصفحة الرئيسية',
     'laguages'                  => 'اللغات',
@@ -29,28 +32,42 @@ return [
     'meta_keywords'             => 'متجر ألكتروني, موقع لبيع الملابس , ملابس أطفال, ملابس نسائية, ملابس رجالية, متجر أون لاين',
 
 
+
+    // !================================================
+    // ! Footer :
+    // !================================================
+    'free_shipping'             => 'Free Shipping',
+    'free_shipping_desc'        => 'Free On Oder Over $99',
+    'guarantee'                 => 'Guarantee',
+    'guarantee_desc'            => '30 Days Money Back',
+    'safe_payment'              => 'Safe Payment',
+    'safe_payment_desc'         => 'Safe your online payment',
+    'online_support'            => 'Online Suport',
+    'online_support_desc'       => 'We Have Support 24/7',
+    'contact_details'           => 'Contact Details',
+
+
+    // !================================================
+    // ! Shop Page :
+    // !================================================
     'fabric'                    => 'الفماش',
     'cotton'                    => 'قطن',
     'polyester'                 => 'بوليستر',
     'wool'                      => 'صوف',
-
     'sleeve'                    => 'الأكمام',
     'full_sleeve'               => 'كامل الأكمام',
     'half_sleeve'               => 'نصف كم',
     'short_sleeve'              => 'كم قصير',
     'sleeveless'                => 'بلا أكمام',
-
     'pattern'                   => 'النمط',
     'checked'                   => 'مربعات',
     'plain'                     => 'عادي',
     'printed'                   => 'مرسوم',
     'self'                      => 'Self',
     'solid'                     => 'Solid',
-
     'fit'                       => 'الملائمة',
     'regular'                   => 'عادي',
     'slim'                      => 'ضئيلة',
-
     'occasion'                  => 'المناسبة',
     'casual'                    => 'عادي',
     'formal'                    => 'رسمي',

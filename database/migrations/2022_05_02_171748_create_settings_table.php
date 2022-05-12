@@ -15,6 +15,9 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('email')->unique();
+            $table->string('mobile');
+            $table->text('location');
             $table->integer('min_cart_value');
             $table->integer('max_cart_value');
             $table->timestamps();

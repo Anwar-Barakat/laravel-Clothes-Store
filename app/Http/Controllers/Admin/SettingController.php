@@ -74,7 +74,7 @@ class SettingController extends Controller
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
         if ($request->isMethod('post')) {
-            $data       = $request->only(['min_cart_value', 'max_cart_value']);
+            $data       = $request->only(['min_cart_value', 'max_cart_value', 'email', 'mobile', 'location']);
             $setting->update($data);
             Session::flash('message', __('msgs.settings_update'));
             return redirect()->route('admin.settings.index');

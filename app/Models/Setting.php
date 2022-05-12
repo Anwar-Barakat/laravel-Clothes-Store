@@ -11,6 +11,9 @@ class Setting extends Model
 
     protected $fillable = [
         'min_cart_value',
-        'max_cart_value'
+        'max_cart_value',
+        'email',
+        'mobile',
+        'location',
     ];
 }

@@ -51,7 +51,9 @@ return [
     'email_or_pass_not_valid'   => 'Email or Password Not Valid',
 
 
-    // Admin Settings Page :
+    // !================================================
+    // ! Admin Settings Page :
+    // !================================================
     'email'                     => 'E-mail Address',
     'admin_type'                => 'Admin Type',
     'current_password'          => 'Current Password',
@@ -65,23 +67,33 @@ return [
     'image'                     => 'Image',
 
 
-    // Settings Page:
+
+    // !================================================
+    // ! Settings Page :
+    // !================================================
     'min_cart_value'            => 'Minimum cart value',
     'max_cart_value'            => 'Maximum cart value',
     'type_min_cart_value'       => 'type minimum cart value',
     'type_max_cart_value'       => 'type maximum cart value',
+    'location'                  => 'Location',
+    'type_location'             => 'Type your location',
+    'website_email'             => 'Website E-mail',
+    'website_mobile'            => 'Mobile Number',
 
 
-    // Admins/subAdmins :
-    'admin'                     => 'Admin',
-    'super-admin'               => 'Super Admin',
-    'sub-admin'                 => 'Sub Admin',
-    'add_roles_perm'            => 'Add Permissions & roles',
-    'add_admin'                 => 'Add Admin',
-    'edit_admin'                => 'Edit Admin',
-    'type_admin_name'           => 'Type admin name',
-    'type_admin_email'          => 'Type admin email',
-    'type_password_confirmation' => 'Type password confirmation',
+
+    // !================================================
+    // ! Admins/subAdmins Page :
+    // !================================================
+    'admin'                         => 'Admin',
+    'super-admin'                   => 'Super Admin',
+    'sub-admin'                     => 'Sub Admin',
+    'add_roles_perm'                => 'Add Permissions & roles',
+    'add_admin'                     => 'Add Admin',
+    'edit_admin'                    => 'Edit Admin',
+    'type_admin_name'               => 'Type admin name',
+    'type_admin_email'              => 'Type admin email',
+    'type_password_confirmation'    => 'Type password confirmation',
 
 
 

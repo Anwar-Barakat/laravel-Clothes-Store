@@ -1,7 +1,9 @@
 <?php
 return [
 
-    // Home Page :
+    // !================================================
+    // ! Home Page :
+    // !================================================
     'ecommerce'                 => 'Online eCommerce',
     'home'                      => 'Home',
     'laguages'                  => 'Languages',
@@ -29,7 +31,25 @@ return [
     'meta_keywords'             => "Online store, clothing website, children's clothing, women's clothing, men's clothing, online store",
 
 
-    // Shop :
+
+    // !================================================
+    // ! Footer :
+    // !================================================
+    'free_shipping'             => 'Free Shipping',
+    'free_shipping_desc'        => 'Free On Oder Over $99',
+    'guarantee'                 => 'Guarantee',
+    'guarantee_desc'            => '30 Days Money Back',
+    'safe_payment'              => 'Safe Payment',
+    'safe_payment_desc'         => 'Safe your online payment',
+    'online_support'            => 'Online Suport',
+    'online_support_desc'       => 'We Have Support 24/7',
+    'contact_details'           => 'Contact Details',
+
+
+
+    // !================================================
+    // ! Shop Page :
+    // !================================================
     'digitals'                  => 'Digitals',
     'electronic'                => 'Electronics',
     'brands'                    => 'Brands',
@@ -205,9 +225,9 @@ return [
 
 
 
-    // *================================================
-    // * Orders Page :
-    // *================================================
+    // !================================================
+    // ! Orders Page :
+    // !================================================
     'orders'                    => 'Orders',
     'the_orders'                => 'The Orders',
     'order_products'            => 'Order products',
@@ -265,16 +285,16 @@ return [
 
 
 
-    // *================================================
-    // * About US Page :
-    // *================================================
+    // !================================================
+    // ! About US Page :
+    // !================================================
     'interesting_facts'         => 'Interesting Facts',
 
 
 
-    // *================================================
-    // * Contact US Page :
-    // *================================================
+    // !================================================
+    // ! Contact US Page :
+    // !================================================
     'leave_a_messsage'          => 'Leave a Message',
     'comment'                   => 'Comment',
     'contact_detail'            => 'Contact Detail',
@@ -286,9 +306,9 @@ return [
 
 
 
-    // *================================================
-    // * Wishlist Page :
-    // *================================================
+    // !================================================
+    // ! Wishlist Page :
+    // !================================================
     'wishlist_products'         => 'Wishlist products',
     'actions'                   => 'Actions',
     'no_wishlist'               => 'No wishlist yet',

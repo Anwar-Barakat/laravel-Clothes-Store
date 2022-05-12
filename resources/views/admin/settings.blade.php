@@ -27,6 +27,53 @@
                         name="updateWebsiteSettings" id="updateWebsiteSettings">
                         @csrf
                         <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="email">{{ __('translation.email') }}</label>
+                                    <input type="email" name="email"
+                                        class="form-control @error('email') is-invalid @enderror" id="email"
+                                        value="{{ old('email', $setting->email) }}"
+                                        placeholder="{{ __('translation.email_address') }}">
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="mobile">{{ __('translation.mobile') }}</label>
+                                    <input type="tel" name="mobile"
+                                        class="form-control @error('mobile') is-invalid @enderror" id="mobile"
+                                        value="{{ old('mobile', $setting->mobile) }}"
+                                        placeholder="{{ __('translation.website_mobile') }}">
+                                    @error('mobile')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="location">{{ __('translation.location') }}</label>
+                                    <input type="text" name="location"
+                                        class="form-control @error('location') is-invalid @enderror" id="location"
+                                        value="{{ old('location', $setting->location) }}"
+                                        placeholder="{{ __('translation.type_location') }}">
+                                    @error('location')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="min_cart_value">{{ __('translation.min_cart_value') }}</label>
