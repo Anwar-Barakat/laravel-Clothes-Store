@@ -36,15 +36,23 @@ return [
     // !================================================
     // ! Footer :
     // !================================================
-    'free_shipping'             => 'Free Shipping',
-    'free_shipping_desc'        => 'Free On Oder Over $99',
-    'guarantee'                 => 'Guarantee',
-    'guarantee_desc'            => '30 Days Money Back',
-    'safe_payment'              => 'Safe Payment',
-    'safe_payment_desc'         => 'Safe your online payment',
-    'online_support'            => 'Online Suport',
-    'online_support_desc'       => 'We Have Support 24/7',
-    'contact_details'           => 'Contact Details',
+    'free_shipping'             => 'الشحن مجانا',
+    'free_shipping_desc'        => 'مجانًا عند الطلب أكثر من 99 دولارًا',
+    'guarantee'                 => 'ضمان',
+    'guarantee_desc'            => '30 يومًا لاسترداد الأموال',
+    'safe_payment'              => 'الدفع الآمن',
+    'safe_payment_desc'         => 'دفع آمن عبر الإنترنت',
+    'online_support'            => 'الدعم عبر الإنترنت',
+    'online_support_desc'       => 'لدينا دعم 24/7',
+    'contact_details'           => 'بيانات التواصل',
+    'newsletters_sign_up'       => 'الاشتراك في النشرة الإخبارية',
+    'subscribe'                 => 'إشتراك',
+    'quick_shop'                => 'تسوق سريع',
+    'information'               => 'معلومات',
+    'quick_links'               => 'روابط سريعة',
+    'privacy_policy'            => 'سياسة الخصوصية',
+    'terms_&_conditions'        => 'البنود و الظروف',
+
 
 
     // !================================================

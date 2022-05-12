@@ -36,7 +36,7 @@ return [
     // ! Footer :
     // !================================================
     'free_shipping'             => 'Free Shipping',
-    'free_shipping_desc'        => 'Free On Oder Over $99',
+    'free_shipping_desc'        => 'Free On Order Over $99',
     'guarantee'                 => 'Guarantee',
     'guarantee_desc'            => '30 Days Money Back',
     'safe_payment'              => 'Safe Payment',
@@ -44,6 +44,14 @@ return [
     'online_support'            => 'Online Suport',
     'online_support_desc'       => 'We Have Support 24/7',
     'contact_details'           => 'Contact Details',
+    'newsletters_sign_up'       => 'Sign up for newsletter',
+    'subscribe'                 => 'Subscribe',
+    'quick_shop'                => 'Quick shop',
+    'information'               => 'Information',
+    'quick_links'               => 'Quick links',
+    'privacy_policy'            => 'Privacy Policy',
+    'terms_&_conditions'        => 'Terms & Conditions',
+
 
 
 
