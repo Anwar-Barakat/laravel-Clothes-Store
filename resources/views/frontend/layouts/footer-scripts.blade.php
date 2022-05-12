@@ -123,3 +123,35 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         navbarLink.classList.toggle('active');
     }
 </script>
+
+
+<script>
+    $('#subscriberEmailBtn').on('click', function(e) {
+        var email = $('#subscriberEmail').val();
+        validateEmail(email)
+        $.ajax({
+            type: "post",
+            url: "/newslatterSubscriber/store",
+            data: {
+                email: email
+            },
+            success: function(response) {
+                if (response == 'exists')
+                    toastr.info("{{ __('msgs.email_already_exists') }}");
+
+                else if (response == 'true')
+                    toastr.success("{{ __('msgs.thanks_for_subscription') }}");
+            },
+            error: function() {
+                alert('fail')
+            }
+        });
+    })
+
+    function validateEmail(emailaddress) {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test(emailaddress)) {
+            alert("Please enter valid email");
+        }
+    }
+</script>

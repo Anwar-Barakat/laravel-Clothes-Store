@@ -108,6 +108,7 @@ return [
     'return_order_status_update'    => 'تم تحديث حالة طلب التراجع بنجاح',
     'return_order_status_update'    => 'تم تحديث حالة طلب التغيير بنجاح',
     'order_return_exchange_invalid' => 'عملية إرجاع أو تغيير طلبك غير صالحة',
+    'thanks_for_subscription'       => 'شكرا للاشتراك',
 
 
 

@@ -28,6 +28,7 @@ use App\Http\Controllers\FrontEnd\ContactUsController;
 use App\Http\Controllers\FrontEnd\DeliveryAddressController;
 use App\Http\Controllers\FrontEnd\DetailController;
 use App\Http\Controllers\FrontEnd\HomeController;
+use App\Http\Controllers\FrontEnd\NewslatterSubsciberController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\RatingController as FrontendRatingController;
@@ -386,6 +387,12 @@ Route::group(
             Route::post('/wishlist-delete-item',                            [WishlistController::class, 'destroy']);
 
 
+
+            // *************************************************************
+            // *************************************************************
+            // *************************************************************
+            // NewslatterSubscibers :
+            Route::post('/newslatterSubscriber/store',                      [NewslatterSubsciberController::class, 'store']);
 
             Route::any('/{url?}',                                           [FrontendProductController::class, 'index'])->name('url');
         });

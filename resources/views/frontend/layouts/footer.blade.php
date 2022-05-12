@@ -43,7 +43,7 @@
         <div class="main-footer-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
                         <div class="wrap-footer-item">
                             <h3 class="item-header">{{ __('frontend.contact_details') }}</h3>
                             <div class="item-content">
@@ -67,21 +67,30 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                    <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         <div class="wrap-footer-item footer-item-second">
                             <h3 class="item-header">{{ __('frontend.newsletters_sign_up') }}</h3>
                             <div class="item-content">
                                 <div class="wrap-newletter-footer">
                                     <form action="#" class="frm-newletter" id="frm-newletter">
-                                        <input type="email" class="input-email" name="email" value=""
-                                            placeholder="{{ __('frontend.type_email') }}">
-                                        <button class="btn-submit">{{ __('frontend.subscribe') }}</button>
+                                        <input type="email"
+                                            class="input-email @error('subscriber_email') is-invalid @enderror"
+                                            value="{{ old('subscriber_email') }}" id="subscriberEmail"
+                                            placeholder="{{ __('frontend.type_email') }}" required
+                                            pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                        @error('subscriber_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <button type="button" class="btn-submit" id="subscriberEmailBtn">
+                                            {{ __('frontend.subscribe') }}
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12 box-twin-content ">
                         <div class="row">
                             <div class="wrap-footer-item twin-item">
@@ -122,10 +131,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
             <div class="wrap-back-link">
                 <div class="container">
                     <div class="back-link-box">
@@ -145,9 +152,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="coppy-right-box">
             <div class="container">
                 <div class="coppy-right-item item-left">
@@ -174,15 +179,3 @@
         </div>
     </div>
 </footer>
-
-{{-- <footer id="footer">
-    <div class="wrap-footer-content footer-style-1">
-        <div class="coppy-right-box">
-            <div class="container" style="text-align: center">
-                <div class="coppy-right-item">
-                    <p class="coppy-right-text">{{ __('msgs.copy_right') }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer> --}}

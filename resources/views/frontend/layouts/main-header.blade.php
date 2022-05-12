@@ -149,6 +149,24 @@
                                 </div>
                             </a>
                         </div>
+                        <div class="wrap-icon-section minicart">
+                            <a href="{{ route('frontend.orders.index') }}" class="link-direction">
+                                <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                                <div class="left-info">
+                                    <span class="index">
+                                        <span id="totalProducts">
+                                            @if (Auth::check())
+                                                {{ App\Models\Order::where('user_id', Auth::user()->id)->get()->count() }}
+                                            @else
+                                                0
+                                            @endif
+                                        </span>
+                                        {{ __('frontend.items') }}
+                                    </span>
+                                    <span class="title">{{ __('frontend.orders') }}</span>
+                                </div>
+                            </a>
+                        </div>
                         <div class="wrap-icon-section show-up-after-1024" id="menu__toggle">
                             <a href="#" class="mobile-navigation">
                                 <span></span>

@@ -662,9 +662,12 @@ textarea {
 }
 
 .header .main-info-area {
-    display: table;
+    display: flex;
     width: 100%;
     height: 99px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3rem;
 }
 
 .header.fill-color .center-section .wrap-search-form button {
@@ -698,14 +701,16 @@ textarea {
 .header .main-info-area .center-section {
     padding: 0 15px;
     text-align: center;
+    width: 100%;
 }
 
 .header .main-info-area .left-section {
-    width: 182px;
+    width: fit-content;
 }
 
 .header .main-info-area .right-section {
-    width: 280px;
+    width: 100%;
+    display: flex;
 }
 
 .main-info-area .right-section .wrap-icon-section {
@@ -756,7 +761,7 @@ header.fill-color .main-info-area .right-section .wrap-icon-section .link-direct
 .main-info-area .right-section .wrap-icon-section .link-direction>i {
     display: block;
     float: left;
-    font-size: 25px;
+    font-size: 28px;
     color: #aaa;
     margin: 7px 8px 0 0;
 }
@@ -7135,6 +7140,7 @@ table.shop_attributes tbody {
 @media (min-width: 991px) {
     .container {
         padding: 0;
+        text-align: left;
     }
 }
 
