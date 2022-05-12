@@ -102,6 +102,7 @@ return [
     'order_cancel_invalid'          => 'Your order cancellation process is not valid !!',
     'order_return_invalid'          => 'Your order returning process is not valid !!',
     'return_order_status_update'    => 'Your order status has been updated successfully',
+    'exchange_order_status_update'  => 'Your order status has been updated successfully',
     'order_return_exchange_invalid' => 'Your order returning or exchanging process is not valid !!',
 
 

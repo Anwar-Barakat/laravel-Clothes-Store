@@ -106,6 +106,7 @@ return [
     'order_cancel_invalid'          => 'عملية إلغاء طلبك غير صالحة !!',
     'order_return_invalid'          => 'عملية إرجاع طلبك غير صالحة !!',
     'return_order_status_update'    => 'تم تحديث حالة طلب التراجع بنجاح',
+    'return_order_status_update'    => 'تم تحديث حالة طلب التغيير بنجاح',
     'order_return_exchange_invalid' => 'عملية إرجاع أو تغيير طلبك غير صالحة',
 
 

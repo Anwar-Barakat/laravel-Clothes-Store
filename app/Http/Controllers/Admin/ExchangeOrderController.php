@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\ExchangeOrder;
 use App\Http\Requests\StoreExchangeOrderRequest;
 use App\Http\Requests\UpdateExchangeOrderRequest;
+use App\Models\OrderProduct;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ExchangeOrderController extends Controller
 {
@@ -72,7 +75,33 @@ class ExchangeOrderController extends Controller
      */
     public function update(UpdateExchangeOrderRequest $request, ExchangeOrder $exchangeOrder)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['status']);
+
+            // update status in return_orders table:
+            $exchangeOrder->update(['status' => $data['status']]);
+
+
+            // update status in order_products table:
+            OrderProduct::where([
+                'order_id'      => $exchangeOrder->order_id,
+                'product_code'  => $exchangeOrder->product_code,
+                'product_size'  => $exchangeOrder->product_size
+            ])->update(['product_status' => 'exchange ' . $data['status']]);
+
+
+            // Send Email:
+            $email              = $exchangeOrder->user->email;
+            $exchangeStatus     = $data['status'];
+            $messageData        = ['exchangeOrder' => $exchangeOrder];
+
+            Mail::send('admin.emails.exchange_order', $messageData, function ($message) use ($email, $exchangeStatus) {
+                $message->to($email)->subject("Return Order $exchangeStatus");
+            });
+
+            Session::flash('message', __('msgs.exchange_order_status_update'));
+            return redirect()->route('admin.exchange.orders.index');
+        }
     }
 
     /**
