@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ExchangeOrderController;
+use App\Http\Controllers\Admin\NewslatterSubscriberController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\OrderInvoiceController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -36,6 +37,7 @@ use App\Http\Controllers\FrontEnd\ReturnOrderController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\WishlistController;
+use App\Models\NewslatterSubsciber;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -260,6 +262,17 @@ Route::group(
                 Route::get('contact-us/index',                                  [AdminContactUsController::class, 'index'])->name('contact-us.index');
                 Route::post('update-message-status',                            [AdminContactUsController::class, 'updateStatus']);
                 Route::get('delete-message/{id}',                               [AdminContactUsController::class, 'destroy'])->name('cms-pages.destroy');
+
+
+
+                // *************************************************************
+                // *************************************************************
+                // *************************************************************
+                // Subscriptions :
+                Route::get('newslatter-subscribers/index',                      [NewslatterSubscriberController::class, 'index'])->name('newslatter-subscribers.index');
+                Route::get('delete-subscriber/{id}',                            [NewslatterSubscriberController::class, 'destroy'])->name('newslatter-subscribers.destroy');
+                Route::post('update-subscriber-status',                         [NewslatterSubscriberController::class, 'updateStatus']);
+                Route::get('newslatter-subscribers/export',                     [NewslatterSubscriberController::class, 'export'])->name('newslatter-subscribers.export');
 
 
 

@@ -26,6 +26,8 @@ return [
     'settings'                  => 'Settings',
     'display_admins'            => 'Display admins',
     'return_orders'             => 'Return orders',
+    'newslatter_subscriber'     => 'Newslatter subscriber',
+    'subscribed_on'             => 'Subscribed on',
 
 
     // dashboard :

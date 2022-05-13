@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\NewslatterSubsciber;
 use App\Models\Product;
 use App\Models\Section;
 use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -38,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('sections', Section::with('categories')->get());
         });
 
+
         View::composer('frontend.layouts.footer', function ($view) {
             $view->with([
                 'sections'      => Section::with('categories')->get(),
@@ -45,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
                 'categories'    => Category::where(['status' => 1, 'parent_id' => 0])
                     ->inRandomOrder()
                     ->limit(5)
-                    ->get()
+                    ->get(),
             ]);
         });
 

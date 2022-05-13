@@ -26,7 +26,9 @@ return [
     'admins'                    => 'المشرفين',
     'settings'                  => 'الأعدادات',
     'display_admins'            => 'عرض المشرفين',
-    'return_orders'             => 'Return orders',
+    'return_orders'             => 'الطلبات المُعادة',
+    'newslatter_subscriber'     => 'المشتركين',
+    'subscribed_on'             => 'الأشتراك في',
 
 
 
@@ -342,7 +344,7 @@ return [
     'exchange_date'             => 'تاريخ التغيير',
     'return_comment'            => 'تعليق التراجع',
     'exchange_comment'          => 'تعليق التغيير',
-    'exchange_orders'           => 'تغيير الطلبات',
+    'exchange_orders'           => 'الطلبات المُتغيرة',
     'required_size'             => 'القياس المطلوب',
 
 

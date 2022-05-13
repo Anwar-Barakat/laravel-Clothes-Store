@@ -47,7 +47,7 @@ return [
     'currency_update'               => 'Currency Has updated Successfully',
     'rating_delete'                 => 'Rating Has Deleted Successfully',
     'return_order_status_update'    => 'Return order status has updated successfully',
-
+    'subscriber_delete'             => 'Subscriber Has Deleted Successfully',
 
 
 
@@ -105,6 +105,7 @@ return [
     'exchange_order_status_update'  => 'Your order status has been updated successfully',
     'order_return_exchange_invalid' => 'Your order returning or exchanging process is not valid !!',
     'thanks_for_subscription'       => 'Thanks for subscription',
+
 
 
 

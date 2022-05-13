@@ -151,7 +151,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     function validateEmail(emailaddress) {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         if (!emailReg.test(emailaddress)) {
-            alert("Please enter valid email");
+            toastr.info("{{ __('msgs.email_not_valid') }}");
         }
     }
 </script>

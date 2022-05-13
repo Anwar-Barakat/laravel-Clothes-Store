@@ -239,11 +239,30 @@
                 </a>
             </li>
 
+
             {{-- ratings --}}
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.ratings.index') }}">
                     <i class="fas fa-bookmark icon_sidebar side-menu__icon"></i>
                     <span class="side-menu__label">{{ __('translation.products_evaluations') }}</span>
+                </a>
+            </li>
+
+
+            {{-- Contact Us --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.contact-us.index') }}">
+                    <i class="far fa-comments icon_sidebar side-menu__icon"></i>
+                    <span class="side-menu__label">{{ __('translation.contact_us_messages') }}</span>
+                </a>
+            </li>
+
+
+            {{-- Subscriptions --}}
+            <li class="slide">
+                <a class="side-menu__item" href="{{ route('admin.newslatter-subscribers.index') }}">
+                    <i class="fas fa-check icon_sidebar side-menu__icon" aria-hidden="true"></i>
+                    <span class="side-menu__label">{{ __('translation.newslatter_subscriber') }}</span>
                 </a>
             </li>
 
@@ -256,13 +275,6 @@
             </li>
 
 
-            {{-- Contact Us --}}
-            <li class="slide">
-                <a class="side-menu__item" href="{{ route('admin.contact-us.index') }}">
-                    <i class="far fa-comments icon_sidebar side-menu__icon"></i>
-                    <span class="side-menu__label">{{ __('translation.contact_us_messages') }}</span>
-                </a>
-            </li>
 
 
 
@@ -369,7 +381,8 @@
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'list-group')) }}">List Group</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'navigation')) }}">Navigation</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'images')) }}">Images</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'pagination')) }}">Pagination</a></li>
+                    <li><a class="slide-item" href="{{ url('/' . ($page = 'pagination')) }}">Pagination</a>
+                    </li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'popover')) }}">Popover</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'progress')) }}">Progress</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'spinners')) }}">Spinners</a></li>

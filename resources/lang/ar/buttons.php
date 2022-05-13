@@ -11,6 +11,7 @@ return [
     'check'                     => 'اختيار',
     'submit'                    => 'إرسال',
     'display'                   => 'إظهار',
+    'export'                    => 'تصدير',
 
     'delete_row'                => 'حذف سطر',
     'add_row'                   => 'إضافة سطر',

@@ -11,7 +11,7 @@ return [
     'check'                     => 'Check',
     'submit'                    => 'Submit',
     'display'                   => 'Display',
-
+    'export'                    => 'Export',
 
     'delete_row'                => 'Delete Row',
     'add_row'                   => 'Add Row',

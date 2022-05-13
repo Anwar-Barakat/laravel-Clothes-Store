@@ -8,6 +8,7 @@ use App\Http\Requests\StoreReturnOrderRequest;
 use App\Http\Requests\UpdateReturnOrderRequest;
 use App\Models\OrderProduct;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -40,7 +41,7 @@ class ReturnOrderController extends Controller
      * @param  \App\Http\Requests\StoreReturnOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReturnOrderRequest $request)
+    public function store(Request $request)
     {
         //
     }

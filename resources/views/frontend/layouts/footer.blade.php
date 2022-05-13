@@ -76,8 +76,7 @@
                                         <input type="email"
                                             class="input-email @error('subscriber_email') is-invalid @enderror"
                                             value="{{ old('subscriber_email') }}" id="subscriberEmail"
-                                            placeholder="{{ __('frontend.type_email') }}" required
-                                            pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                                            placeholder="{{ __('frontend.type_email') }}" required>
                                         @error('subscriber_email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
