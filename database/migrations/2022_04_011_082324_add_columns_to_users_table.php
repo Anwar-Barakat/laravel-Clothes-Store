@@ -18,7 +18,7 @@ class AddColumnsToUsersTable extends Migration
             $table->string('address')->after('status')->nullable();
             $table->string('city')->after('address')->nullable();
             $table->string('state')->after('city')->nullable();
-            $table->foreignId('country_id')->after('state')->nullable();
+            $table->foreignId('country_id')->after('state')->constrained('countries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('pincode')->after('country_id')->nullable();
             $table->string('mobile')->after('pincode')->nullable();
         });

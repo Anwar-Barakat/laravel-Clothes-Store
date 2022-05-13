@@ -111,6 +111,7 @@ Route::group(
                 // Users :
                 Route::get('users/index',                                       [AdminUserController::class, 'index'])->name('users.index');
                 Route::post('update-user-status',                               [AdminUserController::class, 'updateStatus']);
+                Route::get('users/export',                                      [AdminUserController::class, 'export'])->name('users.export');
 
 
 
@@ -222,6 +223,7 @@ Route::group(
                 Route::get('orders/index',                                      [AdminOrderController::class, 'index'])->name('orders.index');
                 Route::get('orders/show/{order}',                               [AdminOrderController::class, 'show'])->name('orders.show');
                 Route::post('orders/update',                                    [AdminOrderController::class, 'update'])->name('orders.update');
+                Route::get('orders/export',                                     [AdminOrderController::class, 'export'])->name('orders.export');
 
                 Route::get('order-invoice/{order}',                             [OrderInvoiceController::class, 'show'])->name('orders.invoice.show');
                 Route::get('order-invoice-pdf/{order}',                         [OrderInvoiceController::class, 'printPdfInvoice'])->name('orders.invoice.pdf');

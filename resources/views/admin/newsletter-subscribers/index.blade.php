@@ -29,7 +29,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.newslatter_subscriber') }}</h4>
                         <a href="{{ route('admin.newslatter-subscribers.export') }}" class="button-30">
-                            {{ __('buttons.export') }}
+                            {{ __('buttons.export') }} &nbsp; <i class="far fa-file-excel"></i>
                         </a>
                     </div>
                 </div>

@@ -28,8 +28,12 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.orders') }}</h4>
+                        <a href="{{ route('admin.orders.export') }}" class="button-30">
+                            {{ __('buttons.export') }} &nbsp; <i class="far fa-file-excel"></i>
+                        </a>
                     </div>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap" id="orders">

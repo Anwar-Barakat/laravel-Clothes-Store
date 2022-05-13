@@ -28,10 +28,9 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="card-title mg-b-0">{{ __('translation.users') }}</h4>
-                        <button type="button" class="button-30 modal-effect" data-effect="effect-rotate-left" role="button"
-                            data-toggle="modal" data-target="#addNewSection">
-                            {{ __('buttons.add') }}
-                        </button>
+                        <a href="{{ route('admin.users.export') }}" class="button-30">
+                            {{ __('buttons.export') }} &nbsp; <i class="far fa-file-excel"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -61,9 +60,9 @@
                                                 {{ $user->email }}
                                             </a>
                                         </td>
-                                        <td>{{ $user->address }}</td>
-                                        <td>{{ $user->city }}</td>
-                                        <td>{{ $user->state }}</td>
+                                        <td>{{ $user->address ?? '-' }}</td>
+                                        <td>{{ $user->city ?? '-' }}</td>
+                                        <td>{{ $user->state ?? '-' }}</td>
                                         <td>{{ $user->country->name ?? '-' }}</td>
                                         <td>{{ $user->mobile }}</td>
                                         <td>{{ $user->created_at }}</td>

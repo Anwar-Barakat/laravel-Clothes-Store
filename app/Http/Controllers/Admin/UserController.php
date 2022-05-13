@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UserExport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -101,5 +103,10 @@ class UserController extends Controller
                 'user_id'       => $data['user_id']
             ]);
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new UserExport, 'users.xlsx');
     }
 }
