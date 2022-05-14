@@ -33,8 +33,9 @@ class CheckoutController extends Controller
         $deliveryAddresses      = DeliveryAddress::deliveryAddress();
 
 
-        $totalPrice = 0;
-        $totalWeight = 0;
+        $totalPrice             = 0;
+        $totalWeight            = 0;
+        $totalGST               = 0;
         foreach ($userCartProducts as $userCartProduct) {
             $price              = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
             $totalPrice         = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
@@ -42,9 +43,16 @@ class CheckoutController extends Controller
 
             $totalWeight        += ($userCartProduct->product->weight * $userCartProduct->quantity);
             Session::put('totalWeight', $totalWeight);
+
+            $productTotalPrice  = $price['finalPrice'] * $userCartProduct->quantity;
+            $getGSTPercent      = Product::select('gst')->where('id', $userCartProduct->product_id)->first();
+            $gstPecent          = $getGSTPercent->gst;
+            $gstAmount          = round($productTotalPrice * ($gstPecent / 100), 2);
+            $totalGST           = $totalGST + $gstAmount;
+            Session::put('totalGST', $totalGST);
         }
 
-        $setting    = Setting::where('id', 1)->first();
+        $setting                = Setting::where('id', 1)->first();
 
         if ($totalPrice < $setting->min_cart_value) {
             Session::flash('alert-type', 'info');
@@ -68,6 +76,7 @@ class CheckoutController extends Controller
             'userCartProducts'          => $userCartProducts,
             'deliveryAddresses'         => $deliveryAddresses,
             'totalPrice'                => $totalPrice,
+            'totalGST'                  => $totalGST,
         ]);
     }
 
@@ -126,7 +135,7 @@ class CheckoutController extends Controller
 
             $shippingCharges    = ShippingCharge::getShippingCharges(Session::get('totalWeight'), $deliveryAddress->country_id);
 
-            $grandPrice         = Session::get('totalPrice') + $shippingCharges - Session::get('couponAmount');
+            $grandPrice         = Session::get('totalPrice') + $shippingCharges +  Session::get('totalGST') - Session::get('couponAmount');
             Session::put('grandPrice', $grandPrice);
 
             $order              = Order::create([
@@ -140,6 +149,7 @@ class CheckoutController extends Controller
                 'country_id'            => $deliveryAddress->country_id,
                 'pincode'               => $deliveryAddress->pincode,
                 'shipping_cart'         => $shippingCharges,
+                'gst_charges'           => Session::get('totalGST'),
                 'coupon_code'           => Session::get('couponCode'),
                 'coupon_amount'         => Session::get('couponAmount'),
                 'status'                => 'new',

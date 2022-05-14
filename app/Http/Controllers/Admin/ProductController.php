@@ -52,7 +52,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         if ($request->isMethod('post')) {
-            $data               = $request->only(['category_id', 'brand_id', 'name', 'code', 'color', 'group_code', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $data               = $request->only(['category_id', 'brand_id', 'name', 'code', 'color', 'group_code', 'price', 'discount', 'gst', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;
@@ -101,7 +101,7 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         if ($request->isMethod('post')) {
-            $data               = $request->only(['category_id', 'brand_id', 'name', 'code', 'color', 'group_code', 'price', 'discount', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
+            $data               = $request->only(['category_id', 'brand_id', 'name', 'code', 'color', 'group_code', 'price', 'discount', 'gst', 'weight', 'video', 'description', 'wash_care', 'fabric', 'pattern', 'sleeve', 'fit', 'occasion', 'meta_title', 'meta_description', 'meta_keywords', 'is_feature']);
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;

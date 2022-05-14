@@ -6,9 +6,9 @@
                     <div class="topbar-menu left-menu">
                         <ul>
                             <li class="menu-item">
-                                <a title="{{ __('frontend.phone') }}" href="javascript:void(0)">
-                                    <span class="icon label-before fa fa-mobile"></span>
-                                    {{ __('frontend.phone') }}
+                                <a title="{{ $setting->email }}" href="javascript:void(0)">
+                                    <span class="icon label-before fas fa-envelope"></span>
+                                    {{ $setting->email }}
                                 </a>
                             </li>
                         </ul>

@@ -9,7 +9,7 @@
             @forelse ($deliveryAddresses  as $deliveryAddress)
                 <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
                     <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
-                        required value="{{ $deliveryAddress->id }}"
+                        required value="{{ $deliveryAddress->id }}" total_gst={{ $totalGST }}
                         shipping_charges="{{ $deliveryAddress->shippingCharges }}" totalPrice="{{ $totalPrice }}"
                         couponAmount="{{ Session::get('couponAmount') ?? 0 }}">
                     <label for="address{{ $deliveryAddress->id }}">
@@ -145,14 +145,17 @@
         </p>
         <p class="summary-info" style="margin: 10px 0">
             <span class="title">{{ __('frontend.coupon_discount') }}</span>
-            <b class="index">-$
-                <b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b>
+            <b class="index">-$<b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b>
             </b>
         </p>
         <p class="summary-info" style="margin: 10px 0">
             <span class="title">{{ __('frontend.shipping_charges') }}</span>
-            <b class="index">+$
-                <b id="shippingChargesPos"></b>
+            <b class="index">+$<b id="shippingChargesPos"></b>
+            </b>
+        </p>
+        <p class="summary-info" style="margin: 10px 0">
+            <span class="title">{{ __('frontend.gst') }}</span>
+            <b class="index">+$<b id="totalGST">{{ $totalGST }}</b>
             </b>
         </p>
         <p class="summary-info total-info ">
@@ -161,9 +164,8 @@
                 ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }} +
                 {{ __('frontend.shipping_charges') }})
             </span>
-            <b class="index">$
-                <b id="lastTotalPrice">
-                    {{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}
+            <b class="index">
+                $<b id="lastTotalPrice">{{ $grandPrice = $totalPrice + $totalGST - Session::get('couponAmount') ?? '00' }}
                 </b>
                 {{ Session::put('grandPrice', $grandPrice) }}
             </b>
@@ -207,9 +209,11 @@
         $('input[name=address_id]').bind('change', function() {
             var shipping__charges = $(this).attr('shipping_charges');
             var coupon__amount = $(this).attr('couponAmount');
+            var total_gst = $(this).attr('total_gst');
             var total__price = $(this).attr('totalPrice');
             $('#shippingChargesPos').html(shipping__charges);
-            var grand__total = parseInt(total__price) + parseInt(shipping__charges);
+            var grand__total = parseInt(total__price) + parseInt(shipping__charges) + parseInt(total_gst) -
+                parseInt(coupon__amount);
             $('#lastTotalPrice').html(grand__total)
         });
     </script>

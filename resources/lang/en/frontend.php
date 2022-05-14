@@ -209,7 +209,10 @@ return [
     'choose'                    => 'Choose..',
 
 
-    // Checkout :
+
+    // !================================================
+    // ! Checkout Page :
+    // !================================================
     'delivery_address'          => 'Delivery Address',
     'add_delivery_address'      => 'Add Delivery Address',
     'add_delivery_details'      => 'Add Delivery Address Details',
@@ -223,8 +226,14 @@ return [
     'update_delivery_address'   => 'Update delivery address',
     'payment_methods'           => 'Payment methods',
     'place_order'               => 'Place order',
+    'gst'                       => 'GST/TAX',
+    'gst_charges'               => 'GST charges',
 
-    // Thanks :
+    
+
+    // !================================================
+    // ! Thanks Page :
+    // !================================================
     'thanks'                    => 'Thanks',
     'thanks_line_1'             => 'Your order has been placed successfully',
     'thanks_line_2'             => 'Your order number is ',

@@ -320,7 +320,7 @@ Route::group(
             // *************************************************************
             // *************************************************************
             // Cart Page :
-            Route::get('/cart',                                                 [CartController::class, 'index'])->name('cart');
+            Route::get('/cart',                                             [CartController::class, 'index'])->name('cart');
             Route::post('add-to-cart',                                      [CartController::class, 'store'])->name('cart.store');
             Route::post('update-cart-products-quantity',                    [CartController::class, 'updateProductQuantity']);
             Route::post('delete-cart-product',                              [CartController::class, 'destroy'])->name('cart.destroy');
@@ -413,5 +413,3 @@ Route::group(
         });
     }
 );
-
-Route::get('/{page}',                                       [AdminController::class, 'index']);

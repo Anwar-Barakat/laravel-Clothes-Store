@@ -192,6 +192,7 @@ return [
     'product_description'       => 'وصف المنتج',
     'product_wash_care'         => 'مثلاً غسالة أتوماتيك, ... ',
     'update_status'             => 'تحديث الحالة',
+    'gst'                       => 'ضريبة السلع والخدمات',
 
 
     // Product Attributes :

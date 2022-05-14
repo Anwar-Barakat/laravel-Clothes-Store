@@ -32,6 +32,7 @@ class StoreProductRequest extends FormRequest
             'group_code'            => 'required|regex:/^[\w-]*$/',
             'price'                 => 'required|numeric',
             'discount'              => 'required|numeric',
+            'gst'                   => 'required|numeric',
             'weight'                => 'required|numeric',
             'description'           => '',
             'wash_care'             => '',

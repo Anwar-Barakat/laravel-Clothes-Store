@@ -21,6 +21,7 @@ class Order extends Model
         'country_id',
         'pincode',
         'shipping_cart',
+        'gst_charges',
         'coupon_code',
         'coupon_amount',
         'status',

@@ -192,6 +192,7 @@ return [
     'product_description'       => 'Product Description',
     'product_wash_care'         => 'For example Machine Washing, ... ',
     'update_status'             => 'Update Status',
+    'gst'                       => 'GST',
 
 
     // Product Attributes :

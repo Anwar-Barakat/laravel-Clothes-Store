@@ -37,7 +37,10 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapThree();
 
         View::composer('frontend.layouts.main-header', function ($view) {
-            $view->with('sections', Section::with('categories')->get());
+            $view->with([
+                'sections'      => Section::with('categories')->get(),
+                'setting'       => Setting::first(),
+            ]);
         });
 
 

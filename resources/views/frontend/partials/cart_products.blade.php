@@ -155,18 +155,15 @@
         </p>
         <p class="summary-info" style="margin: 10px 0">
             <span class="title">{{ __('frontend.coupon_discount') }}</span>
-            <b class="index">$
-                <b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b>
-            </b>
+            <b class="index">$<b id="couponAmount">{{ Session::get('couponAmount') ?? '00' }}</b></b>
         </p>
         <p class="summary-info total-info ">
             <span class="title" style="font-size: 13px">
                 {{ __('frontend.total') }} =
                 ({{ __('frontend.subtotal') }} - {{ __('frontend.coupon_discount') }})
             </span>
-            <b class="index">$
-                <b id="lastTotalPrice">
-                    {{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}
+            <b class="index">
+                $<b id="lastTotalPrice">{{ $grandPrice = $totalPrice - Session::get('couponAmount') ?? '00' }}
                 </b>
                 {{ Session::put('grandPrice', $grandPrice) }}
             </b>

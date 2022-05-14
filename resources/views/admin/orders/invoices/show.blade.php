@@ -149,8 +149,14 @@
                                         <td class="tx-right" colspan="2">${{ $subAmount }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="tx-right">{{ __('translation.shipping') }}</td>
-                                        <td class="tx-right" colspan="2">$0</td>
+                                        <td class="tx-right">{{ __('translation.shipping_charges') }}</td>
+                                        <td class="tx-right" colspan="2">
+                                            +${{ $orderDetails->shipping_cart ?? '0' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tx-right">{{ __('translation.gst') }}</td>
+                                        <td class="tx-right" colspan="2">+${{ $orderDetails->gst_charges ?? '0' }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="tx-right">{{ __('frontend.discount') }}</td>
@@ -158,9 +164,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="tx-right tx-uppercase tx-bold tx-inverse">
+                                        <td colspan="3" class="tx-right tx-uppercase tx-bold tx-inverse">
                                             {{ __('translation.total_due') }}</td>
-                                        <td class="tx-right" colspan="2">
+                                        <td class="tx-right" colspan="3">
                                             <h4 class="tx-primary tx-bold">${{ $orderDetails->grand_amount }}</h4>
                                         </td>
                                     </tr>

@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xl-4 col-sm-12">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="price">{{ __('translation.price') }}</label>
                                     <div class="input-group">
@@ -161,7 +161,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-sm-12">
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="discount">{{ __('translation.discount') }} (%)</label>
                                     <div class="input-group">
@@ -182,7 +182,28 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-sm-12">
+                            <div class="col-xl-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="gst">{{ __('translation.gst') }} (%)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                        <input type="number" name="gst" aria-label="Amount (to the nearest dollar)"
+                                            class="form-control @error('gst') is-invalid @enderror"
+                                            value="{{ old('gst') }}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                    </div><!-- input-group -->
+                                    @error('gst')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="weight">{{ __('translation.weight') }}</label>
                                     <div class="input-group">

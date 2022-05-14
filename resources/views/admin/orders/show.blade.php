@@ -105,6 +105,10 @@
                                     <td>${{ $orderDetails->shipping_cart }}</td>
                                 </tr>
                                 <tr>
+                                    <td scope="row">{{ __('translation.gst') }}</td>
+                                    <td>${{ $orderDetails->gst_charges ?? '0' }}</td>
+                                </tr>
+                                <tr>
                                     <td scope="row">{{ __('translation.coupon_code') }}</td>
                                     <td>{{ $orderDetails->coupon_code ?? '-' }}</td>
                                 </tr>

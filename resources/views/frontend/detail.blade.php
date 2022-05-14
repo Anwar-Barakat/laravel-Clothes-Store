@@ -424,9 +424,6 @@
                                                             method="post" id="commentform" class="comment-form"
                                                             novalidate="">
                                                             @csrf
-                                                            @if ($errors->any())
-                                                                {{ implode('', $errors->all('<div>:message</div>')) }}
-                                                            @endif
                                                             <input type="hidden" name="product_id"
                                                                 value="{{ $product->id }}">
                                                             <input type="hidden" name="user_id"

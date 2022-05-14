@@ -254,6 +254,10 @@
                                         <td>{{ $orderDetails->shipping_cart }}</td>
                                     </tr>
                                     <tr>
+                                        <td>{{ __('frontend.gst_charges') }}</td>
+                                        <td>{{ $orderDetails->gst_charges }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>{{ __('frontend.coupon_code') }}</td>
                                         <td>{{ $orderDetails->coupon_code ?? '-' }}</td>
                                     </tr>

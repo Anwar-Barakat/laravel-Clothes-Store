@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('color');
             $table->float('price');
             $table->float('discount');
+            $table->float('gst');
             $table->float('weight');
             $table->string('video')->nullable();
             $table->text('description');

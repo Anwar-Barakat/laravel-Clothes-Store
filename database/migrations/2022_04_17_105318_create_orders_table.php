@@ -25,6 +25,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('pincode');
             $table->float('shipping_cart')->default(0);
+            $table->float('gst_chargers')->default(0);
             $table->string('coupon_code')->nullable();
             $table->float('coupon_amount')->nullable();
             $table->string('status');
