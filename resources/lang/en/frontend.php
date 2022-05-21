@@ -29,7 +29,7 @@ return [
     'logout'                    => 'Logout',
     'meta_desc'                 => 'E-commerce website for selling clothes online',
     'meta_keywords'             => "Online store, clothing website, children's clothing, women's clothing, men's clothing, online store",
-
+    'products_categories'       => 'Products Categories',
 
 
     // !================================================
@@ -229,7 +229,7 @@ return [
     'gst'                       => 'GST/TAX',
     'gst_charges'               => 'GST charges',
 
-    
+
 
     // !================================================
     // ! Thanks Page :
