@@ -15,8 +15,10 @@ class HomeController extends Controller
     public function index()
     {
         $latestProducts         = Product::limit(5)->inRandomOrder()->get();
+        $categpryProducts       = Category::with('products')->limit(5)->inRandomOrder()->get();
         return view('frontend.index', [
             'latestProducts'        => $latestProducts,
+            'categpryProducts'      => $categpryProducts,
         ]);
     }
 }

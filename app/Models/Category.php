@@ -41,6 +41,11 @@ class Category extends Model implements HasMedia
         ];
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id')->select('id', 'name');
