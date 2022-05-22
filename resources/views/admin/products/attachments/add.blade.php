@@ -242,9 +242,9 @@
             centeredSlides: true,
             slidesPerView: "auto",
             coverflowEffect: {
-                rotate: 30,
+                rotate: 0,
                 stretch: 0,
-                depth: 200,
+                depth: 0,
                 modifier: 1,
                 slideShadows: false
             },

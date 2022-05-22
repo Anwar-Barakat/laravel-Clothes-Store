@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
+use App\Models\NewslatterSubsciber;
 use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
@@ -63,6 +64,9 @@ class ProductController extends Controller
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $product->addMediaFromRequest('image')->toMediaCollection('image_products');
             }
+
+            $subscribers        = NewslatterSubsciber::where('status', 1)->get();
+
             Session::flash('message', __('msgs.product_add'));
             return redirect()->route('admin.products.index');
         }
