@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    new product
+    <h1>new product</h1>
+    <p>click <a href="{{ route('frontend.details', $product->id) }}">here</a> to see it.</p>
 </body>
 
 </html>

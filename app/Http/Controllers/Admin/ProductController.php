@@ -58,7 +58,7 @@ class ProductController extends Controller
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;
-            
+
             $product            = Product::create($data);
             if ($request->hasFile('video') && $request->file('video')->isValid()) {
                 $product->addMediaFromRequest('video')->toMediaCollection('video_products');
