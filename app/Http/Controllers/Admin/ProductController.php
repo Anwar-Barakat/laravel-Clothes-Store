@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Jobs\SendNewProductMailToSubscribers;
 use App\Models\Category;
 use App\Models\NewslatterSubsciber;
 use App\Models\Product;
@@ -57,7 +58,8 @@ class ProductController extends Controller
             $category = Category::find($data['category_id']);
             $data['section_id'] = $category['section_id'];
             $data['status']     = 1;
-            $product = Product::create($data);
+            
+            $product            = Product::create($data);
             if ($request->hasFile('video') && $request->file('video')->isValid()) {
                 $product->addMediaFromRequest('video')->toMediaCollection('video_products');
             }
@@ -65,7 +67,11 @@ class ProductController extends Controller
                 $product->addMediaFromRequest('image')->toMediaCollection('image_products');
             }
 
-            $subscribers        = NewslatterSubsciber::where('status', 1)->get();
+            $subscribersInfo    = NewslatterSubsciber::where('status', 1)->get();
+
+            $subscribers        = NewslatterSubsciber::chunk(50, function ($subscribersInfo, $product) {
+                dispatch(new SendNewProductMailToSubscribers($subscribersInfo, $product));
+            });
 
             Session::flash('message', __('msgs.product_add'));
             return redirect()->route('admin.products.index');
