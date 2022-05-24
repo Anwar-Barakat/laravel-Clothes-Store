@@ -182,6 +182,11 @@ return [
     'confirm_password'          => 'Confirmation Password',
     'mobile'                    => 'Mobile',
     'type_your_mobile'          => 'Type your mobile',
+    'forget_password'           => 'Forget password',
+    'send_reset_password'       => 'Send reset password',
+    'email_to_reset_pass'       => 'Type your email to reset password',
+    'reset_password'            => 'Reset password',
+
 
 
     // Email Registered Page:

@@ -110,8 +110,8 @@ return [
     'return_order_status_update'    => 'تم تحديث حالة طلب التغيير بنجاح',
     'order_return_exchange_invalid' => 'عملية إرجاع أو تغيير طلبك غير صالحة',
     'thanks_for_subscription'       => 'شكرا للاشتراك',
-
-
+    'send_link_to_reset_password'   => 'لقد ارسلنا للتو رابط أعادة تعيين كلمة المرور إلى البريد الالكتروني الخاص بك ',
+    'password_update'               => 'تم تحديث كلمة المرور بنجاح',
 
     // *================================================
     // * jQuery Validation :

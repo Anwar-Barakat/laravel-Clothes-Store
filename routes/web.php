@@ -347,6 +347,10 @@ Route::group(
                 Route::post('/check-current-password',                      [UserAccountController::class, 'checkCurrentPassword'])->name('check.currnet.pwd');
                 Route::post('/add-coupon',                                  [UserAccountController::class, 'addCouponOnCart']);
             });
+            Route::get('/password/forget',                                  [UserController::class, 'resetPasswordForm'])->name('forget.password.form');
+            Route::post('/password/send',                                   [UserController::class, 'sendResetLink'])->name('forget.password.link');
+            Route::get('/password/reset/{token}',                           [UserController::class, 'showResetForm'])->name('reset.password.form');
+            Route::post('/password/reset',                                   [UserController::class, 'resetUserPassword'])->name('user.reset.password');
 
 
 

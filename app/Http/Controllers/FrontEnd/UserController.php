@@ -4,13 +4,15 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
-use App\Mail\RegisterMail;
 use App\Models\Cart;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -189,7 +191,7 @@ class UserController extends Controller
                     'email'     => $user['email'],
                 ];
                 Mail::send('frontend.emails.register', $messageData, function ($message) use ($email) {
-                    $message->to($email)->subject('welcome to Laravel eCommerce Webiste');
+                    $message->to($email)->subject('welcome to An eCommerce Webiste');
                 });
 
 
@@ -198,6 +200,71 @@ class UserController extends Controller
             }
         } else
             abort(404);
+    }
+
+    public function resetPasswordForm()
+    {
+        return view('frontend.auth.password.reset');
+    }
+
+    public function sendResetLink(Request $request)
+    {
+        $request->validate([
+            'email'         => ['required', 'email', 'exists:users,email']
+        ]);
+        $token              = Str::random(64);
+        DB::table('password_resets')->insert([
+            'email'         => $request->email,
+            'token'         => $token,
+            'created_at'    => Carbon::now(),
+        ]);
+
+        $action_link = route('frontend.reset.password.form', [
+            'email'         => $request->email,
+            'token'         => $token
+        ]);
+        $body       = "you can reset the password by clicking the link below";
+
+        Mail::send('frontend.emails.email_forget', ['action_link' => $action_link, 'body' => $body], function ($message) use ($request) {
+            $message->to($request->email)->subject(__('frontend.reset_password'));
+        });
+
+
+        Session::flash('alert-type', 'info');
+        Session::flash('message', __('msgs.send_link_to_reset_password'));
+        return redirect()->back();
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('frontend.auth.password.email', ['token' => $token, 'email' => $request->email]);
+    }
+
+    public function resetUserPassword(Request $request)
+    {
+        $request->validate([
+            'email'                 => ['required', 'email', 'exists:users,email'],
+            'password'              => ['required', 'min:8', 'confirmed'],
+            'password_confirmation' => ['required', 'min:8']
+        ]);
+        $check_token    = DB::table('password_resets')->where([
+            'token'     => $request->token,
+            'email'     => $request->email
+        ])->first();
+
+        if (!$check_token) {
+            Session::flash('alert-type', 'error');
+            Session::flash('message', __('msgs.email_not_valid'));
+            return redirect()->back();
+        } else {
+            DB::table('password_resets')->where('email', $request->email)->delete();
+            User::where('email', $request->email)->update([
+                'password'  => bcrypt($request->password)
+            ]);
+
+            Session::flash('message', __('msgs.password_update'));
+            return redirect()->route('frontend.form.login');
+        }
     }
 
     public function logout()
