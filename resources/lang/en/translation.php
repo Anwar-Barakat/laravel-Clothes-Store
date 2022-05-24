@@ -41,16 +41,19 @@ return [
 
     // admin login :
     'login'                     => 'Login',
-    'have_an_account'           => 'Have An Account !!',
+    'have_an_account'           => 'Have An Account?',
     'dont_have_account'         => "don'/t Have An Account !!",
     'register'                  => 'Register',
     'admin_login'               => 'Admin Login',
-    'forget_password'           => 'Forget Your Password ?',
     'here'                      => 'Here',
     'email_address'             => 'E-Mail Address',
     'password'                  => 'Password',
     'remember_me'               => 'Remember Me',
     'email_or_pass_not_valid'   => 'Email or Password Not Valid',
+    'forget_password'           => 'Forget password',
+    'send_reset_password'       => 'Send reset password',
+    'email_to_reset_pass'       => 'Type your email to reset password',
+    'reset_password'            => 'Reset password',
 
 
     // !================================================

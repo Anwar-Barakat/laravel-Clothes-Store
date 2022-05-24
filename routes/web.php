@@ -294,6 +294,10 @@ Route::group(
                 Route::get('logout',                                            [AdminController::class, 'logout'])->name('logout');
             });
             Route::match(['get', 'post'], '/login',                             [AdminController::class, 'login'])->name('login');
+            Route::get('password/forget',                                       [AdminController::class, 'resetPasswordForm'])->name('forget.password.form');
+            Route::post('password/send',                                        [AdminController::class, 'sendResetLink'])->name('forget.password.link');
+            Route::get('password/reset/{token}',                                [AdminController::class, 'showResetForm'])->name('reset.password.form');
+            Route::post('password/reset',                                       [AdminController::class, 'resetUserPassword'])->name('reset.password');
         });
 
 
@@ -350,7 +354,7 @@ Route::group(
             Route::get('/password/forget',                                  [UserController::class, 'resetPasswordForm'])->name('forget.password.form');
             Route::post('/password/send',                                   [UserController::class, 'sendResetLink'])->name('forget.password.link');
             Route::get('/password/reset/{token}',                           [UserController::class, 'showResetForm'])->name('reset.password.form');
-            Route::post('/password/reset',                                   [UserController::class, 'resetUserPassword'])->name('user.reset.password');
+            Route::post('/password/reset',                                  [UserController::class, 'resetUserPassword'])->name('user.reset.password');
 
 
 

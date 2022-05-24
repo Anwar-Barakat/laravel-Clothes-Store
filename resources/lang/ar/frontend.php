@@ -180,12 +180,11 @@ return [
     'mobile'                    => 'رقم الموبايل',
     'type_your_mobile'          => 'أدخل رقم الموبايل',
     'forget_password'           => 'نسيت كلمة المرور',
-    'reset_password'            => 'إعادة تعيين كلمة المرور',
     'send_reset_password'       => 'إرسال إعادة تعيين كلمة المرور',
     'email_to_reset_pass'       => 'اكتب بريدك الإلكتروني لإعادة تعيين كلمة المرور',
     'reset_password'            => 'إعادة تعيين كلمة المرور',
 
-    
+
 
     // Email Registered Page:
     'email_register'            => 'البريد الألكتروني المسجل',
