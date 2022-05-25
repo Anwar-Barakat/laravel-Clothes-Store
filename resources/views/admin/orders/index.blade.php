@@ -68,7 +68,12 @@
                                             @endforeach
                                         </td>
                                         <td>{{ $order->grand_amount }}</td>
-                                        <td>{{ $order->status }}</td>
+                                        <td>
+                                            <div style="position: relative"
+                                                class="d-flex align-items-center justify-content-center">
+                                                <span>{{ __('translation.' . $order->status) }}</span>
+                                            </div>
+                                        </td>
                                         <td>{{ $order->payment_method }}</td>
                                         <td>
                                             <div class="dropdown dropup">
