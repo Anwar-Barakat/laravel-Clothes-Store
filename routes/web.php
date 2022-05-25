@@ -15,7 +15,6 @@ use App\Http\Controllers\FrontEnd\ReturnOrderController;
 use App\Http\Controllers\Frontend\UserAccountController;
 use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\WishlistController;
-use App\Models\NewslatterSubsciber;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -31,11 +30,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Auth::routes();
-
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Auth::routes(['register' => false]);
 
 
 Route::group(

@@ -37,11 +37,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Auth::routes();
-
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Auth::routes(['register' => false]);
 
 
 Route::group(
