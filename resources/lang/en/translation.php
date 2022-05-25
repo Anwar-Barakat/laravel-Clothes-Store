@@ -28,15 +28,21 @@ return [
     'return_orders'             => 'Return orders',
     'newslatter_subscriber'     => 'Newslatter subscriber',
     'subscribed_on'             => 'Subscribed on',
+    'logout'                    => 'Sign Out',
 
 
-    // dashboard :
+
+    // !================================================
+    // ! Dashboard Page :
+    // !================================================
     'hi_welcome_back'           => 'Hi, Welcome Back!',
     'welcome_back'              => 'Welcome Back!',
+    'total_invoices'            => 'Total invoices',
+    'unpaid_invoices'           => 'Unpaid invoices',
+    'paid_invoices'             => 'Paid invoices',
+    'pending_invoices'          => 'Pending invoices',
+    'invoice_count'             => 'number of invoices',
 
-
-    // main header :
-    'logout'                    => 'Sign Out',
 
 
     // admin login :

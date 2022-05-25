@@ -29,16 +29,22 @@ return [
     'return_orders'             => 'الطلبات المُعادة',
     'newslatter_subscriber'     => 'المشتركين',
     'subscribed_on'             => 'الأشتراك في',
-
-
-
-    // main header :
     'logout'                    => 'تسجيل الخروج',
 
 
-    // dashboard :
+    // !================================================
+    // ! Dashboard Page :
+    // !================================================
     'hi_welcome_back'           => 'مرحباً, أهلا بعودتك',
     'welcome_back'              => 'أهلا بعودتك',
+    'total_invoices'            => 'الفواتير الكلية',
+    'unpaid_invoices'           => 'الفواتير الغير مدفوعة',
+    'paid_invoices'             => 'الفواتير المدفوعة',
+    'pending_invoices'          => 'الفواتير المعلقة',
+    'invoice_count'             => 'عدد الفواتير',
+
+
+
 
 
     // admin login :
