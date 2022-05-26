@@ -51,7 +51,7 @@ return [
     'women'                     => 'النساء',
     'children'                  => 'الأطفال',
     'products_ratings'          => 'نسب المنتجات',
-
+    'invoices_rates'            => 'نسبة الفواتير لبعض الحالات',
 
 
     // admin login :

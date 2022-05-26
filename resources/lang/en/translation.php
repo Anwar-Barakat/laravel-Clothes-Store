@@ -51,6 +51,7 @@ return [
     'women'                     => 'Women',
     'children'                  => 'Children',
     'products_ratings'          => 'Products rates',
+    'invoices_rates'            => 'Invoices rates',
 
 
     // admin login :

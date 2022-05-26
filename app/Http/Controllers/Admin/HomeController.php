@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,11 +20,10 @@ class HomeController extends Controller
         $womenProducts                  = (Product::where('section_id', 1)->count() / $productsCount) * 100 ?? 0;
         $menProductsPercentage          = (Product::where('section_id', 2)->count() / $productsCount) * 100 ?? 0;
         $childrenProducts               = (Product::where('section_id', 3)->count() / $productsCount) * 100 ?? 0;
-
-        $invoices                       =  app()->chartjs
+        $products                       =  app()->chartjs
             ->name('barChartTest')
             ->type('bar')
-            ->size(['width' => 400, 'height' => 200])
+            ->size(['width' => 400, 'height' => 137])
             ->labels([__('translation.men'), __('translation.women'), __('translation.children')])
             ->datasets([
                 [
@@ -34,7 +34,26 @@ class HomeController extends Controller
 
             ]);
 
-        return view('index', compact('invoices'));
+
+        $totalInvoices                  = Order::count();
+        $newInvoicesPercentage          = (Order::where('status', 'new')->count() / $totalInvoices) * 100;
+        $cancelledInvoicesPercentage    = (Order::where('status', 'cancelled')->count() / $totalInvoices) * 100;
+        $deliveredInvoicesPercentage    = (Order::where('status', 'delivered')->count() / $totalInvoices) * 100;
+
+        $invoices = app()->chartjs
+            ->name('pieChartTest')
+            ->type('pie')
+            ->size(['width' => 400, 'height' => 200])
+            ->labels([__('translation.new_invoices'), __('translation.cancelled_invoices'), __('translation.delivered_invoices')])
+            ->datasets([
+                [
+                    'backgroundColor' => ['#0984e375', '#ff57228c', '#00b894'],
+                    'hoverBackgroundColor' => ['#0984e340', '#ff572252', '#55efc4'],
+                    'data' => [round($newInvoicesPercentage, 2), round($cancelledInvoicesPercentage, 2), round($deliveredInvoicesPercentage, 2)]
+                ]
+            ])
+            ->options([]);
+        return view('index', ['products' => $products, 'invoices' => $invoices]);
     }
 
     /**

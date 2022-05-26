@@ -167,15 +167,16 @@
                     <p class="tx-12 text-muted mb-0">...</p>
                 </div>
                 <div class="card-body">
-                    {!! $invoices->render() !!}
+                    {!! $products->render() !!}
                 </div>
             </div>
         </div>
         <div class="col-lg-12 col-xl-5">
             <div class="card card-dashboard-map-one">
-                <label class="main-content-label">Sales Revenue by Customers in USA</label>
-                <span class="d-block mg-b-20 text-muted tx-12">Sales Performance of all states in the United States</span>
+                <label class="main-content-label">{{ __('translation.invoices_rates') }}</label>
+                <span class="d-block mg-b-20 text-muted tx-12">...</span>
                 <div class="">
+                    {!! $invoices->render() !!}
                 </div>
             </div>
         </div>
