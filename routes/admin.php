@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ContactUsController as AdminContactUsController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\ExchangeOrderController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\NewslatterSubscriberController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\OrderInvoiceController;
@@ -37,9 +38,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Auth::routes(['register' => false]);
-
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -52,9 +50,7 @@ Route::group(
         // ======================================================
         Route::prefix('/admin/')->as('admin.')->group(function () {
             Route::group(['middleware' => 'admin'], function () {
-                Route::get('/dashboard', function () {
-                    return view('index');
-                })->name('dashboard');
+                Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
                 // *************************************************************
                 // *************************************************************

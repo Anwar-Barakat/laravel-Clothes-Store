@@ -41,8 +41,16 @@ return [
     'unpaid_invoices'           => 'Unpaid invoices',
     'paid_invoices'             => 'Paid invoices',
     'pending_invoices'          => 'Pending invoices',
-    'invoice_count'             => 'number of invoices',
-
+    'invoice_count'             => 'Number of invoices',
+    'new_invoices'              => 'New invoices',
+    'in_process_invoices'       => 'In process invoices',
+    'cancelled_invoices'        => 'cancelled invoices',
+    'shipped_invoices'          => 'Shipped invoices',
+    'delivered_invoices'        => 'Delivered invoices',
+    'men'                       => 'Men',
+    'women'                     => 'Women',
+    'children'                  => 'Children',
+    'products_ratings'          => 'Products rates',
 
 
     // admin login :

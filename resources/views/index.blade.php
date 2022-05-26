@@ -161,14 +161,13 @@
             <div class="card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">Order status</h4>
+                        <h4 class="card-title mb-0">{{ __('translation.products_ratings') }}</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 text-muted mb-0">Order Status and Tracking. Track your order from ship date to arrival.
-                        To begin, enter your order number.</p>
+                    <p class="tx-12 text-muted mb-0">...</p>
                 </div>
                 <div class="card-body">
-
+                    {!! $invoices->render() !!}
                 </div>
             </div>
         </div>

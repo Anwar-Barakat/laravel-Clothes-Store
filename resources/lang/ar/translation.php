@@ -42,8 +42,15 @@ return [
     'paid_invoices'             => 'الفواتير المدفوعة',
     'pending_invoices'          => 'الفواتير المعلقة',
     'invoice_count'             => 'عدد الفواتير',
-
-
+    'new_invoices'              => 'الفواتير جديدة',
+    'in_process_invoices'       => 'الفواتير قيد المعالجة',
+    'cancelled_invoices'        => 'الفواتير الملغاة',
+    'shipped_invoices'          => 'فواتير مشحونة',
+    'delivered_invoices'        => 'الفواتير المسلمة',
+    'men'                       => 'الرجال',
+    'women'                     => 'النساء',
+    'children'                  => 'الأطفال',
+    'products_ratings'          => 'نسب المنتجات',
 
 
 
