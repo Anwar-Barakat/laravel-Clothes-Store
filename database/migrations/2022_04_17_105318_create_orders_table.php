@@ -32,6 +32,8 @@ class CreateOrdersTable extends Migration
             $table->string('payment_method');
             $table->string('payment_gateway');
             $table->float('grand_amount');
+            $table->string('courier_name')->nullable();
+            $table->string('tracking_number')->nullable();
             $table->timestamps();
         });
     }

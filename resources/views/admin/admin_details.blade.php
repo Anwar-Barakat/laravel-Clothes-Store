@@ -33,7 +33,8 @@
                                     <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}"
                                         class="img img-thumbnail  admin-image">
                                 @else
-                                    <img src="{{ asset('assets/img/6.jpg') }}" class="img img-thumbnail  admin-image">
+                                    <img src="{{ asset('assets/img/faces/6.jpg') }}"
+                                        class="img img-thumbnail  admin-image">
                                 @endif
                             </div>
                         </div>

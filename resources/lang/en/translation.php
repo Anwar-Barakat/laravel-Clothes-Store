@@ -52,6 +52,7 @@ return [
     'children'                  => 'Children',
     'products_ratings'          => 'Products rates',
     'invoices_rates'            => 'Invoices rates',
+    'order_add'                 => 'order has been added successfully',
 
 
     // admin login :

@@ -23,7 +23,7 @@ class HomeController extends Controller
         $products                       =  app()->chartjs
             ->name('barChartTest')
             ->type('bar')
-            ->size(['width' => 400, 'height' => 137])
+            ->size(['width' => 400, 'height' => 200])
             ->labels([__('translation.men'), __('translation.women'), __('translation.children')])
             ->datasets([
                 [

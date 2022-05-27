@@ -164,7 +164,7 @@
                         <h4 class="card-title mb-0">{{ __('translation.products_ratings') }}</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 text-muted mb-0">...</p>
+                    {{-- <p class="tx-12 text-muted mb-0">...</p> --}}
                 </div>
                 <div class="card-body">
                     {!! $products->render() !!}
@@ -174,7 +174,7 @@
         <div class="col-lg-12 col-xl-5">
             <div class="card card-dashboard-map-one">
                 <label class="main-content-label">{{ __('translation.invoices_rates') }}</label>
-                <span class="d-block mg-b-20 text-muted tx-12">...</span>
+                {{-- <span class="d-block mg-b-20 text-muted tx-12">...</span> --}}
                 <div class="">
                     {!! $invoices->render() !!}
                 </div>

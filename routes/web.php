@@ -73,9 +73,9 @@ Route::group(
             // *************************************************************
             // *************************************************************
             // Login/Regsister :
-            Route::get('/login-form',                                       [UserController::class, 'showLoginForm'])->name('form.login');
+            Route::get('/login',                                            [UserController::class, 'showLoginForm'])->name('form.login');
             Route::post('/login',                                           [UserController::class, 'login'])->name('login');
-            Route::get('/register-form',                                    [UserController::class, 'showRegisterForm'])->name('form.register');
+            Route::get('/register',                                         [UserController::class, 'showRegisterForm'])->name('form.register');
             Route::post('/register',                                        [UserController::class, 'store'])->name('register');
             Route::get('/logout',                                           [UserController::class, 'logout'])->name('logout');
             Route::get('/check-email',                                      [UserController::class, 'checkEmail']);
