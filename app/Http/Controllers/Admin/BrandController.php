@@ -48,7 +48,7 @@ class BrandController extends Controller
                 ],
                 'status'    => $data['status']
             ]);
-            Session::flash('message', __('msgs.brand_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.brand')]));
             return redirect()->back();
         }
     }
@@ -93,7 +93,7 @@ class BrandController extends Controller
                 ],
                 'status'    => $data['status']
             ]);
-            Session::flash('message', __('msgs.brand_updated'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.brand')]));
             return redirect()->back();
         }
     }
@@ -122,7 +122,7 @@ class BrandController extends Controller
             ]);
             return response()->json([
                 'status'        => $status,
-                'brand_id'    => $data['brand_id']
+                'brand_id'      => $data['brand_id']
             ]);
         }
     }

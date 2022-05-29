@@ -4,17 +4,12 @@ return [
     // *================================================
     // * Backend :
     // *================================================
-    'update_admin_password'         => 'Admin Password Has Updated Successfully !!',
-    'update_admin_details'          => 'Admin Details Has Updated Successfully !!',
+    'added'                         => ':name Has Added Successfully',
+    'updated'                       => ':name Has Updated Successfully',
+    'deleted'                       => ':name Has Deleted Successfully',
+
+
     'no_matching'                   => 'No matching records found',
-    'section_added'                 => 'Section Has Added Successfully',
-    'section_updated'               => 'Section Has Updated Successfully',
-    'category_add'                  => 'Category Has Added Successfuly',
-    'category_update'               => 'Category Has Updated Successfuly',
-    'category_delete'               => 'Category Has Deleted Succesfully',
-    'banner_add'                    => 'Banner Has Added Successfuly',
-    'banner_update'                 => 'Banner Has Updated Successfuly',
-    'banner_delete'                 => 'Banner Has Deleted Succesfully',
     'product_add'                   => 'Product Has Added Successfuly',
     'product_update'                => 'Product Has Updated Successfuly',
     'product_delete'                => 'Product Has Deleted Succesfully',
@@ -29,8 +24,6 @@ return [
     'product_attachments_delete'    => 'Product Attachments Has Deleted Successfuly',
     'are_your_sure'                 => 'Are you sure?',
     'yes_delete'                    => 'Yes, Delete !',
-    'brand_add'                     => 'Brand Has Added Successfully',
-    'brand_updated'                 => 'Brand Has Updated Successfully',
     'order_status'                  => 'Order status Has Updated Successfully',
     'shipping_charges_update'       => 'Shipping Charges Updated Successfully',
     'cms_page_add'                  => 'CMS Page Has Added Successfuly',
@@ -38,7 +31,6 @@ return [
     'cms_page_delete'               => 'CMS Page Has Deleted Succesfully',
     'contact_us_add'                => 'The Message has added successfully',
     'contact_us_delete'             => 'The Message has deleted successfully',
-    'settings_update'               => 'The Settings has updated successfully',
     'admin_add'                     => 'Admin has added successfully',
     'admin_update'                  => 'Admin has updated successfully',
     'admin_delete'                  => 'Admin has Deleted successfully',

@@ -28,23 +28,25 @@ class SectionController extends Controller
                 ],
                 'status'    => $request->status
             ]);
-            Session::flash('message', __('msgs.section_added'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.section')]));
             return redirect()->back();
         }
     }
 
     public function update(UpdateSectionRequest $request, Section $section)
     {
-        $validation = $request->validated();
-        $section->update([
-            'name'      => [
-                'ar'        => $request->name_ar,
-                'en'        => $request->name_en,
-            ],
-            'status'    => $request->status
-        ]);
-        Session::flash('message', __('msgs.section_updated'));
-        return redirect()->back();
+        if ($request->isMethod('post')) {
+            $validation = $request->validated();
+            $section->update([
+                'name'      => [
+                    'ar'        => $request->name_ar,
+                    'en'        => $request->name_en,
+                ],
+                'status'    => $request->status
+            ]);
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.section')]));
+            return redirect()->back();
+        }
     }
 
     public function updateStatus(Request $request)

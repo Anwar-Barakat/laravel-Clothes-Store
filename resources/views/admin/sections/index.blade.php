@@ -96,7 +96,8 @@
                                                                     class="form-control  @error('name_ar') is-invalid @enderror"
                                                                     id="name_ar" name="name_ar"
                                                                     value="{{ $section->getTranslation('name', 'ar') }}"
-                                                                    placeholder="{{ __('translation.enter_the_name_en') }}">
+                                                                    placeholder="{{ __('translation.enter_the_name_en') }}"
+                                                                    required>
                                                                 @error('name_ar')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -110,7 +111,8 @@
                                                                     class="form-control  @error('name_en') is-invalid @enderror"
                                                                     id="name_en" name="name_en"
                                                                     value="{{ $section->getTranslation('name', 'en') }}"
-                                                                    placeholder="{{ __('translation.enter_the_name_en') }}">
+                                                                    placeholder="{{ __('translation.enter_the_name_en') }}"
+                                                                    required>
                                                                 @error('name_en')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -122,14 +124,14 @@
                                                                     for="status">{{ __('translation.status') }}</label>
                                                                 <select
                                                                     class="form-control @error('status') is-invalid @enderror"
-                                                                    id="status" name="status">
+                                                                    id="status" name="status" required>
                                                                     <option value="">{{ __('translation.choose..') }}
                                                                     </option>
                                                                     <option value="1"
                                                                         {{ old('status', $section->status) == '1' ? 'selected' : '' }}>
                                                                         {{ __('translation.active') }}</option>
                                                                     <option value="0"
-                                                                        {{ old('status', $section->status) == '1' ? 'selected' : '' }}>
+                                                                        {{ old('status', $section->status) == '0' ? 'selected' : '' }}>
                                                                         {{ __('translation.disactive') }}
                                                                     </option>
                                                                 </select>
@@ -176,7 +178,7 @@
                         <div class="form-group">
                             <label for="name_ar">{{ __('translation.name_ar') }}</label>
                             <input type="text" class="form-control  @error('name_ar') is-invalid @enderror" id="name_ar"
-                                name="name_ar" placeholder="{{ __('translation.enter_the_name_en') }}">
+                                name="name_ar" placeholder="{{ __('translation.enter_the_name_en') }}" required>
                             @error('name_ar')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -186,7 +188,7 @@
                         <div class="form-group">
                             <label for="name_en">{{ __('translation.name_en') }}</label>
                             <input type="text" class="form-control  @error('name_en') is-invalid @enderror" id="name_en"
-                                name="name_en" placeholder="{{ __('translation.enter_the_name_en') }}">
+                                name="name_en" placeholder="{{ __('translation.enter_the_name_en') }}" required>
                             @error('name_en')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -195,7 +197,8 @@
                         </div>
                         <div class="form-group">
                             <label for="status">{{ __('translation.status') }}</label>
-                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status"
+                                required>
                                 <option value="">{{ __('translation.choose..') }}</option>
                                 <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
                                     {{ __('translation.active') }}</option>

@@ -53,10 +53,10 @@ class BannerController extends Controller
                 'status'        => $data['status'],
             ]);
 
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            if ($request->hasFile('image') && $request->file('image')->isValid())
                 $banner->addMediaFromRequest('image')->toMediaCollection('banners');
-            }
-            Session::flash('message', __('msgs.banner_add'));
+
+            Session::flash('message', __('msgs.added', ['name' => __('translation.banner')]));
             return redirect()->route('admin.banners.index');
         }
     }
@@ -110,7 +110,7 @@ class BannerController extends Controller
                 $banner->addMediaFromRequest('image')->toMediaCollection('banners');
             }
 
-            Session::flash('message', __('msgs.banner_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.banner')]));
             return redirect()->route('admin.banners.index');
         }
     }

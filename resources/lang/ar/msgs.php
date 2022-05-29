@@ -4,17 +4,11 @@ return [
     // *================================================
     // * Backend :
     // *================================================
-    '   update_admin_password'     => 'تم تحديث كلمة المرور بنجاح',
-    'update_admin_details'          => 'تم تحديث البيانات بنجاح',
+    'added'                         => 'تم إضافة :name بنجاح',
+    'updated'                       => 'تم تحديث :name بنجاح',
+    'deleted'                       => 'تم حذف :name بنجاح',
+
     'no_matching'                   => 'لا يوجد حقول مطابقة',
-    'section_added'                 => 'تم إضافة القسم بنجاح',
-    'section_updated'               => 'تم تحديث القسم بنجاح',
-    'category_add'                  => 'تم إضافة الفئة بنجاح',
-    'category_update'               => 'تم تحديث الفئة بنجاح',
-    'category_delete'               => 'تم حذف الفئة بنجاح',
-    'banner_add'                    => 'تم إضافة الراية بنجاح',
-    'banner_update'                 => 'تم تحديث الراية بنجاح',
-    'banner_delete'                 => 'تم حذف الراية بنجاح',
     'product_add'                   => 'تم إضافة المنتج بنجاح',
     'product_update'                => 'تم تحديث المنتج بنجاح',
     'product_delete'                => 'تم حذف المنتج بنجاح',
@@ -31,7 +25,6 @@ return [
     'product_attachment_delete'     => 'تم حذف المرفق بنجاح',
     'product_attachments_delete'    => 'تم حذف مرفقات المنتج بنجاح',
     'are_your_sure'                 => 'هل أنت متأكد من عملية الحذف ؟',
-    'brand_add'                     => 'تم اضافة الشعار بنجاح',
     'yes_delete'                    => 'تعم, احذف !',
     'delete_all_attachs'            => 'هل أنت متأكد من حذف جميع المرفقات ؟',
     'brnad_added'                   => 'تم إضافة الشعار بنجاح',
@@ -43,7 +36,6 @@ return [
     'cms_page_delete'               => 'تم حذف صفحة إدارة المحتوى بنجاح',
     'contact_us_add'                => 'تم ارسال الرسالة بمجاح',
     'contact_us_delete'             => 'تم حذف الرسالة بمجاح',
-    'settings_update'               => 'تم تحديث الأعدادات بنجاح',
     'admin_add'                     => 'تم إضافة الأدمن بنجاح',
     'admin_update'                  => 'تم تحديث الأدمن بنجاح',
     'admin_delete'                  => 'تم حذف الأدمن بنجاح',

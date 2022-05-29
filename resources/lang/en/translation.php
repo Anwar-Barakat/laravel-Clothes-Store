@@ -55,7 +55,10 @@ return [
     'order_add'                 => 'order has been added successfully',
 
 
-    // admin login :
+
+    // !================================================
+    // ! Admin login :
+    // !================================================
     'login'                     => 'Login',
     'have_an_account'           => 'Have An Account?',
     'dont_have_account'         => "don'/t Have An Account !!",
@@ -72,13 +75,14 @@ return [
     'reset_password'            => 'Reset password',
 
 
+
     // !================================================
     // ! Admin Settings Page :
     // !================================================
     'email'                     => 'E-mail Address',
     'admin_type'                => 'Admin Type',
     'current_password'          => 'Current Password',
-    'password'              => 'New Password',
+    'new_password'              => 'New Password',
     'password_confirmation'     => 'Confirmation Password',
     'currnet_pwd_true'          => 'Current Password Is Correct',
     'currnet_pwd_false'         => 'Current Password Is Incorrect',
@@ -118,7 +122,9 @@ return [
 
 
 
-    // Sections :
+    // !================================================
+    // ! Sections :
+    // !================================================
     'id'                        => 'Id',
     'status'                    => 'Status',
     'active'                    => 'Active',
@@ -135,7 +141,11 @@ return [
     'name_ar'                   => 'Arabic Name',
     'name_en'                   => 'English Name',
 
-    // Categories :
+
+
+    // !================================================
+    // ! Categories :
+    // !================================================
     'url'                       => 'URL',
     'category_name'             => 'Category Name',
     'category_level'            => 'Category Level',
@@ -214,7 +224,7 @@ return [
     'gst'                       => 'GST',
 
 
-    // Product Attributes :
+    //* Product Attributes :
     'product_attributes'        => 'Attributes Product',
     'add_attributes'            => 'Add Attributes',
     'enter_size'                => 'Enter Size',
@@ -226,7 +236,7 @@ return [
     'stock'                     => 'Stock',
     'added_attributes'          => 'Added Attributes',
 
-    // Product Images :
+    //* Product Images :
     'add_images'                => 'Add Attachments',
     'product_images'            => 'Product Attachments',
     'add_multi_image'           => 'Choose Multi Attachments',
@@ -234,15 +244,22 @@ return [
     'no_attachments'            => 'No Attachments Yet !!',
 
 
-    // Brands :
-    'brands'                    => 'Brands',
+
+    // !================================================
+    // ! Brands :
+    // !================================================
     'brand'                     => 'Brand',
+    'brands'                    => 'Brands',
     'update_brand'              => 'Update Brand',
     'add_new_brand'             => 'Add New Brand',
     'update_brand'              => 'Update Brand',
 
 
-    // Banners :
+
+    // !================================================
+    // ! Banners :
+    // !================================================
+    'banner'                    => 'Banner',
     'update_banner'             => 'Update Banner',
     'add_new_banner'            => 'Add New Banner',
     'enter_the_title_ar'        => 'Enter Arabic Title',

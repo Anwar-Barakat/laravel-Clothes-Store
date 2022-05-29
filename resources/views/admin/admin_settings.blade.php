@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-xl-6 col-sm-12">
                                 <div class="form-group">
-                                    <label for="new_password">{{ __('translation.password') }}</label>
+                                    <label for="new_password">{{ __('translation.new_password') }}</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                                         id="new_password" name="password" required
                                         placeholder="{{ __('translation.password') }}">

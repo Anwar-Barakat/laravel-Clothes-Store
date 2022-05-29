@@ -38,7 +38,7 @@ class AdminSettingController extends Controller
                 Admin::where('id', Auth::guard('admin')->user()->id)->update([
                     'password'  => bcrypt($validatedData['password']),
                 ]);
-                Session::flash('message', __('msgs.update_admin_password'));
+                Session::flash('message', __('msgs.updated', ['name' => __('translation.password')]));
             } else {
                 Session::flash('alert-type', 'error');
                 Session::flash('message', __('translation.currnet_pwd_false'));
@@ -71,7 +71,7 @@ class AdminSettingController extends Controller
                 'mobile'    => $validatedData['mobile'],
             ]);
             return view('admin.admin_details', ['admin', $admin]);
-            Session::flash('message', __('msgs.update_admin_details'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.admin_details')]));
             return redirect()->back();
         }
         return view('admin.admin_details');
