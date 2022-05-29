@@ -56,13 +56,14 @@ class CheckoutController extends Controller
 
         if ($totalPrice < $setting->min_cart_value) {
             Session::flash('alert-type', 'info');
-            Session::flash('message',  __('msgs.min_cart_amount'));
+
+            Session::flash('message', __('msgs.min_cart_amount', ['min' => $setting->min_cart_value]));
             return redirect()->route('frontend.cart');
         }
 
         if ($totalPrice > $setting->max_cart_value) {
             Session::flash('alert-type', 'info');
-            Session::flash('message',  __('msgs.max_cart_amount'));
+            Session::flash('message', __('msgs.max_cart_amount', ['max' => $setting->max_cart_value]));
             return redirect()->route('frontend.cart');
         }
 
