@@ -108,8 +108,8 @@
                                     <label for="image">{{ __('translation.attachments') }}</label>
                                     <div class="custom-file">
                                         <input class="custom-file-input" id="customFile" type="file" type="file"
-                                            name="image[]" accept=".jpg, .png, image/jpeg, image/png" multiple> <label
-                                            class="custom-file-label @error('image') is-invalid @enderror"
+                                            name="image[]" accept=".jpg, .png, image/jpeg, image/png" multiple required>
+                                        <label class="custom-file-label @error('image') is-invalid @enderror"
                                             for="customFile">{{ __('translation.choose_file') }}</label>
                                     </div>
                                     @error('image')

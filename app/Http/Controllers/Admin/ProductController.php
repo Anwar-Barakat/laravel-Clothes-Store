@@ -60,12 +60,13 @@ class ProductController extends Controller
             $data['status']     = 1;
 
             $product            = Product::create($data);
-            if ($request->hasFile('video') && $request->file('video')->isValid()) {
+            if ($request->hasFile('video') && $request->file('video')->isValid())
                 $product->addMediaFromRequest('video')->toMediaCollection('video_products');
-            }
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+
+            if ($request->hasFile('image') && $request->file('image')->isValid())
                 $product->addMediaFromRequest('image')->toMediaCollection('image_products');
-            }
+
 
             $subscribersInfo    = NewslatterSubsciber::where('status', 1)->get();
 
@@ -73,7 +74,7 @@ class ProductController extends Controller
                 dispatch(new SendNewProductMailToSubscribers($subscribersInfo, $product));
             });
 
-            Session::flash('message', __('msgs.product_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.product')]));
             return redirect()->route('admin.products.index');
         }
     }
@@ -125,7 +126,8 @@ class ProductController extends Controller
                 $product->clearMediaCollection('image_products');
                 $product->addMediaFromRequest('image')->toMediaCollection('image_products');
             }
-            Session::flash('message', __('msgs.product_update'));
+
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.product')]));
             return redirect()->route('admin.products.index');
         }
     }
@@ -141,7 +143,7 @@ class ProductController extends Controller
         $product->delete();
         Media::where(['model_id' => $product->id, 'collection_name' => 'image_products'])->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.product_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.product')]));
         return redirect()->route('admin.products.index');
     }
 

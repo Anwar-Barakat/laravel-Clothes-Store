@@ -50,14 +50,14 @@ class ProductAttributeController extends Controller
                 $skuCount = ProductAttribute::where('sku', $value)->count();
                 if ($skuCount > 0) {
                     Session::flash('alert-type', 'info');
-                    Session::flash('message', __('msgs.sku_already_exists'));
+                    Session::flash('message', __('msgs.is_existed', ['name' => __('translation.sku')]));
                     return redirect()->route('admin.product.attributes.create', $product_id);
                 }
                 // Size of Product Must Be Unique :
                 $sizeCount = ProductAttribute::where(['size' => $data['size'][$key], 'product_id' => $product_id])->count();
                 if ($sizeCount > 0) {
                     Session::flash('alert-type', 'info');
-                    Session::flash('message', __('msgs.size_already_exists'));
+                    Session::flash('message', __('msgs.is_existed', ['name' => __('translation.size')]));
                     return redirect()->route('admin.product.attributes.create', $product_id);
                 }
 
@@ -66,13 +66,13 @@ class ProductAttributeController extends Controller
                     'product_id'    => $product_id,
                     'sku'           => $value,
                     'size'          => $data['size'][$key],
-                    'price'          => $data['price'][$key],
-                    'stock'          => $data['stock'][$key],
+                    'price'         => $data['price'][$key],
+                    'stock'         => $data['stock'][$key],
                     'status'        => 1,
                 ]);
             }
         }
-        Session::flash('message', __('msgs.attributes_add'));
+        Session::flash('message', __('msgs.added', ['name' => __('translation.product_attributes')]));
         return redirect()->route('admin.product.attributes.create', $product_id);
     }
 
@@ -117,9 +117,10 @@ class ProductAttributeController extends Controller
                     ]);
                 }
             }
+
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.product_attributes')]));
+            return redirect()->route('admin.product.attributes.create', $product->id);
         }
-        Session::flash('message', __('msgs.attributes_update'));
-        return redirect()->route('admin.product.attributes.create', $product->id);
     }
 
     /**
@@ -132,7 +133,7 @@ class ProductAttributeController extends Controller
     {
         ProductAttribute::findOrFail($id)->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.attributes_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.product_attributes')]));
         return redirect()->back();
     }
 

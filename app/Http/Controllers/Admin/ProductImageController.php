@@ -27,13 +27,17 @@ class ProductImageController extends Controller
     {
         if ($request->isMethod('post')) {
             $product    = Product::findOrFail($request->product_id);
+            $validatedData = $request->validate([
+                'image'             => 'required|array',
+                'image.*'           => 'required|image|mimes:jpeg,png,jpg|max:1048',
+            ]);
 
             if ($request->hasFile('image')) {
                 $images = $product->addMultipleMediaFromRequest(['image'])->each(function ($image) {
                     $image->toMediaCollection('product_attachments');
                 });
             }
-            Session::flash('message', __('msgs.product_attachments_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.product_images')]));
             return redirect()->back();
         }
     }
@@ -43,7 +47,7 @@ class ProductImageController extends Controller
         $media = Media::whereId($id)->first();
         $media->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.product_attachment_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.product_images')]));
         return redirect()->back();
     }
 

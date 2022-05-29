@@ -233,6 +233,7 @@ return [
     'enter_stock'               => 'على سبيل المثال 3 قطع',
     'stock'                     => 'في المصنع',
     'added_attributes'          => 'الخصائص المضافة',
+    'product_attributes'        => 'خصائص المنتج',
 
 
     //* Product Images :

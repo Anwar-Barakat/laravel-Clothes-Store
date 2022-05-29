@@ -235,6 +235,7 @@ return [
     'enter_stock'               => 'Enter Stock',
     'stock'                     => 'Stock',
     'added_attributes'          => 'Added Attributes',
+    'product_attributes'        => 'Product Attributes',
 
     //* Product Images :
     'add_images'                => 'Add Attachments',
