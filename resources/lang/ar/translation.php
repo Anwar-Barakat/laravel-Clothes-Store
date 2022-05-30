@@ -1,5 +1,7 @@
 <?php
 return [
+    'please_type'                      => 'من فضلك, قم بأدخال :name',
+
     // !================================================
     // ! Sidebar Page :
     // !================================================
@@ -99,12 +101,7 @@ return [
     // !================================================
     'min_cart_value'            => 'قيمة كرت الشراء الدنيا',
     'max_cart_value'            => 'قيمة كرت الشراء العليا',
-    'type_min_cart_value'       => 'ادخل قيمة كرت الشراء الدنيا',
-    'type_max_cart_value'       => 'ادخل قيمة كرت الشراء العليا',
     'location'                  => 'الموقع',
-    'type_location'             => ' ادخل عنوان الموقع',
-    'website_email'             => 'البريد الألكتروني',
-    'website_mobile'            => 'رقم التواصل',
 
 
 
@@ -117,10 +114,7 @@ return [
     'add_roles_perm'                => 'إضافة صلاحيات و أدوار',
     'add_admin'                     => 'إضافة مشرف',
     'edit_admin'                    => 'تعديل المشرف',
-    'type_admin_name'               => 'ادخل اسم الأدمن',
-    'type_admin_email'              => 'ادخل البريد الألكتروني',
-    'type_password_confirmation'    => 'ادخل تاكيد كلمة المرور',
-    'type_mobile'                   => 'ادخل رقم الموبايل',
+    'mobile'                        => 'رقم الموبايل',
 
 
 
@@ -134,9 +128,6 @@ return [
     'actions'                   => 'خيارات',
     'add_new_section'           => 'إضافة قسم جديد',
     'update_section'            => 'تحديث القسم',
-    'enter_the_name'            => 'أدخل الاسم',
-    'enter_the_name_ar'         => 'أدخل الاسم بالعربي',
-    'enter_the_name_en'         => 'أدخل الاسم بالأنكليزي',
     'choose..'                  => 'اختر',
     'choose_file'               => 'اختر صورة',
     'choose_video'              => 'اختر فيديو',
@@ -149,13 +140,11 @@ return [
     // ! Categories :
     // !================================================
     'url'                       => 'الرابط',
-    'category_name'             => 'اسم الفئة',
     'category_level'            => 'مستوى الفئة',
     'image'                     => 'الصورة',
     'discount'                  => 'الخصوم',
     'categoru_url'              => 'رابط الفئة',
     'desc'                      => 'الوصف',
-    'category_description'      => 'وصف الفئة',
     'main_cat'                  => 'فئة رئيسية',
     'meta'                      => 'المعلومات الإضافية',
     'meta_title'                => ' عنوان الميتا',
@@ -176,12 +165,6 @@ return [
     'group_code'                => 'كود المجموعة',
     'code'                      => 'الرمز',
     'category'                  => 'الفئة',
-    'product_name'              => 'اسم المنتج',
-    'enter_product_name'        => 'ادخل اسم المنتج',
-    'product_color'             => 'لون المنتج',
-    'enter_product_color'       => 'ادخل لون المنتج',
-    'product_code'              => ' رمز المنتج',
-    'enter_product_code'        => ' ادخل رمز المنتج',
     'price'                     => 'السعر',
     'weight'                    => 'الوزن',
     'g'                         => 'غرام',
@@ -226,11 +209,7 @@ return [
     'product_attributes'        => 'خصائص المنتج',
     'add_attributes'            => 'إضافة خصائص',
     'size'                      => 'القياس',
-    'enter_size'                => 'ادخل القياس',
-    'enter_sku'                 => ' ادخل الرمز النوعي',
     'sku'                       => 'الرمز النوعي',
-    'enter_price'               => 'ادخل السعر',
-    'enter_stock'               => 'على سبيل المثال 3 قطع',
     'stock'                     => 'في المصنع',
     'added_attributes'          => 'الخصائص المضافة',
     'product_attributes'        => 'خصائص المنتج',
@@ -264,10 +243,6 @@ return [
     'banner'                    => 'الراية',
     'update_banner'             => 'تحديث الراية',
     'add_new_banner'            => 'إضافة راية جديدة',
-    'enter_the_title_ar'        => 'أدخل العنوان بالعربي',
-    'enter_the_title_en'        => 'أدخل العنوان بالأنكليزي',
-    'enter_the_link'            => 'ادخال الرابط',
-    'enter_the_alternative'     => 'ادخل البديل',
     'title_ar'                  => 'العنوان بالعربي',
     'title_en'                  => 'العنوان بالأنكليزي',
     'link'                      => 'الرابط',
@@ -280,7 +255,6 @@ return [
     'coupon'                    => 'القسيمة',
     'coupons'                   => 'القسائم',
     'code'                      => 'الرمز',
-    'enter_code'                => 'ادخل الرمز',
     'type'                      => 'النوع',
     'multiple_times'            => 'عدة مرات',
     'single_times'              => 'مرة واحدة',
@@ -355,8 +329,6 @@ return [
     'in'                        => 'في',
     'courier_name'              => 'اسم البريد السريع',
     'tracking_number'           => 'رقم التعقب',
-    'type_courier_name'         => 'ادخل رقم التعقب',
-    'type_tracking_number'      => 'ادخل اسم البريد السريع',
     'order_invoice'             => 'فاتورة الطلب',
     'invoice'                   => 'الفاتورة',
     'order'                     => 'الطلب',
@@ -409,7 +381,10 @@ return [
     // !================================================
     'shipping_charges'          => 'تكاليف الشحن',
     'updated_at'                => 'التحديث في',
-    'type_shipping_charges'     => 'ادخل رسوم الشحن',
+    'zero_500g'                 => 'zero إلى 500g',
+    '501_1000g'                 => '500 إلى 1000g',
+    '1001_2000g'                => '1000 إلى 2000g',
+    '2001_5000g'                => '2001 إلى 5000g',
     'above_5000g'               => 'اكثر من 5000g',
     'update_shipping_charges'   => 'تحديث رسوم الشحن',
 
@@ -422,11 +397,6 @@ return [
     'cms_pages'                 => 'صفحات إدارة المحتوى',
     'add_new_cms_page'          => 'إضافة صفحة جديدة',
     'edit_cms_page'             => 'تعديل الصفحة',
-    'type_title'                => 'أدخل العنوان',
-    'type_description'          => 'أدخل الوصف',
-    'type_meta_title'           => 'أدخل عنوان الميتا',
-    'type_meta_description'     => 'أدخل وصف الميتا',
-    'type_meta_keywords'        => 'أدخل كلمات المفتاحية للميتا',
 
 
 
@@ -450,7 +420,6 @@ return [
     'rate'                      => 'النسبة',
     'add_new_currency'          => 'أضف عملة جديدة',
     'currency_code'             => 'رمز العملة',
-    'type_currency_code'        => 'ادخل رمز النسبة',
     'rate'                      => 'النسبة',
     'rate_within_dollar'        => 'النسبة مقابل الدولار',
     'edit_currency'             => 'تعديل العملة',

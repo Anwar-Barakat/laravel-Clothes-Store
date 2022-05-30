@@ -34,7 +34,8 @@
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" value="{{ old('name') }}"
-                                        placeholder="{{ __('translation.type_admin_name') }}" required>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}"
+                                        required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -48,7 +49,8 @@
                                     <input type="email" name="email"
                                         class="form-control @error('email') is-invalid @enderror" id="email"
                                         value="{{ old('email') }}"
-                                        placeholder="{{ __('translation.type_admin_email') }}" required>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.email')]) }}"
+                                        required>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -106,7 +108,8 @@
                                     <input type="mobile" name="mobile"
                                         class="form-control @error('mobile') is-invalid @enderror" id="mobile"
                                         value="{{ old('mobile') }}"
-                                        placeholder="{{ __('translation.type_mobile') }}" required>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}"
+                                        required>
                                     @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -137,7 +140,8 @@
                                     <label for="password">{{ __('translation.password') }}</label>
                                     <input type="password" name="password"
                                         class="form-control @error('password') is-invalid @enderror" id="password"
-                                        value="{{ old('password') }}" placeholder="{{ __('translation.password') }}"
+                                        value="{{ old('password') }}"
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.password')]) }}"
                                         required>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -153,7 +157,8 @@
                                     <input type="password" name="password_confirmation"
                                         class="form-control @error('password_confirmation') is-invalid @enderror"
                                         id="password_confirmation" value="{{ old('password_confirmation') }}"
-                                        placeholder="{{ __('translation.type_password_confirmation') }}" required>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.password_confirmation')]) }}"
+                                        required>
                                     @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

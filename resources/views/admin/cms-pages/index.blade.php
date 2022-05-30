@@ -131,7 +131,7 @@
                                                                             class="form-control  @error('title') is-invalid @enderror"
                                                                             id="edit_title" name="title"
                                                                             value="{{ old('title', $cms_page->title) }}"
-                                                                            placeholder="{{ __('translation.type_title') }}">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.title')]) }}">
                                                                         @error('title')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -147,7 +147,7 @@
                                                                             class="form-control  @error('meta_title') is-invalid @enderror"
                                                                             id="edit_meta_title" name="meta_title"
                                                                             value="{{ old('title', $cms_page->meta_title) }}"
-                                                                            placeholder="{{ __('translation.type_meta_title') }}">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_title')]) }}">
                                                                         @error('meta_title')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -166,7 +166,7 @@
                                                                             id="edit_meta_description"
                                                                             name="meta_description"
                                                                             value="{{ old('title', $cms_page->meta_description) }}"
-                                                                            placeholder="{{ __('translation.type_meta_description') }}">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_description')]) }}">
                                                                         @error('meta_description')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -182,7 +182,7 @@
                                                                             class="form-control  @error('meta_keywords') is-invalid @enderror"
                                                                             id="edit_meta_keywords" name="meta_keywords"
                                                                             value="{{ old('title', $cms_page->meta_keywords) }}"
-                                                                            placeholder="{{ __('translation.type_meta_keywords') }}">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_keywords')]) }}">
                                                                         @error('meta_keywords')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -199,7 +199,7 @@
                                                                         <textarea type="text" class="form-control  @error('description') is-invalid @enderror" id="edit_description"
                                                                             name="description" rows="3"
                                                                             value="{{ old('title', $cms_page->description) }}"
-                                                                            placeholder="{{ __('translation.type_description') }}"></textarea>
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.desc')]) }}"></textarea>
                                                                         @error('title')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -208,9 +208,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-
-
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">{{ __('buttons.close') }}</button>
@@ -251,7 +248,7 @@
                                     <label for="title">{{ __('translation.title') }}</label>
                                     <input type="text" class="form-control  @error('title') is-invalid @enderror" id="title"
                                         value="{{ old('title') }}" name="title"
-                                        placeholder="{{ __('translation.type_title') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.title')]) }}">
                                     @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -264,7 +261,7 @@
                                     <label for="meta_title">{{ __('translation.meta_title') }}</label>
                                     <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
                                         id="meta_title" name="meta_title" value="{{ old('meta_title') }}"
-                                        placeholder="{{ __('translation.type_meta_title') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_title')])}}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -280,7 +277,7 @@
                                     <input type="text" class="form-control  @error('meta_description') is-invalid @enderror"
                                         id="meta_description" name="meta_description"
                                         value="{{ old('meta_description') }}"
-                                        placeholder="{{ __('translation.type_meta_description') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_description')]) }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -293,7 +290,7 @@
                                     <label for="meta_keywords">{{ __('translation.meta_keywords') }}</label>
                                     <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
                                         id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}"
-                                        placeholder="{{ __('translation.type_meta_keywords') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_keywords')]) }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -308,7 +305,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea type="text" class="form-control  @error('description') is-invalid @enderror" id="description"
                                         name="description" rows="3" value="{{ old('description') }}"
-                                        placeholder="{{ __('translation.type_description') }}"></textarea>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.desc')]) }}"></textarea>
                                     @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

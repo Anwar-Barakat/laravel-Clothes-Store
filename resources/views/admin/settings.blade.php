@@ -33,7 +33,7 @@
                                     <input type="email" name="email"
                                         class="form-control @error('email') is-invalid @enderror" id="email"
                                         value="{{ old('email', $setting->email) }}"
-                                        placeholder="{{ __('translation.email_address') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.email_address')]) }}">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
                                     <input type="tel" name="mobile"
                                         class="form-control @error('mobile') is-invalid @enderror" id="mobile"
                                         value="{{ old('mobile', $setting->mobile) }}"
-                                        placeholder="{{ __('translation.website_mobile') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}">
                                     @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -64,7 +64,7 @@
                                     <input type="text" name="location"
                                         class="form-control @error('location') is-invalid @enderror" id="location"
                                         value="{{ old('location', $setting->location) }}"
-                                        placeholder="{{ __('translation.type_location') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.location')]) }}">
                                     @error('location')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -84,7 +84,8 @@
                                         <input type="number" name="min_cart_value"
                                             aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('min_cart_value') is-invalid @enderror"
-                                            value="{{ old('min_cart_value', $setting->min_cart_value) }}">
+                                            value="{{ old('min_cart_value', $setting->min_cart_value) }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.min_cart_value')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -106,7 +107,8 @@
                                         <input type="number" name="max_cart_value"
                                             aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('max_cart_value') is-invalid @enderror"
-                                            value="{{ old('max_cart_value', $setting->max_cart_value) }}">
+                                            value="{{ old('max_cart_value', $setting->max_cart_value) }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.max_cart_value')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>

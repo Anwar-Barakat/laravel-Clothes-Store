@@ -43,7 +43,8 @@
                                 <div class="form-group">
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" value="{{ old('name', Auth::guard('admin')->user()->name) }}">
+                                        id="name" value="{{ old('name', Auth::guard('admin')->user()->name) }}"
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -55,7 +56,8 @@
                                 <div class="form-group">
                                     <label for="email">{{ __('translation.email_address') }}</label>
                                     <input class="form-control" readonly="readonly" id="email"
-                                        value="{{ Auth::guard('admin')->user()->email }}">
+                                        value="{{ Auth::guard('admin')->user()->email }}"
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.email_address')]) }}">
                                 </div>
                             </div>
                         </div>
@@ -64,7 +66,8 @@
                                 <div class="form-group">
                                     <label for="type">{{ __('translation.admin_type') }}</label>
                                     <input type="text" name="type" class="form-control @error('type') is-invalid @enderror"
-                                        id="type" value="{{ old('type', Auth::guard('admin')->user()->type) }}">
+                                        id="type" value="{{ old('type', Auth::guard('admin')->user()->type) }}"
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.admin_type')]) }}">
                                     @error('type')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -77,7 +80,8 @@
                                     <label for="mobile">{{ __('translation.admin_phone') }}</label>
                                     <input type="tel" name="mobile"
                                         class="form-control @error('mobile') is-invalid @enderror" id="mobile"
-                                        value="{{ old('mobile', Auth::guard('admin')->user()->mobile) }}">
+                                        value="{{ old('mobile', Auth::guard('admin')->user()->mobile) }}"
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')])  }}">
                                     @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

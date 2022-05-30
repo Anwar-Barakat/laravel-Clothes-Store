@@ -181,25 +181,25 @@
                                         <label for="size">{{ __('translation.size') }}</label>
                                         <input type="text" name="size[]" value="{{ old('size') }}" id="size"
                                             class="form-control" required=""
-                                            placeholder="{{ __('translation.enter_size') }}" />
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.size')]) }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="sku">{{ __('translation.sku') }}</label>
                                         <input type="text" name="sku[]" value="{{ old('sku') }}" id="sku"
                                             class="form-control" required=""
-                                            placeholder="{{ __('translation.enter_sku') }}" />
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.sku')]) }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="price">{{ __('translation.price') }}</label>
                                         <input type="number" name="price[]" value="{{ old('price') }}" id="price"
                                             class="form-control" required=""
-                                            placeholder="{{ __('translation.enter_price') }}" />
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.price')]) }}" />
                                     </div>
                                     <div class="form-group">
                                         <label for="stock">{{ __('translation.stock') }}</label>
                                         <input type="number" name="stock[]" value="{{ old('stock') }}" id="stock"
                                             class="form-control" required=""
-                                            placeholder="{{ __('translation.enter_stock') }}" />
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.stock')]) }}" />
                                     </div>
                                     <a href="javascript:void(0);" class="add_button button-30" title="Add field">
                                         {{ __('buttons.add_row') }}
@@ -258,16 +258,16 @@
             var fieldHTML =
                 `<div class="d-flex align-items-center justify-content-start added-field-attribute">
                     <div class="form-group">
-                        <input type="text" name="size[]" value="{{ old('size') }}" class="form-control" required="" placeholder="{{ __('translation.enter_size') }}" id="size" />
+                        <input type="text" name="size[]" value="{{ old('size') }}" class="form-control" required="" placeholder="{{ __('translation.please_type', ['name' => __('translation.size')]) }}" id="size" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="sku[]" value="{{ old('sku') }}" class="form-control" required="" placeholder="{{ __('translation.enter_sku') }}" id="sku" />
+                        <input type="text" name="sku[]" value="{{ old('sku') }}" class="form-control" required="" placeholder="{{ __('translation.please_type', ['name' => __('translation.sku')]) }}" id="sku" />
                     </div>
                     <div class="form-group">
-                        <input type="number" name="price[]" value="{{ old('price') }}" class="form-control" required="" placeholder="{{ __('translation.enter_price') }}" id="price" />
+                        <input type="number" name="price[]" value="{{ old('price') }}" class="form-control" required="" placeholder="{{ __('translation.please_type', ['name' => __('translation.price')]) }}" id="price" />
                     </div>
                     <div class="form-group">
-                    <input type="number" name="stock[]" value="{{ old('stock') }}" class="form-control" required="" placeholder="{{ __('translation.enter_stock') }}" id="stock" />
+                    <input type="number" name="stock[]" value="{{ old('stock') }}" class="form-control" required="" placeholder="{{ __('translation.please_type', ['name' => __('translation.stock')]) }}" id="stock" />
                     </div>
                     <a href="javascript:void(0);" class="remove_button button-30 added-field-attribute-deleted-btn">{{ __('buttons.delete_row') }}</a>
                 </div>`; //New input field html

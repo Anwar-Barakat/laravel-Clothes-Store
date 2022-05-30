@@ -123,7 +123,7 @@
                                                                 <input type="text"
                                                                     class="form-control  @error('code') is-invalid @enderror"
                                                                     id="code" name="code"
-                                                                    placeholder="{{ __('translation.type_currency_code') }}"
+                                                                    placeholder="{{ __('translation.please_type', ['name' => __('translation.currency_code')]) }}"
                                                                     value="{{ old('code', $currency->code) }}">
                                                                 @error('code')
                                                                     <span class="invalid-feedback" role="alert">
@@ -202,7 +202,7 @@
                         <div class="form-group">
                             <label for="code">{{ __('translation.currency_code') }}</label>
                             <input type="text" class="form-control  @error('code') is-invalid @enderror" id="code"
-                                name="code" placeholder="{{ __('translation.type_currency_code') }}"
+                                name="code" placeholder="{{ __('translation.please_type', ['name' => __('translation.currency_code')]) }}"
                                 value="{{ old('code') }}">
                             @error('code')
                                 <span class="invalid-feedback" role="alert">

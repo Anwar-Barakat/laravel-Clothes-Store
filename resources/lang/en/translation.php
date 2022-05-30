@@ -1,5 +1,7 @@
 <?php
 return [
+    'please_type'                      => 'Please, Type :name',
+
     // !================================================
     // ! Sidebar Page :
     // !================================================
@@ -89,7 +91,6 @@ return [
     'currnet_pwd_false'         => 'Current Password Is Incorrect',
     'admin_details'             => 'Admin Details',
     'name'                      => 'Name',
-    'admin_phone'               => 'Phone',
     'image'                     => 'Image',
 
 
@@ -99,12 +100,7 @@ return [
     // !================================================
     'min_cart_value'            => 'Minimum cart value',
     'max_cart_value'            => 'Maximum cart value',
-    'type_min_cart_value'       => 'type minimum cart value',
-    'type_max_cart_value'       => 'type maximum cart value',
     'location'                  => 'Location',
-    'type_location'             => 'Type your location',
-    'website_email'             => 'Website E-mail',
-    'website_mobile'            => 'Mobile Number',
 
 
 
@@ -117,9 +113,6 @@ return [
     'add_roles_perm'                => 'Add Permissions & roles',
     'add_admin'                     => 'Add Admin',
     'edit_admin'                    => 'Edit Admin',
-    'type_admin_name'               => 'Type admin name',
-    'type_admin_email'              => 'Type admin email',
-    'type_password_confirmation'    => 'Type password confirmation',
 
 
 
@@ -133,9 +126,6 @@ return [
     'actions'                   => 'Actions',
     'add_new_section'           => 'Add New Section',
     'update_section'            => 'Update Section',
-    'enter_the_name'            => 'Enter Name',
-    'enter_the_name_ar'         => 'Enter Arabic Name',
-    'enter_the_name_en'         => 'Enter English Name',
     'choose..'                  => 'Choose..',
     'choose_file'               => 'Choose Image',
     'choose_video'              => 'Choose Video',
@@ -148,20 +138,15 @@ return [
     // ! Categories :
     // !================================================
     'url'                       => 'URL',
-    'category_name'             => 'Category Name',
     'category_level'            => 'Category Level',
     'image'                     => 'Image',
     'discount'                  => 'Discount',
     'category_url'              => 'Category URL',
     'desc'                      => 'Description',
-    'category_description'      => 'Category Description',
     'meta'                      => 'Additional Info',
     'meta_title'                => 'Meta Title',
     'meta_description'          => 'Meta Description',
     'meta_keywords'             => 'Meta keywords',
-    'category_meta_title'       => 'Category Meta Title',
-    'category_meta_description' => 'Category Meta Description',
-    'category_meta_keywords'    => 'Category Meta keywords',
     'main_cat'                  => 'Main Category',
     'section'                   => 'Section',
     'parent_category'           => 'Parent Category',
@@ -176,15 +161,8 @@ return [
     // !================================================
     'color'                     => 'Color',
     'group_code'                => 'Group color',
-    'enter_product_group_code'  => 'Type group code',
     'code'                      => 'Code',
     'category'                  => 'Category',
-    'product_name'              => 'Product Name',
-    'enter_product_name'        => 'Type Product Name',
-    'product_color'             => 'Product Color',
-    'enter_product_color'       => 'Type Product Color',
-    'product_code'              => 'product Code',
-    'enter_product_code'        => 'Type Product Code',
     'price'                     => 'Price',
     'weight'                    => 'Weight',
     'g'                         => 'g',
@@ -219,8 +197,6 @@ return [
     'yes'                       => 'Yes',
     'no'                        => 'No',
     'edit_product'              => 'Edit Product',
-    'product_description'       => 'Product Description',
-    'product_wash_care'         => 'For example Machine Washing, ... ',
     'update_status'             => 'Update Status',
     'gst'                       => 'GST',
 
@@ -228,12 +204,8 @@ return [
     //* Product Attributes :
     'product_attributes'        => 'Attributes Product',
     'add_attributes'            => 'Add Attributes',
-    'enter_size'                => 'Enter Size',
     'size'                      => 'Size',
-    'enter_sku'                 => 'Enter SKU',
     'sku'                       => 'SKU',
-    'enter_price'               => 'Enter Price',
-    'enter_stock'               => 'Enter Stock',
     'stock'                     => 'Stock',
     'added_attributes'          => 'Added Attributes',
     'product_attributes'        => 'Product Attributes',
@@ -264,8 +236,6 @@ return [
     'banner'                    => 'Banner',
     'update_banner'             => 'Update Banner',
     'add_new_banner'            => 'Add New Banner',
-    'enter_the_title_ar'        => 'Enter Arabic Title',
-    'enter_the_title_en'        => 'Enter English Title',
     'title_ar'                  => 'Arabic Title',
     'title_en'                  => 'English Title',
     'link'                      => 'Link',
@@ -280,7 +250,6 @@ return [
     'coupon'                    => 'Coupon',
     'coupons'                   => 'Coupons',
     'code'                      => 'Code',
-    'enter_code'                => 'Enter The Code',
     'type'                      => 'Type',
     'multiple_times'            => 'Multiple Times',
     'single_times'              => 'Single Times',
@@ -354,8 +323,6 @@ return [
     'in'                        => 'In',
     'courier_name'              => 'Courier name',
     'tracking_number'           => 'Tracking number',
-    'type_courier_name'         => 'Type Courier name',
-    'type_tracking_number'      => 'Type Tracking number',
     'order_invoice'             => 'Order invoice',
     'invoice'                   => 'Invoice',
     'order'                     => 'Order',
@@ -409,7 +376,10 @@ return [
     // !================================================
     'shipping_charges'          => 'Shipping charges',
     'updated_at'                => 'Update At',
-    'type_shipping_charges'     => 'Type shipping charges',
+    'zero_500g'                 => 'zero to 500g',
+    '501_1000g'                 => '500 to 1000g',
+    '1001_2000g'                => '1000 to 2000g',
+    '2001_5000g'                => '2001 to 5000g',
     'above_5000g'               => 'Above 5000g',
     'update_shipping_charges'   => 'Update shipping charges',
 
@@ -422,11 +392,6 @@ return [
     'cms_pages'                 => 'CMS Pages',
     'add_new_cms_page'          => 'Add new cms page',
     'edit_cms_page'             => 'Edit cms page',
-    'type_title'                => 'Type title',
-    'type_description'          => 'Type description',
-    'type_meta_title'           => 'Type meta title',
-    'type_meta_description'     => 'Type meta description',
-    'type_meta_keywords'        => 'Type meta keywords',
 
 
 
@@ -450,7 +415,6 @@ return [
     'rate'                      => 'Rate',
     'add_new_currency'          => 'add new currency',
     'currency_code'             => 'Currency code',
-    'type_currency_code'        => 'Type currency code',
     'rate'                      => 'Rate',
     'rate_within_dollar'        => 'Rate within dollar',
     'edit_currency'             => 'Edit currency',

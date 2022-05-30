@@ -59,7 +59,7 @@
                                     <label for="new_password">{{ __('translation.new_password') }}</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                                         id="new_password" name="password" required
-                                        placeholder="{{ __('translation.password') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.new_password')])  }}">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                                     <input type="password"
                                         class="form-control  @error('password_confirmation') is-invalid @enderror"
                                         id="password_confirmation" name="password_confirmation" required
-                                        placeholder="{{ __('translation.password_confirmation') }}">
+                                        placeholder="{{__('translation.please_type', ['name' => __('translation.password_confirmation')])  }}">
                                     @error('password_confirmation')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

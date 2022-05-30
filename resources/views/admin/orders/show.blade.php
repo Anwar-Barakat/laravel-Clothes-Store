@@ -230,7 +230,7 @@
                                     <label for="courier_name">{{ __('translation.courier_name') }}</label>
                                     <input type="text" class="form-control @error('courier_name') is-invalid @enderror"
                                         id="courier_name" name="courier_name" value="{{ $orderDetails->courier_name }}"
-                                        placeholder="{{ __('translation.type_courier_name') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.courier_name')]) }}">
                                     @error('courier_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -244,7 +244,7 @@
                                     <input type="text" class="form-control @error('tracking_number') is-invalid @enderror"
                                         id="tracking_number" name="tracking_number"
                                         value="{{ $orderDetails->tracking_number }}"
-                                        placeholder="{{ __('translation.type_tracking_number') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.tracking_number')]) }}">
                                     @error('tracking_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

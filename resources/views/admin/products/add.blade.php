@@ -34,7 +34,7 @@
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" value="{{ old('name') }}"
-                                        placeholder="{{ __('translation.product_name') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
                                     <label for="code">{{ __('translation.code') }}</label>
                                     <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
                                         id="code" value="{{ old('code') }}"
-                                        placeholder="{{ __('translation.enter_product_code') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.code')]) }}">
                                     @error('code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -63,7 +63,7 @@
                                     <input type="text" name="color"
                                         class="form-control @error('color') is-invalid @enderror" id="color"
                                         value="{{ old('color') }}"
-                                        placeholder="{{ __('translation.enter_product_color') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.color')]) }}">
                                     @error('color')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -77,7 +77,7 @@
                                     <input type="text" name="group_code"
                                         class="form-control @error('group_code') is-invalid @enderror" id="group_code"
                                         value="{{ old('group_code') }}"
-                                        placeholder="{{ __('translation.enter_product_group_code') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.group_code')]) }}">
                                     @error('group_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xl-6 col-sm-12">
+                            <div class="col-xl-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="price">{{ __('translation.price') }}</label>
                                     <div class="input-group">
@@ -149,7 +149,8 @@
                                         </div>
                                         <input type="number" name="price" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('price') is-invalid @enderror"
-                                            value="{{ old('price') }}">
+                                            value="{{ old('price') }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.price')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -161,7 +162,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-sm-12">
+                            <div class="col-xl-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="discount">{{ __('translation.discount') }} (%)</label>
                                     <div class="input-group">
@@ -170,7 +171,8 @@
                                         </div>
                                         <input type="number" name="discount" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('discount') is-invalid @enderror"
-                                            value="{{ old('discount') }}">
+                                            value="{{ old('discount') }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.discount')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -182,7 +184,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-sm-12">
+                            <div class="col-xl-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="gst">{{ __('translation.gst') }} (%)</label>
                                     <div class="input-group">
@@ -191,7 +193,8 @@
                                         </div>
                                         <input type="number" name="gst" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('gst') is-invalid @enderror"
-                                            value="{{ old('gst') }}">
+                                            value="{{ old('gst') }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.gst')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -203,7 +206,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-xl-6 col-sm-12">
+                            <div class="col-xl-3 col-sm-12">
                                 <div class="form-group">
                                     <label for="weight">{{ __('translation.weight') }}</label>
                                     <div class="input-group">
@@ -211,7 +214,8 @@
                                             <span class="input-group-text">{{ __('translation.g') }}</span>
                                         </div>
                                         <input name="weight" class="form-control @error('weight') is-invalid @enderror"
-                                            type="number" value="{{ old('weight') }}">
+                                            type="number" value="{{ old('weight') }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.weight')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -390,7 +394,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea description="text" name="description" class="form-control @error('description') is-invalid @enderror"
                                         id="description" rows="3"
-                                        placeholder="{{ __('translation.product_description') }}">{{ old('description') }}</textarea>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.desc')]) }}">{{ old('description') }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -403,7 +407,7 @@
                                     <label for="wash_care">{{ __('translation.wash_care') }}</label>
                                     <textarea wash_care="text" name="wash_care" class="form-control @error('wash_care') is-invalid @enderror"
                                         id="wash_care" rows="3"
-                                        placeholder="{{ __('translation.product_wash_care') }}">{{ old('wash_care') }}</textarea>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.wash_care')]) }}">{{ old('wash_care') }}</textarea>
                                     @error('wash_care')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -419,7 +423,7 @@
                                     <input meta_title="text" name="meta_title"
                                         class="form-control @error('meta_title') is-invalid @enderror" id="meta_title"
                                         value="{{ old('meta_title') }}"
-                                        placeholder="{{ __('translation.meta_title') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_title')]) }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -433,7 +437,7 @@
                                     <input meta_description="text" name="meta_description"
                                         class="form-control @error('meta_description') is-invalid @enderror"
                                         id="meta_description" value="{{ old('meta_description') }}"
-                                        placeholder="{{ __('translation.meta_description') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_description')]) }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -447,7 +451,7 @@
                                     <input meta_keywords="text" name="meta_keywords"
                                         class="form-control @error('meta_keywords') is-invalid @enderror"
                                         id="meta_keywords" value="{{ old('meta_keywords') }}"
-                                        placeholder="{{ __('translation.meta_keywords') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_keywords')]) }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

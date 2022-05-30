@@ -131,7 +131,8 @@
                                         </div>
                                         <input name="amount" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('amount') is-invalid @enderror" type="number"
-                                            value="{{ old('amount', $coupon->amount_without_type) }}">
+                                            value="{{ old('amount', $coupon->amount_without_type) }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.amount')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>

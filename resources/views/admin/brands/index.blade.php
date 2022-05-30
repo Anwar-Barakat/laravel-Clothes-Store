@@ -96,7 +96,7 @@
                                                                     class="form-control  @error('name_ar') is-invalid @enderror"
                                                                     id="name_ar" name="name_ar"
                                                                     value="{{ $brand->getTranslation('name', 'ar') }}"
-                                                                    placeholder="{{ __('translation.enter_the_name_en') }}">
+                                                                    placeholder="{{ __('translation.please_type', ['name' => __('translation.name_ar')]) }}">
                                                                 @error('name_ar')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -110,7 +110,7 @@
                                                                     class="form-control  @error('name_en') is-invalid @enderror"
                                                                     id="name_en" name="name_en"
                                                                     value="{{ $brand->getTranslation('name', 'en') }}"
-                                                                    placeholder="{{ __('translation.enter_the_name_en') }}">
+                                                                    placeholder="{{ __('translation.please_type', ['name' => __('translation.name_en')]) }}">
                                                                 @error('name_en')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -176,7 +176,7 @@
                         <div class="form-group">
                             <label for="name_ar">{{ __('translation.name_ar') }}</label>
                             <input type="text" class="form-control  @error('name_ar') is-invalid @enderror" id="name_ar"
-                                name="name_ar" placeholder="{{ __('translation.enter_the_name_en') }}">
+                                name="name_ar" placeholder="{{ __('translation.please_type', ['name' => __('translation.name_ar')]) }}">
                             @error('name_ar')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -186,7 +186,7 @@
                         <div class="form-group">
                             <label for="name_en">{{ __('translation.name_en') }}</label>
                             <input type="text" class="form-control  @error('name_en') is-invalid @enderror" id="name_en"
-                                name="name_en" placeholder="{{ __('translation.enter_the_name_en') }}">
+                                name="name_en" placeholder="{{ __('translation.please_type', ['name' => __('translation.name_en')]) }}">
                             @error('name_en')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

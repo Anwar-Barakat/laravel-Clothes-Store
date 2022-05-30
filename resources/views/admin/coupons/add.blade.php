@@ -63,7 +63,7 @@
                                     <label for="code">{{ __('translation.code') }}</label>
                                     <input type="text" name="code" class="form-control @error('code') is-invalid @enderror"
                                         id="code" value="{{ old('code') }}"
-                                        placeholder="{{ __('translation.enter_code') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.code')]) }}">
                                     @error('code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -154,7 +154,8 @@
                                         </div>
                                         <input name="amount" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('amount') is-invalid @enderror" type="number"
-                                            value="{{ old('amount') }}">
+                                            value="{{ old('amount') }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.amount')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>

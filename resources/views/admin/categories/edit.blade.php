@@ -48,7 +48,8 @@
                                     <label for="name">{{ __('translation.name') }}</label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" value="{{ old('name', $category->name) }}"
-                                        placeholder="{{ __('translation.category_name') }}" required>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}"
+                                        required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -130,7 +131,8 @@
                                         </div>
                                         <input name="discount" aria-label="Amount (to the nearest dollar)"
                                             class="form-control @error('discount') is-invalid @enderror" type="number"
-                                            value="{{ old('discount', $category->discount) }}">
+                                            value="{{ old('discount', $category->discount) }}"
+                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.discount')]) }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -149,7 +151,7 @@
                                     <label for="description">{{ __('translation.desc') }}</label>
                                     <textarea description="text" name="description" class="form-control @error('description') is-invalid @enderror"
                                         id="description" rows="3"
-                                        placeholder="{{ __('translation.category_description') }}">{{ old('description', $category->description) }}</textarea>
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.desc')]) }}">{{ old('description', $category->description) }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -168,7 +170,7 @@
                                     <input meta_title="text" name="meta_title"
                                         class="form-control @error('meta_title') is-invalid @enderror" id="meta_title"
                                         value="{{ old('meta_title', $category->meta_title) }}"
-                                        placeholder="{{ __('translation.meta_title') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_title')]) }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -197,7 +199,7 @@
                                     <input meta_keywords="text" name="meta_keywords"
                                         class="form-control @error('meta_keywords') is-invalid @enderror" id="meta_keywords"
                                         value="{{ old('meta_keywords', $category->meta_keywords) }}"
-                                        placeholder="{{ __('translation.meta_keywords') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.meta_keywords')]) }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

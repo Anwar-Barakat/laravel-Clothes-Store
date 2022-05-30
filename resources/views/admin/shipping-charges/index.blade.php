@@ -27,11 +27,8 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mg-b-0">{{ __('translation.sections') }}</h4>
-                        <button type="button" class="button-30 modal-effect" data-effect="effect-rotate-left" role="button"
-                            data-toggle="modal" data-target="#addNewSection">
-                            {{ __('buttons.add') }}
-                        </button>
+                        <h4 class="card-title mg-b-0">{{ __('translation.shipping_charges') }}</h4>
+
                     </div>
                 </div>
                 <div class="card-body">
@@ -140,7 +137,7 @@
                                                                             class="form-control  @error('zero_500g') is-invalid @enderror"
                                                                             id="zero_500g" name="zero_500g"
                                                                             value="{{ old('zero_500g', $shippingCharge->zero_500g) }}"
-                                                                            placeholder="{{ __('translation.type_zero_500g') }} (0-500g)">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.zero_500g')]) }}">
                                                                         @error('zero_500g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -160,7 +157,7 @@
                                                                             class="form-control  @error('_501_1000g') is-invalid @enderror"
                                                                             id="_501_1000g" name="_501_1000g"
                                                                             value="{{ old('_501_1000g', $shippingCharge->_501_1000g) }}"
-                                                                            placeholder="{{ __('translation.type__501_1000g') }} (501-1000g)">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.501_1000g')]) }}">
                                                                         @error('_501_1000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -177,7 +174,7 @@
                                                                             class="form-control  @error('_1001_2000g') is-invalid @enderror"
                                                                             id="_1001_2000g" name="_1001_2000g"
                                                                             value="{{ old('_1001_2000g', $shippingCharge->_1001_2000g) }}"
-                                                                            placeholder="{{ __('translation.type__1001_2000g') }} (1001-2000g)">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.1001_2000g')]) }} ">
                                                                         @error('_1001_2000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -197,7 +194,7 @@
                                                                             class="form-control  @error('_2001_5000g') is-invalid @enderror"
                                                                             id="_2001_5000g" name="_2001_5000g"
                                                                             value="{{ old('_2001_5000g', $shippingCharge->_2001_5000g) }}"
-                                                                            placeholder="{{ __('translation.type__2001_5000g') }} (2001-5000g)">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.2001_5000g')]) }}">
                                                                         @error('_2001_5000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -214,7 +211,7 @@
                                                                             class="form-control  @error('above_5000g') is-invalid @enderror"
                                                                             id="above_5000g" name="above_5000g"
                                                                             value="{{ old('above_5000g', $shippingCharge->above_5000g) }}"
-                                                                            placeholder="{{ __('translation.type_above_5000g') }} {{ __('translation.above_5000g') }}">
+                                                                            placeholder="{{ __('translation.please_type', ['name' => __('translation.above_5000g')]) }}">
                                                                         @error('above_5000g')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
