@@ -48,7 +48,7 @@ class CmsPageController extends Controller
 
 
             CmsPage::create($data);
-            Session::flash('message', __('msgs.cms_page_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.cms_page')]));
             return redirect()->route('admin.cms-pages.index');
         }
     }
@@ -87,7 +87,8 @@ class CmsPageController extends Controller
         if ($request->isMethod('post')) {
             $data                   = $request->only(['title', 'description', 'meta_title', 'meta_description', 'meta_keywords']);
             $cmsPage->update($data);
-            Session::flash('message', __('msgs.cms_page_update'));
+
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.cms_page')]));
             return redirect()->route('admin.cms-pages.index');
         }
     }
@@ -102,7 +103,7 @@ class CmsPageController extends Controller
     {
         CmsPage::findOrFail($id)->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.cms_page_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.cms_page')]));
         return redirect()->route('admin.cms-pages.index');
     }
 

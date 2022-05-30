@@ -62,7 +62,7 @@ class CouponController extends Controller
 
 
             Coupon::create($data);
-            Session::flash('message', __('msgs.coupno_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.coupon')]));
             return redirect()->route('admin.coupons.index');
 
 
@@ -121,7 +121,7 @@ class CouponController extends Controller
                 $data['categories'] = implode(',', $data['categories'] ?? []);
 
             $coupon->update($data);
-            Session::flash('message', __('msgs.coupno_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.coupon')]));
             return redirect()->route('admin.coupons.index');
         }
     }
@@ -136,7 +136,7 @@ class CouponController extends Controller
     {
         $coupon->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.coupno_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.coupon')]));
         return redirect()->route('admin.coupons.index');
     }
 

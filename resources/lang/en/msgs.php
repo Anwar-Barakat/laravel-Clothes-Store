@@ -4,32 +4,18 @@ return [
     // *================================================
     // * Backend :
     // *================================================
-    'added'                         => ':name Has Added Successfully',
-    'updated'                       => ':name Has Updated Successfully',
-    'deleted'                       => ':name Has Deleted Successfully',
+    'added'                         => ':name Has Been Added Successfully',
+    'updated'                       => ':name Has Been Updated Successfully',
+    'deleted'                       => ':name Has Been Deleted Successfully',
     'is_existed'                    => ':name Is Already Exists',
+    'not_valid'                     => ':name Not Valid',
 
 
     'no_matching'                   => 'No matching records found',
     'browser_error'                 => 'Your browser does not support the video tag.',
     'are_your_sure'                 => 'Are you sure?',
     'yes_delete'                    => 'Yes, Delete !',
-    'order_status'                  => 'Order status Has Updated Successfully',
-    'shipping_charges_update'       => 'Shipping Charges Updated Successfully',
-    'cms_page_add'                  => 'CMS Page Has Added Successfuly',
-    'cms_page_update'               => 'CMS Page Has Updated Successfuly',
-    'cms_page_delete'               => 'CMS Page Has Deleted Succesfully',
-    'contact_us_add'                => 'The Message has added successfully',
-    'contact_us_delete'             => 'The Message has deleted successfully',
-    'admin_add'                     => 'Admin has added successfully',
-    'admin_update'                  => 'Admin has updated successfully',
-    'admin_delete'                  => 'Admin has Deleted successfully',
-    'currency_add'                  => 'Currency Has Added Successfully',
-    'currency_delete'               => 'Currency Has Deleted Successfully',
-    'currency_update'               => 'Currency Has updated Successfully',
-    'rating_delete'                 => 'Rating Has Deleted Successfully',
-    'return_order_status_update'    => 'Return order status has updated successfully',
-    'subscriber_delete'             => 'Subscriber Has Deleted Successfully',
+    'delete_all_attachs'            => 'Delete All Attachments',
 
 
 
@@ -54,9 +40,6 @@ return [
     'already_cofirm'                => 'The account is already activated !',
     'update_user_password'          => 'Password Has Updated Successfully !!',
     'update_user_details'           => 'Details Has Updated Successfully !!',
-    'coupno_add'                    => 'Coupon Has Added Successfuly',
-    'coupno_update'                 => 'Coupon Has Updated Successfuly',
-    'coupno_delete'                 => 'Coupon Has Deleted Successfuly',
     'logged_in_for_coupon'          => 'Please, Logged in to apply the Coupon',
     'coupon_code_not_valid'         => 'Coupon code is invalid !!',
     'coupon_code_not_active'        => 'Coupon code is not active !!',
@@ -83,12 +66,9 @@ return [
     'order_exchange'                => 'Order has been exchanged successfully',
     'order_cancel_invalid'          => 'Your order cancellation process is not valid !!',
     'order_return_invalid'          => 'Your order returning process is not valid !!',
-    'return_order_status_update'    => 'Your order status has been updated successfully',
-    'exchange_order_status_update'  => 'Your order status has been updated successfully',
     'order_return_exchange_invalid' => 'Your order returning or exchanging process is not valid !!',
     'thanks_for_subscription'       => 'Thanks for subscription',
     'send_link_to_reset_password'   => 'We are sending you a link to reset your password, Please check your email',
-    'password_update'               => 'Password has been updated successfully',
 
 
     // *================================================

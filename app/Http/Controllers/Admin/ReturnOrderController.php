@@ -100,8 +100,7 @@ class ReturnOrderController extends Controller
             Mail::send('admin.emails.return_order', $messageData, function ($message) use ($email, $returnStatus) {
                 $message->to($email)->subject("Return Order $returnStatus");
             });
-
-            Session::flash('message', __('msgs.return_order_status_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.return_order_status')]));
             return redirect()->route('admin.return.orders.index');
         }
     }

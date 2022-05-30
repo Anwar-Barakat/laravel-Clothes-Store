@@ -99,7 +99,7 @@ class ExchangeOrderController extends Controller
                 $message->to($email)->subject("Return Order $exchangeStatus");
             });
 
-            Session::flash('message', __('msgs.exchange_order_status_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.exchange_order_status')]));
             return redirect()->route('admin.exchange.orders.index');
         }
     }

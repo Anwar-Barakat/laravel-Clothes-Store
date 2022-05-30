@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', __('translation.newslatter_subscriber'))
+@section('title', __('translation.subscriber'))
 @section('css')
     <!-- Internal Data table css -->
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -15,7 +15,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">{{ __('translation.dashboard') }}</h4><span
-                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.newslatter_subscriber') }}</span>
+                    class="text-muted mt-1 tx-13 mr-2 mb-0">/ {{ __('translation.subscriber') }}</span>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mg-b-0">{{ __('translation.newslatter_subscriber') }}</h4>
+                        <h4 class="card-title mg-b-0">{{ __('translation.subscriber') }}</h4>
                         <a href="{{ route('admin.newslatter-subscribers.export') }}" class="button-30">
                             {{ __('buttons.export') }} &nbsp; <i class="far fa-file-excel"></i>
                         </a>

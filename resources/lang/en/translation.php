@@ -26,7 +26,8 @@ return [
     'settings'                  => 'Settings',
     'display_admins'            => 'Display admins',
     'return_orders'             => 'Return orders',
-    'newslatter_subscriber'     => 'Newslatter subscriber',
+    'subscriber'     => 'Subscriber',
+    'subscriber'                => 'Subscriber',
     'subscribed_on'             => 'Subscribed on',
     'logout'                    => 'Sign Out',
 
@@ -68,7 +69,7 @@ return [
     'email_address'             => 'E-Mail Address',
     'password'                  => 'Password',
     'remember_me'               => 'Remember Me',
-    'email_or_pass_not_valid'   => 'Email or Password Not Valid',
+    'email_pass'                => 'Email or Password',
     'forget_password'           => 'Forget password',
     'send_reset_password'       => 'Send reset password',
     'email_to_reset_pass'       => 'Type your email to reset password',
@@ -272,7 +273,11 @@ return [
     'title'                     => 'Title',
 
 
-    // Coupons :
+
+    // !================================================
+    // ! Coupons :
+    // !================================================
+    'coupon'                    => 'Coupon',
     'coupons'                   => 'Coupons',
     'code'                      => 'Code',
     'enter_code'                => 'Enter The Code',
@@ -312,7 +317,6 @@ return [
     'order_details'             => 'Order details',
     'order_date'                => 'Order date',
     'order_status'              => 'Order status',
-    'shipping_charges'          => 'Shipping charges',
     'coupon_code'               => 'Coupon code',
     'coupon_amount'             => 'Coupon amount',
     'view_details'              => 'View details',
@@ -371,7 +375,6 @@ return [
     'total'                     => 'Total',
     'notice'                    => 'NOTICE',
     'thank_you'                 => 'Thank you',
-    'shipping_charges'          => 'Shipping charges',
     'cause'                     => 'cause',
     'return_reason'             => 'Return reason',
     'exchange_reason'           => 'Exchange reason',
@@ -381,7 +384,8 @@ return [
     'exchange_comment'          => 'Exchange comment',
     'exchange_orders'           => 'Exchange orders',
     'required_size'             => 'Required size',
-
+    'return_order_status'       => 'Return Order Status',
+    'exchange_order_status'     => 'Exchange Order Status',
 
 
 
@@ -399,7 +403,11 @@ return [
     'required smaller size'                     => 'required smaller size',
 
 
-    // Shipping Charges :
+
+    // !================================================
+    // ! Shipping Charges :
+    // !================================================
+    'shipping_charges'          => 'Shipping charges',
     'updated_at'                => 'Update At',
     'type_shipping_charges'     => 'Type shipping charges',
     'above_5000g'               => 'Above 5000g',
@@ -410,6 +418,7 @@ return [
     // !================================================
     // ! CMS Pages :
     // !================================================
+    'cms_page'                  => 'CMS Page',
     'cms_pages'                 => 'CMS Pages',
     'add_new_cms_page'          => 'Add new cms page',
     'edit_cms_page'             => 'Edit cms page',
@@ -429,12 +438,14 @@ return [
     'display_details'           => 'display details',
     'message_details'           => 'Message details',
     'comment'                   => 'Message',
+    'message'                   => 'Message',
 
 
 
     // !================================================
     // ! Currencies Page :
     // !================================================
+    'currency'                  => 'Currency',
     'currencies'                => 'Currencies',
     'rate'                      => 'Rate',
     'add_new_currency'          => 'add new currency',
@@ -449,6 +460,7 @@ return [
     // !================================================
     // ! Ratings Page :
     // !================================================
+    'rating'                    => 'Rating',
     'products_evaluations'      => 'Products evaluations',
     'ratings'                   => 'Ratings',
     'display_rating'            => 'Display rating',

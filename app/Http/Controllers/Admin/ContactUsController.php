@@ -85,7 +85,7 @@ class ContactUsController extends Controller
     {
         ContactUs::findOrFail($id)->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.message_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.message')]));
         return redirect()->route('admin.contact-us.index');
     }
 

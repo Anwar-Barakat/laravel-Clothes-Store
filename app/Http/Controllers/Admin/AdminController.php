@@ -39,7 +39,7 @@ class AdminController extends Controller
                 $admin->addMediaFromRequest('avatar')->toMediaCollection('avatars');
             }
 
-            Session::flash('message', __('msgs.admin_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.admin')]));
             return redirect()->route('admin.admins.index');
         }
     }
@@ -58,7 +58,7 @@ class AdminController extends Controller
                 $admin->clearMediaCollection('avatars');
                 $admin->addMediaFromRequest('image')->toMediaCollection('avatars');
             }
-            Session::flash('message', __('msgs.admin_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.admin')]));
             return redirect()->route('admin.admins.index');
         }
     }
@@ -69,7 +69,8 @@ class AdminController extends Controller
         $admin->delete();
         Media::where(['model_id' => $admin->id, 'collection_name' => 'avatars'])->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.admin_delete'));
+
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.admin')]));
         return redirect()->route('admin.admins.index');
     }
 
@@ -112,7 +113,8 @@ class AdminController extends Controller
                 return redirect()->route('admin.dashboard');
             } else {
                 Session::flash('alert-type', 'error');
-                Session::flash('message', __('translation.email_or_pass_not_valid'));
+
+                Session::flash('message', __('msgs.not_valid', ['name' => __('translation.email_pass')]));
                 return redirect()->route('admin.login');
             }
         }
@@ -171,7 +173,7 @@ class AdminController extends Controller
 
         if (!$check_token) {
             Session::flash('alert-type', 'error');
-            Session::flash('message', __('msgs.email_not_valid'));
+            Session::flash('message', __('msgs.not_valid', ['name' => __('translation.email_address')]));
             return redirect()->back();
         } else {
             DB::table('password_resets')->where('email', $request->email)->delete();
@@ -179,7 +181,7 @@ class AdminController extends Controller
                 'password'  => bcrypt($request->password)
             ]);
 
-            Session::flash('message', __('msgs.password_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.password')]));
             return redirect()->route('admin.login');
         }
     }

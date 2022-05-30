@@ -43,6 +43,7 @@ class CurrencyController extends Controller
         if ($request->isMethod('post')) {
             $data   = $request->only(['code', 'rate', 'status']);
             Currency::create($data);
+            Session::flash('message', __('msgs.added', ['name' => __('translation.currency')]));
             Session::flash('message', __('msgs.currency_add'));
             return redirect()->back();
         }
@@ -82,7 +83,7 @@ class CurrencyController extends Controller
         if ($request->isMethod('post')) {
             $data   = $request->only(['code', 'rate', 'status']);
             $currency->update($data);
-            Session::flash('message', __('msgs.currency_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.currency')]));
             return redirect()->back();
         }
     }
@@ -98,7 +99,7 @@ class CurrencyController extends Controller
         $currency = Currency::findOrFail($id);
         $currency->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.currency_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.currency')]));
         return redirect()->route('admin.currencies.index');
     }
 

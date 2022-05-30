@@ -90,7 +90,7 @@ class NewslatterSubscriberController extends Controller
         $subscriber = NewslatterSubsciber::findOrFail($id);
         $subscriber->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.subscriber_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.subscriber')]));
         return redirect()->route('admin.newslatter-subscribers.index');
     }
 
@@ -112,7 +112,8 @@ class NewslatterSubscriberController extends Controller
         }
     }
 
-    public function export(){
-        return Excel::download(new SubscrivberExport,'subscribers.xlsx');
+    public function export()
+    {
+        return Excel::download(new SubscrivberExport, 'subscribers.xlsx');
     }
 }

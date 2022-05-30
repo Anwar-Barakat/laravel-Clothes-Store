@@ -262,7 +262,7 @@
             <li class="slide">
                 <a class="side-menu__item" href="{{ route('admin.newslatter-subscribers.index') }}">
                     <i class="fas fa-check icon_sidebar side-menu__icon" aria-hidden="true"></i>
-                    <span class="side-menu__label">{{ __('translation.newslatter_subscriber') }}</span>
+                    <span class="side-menu__label">{{ __('translation.subscriber') }}</span>
                 </a>
             </li>
 

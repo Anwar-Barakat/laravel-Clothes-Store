@@ -88,7 +88,7 @@ class RatingController extends Controller
         $rating = Rating::findOrFail($id);
         $rating->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.coupno_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.rating')]));
         return redirect()->route('admin.ratings.index');
     }
 

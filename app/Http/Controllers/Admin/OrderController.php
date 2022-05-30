@@ -102,8 +102,6 @@ class OrderController extends Controller
             }
 
 
-
-
             $orderDetails           = Order::with(['orderProduct', 'user'])->where('id', $data['order_id'])->first();
             $email                  = $orderDetails->user->email;
             $messageData = [
@@ -125,7 +123,7 @@ class OrderController extends Controller
             ]);
 
 
-            Session::flash('message', __('msgs.order_status'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.order_status')]));
             return redirect()->back();
         }
     }
