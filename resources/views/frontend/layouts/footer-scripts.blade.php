@@ -137,7 +137,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             },
             success: function(response) {
                 if (response == 'exists')
-                    toastr.info("{{ __('msgs.email_already_exists') }}");
+                    toastr.info("{{  __('msgs.is_existed', ['name' => __('frontend.email_address')]) }}");
 
                 else if (response == 'true')
                     toastr.success("{{ __('msgs.thanks_for_subscription') }}");
@@ -151,7 +151,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     function validateEmail(emailaddress) {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         if (!emailReg.test(emailaddress)) {
-            toastr.info("{{ __('msgs.email_not_valid') }}");
+            toastr.info("{{ __('msgs.not_valid', ['name' => __('translation.email_address')]) }}");
         }
     }
 </script>

@@ -54,7 +54,7 @@ class CartController extends Controller
         $getProductStock = ProductAttribute::where(['product_id' => $data['product_id'], 'size'  => $data['size']])->first();
         if ($getProductStock->stock < $data['product-quatity']) {
             Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.quant_is_anavailable'));
+            Session::flash('message', __('msgs.not_available', ['name' => __('translation.quantity')]));
             return redirect()->back();
         }
 
@@ -84,7 +84,7 @@ class CartController extends Controller
 
         if ($productCount > 0) {
             Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.product_already_exists'));
+            Session::flash('message', __('msgs.is_existed', ['name' => __('translation.product')]));
             return redirect()->back();
         }
 
@@ -106,7 +106,7 @@ class CartController extends Controller
             'quantity'      => $data['product-quatity']
         ]);
 
-        Session::flash('message', __('msgs.product_added_to_cart'));
+        Session::flash('message', __('msgs.added', ['name' => __('translation.product')]));
         return redirect()->back();
     }
 

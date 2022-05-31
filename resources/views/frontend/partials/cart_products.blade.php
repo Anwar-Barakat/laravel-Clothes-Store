@@ -209,7 +209,7 @@
                 },
                 success: function(response) {
                     if (response.status == false)
-                        toastr.info("{{ __('msgs.amount_not_available') }}");
+                        toastr.info("{{ __('msgs.not_available', ['name' => __('translation.amount')]) }}");
                     $('#totalProducts').html(response['totalCartProducts']);
                     $('#AppendCartProducts').html(response['view']);
                 },
@@ -232,7 +232,8 @@
                 },
                 success: function(response) {
                     if (response.status == true) {
-                        toastr.info("{{ __('msgs.cart_product_delete') }}");
+                        toastr.info(
+                        "{{ __('msgs.deleted', ['name' => __('translation.product')]) }}");
                     }
                 }
             });

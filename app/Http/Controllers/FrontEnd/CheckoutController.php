@@ -56,7 +56,6 @@ class CheckoutController extends Controller
 
         if ($totalPrice < $setting->min_cart_value) {
             Session::flash('alert-type', 'info');
-
             Session::flash('message', __('msgs.min_cart_amount', ['min' => $setting->min_cart_value]));
             return redirect()->route('frontend.cart');
         }
@@ -118,7 +117,7 @@ class CheckoutController extends Controller
                     Product::deleteCartProduct($item->product_id);
 
                     Session::flash('alert-type', 'info');
-                    Session::flash('message',  __($item->name . 'msgs.remove_product_from_cart'));
+                    Session::flash('message', __('msgs.deleted', ['name' => $item->name]));
                     return redirect()->route('frontend.cart');
                 }
             }
@@ -210,8 +209,7 @@ class CheckoutController extends Controller
                 return "prepaid coming soon!!";
             }
 
-
-            Session::flash('message', __('msgs.order_place_add'));
+            Session::flash('message', __('msgs.placed', ['name' => __('frontend.order')]));
             return redirect()->route('frontend.cart');
         }
     }

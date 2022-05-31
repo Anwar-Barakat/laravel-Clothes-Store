@@ -30,7 +30,7 @@ class UserAccountController extends Controller
         if ($request->isMethod('post')) {
             $data   = $request->only(['name', 'country_id', 'city', 'state', 'mobile', 'address', 'pincode']);
             User::where('id', Auth::user()->id)->update($data);
-            Session::flash('message', __('msgs.update_user_details'));
+            Session::flash('message', __('msgs.updated', ['name' => __('frontend.detail')]));
             return redirect()->back();
         }
     }
@@ -43,7 +43,7 @@ class UserAccountController extends Controller
                 User::where('id', Auth::user()->id)->update([
                     'password'  => bcrypt($data['password']),
                 ]);
-                Session::flash('message', __('msgs.update_admin_password'));
+                Session::flash('message', __('msgs.updated', ['name' => __('translation.password')]));
             } else {
                 Session::flash('alert-type', 'error');
                 Session::flash('message', __('translation.currnet_pwd_false'));

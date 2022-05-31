@@ -49,7 +49,7 @@ class ContactUsController extends Controller
 
 
             ContactUs::create($data);
-            Session::flash('message', __('msgs.contact_us_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('translation.message')]));
             return redirect()->back();
         }
     }

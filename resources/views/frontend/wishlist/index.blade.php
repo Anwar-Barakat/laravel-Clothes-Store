@@ -108,7 +108,7 @@
                     if (response.status == true) {
                         $('.wishlistItemsCount').html(response.wishlistItemsCount + items);
                         $(`tr#wishlist-${wishlist_id}`).remove();
-                        toastr.info("{{ __('msgs.admin_add') }}");
+                        toastr.info("{{ __('msgs.deleted', ['name' => __('translation.product')]) }}");
                     }
                 },
                 error: function() {

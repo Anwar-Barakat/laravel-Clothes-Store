@@ -171,22 +171,22 @@
                     },
                     success: function(response) {
                         if (response.status == 'not valid')
-                            toastr.info("{{ __('msgs.coupon_code_not_valid') }}");
+                            toastr.info("{{ __('msgs.not_valid', ['name' => __('translation.coupon')]) }}");
 
                         if (response.status == 'not active')
-                            toastr.info("{{ __('msgs.coupon_code_not_active') }}");
+                            toastr.info("{{ __('msgs.not_active', ['name' => __('translation.coupon')]) }}");
 
                         if (response.status == 'is expire')
-                            toastr.info("{{ __('msgs.coupon_code_is_expire') }}");
+                            toastr.info("{{ __('msgs.is_expired', ['name' => __('translation.coupon')])  }}");
 
                         if (response.status == 'cat not found here')
-                            toastr.info("{{ __('msgs.cat_not_found_here') }}");
+                            toastr.info("{{ __('msgs.coupon_error_1') }}");
 
                         if (response.status == 'user not found here')
-                            toastr.info("{{ __('msgs.user_not_found_here') }}");
+                            toastr.info("{{ __('msgs.coupon_error_2') }}");
 
                         if (response.status == 'code already availated')
-                            toastr.info("{{ __('msgs.code_already_availated') }}");
+                            toastr.info("{{ __('msgs.coupon_error_3') }}");
 
                         if (response.status == true) {
                             $('#totalProducts').html(response['totalCartProducts']);

@@ -651,7 +651,7 @@
                         toastr.info("{{ __('msgs.login_to_add_wishlist') }}");
 
                     else if (response == 'product-already-exists-in-wishlist')
-                        toastr.info("{{ __('msgs.exists_in_wishlist') }}");
+                        toastr.info("{{ __('msgs.is_existed', ['name' => __('frontend.product')]) }}");
 
                     else {
                         if (response.action == 'add') {

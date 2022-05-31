@@ -184,26 +184,6 @@
 </div>
 
 @section('js')
-    {{-- Delete The Product from shopping cart --}}
-    <script>
-        $(document).on('click', '.btnProductDelete', function() {
-            var cartId = $(this).attr('cartId');
-            $.ajax({
-                type: "post",
-                url: "delete-cart-product",
-                data: {
-                    cartId: cartId
-                },
-                success: function(response) {
-                    if (response.status == true) {
-                        toastr.info("{{ __('msgs.cart_product_delete') }}");
-                    }
-                }
-            });
-        });
-    </script>
-
-
     {{-- Calculate shipping charges and update grand amount --}}
     <script>
         $('input[name=address_id]').bind('change', function() {

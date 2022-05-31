@@ -51,11 +51,11 @@ class RatingController extends Controller
             $ratingCount            = Rating::where(['user_id' => Auth::user()->id, 'product_id' => $data['product_id']])->count();
             if ($ratingCount > 0) {
                 Session::flash('alert-type', 'info');
-                Session::flash('message', __('msgs.review_already_exists'));
+                Session::flash('message', __('msgs.is_existed', ['name' => __('frontend.review')]));
             } else {
                 $data['user_id']    = Auth::user()->id;
                 Rating::create($data);
-                Session::flash('message', __('msgs.rating_add'));
+                Session::flash('message', __('msgs.added', ['name' => __('frontend.your_rating')]));
             }
             return redirect()->back();
         }

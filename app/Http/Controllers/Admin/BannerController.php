@@ -126,7 +126,7 @@ class BannerController extends Controller
         Banner::findOrFail($id)->delete();
         Media::where(['model_id' => $id, 'collection_name' => 'banners'])->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.banner_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('translation.banner')]));
         return redirect()->route('admin.banners.index');
     }
 

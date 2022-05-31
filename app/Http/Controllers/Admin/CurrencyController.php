@@ -44,7 +44,6 @@ class CurrencyController extends Controller
             $data   = $request->only(['code', 'rate', 'status']);
             Currency::create($data);
             Session::flash('message', __('msgs.added', ['name' => __('translation.currency')]));
-            Session::flash('message', __('msgs.currency_add'));
             return redirect()->back();
         }
     }

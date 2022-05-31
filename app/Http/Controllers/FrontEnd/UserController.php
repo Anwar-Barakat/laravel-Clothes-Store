@@ -56,7 +56,7 @@ class UserController extends Controller
             $userCount  = User::where('email', $data['email'])->count();
             if ($userCount > 0) {
                 Session::flash('alert-type', 'info');
-                Session::flash('message', __('msgs.email_already_exists'));
+                Session::flash('message',  __('msgs.is_existed', ['name' => __('frontend.email_address')]));
                 return redirect()->back();
             } else {
                 User::create($data);
@@ -154,7 +154,7 @@ class UserController extends Controller
                 }
             } else {
                 Session::flash('alert-type', 'info');
-                Session::flash('message', __('msgs.email_or_pass_not_valid'));
+                Session::flash('message',  __('msgs.not_valid', ['name' => __('msgs.email_or_password')]));
                 return redirect()->back();
             }
         }
@@ -254,7 +254,7 @@ class UserController extends Controller
 
         if (!$check_token) {
             Session::flash('alert-type', 'error');
-            Session::flash('message', __('msgs.email_not_valid'));
+            Session::flash('message', __('msgs.not_valid', ['name' => __('translation.email_address')]));
             return redirect()->back();
         } else {
             DB::table('password_resets')->where('email', $request->email)->delete();
@@ -262,7 +262,7 @@ class UserController extends Controller
                 'password'  => bcrypt($request->password)
             ]);
 
-            Session::flash('message', __('msgs.password_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('translation.password')]));
             return redirect()->route('frontend.form.login');
         }
     }

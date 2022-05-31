@@ -43,7 +43,7 @@ class DeliveryAddressController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->only(['user_id', 'name', 'mobile', 'address', 'city', 'state', 'country_id', 'pincode', 'status',]);
             DeliveryAddress::create($data);
-            Session::flash('message', __('msgs.delivery_address_add'));
+            Session::flash('message', __('msgs.added', ['name' => __('frontend.delivery_address')]));
             return redirect()->route('frontend.cart');
         }
     }
@@ -82,7 +82,7 @@ class DeliveryAddressController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->only(['user_id', 'name', 'mobile', 'address', 'city', 'state', 'country_id', 'pincode', 'status',]);
             $deliveryAddress->update($data);
-            Session::flash('message', __('msgs.delivery_address_update'));
+            Session::flash('message', __('msgs.updated', ['name' => __('frontend.delivery_address')]));
             return redirect()->route('frontend.cart');
         }
     }
@@ -98,7 +98,7 @@ class DeliveryAddressController extends Controller
         $deliveryAddress = DeliveryAddress::findOrFail($id);
         $deliveryAddress->delete();
         Session::flash('alert-type', 'info');
-        Session::flash('message', __('msgs.delivery_address_delete'));
+        Session::flash('message', __('msgs.deleted', ['name' => __('frontend.delivery_address')]));
         return redirect()->route('frontend.cart');
     }
 }
