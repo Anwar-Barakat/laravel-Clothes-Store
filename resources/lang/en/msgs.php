@@ -9,6 +9,7 @@ return [
     'deleted'                       => ':name Has Been Deleted Successfully',
     'is_existed'                    => ':name Is Already Exists',
     'not_valid'                     => ':name Not Valid',
+    'not_available'                 => ':name Not Avaliable',
 
 
     'no_matching'                   => 'No matching records found',
@@ -22,7 +23,7 @@ return [
     // *================================================
     // * FrontEnd :
     // *================================================
-    'copy_right'                    => 'Copyright © 2022 Anwar Store. All rights reserved',
+    'copy_right'                    => 'Copyright © 2022 An. All rights reserved',
     'no_products_yet'               => 'No Products Yet !!',
     'quant_is_anavailable'          => 'Required quantity is not available',
     'product_added_to_cart'         => 'Products has added to Cart Successfully!!',

@@ -42,7 +42,7 @@
                                             <label for="name">{{ __('frontend.name') }}<span>*</span></label>
                                             <input type="text" class="form-control  @error('name') is-invalid @enderror"
                                                 id="name" name="name" value="{{ old('name') }}"
-                                                placeholder="{{ __('frontend.type_name') }}">
+                                                placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}">
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                                             <label for="email">{{ __('frontend.email_address') }}<span>*</span></label>
                                             <input type="text" class="form-control  @error('email') is-invalid @enderror"
                                                 id="email" name="email" value="{{ old('email') }}"
-                                                placeholder="{{ __('frontend.type_email') }}">
+                                                placeholder="{{ __('translation.please_type', ['name' => __('translation.email_address')]) }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -64,7 +64,7 @@
                                             <label for="phone">{{ __('frontend.mobile') }}</label>
                                             <input type="text" class="form-control  @error('phone') is-invalid @enderror"
                                                 id="phone" name="phone" value="{{ old('phone') }}"
-                                                placeholder="{{ __('frontend.type_phone') }}">
+                                                placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}">
                                             @error('phone')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
                                         <div class="form-group">
                                             <label for="comment">{{ __('frontend.mobile') }}</label>
                                             <textarea type="text" class="form-control  @error('comment') is-invalid @enderror" id="comment" name="comment"
-                                                placeholder="{{ __('frontend.type_comment') }}">{{ old('comment') }}</textarea>
+                                                placeholder="{{ __('translation.please_type', ['name' => __('translation.comment')]) }}">{{ old('comment') }}</textarea>
                                             @error('comment')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

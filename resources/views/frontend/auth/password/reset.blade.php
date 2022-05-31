@@ -77,8 +77,8 @@
             },
             messages: {
                 email: {
-                    required: "{{ __('msgs.email_not_valid') }} ",
-                    email: "{{ __('msgs.valid_email') }} ",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.email_address')]) }} ",
+                    email: "{{ __('msgs.not_valid', ['name' => __('translation.email')]) }} ",
                 },
             }
         });

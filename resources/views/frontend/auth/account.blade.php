@@ -46,7 +46,7 @@
                                                         title="{{ __('frontend.name') }}"
                                                         class="@error('name') is-invalid @enderror"
                                                         value="{{ old('name', Auth::user()->name) }}" autocomplete="name"
-                                                        autofocus placeholder="{{ __('frontend.type_your_name') }}"
+                                                        autofocus placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}"
                                                         pattern="[A-Za-z]+">
                                                     @error('name')
                                                         <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                                                         class=" @error('pincode') is-invalid @enderror"
                                                         value="{{ old('pincode', Auth::user()->pincode) }}"
                                                         autocomplete="pincode" autofocus
-                                                        placeholder="{{ __('frontend.type_your_pincode') }}">
+                                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.pincode')]) }}">
                                                     @error('pincode')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -81,7 +81,7 @@
                                                         class=" @error('mobile') is-invalid @enderror"
                                                         value="{{ old('mobile', Auth::user()->mobile) }}"
                                                         autocomplete="mobile" autofocus
-                                                        placeholder="{{ __('frontend.type_your_mobile') }}">
+                                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}">
                                                     @error('mobile')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -99,7 +99,7 @@
                                                         class="@error('address') is-invalid @enderror"
                                                         value="{{ old('address', Auth::user()->address) }}"
                                                         autocomplete="address"
-                                                        placeholder="{{ __('frontend.type_your_address') }}">
+                                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.address')]) }}">
                                                     @error('address')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -114,7 +114,7 @@
                                                         title="{{ __('frontend.city') }}"
                                                         class=" @error('city') is-invalid @enderror"
                                                         value="{{ old('city', Auth::user()->city) }}" autocomplete="city"
-                                                        autofocus placeholder="{{ __('frontend.type_your_city') }}">
+                                                        autofocus placeholder="{{ __('translation.please_type', ['name' => __('translation.city')]) }}">
                                                     @error('city')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -132,7 +132,7 @@
                                                         class="@error('state') is-invalid @enderror"
                                                         value="{{ old('state', Auth::user()->state) }}"
                                                         autocomplete="state"
-                                                        placeholder="{{ __('frontend.type_your_state') }}">
+                                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.state')]) }}">
                                                     @error('state')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -274,12 +274,12 @@
                 },
             },
             messages: {
-                name: "{{ __('msgs.enter_your_name') }}",
+                name: "{{ __('translation.please_type', ['name' => __('translation.name')]) }}",
                 mobile: {
-                    required: "{{ __('msgs.enter_your_mobile') }}",
+                    required: "{{ __('msgs.updated', ['name' => __('translation.mobile')]) }}",
                     minlength: "{{ __('msgs.min_mobile') }}",
                     maxlength: "{{ __('msgs.max_mobile') }}",
-                    digits: "{{ __('msgs.mobile_not_valid') }}",
+                    digits: "{{ __('msgs.not_valid', ['name' => __('translation.mobile')]) }}",
                 },
             }
         });
@@ -299,12 +299,12 @@
             },
             messages: {
                 password: {
-                    required: "{{ __('msgs.enter_new_password') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password')]) }}",
                     minlength: "{{ __('msgs.min_password') }}",
                     maxlength: "{{ __('msgs.max_password') }}",
                 },
                 password_confirmation: {
-                    required: "{{ __('msgs.enter_your_conf__pass') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password_confirmation')]) }}",
                     minlength: "{{ __('msgs.min_password') }}",
                     maxlength: "{{ __('msgs.max_password') }}",
                     equalTo: "{{ __('msgs.confirm_pass') }}"

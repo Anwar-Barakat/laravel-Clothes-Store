@@ -31,7 +31,7 @@
                                     <label for="name">{{ __('frontend.name') }}</label>
                                     <input id="name" class="@error('name') is-invalid @enderror" type="text" name="name"
                                         value="{{ old('name', $deliveryAddress->name) }}"
-                                        placeholder="{{ __('frontend.type_your_name') }}"
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}"
                                         title="{{ __('frontend.name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                         class="@error('mobile') is-invalid @enderror"
                                         value="{{ old('mobile', $deliveryAddress->mobile) }}"
                                         title="{{ __('frontend.mobile') }}"
-                                        placeholder="{{ __('msgs.enter_your_mobile') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}">
                                     @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                                         value="{{ old('address', $deliveryAddress->address) }}"
                                         class="@error('address') is-invalid @enderror"
                                         title="{{ __('frontend.address') }}"
-                                        placeholder="{{ __('frontend.type_your_address') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.address')])}}">
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -72,7 +72,7 @@
                                     <input id="city" type="text" name="city"
                                         value="{{ old('city', $deliveryAddress->city) }}"
                                         class="@error('city') is-invalid @enderror" title="{{ __('frontend.city') }}"
-                                        placeholder="{{ __('frontend.type_your_city') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.city')]) }}">
                                     @error('city')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -86,7 +86,7 @@
                                     <input id="state" type="text" name="state"
                                         value="{{ old('state', $deliveryAddress->state) }}"
                                         class="@error('state') is-invalid @enderror" title="{{ __('frontend.state') }}"
-                                        placeholder="{{ __('frontend.type_your_state') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.state')]) }}">
                                     @error('state')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -116,7 +116,7 @@
                                         value="{{ old('pincode', $deliveryAddress->pincode) }}"
                                         class="@error('pincode') is-invalid @enderror"
                                         title="{{ __('frontend.pincode') }}"
-                                        placeholder="{{ __('frontend.type_your_pincode') }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.pincode')]) }}">
                                     @error('pincode')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

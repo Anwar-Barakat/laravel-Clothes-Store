@@ -116,15 +116,15 @@
             },
             messages: {
                 email: {
-                    required: "{{ __('msgs.email_not_valid') }} ",
-                    email: "{{ __('msgs.valid_email') }} ",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.email_address')]) }} ",
+                    email: "{{ __('msgs.not_valid', ['name' => __('translation.email_address')]) }} ",
                 },
                 password: {
-                    required: "{{ __('msgs.enter_your_password') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password')]) }}",
                     minlength: "{{ __('msgs.min_password') }}"
                 },
                 password_confirmation: {
-                    required: "{{ __('msgs.enter_your_conf__pass') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password_confirmation')]) }}",
                     minlength: "{{ __('msgs.min_password') }}",
                     equalTo: "{{ __('msgs.confirm_pass') }}"
                 },

@@ -9,7 +9,6 @@ return [
     'laguages'                  => 'Languages',
     'login'                     => 'Login',
     'register'                  => 'Register',
-    'phone'                     => 'Phone : 00112233-001',
     'currency'                  => 'Curruncies',
     'search'                    => 'Search Here...',
     'all_categories'            => 'All Categories',
@@ -58,8 +57,6 @@ return [
     // !================================================
     // ! Shop Page :
     // !================================================
-    'digitals'                  => 'Digitals',
-    'electronic'                => 'Electronics',
     'brands'                    => 'Brands',
     'price'                     => 'Price',
     'unit_price'                => 'Unit price',
@@ -78,36 +75,34 @@ return [
     'name_z_a_sort'             => 'Sort by name: Z to A',
     'price_asc_sort'            => 'Sort by price: low to high',
     'price_desc_sort'           => 'Sort by price: high to low',
-
     'fabric'                    => 'Fabric',
     'cotton'                    => 'Cotton',
     'polyester'                 => 'Polyester',
     'wool'                      => 'wool',
-
     'sleeve'                    => 'Seleeve',
     'full_sleeve'               => 'Full Sleeve',
     'half_sleeve'               => 'Half Sleeve',
     'short_sleeve'              => 'Short Sleeve',
     'sleeveless'                => 'SleeveLess',
-
     'pattern'                   => 'Pattern',
     'checked'                   => 'Checked',
     'plain'                     => 'Plain',
     'printed'                   => 'Printed',
     'self'                      => 'Self',
     'solid'                     => 'Solid',
-
     'fit'                       => 'Fit',
     'regular'                   => 'Regular',
     'slim'                      => 'Slim',
-
     'occasion'                  => 'Occasion',
     'casual'                    => 'Casual',
     'formal'                    => 'Formal',
     'filters'                   => 'Filters',
 
 
-    // Cart :
+
+    // !================================================
+    // ! Cart Page :
+    // !================================================
     'products_name'             => 'Products Name',
     'order_summary'             => 'Order Summery',
     'subtotal'                  => 'SubTotal',
@@ -171,17 +166,14 @@ return [
     // Login/Register :
     'login_into_account'        => 'Log in to your account',
     'email_address'             => 'Email Address',
-    'type_your_email'           => 'Type your email address',
     'password'                  => 'Password',
     'remember_me'               => 'remember_me',
     'forgotten_password'        => 'Forgotten password',
     'register'                  => 'Register',
     'create_new_account'        => 'Create New Account',
-    'type_your_name'            => 'Type your name',
     'have_an_account'           => 'Have an account',
     'confirm_password'          => 'Confirmation Password',
     'mobile'                    => 'Mobile',
-    'type_your_mobile'          => 'Type your mobile',
     'forget_password'           => 'Forget password',
     'send_reset_password'       => 'Send reset password',
     'email_to_reset_pass'       => 'Type your email to reset password',
@@ -200,16 +192,13 @@ return [
     'update_info'               => 'Update account detail',
     'update_account_password'   => 'Update account password',
     'address'                   => 'Address',
-    'type_your_address'         => 'Type your address',
     'city'                      => 'City',
     'country'                   => 'Country',
     'state'                     => 'State',
     'pincode'                   => 'Pincode',
-    'type_your_pincode'         => 'Type your pincode',
     'current_password'          => 'Current password',
     'rtpe_current_password'     => 'Type current password',
     'new_password'              => 'New Password',
-    'type_new_password'         => 'Type new password',
     'choose_country'            => 'Choose Country',
     'choose'                    => 'Choose..',
 

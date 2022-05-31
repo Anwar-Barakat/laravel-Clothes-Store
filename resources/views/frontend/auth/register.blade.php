@@ -34,7 +34,7 @@
                                                         title="{{ __('frontend.name') }}"
                                                         class="@error('name') is-invalid @enderror"
                                                         value="{{ old('name') }}" autocomplete="name" autofocus
-                                                        placeholder="{{ __('frontend.type_your_name') }}">
+                                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.name')]) }}">
                                                     @error('name')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
                                                         title="{{ __('frontend.mobile') }}"
                                                         class=" @error('mobile') is-invalid @enderror"
                                                         value="{{ old('mobile') }}" autocomplete="mobile" autofocus
-                                                        placeholder="{{ __('frontend.type_your_mobile') }}">
+                                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}">
                                                     @error('mobile')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -63,7 +63,8 @@
                                             <input type="email" id="email" name="email"
                                                 title="{{ __('frontend.email_address') }}"
                                                 class="@error('email') is-invalid @enderror" value="{{ old('email') }}"
-                                                autocomplete="email" placeholder="{{ __('frontend.type_your_email') }}">
+                                                autocomplete="email"
+                                                placeholder="{{ __('translation.please_type', ['name' => __('translation.email_address')]) }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -148,24 +149,24 @@
                 },
             },
             messages: {
-                name: "{{ __('msgs.enter_your_name') }}",
+                name: "{{ __('translation.please_type', ['name' => __('translation.name')]) }}",
                 mobile: {
-                    required: "{{ __('msgs.enter_your_mobile') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}",
                     minlength: "{{ __('msgs.min_mobile') }}",
                     maxlength: "{{ __('msgs.max_mobile') }}",
                     digits: "{{ __('msgs.mobile_not_valid') }}",
                 },
                 email: {
-                    required: "{{ __('msgs.email_not_valid') }} ",
-                    email: "{{ __('msgs.valid_email') }} ",
-                    remote: "{{ __('msgs.email_already_exists') }} ",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.email_address')]) }} ",
+                    email: "{{ __('msgs.not_valid', ['name' => __('translation.email_address')]) }} ",
+                    remote: "{{ __('msgs.is_existed', ['name' => __('translation.email_address')]) }} ",
                 },
                 password: {
-                    required: "{{ __('msgs.enter_your_password') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password')]) }}",
                     minlength: "{{ __('msgs.min_password') }}"
                 },
                 password_confirmation: {
-                    required: "{{ __('msgs.enter_your_conf__pass') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password_confirmation')]) }}",
                     minlength: "{{ __('msgs.min_password') }}",
                     equalTo: "{{ __('msgs.confirm_pass') }}"
                 },

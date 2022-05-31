@@ -34,7 +34,7 @@
                                                 title="{{ __('frontend.email_address') }}"
                                                 class="@error('email') is-invalid @enderror" value="{{ old('email') }}"
                                                 required autocomplete="email" autofocus
-                                                placeholder="{{ __('frontend.type_your_email') }}">
+                                                placeholder="{{ __('translation.please_type', ['name' => __('translation.email_address')]) }}">
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -59,7 +59,8 @@
                                                     value="forever" {{ old('remember') ? 'checked' : '' }}
                                                     type="checkbox"><span>{{ __('frontend.remember_me') }}</span>
                                             </label>
-                                            <a class="link-function left-position" href="{{ route('frontend.forget.password.form') }}"
+                                            <a class="link-function left-position"
+                                                href="{{ route('frontend.forget.password.form') }}"
                                                 title="{{ __('frontend.forgotten_password') }}?">{{ __('frontend.forgotten_password') }}?</a>
                                         </fieldset>
                                         <input type="submit" class="button-30" role="button"
@@ -96,11 +97,11 @@
             },
             messages: {
                 email: {
-                    required: "{{ __('msgs.email_not_valid') }} ",
-                    email: "{{ __('msgs.valid_email') }} ",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.email_address')]) }} ",
+                    email: "{{ __('msgs.not_valid', ['name' => __('translation.email_address')]) }} ",
                 },
                 password: {
-                    required: "{{ __('msgs.enter_your_password') }}",
+                    required: "{{ __('translation.please_type', ['name' => __('translation.password')]) }}",
                     minlength: "{{ __('msgs.min_password') }}"
                 },
             }
