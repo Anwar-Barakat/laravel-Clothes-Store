@@ -273,6 +273,7 @@ return [
     'add_cancelling_cause'      => 'Adding cancelling cause',
     'cause'                     => 'Cause',
     'return_order'              => 'Return order',
+    'exchange_order'            => 'Exchange order',
     'exchange'                  => 'Exhange',
     'return'                    => 'Return',
     'order'                     => 'order',

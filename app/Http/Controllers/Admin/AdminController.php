@@ -142,7 +142,7 @@ class AdminController extends Controller
             'email'         => $request->email,
             'token'         => $token
         ]);
-        $body       = "you can reset the password by clicking the link below";
+        $body       = __('emails.reset_password_below');
 
         Mail::send('frontend.emails.email_forget', ['action_link' => $action_link, 'body' => $body], function ($message) use ($request) {
             $message->to($request->email)->subject(__('frontend.reset_password'));

@@ -38,7 +38,7 @@ class SendNewProductMailToSubscribers implements ShouldQueue
 
         foreach ($emails as $email) {
             Mail::send('admin.emails.new_product', $product, function ($message) use ($email) {
-                $message->to($email)->subject("New Product");
+                $message->to($email)->subject(__('emails.new_product'));
             });
         }
     }

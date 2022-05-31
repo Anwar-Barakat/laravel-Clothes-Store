@@ -284,6 +284,7 @@ return [
     'add_cancelling_cause'      => 'إضافة سبب الإلغاء',
     'cause'                     => 'السبب',
     'return_order'              => 'إرجاع الطلب',
+    'exchange_order'            => 'تغيير الطلب',
     'exchange'                  => 'تغيير',
     'return'                    => 'إرجاع',
     'order'                     => 'الطلب',
