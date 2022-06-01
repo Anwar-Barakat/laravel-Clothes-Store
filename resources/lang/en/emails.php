@@ -9,5 +9,6 @@ return [
     'to'                    => 'to',
     'thanks_you'            => 'Thank you',
     'new_product'           => 'New Product',
-
+    'hello'                 => 'Hello',
+    'ths_to_shop'           => 'Thank you for shopping with us',
 ];

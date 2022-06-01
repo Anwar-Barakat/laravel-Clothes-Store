@@ -9,4 +9,6 @@ return [
     'to'                    => 'إلى',
     'thanks_you'            => 'شكراً لك',
     'new_product'           => 'منتج جديد',
+    'hello'                 => 'مرحباً',
+    'ths_to_shop'           => 'شكرا للتسوق معنا',
 ];
