@@ -6,6 +6,12 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/table/css/style.css') }}">
+    <style>
+        .country .chosen-container {
+            height: 1rem !important;
+        }
+
+    </style>
 @endsection
 
 @section('content')
@@ -23,13 +29,13 @@
                         @endphp
                         @if ($status == 'new')
                             <div class="w-20">
-                                <a href="javascript:void(0);" data-toggle="modal" data-target="#cancellingOrder"
+                                <a href="javascript:void(0);" id="cancelOrder"
                                     class="main-button ">{{ __('frontend.cancel_order') }}</a>
                             </div>
                         @endif
                         @if ($status == 'delivered')
                             <div class="w-20">
-                                <a href="javascript:void(0);" data-toggle="modal" data-target="#returningOrder"
+                                <a href="javascript:void(0);" id="exchangeOrder"
                                     class="main-button ">{{ __('frontend.return') }}/{{ __('frontend.exchange') }}
                                     {{ __('frontend.order') }}</a>
                             </div>
@@ -40,108 +46,126 @@
                 @if ($errors->any())
                     {{ implode('', $errors->all('<div>:message</div>')) }}
                 @endif
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="exchange-modal-container" id="exchange-modal-container">
+                    <div class="exchange-modal-content">
+                        <h2>{{ __('frontend.return_order') }}/{{ __('frontend.exchange_order') }}
+                        </h2>
                         <form action="{{ route('frontend.orders.return.store', $orderDetails) }}" method="POST">
                             @csrf
-                            <fieldset class="wrap-input country">
-                                <label for="return_exchange">{{ __('frontend.return_exchange') }}:</label>
-                                <select name="return_exchange" class="form-control" required id="returnExchange">
-                                    <option value="">{{ __('frontend.choose') }}</option>
-                                    <option value="return">{{ __('frontend.return') }}</option>
-                                    <option value="exchange">{{ __('frontend.exchange') }}</option>
-                                </select>
-                                @error('return_exchange')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                            <br>
-                            <br>
-                            <fieldset class="wrap-input country">
-                                <label for="product_info">{{ __('frontend.products') }}:</label>
-                                <select name="product_info" id="product_info" class="form-control" required>
-                                    <option value="">{{ __('frontend.choose') }}</option>
-                                    @foreach ($orderDetails->orderProduct as $product)
-                                        @if ($product->product_status != 'returned')
-                                            <option value="{{ $product->product_code }} {{ $product->product_size }}">
-                                                {{ $product->product_code }}-{{ $product->product_size }}
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <fieldset class="wrap-input country mt-4">
+                                        <label
+                                            for="return_exchange">{{ __('frontend.return') }}/{{ __('frontend.exchange') }}:</label>
+                                        <select name="return_exchange" class="form-control" required id="returnExchange">
+                                            <option value="">{{ __('frontend.choose') }}</option>
+                                            <option value="return">{{ __('frontend.return') }}</option>
+                                            <option value="exchange">{{ __('frontend.exchange') }}</option>
+                                        </select>
+                                        @error('return_exchange')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </fieldset><br><br>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <fieldset class="wrap-input country mt-4">
+                                        <label for="product_info">{{ __('frontend.products') }}:</label>
+                                        <select name="product_info" id="product_info" class="form-control" required>
+                                            <option value="">{{ __('frontend.choose') }}</option>
+                                            @foreach ($orderDetails->orderProduct as $product)
+                                                @if ($product->product_status != 'returned')
+                                                    <option
+                                                        value="{{ $product->product_code }} {{ $product->product_size }}">
+                                                        {{ $product->product_code }}-{{ $product->product_size }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @error('product_info')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </fieldset><br><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <fieldset class="wrap-input country productSize" style="display: none"
+                                        id="AppendProductSizes">
+                                        @include('frontend.partials.append_sizes')
+                                        <br><br>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <fieldset class="wrap-input country mt-4">
+                                        <label for="reason">{{ __('frontend.cause') }}:</label>
+                                        <select name="reason" id="reason" class="form-control" required>
+                                            <option value="">{{ __('frontend.choose') }}</option>
+                                            <option value="performance or quality adequate">
+                                                {{ __('frontend.performance or quality adequate') }}</option>
+                                            <option value="product damaged but shipping box ok">
+                                                {{ __('frontend.product damaged but shipping box ok') }}
                                             </option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                @error('product_info')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
+                                            <option value="item arrived too late">
+                                                {{ __('frontend.item arrived too late') }}
+                                            </option>
+                                            <option value="wrong item was send">
+                                                {{ __('frontend.wrong item was send') }}
+                                            </option>
+                                            <option value="item defective or does not work">
+                                                {{ __('frontend.item defective or does not work') }}
+                                            </option>
+                                            <option value="required smaller size">
+                                                {{ __('frontend.required smaller size') }}
+                                            </option>
+                                            <option value="required larger size">
+                                                {{ __('frontend.required larger size') }}
+                                            </option>
+                                        </select>
+                                        @error('reason')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </fieldset>
+                                </div>
+                            </div>
                             <br>
-                            <br>
-                            <fieldset class="wrap-input country productSize" style="display: none" id="AppendProductSizes">
-                                @include('frontend.partials.append_sizes')
-                            </fieldset>
-                            <br>
-                            <br>
-
-                            <fieldset class="wrap-input country">
-                                <label for="reason">{{ __('frontend.cause') }}:</label>
-                                <select name="reason" id="reason" class="form-control" required>
-                                    <option value="">{{ __('frontend.choose') }}</option>
-                                    <option value="performance or quality adequate">
-                                        {{ __('frontend.performance or quality adequate') }}</option>
-                                    <option value="product damaged but shipping box ok">
-                                        {{ __('frontend.product damaged but shipping box ok') }}
-                                    </option>
-                                    <option value="item arrived too late">
-                                        {{ __('frontend.item arrived too late') }}
-                                    </option>
-                                    <option value="wrong item was send">
-                                        {{ __('frontend.wrong item was send') }}
-                                    </option>
-                                    <option value="item defective or does not work">
-                                        {{ __('frontend.item defective or does not work') }}
-                                    </option>
-                                    <option value="required smaller size">
-                                        {{ __('frontend.required smaller size') }}
-                                    </option>
-                                    <option value="required larger size">
-                                        {{ __('frontend.required larger size') }}
-                                    </option>
-                                </select>
-                                @error('reason')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-                            <br>
-                            <br>
-
-                            <fieldset class="wrap-input country">
-                                <label for="comment">{{ __('frontend.comment') }}:</label>
-                                <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="{{ __('frontend.type_comment') }}"
-                                    required>{{ old('comment') }}</textarea>
-                                @error('comment')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </fieldset>
-
-                            <fieldset class="wrap-input country">
-                                <button type="submit" order_id="{{ $orderDetails->id }}"
-                                    class="main-button returnExchangeBtn">
-                                    {{ __('frontend.return') }}/{{ __('frontend.exchange') }}
-                                    {{ __('frontend.order') }}</button>
-                            </fieldset>
+                            <div class="row">
+                                <div class="col-12">
+                                    <fieldset class="wrap-input country mt-5">
+                                        <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="{{ __('frontend.type_comment') }}"
+                                            required>{{ old('comment') }}</textarea>
+                                        @error('comment')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <fieldset class="wrap-input country mt-4">
+                                        <button type="submit" order_id="{{ $orderDetails->id }}"
+                                            class="main-button returnExchangeBtn">
+                                            {{ __('frontend.return') }}/{{ __('frontend.exchange') }}
+                                            {{ __('frontend.order') }}</button>
+                                    </fieldset>
+                                </div>
+                            </div>
                         </form>
+                        <button id="exchangeOrderClose"
+                            class="w-20 btn btn-default mt-4">{{ __('buttons.close') }}</button>
                     </div>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="cancel-modal-container" id="cancel-modal-container">
+                    <div class="cancel-modal-content">
+                        <h2>{{ __('frontend.cancel_order') }}</h2>
                         <form action="{{ route('frontend.orders.destroy', $orderDetails) }}" method="POST">
                             @csrf
                             <fieldset class="wrap-input country">
@@ -169,11 +193,13 @@
                                 @enderror
                             </fieldset>
 
-                            <fieldset class="wrap-input country">
+                            <fieldset class="wrap-input country  mt-4">
                                 <button type="submit" order_id="{{ $orderDetails->id }}"
                                     class="main-button">{{ __('frontend.cancel_order') }}</button>
                             </fieldset>
                         </form>
+                        <button id="cancelOrderClose"
+                            class="w-20 btn btn-default mt-4">{{ __('buttons.close') }}</button>
                     </div>
                 </div>
                 <div class="row">
@@ -359,5 +385,31 @@
             }
 
         });
+    </script>
+
+    {{-- Show/Hide Custom Popup --}}
+    <script>
+        let cancelOrder = document.getElementById('cancelOrder');
+        let cancelOrderClose = document.getElementById('cancelOrderClose');
+        if (cancelOrder)
+            cancelOrder.addEventListener('click', function() {
+                document.getElementById('cancel-modal-container').classList.add('open')
+            });
+        if (cancelOrderClose)
+            cancelOrderClose.addEventListener('click', function() {
+                document.getElementById('cancel-modal-container').classList.remove('open')
+            });
+
+
+        let exchangeOrder = document.getElementById('exchangeOrder');
+        let exchangeOrderClose = document.getElementById('exchangeOrderClose');
+        if (exchangeOrder)
+            exchangeOrder.addEventListener('click', function() {
+                document.getElementById('exchange-modal-container').classList.add('open')
+            });
+        if (exchangeOrderClose)
+            exchangeOrderClose.addEventListener('click', function() {
+                document.getElementById('exchange-modal-container').classList.remove('open')
+            })
     </script>
 @endsection

@@ -221,4 +221,42 @@
             </div>
         </main>
     </div>
+    <button id="cancelOrder">open 1</button>
+    <div class="cancel-modal-container" id="cancel-modal-container">
+        <div class="cancel-modal-content">
+            <h1>{{ __('frontend.return_order') }}</h1>
+            <button id="cancelOrderClose">close 1</button>
+        </div>
+    </div>
+
+    <button id="exchangeOrder">open 2</button>
+    <div class="exchange-modal-container" id="exchange-modal-container">
+        <div class="exchange-modal-content">
+            <h1>{{ __('frontend.exchange_order') }}</h1>
+            <button id="cancelOrderClose">close 2</button>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script>
+        let cancelOrder = document.getElementById('cancelOrder');
+        let cancelOrderClose = document.getElementById('cancelOrderClose');
+        cancelOrder.addEventListener('click', function() {
+            document.getElementById('cancel-modal-container').classList.add('open')
+        });
+        cancelOrderClose.addEventListener('click', function() {
+            document.getElementById('cancel-modal-container').classList.remove('open')
+        });
+
+
+        let exchangeOrder = document.getElementById('exchangeOrder');
+        let exchangeOrderClose = document.getElementById('exchangeOrderClose');
+        exchangeOrder.addEventListener('click', function() {
+            document.getElementById('exchange-modal-container').classList.add('open')
+        });
+        exchangeOrderClose.addEventListener('click', function() {
+            document.getElementById('exchange-modal-container').classList.remove('open')
+        })
+    </script>
 @endsection

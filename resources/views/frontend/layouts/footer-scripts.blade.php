@@ -137,7 +137,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             },
             success: function(response) {
                 if (response == 'exists')
-                    toastr.info("{{  __('msgs.is_existed', ['name' => __('frontend.email_address')]) }}");
+                    toastr.info(
+                        "{{ __('msgs.is_existed', ['name' => __('frontend.email_address')]) }}"
+                    );
 
                 else if (response == 'true')
                     toastr.success("{{ __('msgs.thanks_for_subscription') }}");
@@ -155,3 +157,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         }
     }
 </script>
+
+
+

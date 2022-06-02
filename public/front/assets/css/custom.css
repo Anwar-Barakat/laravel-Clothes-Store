@@ -20,7 +20,7 @@ html {
     background: #99b19c;
 }
 
- :root {
+:root {
     --main-color: #009688
 }
 
@@ -731,6 +731,51 @@ a.text-danger:focus {
 
 
 /* *******************************  Page  ************************************ */
+
+.cancel-modal-container,
+.exchange-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    transform: translateY(-50px);
+}
+
+.cancel-modal-container.open,
+.exchange-modal-container.open {
+    opacity: 1;
+    z-index: 1000000000;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.cancel-modal-content,
+.exchange-modal-content {
+    background-color: white;
+    padding: 30px 50px;
+    width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+}
+
+@media screen and (max-width:768px) {
+    .cancel-modal-content,
+    .exchange-modal-content {
+        width: 80%;
+        margin: auto;
+        height: 70vh;
+        overflow: scroll;
+    }
+}
 
 
 /* *******************************  Page  ************************************ */
