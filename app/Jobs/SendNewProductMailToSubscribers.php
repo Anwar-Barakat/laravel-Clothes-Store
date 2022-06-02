@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 class SendNewProductMailToSubscribers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $subscribersInfo, $product;
+    public $subscribersInfo, $product;
     /**
      * Create a new job instance.
      *
