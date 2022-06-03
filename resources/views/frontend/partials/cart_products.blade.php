@@ -1,45 +1,49 @@
 @auth
-    <div class="wrap-iten-in-cart" id="AppendCartProducts">
-        @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
-            <h3 class="box-title">
-                {{ __('frontend.your_address') }}
-            </h3>
-        @endif
-        <ul class="p-0">
-            @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
-                <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
-                    <label for="address{{ $deliveryAddress->id }}">
-                        {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
-                        {{ $deliveryAddress->country->name }}
-                        (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
-                            class="text text-success">
-                            {{ __('buttons.edit') }}
-                            <i class="fa fa-edit"></i>
-                        </a>/
-                        <a href="javascript:void(0);" class="confirmationDelete text-danger"
-                            data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
-                            {{ __('buttons.delete') }}
-                            <i class="fa fa-trash"></i>
-                        </a>)
-                    </label>
-                </li>
-            @empty
-                <li class="pr-cart-item">
-                    <div class="product-image">
-                        {{ __('frontend.no_delivery_address') }}
-                    </div>
-                </li>
-            @endforelse
-            @error('address_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </ul>
+    <div class="summary order_summerized">
+        <div class="order-summary" style="width: 100%">
+            <div class="wrap-iten-in-cart" id="AppendCartProducts">
+                @if (App\Models\DeliveryAddress::deliveryAddress()->count() > 0)
+                    <h3 class="title-box">
+                        {{ __('frontend.your_address') }}
+                    </h3>
+                @endif
+                <ul style="padding: 0">
+                    @forelse (App\Models\DeliveryAddress::deliveryAddress() as $deliveryAddress)
+                        <li class="pr-cart-item summary-info" style="display: flex;column-gap: 1rem">
+                            <label for="address{{ $deliveryAddress->id }}">
+                                {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
+                                {{ $deliveryAddress->country->name }}
+                                (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
+                                    class="text text-success">
+                                    {{ __('buttons.edit') }}
+                                    <i class="fa fa-edit"></i>
+                                </a>/
+                                <a href="javascript:void(0);" class="confirmationDelete text-danger"
+                                    data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
+                                    {{ __('buttons.delete') }}
+                                    <i class="fa fa-trash"></i>
+                                </a>)
+                            </label>
+                        </li>
+                    @empty
+                        <li class="pr-cart-item summary-info">
+                            <div class="product-image">
+                                {{ __('frontend.no_delivery_address') }}
+                            </div>
+                        </li>
+                    @endforelse
+                    @error('address_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </ul>
+            </div>
+        </div>
     </div>
-    <hr>
 @endauth
-
+<br>
+<br>
 <h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
 <ul class="products-cart">
     @php
@@ -209,7 +213,8 @@
                 },
                 success: function(response) {
                     if (response.status == false)
-                        toastr.info("{{ __('msgs.not_available', ['name' => __('translation.amount')]) }}");
+                        toastr.info(
+                            "{{ __('msgs.not_available', ['name' => __('translation.amount')]) }}");
                     $('#totalProducts').html(response['totalCartProducts']);
                     $('#AppendCartProducts').html(response['view']);
                 },
@@ -233,7 +238,7 @@
                 success: function(response) {
                     if (response.status == true) {
                         toastr.info(
-                        "{{ __('msgs.deleted', ['name' => __('translation.product')]) }}");
+                            "{{ __('msgs.deleted', ['name' => __('translation.product')]) }}");
                     }
                 }
             });

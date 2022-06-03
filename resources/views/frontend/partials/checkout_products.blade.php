@@ -1,50 +1,55 @@
 @auth
-    <div class="wrap-iten-in-cart" id="AppendCartProducts">
-        @if ($deliveryAddresses->count() > 0)
-            <h3 class="box-title">
-                {{ __('frontend.check_your_address') }}
-            </h3>
-        @endif
-        <ul class="p-0">
-            @forelse ($deliveryAddresses  as $deliveryAddress)
-                <li class="pr-cart-item" style="display: flex;column-gap: 1rem">
-                    <input class="" id="address{{ $deliveryAddress->id }}" name="address_id" type="radio"
-                        required value="{{ $deliveryAddress->id }}" total_gst={{ $totalGST }}
-                        shipping_charges="{{ $deliveryAddress->shippingCharges }}" totalPrice="{{ $totalPrice }}"
-                        couponAmount="{{ Session::get('couponAmount') ?? 0 }}">
-                    <label for="address{{ $deliveryAddress->id }}">
-                        {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
-                        {{ $deliveryAddress->country->name }}
-                        (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
-                            class="text text-success">
-                            {{ __('buttons.edit') }}
-                            <i class="fa fa-edit"></i>
-                        </a>/
-                        <a href="javascript:void(0);" class="confirmationDelete text-danger"
-                            data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
-                            {{ __('buttons.delete') }}
-                            <i class="fa fa-trash"></i>
-                        </a>)
-                    </label>
-                </li>
-            @empty
-                <li class="pr-cart-item">
-                    <div class="product-image">
-                        {{ __('frontend.no_delivery_address') }}
-                    </div>
-                </li>
-            @endforelse
-            @error('address_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </ul>
+    <div class="summary order_summerized">
+        <div class="order-summary" style="width: 100%">
+            <div class="wrap-iten-in-cart" id="AppendCartProducts">
+                @if ($deliveryAddresses->count() > 0)
+                    <h3 class="title-box">
+                        {{ __('frontend.check_your_address') }}
+                    </h3>
+                @endif
+                <ul class="p-0">
+                    @forelse ($deliveryAddresses  as $deliveryAddress)
+                        <li class="pr-cart-item summary-info"
+                            style="display: flex;column-gap: 1rem;    align-items: baseline;">
+                            <input class="" id="address{{ $deliveryAddress->id }}" name="address_id"
+                                type="radio" required value="{{ $deliveryAddress->id }}" total_gst={{ $totalGST }}
+                                shipping_charges="{{ $deliveryAddress->shippingCharges }}"
+                                totalPrice="{{ $totalPrice }}" couponAmount="{{ Session::get('couponAmount') ?? 0 }}">
+                            <label for="address{{ $deliveryAddress->id }}">
+                                {{ $deliveryAddress->name }},{{ $deliveryAddress->address }},{{ $deliveryAddress->city }},{{ $deliveryAddress->state }}
+                                {{ $deliveryAddress->country->name }}
+                                (<a href="{{ route('frontend.delivery.address.edit', $deliveryAddress) }}"
+                                    class="text text-success">
+                                    {{ __('buttons.edit') }}
+                                    <i class="fa fa-edit"></i>
+                                </a>/
+                                <a href="javascript:void(0);" class="confirmationDelete text-danger"
+                                    data-delivery="{{ $deliveryAddress->id }}" title="{{ __('buttons.delete') }}">
+                                    {{ __('buttons.delete') }}
+                                    <i class="fa fa-trash"></i>
+                                </a>)
+                            </label>
+                        </li>
+                    @empty
+                        <li class="pr-cart-item summary-info">
+                            <div class="product-image">
+                                {{ __('frontend.no_delivery_address') }}
+                            </div>
+                        </li>
+                    @endforelse
+                    @error('address_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </ul>
+            </div>
+        </div>
     </div>
-    <hr>
 @endauth
-
-<h3 class="box-title">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
+<br>
+<br>
+<h3 class="box-title mt-3">{{ __('frontend.products') }} ({{ totalProducts() }})</h3>
 <ul class="products-cart">
     @php
         $totalPrice = 0;

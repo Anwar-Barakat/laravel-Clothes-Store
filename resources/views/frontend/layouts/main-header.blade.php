@@ -62,8 +62,8 @@
                 <div class="mid-section main-info-area">
 
                     <div class="wrap-logo-top left-section">
-                        <a href="index.html" class="link-to-home">
-                            <img src="{{ asset('front/assets/images/logo.jpg') }}" alt="mercado">
+                        <a href="javascript:void(0);" class="link-to-home">
+                            <img src="{{ asset('front/assets/images/logo.png') }}" alt="mercado">
                         </a>
                     </div>
 
