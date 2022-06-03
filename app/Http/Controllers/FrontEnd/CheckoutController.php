@@ -28,56 +28,63 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $featuredPorducts       = Product::where(['is_feature' => 'Yes', 'status' => 1])->limit(5)->inRandomOrder()->get();
-        $userCartProducts       = Cart::userCartProducts();
-        $deliveryAddresses      = DeliveryAddress::deliveryAddress();
+        if (Auth::check()) {
+
+            $featuredPorducts       = Product::where(['is_feature' => 'Yes', 'status' => 1])->limit(5)->inRandomOrder()->get();
+            $userCartProducts       = Cart::userCartProducts();
+            $deliveryAddresses      = DeliveryAddress::deliveryAddress();
 
 
-        $totalPrice             = 0;
-        $totalWeight            = 0;
-        $totalGST               = 0;
-        foreach ($userCartProducts as $userCartProduct) {
-            $price              = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
-            $totalPrice         = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
-            Session::put('totalPrice', $totalPrice);
+            $totalPrice             = 0;
+            $totalWeight            = 0;
+            $totalGST               = 0;
+            foreach ($userCartProducts as $userCartProduct) {
+                $price              = Product::getDiscountedAttributePrice($userCartProduct->product->id, $userCartProduct->size);
+                $totalPrice         = $totalPrice + $price['finalPrice'] * $userCartProduct->quantity;
+                Session::put('totalPrice', $totalPrice);
 
-            $totalWeight        += ($userCartProduct->product->weight * $userCartProduct->quantity);
-            Session::put('totalWeight', $totalWeight);
+                $totalWeight        += ($userCartProduct->product->weight * $userCartProduct->quantity);
+                Session::put('totalWeight', $totalWeight);
 
-            $productTotalPrice  = $price['finalPrice'] * $userCartProduct->quantity;
-            $getGSTPercent      = Product::select('gst')->where('id', $userCartProduct->product_id)->first();
-            $gstPecent          = $getGSTPercent->gst;
-            $gstAmount          = round($productTotalPrice * ($gstPecent / 100), 2);
-            $totalGST           = $totalGST + $gstAmount;
-            Session::put('totalGST', $totalGST);
-        }
+                $productTotalPrice  = $price['finalPrice'] * $userCartProduct->quantity;
+                $getGSTPercent      = Product::select('gst')->where('id', $userCartProduct->product_id)->first();
+                $gstPecent          = $getGSTPercent->gst;
+                $gstAmount          = round($productTotalPrice * ($gstPecent / 100), 2);
+                $totalGST           = $totalGST + $gstAmount;
+                Session::put('totalGST', $totalGST);
+            }
 
-        $setting                = Setting::where('id', 1)->first();
+            $setting                = Setting::where('id', 1)->first();
 
-        if ($totalPrice < $setting->min_cart_value) {
+            if ($totalPrice < $setting->min_cart_value) {
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.min_cart_amount', ['min' => $setting->min_cart_value]));
+                return redirect()->route('frontend.cart');
+            }
+
+            if ($totalPrice > $setting->max_cart_value) {
+                Session::flash('alert-type', 'info');
+                Session::flash('message', __('msgs.max_cart_amount', ['max' => $setting->max_cart_value]));
+                return redirect()->route('frontend.cart');
+            }
+
+            foreach ($deliveryAddresses as $key => $value) {
+                $shippingCharges                            = ShippingCharge::getShippingCharges($totalWeight, $value->country_id);
+                $deliveryAddresses[$key]['shippingCharges'] = $shippingCharges;
+            }
+
+            return view('frontend.checkout', [
+                'featuredPorducts'          => $featuredPorducts,
+                'userCartProducts'          => $userCartProducts,
+                'deliveryAddresses'         => $deliveryAddresses,
+                'totalPrice'                => $totalPrice,
+                'totalGST'                  => $totalGST,
+            ]);
+        } else {
             Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.min_cart_amount', ['min' => $setting->min_cart_value]));
-            return redirect()->route('frontend.cart');
+            Session::flash('message', __('msgs.login_to', ['name' => __('frontend.checkout')]));
+            return redirect()->route('frontend.form.login');
         }
-
-        if ($totalPrice > $setting->max_cart_value) {
-            Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.max_cart_amount', ['max' => $setting->max_cart_value]));
-            return redirect()->route('frontend.cart');
-        }
-
-        foreach ($deliveryAddresses as $key => $value) {
-            $shippingCharges                            = ShippingCharge::getShippingCharges($totalWeight, $value->country_id);
-            $deliveryAddresses[$key]['shippingCharges'] = $shippingCharges;
-        }
-
-        return view('frontend.checkout', [
-            'featuredPorducts'          => $featuredPorducts,
-            'userCartProducts'          => $userCartProducts,
-            'deliveryAddresses'         => $deliveryAddresses,
-            'totalPrice'                => $totalPrice,
-            'totalGST'                  => $totalGST,
-        ]);
     }
 
     /**

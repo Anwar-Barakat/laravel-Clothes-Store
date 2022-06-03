@@ -336,4 +336,10 @@ return [
     'actions'                   => 'خيارات',
     'no_wishlist'               => 'لا يوجد قائمة رغبات بعد',
 
+    // Lgoin msgs:
+    'add_rating'                => 'إضافة تقييم',
+    'add_wishlist'              => 'إضافة الى قائمة الرغبات',
+    'display_orders'            => 'عرض الطلبات',
+    'display_wishlist'          => 'عرض قائمة الرغبات',
+    'rate_the_product'          => 'تقييم المنتج',
 ];

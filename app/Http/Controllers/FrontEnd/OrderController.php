@@ -19,8 +19,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders     = Order::with('orderProduct')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
-        return view('frontend.orders.index', ['orders' => $orders]);
+        if (Auth::check()) {
+            $orders     = Order::with('orderProduct')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+            return view('frontend.orders.index', ['orders' => $orders]);
+        } else {
+            Session::flash('alert-type', 'info');
+            Session::flash('message', __('msgs.login_to', ['name' => __('frontend.display_orders')]));
+            return redirect()->route('frontend.form.login');
+        }
     }
 
     /**

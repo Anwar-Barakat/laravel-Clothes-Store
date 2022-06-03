@@ -44,8 +44,8 @@ class RatingController extends Controller
             $data                   = $request->only(['product_id', 'review', 'rating']);
             if (!Auth::check()) {
                 Session::flash('alert-type', 'info');
-                Session::flash('message', __('msgs.login_to_rate'));
-                return redirect()->back();
+                Session::flash('message', __('msgs.login_to', ['name' => __('frontend.rate_the_product')]));
+                return redirect()->route('frontend.form.login');
             }
 
             $ratingCount            = Rating::where(['user_id' => Auth::user()->id, 'product_id' => $data['product_id']])->count();

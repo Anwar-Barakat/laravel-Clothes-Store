@@ -13,6 +13,7 @@ return [
     'not_valid'                     => ':name Not Valid',
     'not_active'                    => ':name Not Active',
     'not_available'                 => ':name Not Avaliable',
+    'login_to'                      => 'Please, login to :name',
 
 
     'no_matching'                   => 'No matching records found',

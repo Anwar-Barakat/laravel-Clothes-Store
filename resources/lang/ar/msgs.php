@@ -13,6 +13,7 @@ return [
     'not_valid'                     => ':name غير صالح ',
     'not_active'                    => ':name غير فعال ',
     'not_available'                 => ':name غير متاح ',
+    'login_to'                      => 'من فضلك قم بتسجيل الدخول ل :name',
 
     'no_matching'                   => 'لا يوجد حقول مطابقة',
     'browser_error'                 => 'هذا المتصفح لا يدعم صيغة الفيدية هذه',

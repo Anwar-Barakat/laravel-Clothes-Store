@@ -174,10 +174,8 @@
         </p>
     </div>
     <div class="checkout-info">
-        @auth
-            <a class="btn btn-checkout"
-                href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.add_delivery_address') }}</a>
-        @endauth
+        <a class="btn btn-checkout"
+            href="{{ route('frontend.delivery.address.create') }}">{{ __('frontend.add_delivery_address') }}</a>
         <a class="btn btn-checkout" href="{{ route('frontend.url', 'men-shoes') }}">
             {{ __('frontend.contiue_shopping') }} &nbsp;
             <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>

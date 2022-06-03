@@ -324,4 +324,13 @@ return [
     'wishlist_products'         => 'Wishlist products',
     'actions'                   => 'Actions',
     'no_wishlist'               => 'No wishlist yet',
+
+
+    // Lgoin msgs:
+    'add_rating'                => 'add rating',
+    'add_wishlist'              => 'add to wishlist',
+    'display_orders'            => 'display orders',
+    'display_wishlist'          => 'display wishlist',
+    'rate_the_product'          => 'rate the product',
+
 ];

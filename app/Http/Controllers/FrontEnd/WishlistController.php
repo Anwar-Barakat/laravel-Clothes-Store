@@ -21,12 +21,11 @@ class WishlistController extends Controller
     {
         if (Auth::check()) {
             $userWishlist   = Wishlist::userWishlistItems();
-
             return view('frontend.wishlist.index', ['userWishlist' => $userWishlist]);
         } else {
             Session::flash('alert-type', 'info');
-            Session::flash('message', __('msgs.login_to_display_wishlist'));
-            return redirect()->back();
+            Session::flash('message', __('msgs.login_to', ['name' => __('frontend.display_wishlist')]));
+            return redirect()->route('frontend.form.login');
         }
     }
 

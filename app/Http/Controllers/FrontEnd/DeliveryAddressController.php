@@ -28,8 +28,14 @@ class DeliveryAddressController extends Controller
      */
     public function create()
     {
-        $userCartProducts   = Cart::userCartProducts();
-        return view('frontend.delivery-address.add', ['userCartProducts' => $userCartProducts]);
+        if (auth()->check()) {
+            $userCartProducts   = Cart::userCartProducts();
+            return view('frontend.delivery-address.add', ['userCartProducts' => $userCartProducts]);
+        } else {
+            Session::flash('alert-type', 'info');
+            Session::flash('message', __('msgs.login_to', ['name' => __('frontend.add_delivery_address')]));
+            return redirect()->route('frontend.form.login');
+        }
     }
 
     /**
