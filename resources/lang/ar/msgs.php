@@ -30,7 +30,7 @@ return [
     // *================================================
     'min_cart_amount'               => 'يجب أن يكون الحد الأدنى لمبلغ سلة التسوق :min دولارات',
     'max_cart_amount'               => 'يجب أن يكون الحد الأعلى لمبلغ سلة التسوق :max دولارات',
-    'copy_right'                    => 'حقوق النشر @2022 متجر An. جميع الحقوق محفوظة',
+    'copy_right'                    => 'حقوق النشر @2022 متجر AN. جميع الحقوق محفوظة',
     'coupon_error_1'                => 'هذه القسيمة ليس لأحد المنتجات المختارة !!',
     'coupon_error_2'                => 'هذه القسيمة ليس لك !!',
     'coupon_error_3'                => 'لقد استفدت بالفعل من رمز القسيمة هذا !',
@@ -43,9 +43,6 @@ return [
     'order_return_invalid'          => 'عملية إرجاع طلبك غير صالحة !!',
     'order_return_exchange_invalid' => 'عملية إرجاع أو إلغاء طلبك غير صالحة !!',
     'no_products_yet'               => 'لا يوجد منتجات بعد !!',
-    'login_to_rate'                 => 'قم بتسجل الدخول لإضافة تقييم لهذا المنتج',
-    'login_to_add_wishlist'         => 'قم بتسجل الدخول لأضافة هذا المنتج الى قائمة الرغبات',
-    'login_to_display_wishlist'     => 'قم بتسجيل الدخول لعرض قائمة المنتجات الخاصة بك',
     'email_or_password'             => 'الأيميل أو كلمة المرور',
     'cant_reduce_quantity'          => 'كمية المنتج يجب ان تكون 1 او اكثر',
     'registered_success'            => 'تم تسجيلك بنجاح !!',
@@ -65,5 +62,11 @@ return [
     'min_password'              => 'يجب أن تتكون كلمة المرور الخاصة بك من 8 أحرف على الأقل',
     'max_password'              => 'يجب أن تتكون كلمة المرور الخاصة بك من 25 أحرف على الأكثر',
     'confirm_pass'              => 'يرجى إدخال كلمة المرور مطابقة لكلمة المرور الجديدة',
+
+
+
+    // error pages:
+    'error_404_line_1'          => 'Oopps. The page you were looking for doesn\'t exist.',
+    'error_404_line_2'          => 'You may have mistyped the address or the page may have moved.',
 
 ];

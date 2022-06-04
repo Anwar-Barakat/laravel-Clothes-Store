@@ -30,7 +30,7 @@ return [
     // *================================================
     'min_cart_amount'               => 'Minimum cart amount must be :min dollar',
     'max_cart_amount'               => 'Maximum cart amount must be :max dollar',
-    'copy_right'                    => 'Copyright © 2022 An. All rights reserved',
+    'copy_right'                    => 'Copyright © 2022 AN. All rights reserved',
     'coupon_error_1'                => 'This coupon code is not for one of the selected products !!',
     'coupon_error_2'                 => 'This coupon code is not for you !!',
     'coupon_error_3'                => 'This coupon code is already availed by you !',
@@ -43,9 +43,6 @@ return [
     'order_return_invalid'          => 'Your order returning process is not valid !!',
     'order_return_exchange_invalid' => 'Your order returning or exchanging process is not valid !!',
     'no_products_yet'               => 'No Products Yet !!',
-    'login_to_rate'                 => 'Login to rate this product',
-    'login_to_add_wishlist'         => 'Login to add this product to wishlist',
-    'login_to_display_wishlist'     => 'Login to display your product wishlist',
     'email_or_password'             => 'Email or password',
     'cant_reduce_quantity'          => 'Product quantity must be 1 or more then',
     'registered_success'            => 'You have been successfully registered !!',
@@ -75,4 +72,9 @@ return [
     'valid_email'               => 'Please Enter Your Valid Email',
     'valid_name'                => 'Please Enter Your Valid Name',
     'enter_new_password'        => 'Enter New Password',
+
+
+    // error pages:
+    'error_404_line_1'          => 'Oopps. The page you were looking for doesn\'t exist.',
+    'error_404_line_2'          => 'You may have mistyped the address or the page may have moved.',
 ];

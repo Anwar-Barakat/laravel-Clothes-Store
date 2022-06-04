@@ -197,7 +197,10 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('frontend.url', 'men-shoes') }}"
+                                @php
+                                    $cat = App\Models\Category::inRandomOrder()->first();
+                                @endphp
+                                <a href="{{ route('frontend.url', $cat->url) }}"
                                     class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'active' : '' }} ">
                                     {{ __('frontend.shop') }}
                                 </a>

@@ -2685,6 +2685,10 @@ li.menu-item .nav-label.sale-label::before {
     padding-left: 20px;
 }
 
+.wrap-shop-control .change-display-mode {
+    padding-left: 20px;
+}
+
 .wrap-shop-control .sort-item.orderby {
     margin-right: 10px;
     margin-top: 2.5px;
@@ -7181,7 +7185,7 @@ table.shop_attributes tbody {
         padding: 10px;
     }
     .wrap-shop-control {
-        display: inline-block;
+        display: flex;
         width: 100%;
         padding-bottom: 10px;
     }
@@ -7502,7 +7506,6 @@ table.shop_attributes tbody {
     }
     .style-twin-default .banner-item {
         width: 100%;
-        padding-top: 30px;
         font-size: 0;
     }
     .style-twin-default .banner-item:nth-child(even) {
@@ -7788,9 +7791,6 @@ table.shop_attributes tbody {
         text-align: center;
         margin-top: 10px;
     }
-    .wrap-footer-content ul li {
-        text-align: center;
-    }
     .wrap-newletter-footer {
         float: initial;
         margin-bottom: 15px;
@@ -7800,12 +7800,8 @@ table.shop_attributes tbody {
         max-width: 300px;
         display: inline-block;
     }
-    .wrap-footer-content .wrap-footer-item .item-header {
-        text-align: center;
-    }
     .wrap-footer-content .wrap-footer-item {
         width: 100%;
-        text-align: center;
     }
 }
 
@@ -8183,6 +8179,7 @@ table.shop_attributes tbody {
     font-size: 1.4rem;
     font-weight: bold;
     text-align: left;
+    margin-top: 2rem;
 }
 
 .wrap-search-form .mega-box.active {

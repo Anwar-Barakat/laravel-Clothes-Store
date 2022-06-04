@@ -137,9 +137,8 @@
                                                 </ul>
                                             </div>
                                         </div><!-- Categories widget-->
-                                        <hr>
 
-                                        <div class="widget mercado-widget brands-widget brand-widget">
+                                        {{-- <div class="widget mercado-widget brands-widget brand-widget">
                                             <div class="title d-flex">
                                                 <h2 class="widget-title">{{ __('frontend.brands') }}</h2>
                                                 <i class="fas fa-chevron-up icon"></i>
@@ -163,7 +162,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div><!-- brand widget-->
+                                        </div><!-- brand widget--> --}}
 
                                         <hr>
                                         <div class="widget mercado-widget filter-widget">
@@ -232,9 +231,7 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        @include(
-                                            'frontend.partials.popular_products'
-                                        )
+                                        @include('frontend.partials.popular_products')
                                     </div>
                                     <!--end sitebar-->
                             </div>

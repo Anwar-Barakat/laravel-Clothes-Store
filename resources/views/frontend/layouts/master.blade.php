@@ -27,7 +27,10 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('frontend.url', 'men-shoes') }}"
+                @php
+                    $cat = App\Models\Category::inRandomOrder()->first();
+                @endphp
+                <a href="{{ route('frontend.url', $cat->url) }}"
                     class="link-term mercado-item-title {{ request()->routeIs('frontend.url') ? 'button-30' : '' }} ">
                     {{ __('frontend.shop') }}
                 </a>

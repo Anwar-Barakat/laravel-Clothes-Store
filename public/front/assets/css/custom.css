@@ -17,7 +17,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #99b19c;
+    background: var(--main-color);
 }
 
 :root {
@@ -658,6 +658,22 @@ a.text-danger:focus {
         display: flex;
         opacity: 1;
         bottom: 0px;
+    }
+    .style-twin-default {
+        display: flex;
+        column-gap: 2rem;
+    }
+    .owl-carousel.owl-loaded {
+        height: fit-content !important;
+    }
+}
+
+@media screen and (max-width:551px) {
+    .style-twin-default {
+        flex-direction: column;
+    }
+    .style-twin-default .banner-item {
+        margin-bottom: 0 !important;
     }
 }
 
