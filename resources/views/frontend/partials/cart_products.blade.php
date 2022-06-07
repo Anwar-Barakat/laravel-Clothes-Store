@@ -187,19 +187,21 @@
     {{-- Update Cart Products --}}
     <script>
         $(document).on('click', '.btnProductUpdate', function() {
+            var quantity = $(this).parent().find('input').val();
+            var newQuantity = quantity
+
             if ($(this).hasClass('btn-reduce')) {
-                var quantity = $(this).prev().val();
                 if (quantity <= 1) {
                     alert("{{ __('msgs.cant_reduce_quantity') }}");
                     return false;
-                } else
-                    newQuantity = parseInt(quantity) - 1;
+                }
+                newQuantity = --quantity;
             }
             if ($(this).hasClass('btn-increase')) {
-                var quantity = $(this).prev().prev().val();
-                newQuantity = parseInt(quantity) + 1;
+                newQuantity = ++quantity;
             }
-            alert(newQuantity)
+            alert(newQuantity);
+
 
             var cartId = $(this).attr('cartId');
             $.ajax({

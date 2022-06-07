@@ -186,6 +186,8 @@ class CartController extends Controller
                 'quantity'  => $data['newQuantity']
             ]);
 
+            $userCartProducts   = Cart::userCartProducts();
+
             $totalCartProducts = totalProducts();
             return response()->json([
                 'status'            => true,

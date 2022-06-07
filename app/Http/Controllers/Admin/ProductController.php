@@ -65,7 +65,7 @@ class ProductController extends Controller
 
 
             if ($request->hasFile('image') && $request->file('image')->isValid())
-                $product->addMediaFromRequest('image')->toMediaCollection('image_products');
+                $product->addMePdiaFromRequest('image')->toMediaCollection('image_products');
 
 
             $subscribersInfo    = NewslatterSubsciber::where('status', 1)->get();
