@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Jobs\SendNewProductMailToSubscribers;
+use App\Jobs\SendNewProductToSubscriber;
 use App\Models\Category;
 use App\Models\NewslatterSubsciber;
 use App\Models\Product;
@@ -65,14 +66,8 @@ class ProductController extends Controller
 
 
             if ($request->hasFile('image') && $request->file('image')->isValid())
-                $product->addMePdiaFromRequest('image')->toMediaCollection('image_products');
+                $product->addMediaFromRequest('image')->toMediaCollection('image_products');
 
-
-            $subscribersInfo    = NewslatterSubsciber::where('status', 1)->get();
-
-            $subscribers        = NewslatterSubsciber::chunk(50, function ($subscribersInfo, $product) {
-                dispatch(new SendNewProductMailToSubscribers($subscribersInfo, $product));
-            });
 
             Session::flash('message', __('msgs.added', ['name' => __('translation.product')]));
             return redirect()->route('admin.products.index');

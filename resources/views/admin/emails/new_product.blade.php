@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +13,7 @@
     <p>click <a href="{{ route('frontend.details', $product->id) }}">here</a> to see it.</p>
 </body>
 
-</html>
+</html> --}}
 
 
 <!DOCTYPE html>
