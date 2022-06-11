@@ -77,11 +77,11 @@
                             </div>
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-group">
-                                    <label for="mobile">{{ __('translation.admin_phone') }}</label>
+                                    <label for="mobile">{{ __('translation.mobile') }}</label>
                                     <input type="tel" name="mobile"
                                         class="form-control @error('mobile') is-invalid @enderror" id="mobile"
                                         value="{{ old('mobile', Auth::guard('admin')->user()->mobile) }}"
-                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')])  }}">
+                                        placeholder="{{ __('translation.please_type', ['name' => __('translation.mobile')]) }}">
                                     @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

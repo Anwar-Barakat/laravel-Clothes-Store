@@ -788,8 +788,14 @@ a.text-danger:focus {
     .exchange-modal-content {
         width: 80%;
         margin: auto;
-        height: 70vh;
+        height: auto;
         overflow: scroll;
+    }
+    .exchange-modal-content {
+        height: 80vh;
+    }
+    .exchange-modal-content h2 {
+        font-size: 2rem;
     }
 }
 

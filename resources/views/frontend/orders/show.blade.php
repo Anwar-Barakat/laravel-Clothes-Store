@@ -10,7 +10,6 @@
         .country .chosen-container {
             height: 1rem !important;
         }
-
     </style>
 @endsection
 
@@ -92,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col-lg-6">
+                                <div class="col-md-12 col-lg-6 mt-4">
                                     <fieldset class="wrap-input country productSize" style="display: none"
                                         id="AppendProductSizes">
                                         @include('frontend.partials.append_sizes')
@@ -131,9 +130,10 @@
                                             </span>
                                         @enderror
                                     </fieldset>
+                                    <br>
                                 </div>
                             </div>
-                            <br>
+
                             <div class="row">
                                 <div class="col-12">
                                     <fieldset class="wrap-input country mt-5">
@@ -158,8 +158,12 @@
                                 </div>
                             </div>
                         </form>
-                        <button id="exchangeOrderClose"
-                            class="w-20 btn btn-default mt-4">{{ __('buttons.close') }}</button>
+                        <div class="row">
+                            <div class="col-12 mt-4">
+                                <button id="exchangeOrderClose"
+                                    class="w-20 btn btn-default">{{ __('buttons.close') }}</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -192,7 +196,7 @@
                                     </span>
                                 @enderror
                             </fieldset>
-
+                            <br>
                             <fieldset class="wrap-input country  mt-4">
                                 <button type="submit" order_id="{{ $orderDetails->id }}"
                                     class="main-button">{{ __('frontend.cancel_order') }}</button>
