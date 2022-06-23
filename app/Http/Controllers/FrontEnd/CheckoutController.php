@@ -208,7 +208,7 @@ class CheckoutController extends Controller
                     'orderDetails'  => $orderDetails
                 ];
                 Mail::send('frontend.emails.order', $messageData, function ($message) use ($email) {
-                    $message->to($email)->subject('Order Placed - Laravel eCommerce Webiste');
+                    $message->to($email)->subject('Order Placed - Laravel Clothes Store');
                 });
 
                 return redirect()->route('frontend.checkout.thanks');

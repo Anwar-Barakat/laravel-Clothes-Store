@@ -20,16 +20,16 @@ class CmsPageSeeder extends Seeder
                 'description'       => 'Content is coming soon',
                 'url'               => 'about-us',
                 'meta_title'        => 'About Us',
-                'meta_description'  => 'About eCommerce Website',
-                'meta_keywords'     => 'about us, about ecommerce website',
+                'meta_description'  => 'About Clothes Store',
+                'meta_keywords'     => 'about us, about clothes store website',
             ],
             [
                 'title'             => 'Privacy Policy',
                 'description'       => 'Content is coming soon',
                 'url'               => 'privacy-policy',
                 'meta_title'        => 'Privacy Policy',
-                'meta_description'  => 'About Privacy Policy of eCommerce Website',
-                'meta_keywords'     => 'privacy policy,privacy policy of ecommerce website',
+                'meta_description'  => 'About Privacy Policy of clothes store',
+                'meta_keywords'     => 'privacy policy,privacy policy of clothes store',
             ],
         ];
 

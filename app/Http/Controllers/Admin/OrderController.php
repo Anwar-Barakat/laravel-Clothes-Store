@@ -111,7 +111,7 @@ class OrderController extends Controller
                 'tracking_number'   => $data['tracking_number'] ?? '',
             ];
             Mail::send('frontend.emails.order_status', $messageData, function ($message) use ($email) {
-                $message->to($email)->subject('Order Placed - An eCommerce Webiste');
+                $message->to($email)->subject('Order Placed - An Clothes Store');
             });
 
 

@@ -6,7 +6,7 @@ return [
     // ! Sidebar Page :
     // !================================================
     'dashboard'                 => 'Dashboard',
-    'ecommerce'                 => 'E-commerce',
+    'ecommerce'                 => 'Clothes Store',
     'categories'                => 'Categories',
     'main'                      => 'Main',
     'admin_settings'            => 'Admin Settings',

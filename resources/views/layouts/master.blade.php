@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Description" content="An eCommerce Webiste">
+    <meta name="Description" content="An Clothes Store">
     <meta name="Author" content="Anwar Barakat">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="Keywords" content="Laravel eCommerce Webiste, eCommerce, online shopping,clothes store" />
+    <meta name="Keywords" content="Laravel Clothes Store, eCommerce, online shopping,clothes store" />
     @include('layouts.head')
 </head>
 

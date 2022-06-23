@@ -4,7 +4,7 @@ return [
     // !================================================
     // ! Home Page :
     // !================================================
-    'ecommerce'                 => 'Online eCommerce',
+    'ecommerce'                 => 'Online Clothes Store',
     'home'                      => 'Home',
     'laguages'                  => 'Languages',
     'login'                     => 'Login',
@@ -26,7 +26,7 @@ return [
     'shop_now'                  => 'Shop Now',
     'dashboard'                 => 'Dashboard',
     'logout'                    => 'Logout',
-    'meta_desc'                 => 'E-commerce website for selling clothes online',
+    'meta_desc'                 => 'Clothes store for selling clothes online',
     'meta_keywords'             => "Online store, clothing website, children's clothing, women's clothing, men's clothing, online store",
     'products_categories'       => 'Products Categories',
 

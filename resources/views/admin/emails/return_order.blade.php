@@ -1,38 +1,3 @@
-{{-- <!doctype html>
-<html lang="en">
-
-<head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-
-<body>
-    <table class="table">
-        <tr>
-            <td>Dear {{ $returnOrder->user->name }}</td>
-        </tr>
-        <tr>
-            <td>
-                Your return order has been {{ $returnOrder['status'] }} for order #{{ $returnOrder['order_id'] }}
-                with the e-commerce site
-            </td>
-
-        </tr>
-        <tr>
-            <td>thank you</td>
-        </tr>
-        <tr>
-            <td>eCommerce website</td>
-        </tr>
-    </table>
-
-</body>
-
-</html> --}}
-
-
 <!doctype html>
 <html lang="en-US">
 

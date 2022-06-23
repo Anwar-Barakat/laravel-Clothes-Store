@@ -200,7 +200,6 @@
             if ($(this).hasClass('btn-increase')) {
                 newQuantity = ++quantity;
             }
-            alert(newQuantity);
 
 
             var cartId = $(this).attr('cartId');
